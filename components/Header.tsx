@@ -14,11 +14,10 @@ export default function Header() {
             height={32}
           />
           <h1 className="sm:text-4xl text-2xl text-white ml-2 tracking-tight">
-          AIntelligentCode.com
+            aintelligentcode.dev
           </h1>
         </Link>
       </header>
-      
-      </div>
+    </div>
   );
 }
