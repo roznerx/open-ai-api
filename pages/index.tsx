@@ -2,12 +2,10 @@ import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import { CopyBlock, dracula } from "react-code-blocks";
 import Head from "next/head";
-import Image from "next/image";
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
 import DropDown, { ElementType } from "../components/DropDown";
 import Footer from "../components/Footer";
-import Github from "../components/GitHub";
 import Header from "../components/Header";
 import LoadingDots from "../components/LoadingDots";
 import ResizablePanel from "../components/ResizablePanel";
@@ -22,8 +20,8 @@ const Home: NextPage = () => {
   let libElements: ElementType[] = ["React" , "Vue"];
   let langElements: ElementType[] = ["Typescript", "Javascript"];
   
-  console.log("Streamed response: ", generatedCode);
-  console.log("lib: ", lib);
+  // console.log("Streamed response: ", generatedCode);
+  // console.log("lib: ", lib);
 
   const prompt =
   langElement === "Typescript"
@@ -47,8 +45,8 @@ const Home: NextPage = () => {
         prompt,
       }),
     });
-    console.warn("Edge function returned.");
-    console.warn("response::", response);
+    // console.warn("Edge function returned.");
+    // console.warn("response::", response);
 
     if (!response.ok) {
       throw new Error(response.statusText);
