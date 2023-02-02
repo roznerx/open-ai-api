@@ -13,8 +13,8 @@ export default function Header() {
             width={32}
             height={32}
           />
-          <h1 className="sm:text-4xl text-2xl text-white ml-2 tracking-tight">
-            aintelligentcode.dev
+          <h1 className="sm:text-4xl text-2xl text-white ml-2 tracking-tight max-sm:pt-0 max-md:pt-4">
+            AIntelligentcode.dev
           </h1>
         </Link>
       </header>
