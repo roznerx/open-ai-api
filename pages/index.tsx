@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, dracula, CodeBlock } from "react-code-blocks";
 import Head from "next/head";
 import { useState } from "react";
 import { Toaster, toast } from "react-hot-toast";
@@ -20,8 +20,8 @@ const Home: NextPage = () => {
   let libElements: ElementType[] = ["React", "Vue"];
   let langElements: ElementType[] = ["Typescript", "Javascript"];
 
-  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "// 1.", "// 2." and "// 3.", with and no additional comments. 
-      Make sure to comment on the generated code and write the code based on this context: ${codeSentence}${
+  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "// 1.", "// 2." and "// 3.", without code comments. 
+      Make sure to write the code based on this context: ${codeSentence}${
     codeSentence.slice(-1) === "." ? "" : "."
   }`;
 
@@ -160,7 +160,7 @@ const Home: NextPage = () => {
                       Your generated code:
                     </h2>
                   </div>
-                  <div className="w-4/4  flex flex-col items-start md:items-center lg:items-center">
+                  <div className="flex flex-col items-center text-center md:items-center lg:items-center">
                     {generatedCode
                       .substring(generatedCode.indexOf("// 1") + 0)
                       .split("// 1.")
@@ -170,21 +170,35 @@ const Home: NextPage = () => {
                         }
                         return (
                           <div
-                            className="flex flex-wrap rounded-xl border bg-white p-4 px-2 text-left font-mono shadow-md transition hover:bg-gray-100"
+                            className="rounded-xl border bg-white p-4 px-2 text-left font-mono shadow-md transition hover:bg-gray-100"
                             key={generated}
                           >
-                            <div className="sm:text-left lg:max-w-2xl">
+                            <div
+                              style={{
+                                flex: 1,
+                                paddingBottom: "1em",
+                              }}
+                            >
                               <CopyBlock
-                                customStyle={{
-                                  overflowY: "scroll",
-                                  overflowX: "scroll",
-                                }}
                                 text={generated}
                                 language={
                                   langElement === "Typescript" ? "tsx" : "jsx"
                                 }
                                 codeBlock
+                                showLineNumbers={true}
+                                wrapLines={true}
                                 theme={dracula}
+                                customStyle={{
+                                  height: "300px",
+                                  width: "95%",
+                                  maxWidth: "95%",
+                                  overflowY: "scroll",
+                                  overflowX: "scroll",
+                                  margin: "0px 0.75rem",
+                                  borderRadius: "5px",
+                                  boxShadow: "1px 2px 3px rgba(0,0,0,0.35)",
+                                  fontSize: "0.80rem",
+                                }}
                               />
                             </div>
                           </div>
