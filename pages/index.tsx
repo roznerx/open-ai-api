@@ -20,8 +20,8 @@ const Home: NextPage = () => {
   let libElements: ElementType[] = ["React" , "Vue"];
   let langElements: ElementType[] = ["Typescript", "Javascript"];
   
-  console.log("Streamed response: ", generatedCode);
-  console.log("lib: ", lib);
+  // console.log("Streamed response: ", generatedCode);
+  // console.log("lib: ", lib);
 
   const prompt =
   langElement === "Typescript"
@@ -45,8 +45,8 @@ const Home: NextPage = () => {
         prompt,
       }),
     });
-    console.warn("Edge function returned.");
-    console.warn("response::", response);
+    // console.warn("Edge function returned.");
+    // console.warn("response::", response);
 
     if (!response.ok) {
       throw new Error(response.statusText);
