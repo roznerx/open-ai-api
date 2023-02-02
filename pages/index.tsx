@@ -20,7 +20,7 @@ const Home: NextPage = () => {
   let libElements: ElementType[] = ["React", "Vue"];
   let langElements: ElementType[] = ["Typescript", "Javascript"];
 
-  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "1." with and no additional comments. 
+  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "// 1.", "// 2." and "// 3.", with and no additional comments. 
       Make sure to comment on the generated code and write the code based on this context: ${codeSentence}${
     codeSentence.slice(-1) === "." ? "" : "."
   }`;
@@ -54,9 +54,8 @@ const Home: NextPage = () => {
     const reader = data.getReader();
     const decoder = new TextDecoder();
     let done = false;
-    let counter = 0;
+
     while (!done) {
-      ++counter;
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       let chunkValue = decoder.decode(value);
@@ -161,27 +160,33 @@ const Home: NextPage = () => {
                       Your generated code:
                     </h2>
                   </div>
-                  <div className="mx-auto flex flex-col items-center justify-center ">
+                  <div className="w-4/4  flex flex-col items-start md:items-center lg:items-center">
                     {generatedCode
-                      .substring(generatedCode.indexOf("1") + 0)
-                      .split("1.")
+                      .substring(generatedCode.indexOf("// 1") + 0)
+                      .split("// 1.")
                       .map((generated, idx) => {
                         if (idx === 0) {
                           return;
                         }
                         return (
                           <div
-                            className="rounded-xl border bg-white p-4 px-2 text-left font-mono shadow-md transition hover:bg-gray-100 sm:w-auto lg:w-2/3"
+                            className="flex flex-wrap rounded-xl border bg-white p-4 px-2 text-left font-mono shadow-md transition hover:bg-gray-100"
                             key={generated}
                           >
-                            <CopyBlock
-                              text={generated}
-                              language={
-                                langElement === "Typescript" ? "tsx" : "jsx"
-                              }
-                              codeBlock
-                              theme={dracula}
-                            />
+                            <div className="sm:text-left lg:max-w-2xl">
+                              <CopyBlock
+                                customStyle={{
+                                  overflowY: "scroll",
+                                  overflowX: "scroll",
+                                }}
+                                text={generated}
+                                language={
+                                  langElement === "Typescript" ? "tsx" : "jsx"
+                                }
+                                codeBlock
+                                theme={dracula}
+                              />
+                            </div>
                           </div>
                         );
                       })}
