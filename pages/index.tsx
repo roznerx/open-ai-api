@@ -17,14 +17,13 @@ const Home: NextPage = () => {
   const [lib, setLib] = useState<ElementType>("React");
   const [generatedCode, setGeneratedCode] = useState<String>("");
 
-  let libElements: ElementType[] = ["React" , "Vue"];
+  let libElements: ElementType[] = ["React", "Vue"];
   let langElements: ElementType[] = ["Typescript", "Javascript"];
 
-  const prompt =
-      `Generate code written in ${langElement} and ${lib}, clearly labeled "1." with and no additional comments. 
+  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "1." with and no additional comments. 
       Make sure to comment on the generated code and write the code based on this context: ${codeSentence}${
-          codeSentence.slice(-1) === "." ? "" : "."
-        }`;
+    codeSentence.slice(-1) === "." ? "" : "."
+  }`;
 
   const generateCode = async (e: any) => {
     e.preventDefault();
@@ -61,22 +60,15 @@ const Home: NextPage = () => {
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
       let chunkValue = decoder.decode(value);
-      // console.log(`🚀 ${counter} - chunkValue Before: `, chunkValue)
-      // chunkValue.replace('', '🔥🔥🔥🔥🔥🔥🔥')
-      // generatedCode.replace('', '🔥🔥🔥🔥🔥🔥🔥')
-      // console.log(`🚀 ${counter} - chunkValue is empty 🔥: `, chunkValue == '')
       setGeneratedCode((prev) => prev + chunkValue);
       if (done) {
         setLoading(false);
       }
     }
-
-
-    
   };
 
   return (
-    <div className="flex w-full flex-col items-center justify-center min-h-screen">
+    <div className="flex min-h-screen w-full flex-col items-center justify-center">
       <Head>
         <title>AIntelligent Code Generator</title>
         <link rel="icon" href="/favicon.ico" />
@@ -84,16 +76,15 @@ const Home: NextPage = () => {
 
       <Header />
 
-      <main className="flex flex-1 w-full flex-col items-center justify-center text-center px-4 mt-12 sm:mt-20 min-w-full">
-   
-        <h1 className="sm:text-6xl text-4xl max-w-2xl font-bold text-slate-900">
+      <main className="mt-12 flex w-full min-w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
+        <h1 className="max-w-2xl text-4xl font-bold text-slate-900 sm:text-6xl">
           Generate Code
         </h1>
-        <div className="max-w-xl w-full">
-          <div className="flex mt-10 items-center space-x-3">
-          <div className="p-4 text-white rounded-full bg-black flex items-center justify-center font-mono h-5 w-5 text-sm">
-          1
-          </div>
+        <div className="w-full max-w-xl">
+          <div className="mt-10 flex items-center space-x-3">
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-black p-4 font-mono text-sm text-white">
+              1
+            </div>
             <p className="text-left font-medium">
               Write a few sentences about what do you want to accomplish:
             </p>
@@ -102,37 +93,44 @@ const Home: NextPage = () => {
             value={codeSentence}
             onChange={(e) => setCodeSentence(e.target.value)}
             rows={4}
-            className="w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black my-5"
-            placeholder={
-              "e.g. Write a real-time chat system using socket io."
-            }
+            className="my-5 w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black"
+            placeholder={"e.g. Write a real-time chat system using socket io."}
           />
-          <div className="flex mb-5 items-center space-x-3">
-          <div className="p-4 text-white rounded-full bg-black flex items-center justify-center font-mono h-5 w-5 text-sm">
-          2
-          </div>
+          <div className="mb-5 flex items-center space-x-3">
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-black p-4 font-mono text-sm text-white">
+              2
+            </div>
             <p className="text-left font-medium">Select your flavor:</p>
           </div>
           <div className="block">
-            <DropDown elements={langElements} element={langElement} setElement={(newElement) => setLangElement(newElement)} />
+            <DropDown
+              elements={langElements}
+              element={langElement}
+              setElement={(newElement) => setLangElement(newElement)}
+            />
           </div>
-     
-          <div className="flex mt-8 mb-5 items-center space-x-3">
-        
-          <div className="p-4 text-white rounded-full bg-black flex items-center justify-center font-mono h-5 w-5 text-sm">
-          3
+
+          <div className="mt-8 mb-5 flex items-center space-x-3">
+            <div className="flex h-5 w-5 items-center justify-center rounded-full bg-black p-4 font-mono text-sm text-white">
+              3
+            </div>
+            <p className="text-left font-medium">
+              Select the library of your preference:
+            </p>
           </div>
-            <p className="text-left font-medium">Select the library of your preference:</p>
-          </div>
-          
+
           <div className="block">
-            <DropDown elements={libElements} element={lib} setElement={(newLib) => setLib(newLib)} />
+            <DropDown
+              elements={libElements}
+              element={lib}
+              setElement={(newLib) => setLib(newLib)}
+            />
           </div>
 
           {!loading && (
             <button
               // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
-              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 sm:mt-10"
               onClick={(e) => generateCode(e)}
             >
               Generate Code
@@ -140,7 +138,7 @@ const Home: NextPage = () => {
           )}
           {loading && (
             <button
-              className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
+              className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 sm:mt-10"
               disabled
             >
               <LoadingDots color="white" style="large" />
@@ -152,45 +150,38 @@ const Home: NextPage = () => {
           reverseOrder={false}
           toastOptions={{ duration: 2000 }}
         />
-        <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
+        <hr className="border-1 h-px bg-gray-700 dark:bg-gray-700" />
         <ResizablePanel>
           <AnimatePresence mode="popLayout">
-            <motion.div className="space-y-10 my-10">
+            <motion.div className="my-10 space-y-10">
               {generatedCode && (
                 <>
                   <div>
-                    <h2 className="sm:text-4xl text-3xl font-bold text-slate-900 mx-auto">
+                    <h2 className="mx-auto text-3xl font-bold text-slate-900 sm:text-4xl">
                       Your generated code:
                     </h2>
                   </div>
-                  <div className="flex flex-col items-center justify-center mx-auto ">
+                  <div className="mx-auto flex flex-col items-center justify-center ">
                     {generatedCode
                       .substring(generatedCode.indexOf("1") + 0)
                       .split("1.")
                       .map((generated, idx) => {
                         if (idx === 0) {
-                          return
+                          return;
                         }
                         return (
                           <div
-                            className="bg-white text-left  sm:w-auto lg:w-2/3 rounded-xl shadow-md p-4 hover:bg-gray-100 transition border px-2"
-                            // onClick={() => {
-                            //   navigator.clipboard.writeText(generated);
-                            //   toast("Code copied to clipboard", {
-                            //     icon: "✂️",
-                            //   });
-                            // }}
+                            className="rounded-xl border bg-white p-4 px-2 text-left font-mono shadow-md transition hover:bg-gray-100 sm:w-auto lg:w-2/3"
                             key={generated}
                           >
-            
-                            {/* <div id="parent" className="[&>*:nth-child(1)_code:nth-child(2)_span]:h-0"> */}
-                              <CopyBlock
-                                text={generated}
-                                showLineNumbers
-                                language={langElement === "Typescript" ? "tsx" : "jsx"}
-                                theme={dracula}
-                              />
-                            {/* </div> */}
+                            <CopyBlock
+                              text={generated}
+                              language={
+                                langElement === "Typescript" ? "tsx" : "jsx"
+                              }
+                              codeBlock
+                              theme={dracula}
+                            />
                           </div>
                         );
                       })}
