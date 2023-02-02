@@ -19,16 +19,10 @@ const Home: NextPage = () => {
 
   let libElements: ElementType[] = ["React" , "Vue"];
   let langElements: ElementType[] = ["Typescript", "Javascript"];
-  
-  // console.log("Streamed response: ", generatedCode);
-  // console.log("lib: ", lib);
 
   const prompt =
-  langElement === "Typescript"
-      ? `Generate an App, written in Typescript and ${lib}, clearly labeled "1.","2." and "3.". Make sure to write the App based on this context: ${codeSentence}${
-          codeSentence.slice(-1) === "." ? "" : "."
-        }`
-      : `Generate 2 ${langElement} twitter bios with no hashtags and clearly labeled "1." and "2.". Make sure each generated bio is at least 14 words and at max 20 words and base them on this context: ${codeSentence}${
+      `Generate code written in ${langElement} and ${lib}, clearly labeled "1." with and no additional comments. 
+      Make sure to comment on the generated code and write the code based on this context: ${codeSentence}${
           codeSentence.slice(-1) === "." ? "" : "."
         }`;
 
@@ -61,11 +55,16 @@ const Home: NextPage = () => {
     const reader = data.getReader();
     const decoder = new TextDecoder();
     let done = false;
-
+    let counter = 0;
     while (!done) {
+      ++counter;
       const { value, done: doneReading } = await reader.read();
       done = doneReading;
-      const chunkValue = decoder.decode(value);
+      let chunkValue = decoder.decode(value);
+      // console.log(`🚀 ${counter} - chunkValue Before: `, chunkValue)
+      // chunkValue.replace('', '🔥🔥🔥🔥🔥🔥🔥')
+      // generatedCode.replace('', '🔥🔥🔥🔥🔥🔥🔥')
+      // console.log(`🚀 ${counter} - chunkValue is empty 🔥: `, chunkValue == '')
       setGeneratedCode((prev) => prev + chunkValue);
       if (done) {
         setLoading(false);
@@ -77,7 +76,7 @@ const Home: NextPage = () => {
   };
 
   return (
-    <div className="flex min-w-max mx-auto flex-col items-center justify-center min-h-screen">
+    <div className="flex w-full flex-col items-center justify-center min-h-screen">
       <Head>
         <title>AIntelligent Code Generator</title>
         <link rel="icon" href="/favicon.ico" />
@@ -96,7 +95,7 @@ const Home: NextPage = () => {
           1
           </div>
             <p className="text-left font-medium">
-              Write a few sentences about what do you want to acomplish using Typescript or Javascripr
+              Write a few sentences about what do you want to accomplish:
             </p>
           </div>
           <textarea
@@ -112,7 +111,7 @@ const Home: NextPage = () => {
           <div className="p-4 text-white rounded-full bg-black flex items-center justify-center font-mono h-5 w-5 text-sm">
           2
           </div>
-            <p className="text-left font-medium">Select your flavor.</p>
+            <p className="text-left font-medium">Select your flavor:</p>
           </div>
           <div className="block">
             <DropDown elements={langElements} element={langElement} setElement={(newElement) => setLangElement(newElement)} />
@@ -123,7 +122,7 @@ const Home: NextPage = () => {
           <div className="p-4 text-white rounded-full bg-black flex items-center justify-center font-mono h-5 w-5 text-sm">
           3
           </div>
-            <p className="text-left font-medium">Select the library of your preference</p>
+            <p className="text-left font-medium">Select the library of your preference:</p>
           </div>
           
           <div className="block">
@@ -132,10 +131,11 @@ const Home: NextPage = () => {
 
           {!loading && (
             <button
+              // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
               className="bg-black rounded-xl text-white font-medium px-4 py-2 sm:mt-10 mt-8 hover:bg-black/80 w-full"
               onClick={(e) => generateCode(e)}
             >
-              Generate the code you want, just be creative &rarr;
+              Generate Code
             </button>
           )}
           {loading && (
@@ -154,7 +154,7 @@ const Home: NextPage = () => {
         />
         <hr className="h-px bg-gray-700 border-1 dark:bg-gray-700" />
         <ResizablePanel>
-          <AnimatePresence mode="wait">
+          <AnimatePresence mode="popLayout">
             <motion.div className="space-y-10 my-10">
               {generatedCode && (
                 <>
@@ -163,32 +163,34 @@ const Home: NextPage = () => {
                       Your generated code:
                     </h2>
                   </div>
-                  <div className="space-y-8 flex flex-col items-center justify-center max-w-xl mx-auto">
+                  <div className="flex flex-col items-center justify-center mx-auto ">
                     {generatedCode
                       .substring(generatedCode.indexOf("1") + 0)
                       .split("1.")
                       .map((generated, idx) => {
-                        // if (idx === 0) {
-                        //   return
-                        // }
+                        if (idx === 0) {
+                          return
+                        }
                         return (
                           <div
-                            className="bg-white text-left min-w-full w-fit rounded-xl shadow-md p-4 hover:bg-gray-100 transition cursor-copy border px-2"
-                            onClick={() => {
-                              navigator.clipboard.writeText(generated);
-                              toast("Code copied to clipboard", {
-                                icon: "✂️",
-                              });
-                            }}
+                            className="bg-white text-left  sm:w-auto lg:w-2/3 rounded-xl shadow-md p-4 hover:bg-gray-100 transition border px-2"
+                            // onClick={() => {
+                            //   navigator.clipboard.writeText(generated);
+                            //   toast("Code copied to clipboard", {
+                            //     icon: "✂️",
+                            //   });
+                            // }}
                             key={generated}
                           >
-                            <CopyBlock
-                              className="w-auto bg-white"
-                              text={generated}
-                              showLineNumbers
-                              language={langElement === "Typescript" ? "tsx" : "jsx"}
-                              theme={dracula}
-                            />
+            
+                            {/* <div id="parent" className="[&>*:nth-child(1)_code:nth-child(2)_span]:h-0"> */}
+                              <CopyBlock
+                                text={generated}
+                                showLineNumbers
+                                language={langElement === "Typescript" ? "tsx" : "jsx"}
+                                theme={dracula}
+                              />
+                            {/* </div> */}
                           </div>
                         );
                       })}
