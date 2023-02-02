@@ -7,29 +7,24 @@ class MyDocument extends Document {
         <Head>
           <link rel="icon" href="/favicon.ico" />
           <meta
-            name="description"
-            content="Generate your next Twitter bio in seconds."
+            name="title"
+            content="AIntelligent Code Generator"
           />
-          <meta property="og:site_name" content="twitterbio.com" />
+          <meta
+            name="description"
+            content="Generate your next code idea in seconds."
+          />
+          <meta property="og:site_name" content="aintelligentcode.dev" />
           <meta
             property="og:description"
-            content="Generate your next Twitter bio in seconds."
+            content="Generate your next Code idea in seconds."
           />
-          <meta property="og:title" content="Twitter Bio Generator" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Twitter Bio Generator" />
-          <meta
-            name="twitter:description"
-            content="Generate your next Twitter bio in seconds."
-          />
+          <meta property="og:title" content="AI Intelligent Code Generator" />
           <meta
             property="og:image"
-            content="https://twitterbio.com/og-image.png"
+            content="https://www.aintelligentcode.dev/_next/image?url=%2FgitIcon.png&w=64&q=75"
           />
-          <meta
-            name="twitter:image"
-            content="https://twitterbio.com/og-image.png"
-          />
+         
         </Head>
         <body>
           <Main />
