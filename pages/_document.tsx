@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <meta property="og:title" content="AI Intelligent Code Generator" />
           <meta
             property="og:image"
-            content="https://www.aintelligentcode.dev/_next/image?url=%2FgitIcon.png&w=64&q=75"
+            content="/gitIcon.png"
           />
          
         </Head>
