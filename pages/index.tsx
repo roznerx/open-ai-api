@@ -81,7 +81,7 @@ const Home: NextPage = () => {
       return;
     }
     try {
-      reader.releaseLock();
+      reader.cancel();
       setReader(null);
     } catch (error: any) {
       if (error.message !== "aborted") {
