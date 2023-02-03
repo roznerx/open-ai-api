@@ -1,23 +1,30 @@
+import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Header() {
   return (
-    <div className="bg-gradient-to-r from-indigo-500  via-purple-500 to-pink-500 content-center flex w-full lg:w-full pb-7 px-2">
-      <header className="m-auto mt-5">
-        <Link href="/" className="flex space-x-3">
-          <Image
-            alt="Intelligent Code generator"
-            src="/gitIcon.png"
-            className="sm:w-12 sm:h-12 w-8 h-8"
-            width={32}
-            height={32}
-          />
-          <h1 className="sm:text-4xl text-2xl text-white ml-2 tracking-tight max-sm:pt-0 max-md:pt-4">
-            AIntelligentcode.dev
-          </h1>
-        </Link>
-      </header>
-    </div>
+    <>
+      <Head>
+        <title>AIntelligent Code Generator</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <div className="flex w-full  content-center bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 px-2 pb-7 lg:w-full">
+        <header className="m-auto mt-5">
+          <Link href="/" className="flex space-x-3">
+            <Image
+              alt="Intelligent Code generator"
+              src="/gitIcon.png"
+              className="h-8 w-8 sm:h-12 sm:w-12"
+              width={32}
+              height={32}
+            />
+            <h1 className="ml-2 text-2xl tracking-tight text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
+              AIntelligentcode.dev
+            </h1>
+          </Link>
+        </header>
+      </div>
+    </>
   );
 }
