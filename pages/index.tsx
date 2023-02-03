@@ -80,12 +80,9 @@ const Home: NextPage = () => {
       return;
     }
     try {
-      reader.cancel();
+      reader.releaseLock();
       setReader(null);
     } catch (error: any) {
-      if (error.message !== "aborted") {
-        throw error;
-      }
     } finally {
       setReader(null);
     }
