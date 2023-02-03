@@ -63,7 +63,6 @@ const Home: NextPage = () => {
         if (done) {
           setLoading(false);
         }
-        // }
       }
     } catch (error) {
     } finally {
@@ -132,7 +131,7 @@ const Home: NextPage = () => {
             text="Generate Code"
           />
           <StopButton
-            onClick={stopGeneration}
+            onCancel={stopGeneration}
             loading={loading}
             text="Stop Generating"
           />

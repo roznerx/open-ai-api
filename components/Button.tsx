@@ -8,7 +8,7 @@ type ButtonProps = {
 type StopButtonProps = {
   loading: boolean;
   text?: string;
-  onClick: () => void;
+  onCancel: () => void;
 };
 
 export default function Button({ loading, onClick, text = "" }: ButtonProps) {
@@ -32,14 +32,14 @@ export default function Button({ loading, onClick, text = "" }: ButtonProps) {
 
 export function StopButton({
   loading,
-  onClick,
+  onCancel,
   text = "Generate Code",
 }: StopButtonProps) {
   return loading ? (
     <button
       // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
       className="mt-8 w-full rounded-xl bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500 px-4 py-2 font-medium text-white hover:bg-black/80 sm:mt-10"
-      onClick={() => onClick()}
+      onClick={onCancel}
     >
       {text}
     </button>
