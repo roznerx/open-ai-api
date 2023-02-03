@@ -65,6 +65,7 @@ const Home: NextPage = () => {
         }
       }
     } catch (error) {
+      throw error;
     } finally {
       setLoading(false);
       setReader(null);
@@ -75,13 +76,13 @@ const Home: NextPage = () => {
     generateCode();
   };
 
-  const stopGeneration = () => {
+  const stopGeneration = async () => {
     if (!reader) {
       return;
     }
     try {
-      reader.releaseLock();
-      setReader(null);
+      await reader.cancel();
+      // setReader(null);
     } catch (error: any) {
     } finally {
       setReader(null);
