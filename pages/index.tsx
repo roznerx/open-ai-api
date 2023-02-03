@@ -1,17 +1,18 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
-import { CopyBlock, dracula } from "react-code-blocks";
 import { useState } from "react";
 import DropDown, { ElementType } from "../components/DropDown";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import ResizablePanel from "../components/ResizablePanel";
-import Button from "../components/Button";
+import Button, { StopButton } from "../components/Button";
 import BulletPoint from "../components/BulletPoint";
 import GenerateCode from "../components/GenerateCode";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
+  const [reader, setReader] =
+    useState<ReadableStreamDefaultReader<Uint8Array> | null>(null);
   const [codeSentence, setCodeSentence] = useState("");
   const [langElement, setLangElement] = useState<ElementType>("Typescript");
   const [lib, setLib] = useState<ElementType>("React");
@@ -49,17 +50,25 @@ const Home: NextPage = () => {
     }
 
     const reader = data.getReader();
+    setReader(reader);
     const decoder = new TextDecoder();
     let done = false;
 
-    while (!done) {
-      const { value, done: doneReading } = await reader.read();
-      done = doneReading;
-      let chunkValue = decoder.decode(value);
-      setGeneratedCode((prev) => prev + chunkValue);
-      if (done) {
-        setLoading(false);
+    try {
+      while (!done) {
+        const { value, done: doneReading } = await reader.read();
+        done = doneReading;
+        let chunkValue = decoder.decode(value);
+        setGeneratedCode((prev) => prev + chunkValue);
+        if (done) {
+          setLoading(false);
+        }
+        // }
       }
+    } catch (error) {
+    } finally {
+      setLoading(false);
+      setReader(null);
     }
   };
 
@@ -67,7 +76,21 @@ const Home: NextPage = () => {
     generateCode();
   };
 
-  const hasGeneratedCode = generateCode.length > 0;
+  const stopGeneration = () => {
+    if (!reader) {
+      return;
+    }
+    try {
+      reader.releaseLock();
+      setReader(null);
+    } catch (error: any) {
+      if (error.message !== "aborted") {
+        throw error;
+      }
+    } finally {
+      setReader(null);
+    }
+  };
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center">
@@ -103,7 +126,16 @@ const Home: NextPage = () => {
             element={lib}
             setElement={(newLib) => setLib(newLib)}
           />
-          <Button onCodeGeneration={onCodeGeneration} loading={loading} />
+          <Button
+            onClick={onCodeGeneration}
+            loading={loading}
+            text="Generate Code"
+          />
+          <StopButton
+            onClick={stopGeneration}
+            loading={loading}
+            text="Stop Generating"
+          />
         </div>
         <hr className="border-1 h-px bg-gray-700 dark:bg-gray-700" />
         <ResizablePanel>
