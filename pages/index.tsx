@@ -8,9 +8,11 @@ import ResizablePanel from "../components/ResizablePanel";
 import Button, { StopButton } from "../components/Button";
 import BulletPoint from "../components/BulletPoint";
 import GenerateCode from "../components/GenerateCode";
+import MyModal from "../components/Modal";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
+  const [modaIsOpen, setModaIsOpen] = useState(false);
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null);
   const [codeSentence, setCodeSentence] = useState("");
@@ -40,6 +42,8 @@ const Home: NextPage = () => {
     });
 
     if (!response.ok) {
+      setLoading(false);
+      <MyModal isOpen={modaIsOpen} setIsOpen={setModaIsOpen} />;
       throw new Error(response.statusText);
     }
 
