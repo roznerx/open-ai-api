@@ -29,8 +29,18 @@ const Home: NextPage = () => {
   }`;
 
   const generateCode = async () => {
-    setGeneratedCode("");
     setLoading(true);
+    const timeout = 4000;
+    const controller = new AbortController();
+    const id = setTimeout(() => {
+      controller.abort();
+      setLoading(false);
+      setModaIsOpen(true);
+      setCodeSentence("");
+    }, timeout);
+
+    setGeneratedCode("");
+
     const response = await fetch("/api/generate", {
       method: "POST",
       headers: {
@@ -39,17 +49,18 @@ const Home: NextPage = () => {
       body: JSON.stringify({
         prompt,
       }),
+      signal: controller.signal,
     });
-
+    clearTimeout(id);
     if (!response.ok) {
       setLoading(false);
-      <MyModal isOpen={modaIsOpen} setIsOpen={setModaIsOpen} />;
-      throw new Error(response.statusText);
+      return;
     }
 
     // This data is a ReadableStream
     const data = response.body;
     if (!data) {
+      setLoading(false);
       return;
     }
 
@@ -96,6 +107,7 @@ const Home: NextPage = () => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center">
       <Header />
+      <MyModal isOpen={modaIsOpen} setIsOpen={setModaIsOpen} />
       <main className="mt-12 flex w-full min-w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
         <h1 className="max-w-2xl text-4xl font-bold text-slate-900 sm:text-6xl">
           Generate Code

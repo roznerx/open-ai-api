@@ -5,14 +5,6 @@ type DialogProps = {
   setIsOpen: (arg: boolean) => void;
 };
 export default function MyModal({ isOpen, setIsOpen }: DialogProps) {
-  function closeModal() {
-    setIsOpen(false);
-  }
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -44,18 +36,15 @@ export default function MyModal({ isOpen, setIsOpen }: DialogProps) {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all">
+                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
                   <Dialog.Title
                     as="h3"
-                    className="text-lg font-medium leading-6 text-gray-900"
+                    className="text-md font-medium leading-6 text-gray-900"
                   >
-                    Try a new prompt
+                    There was an error with your request
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      We can't find a good answer for you, please reprase your
-                      prompt.
-                    </p>
+                    <p className="text-sm text-gray-500">Please try again</p>
                   </div>
 
                   <div className="mt-4">
