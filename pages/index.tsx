@@ -30,13 +30,13 @@ const Home: NextPage = () => {
 
   const generateCode = async () => {
     setLoading(true);
-    const timeout = 4000;
+    const timeout = 6000;
     const controller = new AbortController();
     const id = setTimeout(() => {
       controller.abort();
       setLoading(false);
       setModaIsOpen(true);
-      setCodeSentence("");
+      // setCodeSentence("");
     }, timeout);
 
     setGeneratedCode("");
@@ -80,7 +80,7 @@ const Home: NextPage = () => {
         }
       }
     } catch (error) {
-      throw error;
+      return `There was an error with your request ${error}`;
     } finally {
       setLoading(false);
       setReader(null);
