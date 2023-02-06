@@ -18,23 +18,16 @@ export default function GenerateCode({
       </div>
       <div className="w-4/4  flex flex-col items-start md:items-center lg:items-center">
         {generatedCode
-          .substring(generatedCode.indexOf("// 1") + 0)
-          .split("// 1.")
-          .map((generated, idx) => {
-            if (idx === 0) {
-              return;
-            }
+          .substring(generatedCode.indexOf("**") + 0)
+          .split("**::")
+          .map((generated) => {
             return (
               <div
                 className="flex flex-wrap rounded-xl border bg-white p-4 px-2 text-left font-mono shadow-md transition hover:bg-gray-100"
                 key={generated}
               >
-                <div className="sm:text-left lg:max-w-2xl">
+                <div className="overflow-x-auto sm:text-left lg:max-w-2xl">
                   <CopyBlock
-                    customStyle={{
-                      overflowY: "scroll",
-                      overflowX: "scroll",
-                    }}
                     text={generated}
                     language={langElement === "Typescript" ? "tsx" : "jsx"}
                     codeBlock

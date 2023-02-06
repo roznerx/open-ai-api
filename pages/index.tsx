@@ -23,10 +23,10 @@ const Home: NextPage = () => {
   let libElements: ElementType[] = ["React", "Vue"];
   let langElements: ElementType[] = ["Typescript", "Javascript"];
 
-  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "// 1.", "// 2." and "// 3.", with and no additional comments. 
-      Make sure to comment on the generated code and write the code based on this context: ${codeSentence}${
+  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "**::", "// 1.", "// 2.", "// 3." and "// 4.". 
+      Context: ${codeSentence}${
     codeSentence.slice(-1) === "." ? "" : "."
-  }`;
+  } Requirements: Make sure to comment on the folder and file structure at the end, including configuration files.`;
 
   const generateCode = async () => {
     setLoading(true);
@@ -75,15 +75,15 @@ const Home: NextPage = () => {
         done = doneReading;
         let chunkValue = decoder.decode(value);
         setGeneratedCode((prev) => prev + chunkValue);
-        if (done) {
-          setLoading(false);
-        }
       }
     } catch (error) {
       return `There was an error with your request ${error}`;
     } finally {
       setLoading(false);
       setReader(null);
+    }
+    if (done) {
+      setLoading(false);
     }
   };
 
