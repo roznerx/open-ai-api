@@ -1,0 +1,108 @@
+import { signIn } from "next-auth/react";
+import {
+  useState,
+  Dispatch,
+  SetStateAction,
+  useCallback,
+  useMemo,
+} from "react";
+import Image from "next/image";
+import BaseModal from "components/modals/BaseModal";
+
+const SignInModal = ({
+  showSignInModal,
+  setShowSignInModal,
+}: {
+  showSignInModal: boolean;
+  setShowSignInModal: Dispatch<SetStateAction<boolean>>;
+}) => {
+  const [signInClicked, setSignInClicked] = useState(false);
+
+  return (
+    <BaseModal showModal={showSignInModal} setShowModal={setShowSignInModal}>
+      <div className="w-full shadow-xl md:max-w-md md:rounded-2xl md:border md:border-gray-200">
+        <div className="justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center md:px-16">
+          <h3 className="font-display text-2xl font-bold">Sign In</h3>
+        </div>
+        <div className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 md:px-16">
+          <button
+            disabled={signInClicked}
+            className={`${
+              signInClicked
+                ? "cursor-not-allowed border-gray-200 bg-gray-100"
+                : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+            } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+            onClick={() => {
+              setSignInClicked(true);
+              signIn("google", {
+                callbackUrl: process.env.NEXTAUTH_URL,
+              });
+            }}
+          >
+            {signInClicked ? (
+              "Loading.."
+            ) : (
+              <>
+                <Image
+                  width={32}
+                  height={32}
+                  alt="Google Logo"
+                  src="./google.svg"
+                  className="h-5 w-5"
+                />
+                <p>Sign In with Google</p>
+              </>
+            )}
+          </button>
+          <button
+            disabled={signInClicked}
+            className={`${
+              signInClicked
+                ? "cursor-not-allowed border-gray-200 bg-gray-100"
+                : "border border-gray-200 bg-white text-black hover:bg-gray-50"
+            } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+            onClick={() => {
+              setSignInClicked(true);
+              signIn("github", {
+                callbackUrl: process.env.NEXTAUTH_URL,
+              });
+            }}
+          >
+            {signInClicked ? (
+              "Loading.."
+            ) : (
+              <>
+                <Image
+                  width={32}
+                  height={32}
+                  alt="Github Logo"
+                  src="/gitIcon.png"
+                  className="h-5 w-5"
+                />
+                <p>Sign In with Github</p>
+              </>
+            )}
+          </button>
+        </div>
+      </div>
+    </BaseModal>
+  );
+};
+
+export function useSignInModal() {
+  const [showSignInModal, setShowSignInModal] = useState(false);
+
+  const SignInModalCallback = useCallback(() => {
+    return (
+      <SignInModal
+        showSignInModal={showSignInModal}
+        setShowSignInModal={setShowSignInModal}
+      />
+    );
+  }, [showSignInModal, setShowSignInModal]);
+
+  return useMemo(
+    () => ({ setShowSignInModal, SignInModal: SignInModalCallback }),
+    [setShowSignInModal, SignInModalCallback],
+  );
+}

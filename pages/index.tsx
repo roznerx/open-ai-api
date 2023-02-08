@@ -161,6 +161,16 @@ const Home: NextPage = () => {
               )} */}
               {generatedCode.length > 0 && (
                 <Sandpack
+                  options={{
+                    showLineNumbers: true,
+                    showConsoleButton: false,
+                    // recompileMode: "delayed",
+                    // recompileDelay: 300,
+                    // autorun: false // wait until the code is there
+                    // wrapContent: true, // default - false
+                    // editorHeight: 350, // default - 300
+                    // editorWidthPercentage: 60, // defau
+                  }}
                   // Try out the included templates below!
                   template="react"
                   files={{
