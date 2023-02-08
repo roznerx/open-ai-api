@@ -1,3 +1,19 @@
+export const OPEN_API = {
+  MODELS: {
+    DAVINCI: "text-davinci-003",
+  },
+  TEMPERATURE: {
+    DEFAULT: 0.7,
+  },
+  MAX_TOKENS: {
+    DEFAULT: 4000,
+  },
+  STREAM: {
+    ENABLED: true,
+    DISABLED: false,
+  },
+};
+
 export const FADE_IN_ANIMATION_SETTINGS = {
   initial: { opacity: 0 },
   animate: { opacity: 1 },

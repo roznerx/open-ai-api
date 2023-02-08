@@ -10,6 +10,7 @@ import Button, { StopButton } from "../components/Button";
 import BulletPoint from "../components/BulletPoint";
 import GenerateCode from "../components/GenerateCode";
 import MyModal from "../components/Modal";
+import { OPEN_API } from "@/lib/constants";
 
 const Home: NextPage = () => {
   const [loading, setLoading] = useState(false);
@@ -47,6 +48,10 @@ const Home: NextPage = () => {
       },
       body: JSON.stringify({
         prompt,
+        model: OPEN_API.MODELS.DAVINCI,
+        temperature: OPEN_API.TEMPERATURE.DEFAULT,
+        max_tokens: OPEN_API.MAX_TOKENS.DEFAULT,
+        stream: OPEN_API.STREAM.ENABLED,
       }),
       signal: controller.signal,
     });
@@ -159,22 +164,29 @@ const Home: NextPage = () => {
                   generatedCode={generatedCode}
                 />
               )} */}
-              {generatedCode.length > 0 && (
+              {"generatedCode.length > 0" && (
                 <Sandpack
+                  theme="auto"
                   options={{
                     showLineNumbers: true,
                     showConsoleButton: false,
+                    showNavigator: false,
                     // recompileMode: "delayed",
                     // recompileDelay: 300,
                     // autorun: false // wait until the code is there
                     // wrapContent: true, // default - false
                     // editorHeight: 350, // default - 300
-                    // editorWidthPercentage: 60, // defau
+                    editorWidthPercentage: 60, // defau
+                  }}
+                  customSetup={{
+                    dependencies: {
+                      tailwindcss: "latest",
+                    },
                   }}
                   // Try out the included templates below!
                   template="react"
                   files={{
-                    "/App.js": generatedCode,
+                    "/App.js": "<div>{children}</div>",
                   }}
                 />
               )}
