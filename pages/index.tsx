@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
+import { Sandpack } from "@codesandbox/sandpack-react";
 import { useState } from "react";
 import DropDown, { ElementType } from "../components/DropDown";
 import Footer from "../components/Footer";
@@ -24,9 +25,7 @@ const Home: NextPage = () => {
   let langElements: ElementType[] = ["Typescript", "Javascript"];
 
   const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "**::", "// 1.", "// 2.", "// 3." and "// 4.". 
-      Context: ${codeSentence}${
-    codeSentence.slice(-1) === "." ? "" : "."
-  } Requirements: Make sure to comment on the folder and file structure at the end, including configuration files.`;
+      Context: ${codeSentence}${codeSentence.slice(-1) === "." ? "" : "."}`;
 
   const generateCode = async () => {
     setLoading(true);
@@ -154,10 +153,19 @@ const Home: NextPage = () => {
         <ResizablePanel>
           <AnimatePresence mode="popLayout">
             <motion.div className="my-10 space-y-10">
-              {generatedCode && (
+              {/* {generatedCode && (
                 <GenerateCode
                   langElement={langElement}
                   generatedCode={generatedCode}
+                />
+              )} */}
+              {generatedCode.length > 0 && (
+                <Sandpack
+                  // Try out the included templates below!
+                  template="react"
+                  files={{
+                    "/App.js": generatedCode,
+                  }}
                 />
               )}
             </motion.div>
