@@ -9,10 +9,11 @@ export const config = {
 };
 
 const handler = async (req: Request): Promise<Response> => {
-  const { prompt, model, temperature, max_tokens, stream } =
+  const { prompt, model, temperature, max_tokens, stream, stop } =
     (await req.json()) as {
       prompt?: string;
       model: string;
+      stop?: string;
       temperature: number;
       max_tokens: number;
       stream: boolean;
@@ -32,6 +33,8 @@ const handler = async (req: Request): Promise<Response> => {
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
+    stop,
+    // stop: "\n" (This will stop the secuence after the first token), // To stop the secuence of the tokens being generated.
   };
 
   const openAIStream = await OpenAIStream(payload);
