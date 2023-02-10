@@ -49,8 +49,8 @@ const Home: NextPage = () => {
       body: JSON.stringify({
         prompt,
         model: OPEN_API.MODELS.DAVINCI,
-        temperature: OPEN_API.TEMPERATURE.DEFAULT,
-        max_tokens: OPEN_API.MAX_TOKENS.DEFAULT,
+        temperature: OPEN_API.TEMPERATURE.OPTIMAL,
+        max_tokens: OPEN_API.MAX_TOKENS.INCREASED,
         stream: OPEN_API.STREAM.ENABLED,
       }),
       signal: controller.signal,
@@ -164,7 +164,7 @@ const Home: NextPage = () => {
                   generatedCode={generatedCode}
                 />
               )} */}
-              {"generatedCode.length > 0" && (
+              {generatedCode.length > 0 && (
                 <Sandpack
                   theme="auto"
                   options={{
@@ -174,9 +174,9 @@ const Home: NextPage = () => {
                     // recompileMode: "delayed",
                     // recompileDelay: 300,
                     // autorun: false // wait until the code is there
-                    // wrapContent: true, // default - false
-                    // editorHeight: 350, // default - 300
-                    editorWidthPercentage: 60, // defau
+                    wrapContent: false, // default - false
+                    // editorHeight: "auto", // default - 300
+                    editorWidthPercentage: 50, // defau
                   }}
                   customSetup={{
                     dependencies: {
@@ -186,7 +186,7 @@ const Home: NextPage = () => {
                   // Try out the included templates below!
                   template="react"
                   files={{
-                    "/App.js": "<div>{children}</div>",
+                    "/App.js": generatedCode,
                   }}
                 />
               )}
