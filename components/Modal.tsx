@@ -41,7 +41,8 @@ export default function MyModal({ isOpen, setIsOpen }: DialogProps) {
                     as="h3"
                     className="text-md font-medium leading-6 text-gray-900"
                   >
-                    There was an error with your request
+                    Our servers are taking longer than expected. We suggest
+                    rewording your instruction or input to get a faster result.
                   </Dialog.Title>
                   <div className="mt-2">
                     <p className="text-sm text-gray-500">Please try again</p>
@@ -53,7 +54,7 @@ export default function MyModal({ isOpen, setIsOpen }: DialogProps) {
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={() => setIsOpen(false)}
                     >
-                      Got it, thanks!
+                      Ok
                     </button>
                   </div>
                 </Dialog.Panel>
