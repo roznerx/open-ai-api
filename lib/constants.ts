@@ -1,12 +1,16 @@
 export const OPEN_API = {
   MODELS: {
     DAVINCI: "text-davinci-003",
+    EDIT_CODE: "code-davinci-edit-001",
   },
   TEMPERATURE: {
+    DETERMINISTIC: 0.1,
+    OPTIMAL: 0.2,
     DEFAULT: 0.7,
   },
   MAX_TOKENS: {
-    DEFAULT: 4000,
+    DEFAULT: 2048,
+    INCREASED: 4096,
   },
   STREAM: {
     ENABLED: true,
