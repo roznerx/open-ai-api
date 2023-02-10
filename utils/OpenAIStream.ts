@@ -7,6 +7,7 @@ import {
 export interface OpenAIStreamPayload {
   model: string;
   prompt: string;
+  stop?: string | [];
   temperature: number;
   top_p: number;
   frequency_penalty: number;
@@ -47,7 +48,8 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
             const text = json.choices[0].text;
             if (
               (counter < 2 && (text.match(/\n/) || []).length) ||
-              text.match(/::/)
+              text.match(/::/) ||
+              text.match(/js/)
             ) {
               // this is a prefix character (i.e., "\n\n"), do nothing
               return;
