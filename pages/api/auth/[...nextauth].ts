@@ -2,9 +2,11 @@ import NextAuth, { AuthOptions } from "next-auth";
 
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
+import { HarperDBAdapter } from "adapters/harperdb";
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
+  adapter: HarperDBAdapter(),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -14,6 +16,7 @@ export const authOptions: AuthOptions = {
     GitHubProvider({
       clientId: process.env.GITHUB_ID || "",
       clientSecret: process.env.GITHUB_SECRET || "",
+      allowDangerousEmailAccountLinking: true,
     }),
   ],
   callbacks: {
@@ -21,9 +24,20 @@ export const authOptions: AuthOptions = {
       return true;
     },
     async session({ session, user, token }) {
-      return session;
+      const newSession = {
+        ...session,
+        user: {
+          id: user.id,
+          ...session.user,
+        },
+      };
+      return newSession;
     },
     async jwt({ token, user, account, profile, isNewUser }) {
+      console.log("🚀 - account", account);
+      console.log("🚀 - token", token);
+      console.log("🚀 - user", user);
+
       return token;
     },
     async redirect({ url, baseUrl }) {

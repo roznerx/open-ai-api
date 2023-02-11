@@ -6,6 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
 import { useSession } from "next-auth/react";
 import useScroll from "hooks/use-scroll";
+import UserDropdown from "components/auth/UserDropdown";
 
 export default function Header() {
   const { SignInModal, setShowSignInModal } = useSignInModal();
@@ -42,7 +43,7 @@ export default function Header() {
                   Sign In
                 </motion.button>
               ) : (
-                "User is logged in"
+                <UserDropdown />
               )}
             </AnimatePresence>
           </div>
