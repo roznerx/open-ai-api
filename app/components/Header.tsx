@@ -1,23 +1,24 @@
-import Head from "next/head";
-import Image from "next/image";
+"use client";
+
 import Link from "next/link";
 import { useSignInModal } from "./modals/SignInModal";
 import { AnimatePresence, motion } from "framer-motion";
-import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
+import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants";
 import { useSession } from "next-auth/react";
 import useScroll from "hooks/use-scroll";
-import UserDropdown from "components/auth/UserDropdown";
+import UserDropdown from "app/components/auth/UserDropdown";
+import { useEffect } from "react";
+import useLocalStorage from "hooks/use-localstorage";
 
-export default function Header() {
+export default function Header({ session }) {
   const { SignInModal, setShowSignInModal } = useSignInModal();
-  const { data: session, status } = useSession();
   const scrolled = useScroll(50);
+  const [userId, setUserId] = useLocalStorage(LSConfig.user.userId, "");
+  useEffect(() => {
+    setUserId(session?.user?.id);
+  }, [userId, setUserId]);
   return (
     <>
-      <Head>
-        <title>A-Intelligent Code Generator</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
       <SignInModal />
       <div
         className={`fixed top-0 w-full ${
@@ -34,7 +35,7 @@ export default function Header() {
           </Link>
           <div>
             <AnimatePresence>
-              {!session && status !== "loading" ? (
+              {!session ? (
                 <motion.button
                   className="rounded-full border border-black bg-black p-1.5 px-4 text-sm text-white transition-all hover:bg-white hover:text-black"
                   onClick={() => setShowSignInModal(true)}

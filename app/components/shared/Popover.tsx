@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, ReactNode, useRef } from "react";
 import * as PopoverPrimitive from "@radix-ui/react-popover";
 import useWindowSize from "hooks/use-window-size";
-import Leaflet from "components/shared/Leaflet";
+import Leaflet from "app/components/shared/Leaflet";
 
 export default function Popover({
   children,

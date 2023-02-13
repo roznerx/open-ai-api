@@ -1,20 +1,18 @@
+"use client";
+
 import { AnimatePresence, motion } from "framer-motion";
-import type { NextPage } from "next";
 import { Sandpack } from "@codesandbox/sandpack-react";
-import { useEffect, useState } from "react";
-import DropDown, { ElementType } from "../components/DropDown";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
-import ResizablePanel from "../components/ResizablePanel";
-import Button, { StopButton } from "../components/Button";
-import BulletPoint from "../components/BulletPoint";
-import GenerateCode from "../components/GenerateCode";
-import MyModal from "../components/Modal";
-import { OPEN_API } from "@/lib/constants";
+import { useState } from "react";
+import DropDown, { ElementType } from "app/components/DropDown";
+import Header from "app/components/Header";
+import ResizablePanel from "app/components/ResizablePanel";
+import Button, { StopButton } from "app/components/Button";
+import BulletPoint from "app/components/BulletPoint";
+import GenerateCode from "app/components/GenerateCode";
+import MyModal from "app/components/Modal";
 import useLocalStorage from "hooks/use-localstorage";
 
-const Home: NextPage = () => {
-  const [userId, setUserId] = useLocalStorage("userId", null);
+export default function Page() {
   const [loading, setLoading] = useState(false);
   const [modaIsOpen, setModaIsOpen] = useState(false);
   const [reader, setReader] =
@@ -54,7 +52,7 @@ const Home: NextPage = () => {
       signal: controller.signal,
     });
 
-    // clearTimeout(id);
+    clearTimeout(id);
     if (!response.ok) {
       setLoading(false);
       return;
@@ -119,11 +117,8 @@ const Home: NextPage = () => {
     }
   };
 
-  console.log("userId::", userId);
-
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center">
-      <Header />
       <MyModal isOpen={modaIsOpen} setIsOpen={setModaIsOpen} />
       <main className="mt-12 flex w-full min-w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
         <h1 className="max-w-2xl text-4xl font-bold text-slate-900 sm:text-6xl">
@@ -213,9 +208,6 @@ const Home: NextPage = () => {
           </AnimatePresence>
         </ResizablePanel>
       </main>
-      <Footer />
     </div>
   );
-};
-
-export default Home;
+}

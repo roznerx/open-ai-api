@@ -7,7 +7,7 @@ import {
 } from "react";
 
 import { AnimatePresence, motion } from "framer-motion";
-import Leaflet from "components/shared/Leaflet";
+import Leaflet from "app/components/shared/Leaflet";
 import useWindowSize from "hooks/use-window-size";
 
 export default function BaseModal({

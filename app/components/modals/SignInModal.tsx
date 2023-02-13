@@ -1,3 +1,5 @@
+"use client";
+
 import { signIn } from "next-auth/react";
 import {
   useState,
@@ -7,7 +9,7 @@ import {
   useMemo,
 } from "react";
 import Image from "next/image";
-import BaseModal from "components/modals/BaseModal";
+import BaseModal from "app/components/modals/BaseModal";
 
 const SignInModal = ({
   showSignInModal,
