@@ -9,35 +9,28 @@ export const config = {
 };
 
 const handler = async (req: Request): Promise<Response> => {
-  const { prompt, model, temperature, max_tokens, stream, stop } =
-    (await req.json()) as {
-      prompt?: string;
-      model: string;
-      stop?: string;
-      temperature: number;
-      max_tokens: number;
-      stream: boolean;
-    };
-
+  const { prompt } = (await req.json()) as {
+    prompt?: string;
+  };
+  console.log("🚀 - prompt, model, temperature, max_tokens, stream", prompt);
   if (!prompt) {
     return new Response("No prompt in the request", { status: 400 });
   }
 
   const payload: OpenAIStreamPayload = {
-    model,
+    model: "text-davinci-003",
     prompt,
-    temperature,
-    max_tokens,
-    stream,
-    n: 1,
+    temperature: 0.7,
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
-    stop,
-    // stop: "\n" (This will stop the secuence after the first token), // To stop the secuence of the tokens being generated.
+    max_tokens: 4000,
+    stream: true,
+    n: 1,
   };
-
   const openAIStream = await OpenAIStream(payload);
+  console.log("🚀 - openAIStream", openAIStream);
+
   return new Response(openAIStream);
 };
 

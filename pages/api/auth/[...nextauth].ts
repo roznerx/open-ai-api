@@ -24,14 +24,17 @@ export const authOptions: AuthOptions = {
       return true;
     },
     async session({ session, user, token }) {
-      const newSession = {
-        ...session,
-        user: {
-          id: user.id,
-          ...session.user,
-        },
-      };
-      return newSession;
+      if (user && user.id) {
+        const newSession = {
+          ...session,
+          user: {
+            id: user.id,
+            ...session.user,
+          },
+        };
+        return newSession;
+      }
+      return session;
     },
     async jwt({ token, user, account, profile, isNewUser }) {
       console.log("🚀 - account", account);

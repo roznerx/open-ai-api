@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import type { NextPage } from "next";
 import { Sandpack } from "@codesandbox/sandpack-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DropDown, { ElementType } from "../components/DropDown";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -11,8 +11,10 @@ import BulletPoint from "../components/BulletPoint";
 import GenerateCode from "../components/GenerateCode";
 import MyModal from "../components/Modal";
 import { OPEN_API } from "@/lib/constants";
+import useLocalStorage from "hooks/use-localstorage";
 
 const Home: NextPage = () => {
+  const [userId, setUserId] = useLocalStorage("userId", null);
   const [loading, setLoading] = useState(false);
   const [modaIsOpen, setModaIsOpen] = useState(false);
   const [reader, setReader] =
@@ -48,14 +50,11 @@ const Home: NextPage = () => {
       },
       body: JSON.stringify({
         prompt,
-        model: OPEN_API.MODELS.DAVINCI,
-        temperature: OPEN_API.TEMPERATURE.OPTIMAL,
-        max_tokens: OPEN_API.MAX_TOKENS.INCREASED,
-        stream: OPEN_API.STREAM.ENABLED,
       }),
       signal: controller.signal,
     });
-    clearTimeout(id);
+
+    // clearTimeout(id);
     if (!response.ok) {
       setLoading(false);
       return;
@@ -63,6 +62,7 @@ const Home: NextPage = () => {
 
     // This data is a ReadableStream
     const data = response.body;
+
     if (!data) {
       setLoading(false);
       return;
@@ -94,6 +94,17 @@ const Home: NextPage = () => {
   const onCodeGeneration = () => {
     generateCode();
   };
+  const onSavePrompt = () => {
+    const payload = {
+      userId: "dqigudiqwgdoqgdqw",
+      prompt: generatedCode,
+    };
+
+    fetch("/api/prompt/save", {
+      method: "POST",
+      body: JSON.stringify(payload),
+    }).then((res) => console.log("res:", res));
+  };
 
   const stopGeneration = async () => {
     if (!reader) {
@@ -107,6 +118,8 @@ const Home: NextPage = () => {
       setReader(null);
     }
   };
+
+  console.log("userId::", userId);
 
   return (
     <div className="flex min-h-screen w-full flex-col items-center justify-center">
@@ -148,6 +161,12 @@ const Home: NextPage = () => {
             loading={loading}
             text="Generate Code"
           />
+          <Button
+            hidden
+            onClick={onSavePrompt}
+            loading={false}
+            text="Save Code"
+          />
           <StopButton
             onCancel={stopGeneration}
             loading={loading}
@@ -158,13 +177,13 @@ const Home: NextPage = () => {
         <ResizablePanel>
           <AnimatePresence mode="popLayout">
             <motion.div className="my-10 space-y-10">
-              {/* {generatedCode && (
+              {generatedCode && (
                 <GenerateCode
                   langElement={langElement}
                   generatedCode={generatedCode}
                 />
-              )} */}
-              {generatedCode.length > 0 && (
+              )}
+              {/* {generatedCode.length > 0 && (
                 <Sandpack
                   theme="auto"
                   options={{
@@ -189,7 +208,7 @@ const Home: NextPage = () => {
                     "/App.js": generatedCode,
                   }}
                 />
-              )}
+              )} */}
             </motion.div>
           </AnimatePresence>
         </ResizablePanel>
