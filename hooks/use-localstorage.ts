@@ -10,8 +10,14 @@ const useLocalStorage = <T>(
     // Retrieve from localStorage
     const item =
       typeof window !== "undefined" && window.localStorage.getItem(key);
-    if (item) {
-      setStoredValue(JSON.parse(item));
+    // console.log("item", item);
+
+    try {
+      if (typeof item !== "undefined") {
+        setStoredValue(JSON.parse(item));
+      }
+    } catch (error) {
+      console.log(`There was an error: , ${error}`);
     }
   }, [key]);
 

@@ -10,7 +10,12 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
 }
 
-export type ElementType = "Typescript" | "Javascript" | "React" | "Vue";
+export type ElementType =
+  | "Typescript"
+  | "Javascript"
+  | "React"
+  | "Vue"
+  | "Angular";
 
 interface DropDownProps {
   element: ElementType;

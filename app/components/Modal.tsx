@@ -1,12 +1,28 @@
 "use client";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, useState } from "react";
+import { on } from "events";
+import { ChangeEventHandler, Fragment } from "react";
 type DialogProps = {
   isOpen: boolean;
+  body: string;
+  propmptName?: string;
+  handleInputChange?: (e: any) => void;
+  onSave?: () => void;
+  savePropmptName?: boolean;
+  buttonText?: string;
   setIsOpen: (arg: boolean) => void;
 };
-export default function MyModal({ isOpen, setIsOpen }: DialogProps) {
+export default function MyModal({
+  isOpen,
+  onSave,
+  setIsOpen,
+  propmptName,
+  savePropmptName,
+  handleInputChange,
+  body,
+  buttonText = "Save",
+}: DialogProps) {
   return (
     <>
       <Transition appear show={isOpen} as={Fragment}>
@@ -43,20 +59,35 @@ export default function MyModal({ isOpen, setIsOpen }: DialogProps) {
                     as="h3"
                     className="text-md font-medium leading-6 text-gray-900"
                   >
-                    Our servers are taking longer than expected. We suggest
-                    rewording your instruction or input to get a faster result.
+                    {body}
                   </Dialog.Title>
                   <div className="mt-2">
-                    <p className="text-sm text-gray-500">Please try again</p>
+                    <p className="text-sm text-gray-500">
+                      {savePropmptName && (
+                        <input
+                          className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                          value={propmptName}
+                          onChange={handleInputChange}
+                          id="question-name"
+                          type="text"
+                          placeholder="Question name"
+                        ></input>
+                      )}
+                      {!savePropmptName && "Please try again"}
+                    </p>
                   </div>
-
                   <div className="mt-4">
                     <button
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false);
+                        if (typeof onSave === "function") {
+                          onSave();
+                        }
+                      }}
                     >
-                      Ok
+                      {buttonText}
                     </button>
                   </div>
                 </Dialog.Panel>

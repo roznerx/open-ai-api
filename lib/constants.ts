@@ -18,6 +18,8 @@ export const OPEN_API = {
   },
 };
 
+export const promptResponseTimeout = 6000;
+
 export const LSConfig = {
   user: {
     userId: "userId",

@@ -7,13 +7,14 @@ import Popover from "app/components/shared/Popover";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
+import Link from "next/link";
 
 export default function UserDropdown() {
   const { data: session } = useSession();
   const { email, image } = session?.user || {};
-  console.log("🚀 - email", email);
   const [openPopover, setOpenPopover] = useState(false);
-  console.log("session", session);
+  // console.log("🚀 - email", email);
+  // console.log("session", session);
   if (!email) return null;
 
   return (
@@ -36,7 +37,18 @@ export default function UserDropdown() {
               disabled
             >
               <LayoutDashboard className="h-4 w-4" />
-              <p className="text-sm">Dashboard</p>
+              <Link href="my-code">
+                <p className="text-sm">My Code</p>
+              </Link>
+            </button>
+            <button
+              className="relative flex w-full cursor-not-allowed items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
+              disabled
+            >
+              <LayoutDashboard className="h-4 w-4" />
+              <Link href="code-idea">
+                <p className="text-sm">Code Idea</p>
+              </Link>
             </button>
             <button
               className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"

@@ -5,6 +5,7 @@
     "allowJs": true,
     "skipLibCheck": true,
     "baseUrl": ".",
+    "checkJs": true,
     "paths": {
       "app/*": ["app/*"],
       "@/lib/*": ["lib/*"]

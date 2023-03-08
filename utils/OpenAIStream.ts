@@ -48,8 +48,7 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
             const text = json.choices[0].text;
             if (
               (counter < 2 && (text.match(/\n/) || []).length) ||
-              text.match(/::/) ||
-              text.match(/js/)
+              text.match(/::/)
             ) {
               // this is a prefix character (i.e., "\n\n"), do nothing
               return;

@@ -4,7 +4,6 @@ import Link from "next/link";
 import { useSignInModal } from "./modals/SignInModal";
 import { AnimatePresence, motion } from "framer-motion";
 import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants";
-import { useSession } from "next-auth/react";
 import useScroll from "hooks/use-scroll";
 import UserDropdown from "app/components/auth/UserDropdown";
 import { useEffect } from "react";

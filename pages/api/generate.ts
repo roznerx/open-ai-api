@@ -1,3 +1,4 @@
+import { OPEN_API } from "@/lib/constants";
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
 
 if (!process.env.OPENAI_API_KEY) {
@@ -12,7 +13,7 @@ const handler = async (req: Request): Promise<Response> => {
   const { prompt } = (await req.json()) as {
     prompt?: string;
   };
-  console.log("🚀 - prompt, model, temperature, max_tokens, stream", prompt);
+
   if (!prompt) {
     return new Response("No prompt in the request", { status: 400 });
   }
@@ -29,7 +30,7 @@ const handler = async (req: Request): Promise<Response> => {
     n: 1,
   };
   const openAIStream = await OpenAIStream(payload);
-  console.log("🚀 - openAIStream", openAIStream);
+  // console.log("🚀 - openAIStream::", new Response(openAIStream));
 
   return new Response(openAIStream);
 };
