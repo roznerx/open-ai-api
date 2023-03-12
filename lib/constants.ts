@@ -24,6 +24,7 @@ export const LSConfig = {
   user: {
     userId: "userId",
   },
+  colorMode: "colorMode",
 };
 
 export const FADE_IN_ANIMATION_SETTINGS = {
