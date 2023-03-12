@@ -1,21 +1,21 @@
-import { OPEN_API } from "@/lib/constants";
-import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream";
+import { OPEN_API } from "@/lib/constants"
+import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream"
 
 if (!process.env.OPENAI_API_KEY) {
-  throw new Error("Missing env var from OpenAI");
+  throw new Error("Missing env var from OpenAI")
 }
 
 export const config = {
   runtime: "edge",
-};
+}
 
 const handler = async (req: Request): Promise<Response> => {
   const { prompt } = (await req.json()) as {
-    prompt?: string;
-  };
+    prompt?: string
+  }
 
   if (!prompt) {
-    return new Response("No prompt in the request", { status: 400 });
+    return new Response("No prompt in the request", { status: 400 })
   }
 
   const payload: OpenAIStreamPayload = {
@@ -28,11 +28,11 @@ const handler = async (req: Request): Promise<Response> => {
     max_tokens: 4000,
     stream: true,
     n: 1,
-  };
-  const openAIStream = await OpenAIStream(payload);
+  }
+  const openAIStream = await OpenAIStream(payload)
   // console.log("🚀 - openAIStream::", new Response(openAIStream));
 
-  return new Response(openAIStream);
-};
+  return new Response(openAIStream)
+}
 
-export default handler;
+export default handler

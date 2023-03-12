@@ -1,37 +1,37 @@
-"use client";
+"use client"
 
-import { harperClient } from "@/lib/harperdb";
+import { harperClient } from "@/lib/harperdb"
 import {
   Sandpack,
   SandpackPreview,
   SandpackCodeEditor,
   SandpackLayout,
   SandpackProvider,
-} from "@codesandbox/sandpack-react";
-import { useEffect, useState } from "react";
+} from "@codesandbox/sandpack-react"
+import { useEffect, useState } from "react"
 
-import SaveCode from "./onSaveCode";
+import SaveCode from "./onSaveCode"
 
 type CustomElement = {
   style?: {
-    display: string;
-  };
-};
+    display: string
+  }
+}
 
 export default function Editor({ questionName, prompt, id }) {
-  const [isSaving, setIsSaving] = useState(false);
-  const [isReseting, setIsReseting] = useState(false);
+  const [isSaving, setIsSaving] = useState(false)
+  const [isReseting, setIsReseting] = useState(false)
   useEffect(() => {
     if (typeof window !== "undefined") {
       const openInSandBoxNode = document.querySelector(
         '[title="Open in CodeSandbox"]',
-      ) as CustomElement;
+      ) as CustomElement
 
-      if (openInSandBoxNode) {
-        openInSandBoxNode.style.display = "none";
+      if (typeof openInSandBoxNode !== "undefined" && openInSandBoxNode.style) {
+        openInSandBoxNode.style.display = "none"
       }
     }
-  }, []);
+  }, [])
 
   return (
     <>
@@ -85,5 +85,5 @@ export default function Editor({ questionName, prompt, id }) {
         )}
       </div>
     </>
-  );
+  )
 }

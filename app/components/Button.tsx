@@ -1,16 +1,16 @@
-import LoadingDots from "./LoadingDots";
+import LoadingDots from "./LoadingDots"
 
 type ButtonProps = {
-  loading: boolean;
-  hidden?: boolean;
-  text?: string;
-  onClick: () => void;
-};
+  loading: boolean
+  hidden?: boolean
+  text?: string
+  onClick: () => void
+}
 type StopButtonProps = {
-  loading: boolean;
-  text?: string;
-  onCancel: () => void;
-};
+  loading: boolean
+  text?: string
+  onCancel: () => void
+}
 
 export default function Button({
   loading,
@@ -35,7 +35,7 @@ export default function Button({
     >
       <LoadingDots color="white" style="large" />
     </button>
-  );
+  )
 }
 
 export function StopButton({
@@ -51,5 +51,5 @@ export function StopButton({
     >
       {text}
     </button>
-  ) : null;
+  ) : null
 }

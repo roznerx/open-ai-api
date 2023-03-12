@@ -1,24 +1,18 @@
-"use client";
+"use client"
 
-import { signIn } from "next-auth/react";
-import {
-  useState,
-  Dispatch,
-  SetStateAction,
-  useCallback,
-  useMemo,
-} from "react";
-import Image from "next/image";
-import BaseModal from "app/components/modals/BaseModal";
+import { signIn } from "next-auth/react"
+import { useState, Dispatch, SetStateAction, useCallback, useMemo } from "react"
+import Image from "next/image"
+import BaseModal from "app/components/modals/BaseModal"
 
 const SignInModal = ({
   showSignInModal,
   setShowSignInModal,
 }: {
-  showSignInModal: boolean;
-  setShowSignInModal: Dispatch<SetStateAction<boolean>>;
+  showSignInModal: boolean
+  setShowSignInModal: Dispatch<SetStateAction<boolean>>
 }) => {
-  const [signInClicked, setSignInClicked] = useState(false);
+  const [signInClicked, setSignInClicked] = useState(false)
 
   return (
     <BaseModal showModal={showSignInModal} setShowModal={setShowSignInModal}>
@@ -35,10 +29,10 @@ const SignInModal = ({
                 : "border border-gray-200 bg-white text-black hover:bg-gray-50"
             } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
             onClick={() => {
-              setSignInClicked(true);
+              setSignInClicked(true)
               signIn("google", {
                 callbackUrl: process.env.NEXTAUTH_URL,
-              });
+              })
             }}
           >
             {signInClicked ? (
@@ -64,10 +58,10 @@ const SignInModal = ({
                 : "border border-gray-200 bg-white text-black hover:bg-gray-50"
             } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
             onClick={() => {
-              setSignInClicked(true);
+              setSignInClicked(true)
               signIn("github", {
                 callbackUrl: process.env.NEXTAUTH_URL,
-              });
+              })
             }}
           >
             {signInClicked ? (
@@ -88,11 +82,11 @@ const SignInModal = ({
         </div>
       </div>
     </BaseModal>
-  );
-};
+  )
+}
 
 export function useSignInModal() {
-  const [showSignInModal, setShowSignInModal] = useState(false);
+  const [showSignInModal, setShowSignInModal] = useState(false)
 
   const SignInModalCallback = useCallback(() => {
     return (
@@ -100,11 +94,11 @@ export function useSignInModal() {
         showSignInModal={showSignInModal}
         setShowSignInModal={setShowSignInModal}
       />
-    );
-  }, [showSignInModal, setShowSignInModal]);
+    )
+  }, [showSignInModal, setShowSignInModal])
 
   return useMemo(
     () => ({ setShowSignInModal, SignInModal: SignInModalCallback }),
     [setShowSignInModal, SignInModalCallback],
-  );
+  )
 }

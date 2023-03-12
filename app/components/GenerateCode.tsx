@@ -1,9 +1,9 @@
-import { CopyBlock, dracula } from "react-code-blocks";
+import { CopyBlock, dracula } from "react-code-blocks"
 
 type GenerateCode = {
-  generatedCode: String;
-  langElement: string;
-};
+  generatedCode: String
+  langElement: string
+}
 
 export default function GenerateCode({
   generatedCode,
@@ -36,9 +36,9 @@ export default function GenerateCode({
                   />
                 </div>
               </div>
-            );
+            )
           })}
       </div>
     </>
-  );
+  )
 }

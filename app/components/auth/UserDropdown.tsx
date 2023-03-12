@@ -1,20 +1,33 @@
-"use client";
+"use client"
 
-import { useState } from "react";
-import { signOut, useSession } from "next-auth/react";
-import { LayoutDashboard, LogOut } from "lucide-react";
-import Popover from "app/components/shared/Popover";
-import Image from "next/image";
-import { motion } from "framer-motion";
-import { FADE_IN_ANIMATION_SETTINGS } from "@/lib/constants";
-import Link from "next/link";
+import { useEffect, useState } from "react"
+import { signOut, useSession } from "next-auth/react"
+import { SunMedium, Moon } from "lucide-react"
+import { LampDesk, LogOut, Laptop } from "lucide-react"
+import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants"
+import useLocalStorage from "hooks/use-localstorage"
+import Popover from "app/components/shared/Popover"
+import Image from "next/image"
+import { motion } from "framer-motion"
+import Link from "next/link"
 
 export default function UserDropdown() {
-  const { data: session } = useSession();
-  const { email, image } = session?.user || {};
-  const [openPopover, setOpenPopover] = useState(false);
+  const { data: session } = useSession()
+  const { email, image } = session?.user || {}
+  const [colorMode, setColorMode] = useLocalStorage(LSConfig.colorMode, "")
+  const [openPopover, setOpenPopover] = useState(false)
 
-  if (!email) return null;
+  useEffect(() => {
+    try {
+      if (colorMode === "dark") {
+        document.getElementsByTagName("html")[0].classList.add("dark")
+      } else {
+        document.getElementsByTagName("html")[0].classList.remove("dark")
+      }
+    } catch (_) {}
+  }, [colorMode])
+
+  if (!email) return null
 
   return (
     <motion.div
@@ -24,34 +37,43 @@ export default function UserDropdown() {
       <Popover
         content={
           <div className="mt-3 w-full rounded-md bg-white p-2 sm:w-56">
-            {/* <Link
-              className="flex items-center justify-start space-x-2 relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              href="/dashboard"
-            >
-              <LayoutDashboard className="h-4 w-4" />
-              <p className="text-sm">Dashboard</p>
-            </Link> */}
-            <button
-              className="relative  flex w-full cursor-not-allowed items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              disabled
-            >
-              <LayoutDashboard className="h-4 w-4" />
+            <button className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100">
+              <LampDesk className="h-4 w-4" />
+              <Link href="code-idea">
+                <p className="text-sm">Code Idea</p>
+              </Link>
+            </button>
+            <button className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100">
+              <Laptop className="h-4 w-4" />
               <Link href="my-code">
                 <p className="text-sm">My Code</p>
               </Link>
             </button>
             <button
-              className="relative flex w-full cursor-not-allowed items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              disabled
+              onClick={
+                colorMode === "dark"
+                  ? () => setColorMode("ligth")
+                  : () => setColorMode("dark")
+              }
+              className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
             >
-              <LayoutDashboard className="h-4 w-4" />
-              <Link href="code-idea">
-                <p className="text-sm">Code Idea</p>
+              {colorMode === "dark" ? (
+                <SunMedium className="h-4 w-4" color={"black"} />
+              ) : (
+                <Moon
+                  className="h-4 w-4"
+                  color={colorMode === "dark" ? "white" : "black"}
+                />
+              )}
+              <Link href={"#"}>
+                <p className="text-sm ">
+                  {colorMode === "dark" ? "Ligth Mode" : "Dark Mode"}
+                </p>
               </Link>
             </button>
             <button
               className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
-              onClick={() => signOut({ redirect: false })}
+              onClick={() => signOut()}
             >
               <LogOut className="h-4 w-4" />
               <p className="text-sm">Logout</p>
@@ -75,5 +97,5 @@ export default function UserDropdown() {
         </button>
       </Popover>
     </motion.div>
-  );
+  )
 }

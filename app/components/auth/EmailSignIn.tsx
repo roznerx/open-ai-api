@@ -1,19 +1,19 @@
-import { getCsrfToken } from "next-auth/react";
-import { useState, useEffect, SetStateAction } from "react";
+import { getCsrfToken } from "next-auth/react"
+import { useState, useEffect, SetStateAction } from "react"
 // import { LoadingDots } from '../shared/icons';
 
 const EmailSignIn = () => {
-  const [token, setToken] = useState("");
-  const [signInClicked, setSignInClicked] = useState(false);
+  const [token, setToken] = useState("")
+  const [signInClicked, setSignInClicked] = useState(false)
   useEffect(() => {
     async function getToken() {
-      const t = await getCsrfToken();
+      const t = await getCsrfToken()
       if (t) {
-        setToken(t);
+        setToken(t)
       }
     }
-    getToken();
-  });
+    getToken()
+  })
 
   return (
     <form method="POST" action="/api/auth/signin/email">
@@ -39,7 +39,7 @@ const EmailSignIn = () => {
         </button>
       </div>
     </form>
-  );
-};
+  )
+}
 
-export default EmailSignIn;
+export default EmailSignIn

@@ -1,7 +1,7 @@
 type BulletPoint = {
-  number: number;
-  text: string;
-};
+  number: number
+  text: string
+}
 
 export default function BulletPoint({ number = 1, text = "" }: BulletPoint) {
   return (
@@ -11,5 +11,5 @@ export default function BulletPoint({ number = 1, text = "" }: BulletPoint) {
       </div>
       <p className="text-left font-medium">{text}</p>
     </div>
-  );
+  )
 }

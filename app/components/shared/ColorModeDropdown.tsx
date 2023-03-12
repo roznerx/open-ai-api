@@ -1,25 +1,25 @@
-"use client";
+"use client"
 
-import { useEffect, useState } from "react";
-import { SunMedium, Moon } from "lucide-react";
-import Popover from "app/components/shared/Popover";
-import { motion } from "framer-motion";
-import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants";
-import useLocalStorage from "hooks/use-localstorage";
+import { useEffect, useState } from "react"
+import { SunMedium, Moon } from "lucide-react"
+import Popover from "app/components/shared/Popover"
+import { motion } from "framer-motion"
+import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants"
+import useLocalStorage from "hooks/use-localstorage"
 
 export default function ColorModeDropdown() {
-  const [openPopover, setOpenPopover] = useState(false);
-  const [colorMode, setColorMode] = useLocalStorage(LSConfig.colorMode, "");
+  const [openPopover, setOpenPopover] = useState(false)
+  const [colorMode, setColorMode] = useLocalStorage(LSConfig.colorMode, "")
 
   useEffect(() => {
     try {
       if (colorMode === "dark") {
-        document.getElementsByTagName("html")[0].classList.add("dark");
+        document.getElementsByTagName("html")[0].classList.add("dark")
       } else {
-        document.getElementsByTagName("html")[0].classList.remove("dark");
+        document.getElementsByTagName("html")[0].classList.remove("dark")
       }
     } catch (_) {}
-  }, [colorMode]);
+  }, [colorMode])
 
   return (
     <motion.div
@@ -68,5 +68,5 @@ export default function ColorModeDropdown() {
         </button>
       </Popover>
     </motion.div>
-  );
+  )
 }

@@ -1,13 +1,13 @@
-import { Menu, Transition } from "@headlessui/react";
+import { Menu, Transition } from "@headlessui/react"
 import {
   CheckIcon,
   ChevronDownIcon,
   ChevronUpIcon,
-} from "@heroicons/react/20/solid";
-import { Fragment } from "react";
+} from "@heroicons/react/20/solid"
+import { Fragment } from "react"
 
 function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(" ")
 }
 
 export type ElementType =
@@ -15,12 +15,12 @@ export type ElementType =
   | "Javascript"
   | "React"
   | "Vue"
-  | "Angular";
+  | "Angular"
 
 interface DropDownProps {
-  element: ElementType;
-  setElement: (vibe: ElementType) => void;
-  elements: ElementType[];
+  element: ElementType
+  setElement: (vibe: ElementType) => void
+  elements: ElementType[]
 }
 
 export default function DropDown({
@@ -81,5 +81,5 @@ export default function DropDown({
         </Menu.Items>
       </Transition>
     </Menu>
-  );
+  )
 }

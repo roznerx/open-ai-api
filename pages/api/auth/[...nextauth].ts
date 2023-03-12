@@ -1,8 +1,8 @@
-import NextAuth, { AuthOptions } from "next-auth";
+import NextAuth, { AuthOptions } from "next-auth"
 
-import GoogleProvider from "next-auth/providers/google";
-import GitHubProvider from "next-auth/providers/github";
-import { HarperDBAdapter } from "adapters/harperdb";
+import GoogleProvider from "next-auth/providers/google"
+import GitHubProvider from "next-auth/providers/github"
+import { HarperDBAdapter } from "adapters/harperdb"
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
@@ -21,7 +21,7 @@ export const authOptions: AuthOptions = {
   ],
   callbacks: {
     async signIn({ user, account, profile, email, credentials }) {
-      return true;
+      return true
     },
     async session({ session, user, token }) {
       if (user && user.id) {
@@ -31,24 +31,24 @@ export const authOptions: AuthOptions = {
             id: user.id,
             ...session.user,
           },
-        };
-        return newSession;
+        }
+        return newSession
       }
-      return session;
+      return session
     },
     async jwt({ token, user, account, profile, isNewUser }) {
-      console.log("🚀 - account", account);
-      console.log("🚀 - token", token);
-      console.log("🚀 - user", user);
+      console.log("🚀 - account", account)
+      console.log("🚀 - token", token)
+      console.log("🚀 - user", user)
 
-      return token;
+      return token
     },
     async redirect({ url, baseUrl }) {
       // Allows relative callback URLs
-      if (url.startsWith("/")) return `${baseUrl}${url}`;
+      if (url.startsWith("/")) return `${baseUrl}${url}`
       // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) return url;
-      return baseUrl;
+      else if (new URL(url).origin === baseUrl) return url
+      return baseUrl
     },
   },
   pages: {
@@ -56,5 +56,5 @@ export const authOptions: AuthOptions = {
     signOut: "/",
   },
   debug: false,
-};
-export default NextAuth(authOptions);
+}
+export default NextAuth(authOptions)

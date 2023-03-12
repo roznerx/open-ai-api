@@ -1,18 +1,18 @@
-"use client";
+"use client"
 
-import { Dialog, Transition } from "@headlessui/react";
-import { on } from "events";
-import { ChangeEventHandler, Fragment } from "react";
+import { Dialog, Transition } from "@headlessui/react"
+import { on } from "events"
+import { ChangeEventHandler, Fragment } from "react"
 type DialogProps = {
-  isOpen: boolean;
-  body: string;
-  propmptName?: string;
-  handleInputChange?: (e: any) => void;
-  onSave?: () => void;
-  savePropmptName?: boolean;
-  buttonText?: string;
-  setIsOpen: (arg: boolean) => void;
-};
+  isOpen: boolean
+  body: string
+  propmptName?: string
+  handleInputChange?: (e: any) => void
+  onSave?: () => void
+  savePropmptName?: boolean
+  buttonText?: string
+  setIsOpen: (arg: boolean) => void
+}
 export default function MyModal({
   isOpen,
   onSave,
@@ -81,9 +81,9 @@ export default function MyModal({
                       type="button"
                       className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={() => {
-                        setIsOpen(false);
+                        setIsOpen(false)
                         if (typeof onSave === "function") {
-                          onSave();
+                          onSave()
                         }
                       }}
                     >
@@ -97,5 +97,5 @@ export default function MyModal({
         </Dialog>
       </Transition>
     </>
-  );
+  )
 }

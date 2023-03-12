@@ -1,62 +1,64 @@
-"use client";
+"use client"
 
-import React from "react";
+import React from "react"
 import {
   PaymentElement,
   LinkAuthenticationElement,
   useStripe,
   useElements,
-} from "@stripe/react-stripe-js";
+} from "@stripe/react-stripe-js"
 
 export default function CheckoutForm() {
-  const stripe = useStripe();
-  const elements = useElements();
+  const stripe = useStripe()
+  const elements = useElements()
 
-  const [email, setEmail] = React.useState("");
-  const [message, setMessage] = React.useState(null);
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [email, setEmail] = React.useState("")
+  const [message, setMessage] = React.useState("")
+  const [isLoading, setIsLoading] = React.useState(false)
 
   React.useEffect(() => {
     if (!stripe) {
-      return;
+      return
     }
 
     const clientSecret = new URLSearchParams(window.location.search).get(
       "payment_intent_client_secret",
-    );
+    )
 
     if (!clientSecret) {
-      return;
+      return
     }
 
     stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-      switch (paymentIntent.status) {
-        case "succeeded":
-          setMessage("Payment succeeded!");
-          break;
-        case "processing":
-          setMessage("Your payment is processing.");
-          break;
-        case "requires_payment_method":
-          setMessage("Your payment was not successful, please try again.");
-          break;
-        default:
-          setMessage("Something went wrong.");
-          break;
+      if (paymentIntent) {
+        switch (paymentIntent.status) {
+          case "succeeded":
+            setMessage("Payment succeeded!")
+            break
+          case "processing":
+            setMessage("Your payment is processing.")
+            break
+          case "requires_payment_method":
+            setMessage("Your payment was not successful, please try again.")
+            break
+          default:
+            setMessage("Something went wrong.")
+            break
+        }
       }
-    });
-  }, [stripe]);
+    })
+  }, [stripe])
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
 
     if (!stripe || !elements) {
       // Stripe.js has not yet loaded.
       // Make sure to disable form submission until Stripe.js has loaded.
-      return;
+      return
     }
 
-    setIsLoading(true);
+    setIsLoading(true)
 
     const { error } = await stripe.confirmPayment({
       elements,
@@ -64,21 +66,24 @@ export default function CheckoutForm() {
         // Make sure to change this to your payment completion page
         return_url: "http://localhost:3000",
       },
-    });
+    })
 
     // This point will only be reached if there is an immediate error when
     // confirming the payment. Otherwise, your customer will be redirected to
     // your `return_url`. For some payment methods like iDEAL, your customer will
     // be redirected to an intermediate site first to authorize the payment, then
     // redirected to the `return_url`.
-    if (error.type === "card_error" || error.type === "validation_error") {
-      setMessage(error.message);
+    if (
+      (error.type === "card_error" || error.type === "validation_error") &&
+      error.message
+    ) {
+      setMessage(error.message)
     } else {
-      setMessage("An unexpected error occurred.");
+      setMessage("An unexpected error occurred.")
     }
 
-    setIsLoading(false);
-  };
+    setIsLoading(false)
+  }
 
   return (
     <form id="payment-form" onSubmit={handleSubmit}>
@@ -95,5 +100,5 @@ export default function CheckoutForm() {
       {/* Show any error or success messages */}
       {message && <div id="payment-message">{message}</div>}
     </form>
-  );
+  )
 }

@@ -22,7 +22,11 @@ module.exports = {
       "2xl": "1536px",
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-roboto)"],
+      },
       colors: {
+        mint: "#A1FFE0",
         gray: {
           100: "#E9E9EB",
           200: "#D4D3D8",
@@ -32,9 +36,19 @@ module.exports = {
           600: "#2F2E49",
           700: "#272639",
         },
-        mint: "#A1FFE0",
+        purple: {
+          100: "#F3F2F7",
+          200: "#DAD9E6",
+          300: "#C1C0D6",
+          400: "#8283AD",
+          500: "#605F93",
+          600: "#404061",
+          700: "#28273D",
+          800: "#1D1D29",
+          900: "#101018",
+        },
       },
     },
   },
   plugins: [require("@tailwindcss/forms"), require("@headlessui/tailwindcss")],
-};
+}
