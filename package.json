@@ -11,6 +11,8 @@
     "@headlessui/tailwindcss": "^0.1.2",
     "@heroicons/react": "^2.0.13",
     "@radix-ui/react-popover": "^1.0.3",
+    "@stripe/react-stripe-js": "^1.16.5",
+    "@stripe/stripe-js": "^1.48.0",
     "@tailwindcss/forms": "^0.5.3",
     "@vercel/analytics": "^0.1.8",
     "eventsource-parser": "^0.0.5",
@@ -23,7 +25,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.42.0",
     "react-hot-toast": "^2.4.0",
-    "react-use-measure": "^2.1.1"
+    "react-use-measure": "^2.1.1",
+    "stripe": "^11.13.0"
   },
   "devDependencies": {
     "@types/node": "18.11.3",
