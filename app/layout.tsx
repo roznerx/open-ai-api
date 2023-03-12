@@ -13,11 +13,13 @@ export default async function RootLayout({
   const session = await getServerSession(authOptions);
   return (
     <>
-      <html lang="en" className="">
+      <html lang="en">
         <body>
           <SessionProvider>
             <Header session={session} />
-            {children}
+            <div className="bg-white flex items-center justify-center dark:bg-gray-700">
+              {children}
+            </div>
             <Footer />
           </SessionProvider>
         </body>
