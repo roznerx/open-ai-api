@@ -13,8 +13,7 @@ export default function UserDropdown() {
   const { data: session } = useSession();
   const { email, image } = session?.user || {};
   const [openPopover, setOpenPopover] = useState(false);
-  // console.log("🚀 - email", email);
-  // console.log("session", session);
+
   if (!email) return null;
 
   return (
@@ -24,7 +23,7 @@ export default function UserDropdown() {
     >
       <Popover
         content={
-          <div className="w-full rounded-md bg-white p-2 sm:w-56">
+          <div className="mt-3 w-full rounded-md bg-white p-2 sm:w-56">
             {/* <Link
               className="flex items-center justify-start space-x-2 relative w-full rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
               href="/dashboard"
@@ -33,7 +32,7 @@ export default function UserDropdown() {
               <p className="text-sm">Dashboard</p>
             </Link> */}
             <button
-              className="relative flex w-full cursor-not-allowed items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
+              className="relative  flex w-full cursor-not-allowed items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100"
               disabled
             >
               <LayoutDashboard className="h-4 w-4" />
