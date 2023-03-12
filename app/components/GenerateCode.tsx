@@ -28,6 +28,7 @@ export default function GenerateCode({
               >
                 <div className="overflow-x-auto sm:text-left lg:max-w-2xl">
                   <CopyBlock
+                    showLineNumbers
                     text={generated}
                     language={langElement === "Typescript" ? "tsx" : "jsx"}
                     codeBlock
