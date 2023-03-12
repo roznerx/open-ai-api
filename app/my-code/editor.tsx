@@ -12,8 +12,6 @@ import { useEffect, useState } from "react";
 
 import SaveCode from "./onSaveCode";
 
-const codeContent = document.getElementsByClassName("cm-content");
-
 type CustomElement = {
   style?: {
     display: string;
@@ -22,12 +20,19 @@ type CustomElement = {
 
 export default function Editor({ questionName, prompt, id }) {
   const [isSaving, setIsSaving] = useState(false);
+  const [isReseting, setIsReseting] = useState(false);
   useEffect(() => {
-    const openInSandBoxNode = document.querySelector(
-      '[title="Open in CodeSandbox"]',
-    ) as CustomElement;
-    openInSandBoxNode.style.display = "none";
-  });
+    if (typeof window !== "undefined") {
+      const openInSandBoxNode = document.querySelector(
+        '[title="Open in CodeSandbox"]',
+      ) as CustomElement;
+
+      if (openInSandBoxNode) {
+        openInSandBoxNode.style.display = "none";
+      }
+    }
+  }, []);
+
   return (
     <>
       <div>
@@ -49,16 +54,26 @@ export default function Editor({ questionName, prompt, id }) {
               <SandpackCodeEditor showTabs showLineNumbers={true} />
               <SandpackPreview
                 actionsChildren={
-                  <button
-                    className="rounded-full bg-black px-2 text-gray-200"
-                    onClick={() => setIsSaving(true)}
-                  >
-                    Save Code
-                  </button>
+                  <>
+                    <button
+                      className="rounded-full bg-black px-2 text-gray-200"
+                      onClick={() => setIsSaving(true)}
+                    >
+                      Save
+                    </button>
+                    <button
+                      className="rounded-full bg-black px-2 text-gray-200"
+                      onClick={() => setIsReseting(true)}
+                    >
+                      Reset
+                    </button>
+                  </>
                 }
               />
-              {isSaving && (
+              {(isSaving || isReseting) && (
                 <SaveCode
+                  setIsReseting={setIsReseting}
+                  isReseting={isReseting}
                   setIsSaving={setIsSaving}
                   isSaving={isSaving}
                   questionName={questionName}
