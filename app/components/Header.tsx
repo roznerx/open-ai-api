@@ -8,6 +8,7 @@ import useScroll from "hooks/use-scroll";
 import UserDropdown from "app/components/auth/UserDropdown";
 import { useEffect } from "react";
 import useLocalStorage from "hooks/use-localstorage";
+import ColorModeDropdown from "./shared/ColorModeDropdown";
 
 export default function Header({ session }) {
   const { SignInModal, setShowSignInModal } = useSignInModal();
@@ -20,19 +21,20 @@ export default function Header({ session }) {
     <>
       <SignInModal />
       <div
-        className={`fixed top-0 w-full ${
+        className={`fixed top-0  w-full bg-white  ${
           scrolled
             ? "border-b border-gray-200 bg-white/50 backdrop-blur-xl"
             : "bg-white/0"
         } z-30 transition-all`}
       >
-        <div className="mx-5 flex h-16 max-w-screen-xl items-center justify-between xl:mx-auto">
+        <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
           <Link href="/" className="flex space-x-3">
-            <h1 className="ml-2 text-2xl tracking-tight text-black max-md:pt-4 max-sm:pt-0 sm:text-4xl">
-              AIntelligent Code
+            <h1 className="ml-2 text-2xl tracking-tight text-gray-700 dark:text-gray-300 max-md:pt-4 max-sm:pt-0 sm:text-4xl">
+              A-Intelligent Code
             </h1>
           </Link>
-          <div>
+          <div className="mt-2 flex sm:text-4xl">
+            <ColorModeDropdown />
             <AnimatePresence>
               {!session ? (
                 <motion.button
