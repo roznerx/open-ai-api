@@ -32,14 +32,15 @@ export default function Page() {
 
   // Requirements: As the forth step, make sure to code comment on the folder and file structure.
   const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "**::", "// 1.", "// 2.", "// 3." and "// 4.". 
-   Context: ${codeSentence}${codeSentence.slice(-1) === "." ? "" : "."}`;
+   Context: ${codeSentence}${
+    codeSentence.slice(-1) === "." ? "" : "."
+  } Make sure to export default the Application component in the last step`;
 
   const onCodeGeneration = () => {
     generateCode();
   };
 
   const generateCode = async () => {
-    console.log("prompt: ", prompt);
     setLoading(true);
 
     const id = setTimeout(() => {
@@ -51,7 +52,7 @@ export default function Page() {
 
     setGeneratedCode("");
 
-    const response = await fetch("/api/generate", {
+    const response = await fetch("/api/generateWithTurbo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -85,8 +86,16 @@ export default function Page() {
     try {
       while (!done) {
         const { value, done: doneReading } = await reader.read();
+        // console.log("🚀 - value:", value);
         done = doneReading;
+
         let chunkValue = decoder.decode(value);
+        if (
+          chunkValue.match(/```/) ||
+          chunkValue.match(/``/) ||
+          chunkValue.match(/`/)
+        )
+          chunkValue = "";
         setGeneratedCode((prev) => prev + chunkValue);
       }
     } catch (error) {
@@ -116,7 +125,7 @@ export default function Page() {
     }).then((res) => console.log("res:", res));
   };
 
-  console.log("generatedCode::", generatedCode);
+  // console.log("generatedCode::", generatedCode);
 
   const stopGeneration = async () => {
     setLoading(false);
