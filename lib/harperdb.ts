@@ -10,7 +10,6 @@ export async function harperClient(body) {
       Authorization: `Basic ${process.env.HARPER_API_KEY}`,
     },
     body: JSON.stringify(body),
-    redirect: "follow",
   };
 
   const response = await fetch(process.env.HARPER_DATABASE_URL, requestOptions);
