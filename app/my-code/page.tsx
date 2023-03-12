@@ -7,7 +7,7 @@ export default async function Page() {
   const codeSnippets = await harperClient({
     operation: "sql",
     sql: `SELECT * FROM Auth.UserPrompts WHERE 
-    id = "ac93d8b5-a721-481e-a055-2f12def4a23a"`,
+    id = "7b6a8327-eb4a-49dc-bbd6-4c42db324844"`,
   });
   const { questionName, prompt, id } = codeSnippets && codeSnippets[0];
 
