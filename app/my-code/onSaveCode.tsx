@@ -1,14 +1,18 @@
 import { useActiveCode, useSandpack } from "@codesandbox/sandpack-react";
 import { useEffect } from "react";
 
-export default function SaveCode({ isSaving, id, questionName, setIsSaving }) {
+export default function SaveCode({
+  isSaving,
+  isReseting,
+  setIsReseting,
+  id,
+  questionName,
+  setIsSaving,
+}) {
   const { sandpack } = useSandpack();
-  const { files, activeFile } = sandpack;
-  const activeCode = useActiveCode();
-  const code = files[activeFile].code;
+  const { files, activeFile, resetFile } = sandpack;
 
-  console.log("🚀 - activeCode:", activeCode);
-  console.log("🚀 - code:", code);
+  const code = files[activeFile].code;
 
   useEffect(() => {
     if (code && isSaving) {
@@ -27,7 +31,15 @@ export default function SaveCode({ isSaving, id, questionName, setIsSaving }) {
         .finally(() => setIsSaving(false));
     }
   }, [isSaving, code]);
+  useEffect(() => {
+    if (isReseting) {
+    }
+  }, [isReseting]);
   if (isSaving) {
     return <p>"Saving.."</p>;
+  }
+  if (isReseting) {
+    resetFile("/App.tsx");
+    setIsReseting(false);
   }
 }
