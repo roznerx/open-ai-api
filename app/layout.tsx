@@ -4,12 +4,16 @@ import Header from "app/components/Header"
 import Footer from "app/components/Footer"
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "pages/api/auth/[...nextauth]"
-import { Roboto_Mono } from "@next/font/google"
+import { Poppins } from "@next/font/google"
 
-const roboto = Roboto_Mono({
-  variable: "--font-roboto",
+// const roboto = Roboto_Mono({
+//   variable: "--font-roboto",
+// })
+
+const popins = Poppins({
+  variable: "--font-popins",
+  weight: ["100", "300", "600"],
 })
-
 export default async function RootLayout({
   children,
 }: {
@@ -19,11 +23,11 @@ export default async function RootLayout({
 
   return (
     <>
-      <html lang="en" className={`${roboto.variable} font-sans`}>
+      <html lang="en" className={`${popins.variable} font-popins`}>
         <body>
           <SessionProvider>
             <Header session={session} />
-            <div className="flex items-center justify-center bg-gradient-to-b from-purple-600 via-purple-700 to-purple-800 dark:from-slate-400 dark:to-slate-100">
+            <div className="flex min-h-screen flex-wrap  bg-white dark:bg-gradient-to-b dark:from-purple-600 dark:via-purple-700 dark:to-purple-800">
               {children}
             </div>
             <Footer />

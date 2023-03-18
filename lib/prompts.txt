@@ -1,0 +1,1 @@
+A: Follow these requirements: the chat should be functional and the UI should clearly identify each user. The chat can have only two participants. Make this App with React and use Tailwind CSS for styling. 

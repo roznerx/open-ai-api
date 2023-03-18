@@ -1,7 +1,7 @@
 "use client"
 
 import DropDown, { ElementType } from "app/components/DropDown"
-import { ChangeEvent, SetStateAction, useState } from "react"
+import { ChangeEvent, useState } from "react"
 import ResizablePanel from "app/components/ResizablePanel"
 import Button, { StopButton } from "app/components/Button"
 import BulletPoint from "app/components/BulletPoint"
@@ -24,47 +24,61 @@ export default function Page() {
   const [generatedCode, setGeneratedCode] = useState<String>("")
   const [userId] = useLocalStorage(LSConfig.user.userId, "")
   const controller = new AbortController()
+  const [codeMessages, setCodeMessages] = useState([
+    {
+      role: "system",
+      content: `You are an AI programming assistant.`,
+    },
+  ])
 
-  // console.log("userId", userId);
+  console.log("🚀 - codeMessages outside:", codeMessages)
+  // console.log("codeSentence", codeSentence)
 
   let libElements: ElementType[] = ["React", "Vue", "Angular"]
   let langElements: ElementType[] = ["Typescript", "Javascript"]
 
-  // Requirements: As the forth step, make sure to code comment on the folder and file structure.
-  const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "**::", "// 1.", "// 2.", "// 3." and "// 4.". 
-   Context: ${codeSentence}${
-    codeSentence.slice(-1) === "." ? "" : "."
-  } Make sure to export default the Application component in the last step`
-
   const onCodeGeneration = () => {
+    setCodeMessages([
+      ...codeMessages,
+      {
+        role: "user",
+        content: codeSentence,
+      },
+    ])
     generateCode()
   }
 
   const generateCode = async () => {
     setLoading(true)
+    console.log("🚀 - codeMessages inside:", codeMessages)
+    // const id = setTimeout(() => {
+    //   controller.abort()
+    //   setLoading(false)
+    //   setModaIsOpen(true)
+    //   setCodeSentence("")
+    // }, promptResponseTimeout)
 
-    const id = setTimeout(() => {
-      controller.abort()
-      setLoading(false)
-      setModaIsOpen(true)
-      // setCodeSentence("");
-    }, promptResponseTimeout)
+    // setGeneratedCode("")
 
-    setGeneratedCode("")
-
-    const response = await fetch("/api/generate", {
+    const response = await fetch("/api/generateWithTurbo", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        prompt,
+        messages: [
+          ...codeMessages,
+          {
+            role: "user",
+            content: codeSentence,
+          },
+        ],
       }),
     })
 
     // console.log("response", response);
     // clear timeout
-    clearTimeout(id)
+    // clearTimeout(id)
 
     if (!response.ok) {
       setLoading(false)
@@ -93,7 +107,8 @@ export default function Page() {
         if (
           chunkValue.match(/```/) ||
           chunkValue.match(/``/) ||
-          chunkValue.match(/`/)
+          chunkValue.match(/`/) ||
+          chunkValue.match(/typescript/)
         )
           chunkValue = ""
         setGeneratedCode((prev) => prev + chunkValue)
@@ -166,7 +181,7 @@ export default function Page() {
       />
       <main className="mt-12 flex w-full min-w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
         <h1 className="max-w-2xl text-4xl font-bold text-slate-900 sm:text-6xl">
-          Code Idea 💡
+          Code Idea
         </h1>
         <div className="w-full max-w-xl">
           <BulletPoint
@@ -203,30 +218,16 @@ export default function Page() {
             loading={loading}
             text="Stop Generating"
           />
-
           <ResizablePanel>
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="wait">
               <motion.div className="my-10 space-y-10">
                 {generatedCode && (
-                  <GenerateCode
-                    langElement={langElement}
-                    generatedCode={generatedCode}
-                  />
+                  // <GenerateCode
+                  //   langElement={langElement}
+                  //   generatedCode={generatedCode}
+                  // />
+                  <p className="taxt-black">{generatedCode}</p>
                 )}
-                {/* <CopyBlock
-                codeBlock
-                text={`const Chat = () => {
-                      const [message, setMessage] = useState('');
-                      const [messages, setMessages] = useState([]);
-                    
-                      const sendMessage = (event) => {
-                        event.preventDefault();
-                        setMessages([...messages, message]);
-                        setMessage('');
-                      }`}
-                language={langElement === "Typescript" ? "tsx" : "jsx"}
-                theme={codepen}
-              /> */}
               </motion.div>
             </AnimatePresence>
           </ResizablePanel>

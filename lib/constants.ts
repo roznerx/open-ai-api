@@ -18,6 +18,13 @@ export const OPEN_API = {
   },
 }
 
+export const ASSISTANT = {
+  software:
+    "You are an experienced software engineer. Don't use ``` followed by the programming language, before outputting code.",
+}
+
+export const PREMIUM_SUBSCRIPTION_AMOUNT = 6
+
 export const promptResponseTimeout = 6000
 
 export const LSConfig = {

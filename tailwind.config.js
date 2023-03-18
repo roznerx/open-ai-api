@@ -24,6 +24,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ["var(--font-roboto)"],
+        popins: ["var(--font-popins)"],
       },
       colors: {
         mint: "#A1FFE0",

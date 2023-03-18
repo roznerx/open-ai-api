@@ -5,62 +5,88 @@ import Link from "next/link"
 
 export default function Feature() {
   return (
-    <div className="mx-auto max-w-7xl py-24 sm:px-6 sm:py-32 lg:px-8">
-      <div className="relative isolate overflow-hidden bg-gray-900 px-6 pt-16 shadow-2xl dark:bg-indigo-600 sm:rounded-3xl sm:px-16 md:pt-24 lg:flex lg:gap-x-20 lg:px-24 lg:pt-0">
-        <svg
-          viewBox="0 0 1024 1024"
-          className="absolute top-1/2 left-1/2 -z-10 h-[64rem] w-[64rem] -translate-y-1/2 [mask-image:radial-gradient(closest-side,white,transparent)] sm:left-full sm:-ml-80 lg:left-1/2 lg:ml-0 lg:translate-y-0 lg:-translate-x-1/2"
-          aria-hidden="true"
-        >
-          <circle
-            cx="512"
-            cy="512"
-            r="512"
-            fill="url(#759c1415-0410-454c-8f7c-9a820de03641)"
-            fillOpacity="0.7"
-          />
-          <defs>
-            <radialGradient id="759c1415-0410-454c-8f7c-9a820de03641">
-              <stop stopColor="#7775D6" />
-              <stop offset="1" stopColor="#E935C1" />
-            </radialGradient>
-          </defs>
-        </svg>
-        <div className="mx-auto max-w-md text-center lg:mx-0 lg:flex-auto lg:py-32 lg:text-left">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Boost your productivity.
-            <br />
-            Start using our app today.
-          </h2>
-          <p className="mt-6 text-lg leading-8 text-gray-300">
-            Ac euismod vel sit maecenas id pellentesque eu sed consectetur.
-            Malesuada adipiscing sagittis vel nulla.
-          </p>
-          <div className="mt-10 flex items-center justify-center gap-x-6 lg:justify-start">
-            <Link
-              href="/code-idea"
-              className="rounded-md bg-white px-3.5 py-1.5 text-base font-semibold leading-7 text-gray-900 shadow-sm hover:bg-gray-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-            >
-              Get started
-            </Link>
-            <a
-              href="#"
-              className="text-base font-semibold leading-7 text-white"
-            >
-              Learn more <span aria-hidden="true">→</span>
-            </a>
+    <>
+      <section className="mt-8 text-white">
+        <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
+          <div className="mt-4">
+            <Image
+              className="rounded-md"
+              src="home/smart.svg"
+              alt="React Library"
+              width="599"
+              height="375"
+            />
+          </div>
+          <div className="mt-4 p-2">
+            <h1 className="max-w-xs text-5xl font-bold">Smart suggestions</h1>
+            <p className="mt-4">
+              Our software offers smart generation capabilities, allowing
+              developers to generate high-quality code with ease. With this
+              feature, developers can save time and effort in writing code,
+              resulting in increased productivity and faster development cycles.
+            </p>
+          </div>
+          <div className="mt-4 p-2">
+            <h1 className="max-w-xs text-5xl font-bold">Bug Detection</h1>
+            <p className="mt-4">
+              Our software offers smart generation capabilities, allowing
+              developers to generate high-quality code with ease. With this
+              feature, developers can save time and effort in writing code,
+              resulting in increased productivity and faster development cycles.
+            </p>
+          </div>
+          <div className="mt-4">
+            <Image
+              className="rounded-md"
+              src="home/detection.svg"
+              alt="React Library"
+              width="500"
+              height="375"
+            />
+          </div>
+          <div className="mt-4">
+            <Image
+              className=""
+              src="home/generation.svg"
+              alt="React Library"
+              width="350"
+              height="375"
+            />
+          </div>
+          <div className="mt-4 p-2">
+            <h1 className="max-w-xs text-5xl font-bold">Test Generation</h1>
+            <p className="mt-4">
+              You can generate tests based on the provided function. With this
+              feature, developers can quickly and easily generate test cases for
+              their functions, ensuring that their code is thoroughly tested and
+              reliable. This feature can save developers a significant amount of
+              time and effort in manually creating test cases.
+            </p>
+          </div>
+
+          <div className="mt-4">
+            <h1 className="max-w-xs text-5xl font-bold">Code Ideas</h1>
+            <p className="mt-4">
+              Our software includes a feature that provides developers with code
+              ideas based on the context of their current project. This feature
+              can be especially useful for new developers who may not be as
+              familiar with the language or libraries they are working with.
+              With this feature, developers can save time in researching and
+              experimenting with new code solutions, resulting in faster
+              development cycles and increased productivity.
+            </p>
+          </div>
+          <div className="mt-4">
+            <Image
+              className="rounded-md"
+              src="home/ideas.svg"
+              alt="React Library"
+              width="500"
+              height="375"
+            />
           </div>
         </div>
-        <div className="relative mt-16 h-80 lg:mt-8">
-          <Image
-            className="absolute top-0 left-0 w-[57rem] max-w-none rounded-md bg-white/5 ring-1 ring-white/10"
-            src="https://tailwindui.com/img/component-images/dark-project-app-screenshot.png"
-            alt="App screenshot"
-            width="1824"
-            height="1080"
-          />
-        </div>
-      </div>
-    </div>
+      </section>
+    </>
   )
 }
