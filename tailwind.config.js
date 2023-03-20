@@ -21,12 +21,14 @@ module.exports = {
 
       "2xl": "1536px",
     },
+
     extend: {
       fontFamily: {
         sans: ["var(--font-roboto)"],
         popins: ["var(--font-popins)"],
       },
       colors: {
+        specialBlue: "#6ea9d7",
         mint: "#A1FFE0",
         gray: {
           100: "#E9E9EB",

@@ -23,7 +23,7 @@ export default function Button({
       // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
       className={`${
         hidden ? "hidden" : null
-      } mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 sm:mt-10`}
+      } mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white  dark:text-slate-600 sm:mt-10`}
       onClick={() => onClick()}
     >
       {text}

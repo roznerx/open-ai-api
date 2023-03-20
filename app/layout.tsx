@@ -24,7 +24,7 @@ export default async function RootLayout({
   return (
     <>
       <html lang="en" className={`${popins.variable} font-popins`}>
-        <body>
+        <body className=" dark:from-purple-600 dark:via-purple-700 dark:to-purple-800 ">
           <SessionProvider>
             <Header session={session} />
             <div className="flex min-h-screen flex-wrap  bg-white dark:bg-gradient-to-b dark:from-purple-600 dark:via-purple-700 dark:to-purple-800">
