@@ -23,14 +23,13 @@ export default function Chat({
   const CodeMessages = () => {
     return generatedResponse.map((generatedMessage) => {
       const result = parseText(generatedMessage)
-      console.log("result:", result)
 
       return result.length
         ? result.map((item: any) => {
             if (item.hasOwnProperty("text")) {
               return (
                 <Message
-                  className="my-2"
+                  className="my-2 text-left"
                   model={{
                     message: item.text,
                     direction: "incoming",
