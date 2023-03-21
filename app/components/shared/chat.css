@@ -1,0 +1,4 @@
+.cs-message-list__scroll-wrapper > .cs-message,
+.cs-message-list__scroll-wrapper > .cs-message-group {
+  max-width: 100%;
+}
