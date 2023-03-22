@@ -1,6 +1,6 @@
 "use client"
 
-import { ChangeEvent, KeyboardEvent, useEffect, useState } from "react"
+import { ChangeEvent, KeyboardEvent, useState } from "react"
 import { StopButton } from "app/components/Button"
 import Modal from "app/components/Modal"
 import useLocalStorage from "hooks/use-localstorage"
@@ -175,7 +175,7 @@ export default function Page() {
         setIsOpen={setShowSavePromptModal}
       />
       <main className="mt-12 flex w-full min-w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
-        <div className="w-[85%] dark:text-white">
+        <div className="w-[85%] text-white dark:text-white">
           <Chat
             generatedResponse={generatedMessages}
             onArrowPress={onArrowPress}
