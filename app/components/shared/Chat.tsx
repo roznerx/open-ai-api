@@ -56,7 +56,7 @@ export default function Chat({
       )}
       <div className="fixed bottom-4 left-0 right-0 m-auto w-[82%]">
         <textarea
-          className="w-[100%] resize-none rounded-md p-1 pl-1 font-mono placeholder:pl-2 placeholder:pt-1 placeholder:text-sm placeholder:text-slate-200 focus:border-transparent focus:ring-black/30 dark:bg-slate-700 dark:text-slate-200"
+          className="w-[100%] resize-none rounded-md p-1 pl-1 font-mono placeholder:pl-2 placeholder:pt-1 placeholder:text-sm placeholder:text-slate-600 focus:border-transparent focus:ring-black/30 dark:bg-slate-700 dark:text-slate-200"
           value={codeSentence}
           onChange={(e) => setCodeSentence(e.target.value)}
           onKeyDown={(e) => onCodeGeneration(e)}
