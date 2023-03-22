@@ -18,8 +18,10 @@ export default function Feature() {
             />
           </div>
           <div className="mt-4 p-2">
-            <h1 className="max-w-xs text-5xl font-bold">Smart suggestions</h1>
-            <p className="mt-4">
+            <h1 className="max-w-xs pl-3 text-5xl font-bold">
+              Smart suggestions
+            </h1>
+            <p className="mt-4 p-3">
               Our software offers smart generation capabilities, allowing
               developers to generate high-quality code with ease. With this
               feature, developers can save time and effort in writing code,
@@ -27,8 +29,8 @@ export default function Feature() {
             </p>
           </div>
           <div className="mt-4 p-2">
-            <h1 className="max-w-xs text-5xl font-bold">Bug Detection</h1>
-            <p className="mt-4">
+            <h1 className="max-w-xs pl-3 text-5xl font-bold">Bug Detection</h1>
+            <p className="mt-4 p-3">
               Our software offers smart generation capabilities, allowing
               developers to generate high-quality code with ease. With this
               feature, developers can save time and effort in writing code,
@@ -54,8 +56,10 @@ export default function Feature() {
             />
           </div>
           <div className="mt-4 p-2">
-            <h1 className="max-w-xs text-5xl font-bold">Test Generation</h1>
-            <p className="mt-4">
+            <h1 className="max-w-xs pl-3 text-5xl font-bold">
+              Test Generation
+            </h1>
+            <p className="mt-4 p-3">
               You can generate tests based on the provided function. With this
               feature, developers can quickly and easily generate test cases for
               their functions, ensuring that their code is thoroughly tested and
@@ -65,8 +69,8 @@ export default function Feature() {
           </div>
 
           <div className="mt-4">
-            <h1 className="max-w-xs text-5xl font-bold">Code Ideas</h1>
-            <p className="mt-4">
+            <h1 className="max-w-xs pl-3 text-5xl font-bold">Code Ideas</h1>
+            <p className="mt-4 p-3">
               Our software includes a feature that provides developers with code
               ideas based on the context of their current project. This feature
               can be especially useful for new developers who may not be as
