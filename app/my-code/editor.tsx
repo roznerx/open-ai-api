@@ -1,43 +1,24 @@
 "use client"
 
-import { harperClient } from "@/lib/harperdb"
 import {
-  Sandpack,
   SandpackPreview,
   SandpackCodeEditor,
   SandpackLayout,
   SandpackProvider,
 } from "@codesandbox/sandpack-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 import SaveCode from "./onSaveCode"
-
-type CustomElement = {
-  style?: {
-    display: string
-  }
-}
 
 export default function Editor({ questionName, prompt, id }) {
   const [isSaving, setIsSaving] = useState(false)
   const [isReseting, setIsReseting] = useState(false)
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const openInSandBoxNode = document.querySelector(
-        '[title="Open in CodeSandbox"]',
-      ) as CustomElement
-
-      if (typeof openInSandBoxNode !== "undefined" && openInSandBoxNode.style) {
-        openInSandBoxNode.style.display = "none"
-      }
-    }
-  }, [])
 
   return (
     <>
       <div>
         <h3> Question Name: {questionName}</h3>
-        {prompt.length > 0 && (
+        {prompt && prompt.length > 0 && (
           <SandpackProvider
             options={{
               visibleFiles: ["/App.tsx"],
@@ -70,7 +51,7 @@ export default function Editor({ questionName, prompt, id }) {
                   </>
                 }
               />
-              {(isSaving || isReseting) && (
+              {isSaving && (
                 <SaveCode
                   setIsReseting={setIsReseting}
                   isReseting={isReseting}
