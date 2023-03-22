@@ -13,10 +13,10 @@ export default function SaveCode({
   const { files, activeFile, resetFile } = sandpack
 
   const code = files[activeFile].code
+  console.log("code:", code)
 
   useEffect(() => {
     if (code && isSaving) {
-      console.log("all good")
       const payload = {
         id,
         questionName,
@@ -35,6 +35,7 @@ export default function SaveCode({
     if (isReseting) {
     }
   }, [isReseting])
+
   if (isSaving) {
     return <p>"Saving.."</p>
   }
