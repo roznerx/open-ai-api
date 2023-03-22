@@ -13,7 +13,6 @@ export default function SaveCode({
   const { files, activeFile, resetFile } = sandpack
 
   const code = files[activeFile].code
-  console.log("code:", code)
 
   useEffect(() => {
     if (code && isSaving) {
