@@ -24,12 +24,13 @@ export default async function RootLayout({
   return (
     <>
       <html lang="en" className={`${popins.variable} font-popins`}>
-        <body className=" dark:from-purple-600 dark:via-purple-700 dark:to-purple-800 ">
+        <head>
+          <link rel="icon" href="/favicon.ico" />
+        </head>
+        <body className="bg-gradient-to-b from-purple-800 via-purple-700 to-purple-600 ">
           <SessionProvider>
             <Header session={session} />
-            <div className="flex min-h-screen flex-wrap  bg-white dark:bg-gradient-to-b dark:from-purple-600 dark:via-purple-700 dark:to-purple-800">
-              {children}
-            </div>
+            <div className="flex min-h-screen flex-wrap ">{children}</div>
             <Footer />
           </SessionProvider>
         </body>
