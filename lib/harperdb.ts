@@ -15,6 +15,8 @@ export async function harperClient(body) {
   const response = await fetch(harperURL, requestOptions)
   const result = await response.text()
 
+  // return result
+
   return JSON.parse(result, (key, value) => {
     if (!isNaN(Date.parse(value))) {
       return new Date(value)
