@@ -1,13 +1,11 @@
 import { harperClient } from "@/lib/harperdb"
-import { SandpackProvider } from "@codesandbox/sandpack-react"
 
 import Editor from "./editor"
 
 export default async function Page() {
   const codeSnippets = await harperClient({
     operation: "sql",
-    sql: `SELECT * FROM Auth.UserPrompts WHERE 
-    id = "7b6a8327-eb4a-49dc-bbd6-4c42db324844"`,
+    sql: `SELECT * FROM Auth.UserPrompts WHERE id = "1bbfc507-c3f1-4080-aa47-7b9551211e5b"`,
   })
   const { questionName, prompt, id } = codeSnippets && codeSnippets[0]
 
