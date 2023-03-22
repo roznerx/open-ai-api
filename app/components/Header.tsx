@@ -29,7 +29,7 @@ export default function Header({ session }) {
       >
         <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
           <Link href="/" className="flex space-x-3">
-            <h1 className="ml-2 text-2xl tracking-tight text-black dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
+            <h1 className="ml-2 text-2xl tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
               Code Genius
             </h1>
           </Link>
