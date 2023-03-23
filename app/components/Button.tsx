@@ -4,6 +4,7 @@ type ButtonProps = {
   loading: boolean
   hidden?: boolean
   text?: string
+  variant?: string
   onClick: () => void
 }
 type StopButtonProps = {
@@ -14,6 +15,7 @@ type StopButtonProps = {
 
 export default function Button({
   loading,
+  variant,
   onClick,
   text = "",
   hidden = false,
@@ -21,16 +23,18 @@ export default function Button({
   return !loading ? (
     <button
       // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
-      className={`${
-        hidden ? "hidden" : null
-      } mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 dark:bg-white  dark:text-slate-600 sm:mt-10`}
+      className={`${hidden ? "hidden" : null} ${
+        variant === "mint" ? "bg-mint" : "bg-black"
+      }  w-full rounded-xl bg-black px-4 py-2 font-medium ${
+        variant === "mint" ? "text-black" : "text-mint"
+      } hover:bg-mint/80  dark:bg-white  dark:text-slate-600 `}
       onClick={() => onClick()}
     >
       {text}
     </button>
   ) : (
     <button
-      className="mt-8 w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80 sm:mt-10"
+      className=" w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80"
       disabled
     >
       <LoadingDots color="white" style="large" />
@@ -46,7 +50,7 @@ export function StopButton({
   return loading ? (
     <button
       // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
-      className="mt-8 w-full rounded-xl bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500 px-4 py-2 font-medium text-white hover:bg-black/80"
+      className=" w-full rounded-xl bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500 px-4 py-2 font-medium text-white hover:bg-black/80"
       onClick={onCancel}
     >
       {text}

@@ -31,7 +31,7 @@ export default async function RootLayout({
           <SessionProvider>
             <Header session={session} />
             <div className="flex min-h-screen flex-wrap ">{children}</div>
-            <Footer />
+            {/* <Footer /> */}
           </SessionProvider>
         </body>
       </html>

@@ -164,48 +164,63 @@ export default function Page() {
         buttonText="Save"
         setIsOpen={setShowSavePromptModal}
       />
-      <main className="mt-12 flex w-full min-w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
-        <h1 className="max-w-2xl text-4xl font-bold text-slate-900 sm:text-6xl">
-          Code Idea 💡
+
+      <main className="mt-12 flex w-full flex-col items-center justify-start bg-purple-800 px-4  font-mono">
+        <hr className="border-1 mt-4 h-px w-full bg-white" />
+        <h1 className="text-1xl absolute left-4 my-7  w-auto text-left text-purple-300">
+          CODE COMPLEMENTATIONS AND SUGGESTIONS
         </h1>
-        <div className="w-full max-w-xl">
-          <BulletPoint
-            number={1}
-            text="Describe in a few sentences what do you want to do:"
-          />
+        <hr className="border-1 mt-12 h-px w-full bg-white" />
+        <div id="container" className="relative mx-3 mt-2 h-56 w-full">
           <textarea
+            className="h-56 min-w-full resize-none rounded-md bg-purple-700  text-gray-200 focus:border-purple-700 focus:ring-0 "
             value={codeSentence}
             onChange={(e) => setCodeSentence(e.target.value)}
             rows={4}
-            className="mt-3 w-full rounded-md border-gray-300 shadow-sm focus:border-black focus:ring-black"
-            placeholder={"e.g. Write a real-time chat system using socket io."}
+            placeholder={`e.g. export default function App() {
+     return <h1>Hello world</h1>
+}`}
           />
-          <BulletPoint number={2} text="Select your preference:" />
-          <DropDown
-            elements={langElements}
-            element={langElement}
-            setElement={(newElement) => setLangElement(newElement)}
-          />
-          <BulletPoint number={3} text="Choose your library:" />
-          <DropDown
-            elements={libElements}
-            element={lib}
-            setElement={(newLib) => setLib(newLib)}
-          />
-          <Button
-            onClick={onCodeGeneration}
-            loading={loading}
-            text="Generate"
-          />
+          <div className="absolute bottom-12 left-3">
+            <DropDown
+              elements={langElements}
+              element={langElement}
+              setElement={(newElement) => setLangElement(newElement)}
+            />
+          </div>
+          <div className="absolute left-48 bottom-12 ml-2">
+            <DropDown
+              elements={libElements}
+              element={lib}
+              setElement={(newLib) => setLib(newLib)}
+            />
+          </div>
+          <div className="absolute right-2 bottom-0 mb-2">
+            <Button
+              onClick={onCodeGeneration}
+              loading={loading}
+              variant="mint"
+              text="Generate"
+            />
+          </div>
+          <div className="absolute right-32 bottom-0 mb-2">
+            <Button
+              hidden={false}
+              onClick={onSaveCode}
+              variant="mint"
+              loading={false}
+              text="Save Code"
+            />
+          </div>
 
-          <StopButton
+          {/* <StopButton
             onCancel={stopGeneration}
             loading={loading}
             text="Stop Generating"
-          />
+          /> */}
 
           <ResizablePanel>
-            <AnimatePresence mode="popLayout">
+            <AnimatePresence mode="sync">
               <motion.div className="my-10 space-y-10">
                 {generatedCode && (
                   <GenerateCode
@@ -230,12 +245,6 @@ export default function Page() {
               </motion.div>
             </AnimatePresence>
           </ResizablePanel>
-          <Button
-            hidden={false}
-            onClick={onSaveCode}
-            loading={false}
-            text="Save Code"
-          />
         </div>
       </main>
     </>
