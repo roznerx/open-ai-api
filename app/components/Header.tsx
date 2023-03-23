@@ -37,7 +37,7 @@ export default function Header({ session }) {
             <AnimatePresence>
               {!session ? (
                 <motion.button
-                  className="rounded-full border border-white bg-gradient-to-tr from-[#7775D6] via-purple-500 to-[#E935C1] p-1.5 px-4 text-sm font-medium text-white transition-all"
+                  className="rounded-full border border-white bg-black  p-1.5 px-4 text-sm font-medium text-mint"
                   onClick={() => setShowSignInModal(true)}
                   {...FADE_IN_ANIMATION_SETTINGS}
                 >
