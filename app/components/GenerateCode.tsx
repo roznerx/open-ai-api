@@ -1,10 +1,13 @@
-import { CopyBlock, dracula } from "react-code-blocks"
+import { CopyBlock, dracula, codepen } from "react-code-blocks"
+import tailwindConfig from "tailwind.config.js"
 
 type GenerateCode = {
   generatedCode: String
   langElement?: string
   align?: string
 }
+
+const colors: any = tailwindConfig.theme?.extend?.colors
 
 export default function GenerateCode({
   align = "center",
@@ -17,32 +20,21 @@ export default function GenerateCode({
         className={`my-2 flex flex-col items-${align} md:items-${align} lg:items-${align}`}
       >
         {generatedCode
-          .substring(generatedCode.indexOf("**") + 1)
+          .substring(generatedCode.indexOf("**") + 0)
           .split("**::")
           .map((generated) => {
             return (
-              <div
-                style={{
-                  width: "100%",
-                  flex: 1,
-                  background: "#28273D",
-                  color: "white",
-                  paddingBottom: "1rem",
-                }}
-              >
+              <div className="w-full text-left">
                 <CopyBlock
-                  customStyle={{
-                    height: "auto",
-                    overflowY: "scroll",
-                    borderRadius: "5px",
-                    fontSize: "1rem",
-                    margin: "0px 0.75rem",
-                  }}
-                  theme={dracula}
                   showLineNumbers
                   text={generated}
                   language={langElement === "Typescript" ? "tsx" : "jsx"}
                   codeBlock
+                  theme={{
+                    ...dracula,
+                    backgroundColor: "#28273D",
+                    metaColor: colors.mint,
+                  }}
                 />
               </div>
             )

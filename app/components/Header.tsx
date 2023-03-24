@@ -21,7 +21,7 @@ export default function Header({ session }) {
     <>
       <SignInModal />
       <div
-        className={`fixed top-0  w-full bg-white  ${
+        className={`fixed top-0 w-full bg-white  ${
           scrolled
             ? "border-b border-gray-200 bg-white/20 backdrop-blur-xl"
             : "bg-white/0"
@@ -29,7 +29,7 @@ export default function Header({ session }) {
       >
         <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
           <Link href="/" className="flex space-x-3">
-            <h1 className="ml-2 text-2xl tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
+            <h1 className="ml-2 font-popins text-2xl tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
               Code Genius
             </h1>
           </Link>

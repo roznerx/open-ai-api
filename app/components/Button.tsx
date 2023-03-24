@@ -25,7 +25,7 @@ export default function Button({
       // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
       className={`${hidden ? "hidden" : null} ${
         variant === "mint" ? "bg-mint" : "bg-black"
-      }  w-full rounded-xl bg-black px-4 py-2 font-medium ${
+      }  w-full rounded-md bg-black px-4 py-2 font-medium ${
         variant === "mint" ? "text-black" : "text-mint"
       } hover:bg-mint/80  dark:bg-white  dark:text-slate-600 `}
       onClick={() => onClick()}
@@ -34,7 +34,7 @@ export default function Button({
     </button>
   ) : (
     <button
-      className=" w-full rounded-xl bg-black px-4 py-2 font-medium text-white hover:bg-black/80"
+      className="w-full rounded-md bg-black px-4 py-2 font-medium text-white hover:bg-black/80"
       disabled
     >
       <LoadingDots color="white" style="large" />

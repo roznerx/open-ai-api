@@ -4,12 +4,14 @@ import DropDown, { ElementType } from "app/components/DropDown"
 import { ChangeEvent, SetStateAction, useState } from "react"
 import ResizablePanel from "app/components/ResizablePanel"
 import Button, { StopButton } from "app/components/Button"
+import { HomeIcon, CodeIcon, Codepen, MessageCircleIcon } from "lucide-react"
 import BulletPoint from "app/components/BulletPoint"
 import GenerateCode from "app/components/GenerateCode"
 import Modal from "app/components/Modal"
 import useLocalStorage from "hooks/use-localstorage"
 import { AnimatePresence, motion } from "framer-motion"
 import { LSConfig, promptResponseTimeout } from "@/lib/constants"
+import SideBar from "app/components/shared/SideBar"
 
 export default function Page() {
   const [loading, setLoading] = useState(false)
@@ -19,6 +21,7 @@ export default function Page() {
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
   const [questionName, setQuestionName] = useState("")
+  const [sidebarOpen, setSidebarOpen] = useState(true)
   const [langElement, setLangElement] = useState<ElementType>("Typescript")
   const [lib, setLib] = useState<ElementType>("React")
   const [generatedCode, setGeneratedCode] = useState<String>("")
@@ -164,38 +167,81 @@ export default function Page() {
         buttonText="Save"
         setIsOpen={setShowSavePromptModal}
       />
-
-      <main className="mt-12 flex w-full flex-col items-center justify-start bg-purple-800 px-4  font-mono">
-        <hr className="border-1 mt-4 h-px w-full bg-white" />
-        <h1 className="text-1xl absolute left-4 my-7  w-auto text-left text-purple-300">
-          CODE COMPLEMENTATIONS AND SUGGESTIONS
-        </h1>
-        <hr className="border-1 mt-12 h-px w-full bg-white" />
-        <div id="container" className="relative mx-3 mt-2 h-56 w-full">
-          <textarea
-            className="h-56 min-w-full resize-none rounded-md bg-purple-700  text-gray-200 focus:border-purple-700 focus:ring-0 "
-            value={codeSentence}
-            onChange={(e) => setCodeSentence(e.target.value)}
-            rows={4}
-            placeholder={`e.g. export default function App() {
+      <main className="mt-12 flex w-full flex-row items-start justify-start bg-purple-800 pr-4 font-mono">
+        {/* <SideBar /> */}
+        <div
+          className={`relative hidden h-screen flex-col items-center duration-300 sm:block ${
+            sidebarOpen ? "w-20" : "w-72"
+          } bg-purple-700 p-5 pt-8`}
+        >
+          <HomeIcon
+            size={30}
+            color="white"
+            className="my-6 cursor-pointer border-purple-300 text-purple-400"
+          />
+          <MessageCircleIcon
+            size={30}
+            color="white"
+            className="my-6 cursor-pointer border-purple-300 text-purple-400"
+          />
+          <Codepen
+            size={30}
+            color="white"
+            className="my-6 cursor-pointer border-purple-300 text-purple-400"
+          />
+          <CodeIcon
+            size={30}
+            color="white"
+            className="my-6 cursor-pointer border-purple-300 text-purple-400"
+          />
+          {/* <SidebarArrow
+            color="white"
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className={`${
+              !sidebarOpen && "rotate-180"
+            } absolute -right-3 top-2 cursor-pointer rounded-full border border-purple-300 text-purple-400`}
+          /> */}
+        </div>
+        {/* <SideBar /> */}
+        <div>
+          <hr className="border-1 mt-12 h-px w-full " />
+        </div>
+        <div id="container" className="relative mx-3 h-64 w-full">
+          <h1 className="text-1xl left-2 mb-4 w-full text-purple-300">
+            CODE COMPLEMENTATIONS AND SUGGESTIONS
+          </h1>
+          <hr className="border-1 mt-1 h-px w-full border-purple-400" />
+          <div className="mt-14">
+            <div className="absolute top-4 w-full">
+              <p className="mt-9 border-b-[1px] border-purple-800 bg-purple-700 p-2 font-popins text-lg font-bold leading-7 text-white">
+                Paste your code and look for code suggestions
+              </p>
+            </div>
+            <textarea
+              className="focus:shadow-outline h-64 min-w-full resize-none rounded-md border-none bg-purple-700 pt-4 text-gray-200 placeholder:pt-1 focus:border-purple-700 focus:ring-purple-700 active:border-purple-700"
+              value={codeSentence}
+              onChange={(e) => setCodeSentence(e.target.value)}
+              rows={4}
+              placeholder={`e.g. export default function App() {
      return <h1>Hello world</h1>
 }`}
-          />
-          <div className="absolute bottom-12 left-3">
+            />
+          </div>
+          <div className="absolute -bottom-3 left-3">
             <DropDown
               elements={langElements}
               element={langElement}
               setElement={(newElement) => setLangElement(newElement)}
             />
           </div>
-          <div className="absolute left-48 bottom-12 ml-2">
+          <div className="absolute left-48 -bottom-3 ml-2">
             <DropDown
               elements={libElements}
               element={lib}
               setElement={(newLib) => setLib(newLib)}
             />
           </div>
-          <div className="absolute right-2 bottom-0 mb-2">
+          <div className="absolute right-2 -bottom-14 mb-[2px]">
             <Button
               onClick={onCodeGeneration}
               loading={loading}
@@ -203,7 +249,7 @@ export default function Page() {
               text="Generate"
             />
           </div>
-          <div className="absolute right-32 bottom-0 mb-2">
+          <div className="absolute right-32 -bottom-14 mb-[2px]">
             <Button
               hidden={false}
               onClick={onSaveCode}
@@ -228,20 +274,6 @@ export default function Page() {
                     generatedCode={generatedCode}
                   />
                 )}
-                {/* <CopyBlock
-                codeBlock
-                text={`const Chat = () => {
-                      const [message, setMessage] = useState('');
-                      const [messages, setMessages] = useState([]);
-                    
-                      const sendMessage = (event) => {
-                        event.preventDefault();
-                        setMessages([...messages, message]);
-                        setMessage('');
-                      }`}
-                language={langElement === "Typescript" ? "tsx" : "jsx"}
-                theme={codepen}
-              /> */}
               </motion.div>
             </AnimatePresence>
           </ResizablePanel>
