@@ -9,6 +9,7 @@ import UserDropdown from "app/components/auth/UserDropdown"
 import { useEffect } from "react"
 import useLocalStorage from "hooks/use-localstorage"
 import ColorModeDropdown from "./shared/ColorModeDropdown"
+import Image from "next/image"
 
 export default function Header({ session }) {
   const { SignInModal, setShowSignInModal } = useSignInModal()
@@ -28,8 +29,9 @@ export default function Header({ session }) {
         } z-30 transition-all`}
       >
         <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
-          <Link href="/" className="flex space-x-3">
-            <h1 className="ml-2 font-popins text-2xl tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
+          <Link href="/" className="flex ">
+            <Image alt="React JS" src={"/logo.svg"} width={24} height={24} />
+            <h1 className="ml-6 font-popins text-lg tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
               Code Genius
             </h1>
           </Link>
