@@ -1,3 +1,28 @@
-export default function SideBar() {
-  return <div className="relative h-screen w-72 bg-white p-5 pt-8"></div>
+import { HomeIcon, CodeIcon } from "lucide-react"
+import SearchBar from "./SearchBar"
+
+export default function SideBar({ sidebarOpen, setSidebarOpen }) {
+  return (
+    <div
+      id="sidebar"
+      className={`fixed -top-12 left-0 z-40 mt-12 hidden h-screen -translate-x-full flex-col items-start border-r border-purple-400 transition-transform duration-700 sm:relative sm:flex sm:translate-x-0 ${
+        sidebarOpen ? "w-68" : "w-[65px]"
+      } bg-purple-700 px-5 pt-3`}
+    >
+      <SearchBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+      <HomeIcon
+        size={26}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        color="white"
+        className="cursor-pointer border-purple-300 text-purple-400"
+      />
+
+      <CodeIcon
+        size={26}
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+        color="white"
+        className="my-6 cursor-pointer border-purple-300 text-purple-400"
+      />
+    </div>
+  )
 }

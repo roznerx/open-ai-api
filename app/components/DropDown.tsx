@@ -29,31 +29,41 @@ export default function DropDown({
   element,
   setElement,
 }: DropDownProps) {
+  const ReactIcon = () => (
+    <Image alt="React JS" src={"/icons/react.png"} width={24} height={24} />
+  )
+  const TypescriptIcon = () => (
+    <Image
+      alt="Typescript"
+      src={"/icons/typescript.png"}
+      width={24}
+      height={24}
+    />
+  )
+
+  const JavascriptIcon = () => (
+    <Image alt="Javascript" src={"/icons/JS.svg"} width={24} height={24} />
+  )
+
   return (
     <Menu
       as="div"
       className="absolute w-44  bg-purple-800 text-left text-white"
     >
       <div>
-        <Menu.Button className="shadow-smfocus:outline-none  inline-flex w-full items-start justify-between rounded-md border py-2 pl-2 focus:ring-2 focus:ring-black">
-          {element === "Javascript" && (
+        <Menu.Button className="shadow-smfocus:outline-none inline-flex w-full items-start justify-between rounded-md border py-2 pl-2 focus:ring-2 focus:ring-black">
+          {element === "Javascript" && <JavascriptIcon />}
+          {element === "Typescript" && <TypescriptIcon />}
+          {element === "React" && <ReactIcon />}
+          {element === "Vue" && (
             <Image
-              className="mr-1"
-              alt="Javascript"
-              src={"icons/JS.svg"}
+              alt="React JS"
+              src={"/icons/vue.png"}
               width={24}
               height={24}
             />
           )}
-          {element === "Typescript" && (
-            <Image
-              alt="Javascript"
-              src={"icons/JS.svg"}
-              width={24}
-              height={24}
-            />
-          )}
-          <span className="ml-1">{element}</span>
+          <span className="absolute left-8 ml-1">{element}</span>
           <ChevronUpIcon
             className="mr-1 ml-2 h-5 w-5 ui-open:hidden"
             aria-hidden="true"
@@ -90,18 +100,20 @@ export default function DropDown({
                       "flex w-full items-start justify-start space-x-2 py-2 pl-2 text-left text-sm",
                     )}
                   >
-                    {item === "Javascript" && (
+                    {item === "Javascript" && <JavascriptIcon />}
+                    {item === "Typescript" && <TypescriptIcon />}
+                    {item === "React" && (
                       <Image
-                        alt="Javascript"
-                        src={"icons/JS.svg"}
+                        alt="React JS"
+                        src={"/icons/react.png"}
                         width={24}
                         height={24}
                       />
                     )}
-                    {item === "Typescript" && (
+                    {item === "Vue" && (
                       <Image
-                        alt="Javascript"
-                        src={"icons/JS.svg"}
+                        alt="React JS"
+                        src={"/icons/vue.png"}
                         width={24}
                         height={24}
                       />
