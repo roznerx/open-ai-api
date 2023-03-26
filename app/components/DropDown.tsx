@@ -56,7 +56,7 @@ export default function DropDown({
   const JavascriptIcon = () => (
     <Image alt="Javascript" src={"/icons/JS.svg"} width={24} height={24} />
   )
-  console.log("pasa por aqui")
+
   return (
     <Menu as="div" className="absolute w-44 bg-purple-800 text-left text-white">
       <div>
