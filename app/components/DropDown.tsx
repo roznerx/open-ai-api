@@ -5,7 +5,7 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/20/solid"
 import Image from "next/image"
-import { Fragment } from "react"
+import React, { Fragment, memo } from "react"
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
@@ -24,37 +24,34 @@ interface DropDownProps {
   elements: ElementType[]
 }
 
-export default function DropDown({
-  elements,
-  element,
-  setElement,
-}: DropDownProps) {
-  const ReactIcon = () => (
+function DropDownComponent({ elements, element, setElement }: DropDownProps) {
+  const ReactIcon = React.memo(() => (
     <Image alt="React JS" src={"/icons/react.png"} width={24} height={24} />
-  )
-  const VueJSIcon = () => (
+  ))
+
+  const VueJSIcon = React.memo(() => (
     <Image alt="Vue JS" src={"/icons/vue.png"} width={24} height={24} />
-  )
-  const AngularIcon = () => (
+  ))
+  const AngularIcon = React.memo(() => (
     <Image
       alt="Angular JS"
       src={"/icons/angular.webp"}
       width={24}
       height={24}
     />
-  )
-  const TypescriptIcon = () => (
+  ))
+  const TypescriptIcon = React.memo(() => (
     <Image
       alt="Typescript"
       src={"/icons/typescript.png"}
       width={24}
       height={24}
     />
-  )
+  ))
 
-  const JavascriptIcon = () => (
+  const JavascriptIcon = React.memo(() => (
     <Image alt="Javascript" src={"/icons/JS.svg"} width={24} height={24} />
-  )
+  ))
 
   return (
     <Menu as="div" className="absolute w-44 bg-purple-800 text-left text-white">
@@ -121,3 +118,6 @@ export default function DropDown({
     </Menu>
   )
 }
+
+export const DropDown = memo(DropDownComponent)
+export default DropDown

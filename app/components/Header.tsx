@@ -29,7 +29,7 @@ export default function Header({ session }) {
         } z-30 transition-all`}
       >
         <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
-          <Link href="/" className="flex ">
+          <Link href="/" className="mx-auto flex sm:mx-0">
             <Image alt="React JS" src={"/logo.svg"} width={24} height={24} />
             <h1 className="ml-6 font-popins text-lg tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
               Code Genius
