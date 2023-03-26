@@ -11,7 +11,7 @@ export default function SearchBar({ sidebarOpen, setSidebarOpen }) {
 
   return (
     <div
-      className={`relative my-2 mr-2 flex h-12 items-center rounded-md bg-transparent py-2 sm:right-0 ${
+      className={`relative  mr-2 flex h-12 items-center rounded-md bg-transparent  sm:right-0 ${
         sidebarOpen ? "bg-purple-200" : "bg-transparent"
       }`}
     >
@@ -26,7 +26,7 @@ export default function SearchBar({ sidebarOpen, setSidebarOpen }) {
           ref={searchRef}
           type={"search"}
           placeholder="Search"
-          className="duration-600 flex cursor-default rounded-md border-none bg-transparent text-gray-500 focus:ring-2 focus:ring-purple-200 focus-visible:ring-offset-neutral-50 sm:bg-purple-200"
+          className="duration-600 flex cursor-default rounded-md border-none bg-transparent text-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-200 focus-visible:ring-offset-neutral-50 sm:bg-purple-200"
         />
       )}
     </div>

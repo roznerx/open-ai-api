@@ -174,22 +174,22 @@ export default function Page() {
       <main className="mt-12 flex w-full flex-row items-start justify-start bg-purple-800 pr-4 font-mono">
         <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
         <div>
-          <hr className="border-1 mt-12 h-px w-full " />
+          <hr className="border-1 mt-12 h-px w-full" />
         </div>
-        <div id="container" className="relative ml-2 h-64 w-full">
-          <h1 className="text-1xl left-2 mb-4 w-full text-purple-300">
+        <div id="container" className="relative ml-2 w-full">
+          <div className="text-1xl left-2 mt-4 w-full text-center text-purple-300 sm:text-left">
             CODE COMPLEMENTATIONS AND SUGGESTIONS
-          </h1>
-          <hr className="border-1 mt-1 h-px w-full border-purple-400" />
-          <div className="mt-14">
-            <div className="absolute top-4 w-full">
-              <p className="text-md mt-8 border-b-[1px] border-purple-800 bg-purple-700 p-2 font-popins font-medium leading-7 text-white">
-                Paste your code and look for code suggestions
-              </p>
-            </div>
+          </div>
+          <hr className="border-1 h-px w-full border-purple-400" />
+          <div className="">
+            <p className="text-md mt-2 mb-1 border-b-[1px] border-purple-800 bg-purple-700 p-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
+              Paste your code and look for code suggestions
+            </p>
+          </div>
+          <div className="h-60 rounded-md bg-yellow-300">
             <textarea
               ref={textareaRef}
-              className="focus:shadow-outline h-64 min-w-full resize-none rounded-md border-none bg-purple-700 pt-4 text-gray-200 placeholder:pt-1 focus:border-purple-700 focus:ring-purple-700 active:border-purple-700"
+              className="focus:shadow-outline h-60 min-w-full resize-none  border-none bg-purple-700 pt-4 text-gray-200  focus:border-purple-700 focus:ring-purple-700 active:border-purple-700"
               value={codeSentence}
               onChange={(e) => setCodeSentence(e.target.value)}
               rows={4}
@@ -197,37 +197,39 @@ export default function Page() {
      return <h1>Hello world</h1>
 }`}
             />
-          </div>
-          <div className="absolute -bottom-[51px] left-3">
-            <DropDown
-              elements={langElements}
-              element={langElement}
-              setElement={(newElement) => setLangElement(newElement)}
-            />
-          </div>
-          <div className="absolute left-48 -bottom-[51px] ml-2">
-            <DropDown
-              elements={libElements}
-              element={lib}
-              setElement={(newLib) => setLib(newLib)}
-            />
-          </div>
-          <div className="absolute right-2 -bottom-[92px] mb-0">
-            <Button
-              onClick={onCodeGeneration}
-              loading={loading}
-              variant="mint"
-              text="Generate"
-            />
-          </div>
-          <div className="absolute right-32 -bottom-[92px] ">
-            <Button
-              hidden={false}
-              onClick={onSaveCode}
-              variant="mint"
-              loading={false}
-              text="Save Code"
-            />
+            <div className="relative">
+              <div className="absolute bottom-12 mb-1">
+                <DropDown
+                  elements={langElements}
+                  element={langElement}
+                  setElement={(newElement) => setLangElement(newElement)}
+                />
+              </div>
+              <div className="absolute bottom-12 mb-1 ml-48">
+                <DropDown
+                  elements={libElements}
+                  element={lib}
+                  setElement={(newLib) => setLib(newLib)}
+                />
+              </div>
+              <div className="absolute right-2 bottom-0 mb-[10px] hidden sm:block">
+                <Button
+                  onClick={onCodeGeneration}
+                  loading={loading}
+                  variant="mint"
+                  text="Generate"
+                />
+              </div>
+              <div className="absolute right-40 bottom-0 mb-[10px] hidden sm:block">
+                <Button
+                  hidden={false}
+                  onClick={onSaveCode}
+                  variant="mint"
+                  loading={false}
+                  text="Save Code"
+                />
+              </div>
+            </div>
           </div>
           <ResizablePanel>
             <AnimatePresence mode="sync">

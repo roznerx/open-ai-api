@@ -9,14 +9,13 @@ export default function SideBar({ sidebarOpen, setSidebarOpen }) {
         sidebarOpen ? "w-68" : "w-[65px]"
       } bg-purple-700 px-5 pt-3`}
     >
-      <SearchBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <HomeIcon
+      {/* <HomeIcon
         size={26}
         onClick={() => setSidebarOpen(!sidebarOpen)}
         color="white"
         className="cursor-pointer border-purple-300 text-purple-400"
-      />
-
+      /> */}
+      <SearchBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <CodeIcon
         size={26}
         onClick={() => setSidebarOpen(!sidebarOpen)}

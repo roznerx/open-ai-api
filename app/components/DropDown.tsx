@@ -32,6 +32,17 @@ export default function DropDown({
   const ReactIcon = () => (
     <Image alt="React JS" src={"/icons/react.png"} width={24} height={24} />
   )
+  const VueJSIcon = () => (
+    <Image alt="Vue JS" src={"/icons/vue.png"} width={24} height={24} />
+  )
+  const AngularIcon = () => (
+    <Image
+      alt="Angular JS"
+      src={"/icons/angular.webp"}
+      width={24}
+      height={24}
+    />
+  )
   const TypescriptIcon = () => (
     <Image
       alt="Typescript"
@@ -46,23 +57,14 @@ export default function DropDown({
   )
 
   return (
-    <Menu
-      as="div"
-      className="absolute w-44  bg-purple-800 text-left text-white"
-    >
+    <Menu as="div" className="absolute w-44 bg-purple-800 text-left text-white">
       <div>
         <Menu.Button className="shadow-smfocus:outline-none inline-flex w-full items-start justify-between rounded-md border py-2 pl-2 focus:ring-2 focus:ring-black">
           {element === "Javascript" && <JavascriptIcon />}
           {element === "Typescript" && <TypescriptIcon />}
           {element === "React" && <ReactIcon />}
-          {element === "Vue" && (
-            <Image
-              alt="React JS"
-              src={"/icons/vue.png"}
-              width={24}
-              height={24}
-            />
-          )}
+          {element === "Vue" && <VueJSIcon />}
+          {element === "Angular" && <AngularIcon />}
           <span className="absolute left-8 ml-1">{element}</span>
           <ChevronUpIcon
             className="mr-1 ml-2 h-5 w-5 ui-open:hidden"
@@ -102,22 +104,9 @@ export default function DropDown({
                   >
                     {item === "Javascript" && <JavascriptIcon />}
                     {item === "Typescript" && <TypescriptIcon />}
-                    {item === "React" && (
-                      <Image
-                        alt="React JS"
-                        src={"/icons/react.png"}
-                        width={24}
-                        height={24}
-                      />
-                    )}
-                    {item === "Vue" && (
-                      <Image
-                        alt="React JS"
-                        src={"/icons/vue.png"}
-                        width={24}
-                        height={24}
-                      />
-                    )}
+                    {item === "React" && <ReactIcon />}
+                    {item === "Vue" && <VueJSIcon />}
+                    {item === "Angular" && <AngularIcon />}
                     <span>{item}</span>
                     {element === item ? (
                       <CheckIcon className="text-bold h-4 w-4" />

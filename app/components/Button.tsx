@@ -25,7 +25,7 @@ export default function Button({
       // bg-gradient-to-r from-pink-500  via-purple-500 to-indigo-500
       className={`${hidden ? "hidden" : null} ${
         variant === "mint" ? "bg-mint" : "bg-black"
-      }  w-full rounded-md bg-black px-4 py-2 font-medium ${
+      }  w-36 rounded-md bg-black px-4 py-2 font-medium ${
         variant === "mint" ? "text-black" : "text-mint"
       } hover:bg-mint/80  dark:bg-white  dark:text-slate-600 `}
       onClick={() => onClick()}
