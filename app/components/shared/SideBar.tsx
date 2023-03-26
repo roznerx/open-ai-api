@@ -1,4 +1,4 @@
-import { HomeIcon, CodeIcon } from "lucide-react"
+import { HomeIcon, Code } from "lucide-react"
 import SearchBar from "./SearchBar"
 
 export default function SideBar({ sidebarOpen, setSidebarOpen }) {
@@ -16,7 +16,7 @@ export default function SideBar({ sidebarOpen, setSidebarOpen }) {
         className="cursor-pointer border-purple-300 text-purple-400"
       /> */}
       <SearchBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
-      <CodeIcon
+      <Code
         size={26}
         onClick={() => setSidebarOpen(!sidebarOpen)}
         color="white"

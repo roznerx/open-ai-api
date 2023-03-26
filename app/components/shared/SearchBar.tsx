@@ -1,4 +1,4 @@
-import { SearchIcon } from "lucide-react"
+import { Search } from "lucide-react"
 import { useEffect, useRef } from "react"
 
 export default function SearchBar({ sidebarOpen, setSidebarOpen }) {
@@ -15,7 +15,7 @@ export default function SearchBar({ sidebarOpen, setSidebarOpen }) {
         sidebarOpen ? "bg-purple-200" : "bg-transparent"
       }`}
     >
-      <SearchIcon
+      <Search
         size={22}
         onClick={() => setSidebarOpen(!sidebarOpen)}
         color={sidebarOpen ? "#2F2E49" : "white"}

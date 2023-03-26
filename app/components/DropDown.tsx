@@ -5,7 +5,7 @@ import {
   ChevronUpIcon,
 } from "@heroicons/react/20/solid"
 import Image from "next/image"
-import React, { Fragment, memo } from "react"
+import React, { Fragment } from "react"
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
@@ -24,7 +24,11 @@ interface DropDownProps {
   elements: ElementType[]
 }
 
-function DropDownComponent({ elements, element, setElement }: DropDownProps) {
+export default function DropDown({
+  elements,
+  element,
+  setElement,
+}: DropDownProps) {
   const ReactIcon = React.memo(() => (
     <Image alt="React JS" src={"/icons/react.png"} width={24} height={24} />
   ))
@@ -49,10 +53,10 @@ function DropDownComponent({ elements, element, setElement }: DropDownProps) {
     />
   ))
 
-  const JavascriptIcon = React.memo(() => (
+  const JavascriptIcon = () => (
     <Image alt="Javascript" src={"/icons/JS.svg"} width={24} height={24} />
-  ))
-
+  )
+  console.log("pasa por aqui")
   return (
     <Menu as="div" className="absolute w-44 bg-purple-800 text-left text-white">
       <div>
@@ -100,7 +104,14 @@ function DropDownComponent({ elements, element, setElement }: DropDownProps) {
                     )}
                   >
                     {item === "Javascript" && <JavascriptIcon />}
-                    {item === "Typescript" && <TypescriptIcon />}
+                    {item === "Typescript" && (
+                      <Image
+                        alt="Typescript"
+                        src={"/icons/typescript.png"}
+                        width={24}
+                        height={24}
+                      />
+                    )}
                     {item === "React" && <ReactIcon />}
                     {item === "Vue" && <VueJSIcon />}
                     {item === "Angular" && <AngularIcon />}
@@ -118,6 +129,3 @@ function DropDownComponent({ elements, element, setElement }: DropDownProps) {
     </Menu>
   )
 }
-
-export const DropDown = memo(DropDownComponent)
-export default DropDown

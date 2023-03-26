@@ -8,6 +8,9 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "tailwindui.com",
     ],
+    dangerouslyAllowSVG: true,
+    contentDispositionType: "attachment",
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
   experimental: {
     appDir: true,
