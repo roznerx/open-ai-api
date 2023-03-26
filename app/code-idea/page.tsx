@@ -186,7 +186,7 @@ export default function Page() {
               Paste your code and look for code suggestions
             </p>
           </div>
-          <div className="h-60 rounded-md bg-yellow-300">
+          <div className="h-60 rounded-md">
             <textarea
               ref={textareaRef}
               className="focus:shadow-outline h-60 min-w-full resize-none  border-none bg-purple-700 pt-4 text-gray-200  focus:border-purple-700 focus:ring-purple-700 active:border-purple-700"
@@ -230,6 +230,21 @@ export default function Page() {
                 />
               </div>
             </div>
+          </div>
+          <div className="my-2 flex h-auto items-center justify-between sm:hidden">
+            <Button
+              hidden={false}
+              onClick={onSaveCode}
+              variant="mint"
+              loading={false}
+              text="Save Code"
+            />
+            <Button
+              onClick={onCodeGeneration}
+              loading={loading}
+              variant="mint"
+              text="Generate"
+            />
           </div>
           <ResizablePanel>
             <AnimatePresence mode="sync">
