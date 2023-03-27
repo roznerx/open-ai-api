@@ -25,7 +25,7 @@ export default function Chat() {
 
   return (
     <>
-      <div className="relative m-auto w-[82%]">
+      <div className="relative m-auto mx-2 w-[100%]">
         <textarea
           ref={textareaRef}
           className="placeholder:text-base font-base mt-6 w-[100%] resize-none rounded-md border-none bg-purple-400 py-2.5 pl-1 font-mono text-white placeholder:pl-2 placeholder:pt-1 placeholder:text-white focus:border-transparent focus:ring-black/30"
@@ -36,9 +36,9 @@ export default function Chat() {
           placeholder={"What do you want to build?"}
         ></textarea>
 
-        <button className="absolute mt-1 rounded-md bg-gray-900 p-1 disabled:hover:bg-transparent md:bottom-2.5 md:right-2">
+        <button className="absolute bottom-2.5 right-3 mt-1 rounded-md bg-gray-900 p-1 disabled:hover:bg-transparent">
           <Image
-            className="rotate-10 mb-1 mr-2 pt-2 pb-1 pl-2 text-white"
+            className="mb-1 mr-2 pt-2 pb-1 pl-2 text-white"
             alt="Send"
             width={24}
             height={24}

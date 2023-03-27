@@ -1,0 +1,27 @@
+@keyframes waterfall {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+    top: 0;
+  }
+  50% {
+    top: 50%;
+  }
+  75% {
+    top: 75%;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(0%);
+    opacity: 0;
+  }
+}
+
+.element {
+  animation: waterfall 5s linear infinite;
+}
+
+.element:nth-child(2n) {
+  animation-delay: 5s; /* adjust to fit your needs */
+  /* animation-timing-function: cubic-bezier(0.075, 0.82, 0.165, 1); */
+}

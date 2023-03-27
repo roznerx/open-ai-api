@@ -1,169 +1,176 @@
 "use client"
 
-import Image from "next/image"
+import "../../styles/waterfall.css"
 import Chat from "./Chat"
 
 export default function SuperHero() {
-  const bgMatrix = Array(70)
+  let bgMatrix = Array(70)
     .fill(1, 0)
-    .map((_, i) => (
-      <>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-400`}
-        >
-          0
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-500`}
-        >
-          0
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-400`}
-        >
-          1
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i === 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-700`}
-        >
-          1
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-500`}
-        >
-          0
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-500`}
-        >
-          1
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-700`}
-        >
-          0
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-700`}
-        >
-          1
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-700`}
-        >
-          1
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-700`}
-        >
-          1
-        </span>
-        <span
-          key={Math.random()}
-          className={`${
-            i < 30
-              ? "text-xs opacity-30"
-              : i < 50
-              ? "text-sm opacity-50"
-              : i > 50 && i < 80
-              ? "opacity-80"
-              : "opacity-100"
-          } px-3 text-indigo-600`}
-        >
-          1
-        </span>
-      </>
-    ))
+    .map((_, i) => {
+      return (
+        <>
+          <span
+            key={Math.random()}
+            className={`element mx-1 ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-400`}
+          >
+            0
+          </span>
+          <span
+            key={Math.random()}
+            className={`element  ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-500`}
+          >
+            0
+          </span>
+          <span
+            key={Math.random()}
+            className={`element ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-400`}
+          >
+            1
+          </span>
+          <span
+            key={Math.random()}
+            className={`element ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i === 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-700`}
+          >
+            1
+          </span>
+          <span
+            key={Math.random()}
+            className={` element ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-500`}
+          >
+            0
+          </span>
+          <span
+            key={Math.random()}
+            className={`element  ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-500`}
+          >
+            1
+          </span>
+          <span
+            key={Math.random()}
+            className={`element  ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-700`}
+          >
+            0
+          </span>
+          <span
+            key={Math.random()}
+            className={`element  ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-700`}
+          >
+            1
+          </span>
+          <span
+            key={Math.random()}
+            className={` element ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-700`}
+          >
+            1
+          </span>
+          <span
+            key={Math.random()}
+            className={`  ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-700`}
+          >
+            1
+          </span>
+          <span
+            key={Math.random()}
+            className={`  ${
+              i < 30
+                ? "text-xs opacity-30"
+                : i < 50
+                ? "text-sm opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-600`}
+          >
+            1
+          </span>
+        </>
+      )
+    })
+
+  // useEffect(() => {
+
+  // }, [])
+
   return (
     <>
       <section>
@@ -175,7 +182,11 @@ export default function SuperHero() {
         </p>
       </section>
       <Chat />
-      <div className="flex h-96 w-screen flex-wrap pt-7">{bgMatrix}</div>
+      <div className="relative flex h-96 w-full flex-row flex-wrap pt-7">
+        {bgMatrix}
+      </div>
+
+      {/* <canvas className="flex h-96 w-screen flex-wrap pt-7" id="canv"></canvas> */}
     </>
   )
 }

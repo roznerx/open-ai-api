@@ -176,13 +176,13 @@ export default function Page() {
         <div>
           <hr className="border-1 mt-12 h-px w-full" />
         </div>
-        <div id="container" className="relative ml-2 w-full">
-          <div className="text-1xl left-2 mt-4 w-full text-center text-purple-300 sm:text-left">
+        <div id="container" className="relative mx-12 w-full">
+          <div className="text-1xl left-2 my-4 w-full text-center text-purple-300 sm:text-left">
             CODE COMPLEMENTATIONS AND SUGGESTIONS
           </div>
           <hr className="border-1 h-px w-full border-purple-400" />
           <div className="">
-            <p className="text-md mt-2 mb-1 border-b-[1px] border-purple-800 bg-purple-700 p-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
+            <p className="text-md mt-1 mb-0.5 border-b-[1px] border-purple-800 bg-purple-700 p-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
               Paste your code and look for code suggestions
             </p>
           </div>
@@ -197,7 +197,7 @@ export default function Page() {
      return <h1>Hello world</h1>
 }`}
             />
-            <div className="relative">
+            <div className="relative ml-1">
               <div className="absolute bottom-12 mb-1">
                 <DropDown
                   elements={langElements}

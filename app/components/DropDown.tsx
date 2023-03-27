@@ -58,9 +58,12 @@ export default function DropDown({
   )
 
   return (
-    <Menu as="div" className="absolute w-44 bg-purple-800 text-left text-white">
+    <Menu
+      as="div"
+      className="absolute w-44 rounded-lg bg-purple-800 text-left text-white"
+    >
       <div>
-        <Menu.Button className="shadow-smfocus:outline-none inline-flex w-full items-start justify-between rounded-md border py-2 pl-2 focus:ring-2 focus:ring-black">
+        <Menu.Button className="shadow-smfocus:outline-none inline-flex w-full items-start justify-between  border-none py-2 pl-2 focus:ring-2 focus:ring-black">
           {element === "Javascript" && <JavascriptIcon />}
           {element === "Typescript" && <TypescriptIcon />}
           {element === "React" && <ReactIcon />}
@@ -88,7 +91,7 @@ export default function DropDown({
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items
-          className="left-0 z-10 w-full rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          className="left-0 z-10 w-full rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 hover:bg-none focus:outline-none "
           key={element}
         >
           <div className="">
@@ -100,7 +103,7 @@ export default function DropDown({
                     className={classNames(
                       active ? "bg-gray-100 text-gray-900" : "text-gray-700",
                       element === item ? "bg-gray-200" : "",
-                      "flex w-full items-start justify-start space-x-2 py-2 pl-2 text-left text-sm",
+                      "text-sm flex w-full items-start justify-start space-x-2 py-2 pl-2 text-left",
                     )}
                   >
                     {item === "Javascript" && <JavascriptIcon />}

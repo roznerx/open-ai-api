@@ -34,7 +34,7 @@ export default function Header({ session }) {
         } z-30 transition-all`}
       >
         <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
-          <Link href="/" className="mx-auto flex sm:mx-0">
+          <Link href="/" className="mx-auto mt-3 flex sm:mx-0">
             <Image alt="React JS" src={"/logo.svg"} width={24} height={24} />
             <h1
               className={`${rubik.variable} text-lg sm:text-xl ml-2 font-rubik text-2xl font-bold leading-6 tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0`}
@@ -43,19 +43,19 @@ export default function Header({ session }) {
             </h1>
           </Link>
           <div className="sm:text-4xl mt-2 flex">
-            <AnimatePresence>
+            {/* <AnimatePresence>
               {!session ? (
                 <motion.button
                   className="text-sm rounded-full border border-white  bg-black p-1.5 px-4 font-medium text-mint"
                   onClick={() => setShowSignInModal(true)}
                   {...FADE_IN_ANIMATION_SETTINGS}
                 >
-                  Sign In
+                  Create Account
                 </motion.button>
               ) : (
                 <UserDropdown />
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
           </div>
         </div>
       </div>
