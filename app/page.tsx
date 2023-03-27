@@ -1,7 +1,7 @@
 import Hero from "./home/Hero"
 import Feature from "./home/Feature"
-import Subscription from "./home/Subscription"
-import LiveDemo from "./home/LiveDemo"
+// import Subscription from "./home/Subscription"
+import SuperHero from "./home/SuperHero"
 
 export const metadata = {
   title: "Create Genius Code",
@@ -10,18 +10,9 @@ export const metadata = {
 }
 
 export default function Page() {
-  // Create PaymentIntent as soon as the page loads
-  // fetch("http://localhost:3000/api/payments", {
-  //   method: "POST",
-  //   headers: { "Content-Type": "application/json" },
-  //   body: JSON.stringify({ items: [{ id: "xl-tshirt" }] }),
-  // })
-  //   .then((res) => res.json())
-  //   .then((data) => console.log("stripe data::", data))
-
   return (
-    <main className={` mx-auto max-w-max py-24`}>
-      <LiveDemo />
+    <main className={`mx-auto max-w-max py-24`}>
+      <SuperHero />
       <Hero />
       {/* <Subscription /> */}
       <Feature />

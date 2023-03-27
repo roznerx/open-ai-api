@@ -1,11 +1,12 @@
 "use client"
 
 import Image from "next/image"
+import Chat from "./Chat"
 
-export default function LiveDemo() {
+export default function SuperHero() {
   const bgMatrix = Array(70)
     .fill(1, 0)
-    .map((key, i) => (
+    .map((_, i) => (
       <>
         <span
           key={Math.random()}
@@ -166,19 +167,15 @@ export default function LiveDemo() {
   return (
     <>
       <section>
-        <h1 className="p-3 text-center text-5xl font-bold text-white dark:text-white">
+        <h1 className="p-3 text-center text-6xl text-white dark:text-white">
           Create <p className="inline-block  text-mint">Genius Code</p>
         </h1>
-        <p className="mt-2 px-3 text-center text-white">
+        <p className="mt-2 px-3 text-center text-2xl text-white">
           Create Better, Faster and Easier Code with your AI Genius.
         </p>
       </section>
-
+      <Chat />
       <div className="flex h-96 w-screen flex-wrap pt-7">{bgMatrix}</div>
-      {/* <div
-        style={{ backgroundImage: `url('/home/landing/pattern.png')` }}
-        className="h-96 bg-left-bottom bg-repeat"
-      ></div> */}
     </>
   )
 }

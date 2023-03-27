@@ -8,8 +8,13 @@ import useScroll from "hooks/use-scroll"
 import UserDropdown from "app/components/auth/UserDropdown"
 import { useEffect } from "react"
 import useLocalStorage from "hooks/use-localstorage"
-import ColorModeDropdown from "./shared/ColorModeDropdown"
 import Image from "next/image"
+import { Rubik } from "next/font/google"
+
+const rubik = Rubik({
+  variable: "--font-rubik",
+  weight: ["400", "300", "600"],
+})
 
 export default function Header({ session }) {
   const { SignInModal, setShowSignInModal } = useSignInModal()
@@ -31,15 +36,17 @@ export default function Header({ session }) {
         <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
           <Link href="/" className="mx-auto flex sm:mx-0">
             <Image alt="React JS" src={"/logo.svg"} width={24} height={24} />
-            <h1 className="ml-6 font-popins text-lg tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0 sm:text-4xl">
+            <h1
+              className={`${rubik.variable} text-lg sm:text-xl ml-2 font-rubik text-2xl font-bold leading-6 tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0`}
+            >
               Code Genius
             </h1>
           </Link>
-          <div className="mt-2 flex sm:text-4xl">
+          <div className="sm:text-4xl mt-2 flex">
             <AnimatePresence>
               {!session ? (
                 <motion.button
-                  className="rounded-full border border-white bg-black  p-1.5 px-4 text-sm font-medium text-mint"
+                  className="text-sm rounded-full border border-white  bg-black p-1.5 px-4 font-medium text-mint"
                   onClick={() => setShowSignInModal(true)}
                   {...FADE_IN_ANIMATION_SETTINGS}
                 >

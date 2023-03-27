@@ -17,11 +17,29 @@ module.exports = {
       xl: "1280px",
       "2xl": "1536px",
     },
-
+    fontSize: {
+      "2xl": [
+        "24px",
+        {
+          lineHeight: "34px",
+          fontWeight: "400",
+          letterSpacing: "1.5px",
+        },
+      ],
+      "6xl": [
+        "64px",
+        {
+          lineHeight: "65.3px",
+          letterSpacing: "-0.02em",
+          fontWeight: "700",
+        },
+      ],
+    },
     extend: {
       fontFamily: {
         sans: ["var(--font-roboto)"],
         popins: ["var(--font-popins)"],
+        rubik: ["var(--font-rubik)"],
       },
       colors: {
         specialBlue: "#6ea9d7",
@@ -39,7 +57,7 @@ module.exports = {
           100: "#F3F2F7",
           200: "#DAD9E6",
           300: "#C1C0D6",
-          400: "#8283AD",
+          400: "#2A2944",
           500: "#605F93",
           600: "#404061",
           700: "#28273D",
