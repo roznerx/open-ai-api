@@ -26,6 +26,14 @@ module.exports = {
           letterSpacing: "1.5px",
         },
       ],
+      "5xl": [
+        "44px",
+        {
+          lineHeight: "45.3px",
+          letterSpacing: "-0.02em",
+          fontWeight: "700",
+        },
+      ],
       "6xl": [
         "64px",
         {
