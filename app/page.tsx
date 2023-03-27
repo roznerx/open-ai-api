@@ -1,6 +1,7 @@
 import Hero from "./home/Hero"
 import Feature from "./home/Feature"
 import Subscription from "./home/Subscription"
+import LiveDemo from "./home/LiveDemo"
 
 export const metadata = {
   title: "Create Genius Code",
@@ -19,10 +20,11 @@ export default function Page() {
   //   .then((data) => console.log("stripe data::", data))
 
   return (
-    <main className={`mx-auto max-w-max bg-slate-500 py-24`}>
+    <main className={` mx-auto max-w-max py-24`}>
+      <LiveDemo />
       <Hero />
       {/* <Subscription /> */}
-      {/* <Feature /> */}
+      <Feature />
     </main>
   )
 }

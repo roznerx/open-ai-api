@@ -11,7 +11,7 @@ export default function Feature() {
           <div className="mt-4">
             <Image
               className="rounded-md"
-              src="home/smart.svg"
+              src="/home/smart.svg"
               alt="React Library"
               width="599"
               height="375"
@@ -40,7 +40,7 @@ export default function Feature() {
           <div className="mt-4">
             <Image
               className="rounded-md"
-              src="home/detection.svg"
+              src="/home/detection.svg"
               alt="React Library"
               width="500"
               height="375"
@@ -49,7 +49,7 @@ export default function Feature() {
           <div className="mt-4">
             <Image
               className=""
-              src="home/generation.svg"
+              src="/home/generation.svg"
               alt="React Library"
               width="350"
               height="375"
@@ -83,7 +83,7 @@ export default function Feature() {
           <div className="mt-4">
             <Image
               className="rounded-md"
-              src="home/ideas.svg"
+              src="/home/ideas.svg"
               alt="React Library"
               width="500"
               height="375"
