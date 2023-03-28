@@ -11,9 +11,9 @@ export default function SuperHero() {
         <>
           <span
             key={Math.random()}
-            className={`element mx-1 ${
+            className={`element mx-1 w-1 ${
               i < 30
-                ? "text-xs opacity-30"
+                ? "opacity-30"
                 : i < 50
                 ? "text-sm opacity-50"
                 : i > 50 && i < 80
@@ -182,7 +182,7 @@ export default function SuperHero() {
         </p>
       </section>
       <Chat />
-      <div className="relative flex h-96 w-full flex-row flex-wrap pt-7">
+      <div className="relative flex h-96 w-full flex-row flex-wrap overflow-hidden bg-opacity-75 ">
         {bgMatrix}
       </div>
 
