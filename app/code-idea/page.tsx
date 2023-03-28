@@ -179,7 +179,7 @@ export default function Page() {
           </div>
           <hr className="border-1 mb-4 h-px w-full border-purple-400" />
 
-          <p className="text-md mt-1 rounded-t-md bg-purple-700 p-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
+          <p className="text-md  rounded-t-md bg-purple-700 pt-2 pl-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
             Paste your code and look for code suggestions
           </p>
           <div className="h-60 rounded-md">

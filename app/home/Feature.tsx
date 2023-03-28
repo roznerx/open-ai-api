@@ -2,10 +2,33 @@
 
 import Image from "next/image"
 import suggestions from "../../animations/suggestions.json"
+import generation from "../../animations/generation.json"
 import Lottie from "lottie-react"
-
+const interactivity: any = {
+  mode: "scroll",
+  actions: [
+    {
+      visibility: [0, 0.2],
+      type: "stop",
+      frames: [0],
+    },
+    {
+      visibility: [0.2, 0.45],
+      type: "seek",
+      frames: [0, 45],
+    },
+    {
+      visibility: [0.45, 1.0],
+      type: "stop",
+      frames: [150],
+    },
+  ],
+}
 const AISuggestions = () => {
   return <Lottie animationData={suggestions} />
+}
+const AIGeneration = () => {
+  return <Lottie interactivity={interactivity} animationData={generation} />
 }
 
 export default function Feature() {
@@ -13,8 +36,8 @@ export default function Feature() {
     <>
       <section className="mt-8 text-white">
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
-          <div className="mt-4">
-            <AISuggestions />
+          <div className="mt-4 flex">
+            <AIGeneration />
           </div>
           <div className="mt-4 p-2">
             <h1 className="max-w-xs pl-3 text-5xl font-bold">
