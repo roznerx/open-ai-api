@@ -5,7 +5,7 @@ import Image from "next/image"
 export default function Feature() {
   return (
     <>
-      <section className="mt-20">
+      <section className="mt-1">
         <h1 className="block w-full text-center text-5xl text-white dark:text-white sm:mx-auto sm:w-2/4 sm:text-6xl">
           Use it with your favorite libraries
         </h1>

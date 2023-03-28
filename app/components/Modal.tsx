@@ -1,11 +1,12 @@
 "use client"
 
 import { Dialog, Transition } from "@headlessui/react"
-import { on } from "events"
 import { ChangeEventHandler, Fragment } from "react"
 type DialogProps = {
   isOpen: boolean
-  body: string
+  isPromptModal?: boolean
+  isLiveDemoModal?: boolean
+  body: string | JSX.Element
   propmptName?: string
   handleInputChange?: (e: any) => void
   onSave?: () => void
@@ -18,7 +19,9 @@ export default function MyModal({
   onSave,
   setIsOpen,
   propmptName,
-  savePropmptName,
+  isPromptModal = false,
+  isLiveDemoModal = false,
+  savePropmptName = false,
   handleInputChange,
   body,
   buttonText = "Save",
@@ -54,32 +57,38 @@ export default function MyModal({
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <Dialog.Panel className="w-full max-w-md transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all">
+                <Dialog.Panel
+                  className={`w-full ${
+                    isLiveDemoModal ? "w-[65%]" : "max-w-md"
+                  } transform overflow-hidden rounded-2xl bg-white p-6 text-center align-middle shadow-xl transition-all`}
+                >
                   <Dialog.Title
                     as="h3"
                     className="text-md font-medium leading-6 text-gray-900"
                   >
                     {body}
                   </Dialog.Title>
-                  <div className="mt-2">
-                    <p className="text-sm text-gray-500">
-                      {savePropmptName && (
-                        <input
-                          className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
-                          value={propmptName}
-                          onChange={handleInputChange}
-                          id="question-name"
-                          type="text"
-                          placeholder="Question name"
-                        ></input>
-                      )}
-                      {!savePropmptName && "Please try again"}
-                    </p>
-                  </div>
+                  {isPromptModal && (
+                    <div className="mt-2">
+                      <p className="text-sm text-gray-500">
+                        {savePropmptName && (
+                          <input
+                            className="focus:shadow-outline w-full appearance-none rounded border py-2 px-3 leading-tight text-gray-700 shadow focus:outline-none"
+                            value={propmptName}
+                            onChange={handleInputChange}
+                            id="question-name"
+                            type="text"
+                            placeholder="Question name"
+                          ></input>
+                        )}
+                        {!savePropmptName && "Please try again"}
+                      </p>
+                    </div>
+                  )}
                   <div className="mt-4">
                     <button
                       type="button"
-                      className="inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                      className="text-sm inline-flex min-w-[145px] justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                       onClick={() => {
                         setIsOpen(false)
                         if (typeof onSave === "function") {

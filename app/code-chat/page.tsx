@@ -10,13 +10,13 @@ import Chat from "app/components/shared/Chat"
 
 export default function Page() {
   const [loading, setLoading] = useState(false)
-  const [modaIsOpen, setModaIsOpen] = useState(false)
-  const [showSavePromptModal, setShowSavePromptModal] = useState(false)
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
-  const [questionName, setQuestionName] = useState("")
   const [generatedCode, setGeneratedCode] = useState<string>("")
+  const [modaIsOpen, setModaIsOpen] = useState(false)
+  const [showSavePromptModal, setShowSavePromptModal] = useState(false)
+  const [questionName, setQuestionName] = useState("")
   const [userId] = useLocalStorage(LSConfig.user.userId, "")
   const controller = new AbortController()
   const codeMessages = useRef([
@@ -58,14 +58,6 @@ export default function Page() {
 
   const generateCode = async () => {
     setLoading(true)
-
-    // const id = setTimeout(() => {
-    //   controller.abort()
-    //   setLoading(false)
-    //   setModaIsOpen(true)
-    //   setCodeSentence("")
-    // }, promptResponseTimeout)
-    // setGeneratedCode("")
 
     const response = await fetch("/api/generateWithTurbo", {
       method: "POST",

@@ -93,7 +93,6 @@ export default function Page() {
     try {
       while (!done) {
         const { value, done: doneReading } = await reader.read()
-        // console.log("🚀 - value:", value);
         done = doneReading
 
         let chunkValue = decoder.decode(value)
@@ -180,16 +179,15 @@ export default function Page() {
           <div className="text-1xl left-2 my-4 w-full text-center text-purple-300 sm:text-left">
             CODE COMPLEMENTATIONS AND SUGGESTIONS
           </div>
-          <hr className="border-1 h-px w-full border-purple-400" />
-          <div className="">
-            <p className="text-md mt-1 mb-0.5 border-b-[1px] border-purple-800 bg-purple-700 p-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
+          <hr className="border-1 mb-4 h-px w-full border-purple-400" />
+
+          <div className="h-60 rounded-md">
+            <p className="text-md mt-1 rounded-t-md bg-purple-700 p-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
               Paste your code and look for code suggestions
             </p>
-          </div>
-          <div className="h-60 rounded-md">
             <textarea
               ref={textareaRef}
-              className="focus:shadow-outline h-60 min-w-full resize-none  border-none bg-purple-700 pt-4 text-gray-200  focus:border-purple-700 focus:ring-purple-700 active:border-purple-700"
+              className="focus:shadow-outline h-60 min-w-full resize-none rounded-b-md border-none  bg-purple-700 pb-6 pt-4 text-gray-200  focus:border-purple-700 focus:ring-purple-700 active:border-purple-700"
               value={codeSentence}
               onChange={(e) => setCodeSentence(e.target.value)}
               rows={4}
@@ -197,22 +195,22 @@ export default function Page() {
      return <h1>Hello world</h1>
 }`}
             />
-            <div className="relative ml-1">
-              <div className="absolute bottom-12 mb-1">
+            <div className="relative ml-4 ">
+              <div className="absolute bottom-14 mb-1">
                 <DropDown
                   elements={langElements}
                   element={langElement}
                   setElement={(newElement) => setLangElement(newElement)}
                 />
               </div>
-              <div className="absolute bottom-12 mb-1 ml-48">
+              <div className="absolute bottom-14 mb-1 ml-48">
                 <DropDown
                   elements={libElements}
                   element={lib}
                   setElement={(newLib) => setLib(newLib)}
                 />
               </div>
-              <div className="absolute right-2 bottom-0 mb-[10px] hidden sm:block">
+              <div className="absolute right-4 bottom-5 hidden sm:block">
                 <Button
                   onClick={onCodeGeneration}
                   loading={loading}
@@ -220,7 +218,7 @@ export default function Page() {
                   text="Generate"
                 />
               </div>
-              <div className="absolute right-40 bottom-0 mb-[10px] hidden sm:block">
+              {/* <div className="absolute right-40 bottom-0 mb-[10px] hidden sm:block">
                 <Button
                   hidden={false}
                   onClick={onSaveCode}
@@ -228,7 +226,7 @@ export default function Page() {
                   loading={false}
                   text="Save Code"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
           <div className="my-2 flex h-auto items-center justify-between sm:hidden">

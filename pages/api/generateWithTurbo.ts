@@ -28,8 +28,6 @@ const handler = async (req: Request): Promise<any> => {
     messages?: []
   }
 
-  console.log("messages::", messages)
-
   const payload: OpenAITurboPayload = {
     model: "gpt-3.5-turbo",
     messages,
