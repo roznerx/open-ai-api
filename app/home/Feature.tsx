@@ -1,7 +1,12 @@
 "use client"
 
 import Image from "next/image"
-import Link from "next/link"
+import suggestions from "../../animations/suggestions.json"
+import Lottie from "lottie-react"
+
+const AISuggestions = () => {
+  return <Lottie animationData={suggestions} />
+}
 
 export default function Feature() {
   return (
@@ -9,13 +14,7 @@ export default function Feature() {
       <section className="mt-8 text-white">
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
           <div className="mt-4">
-            <Image
-              className="rounded-md"
-              src="/home/smart.svg"
-              alt="React Library"
-              width="599"
-              height="375"
-            />
+            <AISuggestions />
           </div>
           <div className="mt-4 p-2">
             <h1 className="max-w-xs pl-3 text-5xl font-bold">

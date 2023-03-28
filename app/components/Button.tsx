@@ -34,9 +34,10 @@ export default function Button({
     </button>
   ) : (
     <button
-      className="w-full rounded-md bg-black px-4 py-2 font-medium text-white hover:bg-black/80"
+      className="flex w-[148px] items-center justify-start rounded-md bg-purple-800  px-4 py-2 align-middle font-medium text-white hover:bg-purple-800/80"
       disabled
     >
+      <span className="mr-2 text-white">Loading</span>
       <LoadingDots color="white" style="large" />
     </button>
   )

@@ -33,15 +33,17 @@ export default function Header({ session }) {
             : "bg-white/0"
         } z-30 transition-all`}
       >
-        <div className="mx-5 flex max-w-screen-xl items-center justify-between xl:mx-auto">
-          <Link href="/" className="mx-auto mt-3 flex sm:mx-0">
-            <Image alt="React JS" src={"/logo.svg"} width={24} height={24} />
-            <h1
-              className={`${rubik.variable} text-lg sm:text-xl ml-2 font-rubik text-2xl font-bold leading-6 tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0`}
-            >
-              Code Genius
-            </h1>
-          </Link>
+        <div className="flex max-w-screen-xl items-center justify-between xl:mx-auto">
+          <div className="ml-7">
+            <Link href="/" className="mx-auto mt-3 ml-7 flex sm:mx-0">
+              <Image alt="React JS" src={"/logo.svg"} width={24} height={24} />
+              <h1
+                className={`${rubik.variable} text-lg sm:text-xl ml-2 font-rubik text-2xl font-bold leading-6 tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0`}
+              >
+                Code Genius
+              </h1>
+            </Link>
+          </div>
           <div className="sm:text-4xl mt-2 flex">
             {/* <AnimatePresence>
               {!session ? (

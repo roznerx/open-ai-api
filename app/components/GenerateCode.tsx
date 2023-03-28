@@ -27,6 +27,7 @@ export default function GenerateCode({
               <div className="w-full text-left">
                 <CopyBlock
                   showLineNumbers
+                  customStyle={{ borderRadius: "0.625rem" }}
                   text={generated}
                   language={langElement === "Typescript" ? "tsx" : "jsx"}
                   codeBlock

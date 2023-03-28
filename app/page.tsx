@@ -1,5 +1,4 @@
 import Hero from "./home/Hero"
-import { ChangeEvent, KeyboardEvent } from "react"
 import Feature from "./home/Feature"
 // import Subscription from "./home/Subscription"
 import SuperHero from "./home/SuperHero"

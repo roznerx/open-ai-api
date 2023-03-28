@@ -5,7 +5,7 @@ export default function SideBar({ sidebarOpen, setSidebarOpen }) {
   return (
     <div
       id="sidebar"
-      className={`fixed top-0 left-0 z-40 mt-12 hidden h-screen -translate-x-full flex-col items-start border-r border-purple-400 transition-transform duration-700 sm:relative sm:flex sm:translate-x-0 ${
+      className={`absolute top-0 left-0 hidden h-full -translate-x-full flex-col items-start border-r border-purple-400 transition-transform duration-700 sm:relative sm:flex sm:translate-x-0 ${
         sidebarOpen ? "w-68" : "w-[65px]"
       } bg-purple-700 px-5 pt-3`}
     >
