@@ -3,6 +3,8 @@
 import Image from "next/image"
 import suggestions from "../../animations/suggestions.json"
 import generation from "../../animations/generation.json"
+import bugDetection from "../../animations/bugDetection.json"
+
 import Lottie from "lottie-react"
 const interactivity: any = {
   mode: "scroll",
@@ -25,10 +27,13 @@ const interactivity: any = {
   ],
 }
 const AISuggestions = () => {
-  return <Lottie animationData={suggestions} />
+  return <Lottie interactivity={interactivity} animationData={suggestions} />
 }
 const AIGeneration = () => {
   return <Lottie interactivity={interactivity} animationData={generation} />
+}
+const BugDetection = () => {
+  return <Lottie interactivity={interactivity} animationData={bugDetection} />
 }
 
 export default function Feature() {
@@ -36,14 +41,14 @@ export default function Feature() {
     <>
       <section className="mt-8 text-white">
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
-          <div className="mt-4 flex">
-            <AIGeneration />
+          <div className="mx-auto flex items-center justify-start">
+            <AISuggestions />
           </div>
-          <div className="mt-4 p-2">
+          <div className="mt-14 p-2">
             <h1 className="max-w-xs pl-3 text-5xl font-bold">
               Smart suggestions
             </h1>
-            <p className="mt-4 p-3">
+            <p className="mt-2 p-8">
               Our software offers smart generation capabilities, allowing
               developers to generate high-quality code with ease. With this
               feature, developers can save time and effort in writing code,
@@ -59,23 +64,11 @@ export default function Feature() {
               resulting in increased productivity and faster development cycles.
             </p>
           </div>
-          <div className="mt-4">
-            <Image
-              className="rounded-md"
-              src="/home/detection.svg"
-              alt="React Library"
-              width="500"
-              height="375"
-            />
+          <div className="mx-auto flex items-center justify-start">
+            <BugDetection />
           </div>
-          <div className="mt-4">
-            <Image
-              className=""
-              src="/home/generation.svg"
-              alt="React Library"
-              width="350"
-              height="375"
-            />
+          <div className="mx-auto flex items-center justify-start">
+            <AIGeneration />
           </div>
           <div className="mt-4 p-2">
             <h1 className="max-w-xs pl-3 text-5xl font-bold">
