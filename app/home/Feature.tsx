@@ -9,16 +9,16 @@ const interactivity: any = {
   actions: [
     {
       visibility: [0, 0.2],
-      type: "stop",
+      type: "play",
       frames: [0],
     },
     {
-      visibility: [0.2, 0.45],
+      visibility: [0.2, 0.5],
       type: "seek",
-      frames: [0, 45],
+      frames: [0, 135],
     },
     {
-      visibility: [0.45, 1.0],
+      visibility: [0.5, 0.9],
       type: "stop",
       frames: [150],
     },
