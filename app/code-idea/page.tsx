@@ -170,22 +170,22 @@ export default function Page() {
         buttonText="Save"
         setIsOpen={setShowSavePromptModal}
       />
-      <main className="flex w-full flex-row items-start justify-start bg-purple-800 pr-4 font-mono">
+      <main className="flex w-full flex-row items-start justify-start bg-purple-800  font-mono">
         <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
 
-        <div id="container" className="relative mx-12 w-full">
+        <div id="container" className="relative mx-2 w-full sm:mx-12">
           <div className="text-1xl left-2 my-4 mt-24 w-full text-center text-purple-300 sm:text-left">
             CODE COMPLEMENTATIONS AND SUGGESTIONS
           </div>
-          <hr className="border-1 mb-4 h-px w-full border-purple-400" />
+          {/* <hr className="border-1  h-px w-full border-purple-400" /> */}
 
-          <p className="text-md  rounded-t-md bg-purple-700 pt-2 pl-2 text-center font-popins font-bold leading-7 text-white sm:text-left">
+          <p className="text-md hidden h-8 w-full rounded-t-md bg-purple-700 pl-3 pt-2 font-popins font-bold leading-7 text-white sm:block sm:text-left">
             Paste your code and look for code suggestions
           </p>
           <div className="h-60 rounded-md">
             <textarea
               ref={textareaRef}
-              className="focus:shadow-outline h-60 min-w-full resize-none rounded-b-md border-none  bg-purple-700 pb-6 pt-4 text-gray-200  focus:border-purple-700 focus:ring-purple-700 active:border-purple-700"
+              className="h-60 min-w-full resize-none rounded-b-md border-none bg-purple-700  pb-6 pt-4 text-gray-200 focus:border-none focus:shadow-none  focus:ring-0 focus:ring-purple-700 active:border-purple-700"
               value={codeSentence}
               onChange={(e) => setCodeSentence(e.target.value)}
               rows={4}
@@ -227,7 +227,7 @@ export default function Page() {
               </div> */}
             </div>
           </div>
-          {/* <div className="my-2 flex h-auto items-center justify-between sm:hidden">
+          <div className="my-4 mx-4 flex h-auto items-center justify-between sm:hidden">
             <Button
               hidden={false}
               onClick={onSaveCode}
@@ -241,7 +241,7 @@ export default function Page() {
               variant="mint"
               text="Generate"
             />
-          </div> */}
+          </div>
           <ResizablePanel>
             <AnimatePresence mode="sync">
               <motion.div className="my-10 space-y-10">

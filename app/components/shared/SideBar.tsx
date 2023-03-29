@@ -1,4 +1,5 @@
 import { HomeIcon, Code } from "lucide-react"
+import Image from "next/image"
 import SearchBar from "./SearchBar"
 
 export default function SideBar({ sidebarOpen, setSidebarOpen }) {
@@ -15,6 +16,13 @@ export default function SideBar({ sidebarOpen, setSidebarOpen }) {
         color="white"
         className="cursor-pointer border-purple-300 text-purple-400"
       /> */}
+      <Image
+        alt="React JS"
+        src={"/logo.svg"}
+        width={24}
+        height={24}
+        className="mb-8"
+      />
       <SearchBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
       <Code
         size={26}

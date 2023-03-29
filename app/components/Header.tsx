@@ -27,16 +27,11 @@ export default function Header({ session }) {
     <>
       <SignInModal />
       <div
-        className={`fixed top-0 w-full bg-white  ${
-          scrolled
-            ? "border-b border-gray-200 bg-white/20 backdrop-blur-xl"
-            : "bg-white/0"
-        } z-30 transition-all`}
+        className={`absolute top-0 z-30 w-full bg-transparent transition-all`}
       >
         <div className="flex max-w-screen-xl items-center justify-between xl:mx-auto">
           <div className="ml-7">
             <Link href="/" className="mx-auto mt-3 ml-7 flex sm:mx-0">
-              <Image alt="React JS" src={"/logo.svg"} width={24} height={24} />
               <h1
                 className={`${rubik.variable} text-lg sm:text-xl ml-2 font-rubik text-2xl font-bold leading-6 tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0`}
               >
@@ -45,19 +40,16 @@ export default function Header({ session }) {
             </Link>
           </div>
           <div className="sm:text-4xl mt-2 flex">
-            {/* <AnimatePresence>
-              {!session ? (
-                <motion.button
-                  className="text-sm rounded-full border border-white  bg-black p-1.5 px-4 font-medium text-mint"
-                  onClick={() => setShowSignInModal(true)}
-                  {...FADE_IN_ANIMATION_SETTINGS}
-                >
-                  Create Account
-                </motion.button>
-              ) : (
-                <UserDropdown />
-              )}
-            </AnimatePresence> */}
+            {!session ? (
+              <motion.button
+                className="text-sm rounded-full border border-white  bg-black p-1.5 px-4 font-medium text-mint"
+                onClick={() => setShowSignInModal(true)}
+              >
+                Create Account
+              </motion.button>
+            ) : (
+              <UserDropdown />
+            )}
           </div>
         </div>
       </div>

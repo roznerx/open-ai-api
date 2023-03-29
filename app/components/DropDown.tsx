@@ -60,7 +60,7 @@ export default function DropDown({
   return (
     <Menu
       as="div"
-      className="absolute w-44 rounded-lg bg-purple-800 text-left text-white"
+      className="absolute w-44 rounded-lg bg-purple-800 text-left text-white "
     >
       <div>
         <Menu.Button className="shadow-smfocus:outline-none inline-flex w-full items-start justify-between  border-none py-2 pl-2 focus:ring-2 focus:ring-black">
