@@ -9,7 +9,7 @@ const interactivity: any = {
   actions: [
     {
       visibility: [0, 0.2],
-      type: "play",
+      type: "stop",
       frames: [0],
     },
     {
