@@ -1,16 +1,19 @@
 import { CopyBlock, dracula, codepen } from "react-code-blocks"
 import tailwindConfig from "tailwind.config.js"
+import Button from "./Button"
 
 type GenerateCode = {
   generatedCode: String
   langElement?: string
   align?: string
+  onSaveCode?: () => void
 }
 
 const colors: any = tailwindConfig.theme?.extend?.colors
 
 export default function GenerateCode({
   align = "center",
+  onSaveCode,
   generatedCode,
   langElement,
 }: GenerateCode) {
@@ -37,6 +40,15 @@ export default function GenerateCode({
                     metaColor: colors.mint,
                   }}
                 />
+                <div className="absolute bottom-12 right-4 hidden sm:block">
+                  <Button
+                    hidden={false}
+                    onClick={() => onSaveCode && onSaveCode()}
+                    variant="mint"
+                    loading={false}
+                    text="Save Code"
+                  />
+                </div>
               </div>
             )
           })}

@@ -215,15 +215,6 @@ export default function Page() {
                   text="Generate"
                 />
               </div>
-              <div className="absolute right-40 bottom-5 mb-[10px] hidden sm:block">
-                <Button
-                  hidden={false}
-                  onClick={onSaveCode}
-                  variant="mint"
-                  loading={false}
-                  text="Save Code"
-                />
-              </div>
             </div>
           </div>
           <div className="my-4 mx-4 flex h-auto items-center justify-between sm:hidden">
@@ -246,6 +237,7 @@ export default function Page() {
               <motion.div className="my-10 space-y-10">
                 {generatedCode && (
                   <GenerateCode
+                    onSaveCode={onSaveCode}
                     langElement={langElement}
                     generatedCode={generatedCode}
                   />
