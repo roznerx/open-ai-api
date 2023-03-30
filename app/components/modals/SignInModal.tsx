@@ -27,7 +27,7 @@ const SignInModal = ({
               signInClicked
                 ? "cursor-not-allowed border-gray-200 bg-gray-100"
                 : "border border-gray-200 bg-white text-black hover:bg-gray-50"
-            } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+            } text-sm flex h-10 w-full items-center justify-center space-x-3 rounded-md border shadow-sm transition-all duration-75 focus:outline-none`}
             onClick={() => {
               setSignInClicked(true)
               signIn("google", {
@@ -43,7 +43,7 @@ const SignInModal = ({
                   width={32}
                   height={32}
                   alt="Google Logo"
-                  src="./google.svg"
+                  src="/google.svg"
                   className="h-5 w-5"
                 />
                 <p>Sign In with Google</p>
@@ -56,7 +56,7 @@ const SignInModal = ({
               signInClicked
                 ? "cursor-not-allowed border-gray-200 bg-gray-100"
                 : "border border-gray-200 bg-white text-black hover:bg-gray-50"
-            } flex h-10 w-full items-center justify-center space-x-3 rounded-md border text-sm shadow-sm transition-all duration-75 focus:outline-none`}
+            } text-sm flex h-10 w-full items-center justify-center space-x-3 rounded-md border shadow-sm transition-all duration-75 focus:outline-none`}
             onClick={() => {
               setSignInClicked(true)
               signIn("github", {

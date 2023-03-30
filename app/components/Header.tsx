@@ -2,8 +2,7 @@
 
 import Link from "next/link"
 import { useSignInModal } from "./modals/SignInModal"
-import { AnimatePresence, motion } from "framer-motion"
-import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants"
+import { LSConfig } from "@/lib/constants"
 import useScroll from "hooks/use-scroll"
 import UserDropdown from "app/components/auth/UserDropdown"
 import { useEffect } from "react"
@@ -39,17 +38,29 @@ export default function Header({ session }) {
               </h1>
             </Link>
           </div>
-          <div className="sm:text-4xl mt-2 flex">
-            {!session ? (
-              <motion.button
-                className="text-sm rounded-full border border-white  bg-black p-1.5 px-4 font-medium text-mint"
-                onClick={() => setShowSignInModal(true)}
-              >
-                Create Account
-              </motion.button>
-            ) : (
-              <UserDropdown />
-            )}
+          <div className="flex h-10 items-end">
+            <div className="text-lg float-right mr-5 cursor-pointer font-mono font-bold text-white">
+              Pricing
+            </div>
+            <div className="my-auto mx-2 mt-2 flex cursor-pointer flex-row items-start  justify-center rounded-lg  bg-mint p-2 font-mono">
+              <Image
+                src={"/icons/code-blocks.svg"}
+                width={15}
+                height={15}
+                className={"mt-1 mr-1"}
+                alt="Code Blocks"
+              />
+              {!session ? (
+                <div
+                  className="text-sm  font-bold text-purple-800"
+                  onClick={() => setShowSignInModal(true)}
+                >
+                  Create Account
+                </div>
+              ) : (
+                <UserDropdown />
+              )}
+            </div>
           </div>
         </div>
       </div>
