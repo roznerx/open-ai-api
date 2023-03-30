@@ -136,7 +136,6 @@ export default function Page() {
     }
     try {
       await reader.cancel()
-      // setReader(null);
     } catch (error: any) {
     } finally {
       setReader(null)
@@ -177,7 +176,7 @@ export default function Page() {
             useArrow
           />
           <StopButton
-            onCancel={stopGeneration}
+            onClick={stopGeneration}
             loading={loading}
             text="Stop Generating"
           />

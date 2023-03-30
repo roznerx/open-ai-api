@@ -178,8 +178,12 @@ export default function SuperHero() {
           Create Better, Faster and Easier Code with your AI Genius.
         </p>
       </section>
+      {/* Code Genius Live Demo  */}
       <HomeChat />
-      <div className="relative flex h-96 w-full flex-row flex-wrap overflow-hidden bg-opacity-75 ">
+
+      <div
+        className={`relative flex h-96 w-full flex-row flex-wrap overflow-hidden bg-opacity-75 `}
+      >
         {bgMatrix}
       </div>
 

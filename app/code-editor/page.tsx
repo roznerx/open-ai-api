@@ -1,4 +1,5 @@
 import { harperClient } from "@/lib/harperdb"
+import SideBar from "app/components/shared/SideBar"
 
 import Editor from "./editor"
 
@@ -10,8 +11,9 @@ export default async function Page() {
   const { questionName, prompt, id } = codeSnippets && codeSnippets[0]
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-center">
-      <div className="bg-white">
+    <div className="flex min-h-screen w-full flex-row items-start justify-center sm:justify-start">
+      <SideBar />
+      <div className="relative mt-12 w-[95%] sm:mx-4 sm:w-full">
         <Editor prompt={prompt} questionName={questionName} id={id} />
       </div>
     </div>

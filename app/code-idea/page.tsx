@@ -19,7 +19,6 @@ export default function Page() {
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
   const [questionName, setQuestionName] = useState("")
-  const [sidebarOpen, setSidebarOpen] = useState(false)
   const [langElement, setLangElement] = useState<ElementType>("Typescript")
   const [lib, setLib] = useState<ElementType>("React")
   const [generatedCode, setGeneratedCode] = useState<String>("")
@@ -171,7 +170,7 @@ export default function Page() {
         setIsOpen={setShowSavePromptModal}
       />
       <main className="flex w-full flex-row items-start justify-start bg-purple-800  font-mono">
-        <SideBar sidebarOpen={sidebarOpen} setSidebarOpen={setSidebarOpen} />
+        <SideBar />
 
         <div id="container" className="relative mx-2 w-full sm:mx-12">
           <div className="text-1xl left-2 my-4 mt-24 w-full text-center text-purple-300 sm:text-left">
@@ -216,7 +215,7 @@ export default function Page() {
                   text="Generate"
                 />
               </div>
-              {/* <div className="absolute right-40 bottom-5 mb-[10px] hidden sm:block">
+              <div className="absolute right-40 bottom-5 mb-[10px] hidden sm:block">
                 <Button
                   hidden={false}
                   onClick={onSaveCode}
@@ -224,7 +223,7 @@ export default function Page() {
                   loading={false}
                   text="Save Code"
                 />
-              </div> */}
+              </div>
             </div>
           </div>
           <div className="my-4 mx-4 flex h-auto items-center justify-between sm:hidden">

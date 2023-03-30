@@ -4,8 +4,11 @@ import {
   SandpackPreview,
   SandpackCodeEditor,
   SandpackLayout,
+  SandpackConsole,
   SandpackProvider,
 } from "@codesandbox/sandpack-react"
+import useWindowSize from "hooks/use-window-size"
+
 import { useState } from "react"
 
 import SaveCode from "./onSaveCode"
@@ -13,11 +16,15 @@ import SaveCode from "./onSaveCode"
 export default function Editor({ questionName, prompt, id }) {
   const [isSaving, setIsSaving] = useState(false)
   const [isReseting, setIsReseting] = useState(false)
+  const { isMobile } = useWindowSize()
 
   return (
     <>
       <div>
-        <h3> Question Name: {questionName}</h3>
+        <h3 className="my-3 ml-2 font-popins text-gray-200">
+          {" "}
+          Question Name: <span className="italic">{questionName}</span>
+        </h3>
         {prompt && prompt.length > 0 && (
           <SandpackProvider
             options={{
@@ -31,9 +38,14 @@ export default function Editor({ questionName, prompt, id }) {
               "/App.tsx": prompt,
             }}
           >
-            <SandpackLayout>
-              <SandpackCodeEditor showTabs showLineNumbers={true} />
+            <SandpackLayout className="h-full">
+              <SandpackCodeEditor
+                style={{ height: isMobile ? 300 : 600 }}
+                showTabs
+                showLineNumbers={true}
+              />
               <SandpackPreview
+                style={{ height: isMobile ? 300 : 600 }}
                 actionsChildren={
                   <>
                     <button
@@ -51,6 +63,7 @@ export default function Editor({ questionName, prompt, id }) {
                   </>
                 }
               />
+
               {isSaving && (
                 <SaveCode
                   setIsReseting={setIsReseting}
