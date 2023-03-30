@@ -31,6 +31,15 @@ export default function Header({ session }) {
         <div className="flex max-w-screen-xl items-center justify-between xl:mx-auto">
           <div className="ml-7">
             <Link href="/" className="mx-auto mt-3 ml-7 flex sm:mx-0">
+              {window.location.pathname === "/" && (
+                <Image
+                  alt="Code Genius"
+                  src={"/logo.svg"}
+                  width={24}
+                  height={24}
+                  className="mb-8"
+                />
+              )}
               <h1
                 className={`${rubik.variable} text-lg sm:text-xl ml-2 font-rubik text-2xl font-bold leading-6 tracking-tight text-white dark:text-white max-md:pt-4 max-sm:pt-0`}
               >

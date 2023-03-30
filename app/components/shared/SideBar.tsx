@@ -15,7 +15,7 @@ export default function SideBar() {
       } bg-purple-700 px-5 pt-3`}
     >
       <Image
-        alt="React JS"
+        alt="Code Genius"
         src={"/logo.svg"}
         width={24}
         height={24}

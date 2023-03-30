@@ -1,4 +1,4 @@
-import { CopyBlock, dracula, codepen } from "react-code-blocks"
+import { CopyBlock, dracula } from "react-code-blocks"
 import tailwindConfig from "tailwind.config.js"
 import Button from "./Button"
 
