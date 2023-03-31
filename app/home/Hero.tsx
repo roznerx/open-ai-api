@@ -10,9 +10,9 @@ export default function Feature() {
           Use it with your favorite libraries
         </h1>
         <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:w-1/2">
-          Code Genius automates the process of generating boilerplate code for
-          React, Angular, and VueJS libraries, allowing developers to focus on
-          more critical aspects of the development process.
+          Code Genius simplifies the task of creating repetitive code for React,
+          Angular, and VueJS libraries, which enables developers to prioritize
+          more essential aspects of the development process.
         </p>
       </section>
       <section className="mx-auto mt-16 flex justify-center gap-1 sm:gap-3 lg:mt-8 ">
