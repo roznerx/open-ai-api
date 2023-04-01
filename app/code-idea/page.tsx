@@ -160,12 +160,13 @@ export default function Page() {
         setIsOpen={setModaIsOpen}
       />
       <Modal
+        savePropmptName
+        isPromptModal
         body="What should we call this question?"
         onSave={onSaveQuestionModal}
         isOpen={showSavePromptModal}
         propmptName={questionName}
         handleInputChange={handleInputChange}
-        savePropmptName
         buttonText="Save"
         setIsOpen={setShowSavePromptModal}
       />

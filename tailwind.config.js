@@ -1,5 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  corePlugins: {
+    gap: true,
+    border: true,
+  },
   future: {
     hoverOnlyWhenSupported: true,
   },
@@ -23,7 +27,23 @@ module.exports = {
         {
           lineHeight: "34px",
           fontWeight: "400",
-          letterSpacing: "1.5px",
+          letterSpacing: "0.5px",
+        },
+      ],
+      "3xl": [
+        "32px",
+        {
+          lineHeight: "38px",
+          fontWeight: "500",
+          letterSpacing: "1.8px",
+        },
+      ],
+      "4xl": [
+        "36px",
+        {
+          lineHeight: "42px",
+          fontWeight: "600",
+          letterSpacing: "2.2px",
         },
       ],
       "5xl": [
