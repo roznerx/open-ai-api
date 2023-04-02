@@ -51,11 +51,9 @@ export default function Feature() {
           <div className="mx-auto flex items-center justify-start">
             <AISuggestions />
           </div>
-          <div className="mt-14 p-2">
-            <h1 className="pl-3 font-popins text-5xl font-bold">
-              Smart suggestions
-            </h1>
-            <p className="mt-2 p-8">
+          <div className="mt-20 p-2">
+            <h1 className="pl-3 text-5xl font-bold">Smart suggestions</h1>
+            <p className="mt-2 w-[80%] p-4">
               Our software offers smart generation capabilities, allowing
               developers to generate high-quality code with ease. With this
               feature, developers can save time and effort in writing code,
@@ -63,59 +61,33 @@ export default function Feature() {
             </p>
           </div>
           <div className="mx-auto flex items-center justify-start">
-            <AISuggestions />
+            <BugDetection />
           </div>
-          <div className="mt-14 p-2">
+          <div className="mt-20 p-2">
             <h1 className="pl-3 font-popins text-5xl font-bold">
-              Smart suggestions
+              Test Generation
             </h1>
-            <p className="mt-2 p-8">
-              Our software offers smart generation capabilities, allowing
-              developers to generate high-quality code with ease. With this
-              feature, developers can save time and effort in writing code,
-              resulting in increased productivity and faster development cycles.
+            <p className="mt-2 w-[80%] p-4">
+              You can generate tests based on the provided function. With this
+              feature, developers can quickly and easily generate test cases for
+              their functions, ensuring that their code is thoroughly tested and
+              reliable. This feature can save developers a significant amount of
+              time and effort in manually creating test cases.
             </p>
           </div>
           <div className="mx-auto flex items-center justify-start">
-            <AISuggestions />
+            <AIGeneration />
           </div>
-          <div className="mt-14 p-2">
-            <h1 className="pl-3 font-popins text-5xl font-bold">
-              Smart suggestions
-            </h1>
-            <p className="mt-2 p-8">
-              Our software offers smart generation capabilities, allowing
-              developers to generate high-quality code with ease. With this
-              feature, developers can save time and effort in writing code,
-              resulting in increased productivity and faster development cycles.
-            </p>
-          </div>
-          <div className="mx-auto flex items-center justify-start">
-            <AISuggestions />
-          </div>
-          <div className="mt-14 p-2">
-            <h1 className="pl-3 font-popins text-5xl font-bold">
-              Smart suggestions
-            </h1>
-            <p className="mt-2 p-8">
-              Our software offers smart generation capabilities, allowing
-              developers to generate high-quality code with ease. With this
-              feature, developers can save time and effort in writing code,
-              resulting in increased productivity and faster development cycles.
-            </p>
-          </div>
-          <div className="mx-auto flex items-center justify-start">
-            <AISuggestions />
-          </div>
-          <div className="mt-14 p-2">
-            <h1 className="pl-3 font-popins text-5xl font-bold">
-              Smart suggestions
-            </h1>
-            <p className="mt-2 p-8">
-              Our software offers smart generation capabilities, allowing
-              developers to generate high-quality code with ease. With this
-              feature, developers can save time and effort in writing code,
-              resulting in increased productivity and faster development cycles.
+          <div className="mt-20 p-2">
+            <h1 className="pl-3 font-popins text-5xl font-bold">Code Ideas</h1>
+            <p className="mt-2 w-[80%] p-4">
+              Our software includes a feature that provides developers with code
+              ideas based on the context of their current project. This feature
+              can be especially useful for new developers who may not be as
+              familiar with the language or libraries they are working with.
+              With this feature, developers can save time in researching and
+              experimenting with new code solutions, resulting in faster
+              development cycles and increased productivity.
             </p>
           </div>
         </div>

@@ -177,8 +177,8 @@ export default function SuperHero() {
           {bgMatrix}
         </div> */}
         <h1
-          className="mx-auto flex w-auto items-center justify-center bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text p-3
-text-6xl text-transparent sm:w-[650px]"
+          className="mx-auto w-[50%] items-center justify-center bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text p-3 text-6xl
+text-transparent sm:flex sm:w-full"
         >
           Create Genius Code
         </h1>

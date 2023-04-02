@@ -12,7 +12,7 @@ export default function Feature() {
           width={100}
           height={100}
         />
-        <h3 className="block w-full text-center text-2xl text-white sm:mx-auto sm:w-2/4 sm:text-6xl">
+        <h3 className="block w-full px-1 py-3 text-center text-2xl text-white sm:mx-auto sm:w-2/4 sm:text-4xl">
           Code faster, easier, and more efficiently.
         </h3>
         <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:w-1/2">
