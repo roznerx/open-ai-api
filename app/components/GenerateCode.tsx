@@ -42,7 +42,7 @@ export default function GenerateCode({
                 />
                 <div className="absolute bottom-12 right-4 hidden sm:block">
                   <Button
-                    hidden={false}
+                    hidden={true}
                     onClick={() => onSaveCode && onSaveCode()}
                     variant="mint"
                     loading={false}

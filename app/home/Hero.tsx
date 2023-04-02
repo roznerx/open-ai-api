@@ -4,40 +4,49 @@ import Image from "next/image"
 
 export default function Feature() {
   return (
-    <>
-      <section className="mt-1">
-        <h1 className="block w-full text-center text-5xl text-white dark:text-white sm:mx-auto sm:w-2/4 sm:text-6xl">
-          Use it with your favorite libraries
-        </h1>
+    <div className="mt-28">
+      <section className="mx-auto mt-12 flex flex-col items-center justify-center">
+        <Image
+          alt="Code Genius"
+          src={"/icons/genius.svg"}
+          width={100}
+          height={100}
+        />
+        <h3 className="block w-full text-center text-2xl text-white sm:mx-auto sm:w-2/4 sm:text-6xl">
+          Code faster, easier, and more efficiently.
+        </h3>
         <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:w-1/2">
-          Code Genius simplifies the task of creating repetitive code for React,
-          Angular, and VueJS libraries, which enables developers to prioritize
-          more essential aspects of the development process.
+          Writing great code can be a challenging and time-consuming task, but
+          with Code Genius you can take your skills to the next level! Explore
+          the possibilities!
         </p>
       </section>
       <section className="mx-auto mt-16 flex justify-center gap-1 sm:gap-3 lg:mt-8 ">
         <Image
           className="rounded-md"
           src="/libs/react.svg"
-          alt="React Library"
+          alt="React JS Library"
+          title="React JS Library"
           width="143"
           height="197"
         />
         <Image
           className="rounded-md"
           src="/libs/vuejs.svg"
-          alt="React Library"
+          alt="Vue JS Library"
+          title="Vue JS Library"
           width="143"
           height="197"
         />
         <Image
           className="rounded-md"
           src="/libs/angular.svg"
-          alt="React Library"
+          alt="Angular JS Library"
+          title="Angular JS Library"
           width="143"
           height="197"
         />
       </section>
-    </>
+    </div>
   )
 }

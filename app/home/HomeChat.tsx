@@ -1,20 +1,16 @@
 "use client"
 
-import {
-  ChatContainer,
-  Message,
-  MessageList,
-} from "@chatscope/chat-ui-kit-react"
+import { Message } from "@chatscope/chat-ui-kit-react"
 import GenerateCode from "app/components/GenerateCode"
-import MyModal from "app/components/Modal"
 import Image from "next/image"
 import React, { KeyboardEvent, useEffect, useRef, useState } from "react"
 import { generateCodeWithTurbo } from "utils/generateCode"
 import { parseText } from "utils/parseText"
+import ChatContainer from "./ChatContainer"
 // import tailwindConfig from "tailwind.config.js"
 
 interface CodeMessagesProps {
-  generatedMessages: string[]
+  generatedMessages: any
 }
 
 export default function HomeChat() {
@@ -28,7 +24,7 @@ export default function HomeChat() {
     {
       role: "system",
       content:
-        "You are a robust and cleaver programming software assistant specializing in Javascript and Typescript. But your knowledge extends to a wide variety of programming skills. Follow user instructions to the letter.",
+        "You are a friendly programming software assistant specializing in Javascript and Typescript. But your knowledge extends to a wide variety of programming skills. Follow user instructions to the letter.",
     },
   ])
 
@@ -79,7 +75,9 @@ export default function HomeChat() {
 
   const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
 
-  const CodeMessages: React.FC<CodeMessagesProps> = ({ generatedMessages }) => {
+  const LiveDemoMessages: React.FC<CodeMessagesProps> = ({
+    generatedMessages,
+  }) => {
     return (
       <>
         {generatedMessages.map((generatedMessage) => {
@@ -112,17 +110,22 @@ export default function HomeChat() {
 
   return (
     <>
-      <div className="mx-auto flex w-[70%] flex-row items-center justify-center">
-        <div className="relative w-[100%]">
+      <div className="relative mx-auto mb-9 flex w-[70%] flex-col items-center justify-center">
+        <div className="relative w-full sm:w-[800px]">
           <input
             ref={textareaRef}
-            className="placeholder:text-base font-sm mt-6 max-h-12 w-full resize-none rounded-md border-none bg-purple-400 py-2.5 pl-1 font-mono text-white placeholder:pl-2 placeholder:pt-1 placeholder:text-white focus:border-transparent focus:ring-black/30"
+            className="placeholder:text-base font-sm mt-6 max-h-12 w-full resize-none rounded-lg
+             border-purple-400  bg-purple-400 py-2.5 pl-1 font-mono text-white outline-0 placeholder:pl-2 placeholder:pt-1 placeholder:font-popins placeholder:text-white hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 sm:w-[800px]"
             value={codeSentence}
             onChange={(e) => setCodeSentence(e.target.value)}
             onKeyDown={(e) => onCodeGeneration(e)}
-            placeholder={"What do you want to build today?"}
+            placeholder={
+              generatedMessages.length <= 0
+                ? "What do you want to build today?"
+                : ""
+            }
           />
-          <button className="absolute right-1 top-5 mt-2 rounded-md bg-gray-900 p-1 disabled:hover:bg-transparent">
+          <button className="absolute right-1 top-5 mt-2 rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent">
             <Image
               className="mb-1 mr-2 pt-2 pb-1 pl-2 text-white"
               alt="Send"
@@ -134,11 +137,10 @@ export default function HomeChat() {
           </button>
         </div>
         {generatedMessages.length > 0 && (
-          <MyModal
-            body={<CodeMessages generatedMessages={generatedMessages} />}
-            isOpen={modaIsOpen}
-            buttonText="Ok"
-            setIsOpen={setModaIsOpen}
+          <ChatContainer
+            messages={
+              <LiveDemoMessages generatedMessages={generatedMessages} />
+            }
           />
         )}
       </div>

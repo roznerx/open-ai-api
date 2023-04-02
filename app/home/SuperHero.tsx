@@ -171,23 +171,22 @@ export default function SuperHero() {
   return (
     <>
       <section>
-        <h1 className="p-3 text-center text-6xl text-white dark:text-white">
-          Create <p className="inline-block  text-mint">Genius Code</p>
+        {/* <div
+          className={`absolute top-0 mt-14 flex h-96 w-full flex-row flex-wrap overflow-hidden bg-opacity-75 `}
+        >
+          {bgMatrix}
+        </div> */}
+        <h1
+          className="mx-auto flex w-auto items-center justify-center bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text p-3
+text-6xl text-transparent sm:w-[650px]"
+        >
+          Create Genius Code
         </h1>
         <p className="mt-2 px-3 text-center text-2xl text-white">
           Create Better, Faster and Easier Code with your AI Genius.
         </p>
       </section>
-      {/* Code Genius Live Demo  */}
       <HomeChat />
-
-      <div
-        className={`relative flex h-96 w-full flex-row flex-wrap overflow-hidden bg-opacity-75 `}
-      >
-        {bgMatrix}
-      </div>
-
-      {/* <canvas className="flex h-96 w-screen flex-wrap pt-7" id="canv"></canvas> */}
     </>
   )
 }
