@@ -5,6 +5,7 @@ import Button from "./Button"
 type GenerateCode = {
   generatedCode: String
   langElement?: string
+  blackBackground?: boolean
   align?: string
   onSaveCode?: () => void
 }
@@ -13,6 +14,7 @@ const colors: any = tailwindConfig.theme?.extend?.colors
 
 export default function GenerateCode({
   align = "center",
+  blackBackground = false,
   onSaveCode,
   generatedCode,
   langElement,
@@ -24,7 +26,11 @@ export default function GenerateCode({
       >
         {generatedCode
           .substring(generatedCode.indexOf("**") + 0)
+          .replace("**", "")
+          .replace("tsx", "")
+          .replace("", "")
           .split("**::")
+
           .map((generated) => {
             return (
               <div className="w-full text-left">
@@ -36,7 +42,7 @@ export default function GenerateCode({
                   codeBlock
                   theme={{
                     ...dracula,
-                    backgroundColor: "#28273D",
+                    backgroundColor: blackBackground ? "#000000" : "#28273D",
                     metaColor: colors.mint,
                   }}
                 />

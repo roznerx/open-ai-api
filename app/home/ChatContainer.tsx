@@ -23,10 +23,6 @@ export default function ChatContainer({ messages }: any) {
     scrollHeight,
   ])
 
-  if (chatContainerRef && chatContainerRef.current) {
-    console.log("offsetHeight ", chatContainerRef.current.offsetHeight)
-    console.log("scrollHeight ", chatContainerRef.current.scrollHeight)
-  }
   return (
     <div
       ref={chatContainerRef}

@@ -48,26 +48,28 @@ export default function Feature() {
     <>
       <section className={`mt-8 text-white ${popins.variable} font-popins`}>
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
-          <div className="mx-auto flex items-center justify-start">
+          <div className="mx-auto flex w-96 items-center justify-start sm:w-full">
             <AISuggestions />
           </div>
-          <div className="mt-20 p-2">
-            <h1 className="pl-3 text-5xl font-bold">Smart suggestions</h1>
-            <p className="mt-2 w-[80%] p-4">
+          <div className="mt-0 p-2 sm:mt-20">
+            <h1 className="pl-3 text-center text-5xl font-bold sm:text-left">
+              Smart suggestions
+            </h1>
+            <p className="mt-2 w-full p-4 text-center sm:w-[80%] sm:text-left">
               Our software offers smart generation capabilities, allowing
               developers to generate high-quality code with ease. With this
               feature, developers can save time and effort in writing code,
               resulting in increased productivity and faster development cycles.
             </p>
           </div>
-          <div className="mx-auto flex items-center justify-start">
+          <div className="mx-auto flex w-96 items-center justify-start sm:w-full">
             <BugDetection />
           </div>
-          <div className="mt-20 p-2">
-            <h1 className="pl-3 font-popins text-5xl font-bold">
+          <div className="mt-0 p-2 sm:mt-20">
+            <h1 className="pl-3 text-center text-5xl font-bold sm:text-left">
               Test Generation
             </h1>
-            <p className="mt-2 w-[80%] p-4">
+            <p className="mt-2 w-full p-4 text-center sm:w-[80%] sm:text-left">
               You can generate tests based on the provided function. With this
               feature, developers can quickly and easily generate test cases for
               their functions, ensuring that their code is thoroughly tested and
@@ -75,12 +77,14 @@ export default function Feature() {
               time and effort in manually creating test cases.
             </p>
           </div>
-          <div className="mx-auto flex items-center justify-start">
+          <div className="mx-auto flex w-96 items-center justify-start sm:w-full">
             <AIGeneration />
           </div>
-          <div className="mt-20 p-2">
-            <h1 className="pl-3 font-popins text-5xl font-bold">Code Ideas</h1>
-            <p className="mt-2 w-[80%] p-4">
+          <div className="mt-0 p-2 sm:mt-20">
+            <h1 className="pl-3 text-center text-5xl font-bold sm:text-left">
+              Code Ideas
+            </h1>
+            <p className="mt-2 w-full p-4 text-center sm:w-[80%] sm:text-left">
               Our software includes a feature that provides developers with code
               ideas based on the context of their current project. This feature
               can be especially useful for new developers who may not be as

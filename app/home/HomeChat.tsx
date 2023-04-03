@@ -98,7 +98,11 @@ export default function HomeChat() {
                   )
                 } else {
                   return (
-                    <GenerateCode align="start" generatedCode={item.code} />
+                    <GenerateCode
+                      align="start"
+                      blackBackground
+                      generatedCode={item.code}
+                    />
                   )
                 }
               })
@@ -110,12 +114,12 @@ export default function HomeChat() {
 
   return (
     <>
-      <div className="relative mx-auto mb-9 flex w-[70%] flex-col items-center justify-center">
-        <div className="relative w-full sm:w-[800px]">
+      <div className="relative ml-1 mb-9 flex w-full flex-col items-center justify-center sm:mx-auto">
+        <div className="relative mt-2 max-h-12 w-full text-center sm:w-[800px]">
           <input
             ref={textareaRef}
-            className="placeholder:text-base font-sm mt-6 max-h-12 w-full resize-none rounded-lg
-             border-purple-400  bg-purple-400 py-2.5 pl-1 font-mono text-white outline-0 placeholder:pl-2 placeholder:pt-1 placeholder:font-popins placeholder:text-white hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 sm:w-[800px]"
+            className="md:placeholder:text-sm font-sm w-[95%] resize-none rounded-lg bg-purple-400 
+             py-2.5 pl-3 font-mono text-white outline-0 placeholder:pl-2 placeholder:pt-1 placeholder:font-popins placeholder:text-[13px] placeholder:text-white hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 sm:w-[800px]"
             value={codeSentence}
             onChange={(e) => setCodeSentence(e.target.value)}
             onKeyDown={(e) => onCodeGeneration(e)}
@@ -125,7 +129,7 @@ export default function HomeChat() {
                 : ""
             }
           />
-          <button className="absolute right-1 top-5 mt-2 rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent">
+          <button className="absolute right-4 top-1  rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1">
             <Image
               className="mb-1 mr-2 pt-2 pb-1 pl-2 text-white"
               alt="Send"

@@ -4,7 +4,7 @@ import Image from "next/image"
 
 export default function Feature() {
   return (
-    <div className="mt-28">
+    <div className="mt-18">
       <section className="mx-auto mt-12 flex flex-col items-center justify-center">
         <Image
           alt="Code Genius"
