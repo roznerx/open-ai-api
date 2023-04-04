@@ -1,12 +1,19 @@
 "use client"
 
-import Image from "next/image"
+import {
+  motion,
+  useMotionValueEvent,
+  useScroll,
+  useSpring,
+  useTransform,
+} from "framer-motion"
 import suggestions from "../../animations/suggestions.json"
 import generation from "../../animations/generation.json"
 import bugDetection from "../../animations/bugDetection.json"
 import { Poppins } from "next/font/google"
 
 import Lottie from "lottie-react"
+import { useState } from "react"
 
 const popins = Poppins({
   variable: "--font-popins",
@@ -34,7 +41,11 @@ const interactivity: any = {
   ],
 }
 const AISuggestions = () => {
-  return <Lottie interactivity={interactivity} animationData={suggestions} />
+  return (
+    <>
+      <Lottie interactivity={interactivity} animationData={suggestions} />
+    </>
+  )
 }
 const AIGeneration = () => {
   return <Lottie interactivity={interactivity} animationData={generation} />
@@ -44,12 +55,36 @@ const BugDetection = () => {
 }
 
 export default function Feature() {
+  const [verticalScroll, setVerticalScroll] = useState(0)
+  const { scrollYProgress, scrollY } = useScroll()
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  })
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    console.log("Page scroll: ", latest)
+    setVerticalScroll(latest)
+  })
   return (
     <>
       <section className={`mt-8 text-white ${popins.variable} font-popins`}>
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
-          <div className="mx-auto flex w-96 items-center justify-start sm:w-full">
+          <motion.div
+            style={{ scaleX: scrollYProgress }}
+            className={`fixed bottom-0 hidden ${
+              verticalScroll > 1400 ? "sm:block" : "hidden"
+            } left-0 right-0 h-96 w-96  bg-gradient-radial  from-gradient-dark/80 via-transparent to-transparent p-20  brightness-50 sm:-mt-[150px] sm:h-[800px] sm:w-[1000px]`}
+          ></motion.div>
+          <motion.div
+            style={{ scaleX }}
+            className={`absolute -left-[300px] top-${
+              verticalScroll !== 0 && verticalScroll
+            } mx-auto -mt-[100px] h-96 w-96 -translate-x-1/2 -translate-y-1/2 transform  rounded-full bg-gradient-radial from-gradient-dark/80 via-transparent to-transparent pb-9 brightness-50 sm:-mt-[150px] sm:h-[800px] sm:w-[1000px]`}
+          ></motion.div>
+          <div className="mx-auto mb-24 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
             <AISuggestions />
+            {/* <div className="brightness-25 absolute left-[-316px] -top-8 h-[750px] w-[750px] rounded-full bg-gradient-radial from-gradient-dark/90 via-transparent to-transparent pb-9" /> */}
           </div>
           <div className="mt-0 p-2 sm:mt-20">
             <h1 className="pl-3 text-center text-5xl font-bold sm:text-left">
@@ -62,7 +97,7 @@ export default function Feature() {
               resulting in increased productivity and faster development cycles.
             </p>
           </div>
-          <div className="mx-auto flex w-96 items-center justify-start sm:w-full">
+          <div className="mx-auto mb-24 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
             <BugDetection />
           </div>
           <div className="mt-0 p-2 sm:mt-20">
@@ -77,7 +112,7 @@ export default function Feature() {
               time and effort in manually creating test cases.
             </p>
           </div>
-          <div className="mx-auto flex w-96 items-center justify-start sm:w-full">
+          <div className="mx-auto flex w-96 items-center justify-start sm:ml-40 sm:w-full">
             <AIGeneration />
           </div>
           <div className="mt-0 p-2 sm:mt-20">

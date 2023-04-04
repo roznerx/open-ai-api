@@ -4,12 +4,12 @@ import Image from "next/image"
 import { motion, useScroll, useTransform } from "framer-motion"
 
 export default function Hero() {
-  const { scrollYProgress } = useScroll()
-  const scale = useTransform(scrollYProgress, [0, 1], [0.5, 2])
+  const { scrollYProgress, scrollY } = useScroll()
+  const scale = useTransform(scrollYProgress, [0, 1], [0.7, 2])
 
   return (
     <div className="mt-18">
-      <section className="mx-auto mt-12 flex flex-col items-center justify-center">
+      <section className="relative mx-auto mt-12 flex flex-col items-center justify-center">
         <Image
           alt="Code Genius"
           src={"/icons/genius.svg"}
@@ -20,22 +20,23 @@ export default function Hero() {
           The AI programming assistant that helps you coding faster, easier, and
           more efficient!
         </h3>
-        <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:w-1/2">
+        <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:mb-[200px] sm:w-1/2">
           Writing great code can be a challenging and time-consuming task, but
           with Code Genius you can take your skills to the next level! Explore
           the possibilities!
         </p>
+
+        <motion.div style={{ scale }}>
+          <motion.div
+            style={{
+              // @ts-ignore
+              scaleY: scrollYProgress - 1900,
+            }}
+            className="absolute left-1/2 top-10 mx-auto -mt-[100px] hidden h-96 w-96 -translate-x-1/2 -translate-y-1/2 transform items-center  justify-start rounded-full bg-gradient-radial from-gradient-dark/80 via-transparent to-transparent pb-9 brightness-50 sm:-mt-[150px] sm:block sm:h-[800px] sm:w-[1000px]"
+          ></motion.div>
+        </motion.div>
       </section>
-      <motion.div style={{ scale }}>
-        <motion.div
-          style={{
-            // @ts-ignore
-            scaleY: scrollYProgress - 1800,
-          }}
-          className="mx-auto -mt-[150px] h-[800px] w-[1000px] items-center justify-center rounded-full bg-gradient-radial from-gradient-dark/90 via-transparent to-transparent pb-9 brightness-50"
-        ></motion.div>
-      </motion.div>
-      <section className="mx-auto mt-10 flex justify-center gap-1 sm:gap-3 lg:mt-8 ">
+      <section className="mx-auto flex justify-center gap-1 sm:mt-[20px] sm:gap-3 ">
         <Image
           className="rounded-md"
           src="/libs/react.svg"
