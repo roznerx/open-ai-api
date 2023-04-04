@@ -1,8 +1,12 @@
 "use client"
 
 import Image from "next/image"
+import { motion, useScroll, useTransform } from "framer-motion"
 
-export default function Feature() {
+export default function Hero() {
+  const { scrollYProgress } = useScroll()
+  const scale = useTransform(scrollYProgress, [0, 1], [0.5, 2])
+
   return (
     <div className="mt-18">
       <section className="mx-auto mt-12 flex flex-col items-center justify-center">
@@ -13,7 +17,8 @@ export default function Feature() {
           height={100}
         />
         <h3 className="block w-full px-1 py-3 text-center text-2xl text-white sm:mx-auto sm:w-2/4 sm:text-4xl">
-          Code faster, easier, and more efficiently.
+          The AI programming assistant that helps you coding faster, easier, and
+          more efficient!
         </h3>
         <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:w-1/2">
           Writing great code can be a challenging and time-consuming task, but
@@ -21,7 +26,16 @@ export default function Feature() {
           the possibilities!
         </p>
       </section>
-      <section className="mx-auto mt-16 flex justify-center gap-1 sm:gap-3 lg:mt-8 ">
+      <motion.div style={{ scale }}>
+        <motion.div
+          style={{
+            // @ts-ignore
+            scaleY: scrollYProgress - 1800,
+          }}
+          className="mx-auto -mt-[150px] h-[800px] w-[1000px] items-center justify-center rounded-full bg-gradient-radial from-gradient-dark/90 via-transparent to-transparent pb-9 brightness-50"
+        ></motion.div>
+      </motion.div>
+      <section className="mx-auto mt-10 flex justify-center gap-1 sm:gap-3 lg:mt-8 ">
         <Image
           className="rounded-md"
           src="/libs/react.svg"

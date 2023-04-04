@@ -14,8 +14,11 @@ export default function Page() {
     <main className={`mx-auto max-w-max py-24`}>
       <SuperHero />
       <Hero />
-      {/* <Subscription /> */}
       <Feature />
     </main>
   )
+}
+
+{
+  /* <Subscription /> */
 }

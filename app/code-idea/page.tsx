@@ -36,11 +36,10 @@ export default function Page() {
   let libElements: ElementType[] = ["React", "Vue", "Angular"]
   let langElements: ElementType[] = ["Typescript", "Javascript"]
 
-  // Requirements: As the forth step, make sure to code comment on the folder and file structure.
   const prompt = `Generate code written in ${langElement} and ${lib}, clearly labeled "**::", "// 1.", "// 2.", "// 3." and "// 4.". 
-   Context: ${codeSentence}${
+  Context: ${codeSentence}${
     codeSentence.slice(-1) === "." ? "" : "."
-  } Make sure to export default the Application component in the last step`
+  } Requirements: Make sure to comment on the folder and file structure at the end and to export default the Application component in the last step.`
 
   const onCodeGeneration = () => {
     generateCode()

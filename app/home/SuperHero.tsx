@@ -1,6 +1,5 @@
 "use client"
 
-import "../../styles/waterfall.css"
 import HomeChat from "./HomeChat"
 
 export default function SuperHero() {
@@ -171,11 +170,11 @@ export default function SuperHero() {
   return (
     <>
       <section>
-        <div
+        {/* <div
           className={`absolute top-0 mt-14 flex h-[600px] w-full flex-row flex-wrap overflow-hidden bg-opacity-75 `}
         >
           {bgMatrix}
-        </div>
+        </div> */}
         <h1
           className="mx-auto w-[90%] items-center justify-center bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text p-3 text-center text-6xl
 text-transparent sm:flex sm:w-full"

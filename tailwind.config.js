@@ -72,6 +72,10 @@ module.exports = {
       colors: {
         specialBlue: "#6ea9d7",
         mint: "#A1FFE0",
+        gradient: {
+          dark: "#a688ff",
+          light: "#d1a8ff",
+        },
         gray: {
           100: "#E9E9EB",
           200: "#D4D3D8",
@@ -92,6 +96,9 @@ module.exports = {
           800: "#1D1D29",
           900: "#101018",
         },
+      },
+      backgroundImage: {
+        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
       },
     },
   },
