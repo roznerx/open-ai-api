@@ -73,8 +73,8 @@ export default function Feature() {
           <motion.div
             style={{ scaleX: scrollYProgress }}
             className={`fixed bottom-0 hidden ${
-              verticalScroll > 1400 ? "sm:block" : "hidden"
-            } left-0 right-0 h-96 w-96  bg-gradient-radial  from-gradient-dark/80 via-transparent to-transparent p-20  brightness-50 sm:-mt-[150px] sm:h-[800px] sm:w-[1000px]`}
+              verticalScroll > 1200 ? "sm:block" : "hidden"
+            } left-0 right-0 h-[550px] w-[550px]  bg-gradient-radial  from-gradient-dark/80 via-transparent to-transparent p-20  brightness-50 sm:-mt-[150px] sm:h-[800px] sm:w-[1000px]`}
           ></motion.div>
           <motion.div
             style={{ scaleX }}

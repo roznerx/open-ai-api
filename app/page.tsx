@@ -6,7 +6,7 @@ import SuperHero from "./home/SuperHero"
 export const metadata = {
   title: "Create Genius Code",
   description:
-    "A playground to explore new Next.js 13 app directory features such as nested layouts, instant loading states, streaming, and component level data fetching.",
+    "A tool that will help you find quick and more innovative solutions using AI and specifically trained models to make the developer's life easier.",
 }
 
 export default function Page() {
