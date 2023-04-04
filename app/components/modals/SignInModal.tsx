@@ -4,6 +4,14 @@ import { signIn } from "next-auth/react"
 import { useState, Dispatch, SetStateAction, useCallback, useMemo } from "react"
 import Image from "next/image"
 import BaseModal from "app/components/modals/BaseModal"
+import { Poppins } from "next/font/google"
+import GithubLogo from 'public/icons/github.svg';
+import GmailLogo from 'public/icons/gmail.svg';
+
+const popins = Poppins({
+  variable: "--font-popins",
+  weight: ["100", "300", "600"],
+});
 
 const SignInModal = ({
   showSignInModal,
@@ -12,73 +20,82 @@ const SignInModal = ({
   showSignInModal: boolean
   setShowSignInModal: Dispatch<SetStateAction<boolean>>
 }) => {
-  const [signInClicked, setSignInClicked] = useState(false)
+  //const [signInClicked, setSignInClicked] = useState(false)
+  // Hotfix for the sign in states!
+  const [signInClickedGitHub, setSignInClickedGitHub] = useState<boolean>(false);
+  const [signInClickedGoogle, setSignInClickedGoogle] = useState<boolean>(false);
 
   return (
-    <BaseModal showModal={showSignInModal} setShowModal={setShowSignInModal}>
-      <div className="w-full shadow-xl md:max-w-md md:rounded-2xl md:border md:border-gray-200">
-        <div className="justify-center space-y-3 border-b border-gray-200 bg-white px-4 py-6 pt-8 text-center md:px-16">
-          <h3 className="font-display text-2xl font-bold">Sign In</h3>
-        </div>
-        <div className="flex flex-col space-y-4 bg-gray-50 px-4 py-8 md:px-16">
+    <BaseModal showModal={/*showSignInModal*/true} setShowModal={setShowSignInModal}>
+      {/* MAIN DIV - BACKGROUND*/}
+      <div className="rounded-2xl h-[487px] w-[504.01px] bg-purple-700 p-4">
+        {/* INNER DIV - FLEX CONTAINER */}
+        { /* TITLE + SUBTITLE */ }
+        <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:p-12">
+          <div className="flex flex-col content-center justify-start justify-items-start gap-4 mb-8">
+            <h1 className={`${popins.variable} text-center text-[28px] font-[700] leading-6 text-white sm:text-left`}>
+              Create your Account
+            </h1>
+            <h6 className="text-[20px] font-[400] font-mono leading-10 text-gray-200">
+              Start coding with Code Genius
+            </h6>
+          </div>
+          {/* DIVIDER */}
+          <hr className="border-1 border-purple-500 w-[384.01px]" />
+          <div className="flex flex-col content-center justify-start justify-items-start gap-4 mb-8">
+            {/* GITHUB BUTTON */}
           <button
-            disabled={signInClicked}
-            className={`${
-              signInClicked
-                ? "cursor-not-allowed border-gray-200 bg-gray-100"
-                : "border border-gray-200 bg-white text-black hover:bg-gray-50"
-            } text-sm flex h-10 w-full items-center justify-center space-x-3 rounded-md border shadow-sm transition-all duration-75 focus:outline-none`}
+            disabled={signInClickedGitHub}
+            className={"h-[80px] w-[380px] bg-black rounded-lg"}
             onClick={() => {
-              setSignInClicked(true)
-              signIn("google", {
-                callbackUrl: process.env.NEXTAUTH_URL,
-              })
-            }}
-          >
-            {signInClicked ? (
-              "Loading.."
-            ) : (
-              <>
-                <Image
-                  width={32}
-                  height={32}
-                  alt="Google Logo"
-                  src="/google.svg"
-                  className="h-5 w-5"
-                />
-                <p>Sign In with Google</p>
-              </>
-            )}
-          </button>
-          <button
-            disabled={signInClicked}
-            className={`${
-              signInClicked
-                ? "cursor-not-allowed border-gray-200 bg-gray-100"
-                : "border border-gray-200 bg-white text-black hover:bg-gray-50"
-            } text-sm flex h-10 w-full items-center justify-center space-x-3 rounded-md border shadow-sm transition-all duration-75 focus:outline-none`}
-            onClick={() => {
-              setSignInClicked(true)
+              setSignInClickedGitHub(true)
               signIn("github", {
                 callbackUrl: process.env.NEXTAUTH_URL,
               })
             }}
           >
-            {signInClicked ? (
-              "Loading.."
-            ) : (
-              <>
+            {
+              signInClickedGitHub ? 
+              <p className="text-white text-[28px] font-[700]">Loading...</p> : 
+              <div className="flex inline-flex content-center justify-center justify-items-center gap-2">
                 <Image
                   width={32}
                   height={32}
                   alt="Github Logo"
-                  src="/gitIcon.png"
-                  className="h-5 w-5"
+                  src={GithubLogo.src}
+                  className="h-[25.51px] w-[26.15px] flex self-center"
                 />
-                <p>Sign In with Github</p>
-              </>
-            )}
+                <p className="text-white text-[28px] font-[700]">GitHub</p>
+              </div>
+            }
           </button>
+          {/* GOOGLE BUTTON */}
+          <button
+            disabled={signInClickedGoogle}
+            className={"h-[80px] w-[380px] bg-white rounded-lg"}
+            onClick={() => {
+              setSignInClickedGoogle(true)
+              signIn("google", {
+                callbackUrl: process.env.NEXTAUTH_URL,
+              })
+            }}
+          >
+            {
+              signInClickedGoogle ? 
+              <p className="text-gray-800 text-[28px] font-[700]">Loading...</p> : 
+              <div className="flex inline-flex content-center justify-center justify-items-center gap-2">
+                <Image
+                  width={32}
+                  height={32}
+                  alt="Gmail Logo"
+                  src={GmailLogo.src}
+                  className="h-[38px] w-[38x] flex self-center"
+                />
+                <p className="text-gray-800 text-[28px] font-[700]">Gmail</p>
+              </div>
+            }
+          </button>
+          </div>
         </div>
       </div>
     </BaseModal>
