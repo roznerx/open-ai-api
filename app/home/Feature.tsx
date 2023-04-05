@@ -2,6 +2,8 @@
 
 import {
   motion,
+  useMotionTemplate,
+  useMotionValue,
   useMotionValueEvent,
   useScroll,
   useSpring,
@@ -56,31 +58,40 @@ const BugDetection = () => {
 
 export default function Feature() {
   const [verticalScroll, setVerticalScroll] = useState(0)
-  const { scrollYProgress, scrollY } = useScroll()
-  const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
-    damping: 30,
-    restDelta: 0.001,
-  })
+  const [horizontallScroll, setHorizontalScroll] = useState(0)
+  const { scrollYProgress, scrollY, scrollX } = useScroll()
+
+  // const scaleX = useSpring(scrollYProgress, {
+  //   stiffness: 100,
+  //   damping: 30,
+  //   restDelta: 0.001,
+  // })
   useMotionValueEvent(scrollY, "change", (latest) => {
-    console.log("Page scroll: ", latest)
+    console.log("Page Y scroll: ", latest)
     setVerticalScroll(latest)
   })
+  const x = useMotionValue(0)
+  const input = [-200, 0, 200]
+  const output = [0, 1, 0]
+  const opacity = useTransform(x, input, output)
   return (
     <>
       <section className={`mt-8 text-white ${popins.variable} font-popins`}>
         <div className="grid grid-cols-1 gap-1 sm:grid-cols-2">
           <motion.div
-            style={{ scaleX: scrollYProgress }}
-            className={`fixed bottom-0 hidden ${
-              verticalScroll > 1200 ? "sm:block" : "hidden"
-            } left-0 right-0 h-[550px] w-[550px]  bg-gradient-radial  from-gradient-dark/80 via-transparent to-transparent p-20  brightness-50 sm:-mt-[150px] sm:h-[800px] sm:w-[1000px]`}
-          ></motion.div>
-          <motion.div
-            style={{ scaleX }}
-            className={`absolute -left-[300px] top-${
-              verticalScroll !== 0 && verticalScroll
-            } mx-auto -mt-[100px] h-96 w-96 -translate-x-1/2 -translate-y-1/2 transform  rounded-full bg-gradient-radial from-gradient-dark/80 via-transparent to-transparent pb-9 brightness-50 sm:-mt-[150px] sm:h-[800px] sm:w-[1000px]`}
+            animate={{
+              x:
+                verticalScroll < 500
+                  ? 350
+                  : verticalScroll >= 500 && verticalScroll < 1200
+                  ? -120
+                  : verticalScroll - 850,
+            }}
+            className={`fixed top-[500px] mx-auto -ml-[50px] hidden ${
+              verticalScroll > 0 ? "sm:block" : "hidden"
+            }  h-[550px] w-[850px] bg-gradient-radial from-gradient-dark/80 via-transparent to-transparent brightness-${
+              verticalScroll > 600 ? "25" : "50"
+            } `}
           ></motion.div>
           <div className="mx-auto mb-24 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
             <AISuggestions />

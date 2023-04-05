@@ -27,7 +27,7 @@ export default async function RootLayout({
         <head>
           <link rel="icon" href="/favicon.ico" />
         </head>
-        <body className="bg-gradient-to-b from-purple-800 via-purple-700 to-purple-600 ">
+        <body className="bg-[#1D1D29]">
           <SessionProvider>
             <Header session={session} />
             <div className="flex min-h-screen flex-nowrap">{children}</div>

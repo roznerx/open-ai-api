@@ -25,16 +25,6 @@ export default function Hero() {
           with Code Genius you can take your skills to the next level! Explore
           the possibilities!
         </p>
-
-        <motion.div style={{ scale }}>
-          <motion.div
-            style={{
-              // @ts-ignore
-              scaleY: scrollYProgress - 1900,
-            }}
-            className="absolute left-1/2 top-10 mx-auto -mt-[100px] hidden h-96 w-96 -translate-x-1/2 -translate-y-1/2 transform items-center  justify-start rounded-full bg-gradient-radial from-gradient-dark/80 via-transparent to-transparent pb-9 brightness-50 sm:-mt-[150px] sm:block sm:h-[800px] sm:w-[1000px]"
-          ></motion.div>
-        </motion.div>
       </section>
       <section className="mx-auto flex justify-center gap-1 sm:mt-[20px] sm:gap-3 ">
         <Image
