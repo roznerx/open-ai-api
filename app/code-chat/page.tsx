@@ -167,6 +167,63 @@ export default function Page() {
       />
       <main className="flex w-full min-w-full flex-1 flex-col items-center justify-center px-4 text-center sm:mt-20">
         <div className="w-[85%] text-white dark:text-white">
+          {/* TITLE */}
+          <h1 className="font-bold text-5xl mb-16">What do you want to accomplish?</h1>
+          {/* FEATURES BOXES */}
+          <div className="flex flex-row justify-between">
+            {/* LEFT BOX */}
+            <div className="w-[357px] h-[332px] bg-purple-400 flex flex-col py-[40px] px-[30px] text-left rounded-[20px]">
+              <div className="w-full h-1/3">
+                <div className="w-[50px] h-[50px] bg-mint rounded-full"></div>
+              </div>
+              <div className="w-full h-1/3">
+                <h4 className="font-bold text-2xl leading-8">Code completion and suggestions</h4>
+              </div>
+              <div className="w-full h-1/3">
+                <h6 className="font-normal text-[16px] leading-6">
+                  Use AI to suggest code snippets or complete code statements as the user types, 
+                  based on previous code patterns and common coding practices.
+                </h6>
+              </div>
+            </div>
+            {/* CENTER BOX */}
+            <div className="w-[357px] h-[332px] bg-purple-400 flex flex-col py-[40px] px-[30px] text-left rounded-[20px]">
+              <div className="w-full h-1/3">
+                <div className="w-[50px] h-[50px] bg-mint rounded-full"></div>
+              </div>
+              <div className="w-full h-1/3">
+                <h4 className="font-bold text-2xl leading-8">Bug detection and correction</h4>
+              </div>
+              <div className="w-full h-1/3">
+                <h6 className="font-normal text-[16px] leading-6">
+                  Use AI to detect and suggest corrections for common coding mistakes, 
+                  such as syntax errors, undefined variables, or null references.
+                </h6>
+              </div>
+            </div>
+            {/* RIGHT BOX */}
+            <div className="w-[357px] h-[332px] bg-purple-400 flex flex-col py-[40px] px-[30px] text-left rounded-[20px]">
+              <div className="w-full h-1/3">
+                <div className="w-[50px] h-[50px] bg-mint rounded-full"></div>
+              </div>
+              <div className="w-full h-1/3">
+                <h4 className="font-bold text-2xl leading-8">Test Code</h4>
+              </div>
+              <div className="w-full h-1/3">
+                <h6 className="font-normal text-[16px] leading-6">
+                  Identify the different scenarios and inputs that need to be tested for 
+                  the code, and develop test cases that can evaluate the code's performance.
+                </h6>
+              </div>
+            </div>
+          </div>
+          {/* BLANK SQUARES */}
+          <div className="flex flex-row justify-between w-full gap-[20px] p-8 mt-8">
+            <div className="w-[261px] h-[214px] bg-white rounded-[10px]"></div>
+            <div className="w-[261px] h-[214px] bg-white rounded-[10px]"></div>
+            <div className="w-[261px] h-[214px] bg-white rounded-[10px]"></div>
+            <div className="w-[261px] h-[214px] bg-white rounded-[10px]"></div>
+          </div>
           <Chat
             generatedResponse={generatedMessages}
             onArrowPress={onArrowPress}
