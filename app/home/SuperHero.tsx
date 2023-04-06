@@ -1,18 +1,18 @@
 "use client"
-
 import "../../styles/waterfall.css"
+
 import HomeChat from "./HomeChat"
 
 export default function SuperHero() {
   const effectClass = "effect"
-  let bgMatrix = Array(40)
+  let bgMatrix = Array(70)
     .fill(1, 0)
     .map((_, i) => {
       return (
         <>
           <span
             key={i}
-            className={`${effectClass} mx-1 w-1 ${
+            className={`${effectClass} mx-1 w-1 text-[10px] ${
               i < 30
                 ? "opacity-30"
                 : i < 50
@@ -26,9 +26,9 @@ export default function SuperHero() {
           </span>
           <span
             key={i}
-            className={`  ${
+            className={` ${effectClass}  ${
               i < 30
-                ? "text-xs opacity-30"
+                ? " text-[10px] opacity-30"
                 : i < 50
                 ? "text-sm opacity-50"
                 : i > 50 && i < 80
@@ -42,9 +42,9 @@ export default function SuperHero() {
             key={i}
             className={`${effectClass} ${
               i < 30
-                ? "text-xs opacity-30"
+                ? " text-[10px] opacity-30"
                 : i < 50
-                ? "text-sm opacity-50"
+                ? "opacity-50"
                 : i > 50 && i < 80
                 ? "opacity-80"
                 : "opacity-100"
@@ -54,53 +54,53 @@ export default function SuperHero() {
           </span>
           <span
             key={i}
+            className={` ${effectClass}  ${
+              i < 30
+                ? " text-[10px] opacity-30"
+                : i === 50
+                ? " opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-700`}
+          >
+            1
+          </span>
+          <span
+            key={i}
+            className={`${effectClass}  ${
+              i < 30
+                ? " text-[10px] opacity-30"
+                : i < 50
+                ? " opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-500`}
+          >
+            0
+          </span>
+          <span
+            key={i}
+            className={` ${effectClass}  ${
+              i < 30
+                ? " text-[10px] opacity-30"
+                : i < 50
+                ? " opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-500`}
+          >
+            1
+          </span>
+          <span
+            key={i}
             className={` ${
               i < 30
-                ? "text-xs opacity-30"
-                : i === 50
-                ? "text-sm opacity-50"
-                : i > 50 && i < 80
-                ? "opacity-80"
-                : "opacity-100"
-            } px-3 text-indigo-700`}
-          >
-            1
-          </span>
-          <span
-            key={i}
-            className={`  ${
-              i < 30
-                ? "text-xs opacity-30"
+                ? "text-[10px] opacity-30"
                 : i < 50
-                ? "text-sm opacity-50"
-                : i > 50 && i < 80
-                ? "opacity-80"
-                : "opacity-100"
-            } px-3 text-indigo-500`}
-          >
-            0
-          </span>
-          <span
-            key={i}
-            className={`  ${
-              i < 30
-                ? "text-xs opacity-30"
-                : i < 50
-                ? "text-sm opacity-50"
-                : i > 50 && i < 80
-                ? "opacity-80"
-                : "opacity-100"
-            } px-3 text-indigo-500`}
-          >
-            1
-          </span>
-          <span
-            key={i}
-            className={`  ${
-              i < 30
-                ? "text-xs opacity-30"
-                : i < 50
-                ? "text-sm opacity-50"
+                ? "opacity-50"
                 : i > 50 && i < 80
                 ? "opacity-80"
                 : "opacity-100"
@@ -110,11 +110,11 @@ export default function SuperHero() {
           </span>
           <span
             key={i}
-            className={`  ${
+            className={`${
               i < 30
-                ? "text-xs opacity-30"
+                ? "text-[10px] opacity-30"
                 : i < 50
-                ? "text-sm opacity-50"
+                ? "opacity-50"
                 : i > 50 && i < 80
                 ? "opacity-80"
                 : "opacity-100"
@@ -126,7 +126,21 @@ export default function SuperHero() {
             key={i}
             className={`${effectClass} ${
               i < 30
-                ? "text-xs opacity-30"
+                ? "text-[10px] opacity-30"
+                : i < 50
+                ? " opacity-50"
+                : i > 50 && i < 80
+                ? "opacity-80"
+                : "opacity-100"
+            } px-3 text-indigo-700`}
+          >
+            1
+          </span>
+          <span
+            key={i}
+            className={` ${effectClass}  ${
+              i < 30
+                ? "text-[10px] opacity-30"
                 : i < 50
                 ? "text-sm opacity-50"
                 : i > 50 && i < 80
@@ -138,23 +152,9 @@ export default function SuperHero() {
           </span>
           <span
             key={i}
-            className={`  ${
+            className={` ${effectClass}  ${
               i < 30
-                ? "text-xs opacity-30"
-                : i < 50
-                ? "text-sm opacity-50"
-                : i > 50 && i < 80
-                ? "opacity-80"
-                : "opacity-100"
-            } px-3 text-indigo-700`}
-          >
-            1
-          </span>
-          <span
-            key={i}
-            className={`  ${
-              i < 30
-                ? "text-xs opacity-30"
+                ? "text-[10px] opacity-30"
                 : i < 50
                 ? "text-sm opacity-50"
                 : i > 50 && i < 80

@@ -1,11 +1,15 @@
 "use client"
 
 import Image from "next/image"
+import { motion, useScroll, useTransform } from "framer-motion"
 
-export default function Feature() {
+export default function Hero() {
+  const { scrollYProgress, scrollY } = useScroll()
+  const scale = useTransform(scrollYProgress, [0, 1], [0.7, 2])
+
   return (
     <div className="mt-18">
-      <section className="mx-auto mt-12 flex flex-col items-center justify-center">
+      <section className="relative mx-auto mt-12 flex flex-col items-center justify-center">
         <Image
           alt="Code Genius"
           src={"/icons/genius.svg"}
@@ -13,15 +17,16 @@ export default function Feature() {
           height={100}
         />
         <h3 className="block w-full px-1 py-3 text-center text-2xl text-white sm:mx-auto sm:w-2/4 sm:text-4xl">
-          Code faster, easier, and more efficiently.
+          The AI programming assistant that helps you coding faster, easier, and
+          more efficient!
         </h3>
-        <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:w-1/2">
+        <p className="mx-auto mt-3 w-full px-3 text-center text-2xl text-white sm:mb-[200px] sm:w-1/2">
           Writing great code can be a challenging and time-consuming task, but
           with Code Genius you can take your skills to the next level! Explore
           the possibilities!
         </p>
       </section>
-      <section className="mx-auto mt-16 flex justify-center gap-1 sm:gap-3 lg:mt-8 ">
+      <section className="mx-auto flex justify-center gap-1 sm:mt-[20px] sm:gap-3 ">
         <Image
           className="rounded-md"
           src="/libs/react.svg"
