@@ -21,15 +21,12 @@ const SignInModal = ({
   showSignInModal: boolean
   setShowSignInModal: Dispatch<SetStateAction<boolean>>
 }) => {
-  //const [signInClicked, setSignInClicked] = useState(false)
-  // Hotfix for the sign in states!
   const [signInClickedGitHub, setSignInClickedGitHub] = useState<boolean>(false);
   const [signInClickedGoogle, setSignInClickedGoogle] = useState<boolean>(false);
-
   const { windowSize, isMobile, isDesktop } = useWindowSize();
 
   return (
-    <BaseModal showModal={/*showSignInModal*/true} setShowModal={setShowSignInModal}>
+    <BaseModal showModal={showSignInModal} setShowModal={setShowSignInModal}>
       {/* MAIN DIV - BACKGROUND*/}
       <div className="rounded-2xl sm:h-[487px] sm:w-[504.01px] bg-purple-700 p-4">
         {/* INNER DIV - FLEX CONTAINER */}
@@ -66,7 +63,7 @@ const SignInModal = ({
                     width={32}
                     height={32}
                     alt="Github Logo"
-                    src={GithubLogo.src}
+                    src={GithubLogo.src} // Should use a logo that includes company font
                     className="h-[25.51px] w-[26.15px] flex self-center"
                   />
                   <p className="text-white text-[28px] font-[700]">GitHub</p>
@@ -92,7 +89,7 @@ const SignInModal = ({
                     width={32}
                     height={32}
                     alt="Gmail Logo"
-                    src={GmailLogo.src}
+                    src={GmailLogo.src} // Should use a logo that includes company font
                     className="h-[38px] w-[38x] flex self-center"
                   />
                   <p className="text-gray-500 text-[28px] font-[700]">Gmail</p>
