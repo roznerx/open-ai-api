@@ -19,7 +19,7 @@ export default async function Page() {
           </p>
         </div>
         <Client session={session} />
-        <Faqs />
+        {/* <Faqs /> */}
       </main>
     </>
   )

@@ -87,9 +87,9 @@ export default function Client({ session }: ClientPropTye) {
         },
         body: JSON.stringify({
           credits,
-          email: session.user.email,
-          userId: session.user.id,
-          name: session.user.name,
+          email: session?.user?.email,
+          userId: session?.user?.id,
+          name: session?.user?.name,
           checkoutURL: stripeSession?.session?.url,
           created: stripeSession?.session?.created,
           amount: stripeSession?.session?.amount_total,
