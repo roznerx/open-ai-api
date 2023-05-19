@@ -6,7 +6,7 @@ type ButtonProps = {
   text?: string
   buttonTextColor?: string
   variant?: string
-  onClick: () => void
+  onClick?: () => void
 }
 type StopButtonProps = {
   loading: boolean
@@ -33,7 +33,7 @@ export default function Button({
           ? "text-gray-600"
           : "text-white"
       } font-semibold`}
-      onClick={() => onClick()}
+      onClick={() => onClick && onClick()}
     >
       {text}
     </button>

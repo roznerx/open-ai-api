@@ -84,8 +84,8 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
           />
           <PromptCard
             onClick={setPrompt}
-            title="Database"
-            text="What's the best Database with Typescript support"
+            title="Python"
+            text="How to create a function in Python?"
           />
           <PromptCard
             onClick={setPrompt}

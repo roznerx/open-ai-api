@@ -3,6 +3,6 @@
   "rules": {
     "react-hooks/exhaustive-deps": "off",
     "react/display-name": "off",
-    "object-shorthand": ["error", "always", { "ignoreConstructors": true }]
+    "object-shorthand": ["off", "always", { "ignoreConstructors": true }]
   }
 }

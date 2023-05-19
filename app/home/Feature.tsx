@@ -12,6 +12,7 @@ import { motion } from "framer-motion"
 
 import ShowCaseCard from "./ShowCaseCard"
 import Button from "app/components/Button"
+import Link from "next/link"
 
 const interactivity: any = {
   mode: "scroll",
@@ -88,6 +89,16 @@ export default function Feature({ setShowSignInModal, session }) {
         setShowSignInModal(true)
       }}
     />
+  )
+  const GoAndExploreChat = (
+    <Link href="/code-chat">
+      <Button
+        buttonTextColor="dark"
+        variant="mint"
+        loading={false}
+        text="Go to the chat"
+      />
+    </Link>
   )
 
   return (
@@ -189,7 +200,7 @@ export default function Feature({ setShowSignInModal, session }) {
             title="Chat with Code Genius and ask anything you want!"
             description="Writing great code can be a challenging and time-consuming task, but with Code Genius you can take your skills to the next level! Explore the possibilities!"
             image={ChatIlustration}
-            button={!session ? CreateAccountButton : undefined}
+            button={!session ? CreateAccountButton : GoAndExploreChat}
           />
         </div>
       </section>
