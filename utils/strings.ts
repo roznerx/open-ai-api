@@ -1,13 +1,13 @@
 export function getCodeGeniusPlaceHolder(mode: string) {
   switch (mode) {
     case "smart":
-      return "Share your code idea and let Code Genius provide you with suggestions"
+      return "E.g: 'I want to create a Chat App'. Tip: Use the dropdowns at the button to select your language and framework. 🧞‍♂️"
     case "test":
-      return "Need unit tests? Paste your code and let Code Genius do the work"
+      return "E.g: Generate tests for your code by pasting the function or component here."
     case "improve":
-      return "Generate better code with Code Genius - paste your function now and get code improvements"
+      return "E.g: Improve your performance code by pasting your function or component here."
     case "docs":
-      return "Paste your code here and Code Genius will document it for you"
+      return "E.g: Create better code by documenting it. Paste your function or component here."
     default:
       return ""
   }

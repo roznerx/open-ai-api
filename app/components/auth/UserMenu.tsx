@@ -7,7 +7,6 @@ import Link from "next/link"
 import { Fragment } from "react"
 
 export default function UserMenu({ session, email, image }) {
-  console.log("image:", image)
   const { isMobile } = useWindowSize()
   return (
     <div className="absolute top-4 right-2 w-56 text-right sm:mr-7">

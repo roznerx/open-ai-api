@@ -15,7 +15,7 @@ export default function Container({ session }) {
   const [testSelected, setTestSelected] = useState(false)
   const [improveSelected, setImproveSelected] = useState(false)
   const [bugSelected, setBugSelected] = useState(false)
-  const [mode, setMode] = useState("")
+  const [mode, setMode] = useState("smart")
   const [docSelected, setDocSelected] = useState(false)
   const [prompt, setPrompt] = useState("")
   const [codeSentence, setCodeSentence] = useState("")
