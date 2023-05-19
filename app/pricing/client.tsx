@@ -51,8 +51,7 @@ export default function Client({ session }: ClientPropTye) {
 
   const submitPaymentInstruction = async (e) => {
     e.preventDefault()
-    console.log("priceId", priceId)
-
+    // console.log("priceId", priceId)
     setLoadingStripe(true)
     if (!session) {
       console.log("Log the user in")
@@ -69,6 +68,7 @@ export default function Client({ session }: ClientPropTye) {
         userId: session.user.id,
       }),
     })
+    console.log("response:", response)
 
     const stripeSession = await response.json()
 
@@ -91,7 +91,7 @@ export default function Client({ session }: ClientPropTye) {
           confirmed: false,
         }),
       })
-      location.href = stripeSession.session.url
+      location.href = stripeSession?.session?.url
     }
   }
 
