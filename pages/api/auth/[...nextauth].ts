@@ -41,7 +41,7 @@ export const authOptions: AuthOptions = {
       if (user.registered) {
         await sendWelcomeEmail({
           name: user.name,
-          html: html,
+          html,
           identifier: user.email,
           provider: { server, from },
         })

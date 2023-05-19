@@ -66,7 +66,7 @@ export default function ContactFormModal({
     const payload = {
       name: formValues.name,
       contactEmail: formValues.workEmail,
-      message: message,
+      message,
     }
     //Using Fetch, post to API api/email/send.ts and pass name, contactEmail, message in the body as a payload
     const res = await fetch("/api/email/send", {

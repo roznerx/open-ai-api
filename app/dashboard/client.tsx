@@ -14,7 +14,7 @@ async function SendCongratsEmail(session, credits) {
   //Send congrats email to the user
   const payload = {
     name: session.user?.name,
-    credits: credits,
+    credits,
     isNewPuchase: true,
     contactEmail: session.user?.email,
     message: "Congratulations! Your credits have been added to your account.",
