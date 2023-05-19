@@ -93,7 +93,7 @@ export default function Client({ session }: ClientPropTye) {
           confirmed: false,
         }),
       })
-      // location.href = stripeSession?.session?.url
+      location.href = stripeSession?.session?.url
     }
   }
 
