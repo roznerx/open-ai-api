@@ -30,7 +30,7 @@ const SignInModal = ({
 }) => {
   const searchParams = useSearchParams()
   const [signInClickedGitHub, setSignInClickedGitHub] = useState<boolean>(false)
-  const [referer, setReferer] = useState<string>("/code-idea")
+  const [referer, setReferer] = useState<string>("/dashboard")
   const [signInClickedGoogle, setSignInClickedGoogle] = useState<boolean>(false)
   const { isMobile } = useWindowSize()
 

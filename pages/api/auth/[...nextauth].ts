@@ -50,7 +50,7 @@ export const authOptions: AuthOptions = {
   },
 
   callbacks: {
-    async signIn({ user, account, ...rest }) {
+    async signIn({ user, account }) {
       return user && user.name ? true : false
     },
     async session({ session, user }) {
@@ -80,7 +80,7 @@ export const authOptions: AuthOptions = {
     },
   },
   pages: {
-    signIn: "/code-idea",
+    signIn: "/dashboard",
     signOut: "/",
   },
   debug: false,

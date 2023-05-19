@@ -68,7 +68,7 @@ export default function Feature({ setShowSignInModal, session }) {
     />
   )
   const ChatIlustration = (
-    <div className="hidden sm:absolute sm:right-40 sm:mt-6 sm:block">
+    <div className="mr-6 hidden sm:absolute sm:right-40 sm:mt-6 sm:block">
       <Image
         src="/home/chat.svg"
         alt="Chat with Code Genius"
