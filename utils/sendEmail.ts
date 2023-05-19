@@ -19,7 +19,7 @@ export async function sendWelcomeEmail(params) {
     from: provider.from,
     subject: `🧞‍♂️ Welcome to Code Genius!`,
     text: text({ url, host }),
-    html: html,
+    html,
   })
   const failed = result.rejected.concat(result.pending).filter(Boolean)
   if (failed.length) {
@@ -35,9 +35,9 @@ export async function sendInfoEmailFromClient(params) {
   const result = await transport.sendMail({
     to: isNewPuchase ? contactEmail : "geniuscodeai@gmail.com",
     subject: isNewPuchase
-      ? `${credits} credits has been added to your account`
+      ? `🧞‍♂️ Thanks for your purchase ${name}`
       : `New Client Contact`,
-    from: from,
+    from,
     text: textInfo({ name, contactEmail, message }),
     html: htmlFromClients({ name, contactEmail, message, isNewPuchase }),
   })
