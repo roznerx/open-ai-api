@@ -1,9 +1,14 @@
-const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
+const Stripe = require("stripe")
 
+const stripe = Stripe(process.env.STRIPE_SECRET_KEY)
+const key = process.env.STRIPE_SECRET_KEY
 export default async function handler(req, res) {
-  console.log("req.headers.origin", req.headers.origin)
-  console.log("req.body.credits", req.body.credits)
-  console.log("stripe", stripe)
+  console.log("key is undefined", process.env.STRIPE_SECRET_KEY === undefined)
+  console.log("key: ", key)
+
+  // console.log("req.headers.origin", req.headers.origin)
+  // console.log("req.body.credits", req.body.credits)
+  // console.log("stripe", stripe)
 
   if (req.method === "POST") {
     try {

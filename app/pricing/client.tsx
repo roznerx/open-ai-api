@@ -1,6 +1,5 @@
 "use client"
 
-import { loadStripe } from "@stripe/stripe-js"
 import GradientButton from "app/components/buttons/gradientButton"
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
@@ -11,6 +10,7 @@ import { Check, Loader2 } from "lucide-react"
 import { PRICE_IDS } from "@/lib/constants"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
+import Footer from "app/components/Footer"
 
 //Theme colors
 const colors: any = tailwindConfig.theme?.extend?.colors
@@ -18,9 +18,6 @@ const colors: any = tailwindConfig.theme?.extend?.colors
 type ClientPropTye = {
   session: any
 }
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
-)
 
 export default function Client({ session }: ClientPropTye) {
   const initialCreditsValue = 50
@@ -274,10 +271,11 @@ export default function Client({ session }: ClientPropTye) {
         </div>
       </section>
       <section className="pt-20">
-        <h2 className="mb-3 text-3xl font-bold text-gray-200 dark:text-white sm:text-4xl sm:leading-none sm:tracking-tight">
+        {/* <h2 className="mb-3 text-3xl font-bold text-gray-200 dark:text-white sm:text-4xl sm:leading-none sm:tracking-tight">
           Frequently asked questions
-        </h2>
+        </h2> */}
       </section>
+      <Footer session={session?.data} />
     </>
   )
 }
