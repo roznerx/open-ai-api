@@ -7,7 +7,7 @@ import Image from "next/image"
 import React, { useEffect } from "react"
 import Loading from "app/_loading"
 import tailwindConfig from "tailwind.config"
-import { Check } from "lucide-react"
+import { Check, Loader2 } from "lucide-react"
 import { PRICE_IDS } from "@/lib/constants"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
@@ -65,7 +65,7 @@ export default function Client({ session }: ClientPropTye) {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        credits: credits,
+        credits,
         priceUID: priceId,
         userId: session.user.id,
       }),
@@ -74,25 +74,26 @@ export default function Client({ session }: ClientPropTye) {
     const stripeSession = await response.json()
 
     // setLoadingStripe(false)
-
-    await fetch("/api/checkout/save", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        credits: credits,
-        email: session.user.email,
-        userId: session.user.id,
-        name: session.user.name,
-        checkoutURL: stripeSession?.session?.url,
-        created: stripeSession.session.created,
-        amount: stripeSession.session.amount_total,
-        confirmed: false,
-      }),
-    })
-
-    location.href = stripeSession.session.url
+    console.log("stripeSession", stripeSession)
+    if (stripeSession) {
+      await fetch("/api/checkout/save", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          credits,
+          email: session.user.email,
+          userId: session.user.id,
+          name: session.user.name,
+          checkoutURL: stripeSession?.session?.url,
+          created: stripeSession?.session?.created,
+          amount: stripeSession?.session?.amount_total,
+          confirmed: false,
+        }),
+      })
+      location.href = stripeSession.session.url
+    }
   }
 
   return (
@@ -165,7 +166,14 @@ export default function Client({ session }: ClientPropTye) {
                 type="submit"
                 className="text-sm  px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
               >
-                {loadingStripe ? <Loading size={20} /> : "Buy Credits"}
+                {loadingStripe ? (
+                  <div className="flex h-8">
+                    <Loader2 className="mt-[2px] animate-spin" size={20} />
+                    <span className="ml-2">Redirecting..</span>
+                  </div>
+                ) : (
+                  "Buy Credits"
+                )}
               </button>
             </div>
           </div>

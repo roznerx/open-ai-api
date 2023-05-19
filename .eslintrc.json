@@ -2,6 +2,7 @@
   "extends": "next/core-web-vitals",
   "rules": {
     "react-hooks/exhaustive-deps": "off",
-    "react/display-name": "off"
+    "react/display-name": "off",
+    "object-shorthand": ["error", "always", { "ignoreConstructors": true }]
   }
 }
