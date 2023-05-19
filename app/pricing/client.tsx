@@ -52,11 +52,10 @@ export default function Client({ session }: ClientPropTye) {
 
   const submitPaymentInstruction = async (e) => {
     e.preventDefault()
-    console.log("priceId", priceId)
-    console.log("session?.user?.id", session?.user?.id)
     setLoadingStripe(true)
+
     if (!session) {
-      console.log("Log the user in")
+      setShowSignInModal(true)
       return false
     }
     const response = await fetch("/api/checkout/stripe_sessions", {
