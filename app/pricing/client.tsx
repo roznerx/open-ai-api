@@ -1,5 +1,6 @@
 "use client"
 
+import { loadStripe } from "@stripe/stripe-js"
 import GradientButton from "app/components/buttons/gradientButton"
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
@@ -17,6 +18,9 @@ const colors: any = tailwindConfig.theme?.extend?.colors
 type ClientPropTye = {
   session: any
 }
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
+)
 
 export default function Client({ session }: ClientPropTye) {
   const initialCreditsValue = 50
@@ -51,7 +55,8 @@ export default function Client({ session }: ClientPropTye) {
 
   const submitPaymentInstruction = async (e) => {
     e.preventDefault()
-    // console.log("priceId", priceId)
+    console.log("priceId", priceId)
+    console.log("session?.user?.id", session?.user?.id)
     setLoadingStripe(true)
     if (!session) {
       console.log("Log the user in")
@@ -65,7 +70,7 @@ export default function Client({ session }: ClientPropTye) {
       body: JSON.stringify({
         credits,
         priceUID: priceId,
-        userId: session.user.id,
+        userId: session?.user?.id,
       }),
     })
     console.log("response:", response)

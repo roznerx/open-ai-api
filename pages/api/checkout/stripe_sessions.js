@@ -1,6 +1,9 @@
 const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY)
 
 export default async function handler(req, res) {
+  console.log("req.headers.origin", req.headers.origin)
+  console.log("stripe", stripe)
+
   if (req.method === "POST") {
     try {
       // Create Checkout Sessions from body params.
@@ -20,6 +23,7 @@ export default async function handler(req, res) {
 
       res.json({ session })
     } catch (err) {
+      console.log("err:", err)
       res.status(err.statusCode || 500).json(err.message)
     }
   } else {
