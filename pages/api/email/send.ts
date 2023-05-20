@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     await sendInfoEmailFromClient({
       isNewPuchase: bodyRequest?.isNewPuchase,
       credits: bodyRequest?.credits,
-      name: bodyRequest.name,
+      name: bodyRequest?.name,
       contactEmail: bodyRequest.contactEmail,
       message: bodyRequest.message,
     })

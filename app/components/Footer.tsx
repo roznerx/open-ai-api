@@ -10,7 +10,7 @@ export default function Footer({ session }: { session: any }) {
   return (
     <>
       <ContactFormModal
-        clientName={(session && session.user && session.user.name) || ""}
+        clientName={(session && session?.user && session?.user?.name) || ""}
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />

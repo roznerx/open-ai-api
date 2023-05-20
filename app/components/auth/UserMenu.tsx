@@ -24,7 +24,7 @@ export default function UserMenu({ session, email, image }) {
                 height={40}
               />
 
-              {!isMobile && <span className="mt-1">{session.user.name}</span>}
+              {!isMobile && <span className="mt-1">{session?.user?.name}</span>}
             </div>
             <ChevronDown
               className="ml-2 -mr-1 mt-1 h-6 w-5 font-medium text-violet-200 hover:text-violet-100"

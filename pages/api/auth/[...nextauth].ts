@@ -26,7 +26,6 @@ export const authOptions: AuthOptions = {
   events: {
     async signIn({ user, account }) {
       console.log("user::", user)
-      console.log("account::", account)
 
       const response = await fetch(
         `${process.env.NEXTAUTH_URL}/api/email/generate-html-email`,
@@ -43,11 +42,11 @@ export const authOptions: AuthOptions = {
       console.log("user reg", user)
 
       //@ts-ignore
-      if (user && user.registered) {
+      if (user && user?.registered) {
         await sendWelcomeEmail({
-          name: user?.name,
+          name: user && user?.name,
           html,
-          identifier: user?.email,
+          identifier: user && user?.email,
           provider: { server, from },
         })
       }
@@ -56,7 +55,7 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     async signIn({ user, account }) {
-      return user && user?.name ? true : false
+      return user || account ? true : false
     },
     async session({ session, user }) {
       if (user && user.id) {
@@ -64,6 +63,10 @@ export const authOptions: AuthOptions = {
           ...session,
           user: {
             ...user,
+            name:
+              (user && user?.name) ||
+              session?.user?.name ||
+              user.email.split("@")[0],
             id: user.id,
           },
         }
@@ -72,9 +75,6 @@ export const authOptions: AuthOptions = {
       } else {
         return session
       }
-    },
-    async jwt({ token, user, account, profile }) {
-      return token
     },
     async redirect({ url, baseUrl }) {
       // if (!url.includes("/code-idea")) return `${url}/code-idea`

@@ -13,10 +13,10 @@ import { useSignInModal } from "app/components/modals/SignInModal"
 async function SendCongratsEmail(session, credits) {
   //Send congrats email to the user
   const payload = {
-    name: session.user?.name,
+    name: session?.user?.name,
     credits,
     isNewPuchase: true,
-    contactEmail: session.user?.email,
+    contactEmail: session?.user?.email,
     message: "Congratulations! Your credits have been added to your account.",
   }
   await fetch("/api/email/send", {
@@ -69,7 +69,7 @@ export default function Client({
   const cardWidth = isMobile ? "w-[100%]" : "w-[47%]"
   const router = useRouter()
   //@ts-ignore
-  const clientName = session && session.user && session.user.name
+  const clientName = session && session?.user && session?.user?.name
   return (
     <>
       <ContactFormModal
