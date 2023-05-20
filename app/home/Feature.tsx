@@ -51,7 +51,6 @@ const CodeDocumentation = () => {
 }
 
 export default function Feature({ setShowSignInModal, session }) {
-  console.log("session:", session)
   const [verticalScroll, setVerticalScroll] = useState(0)
   const { scrollYProgress, scrollY, scrollX } = useScroll()
 
