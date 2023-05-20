@@ -78,5 +78,5 @@ export default async function handler(req, res) {
   </mj-body>
 </mjml>`,
   )
-  return res.send(html)
+  return res.status(200).send(html)
 }
