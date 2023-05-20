@@ -24,7 +24,10 @@ export const authOptions: AuthOptions = {
     }),
   ],
   events: {
-    async signIn({ user }) {
+    async signIn({ user, account }) {
+      console.log("user::", user)
+      console.log("account::", account)
+
       const response = await fetch(
         `${process.env.NEXTAUTH_URL}/api/email/generate-html-email`,
         {
@@ -53,20 +56,20 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     async signIn({ user, account }) {
-      return user && user?.name ? true : false
+      return true
     },
     async session({ session, user }) {
-      if (user && user.id) {
-        const newSession = {
-          ...session,
-          user: {
-            ...user,
-            id: user.id,
-          },
-        }
+      // if (user && user.id) {
+      //   const newSession = {
+      //     ...session,
+      //     user: {
+      //       ...user,
+      //       id: user.id,
+      //     },
+      //   }
 
-        return newSession
-      }
+      //   return newSession
+      // }
       return session
     },
     async jwt({ token, user, account, profile }) {
