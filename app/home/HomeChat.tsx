@@ -38,6 +38,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
+  console.log("userApiCalls", userApiCalls)
 
   const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
     tip: "Get 25 🏆 credits for free by signing in",
@@ -63,7 +64,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     }
 
     if (e.key === "Enter") {
-      if (userApiCalls >= 5 && !session) {
+      if (!session && userApiCalls >= 10) {
         setShowSignInModal(true)
         return false
       } else {
@@ -91,7 +92,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
         //Update free trial usage
         if (!session) {
           const response = await updateAnonymousUserUsage(ip)
-          setUserApiCalls(response.apiCalls)
+          setUserApiCalls(response?.apiCalls)
         }
       }
     }
