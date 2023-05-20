@@ -38,17 +38,20 @@ export const authOptions: AuthOptions = {
         },
       )
       const { html } = await response.json()
-      //@ts-ignore
-      console.log("user reg", user)
+      console.log("html response::", html)
 
-      //@ts-ignore
-      if (user && user?.registered) {
-        await sendWelcomeEmail({
-          name: user && user?.name,
-          html,
-          identifier: user && user?.email,
-          provider: { server, from },
-        })
+      try {
+        //@ts-ignore
+        if (user && user?.registered) {
+          await sendWelcomeEmail({
+            name: user && user?.name,
+            html,
+            identifier: user && user?.email,
+            provider: { server, from },
+          })
+        }
+      } catch (error) {
+        console.error("error::", error)
       }
     },
   },
