@@ -26,21 +26,20 @@ export const authOptions: AuthOptions = {
   events: {
     async signIn({ user, account }) {
       console.log("user::", user)
-
-      const response = await fetch(
-        `${process.env.NEXTAUTH_URL}/api/email/generate-html-email`,
-        {
+      const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email`
+      console.log("fetchUrl::", fetchUrl)
+      try {
+        const response = await fetch(fetchUrl, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({ user }),
-        },
-      )
-      const { html } = await response.json()
-      console.log("html response::", html)
+        })
+        console.log("Response::", response)
+        const { html } = await response.json()
+        console.log("html response::", html)
 
-      try {
         //@ts-ignore
         if (user && user?.registered) {
           await sendWelcomeEmail({
