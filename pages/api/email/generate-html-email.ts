@@ -2,6 +2,9 @@ import compileMjml from "mjml"
 
 export default async function handler(req, res) {
   console.dir("user info", req.body.user)
+  //Get name query parameter from req.body
+  const query = req.query
+  const { name } = query
 
   const html = compileMjml(
     `<mjml>
@@ -14,7 +17,7 @@ export default async function handler(req, res) {
     <mj-section>
       <mj-column>
         <mj-text font-style="normal" font-size="24px" font-weight="bold" font-family="Helvetica Neue" color="#FFF">Welcome to Code Genius!</mj-text>
-        <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5"> 👋 Hey ${req.body?.user?.name}!</mj-text>
+        <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5"> 👋 Hey ${name}!</mj-text>
         <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
           We’re so glad you’re here! Thanks for joining us. </mj-text>
         <mj-text font-style="normal" font-size="18px" font-weight="" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
