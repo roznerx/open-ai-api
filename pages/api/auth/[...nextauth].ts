@@ -36,13 +36,15 @@ export const authOptions: AuthOptions = {
         },
       )
       const { html } = await response.json()
+      //@ts-ignore
+      console.log("user reg", user)
 
       //@ts-ignore
-      if (user.registered) {
+      if (user && user.registered) {
         await sendWelcomeEmail({
-          name: user.name,
+          name: user?.name,
           html,
-          identifier: user.email,
+          identifier: user?.email,
           provider: { server, from },
         })
       }
@@ -51,7 +53,7 @@ export const authOptions: AuthOptions = {
 
   callbacks: {
     async signIn({ user, account }) {
-      return user && user.name ? true : false
+      return user && user?.name ? true : false
     },
     async session({ session, user }) {
       if (user && user.id) {
