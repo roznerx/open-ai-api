@@ -123,11 +123,7 @@ export default function Client({ session }) {
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-      {generatedMessages.length === 0 && (
-        <h2 className="mx-auto mt-2 flex w-[40%] font-sans text-3xl text-gray-200">
-          Chat Inspiration and Sample Conversations with Code Genius
-        </h2>
-      )}
+
       <Chat
         generatedResponse={generatedMessages}
         setCodeSentence={setCodeSentence}

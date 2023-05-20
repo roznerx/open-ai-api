@@ -25,9 +25,7 @@ export const authOptions: AuthOptions = {
   ],
   events: {
     async signIn({ user }) {
-      console.log("user::", user)
       const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email?name=${user.name}`
-      console.log("fetchUrl::", fetchUrl)
 
       const headers = new Headers()
       headers.append("Content-Type", "application/json")
@@ -37,9 +35,8 @@ export const authOptions: AuthOptions = {
           method: "GET",
           headers: headers,
         })
-        console.log("Response::", response)
+
         const { html } = await response.json()
-        console.log("html response::", html)
 
         //@ts-ignore
         if (user && user?.registered) {
