@@ -18,17 +18,16 @@ export default async function handler(req, res) {
           <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5"> ${name},</mj-text>
   <!--        <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5"> 
             We’re so glad you’re here! Thanks for joining us. </mj-text>-->
-          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
+          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">
             Now you have ${credits} credits available in your account, to use however you want! Feel free to explore the following Code Genius features.</mj-text>
-  
           <mj-divider border-width="1px" border-color="#292B45"></mj-divider>
         </mj-column>
       </mj-section>
   
       <mj-section>
         <mj-column>
-          <mj-text font-style="bold" font-size="20px" font-weight="bold" font-family="Helvetica Neue" color="#FFF" line-height="1"> 💡 Code Idea</mj-text>
-          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#FFF" line-height="1.5">If you need to improve a function, document code, test code or you simply want to get suggestions for a code idea, then this is feature you are looking for.</mj-text>
+          <mj-text font-style="bold" font-size="20px" padding="10px 0px 0px 0px" font-weight="bold" font-family="Helvetica Neue" color="#FFF" line-height="1" padding="0px 0px 0px 125px"> 💡 Code Idea</mj-text>
+          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">If you need to improve a function, document code, test code or you simply want to get suggestions for a code idea, then this is feature you are looking for.</mj-text>
           <mj-button background-color="#A1FFE0" color="#1D1D29" align="left" border-radius="10px" font-family="helvetica" font-weight="bold" font-size="18px">Go to code Idea</mj-button>
         </mj-column>
         <mj-column>
@@ -42,12 +41,12 @@ export default async function handler(req, res) {
       </mj-section>
       <mj-section>
         <mj-column>
-          <mj-text font-style="bold" font-size="20px" font-weight="bold" font-family="Helvetica Neue" color="#FFF" line-height="1"> 💬 Chat</mj-text>
-          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#FFF" line-height="1.5">Need some inspiration? go to Genius Code and get the answers you are looking for.</mj-text>
+          <mj-text font-style="bold" font-size="20px" font-weight="bold"  padding="10px 0px 0px 0px" font-family="Helvetica Neue" color="#FFF" line-height="1" padding="0px 0px 0px 125px"> 💬 Chat</mj-text>
+          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">Go to the Chat page and get the answers you are looking for, chat with Coge Genius.</mj-text>
           <mj-button background-color="#A1FFE0" color="#1D1D29" align="left" border-radius="10px" font-family="helvetica" font-weight="bold" font-size="18px">Go to Chat</mj-button>
         </mj-column>
         <mj-column>
-          <mj-image width="200px" src="https://www.code-genius.dev/email/code-idea.png"></mj-image>
+          <mj-image width="190px" src="https://www.code-genius.dev/email/chat-idea.png"></mj-image>
         </mj-column>
       </mj-section>
       <mj-section>
