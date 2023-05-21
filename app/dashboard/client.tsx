@@ -1,7 +1,6 @@
 "use client"
 
 import PromptCard from "app/components/shared/PromptCard"
-import useWindowSize from "hooks/use-window-size"
 import { useRouter, useSearchParams } from "next/navigation"
 import Link from "next/link"
 import React, { useEffect } from "react"
@@ -10,35 +9,7 @@ import ContactFormModal from "app/components/modals/ContactFormModal"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import GradientButton from "app/components/buttons/gradientButton"
-
-export async function SendCongratsEmail(session, credits) {
-  const userName = session?.user?.name
-  const userEmail = session?.user?.email
-  const fetchUrl = `/api/email/generate-credits-html?name=${userName}&credits=${credits}`
-
-  const headers = new Headers()
-  headers.append("Content-Type", "application/json")
-
-  const response = await fetch(fetchUrl, {
-    method: "GET",
-    headers: headers,
-  })
-  const { html } = await response.json()
-
-  //Send congrats email to the user
-  const payload = {
-    name: userName,
-    credits,
-    html,
-    isNewPuchase: true,
-    contactEmail: userEmail,
-    message: "Congratulations! Your credits have been added to your account.",
-  }
-  await fetch("/api/email/send", {
-    method: "POST",
-    body: JSON.stringify(payload),
-  })
-}
+import { SendCongratsEmail } from "utils/sendEmail"
 
 const UpgradeAccount = () => (
   <Link href="/pricing">
@@ -54,16 +25,11 @@ export default function Client({
 }) {
   const { setShowSignInModal } = useSignInModal({})
   const searchParams = useSearchParams()
-  const [emailSent, setEmailSent] = React.useState<boolean>(false)
+
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
-  console.log("emailSent", emailSent)
 
-  useEffect(() => {
-    if (!emailSent && opConfirmation && purchasedCredits) {
-      SendCongratsEmail(session, purchasedCredits)
-    }
-  }, [])
+  console.log("purchasedCredits", purchasedCredits)
 
   useEffect(() => {
     if (searchParams && searchParams.has("success")) {
