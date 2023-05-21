@@ -181,7 +181,9 @@ function htmlFromClients(params: {
 export async function SendCongratsEmail(session, credits) {
   const userName = session?.user?.name
   const userEmail = session?.user?.email
-  const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-credits-html?name=${userName}&credits=${credits}`
+  const fetchUrl = `${
+    process.env.NEXTAUTH_URL
+  }/api/email/generate-credits-html?name=${userName}&credits=${credits}?ts${new Date().getTime()}`
 
   const headers = new Headers()
   headers.append("Content-Type", "application/json")
