@@ -177,3 +177,33 @@ function htmlFromClients(params: {
 </body>
 `
 }
+
+export async function SendCongratsEmail(session, credits) {
+  const userName = session?.user?.name
+  const userEmail = session?.user?.email
+  const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-credits-html?name=${userName}&credits=${credits}`
+
+  const headers = new Headers()
+  headers.append("Content-Type", "application/json")
+
+  const response = await fetch(fetchUrl, {
+    method: "GET",
+    headers: headers,
+  })
+  const { html } = await response.json()
+
+  //Send congrats email to the user
+  const payload = {
+    name: userName,
+    credits,
+    html,
+    isNewPuchase: true,
+    contactEmail: userEmail,
+    message: "Congratulations! Your credits have been added to your account.",
+  }
+
+  await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+    method: "POST",
+    body: JSON.stringify(payload),
+  })
+}
