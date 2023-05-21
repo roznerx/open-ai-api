@@ -1,6 +1,7 @@
 import "../styles/globals.css"
 import SessionProvider from "./provider"
 import { Inter, Roboto_Mono } from "next/font/google"
+import { Metadata } from "next"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -12,6 +13,41 @@ const roboto_mono = Roboto_Mono({
   display: "swap",
   variable: "--font-roboto-mono",
 })
+
+export const metadata: Metadata = {
+  title: {
+    default: "Code Genius",
+    template: "%s | Code Genius",
+  },
+  openGraph: {
+    title: "Code Genius",
+    description:
+      "Code Genius helps developers and companies reach their goals sooner.",
+    url: "https://code-genius.dev",
+    siteName: "Code Genius ",
+    // images: [
+    //   {
+    //     url: "https://leerob.io/og.jpg",
+    //     width: 1920,
+    //     height: 1080,
+    //   },
+    // ],
+    locale: "en-US",
+    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
+  },
+  icons: {
+    shortcut: "/favicon.ico",
+  },
+}
+
 export default async function RootLayout({
   children,
 }: {

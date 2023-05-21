@@ -1,12 +1,14 @@
 import { harperClient } from "@/lib/harperdb"
-import Footer from "app/components/Footer"
-import PromptCard from "app/components/shared/PromptCard"
 import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { SendCongratsEmail } from "utils/sendEmail"
 import Client from "./client"
+
+export const metadata = {
+  title: "AI Dashboard",
+}
 
 export default async function Dashboard() {
   let harperUser

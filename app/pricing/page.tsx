@@ -2,7 +2,11 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import Client from "./client"
 import Faqs from "./faqs"
-export const revalidate = 0
+
+export const metadata = {
+  title: "Pricing",
+}
+
 export default async function Page() {
   const session = await getServerSession(authOptions)
 

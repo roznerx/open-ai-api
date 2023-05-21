@@ -4,8 +4,8 @@ import { redirect } from "next/navigation"
 import Client from "./client"
 
 export const metadata = {
-  title: "Code Genius | Code Chat",
-  description: "Code Chat is a fun way to learn to code.",
+  title: "Code Chat",
+  description: "Code Chat is a fun way to learn how to code.",
 }
 
 export default async function Page() {

@@ -3,6 +3,10 @@ import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import Container from "./container"
 
+export const metadata = {
+  title: "Code Idea",
+}
+
 export default async function Page() {
   const session = await getServerSession(authOptions)
 
