@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from "@headlessui/react"
 import Loading from "app/_loading"
-import { ArrowLeft } from "lucide-react"
+import { Cross, SidebarCloseIcon } from "lucide-react"
 import { Inter } from "next/font/google"
 import { Fragment, useState } from "react"
 
@@ -113,16 +113,18 @@ export default function ContactFormModal({
             >
               <Dialog.Panel
                 className={
-                  "w-[100%] transform overflow-hidden rounded-2xl bg-purple-500 p-4 text-left shadow-xl transition-all md:h-full md:w-[90%] lg:h-fit lg:w-[650px]"
+                  "w-[100%] transform overflow-hidden rounded-2xl bg-purple-500 p-4 text-left shadow-xl transition-all md:h-full md:w-[90%] lg:h-fit lg:w-[40%]"
                 }
               >
                 <div
                   className="relative block cursor-pointer"
                   onClick={() => setIsOpen(false)}
                 >
-                  <div className="abosolute -top-12 -left-12">
-                    <ArrowLeft size={25} color="white" />
-                  </div>
+                  <SidebarCloseIcon
+                    size={25}
+                    className="absolute right-3"
+                    color="white"
+                  />
                 </div>
                 <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:p-12">
                   {loading && !thanksMessage && (
@@ -280,21 +282,24 @@ export default function ContactFormModal({
                     </div>
                   )}
                   {thanksMessage && (
-                    <div className="flex flex-col items-center justify-center font-sans">
+                    <div className="flex w-full flex-col items-center justify-center font-sans">
                       <Dialog.Title
-                        as="h1"
-                        className=" text-2xl leading-6 text-white sm:text-left sm:text-3xl"
+                        as="h3"
+                        className="relative text-2xl leading-6 text-white sm:text-left sm:text-3xl"
                       >
                         <div className="flex flex-col items-center justify-center">
-                          <span className="">Thanks for your purchase</span>
-                          {clientName && (
+                          <span className="-mt-12 text-3xl font-semibold">
+                            Thanks for your purchase 🧞‍♂️
+                          </span>
+                          {/* {clientName && (
                             <span className="mt-2">{clientName}!</span>
-                          )}
+                          )} */}
                         </div>
                       </Dialog.Title>
                       <p className="text-sm mt-4 w-[65%] text-center text-white">
-                        You have now {purchasedCredits} credits extra to create
-                        with Code Genius.
+                        You have now{" "}
+                        <span className="text-3xl">{purchasedCredits}</span>{" "}
+                        credits extra to create with Code Genius.
                       </p>
                     </div>
                   )}
