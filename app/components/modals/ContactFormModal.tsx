@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from "@headlessui/react"
 import Loading from "app/_loading"
-import { Cross, SidebarCloseIcon } from "lucide-react"
+import { SidebarClose } from "lucide-react"
 import { Inter } from "next/font/google"
 import { Fragment, useState } from "react"
 
@@ -120,7 +120,7 @@ export default function ContactFormModal({
                   className="relative block cursor-pointer"
                   onClick={() => setIsOpen(false)}
                 >
-                  <SidebarCloseIcon
+                  <SidebarClose
                     size={25}
                     className="absolute right-3"
                     color="white"
