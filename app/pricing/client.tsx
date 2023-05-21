@@ -9,6 +9,7 @@ import tailwindConfig from "tailwind.config"
 import { Check, Loader2 } from "lucide-react"
 import { getPriceIds } from "@/lib/constants"
 import Header from "app/components/Header"
+import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import Footer from "app/components/Footer"
 
@@ -107,7 +108,7 @@ export default function Client({ session }: ClientPropTye) {
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-      <section className="grid grid-cols-1 space-y-12 pt-9 md:grid-cols-1 md:gap-6 md:gap-x-6 md:space-y-0 lg:grid-cols-2">
+      <section className="grid w-[90%] grid-cols-1 space-y-12 pt-9 md:grid-cols-1 md:gap-6 md:gap-x-6 md:space-y-0 lg:grid-cols-2">
         {/* <!-- Premium  Card --> */}
         <div className="mx-auto flex w-full max-w-lg flex-col rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:min-w-[476px]  xl:p-8">
           <Image
@@ -275,6 +276,7 @@ export default function Client({ session }: ClientPropTye) {
           Frequently asked questions
         </h2> */}
       </section>
+      <Faqs />
       <Footer session={session?.data} />
     </>
   )

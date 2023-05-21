@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import Client from "./client"
-import Faqs from "./faqs"
 
 export const metadata = {
   title: "Pricing",
@@ -23,7 +22,6 @@ export default async function Page() {
           </p>
         </div>
         <Client session={session} />
-        {/* <Faqs /> */}
       </main>
     </>
   )
