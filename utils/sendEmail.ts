@@ -1,11 +1,13 @@
 import { createTransport } from "nodemailer"
 
-const from = process.env.EMAIL_FROM
-const server = process.env.EMAIL_SERVER
+const from = process?.env?.EMAIL_FROM
+const server = process?.env?.EMAIL_SERVER
 
 export async function sendWelcomeEmail(params) {
   const {
     identifier,
+    isNewPuchase = false,
+    credits = 0,
     url = "http://localhost:3000",
     provider,
     name,
@@ -17,9 +19,11 @@ export async function sendWelcomeEmail(params) {
   const result = await transport.sendMail({
     to: identifier,
     from: provider.from,
-    subject: `🧞‍♂️ Welcome to Code Genius!`,
-    text: text({ url, host }),
+    subject: !isNewPuchase
+      ? `🧞‍♂️ Welcome to Code Genius!`
+      : `Thanks ${name}, ${credits} credits has been added to your account!`,
     html,
+    text: text({ url, host }),
   })
   const failed = result.rejected.concat(result.pending).filter(Boolean)
   if (failed.length) {

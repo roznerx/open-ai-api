@@ -9,14 +9,29 @@ import { Confetti } from "utils/confetti"
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
+import GradientButton from "app/components/buttons/gradientButton"
 
-async function SendCongratsEmail(session, credits) {
+export async function SendCongratsEmail(session, credits) {
+  const userName = session?.user?.name
+  const userEmail = session?.user?.email
+  const fetchUrl = `/api/email/generate-credits-html?name=${userName}&credits=${credits}`
+
+  const headers = new Headers()
+  headers.append("Content-Type", "application/json")
+
+  const response = await fetch(fetchUrl, {
+    method: "GET",
+    headers: headers,
+  })
+  const { html } = await response.json()
+
   //Send congrats email to the user
   const payload = {
-    name: session?.user?.name,
+    name: userName,
     credits,
+    html,
     isNewPuchase: true,
-    contactEmail: session?.user?.email,
+    contactEmail: userEmail,
     message: "Congratulations! Your credits have been added to your account.",
   }
   await fetch("/api/email/send", {
@@ -26,17 +41,8 @@ async function SendCongratsEmail(session, credits) {
 }
 
 const UpgradeAccount = () => (
-  <Link
-    href="/pricing"
-    className={`my-auto mx-2 mt-2 flex cursor-pointer flex-row
-    rounded-lg bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] p-[2px] font-mono
-  sm:items-start sm:justify-center`}
-  >
-    <div className="relative h-[48px] w-auto rounded-lg bg-purple-500">
-      <div className="text-sm px-3 py-3 text-center font-bold text-white sm:mx-auto sm:px-6">
-        Upgrade Account
-      </div>
-    </div>
+  <Link href="/pricing">
+    <GradientButton width="200px" text="Upgrade Account" />
   </Link>
 )
 
@@ -48,25 +54,30 @@ export default function Client({
 }) {
   const { setShowSignInModal } = useSignInModal({})
   const searchParams = useSearchParams()
+  const [emailSent, setEmailSent] = React.useState<boolean>(false)
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
+  console.log("emailSent", emailSent)
+
+  useEffect(() => {
+    if (!emailSent && opConfirmation && purchasedCredits) {
+      SendCongratsEmail(session, purchasedCredits)
+    }
+  }, [])
 
   useEffect(() => {
     if (searchParams && searchParams.has("success")) {
-      if (opConfirmation && purchasedCredits > 0) {
-        //THANKS MESSAGE WITH DIALOG
-        setThanksMessage(true)
-        setOpenContactForm(true)
-        //SEND EMAIL
-        SendCongratsEmail(session, purchasedCredits)
-        //SEND CONFETI
-        Confetti()
-      }
-    }
-  }, [searchParams])
+      //THANKS MESSAGE WITH DIALOG
+      setThanksMessage(true)
+      setOpenContactForm(true)
 
-  const { isMobile } = useWindowSize()
-  const cardWidth = isMobile ? "w-[100%]" : "w-[47%]"
+      //SEND CONFETI
+      Confetti()
+    }
+  }, [])
+
+  console.log("purchasedCredits", purchasedCredits)
+
   const router = useRouter()
   //@ts-ignore
   const clientName = session && session?.user && session?.user?.name
@@ -89,7 +100,6 @@ export default function Client({
         <div className="mt-12 flex w-full grow-0 flex-col items-center justify-between gap-4 pt-8 sm:mt-24 sm:flex-row sm:flex-wrap sm:justify-center">
           <PromptCard
             size="large"
-            width={cardWidth}
             hasScale
             order="order-2 sm:order-1"
             imageSrc="/dashboard/credits.svg"
@@ -102,7 +112,6 @@ export default function Client({
             size="large"
             hasScale
             order="order-1 sm:order-2"
-            width={cardWidth}
             button={<UpgradeAccount />}
             title={credits > 10 ? "Premium" : "Free"}
             text="Subscription Plan"

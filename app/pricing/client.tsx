@@ -7,7 +7,7 @@ import Image from "next/image"
 import React, { useEffect } from "react"
 import tailwindConfig from "tailwind.config"
 import { Check, Loader2 } from "lucide-react"
-import { PRICE_IDS } from "@/lib/constants"
+import { getPriceIds } from "@/lib/constants"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import Footer from "app/components/Footer"
@@ -28,6 +28,7 @@ export default function Client({ session }: ClientPropTye) {
   const [priceId, setPrecieId] = React.useState<string>("")
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
+  const PRICE_IDS = getPriceIds()
 
   useEffect(() => {
     if (credits === 50) {
@@ -69,7 +70,7 @@ export default function Client({ session }: ClientPropTye) {
         userId: session?.user?.id,
       }),
     })
-    console.log("response:", response)
+    // console.log("response:", response)
 
     const stripeSession = await response.json()
 

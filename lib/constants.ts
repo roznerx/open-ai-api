@@ -40,6 +40,18 @@ export const PRICE_IDS = {
   100: "price_1N9L7vKrxiA7kR6cauPCI281",
   150: "price_1N9L93KrxiA7kR6cJvbFzuBX",
 }
+export const TESTING_PRICE_IDS = {
+  50: "price_1N33VNKrxiA7kR6cPePbRpyr",
+  100: "price_1N36C1KrxiA7kR6cykNsuT7L",
+  150: "price_1N36YjKrxiA7kR6c2bJpd1NN",
+}
+
+export const getPriceIds = () => {
+  const isLocalHost =
+    typeof window !== "undefined" && window.location.hostname === "localhost"
+
+  return isLocalHost ? TESTING_PRICE_IDS : PRICE_IDS
+}
 
 export const LSConfig = {
   user: {

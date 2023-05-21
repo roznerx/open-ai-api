@@ -1,6 +1,7 @@
 import Image from "next/image"
 import { motion } from "framer-motion"
 import { ReactNode } from "react"
+import useWindowSize from "hooks/use-window-size"
 
 type CardProps = {
   title: string
@@ -18,7 +19,6 @@ export default function PromptCard({
   hasScale,
   title,
   button,
-  width,
   mb,
   order,
   imageSrc,
@@ -26,10 +26,14 @@ export default function PromptCard({
   onClick,
   size,
 }: CardProps) {
+  const { isMobile } = useWindowSize()
+  const cardWidth = isMobile ? "w-[100%]" : "w-[47%]"
   return (
     <div
       className={`${order} mt-4 flex ${
-        size === "large" ? width + " h-60" : "h-38 w-[100%] sm:h-52 sm:w-[23%]"
+        size === "large"
+          ? cardWidth + " h-60"
+          : "h-38 w-[100%] sm:h-60 sm:w-[23%]"
       } 
       ${mb} cursor-pointer justify-between rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
       onClick={() => {
