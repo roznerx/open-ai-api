@@ -3,6 +3,7 @@
 import GradientButton from "app/components/buttons/gradientButton"
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
+import { motion } from "framer-motion"
 import Image from "next/image"
 import React, { useEffect } from "react"
 import tailwindConfig from "tailwind.config"
@@ -108,7 +109,21 @@ export default function Client({ session }: ClientPropTye) {
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-      <section className="grid w-[90%] grid-cols-1 space-y-12 pt-9 md:grid-cols-1 md:gap-6 md:gap-x-6 md:space-y-0 lg:grid-cols-2">
+      <div className="container mx-auto my-6 px-4 pt-20 lg:px-0">
+        <motion.h2
+          whileHover={{ scale: 1.1 }}
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          className="mx-auto mb-3 w-[80%] text-4xl font-semibold text-white dark:text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight"
+        >
+          Only pay what you use
+        </motion.h2>
+        <p className="mx-auto mt-8 w-[90%] text-gray-300 sm:w-full">
+          No hidden fees. No surprise bills. No subscription bills. Only pay
+          what you use.
+        </p>
+      </div>
+      <section className="mt-10 grid w-[90%] grid-cols-1 space-y-12 pt-9 md:grid-cols-1 md:gap-6 md:gap-x-6 md:space-y-0 lg:grid-cols-2">
         {/* <!-- Premium  Card --> */}
         <div className="mx-auto flex w-full max-w-lg flex-col rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:min-w-[476px]  xl:p-8">
           <Image

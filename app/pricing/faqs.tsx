@@ -5,7 +5,7 @@ import { ChevronUp } from "lucide-react"
 
 export default function Example() {
   return (
-    <div className="mx-auto w-[90%] px-4 pt-16 sm:w-[50%]">
+    <div className="mx-auto w-[90%] px-4 pt-16 md:w-[60%] lg:w-[70%]">
       <div className="mx-auto w-full rounded-2xl bg-purple-500 p-2">
         <Disclosure>
           {({ open }) => (
