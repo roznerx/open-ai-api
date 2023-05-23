@@ -38,7 +38,6 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
-  console.log("userApiCalls", userApiCalls)
 
   const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
     tip: "Get 25 🏆 credits for free by signing in",
