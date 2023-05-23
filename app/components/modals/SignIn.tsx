@@ -102,7 +102,9 @@ export const SignInModal = ({
               }}
             >
               {signInClickedGitHub ? (
-                <p className="text-[28px] font-[700] text-white">Loading...</p>
+                <p className="font-[700] text-white sm:text-[20px]">
+                  Loading...
+                </p>
               ) : (
                 <div className="mt-1 inline-flex content-center justify-center justify-items-center gap-2">
                   <Git />

@@ -3,6 +3,7 @@ import { authOptions } from "pages/api/auth/[...nextauth]"
 import { cookies } from "next/headers"
 import Client from "./client"
 import Footer from "./components/Footer"
+import { harperClient } from "@/lib/harperdb"
 
 export const metadata = {
   title: "Create Genius Code with AI",

@@ -1,18 +1,17 @@
 "use client"
 
+import dynamic from "next/dynamic"
 import Lottie from "lottie-react"
 import Image from "next/image"
-import { useState } from "react"
-import { useMotionValueEvent, useScroll } from "framer-motion"
 
 import Suggestions from "../../animations/Code-improvements.json"
 import TestGeneration from "../../animations/generating-tests.json"
 import codeDocumentation from "../../animations/codeDocumentation.json"
 import { motion } from "framer-motion"
 
-import ShowCaseCard from "./ShowCaseCard"
 import Button from "app/components/Button"
 import Link from "next/link"
+import { Loader2 } from "lucide-react"
 
 const interactivity: any = {
   mode: "scroll",
@@ -34,6 +33,13 @@ const interactivity: any = {
     },
   ],
 }
+
+const ShowCaseCard = dynamic(() => import("./ShowCaseCard"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
+  ),
+})
+
 export const AISuggestions = () => {
   return (
     <>
@@ -51,22 +57,6 @@ const CodeDocumentation = () => {
 }
 
 export default function Feature({ setShowSignInModal, session }) {
-  const [verticalScroll, setVerticalScroll] = useState(0)
-  const { scrollYProgress, scrollY, scrollX } = useScroll()
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setVerticalScroll(latest)
-  })
-
-  const AIShowCaseImage = (
-    <Image
-      className="my-auto"
-      src="/home/AIGeneration.svg"
-      alt="AI Generation"
-      width={400}
-      height={170}
-    />
-  )
   const ChatIlustration = (
     <div className="mr-6 hidden sm:absolute sm:right-40 sm:mt-6 sm:block">
       <Image

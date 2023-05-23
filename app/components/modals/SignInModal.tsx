@@ -27,7 +27,7 @@ export function useSignInModal({
         setShowSignInModal={setShowSignInModal}
       />
     ) : null
-  }, [showSignInModal, setShowSignInModal])
+  }, [showSignInModal, tip, userHasAccount])
 
   return useMemo(
     () => ({

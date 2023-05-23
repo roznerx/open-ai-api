@@ -1,9 +1,16 @@
 "use client"
 
 import React from "react"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
-import ContactFormModal from "./modals/ContactFormModal"
+import { Loader2 } from "lucide-react"
+
+const ContactFormModal = dynamic(() => import("./modals/ContactFormModal"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
+  ),
+})
 
 export default function Footer({ session }: { session: any }) {
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
@@ -38,18 +45,21 @@ export default function Footer({ session }: { session: any }) {
           <div className="mt-8 flex sm:pt-2">
             <Link
               href="/terms-and-conditions"
+              prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
             >
               Terms
             </Link>
             <Link
               href="/privacy"
+              prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
             >
               Privacy
             </Link>
             <Link
               href="/pricing"
+              prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
             >
               Pricing

@@ -1,7 +1,6 @@
 "use client"
 
-import { Message } from "@chatscope/chat-ui-kit-react"
-import GenerateCode from "app/components/GenerateCode"
+import dynamic from "next/dynamic"
 import Image from "next/image"
 import React, {
   KeyboardEvent,
@@ -13,17 +12,33 @@ import React, {
 
 import { generateCodeWithTurbo } from "utils/generateCode"
 import { parseText } from "utils/parseText"
-import ChatContainer from "./ChatContainer"
+
 import Hero from "./Hero"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 import Modal from "app/components/Modal"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
+import { Loader2 } from "lucide-react"
 
 export interface CodeMessagesProps {
   generatedMessages: any
 }
+
+const ChatContainer = dynamic(() => import("./ChatContainer"), {
+  loading: () => (
+    <div className="mx-auto flex flex-col items-center justify-center">
+      <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
+    </div>
+  ),
+})
+const GenerateCode = dynamic(() => import("app/components/GenerateCode"), {
+  loading: () => (
+    <div className="mx-auto flex flex-col items-center justify-center">
+      <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
+    </div>
+  ),
+})
 
 export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
@@ -149,15 +164,12 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
                   if (item.hasOwnProperty("text")) {
                     return (
                       <div key={idx} className="rounded-lg bg-purple-400 p-2">
-                        <Message
+                        <p
                           style={{ borderRadius: "0px" }}
                           className="ml-2 text-left leading-7"
-                          model={{
-                            message: item.text,
-                            direction: "incoming",
-                            position: "normal",
-                          }}
-                        />
+                        >
+                          {item.text}
+                        </p>
                       </div>
                     )
                   } else {

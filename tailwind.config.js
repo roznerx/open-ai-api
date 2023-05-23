@@ -73,6 +73,7 @@ module.exports = {
         morado: "#7477FB",
         moradoCode: "#A688FF",
         mint: "#A1FFE0",
+        blue: "#2C9DC0",
         lineNumbers: "#8283AD",
         gradient: {
           dark: "#a688ff",
