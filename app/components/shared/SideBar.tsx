@@ -106,18 +106,10 @@ function SideBar({
   return !isMobile ? (
     <div
       id="sidebar"
-      className={`absolute top-0 left-0 z-50 hidden h-full w-16 translate-x-full flex-col items-start border-r-[1px] border-purple-500
-      bg-purple-800 px-2 transition-transform duration-700 sm:fixed sm:flex sm:translate-x-0`}
+      className={`absolute top-0 left-0 z-50 hidden h-full w-16 translate-x-full flex-col items-start border-r-[1px] border-purple-500 bg-purple-800
+      px-2 transition-transform duration-700 sm:fixed sm:flex sm:translate-x-0`}
     >
-      <Link href="/" className="mt-4 cursor-pointer ">
-        <div
-          className="mx-auto flex h-[40px] w-[40px] items-center justify-center rounded-md pr-2
- hover:bg-purple-500"
-        >
-          <Home width={26} height={26} className={`ml-1.5 text-white`} />
-        </div>
-      </Link>
-      <Link href="/dashboard" className="mt-7 cursor-pointer ">
+      <Link href="/dashboard" className="mt-4 cursor-pointer ">
         <div
           className="mx-auto flex h-[40px] w-[40px] items-center justify-center rounded-md pr-2
  hover:bg-purple-500"
@@ -125,9 +117,8 @@ function SideBar({
           <LayoutDashboard
             width={26}
             height={26}
-            className={`ml-1.5 text-white ${
-              pathname === "/dashboard" ? "text-mint" : ""
-            }`}
+            color={pathname === "/dashboard" ? colors.mint : "white"}
+            className={`ml-1.5 text-white `}
           />
         </div>
       </Link>
@@ -157,9 +148,8 @@ function SideBar({
           <MessageSquare
             width={26}
             height={26}
-            className={`ml-1.5  text-white ${
-              pathname === "/code-chat" ? "text-mint" : ""
-            }`}
+            color={pathname === "/code-chat" ? colors.mint : "white"}
+            className={`ml-1.5`}
           />
         </div>
         {/* <p className="font-mono text-[11px] text-white">Chat</p> */}

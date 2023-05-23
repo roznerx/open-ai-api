@@ -61,7 +61,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
         </div>
       )}
       {generatedResponse.length === 0 && (
-        <div className="mx-auto mb-20 mt-4 flex w-full flex-col items-center justify-center sm:mt-20 sm:max-w-[1000px] sm:flex-row sm:flex-wrap sm:justify-between sm:gap-1">
+        <div className="mx-auto mb-20 mt-4 flex w-full flex-col items-center justify-center sm:mt-10 sm:max-w-[1000px] sm:flex-row sm:flex-wrap sm:justify-between sm:gap-1">
           <PromptCard
             onClick={setPrompt}
             title="Create React App"
@@ -69,8 +69,8 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
           />
           <PromptCard
             onClick={setPrompt}
-            title="Create React App"
-            text="How to use the the Create React App package"
+            title="Create Next App"
+            text="How to use the the Create Next App npm package"
           />
           <PromptCard
             onClick={setPrompt}
@@ -89,8 +89,8 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
           />
           <PromptCard
             onClick={setPrompt}
-            title="Testing"
-            text="Explain how to use Jest with React Testing Library"
+            title="AWS"
+            text="Explain how to use the AWS API"
           />
           <PromptCard
             onClick={setPrompt}
@@ -99,7 +99,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
           />
           <PromptCard
             onClick={setPrompt}
-            title="Testing"
+            title="React Testing"
             text="Explain how to use Jest with React Testing Library"
           />
         </div>
