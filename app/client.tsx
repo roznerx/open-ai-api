@@ -1,7 +1,9 @@
 "use client"
 
+import dynamic from "next/dynamic"
+
 import HeaderWrapper from "./components/shared/HeaderWrapper"
-import SuperHero from "./home/SuperHero"
+
 import HomeChat from "./home/HomeChat"
 import Feature from "./home/Feature"
 

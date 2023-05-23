@@ -1,5 +1,4 @@
 import { harperClient } from "@/lib/harperdb"
-import SideBar from "app/components/shared/SideBar"
 
 import Editor from "./editor"
 

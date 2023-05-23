@@ -1,7 +1,7 @@
 "use client"
 
 import { Dialog, Transition } from "@headlessui/react"
-import Loading from "app/_loading"
+import Loading from "app/suspenseLoading"
 import { SidebarClose } from "lucide-react"
 import { Inter } from "next/font/google"
 import { Fragment, useState } from "react"

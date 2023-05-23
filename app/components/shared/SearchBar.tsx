@@ -1,6 +1,6 @@
 import { Search } from "lucide-react"
 import tailwindConfig from "tailwind.config.js"
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import UserCodeSnippets from "./UserCodeSnippets"
 
 const colors: any = tailwindConfig.theme?.extend?.colors

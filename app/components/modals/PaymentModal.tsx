@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from "@headlessui/react"
 import { ArrowLeft } from "lucide-react"
-import { Inter, Poppins } from "next/font/google"
+import { Inter } from "next/font/google"
 import { Fragment, useEffect, useState } from "react"
 
 interface Props {

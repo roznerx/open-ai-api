@@ -3,7 +3,7 @@ import Button from "app/components/Button"
 import toast, { Toaster } from "react-hot-toast"
 import useClipboard from "utils/useClipboard"
 import { useState } from "react"
-import { Copy, Save } from "lucide-react"
+import { Copy } from "lucide-react"
 
 const notify = () => toast("Code copied!")
 

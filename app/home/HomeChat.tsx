@@ -20,7 +20,6 @@ import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 import Modal from "app/components/Modal"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
-import { harperClient } from "@/lib/harperdb"
 
 export interface CodeMessagesProps {
   generatedMessages: any
@@ -39,7 +38,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
 
-  const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
+  const { SignInModal, setShowSignInModal } = useSignInModal({
     tip: "Get 25 🏆 credits for free by signing in",
   })
   const [generatedCode, setGeneratedCode] = useState<string>("")

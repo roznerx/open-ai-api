@@ -1,5 +1,3 @@
-import { useEffect, useRef } from "react"
-
 const userSnippets = [
   "Item 1",
   "Item 2",

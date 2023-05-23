@@ -4,8 +4,6 @@ import { cookies } from "next/headers"
 import Client from "./client"
 import Footer from "./components/Footer"
 
-import { harperClient } from "@/lib/harperdb"
-
 export const metadata = {
   title: "Create Genius Code with AI",
   description:
@@ -48,8 +46,4 @@ export default async function Page() {
       </main>
     </>
   )
-}
-
-{
-  /* <Subscription /> */
 }

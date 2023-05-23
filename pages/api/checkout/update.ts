@@ -1,5 +1,3 @@
-import { harperClient } from "lib/harperdb"
-
 export default async function handler(req, res) {
   //   const bodyRequest = JSON.parse(req.body)
   console.log("bodyReques::", req.body)

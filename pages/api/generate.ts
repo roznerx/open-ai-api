@@ -1,4 +1,3 @@
-import { OPEN_API } from "@/lib/constants"
 import { OpenAIStream, OpenAIStreamPayload } from "../../utils/OpenAIStream"
 
 if (!process.env.OPENAI_API_KEY) {

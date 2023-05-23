@@ -1,7 +1,7 @@
 "use client"
 
 import { Dialog, Transition } from "@headlessui/react"
-import { Rocket } from "lucide-react"
+
 import Link from "next/link"
 import { Fragment } from "react"
 type DialogProps = {

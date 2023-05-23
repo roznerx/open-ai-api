@@ -9,7 +9,6 @@ import ContactFormModal from "app/components/modals/ContactFormModal"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import GradientButton from "app/components/buttons/gradientButton"
-import { SendCongratsEmail } from "utils/sendEmail"
 
 const UpgradeAccount = () => (
   <Link href="/pricing">

@@ -1,6 +1,6 @@
 "use client"
 
-import { Code, Rocket, FileCode, CurlyBraces, Home } from "lucide-react"
+import { Code, Rocket, FileCode, CurlyBraces } from "lucide-react"
 import { useState } from "react"
 import tailwindConfig from "tailwind.config"
 

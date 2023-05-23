@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useEffect, useRef, useState } from "react"
+import React from "react"
 import { CopyBlock, dracula } from "react-code-blocks"
 import tailwindConfig from "tailwind.config.js"
 

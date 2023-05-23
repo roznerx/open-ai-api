@@ -2,7 +2,6 @@
 
 import SecondaryNavBar from "app/components/shared/SecondaryNavBar"
 import SideBar from "app/components/shared/SideBar"
-import { usePathname } from "next/navigation"
 
 export default function Navigation({
   mode,
