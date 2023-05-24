@@ -14,7 +14,7 @@ export default function Container({ session }) {
   const [openSecondayNavBar, setOpenSecondaryNavBar] = useState(false)
   const [testSelected, setTestSelected] = useState(false)
   const [improveSelected, setImproveSelected] = useState(false)
-  const [bugSelected, setBugSelected] = useState(false)
+  const [bugSelected] = useState(false)
   const [mode, setMode] = useState("smart")
   const [docSelected, setDocSelected] = useState(false)
   const [prompt, setPrompt] = useState("")

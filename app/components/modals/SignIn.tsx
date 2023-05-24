@@ -6,6 +6,7 @@ import GmailLogo from "public/icons/gmail.svg"
 import useWindowSize from "hooks/use-window-size"
 import Git from "../icons/git"
 import { useSearchParams } from "next/navigation"
+import Link from "next/link"
 
 export const SignInModal = ({
   tip,
@@ -37,18 +38,18 @@ export const SignInModal = ({
       <div className="bg-purple-800 p-4 sm:h-auto sm:w-[504.01px] sm:rounded-2xl">
         {/* INNER DIV - FLEX CONTAINER */}
         {/* TITLE + SUBTITLE */}
-        <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:p-12">
-          <div className="mt-8 flex flex-col content-center justify-start justify-items-start gap-2 sm:mb-4 sm:mt-0">
+        <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:px-12">
+          <div className="mt-8 flex flex-col items-center justify-center sm:mt-0">
             <h1
-              className={`text-center font-sans text-[28px] font-[700] text-white`}
+              className={`mt-6 text-center font-sans text-[28px] font-[700] text-white`}
             >
               {userHasAccount
-                ? "Access to your account"
-                : "To create your account, sign up now"}
+                ? "Login to your account"
+                : "Sign up now to create your account"}
             </h1>
           </div>
-          <h6 className="sm:text-xl mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200">
-            Begin your coding journey with the assistance of Code Genius
+          <h6 className="sm:text-xl 4 mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200 ">
+            Unleash your coding potential with Code Genius
           </h6>
           {tip && (
             <p className="text-md mx-auto w-full text-center font-sans text-gray-200">
@@ -61,7 +62,7 @@ export const SignInModal = ({
           <div
             className={`flex ${
               isMobile ? "flex-row" : "flex-col"
-            } mb-8 content-center justify-start justify-items-start gap-4`}
+            } mb-2 content-center justify-start justify-items-start gap-4`}
           >
             {/* GOOGLE BUTTON */}
             <button
@@ -113,6 +114,16 @@ export const SignInModal = ({
             </button>
           </div>
         </div>
+        <p className="mx-auto w-3/4 py-6 text-center text-gray-400">
+          By continuing, you agree to our{" "}
+          <Link href="/terms" className="underline">
+            Terms
+          </Link>{" "}
+          and acknowledge our{" "}
+          <Link href="/terms-and-conditions" className="underline">
+            Privacy policy
+          </Link>
+        </p>
       </div>
     </BaseModal>
   )

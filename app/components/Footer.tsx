@@ -44,6 +44,19 @@ export default function Footer({ session }: { session: any }) {
           </div>
           <div className="mt-8 flex sm:pt-2">
             <Link
+              href="/pricing"
+              prefetch={false}
+              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
+            >
+              Pricing
+            </Link>
+            <div
+              onClick={() => setOpenContactForm(true)}
+              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
+            >
+              Contact
+            </div>
+            <Link
               href="/terms-and-conditions"
               prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
@@ -57,19 +70,6 @@ export default function Footer({ session }: { session: any }) {
             >
               Privacy
             </Link>
-            <Link
-              href="/pricing"
-              prefetch={false}
-              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
-            >
-              Pricing
-            </Link>
-            <div
-              onClick={() => setOpenContactForm(true)}
-              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
-            >
-              Contact
-            </div>
           </div>
         </div>
         <div className="w-ful m-auto content-center border-t border-gray-400 py-4">

@@ -5,7 +5,7 @@
 export async function harperClient(body) {
   const requestOptions = {
     method: "POST",
-    next: { revalidate: 60 },
+    next: { revalidate: 30 },
     headers: {
       "Content-Type": "application/json",
       Authorization: `Basic ${process.env.HARPER_API_KEY}`,

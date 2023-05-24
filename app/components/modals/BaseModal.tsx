@@ -45,11 +45,11 @@ export default function BaseModal({
                 initial={{ scale: 0.95 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.95 }}
-                onMouseDown={(e) => {
-                  if (desktopModalRef.current === e.target) {
-                    setShowModal(false)
-                  }
-                }}
+                // onMouseDown={(e) => {
+                //   // if (desktopModalRef.current === e.target) {
+                //   //   setShowModal(false)
+                //   // }
+                // }}
               >
                 {children}
               </motion.div>

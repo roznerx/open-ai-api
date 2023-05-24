@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image"
 import React, {
   KeyboardEvent,
   useEffect,
@@ -8,21 +7,34 @@ import React, {
   useRef,
   useState,
 } from "react"
-
+import dynamic from "next/dynamic"
+import Image from "next/image"
 import { generateCodeWithTurbo } from "utils/generateCode"
 import { parseText } from "utils/parseText"
 
-import Hero from "./Hero"
 import ChatContainer from "./ChatContainer"
 import GenerateCode from "app/components/GenerateCode"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
-import Modal from "app/components/Modal"
+
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
+import { Loader2 } from "lucide-react"
 
 export interface CodeMessagesProps {
   generatedMessages: any
 }
+
+const Modal = dynamic(() => import("app/components/Modal"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
+  ),
+})
+
+const Hero = dynamic(() => import("./Hero"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
+  ),
+})
 
 export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
@@ -38,7 +50,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const [codeSentence, setCodeSentence] = useState("")
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
-    tip: "Get 25 🏆 credits for free by signing in",
+    tip: "Get 25 credits for free today 🏆 ",
   })
   const [generatedCode, setGeneratedCode] = useState<string>("")
   const codeMessages = useRef([
@@ -132,7 +144,8 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   }
 
   const generatedMessages = useMemo(
-    () => generatedCode.split("<>").filter((i) => i !== ""),
+    () =>
+      generatedCode.split("<>").filter((i) => i !== ""),
     [generatedCode],
   )
 
