@@ -10,7 +10,7 @@ import Header from "app/components/Header"
 
 export default function Container({ session }) {
   const [smartSelected, setSmartSelected] = useState(true)
-  const { setShowSignInModal, showSignInModal } = useSignInModal({})
+  const { setShowSignInModal } = useSignInModal({})
   const [openSecondayNavBar, setOpenSecondaryNavBar] = useState(false)
   const [testSelected, setTestSelected] = useState(false)
   const [improveSelected, setImproveSelected] = useState(false)
@@ -38,7 +38,7 @@ export default function Container({ session }) {
       }
       if (testSelected || search === "test") {
         setPrompt(
-          `Write tests for the following function: "${codeSentence}". Make sure to only output code without any additional explanation.`,
+          `Write tests for the following function: "${codeSentence}".Make sure to use Jest and React Testing Library. Make sure to only output code without any additional explanation.`,
         )
         setMode("test")
       }
@@ -68,6 +68,8 @@ export default function Container({ session }) {
     docSelected,
     codeSentence,
     improveSelected,
+    langElement,
+    lib,
   ])
 
   return (
@@ -82,12 +84,10 @@ export default function Container({ session }) {
         setImproveSelected={setImproveSelected}
         smartSelected={smartSelected}
         testSelected={testSelected}
-        bugSelected={bugSelected}
         docSelected={docSelected}
         setDocSelected={setDocSelected}
         setSmartSelected={setSmartSelected}
         setTestSelected={setTestSelected}
-        setBugSelected={setBugSelected}
       />
       <Client
         userCredits={userCredits}
@@ -97,7 +97,6 @@ export default function Container({ session }) {
         lib={lib}
         setLangElement={setLangElement}
         langElement={langElement}
-        bugSelected={bugSelected}
         improveSelected={improveSelected}
         docSelected={docSelected}
         smartSelected={smartSelected}

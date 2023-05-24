@@ -1,6 +1,5 @@
 "use client"
 
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import React, {
   KeyboardEvent,
@@ -14,31 +13,16 @@ import { generateCodeWithTurbo } from "utils/generateCode"
 import { parseText } from "utils/parseText"
 
 import Hero from "./Hero"
-
+import ChatContainer from "./ChatContainer"
+import GenerateCode from "app/components/GenerateCode"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 import Modal from "app/components/Modal"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
-import { Loader2 } from "lucide-react"
 
 export interface CodeMessagesProps {
   generatedMessages: any
 }
-
-const ChatContainer = dynamic(() => import("./ChatContainer"), {
-  loading: () => (
-    <div className="mx-auto flex flex-col items-center justify-center">
-      <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
-    </div>
-  ),
-})
-const GenerateCode = dynamic(() => import("app/components/GenerateCode"), {
-  loading: () => (
-    <div className="mx-auto flex flex-col items-center justify-center">
-      <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
-    </div>
-  ),
-})
 
 export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
@@ -47,7 +31,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     existingCredits === 0 ? true : false,
   )
   const userId = session && session.user?.id
-  const [loading, setLoading] = useState(false)
+
   const [userApiCalls, setUserApiCalls] = useState<number>(apiCalls)
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
@@ -94,8 +78,8 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
         ]
         setCodeSentence("")
         generateCodeWithTurbo(
+          reader,
           codeMessages,
-          setLoading,
           setReader,
           setGeneratedCode,
           userId,
@@ -132,8 +116,8 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     ]
     setCodeSentence("")
     generateCodeWithTurbo(
+      reader,
       codeMessages,
-      setLoading,
       setReader,
       setGeneratedCode,
       userId,

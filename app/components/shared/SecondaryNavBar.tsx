@@ -16,8 +16,6 @@ export default function SecondaryNavBar({
   setSmartSelected,
   docSelected,
   setDocSelected,
-  bugSelected,
-  setBugSelected,
   testSelected,
   setTestSelected,
 }) {
@@ -31,8 +29,7 @@ export default function SecondaryNavBar({
       className={`${isCodeModeSelected ? "hidden" : "block"}
       ${sidebarOpen ? "block" : "hidden"}
       absolute top-0 left-[64px] z-20 h-auto min-h-screen flex-col
-      items-start
-      bg-purple-800 px-5 transition-transform duration-700
+      items-start bg-purple-800 pl-0 transition-transform duration-700
         sm:flex sm:translate-x-0`}
     >
       {/* <SearchBar
@@ -44,63 +41,63 @@ export default function SecondaryNavBar({
       /> */}
 
       <div
-        className="mt-12 inline-flex h-12"
+        className="mt-3 inline-flex"
         onClick={() => {
           setSidebarOpen(!sidebarOpen)
           setOpenSecondayNavBar((prev) => !prev)
           if (!smartSelected) {
             setSmartSelected(!smartSelected)
           }
-          setBugSelected(false)
           setTestSelected(false)
           setDocSelected(false)
           setImproveSelected(false)
         }}
       >
-        <Code
-          size={26}
-          color={smartSelected ? colors.mint : "white"}
-          className="cursor-pointer border-purple-300"
-        />
-        <p
-          className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
-            smartSelected ? "text-mint" : "text-white"
-          } -mt-1 h-12 cursor-pointer rounded-md p-2 hover:bg-purple-500`}
-        >
-          Code Suggestions
-        </p>
+        <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
+          <Code
+            size={26}
+            color={smartSelected ? colors.mint : "white"}
+            className="cursor-pointer border-purple-300"
+          />
+          <p
+            className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
+              smartSelected ? "text-mint" : "text-white"
+            } `}
+          >
+            Code Suggestions
+          </p>
+        </div>
       </div>
       <div
-        className="mt-0 inline-flex h-12"
+        className="mt-0 inline-flex "
         onClick={() => {
           setSidebarOpen(!sidebarOpen)
           setOpenSecondayNavBar((prev) => !prev)
           if (!improveSelected) {
             setImproveSelected(!improveSelected)
           }
-          setBugSelected(false)
           setSmartSelected(false)
           setTestSelected(false)
           setDocSelected(false)
         }}
       >
-        <Rocket
-          color={improveSelected ? colors.mint : "white"}
-          size={26}
-          className="mt-2 cursor-pointer border-purple-300 "
-        />
-        <p
-          className={`ml-4 h-12 w-[200px] ${
-            sidebarOpen ? "block" : "hidden"
-          }  ${
-            improveSelected ? "text-mint" : "text-white"
-          } cursor-pointer rounded-md pt-2 pl-2 hover:bg-purple-500`}
-        >
-          Improve Code
-        </p>
+        <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
+          <Rocket
+            color={improveSelected ? colors.mint : "white"}
+            size={26}
+            className="cursor-pointer border-purple-300 "
+          />
+          <p
+            className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"}  ${
+              improveSelected ? "text-mint" : "text-white"
+            }`}
+          >
+            Improve Code
+          </p>
+        </div>
       </div>
       <div
-        className="mt-2 inline-flex h-12"
+        className="mt-0 inline-flex"
         onClick={() => {
           setSidebarOpen(!sidebarOpen)
           setOpenSecondayNavBar((prev) => !prev)
@@ -108,26 +105,23 @@ export default function SecondaryNavBar({
             setTestSelected(!testSelected)
           }
           setSmartSelected(false)
-          setBugSelected(false)
           setDocSelected(false)
           setImproveSelected(false)
         }}
       >
-        <CurlyBraces
-          size={26}
-          color={testSelected ? colors.mint : "white"}
-          className="mt-2 cursor-pointer border-purple-300 "
-        />
-        <p
-          className={`ml-4 h-12 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
-            testSelected ? "text-mint" : "text-white"
-          } cursor-pointer rounded-md p-2 hover:bg-purple-500`}
-        >
-          Test Generation
-        </p>
+        <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
+          <CurlyBraces size={26} color={testSelected ? colors.mint : "white"} />
+          <p
+            className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
+              testSelected ? "text-mint" : "text-white"
+            } `}
+          >
+            Test Generation
+          </p>
+        </div>
       </div>
       <div
-        className="mt-2 inline-flex h-12"
+        className="mt-0 inline-flex "
         onClick={() => {
           setSidebarOpen(!sidebarOpen)
           setOpenSecondayNavBar((prev) => !prev)
@@ -135,25 +129,20 @@ export default function SecondaryNavBar({
             setDocSelected(!docSelected)
           }
           setSmartSelected(false)
-          setBugSelected(false)
           setTestSelected(false)
           setImproveSelected(false)
         }}
       >
-        <FileCode
-          size={26}
-          color={docSelected ? colors.mint : "white"}
-          className="mt-2 cursor-pointer border-purple-300"
-        />
-        <p
-          className={`ml-4 h-12 w-[200px] ${
-            docSelected ? "text-mint" : "text-white"
-          } ${
-            sidebarOpen ? "block" : "hidden"
-          } cursor-pointer rounded-md p-2 hover:bg-purple-500 `}
-        >
-          Docs Generation
-        </p>
+        <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
+          <FileCode size={26} color={docSelected ? colors.mint : "white"} />
+          <p
+            className={`ml-4 w-[200px] ${
+              docSelected ? "text-mint" : "text-white"
+            } ${sidebarOpen ? "block" : "hidden"} `}
+          >
+            Docs Generation
+          </p>
+        </div>
       </div>
     </div>
   )

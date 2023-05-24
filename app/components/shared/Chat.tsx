@@ -14,7 +14,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
     if (prompt !== "") {
       setCodeSentence(prompt)
     }
-  }, [prompt])
+  }, [prompt, setCodeSentence])
 
   const LiveDemoMessages: React.FC<CodeMessagesProps> = ({
     generatedMessages,

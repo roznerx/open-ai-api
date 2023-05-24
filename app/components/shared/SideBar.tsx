@@ -46,27 +46,26 @@ function SideBar({
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
-  const selectedMode = () => {
-    switch (mode) {
-      case "smart":
-        return "Smart"
-      case "improve":
-        return "Improve"
-      case "test":
-        return "Test"
-      case "docs":
-        return "Documentation"
-      default:
-        return "Smart"
-    }
-  }
+  // const selectedMode = () => {
+  //   switch (mode) {
+  //     case "smart":
+  //       return "Smart"
+  //     case "improve":
+  //       return "Improve"
+  //     case "test":
+  //       return "Test"
+  //     case "docs":
+  //       return "Documentation"
+  //     default:
+  //       return "Smart"
+  //   }
+  // }
   const CodeIdeaMode = ({ size }) => {
     if (mode === "smart") {
       return (
         <Code
           size={size}
           color={pathname === "/code-idea" ? colors.mint : "white"}
-          className="ml-1.5 cursor-pointer border-purple-300 "
         />
       )
     } else if (mode === "test") {
@@ -74,7 +73,6 @@ function SideBar({
         <CurlyBraces
           size={size}
           color={pathname === "/code-idea" ? colors.mint : "white"}
-          className="ml-1.5 cursor-pointer border-purple-300 sm:mt-2 "
         />
       )
     } else if (mode === "improve") {
@@ -82,7 +80,6 @@ function SideBar({
         <Rocket
           size={size}
           color={pathname === "/code-idea" ? colors.mint : "white"}
-          className="ml-1.5 cursor-pointer border-purple-300 sm:mt-2 "
         />
       )
     } else if (mode === "docs") {
@@ -90,7 +87,6 @@ function SideBar({
         <FileCode
           size={size}
           color={pathname === "/code-idea" ? colors.mint : "white"}
-          className="ml-1.5 cursor-pointer border-purple-300 sm:mt-2"
         />
       )
     }
@@ -106,22 +102,18 @@ function SideBar({
   return !isMobile ? (
     <div
       id="sidebar"
-      className={`absolute top-0 left-0 z-50 hidden h-full w-16 translate-x-full flex-col items-start border-r-[1px] border-purple-500 bg-purple-800
-      px-2 transition-transform duration-700 sm:fixed sm:flex sm:translate-x-0`}
+      className={`absolute top-0 left-0 z-50 hidden h-full w-16 translate-x-full flex-col items-center border-r-[1px] border-purple-500 bg-purple-800
+      transition-transform duration-700 sm:fixed sm:flex sm:translate-x-0`}
     >
-      <Link href="/dashboard" className="mt-4 cursor-pointer ">
-        <div
-          className="mx-auto flex h-[40px] w-[40px] items-center justify-center rounded-md pr-2
- hover:bg-purple-500"
-        >
+      <div className="mt-3 flex h-12 w-full items-center justify-center rounded-md hover:bg-purple-500">
+        <Link href="/dashboard" className="cursor-pointer">
           <LayoutDashboard
             width={26}
             height={26}
             color={pathname === "/dashboard" ? colors.mint : "white"}
-            className={`ml-1.5 text-white `}
           />
-        </div>
-      </Link>
+        </Link>
+      </div>
 
       <div
         onClick={() => {
@@ -129,31 +121,21 @@ function SideBar({
             setOpenSecondaryNavBar((prevState) => !prevState)
           }
         }}
-        className="mt-8 cursor-pointer"
+        className="mt-4 flex h-12 w-full items-center justify-center rounded-md hover:bg-purple-500"
       >
-        <Link href="/code-idea" className="mt-7 cursor-pointer">
-          <div
-            className="mx-auto flex h-[40px] w-[40px] items-center justify-center rounded-md pr-2
- hover:bg-purple-500 "
-          >
-            <CodeIdeaMode size={26} />
-          </div>
+        <Link href="/code-idea" className="cursor-pointer">
+          <CodeIdeaMode size={26} />
         </Link>
       </div>
-      <Link href="/code-chat" className="mt-8 cursor-pointer">
-        <div
-          className="mx-auto flex h-[40px] w-[40px] items-center justify-center rounded-md 
- pr-2 hover:bg-purple-500"
-        >
+
+      <div className="mt-4 flex h-12 w-full items-center justify-center rounded-md hover:bg-purple-500">
+        <Link href="/code-chat" className="cursor-pointer">
           <MessageSquare
-            width={26}
-            height={26}
+            size={26}
             color={pathname === "/code-chat" ? colors.mint : "white"}
-            className={`ml-1.5`}
           />
-        </div>
-        {/* <p className="font-mono text-[11px] text-white">Chat</p> */}
-      </Link>
+        </Link>
+      </div>
       {/* <div className="mt-8 cursor-pointer">
         <SearchBar
           userIsSearching={userIsSearching}
@@ -263,8 +245,10 @@ function SideBar({
           } `}
         >
           <div className="mt-5 ml-4 inline-flex h-[50px] items-start justify-start rounded-md pr-2">
-            <CodeIdeaMode size={26} />
-            <p className="text-sm ml-4 pt-0 text-white">{selectedMode()}</p>
+            <div className="ml-1">
+              <CodeIdeaMode size={26} />
+            </div>
+            {/* <p className="text-sm ml-4 pt-0 text-white">{selectedMode()}</p> */}
             <div
               className={`ml-2 flex gap-4 ${
                 pathname === "/code-idea" ? "block" : "hidden"

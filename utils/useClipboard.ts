@@ -21,6 +21,7 @@ const useClipboard = (
   const copyText = (el: HTMLElement | null, text: string) => {
     if (!el || !text) return
     const selection = window.getSelection()
+    console.log("selection:", selection)
     if (!selection) return
 
     el.style.whiteSpace = "pre"

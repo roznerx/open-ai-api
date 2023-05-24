@@ -13,14 +13,12 @@ export default function Navigation({
   setImproveSelected,
   testSelected,
   setTestSelected,
-  bugSelected,
-  setBugSelected,
   docSelected,
   setDocSelected,
   setSmartSelected,
 }) {
   const isCodeModeSelected =
-    smartSelected | improveSelected | testSelected | bugSelected | docSelected
+    smartSelected | improveSelected | testSelected | docSelected
 
   return (
     <>
@@ -44,8 +42,6 @@ export default function Navigation({
           setSmartSelected={setSmartSelected}
           testSelected={testSelected}
           setTestSelected={setTestSelected}
-          bugSelected={bugSelected}
-          setBugSelected={setBugSelected}
           docSelected={docSelected}
           setDocSelected={setDocSelected}
         />

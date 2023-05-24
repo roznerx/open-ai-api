@@ -1,14 +1,13 @@
 import { updateApiCallsAndCredits } from "./helpers"
 
 export async function generateCodeWithTurbo(
+  reader,
   codeMessages,
-  setLoading,
   setReader,
   setGeneratedCode,
   userId = null,
   setCreditsModaIsOpen,
 ) {
-  setLoading(true)
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
     headers: {
@@ -20,7 +19,6 @@ export async function generateCodeWithTurbo(
   })
 
   if (!response.ok) {
-    setLoading(false)
     return
   }
 
@@ -28,32 +26,31 @@ export async function generateCodeWithTurbo(
   const data = response.body
 
   if (!data) {
-    setLoading(false)
     return
   }
 
-  const reader = data.getReader()
-  setReader(reader)
+  const newReader = data.getReader()
+  if (!reader) {
+    setReader(newReader)
+  }
   const decoder = new TextDecoder()
   let done = false
   let tokensCount = 0
   try {
     while (!done) {
-      const { value, done: doneReading } = await reader.read()
+      const { value, done: doneReading } = await newReader.read()
       done = doneReading
 
       let chunkValue = decoder.decode(value)
 
       setGeneratedCode((prev) => prev + chunkValue)
       if (done) {
-        setGeneratedCode((prev) => prev + "<>")
-        setLoading(false)
+        setGeneratedCode((prev) => prev)
       }
     }
   } catch (error) {
     return `There was an error with your request ${error}`
   } finally {
-    setLoading(false)
     setReader(null)
     //✨ Make some credits update Magic ✨
     if (userId) {
@@ -126,9 +123,9 @@ export async function generateCode(
     return
   }
 
-  const reader = data.getReader()
+  const newReader = data.getReader()
   //Set Reader
-  setReader(reader)
+  setReader(newReader)
   //Text decoder
   const decoder = new TextDecoder()
 
@@ -136,7 +133,7 @@ export async function generateCode(
   let tokensCount = 0
   try {
     while (!done) {
-      const { value, done: doneReading } = await reader.read()
+      const { value, done: doneReading } = await newReader.read()
       done = doneReading
       tokensCount++
       let chunkValue = decoder.decode(value)

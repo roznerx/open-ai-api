@@ -14,7 +14,11 @@ const HeaderWrapper = dynamic(
   () => import("./components/shared/HeaderWrapper"),
   {
     loading: () => (
-      <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
+      <Loader2
+        size={20}
+        color="white"
+        className="hidden h-8 w-8 animate-spin"
+      />
     ),
   },
 )

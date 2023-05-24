@@ -5,7 +5,7 @@ import { useState, useCallback, useMemo } from "react"
 const SignInModal = dynamic(
   () => import("./SignIn").then((mod) => mod.SignInModal),
   {
-    loading: () => <p>Loading...</p>,
+    loading: () => <p className="hidden">Loading...</p>,
   },
 )
 

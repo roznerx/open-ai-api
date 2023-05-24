@@ -24,37 +24,43 @@ export const authOptions: AuthOptions = {
     }),
   ],
   events: {
-    async signIn({ user }) {
-      const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email?name=${user.name}`
+    async signIn({ user, profile }) {
+      console.log("profile:", profile)
 
-      const headers = new Headers()
-      headers.append("Content-Type", "application/json")
+      //@ts-ignore
+      if (user && user?.registered) {
+        const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email?name=${user.name}`
 
-      try {
-        const response = await fetch(fetchUrl, {
-          method: "GET",
-          headers: headers,
-        })
+        const headers = new Headers()
+        headers.append("Content-Type", "application/json")
 
-        const { html } = await response.json()
+        try {
+          const response = await fetch(fetchUrl, {
+            method: "GET",
+            headers: headers,
+          })
 
-        //@ts-ignore
-        if (user && user?.registered) {
+          const { html } = await response.json()
+
+          //@ts-ignore
+
           await sendWelcomeEmail({
             name: user && user?.name,
             html,
             identifier: user && user?.email,
             provider: { server, from },
           })
+        } catch (error) {
+          console.error("error::", error)
         }
-      } catch (error) {
-        console.error("error::", error)
       }
+      return
     },
   },
 
   callbacks: {
-    async signIn({ user, account }) {
+    async signIn({ user, account, profile }) {
+      console.log("profile:", profile)
       return user || account ? true : false
     },
     async session({ session, user }) {

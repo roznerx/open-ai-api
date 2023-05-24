@@ -2,7 +2,6 @@ import { harperClient } from "lib/harperdb"
 
 export default async function handler(req, res) {
   const bodyRequest = req.body
-  console.log("bodyRequest:", bodyRequest)
 
   const existingUser = await harperClient({
     operation: "sql",

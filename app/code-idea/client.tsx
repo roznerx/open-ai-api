@@ -6,7 +6,7 @@ import "prismjs/components/prism-clike"
 import "prismjs/components/prism-javascript"
 
 import Modal from "app/components/Modal"
-
+import tailwindConfig from "tailwind.config.js"
 import GenerateCode from "app/components/GenerateCode"
 import { ChangeEvent, useEffect, useRef, useState } from "react"
 import { ElementType } from "app/components/DropDown"
@@ -15,9 +15,12 @@ import { fetchWithTurbo } from "utils/generateCode"
 import { getCodeGeniusPlaceHolder } from "utils/strings"
 import { updateApiCallsAndCredits } from "utils/helpers"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
+import { Code, CurlyBraces, FileCode, Rocket } from "lucide-react"
 
 let libElements: ElementType[] = ["React", "Vue", "Angular"]
 let langElements: ElementType[] = ["Typescript", "Javascript"]
+
+const colors: any = tailwindConfig.theme?.extend?.colors
 
 export default function Client({
   userId,
@@ -29,7 +32,6 @@ export default function Client({
   langElement,
   codeSentence,
   testSelected,
-  bugSelected,
   smartSelected,
   docSelected,
   setLangElement,
@@ -57,12 +59,7 @@ export default function Client({
         behavior: "smooth",
       })
     }
-  }, [
-    chatContainerRef,
-    chatContainerRef.current,
-    chatContainerRef.current?.scrollHeight,
-    scrollHeight,
-  ])
+  }, [chatContainerRef, chatContainerRef?.current?.scrollHeight, scrollHeight])
 
   useEffect(() => {
     const editorPanel = document.getElementById("code-editor")
@@ -213,39 +210,31 @@ export default function Client({
   function getCodeGeniusMode(): import("react").ReactNode {
     if (smartSelected) {
       return (
-        <>
-          <span>
-            Share your code idea and let Code Genius provide you with{" "}
-            <span className="text-mint">suggestions</span>
-          </span>
-        </>
+        <div className="inline-flex">
+          <Code size={18} color={colors.mint} className="mr-1.5  " />
+          <span className="text-mint">Code suggestion mode</span>{" "}
+        </div>
       )
     } else if (testSelected) {
       return (
-        <>
-          <span>
-            Need <span className="text-mint">unit tests?</span> Paste your code
-            and let Code Genius do the work.
-          </span>
-        </>
+        <div className="inline-flex">
+          <CurlyBraces size={18} color={colors.mint} className="mr-1.5  " />
+          <span className="text-mint">Test generation mode</span>{" "}
+        </div>
       )
     } else if (improveSelected) {
       return (
-        <>
-          <span>
-            Generate better code with Code Genius - paste your function now and
-            get code <span className="text-mint">improvements</span>
-          </span>
-        </>
+        <div className="inline-flex">
+          <Rocket size={18} color={colors.mint} className="mr-1.5  " />
+          <span className="text-mint">Improvements mode</span>{" "}
+        </div>
       )
     } else if (docSelected) {
       return (
-        <>
-          <span>
-            Paste your code and Code Genius will generate{" "}
-            <span className="text-mint">documentation</span> for it
-          </span>
-        </>
+        <div className="inline-flex">
+          <FileCode size={18} color={colors.mint} className="mr-1.5  " />
+          <span className="text-mint">Documentation mode</span>{" "}
+        </div>
       )
     }
   }
@@ -282,17 +271,17 @@ export default function Client({
       <div
         ref={chatContainerRef}
         id="container"
-        className="ml-0 mt-20 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
+        className="ml-0 mt-16 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
       >
-        <div className="w-full sm:mr-3">
-          <div className="sm:text-1xl left-0 mx-auto mb-6 mt-10 w-full border-b-[1px] border-gray-400 px-2 py-4 pb-3 text-center font-sans text-[13px] uppercase text-purple-300 sm:mr-8 sm:mt-6 sm:ml-0 sm:pt-2 ">
+        <div className="w-full">
+          <div className="sm:text-1xl  mx-auto w-full border-b-[1px] border-gray-400  text-center text-[13px] uppercase ">
             {getCodeGeniusMode()}
           </div>
           <Editor
             padding={20}
             textareaId="code-editor"
             placeholder={placeHolderText}
-            className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
+            className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
             value={codeSentence}
             highlight={(code) => highlight(code, languages.js)}
             onValueChange={(code) => setCodeSentence(code)}
