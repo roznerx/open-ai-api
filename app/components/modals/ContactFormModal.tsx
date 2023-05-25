@@ -183,7 +183,7 @@ export default function ContactFormModal({
                                 htmlFor="workEmail"
                                 className="font-sans text-[13px] text-purple-300"
                               >
-                                Work E-mail
+                                Email
                               </label>
                               <input
                                 name="workEmail"
@@ -202,7 +202,7 @@ export default function ContactFormModal({
                                 htmlFor="howCanWeHelp"
                                 className="font-sans text-[13px] text-purple-300"
                               >
-                                How we can help?
+                                Message
                               </label>
                               <textarea
                                 name="howCanWeHelp"

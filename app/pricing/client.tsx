@@ -1,6 +1,5 @@
 "use client"
 
-import GradientButton from "app/components/buttons/gradientButton"
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
 import { motion } from "framer-motion"
@@ -77,7 +76,7 @@ export default function Client({ session }: ClientPropTye) {
     const stripeSession = await response.json()
 
     // setLoadingStripe(false)
-    console.log("stripeSession", stripeSession)
+
     if (stripeSession) {
       await fetch("/api/checkout/save", {
         method: "POST",
@@ -109,7 +108,7 @@ export default function Client({ session }: ClientPropTye) {
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-      <div className="container mx-auto my-6 px-4 pt-20 lg:px-0">
+      <div className=" mx-auto my-6 px-4 pt-20">
         <motion.h2
           whileHover={{ scale: 1.1 }}
           initial={{ opacity: 0 }}
@@ -118,180 +117,183 @@ export default function Client({ session }: ClientPropTye) {
         >
           Only pay what you use
         </motion.h2>
-        <p className="mx-auto mt-8 w-[90%] text-gray-300 sm:w-full">
-          No hidden fees. No surprise bills. No subscription bills. Only pay
-          what you use.
+        <p className="mx-auto mt-8 w-[80%] text-gray-300 sm:w-full">
+          No hidden fees. No surprise bills. No subscription bills.{" "}
+          <span className="font-medium text-gray-200">
+            {" "}
+            Only pay what you use.
+          </span>
         </p>
-      </div>
-      <section className="mt-10 grid w-[90%] grid-cols-1 space-y-12 pt-9 md:grid-cols-1 md:gap-6 md:gap-x-6 md:space-y-0 lg:grid-cols-2">
-        {/* <!-- Premium  Card --> */}
-        <div className="mx-auto flex w-full max-w-lg flex-col rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:min-w-[476px]  xl:p-8">
-          <Image
-            src="/icons/premium.svg"
-            alt="Premium membership"
-            width={40}
-            height={40}
-            className="mx-auto"
-          />
-          <h3 className="my-2 mb-2 text-2xl font-semibold text-mint">
-            Premium
-          </h3>
-          <div className="my-4 flex items-center justify-center">
-            <span className="text-center text-5xl font-extrabold">
-              $ {getCreditPrice()} USD
-            </span>
-          </div>
-          <div className="my-4 mx-auto">
-            <button
-              onClick={() => setCredits(50)}
-              className={`text-xs leading-sm active:bg-bg-morado ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border 
+
+        <section className="mt-12 flex w-full flex-col items-center justify-center gap-6 sm:flex-row">
+          {/* <!-- Premium  Card --> */}
+          <div className="w-full rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:w-[476px] ">
+            <Image
+              src="/icons/premium.svg"
+              alt="Premium membership"
+              width={40}
+              height={40}
+              className="mx-auto"
+            />
+            <h3 className="my-2 mb-2 text-2xl font-semibold text-mint">
+              Premium
+            </h3>
+            <div className="my-4 flex items-center justify-center">
+              <span className="text-center text-5xl font-semibold">
+                $ {getCreditPrice()} USD
+              </span>
+            </div>
+            <div className="my-4 mx-auto">
+              <button
+                onClick={() => setCredits(50)}
+                className={`text-xs leading-sm active:bg-bg-morado ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border 
                   hover:border-morado  hover:bg-purple-500 focus:bg-morado ${
                     credits === 50
                       ? "border-morado bg-morado"
                       : "bg-transparent"
                   } `}
-            >
-              50
-            </button>
-            <button
-              onClick={() => setCredits(100)}
-              className={`text-xs leading-sm hover:bg-purple-1000 ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border hover:border-morado focus:bg-morado  ${
-                credits === 100 ? "border-morado bg-morado" : "bg-transparent"
-              } `}
-            >
-              100
-            </button>
-            <button
-              onClick={() => setCredits(150)}
-              className={`text-xs leading-sm ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border hover:border-morado hover:bg-purple-500 focus:bg-morado ${
-                credits === 150 ? "border-morado bg-morado" : "bg-transparent"
-              } `}
-            >
-              150
-            </button>
-          </div>
-          <div
-            className={`my-4 mx-auto mb-4 mt-2 flex w-[80%] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] p-[2px] font-mono
-    sm:items-start sm:justify-center`}
-          >
-            <div
-              onClick={submitPaymentInstruction}
-              className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700"
-            >
-              <button
-                type="submit"
-                className="text-sm  px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
               >
-                {loadingStripe ? (
-                  <div className="flex h-8">
-                    <Loader2 className="mt-[2px] animate-spin" size={20} />
-                    <span className="ml-2">Redirecting..</span>
-                  </div>
-                ) : (
-                  "Buy Credits"
-                )}
+                50
+              </button>
+              <button
+                onClick={() => setCredits(100)}
+                className={`text-xs leading-sm hover:bg-purple-1000 ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border hover:border-morado focus:bg-morado  ${
+                  credits === 100 ? "border-morado bg-morado" : "bg-transparent"
+                } `}
+              >
+                100
+              </button>
+              <button
+                onClick={() => setCredits(150)}
+                className={`text-xs leading-sm ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border hover:border-morado hover:bg-purple-500 focus:bg-morado ${
+                  credits === 150 ? "border-morado bg-morado" : "bg-transparent"
+                } `}
+              >
+                150
               </button>
             </div>
-          </div>
+            <div
+              className={`my-4 mx-auto mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono hover:font-semibold
+    sm:items-start sm:justify-center`}
+            >
+              <div
+                onClick={submitPaymentInstruction}
+                className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-purple-500"
+              >
+                <button
+                  type="submit"
+                  className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
+                >
+                  {loadingStripe ? (
+                    <div className="flex h-8">
+                      <Loader2 className="mt-[2px] animate-spin" size={20} />
+                      <span className="ml-2">Redirecting..</span>
+                    </div>
+                  ) : (
+                    "Get More Credits"
+                  )}
+                </button>
+              </div>
+            </div>
 
-          {/* <!-- List --> */}
-          <ul
-            role="list"
-            className="my-6 flex flex-col items-center space-y-4 sm:ml-11 sm:items-start "
-          >
-            <li className="flex w-64 items-center  space-x-3">
-              {/* <!-- Icon --> */}
-              <Check color={colors.mint} size={20} />
-              <span>Individual configuration</span>
-            </li>
-            <li className="flex w-64 items-center space-x-3">
-              <Check color={colors.mint} size={20} />
-              <span>
-                Team size: <span className="font-semibold">1 developer</span>
-              </span>
-            </li>
-            <li className="flex w-64 items-center space-x-3">
-              <Check color={colors.mint} size={20} />
-              <span>
-                Premium support: <span className="font-semibold">6 months</span>
-              </span>
-            </li>
-            <li className="flex w-64 items-center space-x-3">
-              <Check color={colors.mint} size={20} />
-              <span>
-                Free updates: <span className="font-semibold">6 months</span>
-              </span>
-            </li>
-          </ul>
-        </div>
-        {/* <!-- Enterprice Card --> */}
-        <div className="mx-auto flex w-full max-w-lg flex-col rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:min-w-[476px] xl:p-8">
-          <Image
-            src="/icons/enterprice.svg"
-            alt="Premium membership"
-            width={40}
-            height={40}
-            className="mx-auto"
-          />
-          <h3
-            className={`mt-2 mb-4 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
-          >
-            Enterprise
-          </h3>
-          <div className="my-4 flex flex-col items-center justify-center">
-            <span className="mr-2 text-center text-5xl font-extrabold">
-              $ 19.99 USD
-            </span>
-            <span className="text-sm mt-7 text-center">
-              Per user, per month.
-            </span>
+            {/* <!-- List --> */}
+            <ul
+              role="list"
+              className="my-6 ml-20 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
+            >
+              <li className="flex w-full space-x-3 self-center">
+                {/* <!-- Icon --> */}
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span> Smart suggestions</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Test Generation</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Code Improvemts</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Docs Generations</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Code Genius Chat</span>
+              </li>
+            </ul>
           </div>
-          <GradientButton
-            text="Contact Us"
-            onClick={() => setOpenContactForm(true)}
-          />
-
-          <ul
-            role="list"
-            className="my-6 flex flex-col items-center space-y-4 text-left sm:ml-11 sm:items-start"
-          >
-            <li className="flex w-64 items-center  space-x-3">
-              <Check color={colors.mint} size={20} />
-              <span className="font-bold">Everything in Premium plus:</span>
-            </li>
-            <li className="flex w-64 items-center  space-x-3">
-              {/* <!-- Icon --> */}
-              <Check color={colors.mint} size={20} />
-              <span>Individual configuration</span>
-            </li>
-            <li className="flex w-64 items-center space-x-3">
-              <Check color={colors.mint} size={20} />
-              <span>
-                Team size: <span className="font-semibold">1 developer</span>
+          {/* <!-- Enterprice Card --> */}
+          <div className="w-full rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:w-[476px] ">
+            <Image
+              src="/icons/enterprice.svg"
+              alt="Premium membership"
+              width={40}
+              height={40}
+              className="mx-auto"
+            />
+            <h3
+              className={`mt-2 mb-4 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
+            >
+              Enterprise
+            </h3>
+            <div className="my-4 flex flex-col items-center justify-center">
+              <span className="mr-2 text-center text-5xl font-semibold">
+                $ 20 USD
               </span>
-            </li>
-            <li className="flex w-64 items-center space-x-3">
-              <Check color={colors.mint} size={20} />
-              <span>
-                Premium support: <span className="font-semibold">6 months</span>
+              <span className="text-sm my-2 inline-block pt-2 text-center">
+                Per user, per month.
               </span>
-            </li>
-            <li className="flex w-64 items-center space-x-3">
-              <Check color={colors.mint} size={20} />
-              <span>
-                Free updates: <span className="font-semibold">6 months</span>
-              </span>
-            </li>
-          </ul>
-        </div>
-      </section>
-      <section className="pt-20">
-        {/* <h2 className="mb-3 text-3xl font-bold text-gray-200 dark:text-white sm:text-4xl sm:leading-none sm:tracking-tight">
-          Frequently asked questions
-        </h2> */}
-      </section>
-      <Faqs />
+            </div>
+            <div
+              onClick={() => setOpenContactForm(true)}
+              className={`my-4 mx-auto mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono  hover:font-semibold
+    sm:items-start sm:justify-center`}
+            >
+              <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-purple-500">
+                <button
+                  type="submit"
+                  className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
+                >
+                  Contact Us
+                </button>
+              </div>
+            </div>
+            <ul
+              role="list"
+              className="my-6 ml-20 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
+            >
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Everything in Premium plus</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                {/* <!-- Icon --> */}
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Unlimited usage</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Custom trained models</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Save and edit ideas code ideas</span>
+              </li>
+              <li className="flex w-full space-x-3">
+                <Check color={colors.mint} className="mt-[2px]" size={20} />
+                <span>Priority support</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+      <div className="mt-10 w-full">
+        <Faqs />
+      </div>
       <Footer session={session?.data} />
     </>
   )

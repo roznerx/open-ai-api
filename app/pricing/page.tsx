@@ -12,7 +12,7 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex w-full flex-col items-center justify-center px-4 text-center">
+      <main className="flex w-full flex-col items-center justify-center text-center">
         <Client session={session} />
       </main>
     </>
