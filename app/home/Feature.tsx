@@ -4,7 +4,7 @@ import dynamic from "next/dynamic"
 import Lottie from "lottie-react"
 import Image from "next/image"
 
-import Suggestions from "../../animations/Code-improvements.json"
+import Suggestions from "../../animations/smartImprovements.json"
 import TestGeneration from "../../animations/generating-tests.json"
 import codeDocumentation from "../../animations/codeDocumentation.json"
 import { motion } from "framer-motion"
