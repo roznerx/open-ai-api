@@ -275,10 +275,10 @@ export default function Client({ session }: ClientPropTye) {
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
                 <span>Unlimited usage</span>
               </li>
-              {/* <li className="flex w-full space-x-3">
+              <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Custom features based on</span>
-              </li> */}
+                <span>Customized chat assistant</span>
+              </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
                 <span>Save and edit code ideas</span>
