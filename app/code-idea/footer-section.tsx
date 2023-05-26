@@ -9,14 +9,21 @@ const notify = () => toast("Code copied!")
 
 export default function FooterSection({
   mode,
+  setUserHasAResponse,
+  setTestFrameworkElement,
+  testFrameworkElement,
+  testFrameworkElements,
+  testLibElement,
+  testLibElements,
   onSaveCode,
+  setTestLib,
   generatedCode,
   langElement,
-  libElements,
   langElements,
   loading,
   setLangElement,
   lib,
+  libElements,
   setLib,
   onCodeGeneration,
 }: any) {
@@ -49,7 +56,7 @@ export default function FooterSection({
           justify-between border-t-[1px] border-purple-500 bg-purple-800"
       >
         <div className="mb-10 ml-6 sm:ml-16">
-          {mode === "smart" && (
+          {(mode === "smart" || mode === "test") && (
             <>
               <div className="hidden sm:ml-4 sm:block">
                 <DropDown
@@ -71,8 +78,25 @@ export default function FooterSection({
                   setElement={(newLib) => setLib(newLib)}
                 />
               </div>
+              <div className="hidden sm:ml-[400px] sm:block">
+                <DropDown
+                  bgColor="bg-purple-500"
+                  elements={testFrameworkElements}
+                  element={testFrameworkElement}
+                  setElement={(item) => setTestFrameworkElement(item)}
+                />
+              </div>
+              <div className={`hidden sm:ml-[600px] sm:block`}>
+                <DropDown
+                  bgColor="bg-purple-500"
+                  elements={testLibElements}
+                  element={testLibElement}
+                  setElement={(item) => setTestLib(item)}
+                />
+              </div>
             </>
           )}
+
           {/* <div
             onClick={onSaveCode}
             className="absolute hidden h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500 sm:left-[470px] sm:bottom-[10.5px] sm:block"
@@ -96,7 +120,10 @@ export default function FooterSection({
             />
           </div>
           <Button
-            onClick={onCodeGeneration}
+            onClick={() => {
+              onCodeGeneration()
+              setUserHasAResponse(false)
+            }}
             loading={loading}
             variant="mint"
             text="Generate"

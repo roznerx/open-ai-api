@@ -92,11 +92,14 @@ export const fetchWithTurbo = async (
 }
 
 export async function generateCode(
-  setLoading,
-  setReader,
-  setGeneratedCode,
-  codeMessages,
-  userId,
+  setLoading: any,
+  setReader: any,
+  setGeneratedCode: any,
+  codeMessages: any,
+  userId: any,
+  setUserHasAResponse?: any,
+  setCreditsLeft?: any,
+  setCreditsModaIsOpen?: any,
 ) {
   setLoading(true)
 
@@ -141,8 +144,6 @@ export async function generateCode(
 
       setGeneratedCode((prev) => prev + chunkValue)
 
-      console.log("Generated: ", generateCode)
-
       if (done) {
         setGeneratedCode((prev) => prev + "<>")
         setLoading(false)
@@ -153,11 +154,15 @@ export async function generateCode(
   } finally {
     setLoading(false)
     setReader(null)
+    if (typeof setUserHasAResponse === "function") {
+      setUserHasAResponse(true)
+    }
     //✨ Make some credits update Magic ✨
     const data = await updateApiCallsAndCredits(userId, tokensCount)
 
-    if (data?.creditsLeft === 0) {
-      alert("You have no more credits left. Please purchase more credits.")
+    if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModaIsOpen) {
+      setCreditsLeft(0)
+      setCreditsModaIsOpen(true)
     }
 
     //RESET TOKENS COUNT.

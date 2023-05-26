@@ -50,7 +50,12 @@
 .token.operator {
   color: #a688ff;
 }
-
+.token .template-string {
+  display: none;
+}
+.token .template-punctuation {
+  display: none;
+}
 .token.entity,
 .token.url,
 .language-css .token.string,

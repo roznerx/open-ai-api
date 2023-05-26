@@ -46,6 +46,7 @@ function GenerateCode({
                   showLineNumbers
                   wrapLongLines
                   customStyle={{
+                    maxWidth: "95%",
                     borderRadius: "0.6rem",
                     border: `0.5px solid ${themeColors.purple[500]}`,
                   }}

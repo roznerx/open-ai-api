@@ -7,6 +7,37 @@ import ChatContainer from "app/home/ChatContainer"
 import { CodeMessagesProps } from "app/home/HomeChat"
 import PromptCard from "./PromptCard"
 
+export const Messages: React.FC<CodeMessagesProps> = ({
+  generatedMessages,
+}) => {
+  return (
+    <>
+      {generatedMessages.map((generatedMessage) => {
+        const result = parseText(generatedMessage)
+
+        return (
+          result.length &&
+          result.map((item: any) => {
+            if (item.hasOwnProperty("code")) {
+              // eslint-disable-next-line react/jsx-key
+              return <GenerateCode align="start" generatedCode={item.code} />
+            }
+
+            if (item.hasOwnProperty("text")) {
+              return (
+                // eslint-disable-next-line react/jsx-key
+                <p className="rounded-lg bg-purple-400 p-2 text-left leading-7">
+                  {item.text}
+                </p>
+              )
+            }
+          })
+        )
+      })}
+    </>
+  )
+}
+
 export default function Chat({ generatedResponse, setCodeSentence }) {
   const [prompt, setPrompt] = useState("")
 
@@ -16,37 +47,6 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
     }
   }, [prompt, setCodeSentence])
 
-  const LiveDemoMessages: React.FC<CodeMessagesProps> = ({
-    generatedMessages,
-  }) => {
-    return (
-      <>
-        {generatedMessages.map((generatedMessage) => {
-          const result = parseText(generatedMessage)
-
-          return (
-            result.length &&
-            result.map((item: any) => {
-              if (item.hasOwnProperty("code")) {
-                // eslint-disable-next-line react/jsx-key
-                return <GenerateCode align="start" generatedCode={item.code} />
-              }
-
-              if (item.hasOwnProperty("text")) {
-                return (
-                  // eslint-disable-next-line react/jsx-key
-                  <p className="rounded-lg bg-purple-400 p-2 text-left leading-7">
-                    {item.text}
-                  </p>
-                )
-              }
-            })
-          )
-        })}
-      </>
-    )
-  }
-
   return (
     <div className="flex items-center justify-center overflow-scroll rounded-md sm:mx-auto sm:flex-row">
       {generatedResponse.length > 0 && (
@@ -54,9 +54,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
           <ChatContainer
             useFullHeight
             useFullWidth
-            messages={
-              <LiveDemoMessages generatedMessages={generatedResponse} />
-            }
+            messages={<Messages generatedMessages={generatedResponse} />}
           />
         </div>
       )}
