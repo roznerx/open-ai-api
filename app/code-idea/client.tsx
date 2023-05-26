@@ -16,7 +16,6 @@ import {
 import FooterSection from "./footer-section"
 import { getCodeGeniusPlaceHolder } from "utils/strings"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
-import { Code, CurlyBraces, FileCode, Rocket } from "lucide-react"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/Messages"
 import Image from "next/image"
@@ -180,32 +179,36 @@ export default function Client({
   }
 
   function getCodeGeniusMode() {
-    if (smartSelected) {
+    if (smartSelected && mode !== "test") {
       return (
-        <div className="inline-flex">
-          <Code size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Code suggestion mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Smart suggestions
+          </span>{" "}
         </div>
       )
-    } else if (testSelected) {
+    } else if (testSelected || mode === "test") {
       return (
-        <div className="inline-flex">
-          <CurlyBraces size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Test generation mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Test generation
+          </span>{" "}
         </div>
       )
     } else if (improveSelected) {
       return (
-        <div className="inline-flex">
-          <Rocket size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Improvements mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Improvements mode
+          </span>{" "}
         </div>
       )
     } else if (docSelected) {
       return (
-        <div className="inline-flex">
-          <FileCode size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Documentation mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Documentation mode
+          </span>{" "}
         </div>
       )
     }
@@ -254,7 +257,7 @@ export default function Client({
         className="ml-0 mt-16 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll pb-24 sm:ml-8 sm:justify-between"
       >
         <div className="w-full">
-          <div className="sm:text-1xl mx-auto w-full border-b-[1px] border-gray-400 text-center text-[13px] uppercase ">
+          <div className="mx-auto  w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
             {getCodeGeniusMode()}
           </div>
           <Editor

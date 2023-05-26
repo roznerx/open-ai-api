@@ -46,27 +46,26 @@ export default function Container({ session }) {
           }  Make sure to prefix all code explanations with "//" so it can be read as code comments. Never add code comments at the end of the line. If a comment has more than 10 words, continue in the next line. Last but not least, only reply with code, without additional explanations.`,
         )
         setMode("smart")
+        setSmartSelected(true)
       }
       if (testSelected || search === "test") {
         setPrompt(`User context: "${codeSentence}".`)
         setMode("test")
-      }
-      if (bugSelected) {
-        setPrompt(
-          `Improve and propose performance boost based on the provided code: \`${codeSentence}\`. Make sure to comment on the improvements at the end, in short code comments.`,
-        )
+        setTestSelected(true)
       }
       if (improveSelected || search === "improve") {
         setPrompt(
           `Improve and propose performance boost based on the provided code: \`${codeSentence}\`. Make sure to comment on the improvements at the end, in short code comments.`,
         )
         setMode("improve")
+        setImproveSelected(true)
       }
       if (docSelected || search === "docs") {
         setPrompt(
           `Create documentation for the provided code: "${codeSentence}". Document the code as code comments. Don't use long sentences`,
         )
         setMode("docs")
+        setDocSelected(true)
       }
     }
   }, [

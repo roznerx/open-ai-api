@@ -23,7 +23,9 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                 if (item.hasOwnProperty("text")) {
                   return (
                     <div key={idx} className="flex">
-                      {logoCodeGenius ? logoCodeGenius : null}
+                      <div className="ml-6">
+                        {logoCodeGenius ? logoCodeGenius : null}
+                      </div>
                       <div
                         className={`mx-auto ml-3 w-[92%] rounded-lg bg-purple-400 p-2`}
                       >
