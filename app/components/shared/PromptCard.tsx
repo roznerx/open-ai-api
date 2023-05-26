@@ -19,8 +19,8 @@ export default function PromptCard({
   hasScale,
   title,
   button,
-  mb,
-  order,
+
+  order = "",
   imageSrc,
   text,
   onClick,
@@ -33,9 +33,9 @@ export default function PromptCard({
       className={`${order} mt-4 flex ${
         size === "large"
           ? cardWidth + " h-60"
-          : "h-38 w-[100%] sm:h-60 sm:w-[23%]"
+          : "h-38 w-[100%] sm:h-48 sm:w-[23%]"
       } 
-      ${mb} cursor-pointer justify-between rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
+      cursor-pointer justify-between rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
       onClick={() => {
         if (onClick) onClick(text)
       }}
@@ -60,10 +60,12 @@ export default function PromptCard({
             />
           )}
         </motion.div>
-        <h5 className="mb-1 text-2xl font-bold tracking-tight text-white">
+        <h5 className="mb-1 text-left text-2xl font-bold tracking-tight text-white">
           {title}
         </h5>
-        <p className="text-sm pt-2 font-normal text-gray-200">{text}</p>
+        <p className="text-sm pt-2 text-left font-normal text-gray-200">
+          {text}
+        </p>
       </div>
       {button && <div className="my-auto">{button}</div>}
     </div>

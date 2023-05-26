@@ -1,11 +1,11 @@
 "use client"
 
 import { Code, Rocket, FileCode, CurlyBraces } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import tailwindConfig from "tailwind.config"
 
 const colors: any = tailwindConfig.theme?.extend?.colors
-
+//write type definitions for the bellow component props
 export default function SecondaryNavBar({
   isCodeModeSelected,
   setOpenSecondayNavBar,
@@ -22,6 +22,18 @@ export default function SecondaryNavBar({
   const [sidebarOpen, setSidebarOpen] = useState(openSecondayNavBar)
   //   const [searchTerm, setSearchTerm] = useState("")
   //   const userIsSearching = searchTerm !== ""
+
+  useEffect(() => {
+    const handleKeyPress = (e) => {
+      if (e.key === "Escape") {
+        setOpenSecondayNavBar((prev) => !prev)
+      }
+    }
+    document.addEventListener("keydown", handleKeyPress)
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress)
+    }
+  }, [])
 
   return (
     <div
@@ -64,7 +76,7 @@ export default function SecondaryNavBar({
               smartSelected ? "text-mint" : "text-white"
             } `}
           >
-            Code Suggestions
+            Smart Suggestions
           </p>
         </div>
       </div>

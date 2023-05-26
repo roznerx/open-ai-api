@@ -48,7 +48,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
   }
 
   return (
-    <div className="flex items-center justify-center overflow-scroll rounded-md sm:mx-auto sm:flex-row">
+    <div className="flex items-center justify-center overflow-scroll rounded-md sm:mx-auto sm:flex-row ">
       {generatedResponse.length > 0 && (
         <div className="mt-8">
           <ChatContainer
@@ -61,48 +61,50 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
         </div>
       )}
       {generatedResponse.length === 0 && (
-        <div className="mx-auto mb-20 mt-4 flex w-full flex-col items-center justify-center sm:mt-10 sm:max-w-[1000px] sm:flex-row sm:flex-wrap sm:justify-between sm:gap-1">
-          <PromptCard
-            onClick={setPrompt}
-            title="Create React App"
-            text="How to use the Create React App npm package"
-          />
-          <PromptCard
-            onClick={setPrompt}
-            title="Create Next App"
-            text="How to use the the Create Next App npm package"
-          />
-          <PromptCard
-            onClick={setPrompt}
-            title="Typescript"
-            text="Explain how to use Typescript with React"
-          />
-          <PromptCard
-            onClick={setPrompt}
-            title="Development"
-            text="What are the best practice in software development"
-          />
-          <PromptCard
-            onClick={setPrompt}
-            title="Python"
-            text="How to create a function in Python?"
-          />
-          <PromptCard
-            onClick={setPrompt}
-            title="AWS"
-            text="Explain how to use the AWS API"
-          />
-          <PromptCard
-            onClick={setPrompt}
-            title="Database"
-            text="What's the best Database with Typescript support"
-          />
-          <PromptCard
-            onClick={setPrompt}
-            title="React Testing"
-            text="Explain how to use Jest with React Testing Library"
-          />
-        </div>
+        <>
+          <div className="mx-auto mb-20 mt-4 flex w-full flex-col items-center justify-center sm:mt-[18%] sm:max-w-[1000px] sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-6">
+            <PromptCard
+              onClick={setPrompt}
+              title="Create React App"
+              text="How to use the Create React App npm package"
+            />
+            <PromptCard
+              onClick={setPrompt}
+              title="Create Next App"
+              text="How to use the the Create Next App npm package"
+            />
+            <PromptCard
+              onClick={setPrompt}
+              title="Typescript"
+              text="Explain how to use Typescript with React"
+            />
+            <PromptCard
+              onClick={setPrompt}
+              title="Development"
+              text="What are the best practice in software development"
+            />
+            <PromptCard
+              onClick={setPrompt}
+              title="Python"
+              text="How to create a function in Python?"
+            />
+            <PromptCard
+              onClick={setPrompt}
+              title="AWS"
+              text="Explain how to use the AWS API"
+            />
+            <PromptCard
+              onClick={setPrompt}
+              title="Database"
+              text="What's the best Database with Typescript support"
+            />
+            <PromptCard
+              onClick={setPrompt}
+              title="React Testing"
+              text="Explain how to use Jest with React Testing Library"
+            />
+          </div>
+        </>
       )}
     </div>
   )

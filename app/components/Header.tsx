@@ -20,7 +20,7 @@ export default function Header({
   const { isMobile } = useWindowSize()
   const shouldHideLogo =
     isMobile &&
-    (pathname === "/code-idea" ||
+    (pathname == "/code-idea" ||
       pathname === "/code-chat" ||
       pathname === "/dashboard")
   return (
@@ -34,7 +34,7 @@ export default function Header({
           >
             <Link href="/" className={` flex sm:mx-0`}>
               <div className={`mt-1 flex sm:ml-7`}>
-                {!shouldHideLogo && (
+                {!shouldHideLogo && pathname !== "/code-idea" && (
                   <>
                     <Image
                       src={"/logo/code-genius.svg"}
@@ -43,14 +43,14 @@ export default function Header({
                       className={"right-8"}
                       alt="Code Genius"
                     />
-                    <h1
-                      className={`sm:text-xl sm:text-xl mt-1 ml-2 bg-gradient-to-r
-                    from-[#A1FFE0] to-[#2C9DC0] bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent  sm:leading-6`}
-                    >
-                      Code Genius
-                    </h1>
                   </>
                 )}
+                <h1
+                  className={`sm:text-xl sm:text-xl mt-1 ml-12 bg-gradient-to-r from-[#A1FFE0]
+                    to-[#2C9DC0] bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:leading-6`}
+                >
+                  Code Genius
+                </h1>
               </div>
             </Link>
           </div>

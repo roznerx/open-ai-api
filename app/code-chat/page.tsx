@@ -18,12 +18,6 @@ export default async function Page() {
   return (
     <>
       <main className="flex w-[100%] flex-col items-center justify-center px-4 text-center sm:mt-10">
-        <div className="mt-12 flex flex-col sm:mt-2">
-          <h2 className="mx-auto flex w-[100%] font-sans text-3xl text-gray-200">
-            Code Genius Chat
-          </h2>
-          <p className="text-gray-200">Ask anything about code</p>
-        </div>
         <Client session={session} />
       </main>
     </>

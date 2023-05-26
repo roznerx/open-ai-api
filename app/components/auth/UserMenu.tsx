@@ -1,6 +1,12 @@
 import { Menu, Transition } from "@headlessui/react"
 import useWindowSize from "hooks/use-window-size"
-import { ChevronDown, LayoutDashboard, LogOut } from "lucide-react"
+import {
+  ChevronDown,
+  Code,
+  LayoutDashboard,
+  LogOut,
+  MessageSquare,
+} from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
@@ -57,6 +63,44 @@ export default function UserMenu({ session, email, image }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>Dashboard</span>
+                  </Link>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="h-11">
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    href="/code-idea"
+                    className={`flex w-full cursor-pointer items-center justify-start ${
+                      active ? "bg-purple-800 text-white" : "text-gray-200"
+                    } `}
+                  >
+                    <Code
+                      width={45}
+                      height={45}
+                      className={`text-sm items-start rounded-md px-2 py-2`}
+                    />
+                    <span>Code Idea</span>
+                  </Link>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="h-11">
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    href="/code-chat"
+                    className={`flex w-full cursor-pointer items-center justify-start ${
+                      active ? "bg-purple-800 text-white" : "text-gray-200"
+                    } `}
+                  >
+                    <MessageSquare
+                      width={45}
+                      height={45}
+                      className={`text-sm items-start rounded-md px-2 py-2`}
+                    />
+                    <span>Chat</span>
                   </Link>
                 )}
               </Menu.Item>

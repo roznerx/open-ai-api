@@ -15,7 +15,6 @@ import { fetchWithTurbo } from "utils/generateCode"
 import { getCodeGeniusPlaceHolder } from "utils/strings"
 import { updateApiCallsAndCredits } from "utils/helpers"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
-import { Code, CurlyBraces, FileCode, Rocket } from "lucide-react"
 
 let libElements: ElementType[] = ["React", "Vue", "Angular"]
 let langElements: ElementType[] = ["Typescript", "Javascript"]
@@ -207,37 +206,42 @@ export default function Client({
     setQuestionName(event.target.value)
   }
 
-  function getCodeGeniusMode(): import("react").ReactNode {
-    if (smartSelected) {
+  function getCodeGeniusMode() {
+    if (smartSelected && mode !== "test") {
       return (
-        <div className="inline-flex">
-          <Code size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Code suggestion mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Smart suggestions
+          </span>{" "}
         </div>
       )
-    } else if (testSelected) {
+    } else if (testSelected || mode === "test") {
       return (
-        <div className="inline-flex">
-          <CurlyBraces size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Test generation mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Test generation
+          </span>{" "}
         </div>
       )
     } else if (improveSelected) {
       return (
-        <div className="inline-flex">
-          <Rocket size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Improvements mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Improvements mode
+          </span>{" "}
         </div>
       )
     } else if (docSelected) {
       return (
-        <div className="inline-flex">
-          <FileCode size={18} color={colors.mint} className="mr-1.5  " />
-          <span className="text-mint">Documentation mode</span>{" "}
+        <div className="inline-flex font-sans">
+          <span className="ml-5  text-2xl font-semibold text-white">
+            Documentation mode
+          </span>{" "}
         </div>
       )
     }
   }
+
   const placeHolderText = getCodeGeniusPlaceHolder(mode)
   return (
     <div className="w-full sm:ml-10">
@@ -274,7 +278,7 @@ export default function Client({
         className="ml-0 mt-16 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
       >
         <div className="w-full">
-          <div className="sm:text-1xl  mx-auto w-full border-b-[1px] border-gray-400  text-center text-[13px] uppercase ">
+          <div className="sm:text-1xl  mx-auto w-full border-b-[1px] border-gray-400  text-left text-[13px]  ">
             {getCodeGeniusMode()}
           </div>
           <Editor

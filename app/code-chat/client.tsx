@@ -123,12 +123,19 @@ export default function Client({ session }) {
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-
-      <Chat
-        generatedResponse={generatedMessages}
-        setCodeSentence={setCodeSentence}
-      />
-
+      {generatedMessages.length === 0 && (
+        <div className="relative mx-auto mt-12 w-full">
+          <h2 className="absolute left-1/2 w-[100%]  -translate-x-1/2 -translate-y-1/2 transform font-sans text-3xl text-gray-200 sm:top-[150px]">
+            Chat with our code assistant
+          </h2>
+        </div>
+      )}
+      <div className="mt-12">
+        <Chat
+          generatedResponse={generatedMessages}
+          setCodeSentence={setCodeSentence}
+        />
+      </div>
       {/* Chat input container */}
       <InputChat
         inputRef={inputRef}
