@@ -62,7 +62,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
       )}
       {generatedResponse.length === 0 && (
         <>
-          <div className="mx-auto mb-20 mt-4 flex w-full flex-col items-center justify-center sm:mt-[18%] sm:max-w-[1000px] sm:flex-row sm:flex-wrap sm:items-center sm:justify-center sm:gap-6">
+          <div className="mx-auto mt-4 flex w-full flex-col items-center justify-center sm:max-w-[1000px] sm:flex-row sm:flex-wrap sm:items-start sm:justify-start sm:gap-6">
             <PromptCard
               onClick={setPrompt}
               title="Create React App"

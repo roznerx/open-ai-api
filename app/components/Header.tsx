@@ -34,7 +34,7 @@ export default function Header({
           >
             <Link href="/" className={` flex sm:mx-0`}>
               <div className={`mt-1 flex sm:ml-7`}>
-                {!shouldHideLogo && pathname !== "/code-idea" && (
+                {!shouldHideLogo && (
                   <>
                     <Image
                       src={"/logo/code-genius.svg"}

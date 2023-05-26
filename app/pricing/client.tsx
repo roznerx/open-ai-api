@@ -213,11 +213,11 @@ export default function Client({ session }: ClientPropTye) {
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Code Improvemts</span>
+                <span>Code Improvements</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Docs Generations</span>
+                <span>Docs Generation</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />

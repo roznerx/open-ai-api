@@ -124,13 +124,13 @@ export default function Client({ session }) {
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       {generatedMessages.length === 0 && (
-        <div className="relative mx-auto mt-12 w-full">
-          <h2 className="absolute left-1/2 w-[100%]  -translate-x-1/2 -translate-y-1/2 transform font-sans text-3xl text-gray-200 sm:top-[150px]">
+        <div className="mx-auto mt-12 mb-12 w-full">
+          <h2 className=" w-full font-sans text-3xl text-gray-200 ">
             Chat with our code assistant
           </h2>
         </div>
       )}
-      <div className="mt-12">
+      <div className="mt-2">
         <Chat
           generatedResponse={generatedMessages}
           setCodeSentence={setCodeSentence}
