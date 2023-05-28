@@ -22,6 +22,8 @@ import { Loader2 } from "lucide-react"
 
 export interface CodeMessagesProps {
   generatedMessages: any
+  logoCodeGenius?: any
+  fontColor?: string
 }
 
 const Modal = dynamic(() => import("app/components/Modal"), {
@@ -144,8 +146,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   }
 
   const generatedMessages = useMemo(
-    () =>
-      generatedCode.split("<>").filter((i) => i !== ""),
+    () => generatedCode.split("<>").filter((i) => i !== ""),
     [generatedCode],
   )
 

@@ -7,21 +7,36 @@ import "prismjs/components/prism-javascript"
 
 import Modal from "app/components/Modal"
 import tailwindConfig from "tailwind.config.js"
-import GenerateCode from "app/components/GenerateCode"
-import { ChangeEvent, useEffect, useRef, useState } from "react"
-import { ElementType } from "app/components/DropDown"
+import React, { ChangeEvent, useEffect, useMemo, useRef, useState } from "react"
+import {
+  LandElementType,
+  libTestingElementType,
+  TestingElementType,
+} from "app/components/DropDown"
 import FooterSection from "./footer-section"
-import { fetchWithTurbo } from "utils/generateCode"
 import { getCodeGeniusPlaceHolder } from "utils/strings"
-import { updateApiCallsAndCredits } from "utils/helpers"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
+import { generateCode } from "utils/generateCode"
+import { CombinedMessages } from "app/components/shared/Messages"
+import Image from "next/image"
 
-let libElements: ElementType[] = ["React", "Vue", "Angular"]
-let langElements: ElementType[] = ["Typescript", "Javascript"]
+let libElements: LandElementType[] = ["React", "Vue", "Angular"]
+let langElements: LandElementType[] = ["Typescript", "Javascript"]
+
+let testFrameworkElements: TestingElementType[] = [
+  "Jest",
+  "Mocha",
+  "Chai",
+  "Jasmine",
+]
+let testLibElements: libTestingElementType[] = ["React Testing"]
 
 const colors: any = tailwindConfig.theme?.extend?.colors
 
 export default function Client({
+  testFrameworkElement,
+  setTestLib,
+  setTestFrameworkElement,
   userId,
   userCredits,
   lib,
@@ -29,6 +44,7 @@ export default function Client({
   prompt,
   setLib,
   langElement,
+  testLibElement,
   codeSentence,
   testSelected,
   smartSelected,
@@ -42,6 +58,7 @@ export default function Client({
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const [showSavePromptModal, setShowSavePromptModal] = useState(false)
+  const [userHasAResponse, setUserHasAResponse] = useState(false)
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [questionName, setQuestionName] = useState("")
@@ -49,7 +66,40 @@ export default function Client({
   const controller = new AbortController()
   const [scrollHeight, setScrollHeight] = useState(0)
   const chatContainerRef = useRef<HTMLDivElement>(null)
+  const placeHolderText = getCodeGeniusPlaceHolder(mode)
+  const codeMessages = useRef([
+    {
+      role: "system",
+      content: "",
+    },
+  ])
+  //SET SYSTEM MESSAGES.
+  useEffect(() => {
+    switch (mode) {
+      case "smart":
+        codeMessages.current[0].content = `You are an AI software development assistant which is specialized in providing code ideas/suggestions. Make sure tu use ${langElement} and ${lib}.`
+        break
+      case "test":
+        codeMessages.current[0].content = `You are a helpful and specialized AI software assistant with experience in unit testing, integration testing and e2e testing. 
+        Make sure tu use ${langElement} and ${lib}, ${testFrameworkElement} and ${testLibElement}.
+        Never add code comments at the end of the line. If a comment has more than 10 words, continue in the next line.`
+        break
+      case "improve":
+        codeMessages.current[0].content =
+          "You are a helpful and specialized AI software assistant which is specialized in code performance and customization."
+        break
+      case "docs":
+        codeMessages.current[0].content =
+          "You are an AI software assistant which is specialized in providing code documentation. Requeriments: Use short sentences to make it easy to read (max 20 words per line)."
+        break
 
+      default:
+        codeMessages.current[0].content =
+          "You are an AI software development assistant which is specialized in providing code ideas/suggestions."
+
+        break
+    }
+  }, [langElement, lib, mode, testFrameworkElement, testLibElement])
   useEffect(() => {
     if (chatContainerRef && chatContainerRef.current) {
       setScrollHeight(chatContainerRef.current?.scrollHeight)
@@ -59,6 +109,13 @@ export default function Client({
       })
     }
   }, [chatContainerRef, chatContainerRef?.current?.scrollHeight, scrollHeight])
+
+  //Clean up previous code responses
+  useEffect(() => {
+    if (generatedCode.length > 0 && !reader && !userHasAResponse) {
+      setGeneratedCode("")
+    }
+  }, [generatedCode, reader, setGeneratedCode, userHasAResponse])
 
   useEffect(() => {
     const editorPanel = document.getElementById("code-editor")
@@ -73,105 +130,38 @@ export default function Client({
     }
   }, [userCredits])
 
+  const generateCompletion = async () => {
+    // setLoading(true)
+
+    codeMessages.current = [
+      ...codeMessages.current,
+      {
+        role: "user",
+        content: prompt,
+      },
+    ]
+    console.log("codeMessages.current:", codeMessages.current)
+
+    setCodeSentence("")
+    generateCode(
+      setLoading,
+      setReader,
+      setGeneratedCode,
+      codeMessages,
+      userId,
+      setUserHasAResponse,
+      setCreditsLeft,
+      setCreditsModaIsOpen,
+    )
+  }
+
   const onCodeGeneration = () => {
     if (!creditsLeft || creditsLeft === 0) {
       setCreditsModaIsOpen(true)
       return false
     }
-    generateCode()
+    generateCompletion()
   }
-
-  const generateCode = async () => {
-    setLoading(true)
-    let response: any
-    // const id = setTimeout(() => {
-    //   controller.abort()
-    //   setLoading(false)
-    //   setModaIsOpen(true)
-    //   // setCodeSentence("");
-    // }, promptResponseTimeout)
-
-    setGeneratedCode("")
-
-    if (testSelected) {
-      response = await fetchWithTurbo(
-        "You are a helpful and specialized AI software assistant with experience in unit testing, e2e testing. Requeriments: Write tests using the Jest and React Testing Library when possible.",
-        prompt,
-      )
-    } else if (improveSelected) {
-      response = await fetchWithTurbo(
-        "You are a helpful and specialized AI software assistant which is specialized in code performance and customization.",
-        prompt,
-      )
-    } else if (docSelected) {
-      response = await fetchWithTurbo(
-        "You are an AI software assistant which is specialized in providing code documentation. Requeriments: Use short sentences to make it easy to read (max 20 words per line).",
-        prompt,
-      )
-    } else {
-      //Smart
-      response = await fetchWithTurbo(
-        "You are an AI software development assistant which is specialized in providing code ideas/suggestions.",
-        prompt,
-      )
-    }
-
-    // console.log("response", response);
-    // clear timeout
-    // clearTimeout(id)
-
-    if (response && !response.ok) {
-      setLoading(false)
-      return
-    }
-
-    // This data is a ReadableStream
-    const data = response.body
-
-    if (!data) {
-      setLoading(false)
-      return
-    }
-
-    const reader = data.getReader()
-    setReader(reader)
-    const decoder = new TextDecoder()
-    let done = false
-    let tokensCount = 0
-    try {
-      while (!done) {
-        const { value, done: doneReading } = await reader.read()
-        done = doneReading
-        tokensCount++
-        let chunkValue = decoder.decode(value)
-        // if (
-        //   chunkValue.match(/```/) ||
-        //   chunkValue.match(/``/) ||
-        //   chunkValue.match(/`/)
-        // )
-        //   chunkValue = ""
-        setGeneratedCode((prev) => prev + chunkValue)
-      }
-    } catch (error) {
-      return `There was an error with your request ${error}`
-    } finally {
-      setLoading(false)
-      setReader(null)
-      //✨ Make some credits update Magic ✨
-      const data = await updateApiCallsAndCredits(userId, tokensCount)
-
-      if (data?.creditsLeft === 0) {
-        setCreditsLeft(0)
-        setCreditsModaIsOpen(true)
-      }
-      //RESET TOKENS COUNT.
-      tokensCount = 0
-    }
-    if (done) {
-      setLoading(false)
-    }
-  }
-
   const onSaveCode = () => {
     setShowSavePromptModal(true)
   }
@@ -186,24 +176,6 @@ export default function Client({
       method: "POST",
       body: JSON.stringify(payload),
     }).then((res) => console.log("res:", res))
-  }
-
-  const stopGeneration = async () => {
-    setLoading(false)
-    controller.abort()
-    if (!reader) {
-      return
-    }
-    try {
-      await reader.cancel()
-      // setReader(null);
-    } catch (error: any) {
-    } finally {
-      setReader(null)
-    }
-  }
-  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setQuestionName(event.target.value)
   }
 
   function getCodeGeniusMode() {
@@ -242,9 +214,89 @@ export default function Client({
     }
   }
 
-  const placeHolderText = getCodeGeniusPlaceHolder(mode)
+  const stopGeneration = async () => {
+    setLoading(false)
+    controller.abort()
+    if (!reader) {
+      return
+    }
+    try {
+      await reader.cancel()
+      // setReader(null);
+    } catch (error: any) {
+    } finally {
+      setReader(null)
+    }
+  }
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setQuestionName(event.target.value)
+  }
+
+  const generatedMessages = useMemo(
+    () => generatedCode.split("<>").filter((i) => i !== ""),
+    [generatedCode],
+  )
+  const LogoCodeGenius = useMemo(
+    () => (
+      <Image
+        src={"/logo/code-genius.svg"}
+        width={32}
+        height={32}
+        className={"right-8"}
+        alt="Code Genius"
+      />
+    ),
+    [],
+  )
+
   return (
     <div className="w-full sm:ml-10">
+      <div
+        ref={chatContainerRef}
+        id="container"
+        className="ml-0 mt-16 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll pb-24 sm:ml-8 sm:justify-between"
+      >
+        <div className="w-full">
+          <div className="mx-auto  w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
+            {getCodeGeniusMode()}
+          </div>
+          <Editor
+            padding={20}
+            textareaId="code-editor"
+            placeholder={placeHolderText}
+            className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
+            value={codeSentence}
+            highlight={(code) => highlight(code, languages.js)}
+            onValueChange={(code) => setCodeSentence(code)}
+          />
+          {generatedMessages && (
+            <CombinedMessages
+              logoCodeGenius={LogoCodeGenius}
+              generatedMessages={generatedMessages}
+            />
+          )}
+        </div>
+      </div>
+      <FooterSection
+        testFrameworkElements={testFrameworkElements}
+        testLibElements={testLibElements}
+        testLibElement={testLibElement}
+        setTestLib={setTestLib}
+        setTestFrameworkElement={setTestFrameworkElement}
+        testFrameworkElement={testFrameworkElement}
+        mode={mode}
+        setUserHasAResponse={setUserHasAResponse}
+        generatedCode={generatedCode}
+        onSaveCode={onSaveCode}
+        langElement={langElement}
+        libElements={libElements}
+        langElements={langElements}
+        loading={loading}
+        setLangElement={setLangElement}
+        lib={lib}
+        setLib={setLib}
+        onCodeGeneration={onCodeGeneration}
+      />
       <Modal
         title={CREDITS_MODAL_COPY.title}
         isCreditsModal
@@ -271,46 +323,6 @@ export default function Client({
         handleInputChange={handleInputChange}
         buttonText="Save"
         setIsOpen={setShowSavePromptModal}
-      />
-      <div
-        ref={chatContainerRef}
-        id="container"
-        className="ml-0 mt-16 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
-      >
-        <div className="w-full">
-          <div className="sm:text-1xl  mx-auto w-full border-b-[1px] border-gray-400  text-left text-[13px]  ">
-            {getCodeGeniusMode()}
-          </div>
-          <Editor
-            padding={20}
-            textareaId="code-editor"
-            placeholder={placeHolderText}
-            className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
-            value={codeSentence}
-            highlight={(code) => highlight(code, languages.js)}
-            onValueChange={(code) => setCodeSentence(code)}
-          />
-          {generatedCode && (
-            <GenerateCode
-              onSaveCode={onSaveCode}
-              langElement={langElement}
-              generatedCode={generatedCode}
-            />
-          )}
-        </div>
-      </div>
-      <FooterSection
-        mode={mode}
-        generatedCode={generatedCode}
-        onSaveCode={onSaveCode}
-        langElement={langElement}
-        libElements={libElements}
-        langElements={langElements}
-        loading={loading}
-        setLangElement={setLangElement}
-        lib={lib}
-        setLib={setLib}
-        onCodeGeneration={onCodeGeneration}
       />
     </div>
   )

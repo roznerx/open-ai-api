@@ -81,6 +81,30 @@ export default function SecondaryNavBar({
         </div>
       </div>
       <div
+        className="mt-0 inline-flex"
+        onClick={() => {
+          setSidebarOpen(!sidebarOpen)
+          setOpenSecondayNavBar((prev) => !prev)
+          if (!testSelected) {
+            setTestSelected(!testSelected)
+          }
+          setSmartSelected(false)
+          setDocSelected(false)
+          setImproveSelected(false)
+        }}
+      >
+        <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
+          <CurlyBraces size={26} color={testSelected ? colors.mint : "white"} />
+          <p
+            className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
+              testSelected ? "text-mint" : "text-white"
+            } `}
+          >
+            Test Generation
+          </p>
+        </div>
+      </div>
+      <div
         className="mt-0 inline-flex "
         onClick={() => {
           setSidebarOpen(!sidebarOpen)
@@ -105,30 +129,6 @@ export default function SecondaryNavBar({
             }`}
           >
             Improve Code
-          </p>
-        </div>
-      </div>
-      <div
-        className="mt-0 inline-flex"
-        onClick={() => {
-          setSidebarOpen(!sidebarOpen)
-          setOpenSecondayNavBar((prev) => !prev)
-          if (!testSelected) {
-            setTestSelected(!testSelected)
-          }
-          setSmartSelected(false)
-          setDocSelected(false)
-          setImproveSelected(false)
-        }}
-      >
-        <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
-          <CurlyBraces size={26} color={testSelected ? colors.mint : "white"} />
-          <p
-            className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
-              testSelected ? "text-mint" : "text-white"
-            } `}
-          >
-            Test Generation
           </p>
         </div>
       </div>

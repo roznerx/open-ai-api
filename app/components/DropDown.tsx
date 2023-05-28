@@ -11,18 +11,21 @@ function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
 }
 
-export type ElementType =
+export type LandElementType =
   | "Typescript"
   | "Javascript"
   | "React"
   | "Vue"
   | "Angular"
 
+export type TestingElementType = "Jest" | "Mocha" | "Chai" | "Jasmine"
+export type libTestingElementType = "React Testing"
+
 interface DropDownProps {
-  element: ElementType
+  element: LandElementType
   bgColor?: string
-  setElement: (vibe: ElementType) => void
-  elements: ElementType[]
+  setElement: (vibe: LandElementType) => void
+  elements: LandElementType[]
 }
 
 export default function DropDown({
@@ -89,7 +92,7 @@ export default function DropDown({
       }  text-left text-white`}
     >
       <div>
-        <Menu.Button className="shadow-smfocus:outline-none inline-flex w-full items-start justify-between border-none py-2 pl-2 focus:ring-2 focus:ring-black">
+        <Menu.Button className="inline-flex w-full items-start justify-between border-none py-2 pl-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-transparent">
           {element === "Javascript" && <JavascriptIcon />}
           {element === "Typescript" && <TypescriptIcon />}
           {element === "React" && <ReactIcon />}

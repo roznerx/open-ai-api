@@ -11,7 +11,6 @@ import { CREDITS_MODAL_COPY } from "@/lib/constants"
 
 export default function Client({ session }) {
   const [loading, setLoading] = useState(false)
-  const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const { setShowSignInModal } = useSignInModal({})
   const [reader, setReader] =
@@ -22,7 +21,7 @@ export default function Client({ session }) {
   // const [questionName, setQuestionName] = useState("")
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
-  const controller = new AbortController()
+  // const controller = new AbortController()
   const inputRef = useRef<any>(null)
   useEffect(() => {
     if (inputRef && inputRef.current) {
@@ -43,7 +42,7 @@ export default function Client({ session }) {
     },
   ])
 
-  const onArrowPress = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+  const onArrowPress = () => {
     if (!userCredits || userCredits === 0) {
       setCreditsModaIsOpen(true)
       return false
