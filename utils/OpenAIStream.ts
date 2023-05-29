@@ -21,6 +21,7 @@ export interface OpenAIStreamPayload {
 export interface OpenAITurboPayload {
   model: string
   messages: any
+  top_p: number
   stream?: boolean
 }
 
@@ -86,8 +87,6 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
 export async function OpenAITurboStream(payload: OpenAITurboPayload) {
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
-
-  // let counter = 0
 
   const res: any = await fetch("https://api.openai.com/v1/chat/completions", {
     headers: {

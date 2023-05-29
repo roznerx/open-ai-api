@@ -19,6 +19,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useState } from "react"
 import tailwindConfig from "tailwind.config"
+import { MaterialTooltip } from "../material-components"
 
 function SideBar({
   setSmartSelected,
@@ -46,20 +47,7 @@ function SideBar({
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
-  // const selectedMode = () => {
-  //   switch (mode) {
-  //     case "smart":
-  //       return "Smart"
-  //     case "improve":
-  //       return "Improve"
-  //     case "test":
-  //       return "Test"
-  //     case "docs":
-  //       return "Documentation"
-  //     default:
-  //       return "Smart"
-  //   }
-  // }
+
   const CodeIdeaMode = ({ size }) => {
     if (mode === "smart") {
       return (
@@ -105,37 +93,54 @@ function SideBar({
       className={`absolute top-0 left-0 z-50 hidden h-full w-16 translate-x-full flex-col items-center border-r-[1px] border-purple-500 bg-purple-800
       transition-transform duration-700 sm:fixed sm:flex sm:translate-x-0`}
     >
-      <div className="mt-3 flex h-12 w-full items-center justify-center rounded-md hover:bg-purple-500">
-        <Link href="/dashboard" className="cursor-pointer">
-          <LayoutDashboard
-            width={26}
-            height={26}
-            color={pathname === "/dashboard" ? colors.mint : "white"}
-          />
-        </Link>
-      </div>
-
-      <div
-        onClick={() => {
-          if (typeof setOpenSecondaryNavBar !== "undefined") {
-            setOpenSecondaryNavBar((prevState) => !prevState)
-          }
-        }}
-        className="mt-4 flex h-12 w-full items-center justify-center rounded-md hover:bg-purple-500"
+      <MaterialTooltip
+        placement="right-start"
+        className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+        content="Dashboard"
       >
-        <Link href="/code-idea" className="cursor-pointer">
-          <CodeIdeaMode size={26} />
-        </Link>
-      </div>
+        <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
+          <Link href="/dashboard">
+            <LayoutDashboard
+              width={26}
+              height={26}
+              color={pathname === "/dashboard" ? colors.mint : "white"}
+            />
+          </Link>
+        </div>
+      </MaterialTooltip>
 
-      <div className="mt-4 flex h-12 w-full items-center justify-center rounded-md hover:bg-purple-500">
-        <Link href="/code-chat" className="cursor-pointer">
-          <MessageSquare
-            size={26}
-            color={pathname === "/code-chat" ? colors.mint : "white"}
-          />
-        </Link>
-      </div>
+      <MaterialTooltip
+        placement="right-start"
+        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+        content="Code Idea"
+      >
+        <div
+          onClick={() => {
+            if (typeof setOpenSecondaryNavBar !== "undefined") {
+              setOpenSecondaryNavBar((prevState) => !prevState)
+            }
+          }}
+          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
+        >
+          <Link href="/code-idea">
+            <CodeIdeaMode size={26} />
+          </Link>
+        </div>
+      </MaterialTooltip>
+      <MaterialTooltip
+        placement="right-start"
+        className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+        content="Chat"
+      >
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
+          <Link href="/code-chat">
+            <MessageSquare
+              size={26}
+              color={pathname === "/code-chat" ? colors.mint : "white"}
+            />
+          </Link>
+        </div>
+      </MaterialTooltip>
       {/* <div className="mt-8 cursor-pointer">
         <SearchBar
           userIsSearching={userIsSearching}
@@ -221,6 +226,7 @@ function SideBar({
             <p className="text-sm ml-4 pt-1 text-white">Dashboard</p>
           </div>
         </Link>
+
         <Link
           href="/code-chat"
           className={`w-full cursor-pointer  ${

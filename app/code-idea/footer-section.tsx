@@ -3,7 +3,8 @@ import Button from "app/components/Button"
 import toast, { Toaster } from "react-hot-toast"
 import useClipboard from "utils/useClipboard"
 import { useState } from "react"
-import { Copy } from "lucide-react"
+import { Copy, PlusSquare } from "lucide-react"
+import { MaterialTooltip } from "app/components/material-components"
 
 const notify = () => toast("Code copied!")
 
@@ -15,6 +16,7 @@ export default function FooterSection({
   testFrameworkElements,
   testLibElement,
   testLibElements,
+  clearPanel,
   onSaveCode,
   setTestLib,
   generatedCode,
@@ -30,6 +32,7 @@ export default function FooterSection({
   console.log("Mode", mode)
 
   const [copied, toggleCopy] = useState(false)
+
   const { copy } = useClipboard()
 
   const text =
@@ -56,7 +59,7 @@ export default function FooterSection({
           justify-between border-t-[1px] border-purple-500 bg-purple-800"
       >
         <div className="mb-10 ml-6 sm:ml-16">
-          {(mode === "smart" || mode === "test") && (
+          {mode === "smart" && (
             <>
               <div className="hidden sm:ml-4 sm:block">
                 <DropDown
@@ -66,11 +69,7 @@ export default function FooterSection({
                   setElement={(newElement) => setLangElement(newElement)}
                 />
               </div>
-              <div
-                className={`${
-                  mode === "smart" ? "block" : "hidden"
-                } ml-0 sm:ml-52 sm:block`}
-              >
+              <div className={`ml-0 hidden sm:ml-52 sm:block`}>
                 <DropDown
                   bgColor="bg-purple-500"
                   elements={libElements}
@@ -78,7 +77,11 @@ export default function FooterSection({
                   setElement={(newLib) => setLib(newLib)}
                 />
               </div>
-              <div className="hidden sm:ml-[400px] sm:block">
+            </>
+          )}
+          {mode === "test" && (
+            <>
+              <div className="hidden sm:ml-4 sm:block">
                 <DropDown
                   bgColor="bg-purple-500"
                   elements={testFrameworkElements}
@@ -86,7 +89,7 @@ export default function FooterSection({
                   setElement={(item) => setTestFrameworkElement(item)}
                 />
               </div>
-              <div className={`hidden sm:ml-[600px] sm:block`}>
+              <div className={`ml-0 hidden sm:ml-52 sm:block`}>
                 <DropDown
                   bgColor="bg-purple-500"
                   elements={testLibElements}
@@ -108,17 +111,46 @@ export default function FooterSection({
             />
           </div> */}
         </div>
-        <div className="mr-8 flex">
-          <div
-            onClick={() => copyHandler()}
-            className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+        <div className="relative mr-8 flex">
+          <MaterialTooltip
+            className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+            content="Clear Pannel"
+            animate={{
+              mount: { scale: 1, y: 0 },
+              unmount: { scale: 0, y: 25 },
+            }}
           >
-            <Copy
-              width={24}
-              height={24}
-              className="mx-auto mt-2 text-white hover:text-mint"
-            />
-          </div>
+            <div
+              data-tooltip-target="clear-pannel"
+              onClick={() => clearPanel()}
+              className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+            >
+              <PlusSquare
+                width={24}
+                height={24}
+                className="mx-auto mt-2 text-white hover:text-mint"
+              />
+            </div>
+          </MaterialTooltip>
+          <MaterialTooltip
+            className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+            content="Copy Code"
+            animate={{
+              mount: { scale: 1, y: 0 },
+              unmount: { scale: 0, y: 25 },
+            }}
+          >
+            <div
+              onClick={() => copyHandler()}
+              className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+            >
+              <Copy
+                width={24}
+                height={24}
+                className="mx-auto mt-2 text-white hover:text-mint"
+              />
+            </div>
+          </MaterialTooltip>
           <Button
             onClick={() => {
               onCodeGeneration()

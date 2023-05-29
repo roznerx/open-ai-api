@@ -16,6 +16,7 @@ const handler = async (req: Request): Promise<any> => {
   const payload: OpenAITurboPayload = {
     model: "gpt-3.5-turbo",
     messages,
+    top_p: 0.9,
     stream: true,
   }
 

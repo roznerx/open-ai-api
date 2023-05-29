@@ -6,26 +6,45 @@ import {
 } from "@heroicons/react/20/solid"
 import Image from "next/image"
 import React, { Fragment } from "react"
+import {
+  AngularIcon,
+  Chai,
+  Jasmine,
+  JavascriptIcon,
+  Jest,
+  Mocha,
+  ReactIcon,
+  RTL,
+  TypescriptIcon,
+  VueJSIcon,
+} from "./shared/lib-icons"
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ")
 }
 
 export type LandElementType =
+  | "Language"
+  | "UI Library"
   | "Typescript"
   | "Javascript"
   | "React"
   | "Vue"
   | "Angular"
 
-export type TestingElementType = "Jest" | "Mocha" | "Chai" | "Jasmine"
-export type libTestingElementType = "React Testing"
+export type TestingElementType =
+  | "Jest"
+  | "Mocha"
+  | "Chai"
+  | "Jasmine"
+  | "Testing Tool"
+export type libTestingElementType = "React Testing" | "Chai" | "Testing Lib"
 
 interface DropDownProps {
-  element: LandElementType
+  element: LandElementType | TestingElementType | libTestingElementType
   bgColor?: string
   setElement: (vibe: LandElementType) => void
-  elements: LandElementType[]
+  elements: LandElementType[] | TestingElementType[] | libTestingElementType[]
 }
 
 export default function DropDown({
@@ -34,71 +53,31 @@ export default function DropDown({
   element,
   setElement,
 }: DropDownProps) {
-  const ReactIcon = React.memo(() => (
-    <Image
-      loading="eager"
-      alt="React JS"
-      src={"/icons/react.png"}
-      width={24}
-      height={24}
-    />
-  ))
-
-  const VueJSIcon = React.memo(() => (
-    <Image
-      loading="eager"
-      alt="Vue JS"
-      src={"/icons/vue.png"}
-      width={24}
-      height={24}
-    />
-  ))
-
-  const AngularIcon = React.memo(() => (
-    <Image
-      loading="eager"
-      alt="Angular JS"
-      src={"/icons/angular.webp"}
-      width={24}
-      height={24}
-    />
-  ))
-
-  const TypescriptIcon = React.memo(() => (
-    <Image
-      loading="eager"
-      alt="Typescript"
-      src={"/icons/typescript.png"}
-      width={24}
-      height={24}
-    />
-  ))
-
-  const JavascriptIcon = () => (
-    <Image
-      loading="eager"
-      alt="Javascript"
-      src={"/icons/JS.svg"}
-      width={24}
-      height={24}
-    />
-  )
-
   return (
     <Menu
       as="div"
       className={`absolute w-32 rounded-lg sm:w-44 ${
         bgColor ? bgColor : "bg-purple-800"
-      }  text-left text-white`}
+      }  text-left font-sans text-white`}
     >
-      <div>
-        <Menu.Button className="inline-flex w-full items-start justify-between border-none py-2 pl-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-transparent">
+      <Menu.Button
+        as="div"
+        className="inline-flex w-full justify-between border-none py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-transparent"
+      >
+        <div className="ml-2 inline-flex">
           {element === "Javascript" && <JavascriptIcon />}
           {element === "Typescript" && <TypescriptIcon />}
           {element === "React" && <ReactIcon />}
           {element === "Vue" && <VueJSIcon />}
           {element === "Angular" && <AngularIcon />}
-          <span className="absolute left-8 ml-1">{element}</span>
+          {element === "React Testing" && <RTL />}
+          {element === "Chai" && <Chai />}
+          {element === "Jest" && <Jest />}
+          {element === "Mocha" && <Mocha />}
+          {element === "Jasmine" && <Jasmine />}
+          <span className="ml-3">{element}</span>
+        </div>
+        <div className="">
           <ChevronUpIcon
             className="mr-2 ml-2 h-5 w-5 ui-open:hidden sm:mr-1"
             aria-hidden="true"
@@ -107,8 +86,8 @@ export default function DropDown({
             className="mr-1 ml-2 hidden h-5 w-5 ui-open:block"
             aria-hidden="true"
           />
-        </Menu.Button>
-      </div>
+        </div>
+      </Menu.Button>
 
       <Transition
         as={Fragment}
@@ -148,6 +127,12 @@ export default function DropDown({
                     {item === "React" && <ReactIcon />}
                     {item === "Vue" && <VueJSIcon />}
                     {item === "Angular" && <AngularIcon />}
+                    {item === "React Testing" && <RTL />}
+                    {item === "Chai" && <Chai />}
+                    {item === "Jest" && <Jest />}
+                    {item === "Mocha" && <Mocha />}
+                    {item === "Jasmine" && <Jasmine />}
+
                     <span>{item}</span>
                     {element === item ? (
                       <CheckIcon className="text-bold h-4 w-4" />

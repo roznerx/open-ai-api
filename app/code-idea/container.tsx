@@ -25,12 +25,12 @@ export default function Container({ session }) {
   const [docSelected, setDocSelected] = useState(false)
   const [prompt, setPrompt] = useState("")
   const [codeSentence, setCodeSentence] = useState("")
-  const [langElement, setLangElement] = useState<LandElementType>("Typescript")
+  const [langElement, setLangElement] = useState<LandElementType>("Language")
   const [testFrameworkElement, setTestFrameworkElement] =
-    useState<TestingElementType>("Jest")
+    useState<TestingElementType>("Testing Tool")
   const [testLibElement, setTestLib] =
-    useState<libTestingElementType>("React Testing")
-  const [lib, setLib] = useState<LandElementType>("React")
+    useState<libTestingElementType>("Testing Lib")
+  const [lib, setLib] = useState<LandElementType>("UI Library")
   const searchParams = useSearchParams()
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
@@ -49,7 +49,9 @@ export default function Container({ session }) {
         setSmartSelected(true)
       }
       if (testSelected || search === "test") {
-        setPrompt(`User context: "${codeSentence}".`)
+        setPrompt(
+          `Generate a unit test and listen for the user's feedback, context: "${codeSentence}".`,
+        )
         setMode("test")
         setTestSelected(true)
       }
@@ -105,6 +107,7 @@ export default function Container({ session }) {
         userCredits={userCredits}
         userId={userId}
         mode={mode}
+        setMode={setMode}
         setTestFrameworkElement={setTestFrameworkElement}
         testFrameworkElement={testFrameworkElement}
         setLib={setLib}

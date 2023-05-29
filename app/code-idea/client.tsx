@@ -6,7 +6,7 @@ import "prismjs/components/prism-clike"
 import "prismjs/components/prism-javascript"
 
 import Modal from "app/components/Modal"
-import tailwindConfig from "tailwind.config.js"
+
 import React, { ChangeEvent, useEffect, useMemo, useRef, useState } from "react"
 import {
   LandElementType,
@@ -20,18 +20,11 @@ import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/Messages"
 import Image from "next/image"
 
+let langElements: LandElementType[] = ["Language", "Typescript", "Javascript"]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
-let langElements: LandElementType[] = ["Typescript", "Javascript"]
 
-let testFrameworkElements: TestingElementType[] = [
-  "Jest",
-  "Mocha",
-  "Chai",
-  "Jasmine",
-]
-let testLibElements: libTestingElementType[] = ["React Testing"]
-
-const colors: any = tailwindConfig.theme?.extend?.colors
+let testFrameworkElements: TestingElementType[] = ["Jest", "Mocha", "Jasmine"]
+let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
   testFrameworkElement,
@@ -41,6 +34,7 @@ export default function Client({
   userCredits,
   lib,
   mode,
+  setMode,
   prompt,
   setLib,
   langElement,
@@ -53,6 +47,9 @@ export default function Client({
   setCodeSentence,
   improveSelected,
 }) {
+  console.log("testFrameworkElement", testFrameworkElement)
+  console.log("testLibElement", testLibElement)
+
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
@@ -80,9 +77,8 @@ export default function Client({
         codeMessages.current[0].content = `You are an AI software development assistant which is specialized in providing code ideas/suggestions. Make sure tu use ${langElement} and ${lib}.`
         break
       case "test":
-        codeMessages.current[0].content = `You are a helpful and specialized AI software assistant with experience in unit testing, integration testing and e2e testing. 
-        Make sure tu use ${langElement} and ${lib}, ${testFrameworkElement} and ${testLibElement}.
-        Never add code comments at the end of the line. If a comment has more than 10 words, continue in the next line.`
+        codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of background in unit testing, integration testing and e2e testing. 
+        Make sure tu use ${langElement} and ${lib}, ${testFrameworkElement} and ${testLibElement}.`
         break
       case "improve":
         codeMessages.current[0].content =
@@ -140,7 +136,7 @@ export default function Client({
         content: prompt,
       },
     ]
-    console.log("codeMessages.current:", codeMessages.current)
+    console.log("codeMessages :", codeMessages.current)
 
     setCodeSentence("")
     generateCode(
@@ -181,7 +177,7 @@ export default function Client({
   function getCodeGeniusMode() {
     if (smartSelected && mode !== "test") {
       return (
-        <div className="inline-flex font-sans">
+        <div className="mt-5 inline-flex font-sans">
           <span className="ml-5  text-2xl font-semibold text-white">
             Smart suggestions
           </span>{" "}
@@ -189,7 +185,7 @@ export default function Client({
       )
     } else if (testSelected || mode === "test") {
       return (
-        <div className="inline-flex font-sans">
+        <div className="mt-5 inline-flex font-sans">
           <span className="ml-5  text-2xl font-semibold text-white">
             Test generation
           </span>{" "}
@@ -197,17 +193,17 @@ export default function Client({
       )
     } else if (improveSelected) {
       return (
-        <div className="inline-flex font-sans">
+        <div className="mt-5 inline-flex font-sans">
           <span className="ml-5  text-2xl font-semibold text-white">
-            Improvements mode
+            Improve Code
           </span>{" "}
         </div>
       )
     } else if (docSelected) {
       return (
-        <div className="inline-flex font-sans">
+        <div className="mt-5 inline-flex font-sans">
           <span className="ml-5  text-2xl font-semibold text-white">
-            Documentation mode
+            Docs generation
           </span>{" "}
         </div>
       )
@@ -249,6 +245,12 @@ export default function Client({
     [],
   )
 
+  const clearPanel = () => {
+    setGeneratedCode("")
+    setCodeSentence("")
+    setMode(mode)
+  }
+
   return (
     <div className="w-full sm:ml-10">
       <div
@@ -278,6 +280,7 @@ export default function Client({
         </div>
       </div>
       <FooterSection
+        clearPanel={clearPanel}
         testFrameworkElements={testFrameworkElements}
         testLibElements={testLibElements}
         testLibElement={testLibElement}
