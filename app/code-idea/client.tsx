@@ -113,8 +113,8 @@ export default function Client({
             content: "",
           },
         ]
-        codeMessages.current[0].content =
-          "You are an AI software assistant which is specialized in providing code documentation. Requeriments: Use short sentences to make it easy to read (max 20 words per line)."
+        codeMessages.current[0].content = `You are an AI software assistant which is specialized in providing code documentation.
+          Make sure to use format docs using MDX syntax. Don't output code.`
         break
       default:
         codeMessages.current = [
@@ -299,6 +299,7 @@ export default function Client({
         </div>
       </div>
       <FooterSection
+        stopGeneration={stopGeneration}
         clearPanel={clearPanel}
         testFrameworkElements={testFrameworkElements}
         testLibElements={testLibElements}

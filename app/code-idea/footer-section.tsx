@@ -3,7 +3,7 @@ import Button from "app/components/Button"
 import toast, { Toaster } from "react-hot-toast"
 import useClipboard from "utils/useClipboard"
 import { useState } from "react"
-import { Copy, PlusSquare } from "lucide-react"
+import { Copy, Cross, PlusSquare } from "lucide-react"
 import { MaterialTooltip } from "app/components/material-components"
 
 const notify = () => toast("Code copied!")
@@ -17,6 +17,7 @@ export default function FooterSection({
   testLibElement,
   testLibElements,
   clearPanel,
+  stopGeneration,
   onSaveCode,
   setTestLib,
   generatedCode,
@@ -111,46 +112,67 @@ export default function FooterSection({
             />
           </div> */}
         </div>
-        <div className="relative mr-8 flex">
-          <MaterialTooltip
-            className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-            content="Clear Pannel"
-            animate={{
-              mount: { scale: 1, y: 0 },
-              unmount: { scale: 0, y: 25 },
-            }}
-          >
-            <div
-              data-tooltip-target="clear-pannel"
-              onClick={() => clearPanel()}
-              className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+        <div className="mx-auto flex items-center gap-28 sm:mr-8 sm:items-center sm:justify-center sm:gap-0">
+          <div className="flex">
+            <MaterialTooltip
+              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+              content="Clear Pannel"
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+              }}
             >
-              <PlusSquare
-                width={24}
-                height={24}
-                className="mx-auto mt-2 text-white hover:text-mint"
-              />
-            </div>
-          </MaterialTooltip>
-          <MaterialTooltip
-            className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-            content="Copy Code"
-            animate={{
-              mount: { scale: 1, y: 0 },
-              unmount: { scale: 0, y: 25 },
-            }}
-          >
-            <div
-              onClick={() => copyHandler()}
-              className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+              <div
+                data-tooltip-target="clear-pannel"
+                onClick={() => clearPanel()}
+                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+              >
+                <PlusSquare
+                  width={24}
+                  height={24}
+                  className="mx-auto mt-2 text-white hover:text-mint"
+                />
+              </div>
+            </MaterialTooltip>
+            <MaterialTooltip
+              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+              content="Copy Code"
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+              }}
             >
-              <Copy
-                width={24}
-                height={24}
-                className="mx-auto mt-2 text-white hover:text-mint"
-              />
-            </div>
-          </MaterialTooltip>
+              <div
+                onClick={() => copyHandler()}
+                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+              >
+                <Copy
+                  width={24}
+                  height={24}
+                  className="mx-auto mt-2 text-white hover:text-mint"
+                />
+              </div>
+            </MaterialTooltip>
+            <MaterialTooltip
+              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+              content="Cancel Generation"
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+              }}
+            >
+              <div
+                onClick={() => stopGeneration()}
+                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+              >
+                <Cross
+                  width={24}
+                  height={24}
+                  className="mx-auto mt-2 rotate-45 text-white hover:text-mint"
+                />
+              </div>
+            </MaterialTooltip>
+          </div>
           <Button
             onClick={() => {
               onCodeGeneration()

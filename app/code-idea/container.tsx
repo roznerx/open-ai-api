@@ -64,7 +64,7 @@ export default function Container({ session }) {
       }
       if (docSelected || search === "docs") {
         setPrompt(
-          `Create documentation for the provided code: "${codeSentence}". Document the code as code comments. Don't use long sentences`,
+          `Create code documentation for the provided context: "${codeSentence}".`,
         )
         setMode("docs")
         setDocSelected(true)
