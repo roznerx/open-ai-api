@@ -1,6 +1,6 @@
 export default async function sitemap() {
   const routes = [
-    "",
+    "/",
     "/code-idea",
     "/code-chat",
     "/pricing",
