@@ -3,7 +3,6 @@ import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
 import { HarperDBAdapter } from "adapters/harperdb"
-import { sendWelcomeEmail } from "utils/sendEmail"
 
 const server = process.env.EMAIL_SERVER
 const from = process.env.EMAIL_FROM
@@ -25,36 +24,28 @@ export const authOptions: AuthOptions = {
   ],
   events: {
     async signIn({ user, profile }) {
-      console.log("profile:", profile)
-
       //@ts-ignore
-      if (user && user?.registered) {
-        const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email?name=${user.name}`
-
-        const headers = new Headers()
-        headers.append("Content-Type", "application/json")
-
-        try {
-          const response = await fetch(fetchUrl, {
-            method: "GET",
-            headers: headers,
-          })
-
-          const { html } = await response.json()
-
-          //@ts-ignore
-
-          await sendWelcomeEmail({
-            name: user && user?.name,
-            html,
-            identifier: user && user?.email,
-            provider: { server, from },
-          })
-        } catch (error) {
-          console.error("error::", error)
-        }
-      }
-      return
+      // if (user && user?.registered) {
+      //   const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email?name=${user.name}`
+      //   const headers = new Headers()
+      //   headers.append("Content-Type", "application/json")
+      //   try {
+      //     const response = await fetch(fetchUrl, {
+      //       method: "GET",
+      //       headers: headers,
+      //     })
+      //     const { html } = await response.json()
+      //     //@ts-ignore
+      //     await sendWelcomeEmail({
+      //       name: user && user?.name,
+      //       html,
+      //       identifier: user && user?.email,
+      //       provider: { server, from },
+      //     })
+      //   } catch (error) {
+      //     console.error("error::", error)
+      //   }
+      // }
     },
   },
 

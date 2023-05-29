@@ -3,7 +3,6 @@ import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
-import { SendCongratsEmail } from "utils/sendEmail"
 import Client from "./client"
 
 export const metadata = {
@@ -91,8 +90,8 @@ export default async function Dashboard() {
       })
       if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
         opConfirmation = true
-        console.log("pasa por server render")
-        SendCongratsEmail(session, purchasedCredits)
+        // console.log("pasa por server render")
+        // SendCongratsEmail(session, purchasedCredits)
       }
     }
   }
