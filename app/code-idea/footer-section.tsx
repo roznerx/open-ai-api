@@ -69,7 +69,7 @@ export default function FooterSection({
                   setElement={(newElement) => setLangElement(newElement)}
                 />
               </div>
-              <div className={`ml-0 hidden sm:ml-52 sm:block`}>
+              <div className={`ml-0 hidden sm:ml-56 sm:block`}>
                 <DropDown
                   bgColor="bg-purple-500"
                   elements={libElements}
@@ -89,7 +89,7 @@ export default function FooterSection({
                   setElement={(item) => setTestFrameworkElement(item)}
                 />
               </div>
-              <div className={`ml-0 hidden sm:ml-52 sm:block`}>
+              <div className={`ml-0 hidden sm:ml-56 sm:block`}>
                 <DropDown
                   bgColor="bg-purple-500"
                   elements={testLibElements}

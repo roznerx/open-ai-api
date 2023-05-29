@@ -41,9 +41,9 @@ export default function Container({ session }) {
 
       if (smartSelected || search === "smart") {
         setPrompt(
-          `Make sure to use this context: ${codeSentence}${
+          `Context: ${codeSentence}${
             codeSentence.slice(-1) === "." ? "" : "."
-          }  Make sure to prefix all code explanations with "//" so it can be read as code comments. Never add code comments at the end of the line. If a comment has more than 10 words, continue in the next line. Last but not least, only reply with code, without additional explanations.`,
+          } If a code comment has more than 10 words, continue in the next line. `,
         )
         setMode("smart")
         setSmartSelected(true)
@@ -57,7 +57,7 @@ export default function Container({ session }) {
       }
       if (improveSelected || search === "improve") {
         setPrompt(
-          `Improve and propose performance boost based on the provided code: \`${codeSentence}\`. Make sure to comment on the improvements at the end, in short code comments.`,
+          `Improve and propose performance boost based on the provided context: \`${codeSentence}\`. Make sure to comment on the improvements at the end, in short code comments.`,
         )
         setMode("improve")
         setImproveSelected(true)
