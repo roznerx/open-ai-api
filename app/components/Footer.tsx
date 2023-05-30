@@ -57,6 +57,12 @@ export default function Footer({ session }: { session: any }) {
               Contact
             </div>
             <Link
+              href="https://discord.gg/3tbJD8vZQw"
+              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
+            >
+              Discord
+            </Link>
+            <Link
               href="/terms-and-conditions"
               prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
