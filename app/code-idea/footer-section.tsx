@@ -3,7 +3,7 @@ import Button from "app/components/Button"
 import toast, { Toaster } from "react-hot-toast"
 import useClipboard from "utils/useClipboard"
 import { useState } from "react"
-import { Copy, Cross, PlusSquare } from "lucide-react"
+import { Copy, Hand, PlusSquare } from "lucide-react"
 import { MaterialTooltip } from "app/components/material-components"
 
 const notify = () => toast("Code copied!")
@@ -165,10 +165,10 @@ export default function FooterSection({
                 onClick={() => stopGeneration()}
                 className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
               >
-                <Cross
+                <Hand
                   width={24}
                   height={24}
-                  className="mx-auto mt-2 rotate-45 text-white hover:text-mint"
+                  className="mx-auto mt-2  text-white hover:text-mint"
                 />
               </div>
             </MaterialTooltip>
