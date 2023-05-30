@@ -3,7 +3,7 @@ export function getCodeGeniusPlaceHolder(mode: string) {
     case "smart":
       return "E.g: Use the dropdowns at the button to select your language and framework. "
     case "test":
-      return "E.g: Generate tests for your code by pasting the function here."
+      return "Tip: Paste the function for which you want tests to be generated."
     case "improve":
       return "E.g: Improve your code performance by pasting your function here."
     case "docs":

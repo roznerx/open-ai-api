@@ -155,7 +155,7 @@ export default function FooterSection({
             </MaterialTooltip>
             <MaterialTooltip
               className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-              content="Cancel Generation"
+              content="Stop Generation"
               animate={{
                 mount: { scale: 1, y: 0 },
                 unmount: { scale: 0, y: 25 },
