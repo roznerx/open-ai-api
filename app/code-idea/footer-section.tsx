@@ -70,14 +70,16 @@ export default function FooterSection({
                   setElement={(newElement) => setLangElement(newElement)}
                 />
               </div>
-              <div className={`ml-0 hidden sm:ml-56 sm:block`}>
-                <DropDown
-                  bgColor="bg-purple-500"
-                  elements={libElements}
-                  element={lib}
-                  setElement={(newLib) => setLib(newLib)}
-                />
-              </div>
+              {langElement !== "Python" && (
+                <div className={`ml-0 hidden sm:ml-56 sm:block`}>
+                  <DropDown
+                    bgColor="bg-purple-500"
+                    elements={libElements}
+                    element={lib}
+                    setElement={(newLib) => setLib(newLib)}
+                  />
+                </div>
+              )}
             </>
           )}
           {mode === "test" && (
