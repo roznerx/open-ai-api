@@ -16,6 +16,7 @@ export const VueJSIcon = React.memo(() => (
     loading="eager"
     alt="Vue JS"
     src={"/icons/vue.png"}
+    className="rotate-45"
     width={24}
     height={24}
   />
