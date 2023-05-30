@@ -10,7 +10,6 @@ import InputChat from "app/components/shared/InputChat"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
 
 export default function Client({ session }) {
-  const [loading, setLoading] = useState(false)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const { setShowSignInModal } = useSignInModal({})
   const [reader, setReader] =

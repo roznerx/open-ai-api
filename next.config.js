@@ -6,6 +6,7 @@ const nextConfig = {
     domains: [
       "avatars.githubusercontent.com",
       "lh3.googleusercontent.com",
+      "api.producthunt.com",
       "tailwindui.com",
       "avatars.dicebear.com",
     ],
