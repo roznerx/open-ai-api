@@ -26,6 +26,7 @@ let testFrameworkElements: TestingElementType[] = ["Jest", "Mocha", "Jasmine"]
 let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
+  setChatHasStarted,
   testFrameworkElement,
   setTestLib,
   setTestFrameworkElement,
@@ -186,6 +187,7 @@ export default function Client({
   }
 
   const onCodeGeneration = () => {
+    setChatHasStarted(true)
     if (!creditsLeft || creditsLeft === 0) {
       setCreditsModaIsOpen(true)
       return false
@@ -268,6 +270,7 @@ export default function Client({
   )
 
   const clearPanel = () => {
+    setChatHasStarted(false)
     setGeneratedCode("")
     setCodeSentence("")
     setMode(mode)

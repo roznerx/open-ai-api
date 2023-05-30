@@ -18,6 +18,7 @@ export default function Container({ session }) {
   const [smartSelected, setSmartSelected] = useState(true)
   const { setShowSignInModal } = useSignInModal({})
   const [openSecondayNavBar, setOpenSecondaryNavBar] = useState(false)
+  const [chatHasStarted, setChatHasStarted] = useState(false)
   const [testSelected, setTestSelected] = useState(false)
   const [improveSelected, setImproveSelected] = useState(false)
   const [bugSelected] = useState(false)
@@ -50,7 +51,13 @@ export default function Container({ session }) {
       }
       if (testSelected || search === "test") {
         setPrompt(
-          `Generate a unit test and listen for the user's feedback, context: "${codeSentence}".`,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Generate a unit test and listen for the user's feedback, context: " +
+                codeSentence +
+                "."
+          }`,
         )
         setMode("test")
         setTestSelected(true)
@@ -82,6 +89,7 @@ export default function Container({ session }) {
     lib,
     testFrameworkElement,
     testLibElement,
+    chatHasStarted,
   ])
 
   return (
@@ -102,6 +110,7 @@ export default function Container({ session }) {
         setTestSelected={setTestSelected}
       />
       <Client
+        setChatHasStarted={setChatHasStarted}
         testLibElement={testLibElement}
         setTestLib={setTestLib}
         userCredits={userCredits}
