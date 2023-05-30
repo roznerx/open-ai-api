@@ -198,9 +198,9 @@ export default function Client({
     }
     generateCompletion()
   }
-  const onSaveCode = () => {
-    setShowSavePromptModal(true)
-  }
+  // const onSaveCode = () => {
+  //   setShowSavePromptModal(true)
+  // }
 
   const onSaveQuestionModal = () => {
     const payload = {
@@ -317,7 +317,6 @@ export default function Client({
         mode={mode}
         setUserHasAResponse={setUserHasAResponse}
         generatedCode={generatedCode}
-        onSaveCode={onSaveCode}
         langElement={langElement}
         libElements={libElements}
         langElements={langElements}
