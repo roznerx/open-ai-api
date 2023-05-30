@@ -110,9 +110,8 @@ export default function Feature({ setShowSignInModal, session }) {
           </motion.p>
         </div>
         <div className="mb-24 grid grid-cols-1 gap-1 sm:grid-cols-2">
-          <div className="mx-auto mb-2 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
+          <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
             <AISuggestions />
-            {/* <CodeDocumentation /> */}
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <motion.h3
@@ -135,7 +134,7 @@ export default function Feature({ setShowSignInModal, session }) {
               efficient, and error-free.
             </motion.p>
           </div>
-          <div className="mx-auto mb-2 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
+          <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
             <AIGeneration />
             {/* <CodeDocumentation /> */}
           </div>
@@ -160,10 +159,10 @@ export default function Feature({ setShowSignInModal, session }) {
               and reliable.
             </motion.p>
           </div>
-          <div className="mx-auto mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
+          <div className="mx-auto mb-10 mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
             <CodeDocumentation />
           </div>
-          <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
+          <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
             <motion.h3
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}

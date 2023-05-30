@@ -46,7 +46,9 @@ export default function Header({
                   </>
                 )}
                 <h1
-                  className={`sm:text-xl sm:text-xl mt-1 ml-12 bg-gradient-to-r from-[#A1FFE0]
+                  className={`sm:text-xl ${
+                    pathname === "/" ? "ml-3" : "ml-12"
+                  } sm:text-xl mt-1  bg-gradient-to-r from-[#A1FFE0]
                     to-[#2C9DC0] bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:leading-6`}
                 >
                   Code Genius
