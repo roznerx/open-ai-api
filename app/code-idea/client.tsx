@@ -7,7 +7,7 @@ import "prismjs/components/prism-javascript"
 
 import Modal from "app/components/Modal"
 
-import React, { ChangeEvent, useEffect, useMemo, useRef, useState } from "react"
+import React, { ChangeEvent, useEffect, useRef, useState } from "react"
 import {
   LandElementType,
   libTestingElementType,
@@ -179,7 +179,6 @@ export default function Client({
 
     setCodeSentence("")
     generateCode(
-      setLoading,
       setReader,
       setGeneratedCode,
       codeMessages,
@@ -268,10 +267,7 @@ export default function Client({
     setQuestionName(event.target.value)
   }
 
-  const generatedMessages = useMemo(
-    () => generatedCode.split("<>").filter((i) => i !== ""),
-    [generatedCode],
-  )
+  const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
 
   const clearPanel = () => {
     setChatHasStarted(false)

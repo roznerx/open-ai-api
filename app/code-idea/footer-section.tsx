@@ -29,8 +29,6 @@ export default function FooterSection({
   setLib,
   onCodeGeneration,
 }: any) {
-  console.log("Mode", mode)
-
   const [copied, toggleCopy] = useState(false)
 
   const { copy } = useClipboard()

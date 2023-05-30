@@ -92,7 +92,6 @@ export const fetchWithTurbo = async (
 }
 
 export async function generateCode(
-  setLoading: any,
   setReader: any,
   setGeneratedCode: any,
   codeMessages: any,
@@ -101,8 +100,6 @@ export async function generateCode(
   setCreditsLeft?: any,
   setCreditsModaIsOpen?: any,
 ) {
-  setLoading(true)
-
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
     headers: {
@@ -114,7 +111,6 @@ export async function generateCode(
   })
 
   if (!response.ok) {
-    setLoading(false)
     return
   }
 
@@ -122,7 +118,6 @@ export async function generateCode(
   const data = response.body
 
   if (!data) {
-    setLoading(false)
     return
   }
 
@@ -146,13 +141,11 @@ export async function generateCode(
 
       if (done) {
         setGeneratedCode((prev) => prev + "<>")
-        setLoading(false)
       }
     }
   } catch (error) {
     return `There was an error with your request ${error}`
   } finally {
-    setLoading(false)
     setReader(null)
     if (typeof setUserHasAResponse === "function") {
       setUserHasAResponse(true)

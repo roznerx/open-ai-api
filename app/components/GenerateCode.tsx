@@ -16,6 +16,7 @@ type GenerateCode = {
 }
 
 const themeColors: any = tailwindConfig.theme?.extend?.colors
+const regex = /^x/
 
 function GenerateCode({
   align = "center",
@@ -29,9 +30,9 @@ function GenerateCode({
       >
         {generatedCode
           .substring(generatedCode.indexOf("**") + 0)
+          .replace(regex, "")
           .replace("javascript", "")
           .replace("js", "")
-          .replace("x", "")
           .replace("python", "")
           .replace("```", "")
           .replace("typescript", "")

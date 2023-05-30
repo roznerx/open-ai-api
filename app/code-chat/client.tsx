@@ -55,7 +55,7 @@ export default function Client({ session }) {
       },
     ]
     setCodeSentence("")
-    generateCode(setLoading, setReader, setGeneratedCode, codeMessages, userId)
+    generateCode(setReader, setGeneratedCode, codeMessages, userId)
   }
 
   const onCodeGeneration = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -77,13 +77,7 @@ export default function Client({ session }) {
       ]
       setCodeSentence("")
       //Generate Code funciton
-      generateCode(
-        setLoading,
-        setReader,
-        setGeneratedCode,
-        codeMessages,
-        userId,
-      )
+      generateCode(setReader, setGeneratedCode, codeMessages, userId)
     }
   }
 

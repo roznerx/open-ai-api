@@ -61,11 +61,11 @@ export default function DropDown({
       as="div"
       className={`absolute w-32 rounded-lg sm:w-48 ${
         bgColor ? bgColor : "bg-purple-800"
-      }  text-left font-sans text-white`}
+      }  cursor-pointer text-left font-sans text-white`}
     >
       <Menu.Button
         as="div"
-        className="inline-flex w-full justify-between border-none py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-transparent"
+        className="inline-flex w-full justify-between border-none py-2 shadow-sm hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
         <div className="ml-2 inline-flex">
           {element === "Javascript" && <JavascriptIcon />}
@@ -103,7 +103,7 @@ export default function DropDown({
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items
-          className="absolute left-0 -top-2 z-10 w-full origin-top-right -translate-y-full transform divide-y rounded-lg  bg-white shadow-lg ring-1 ring-black ring-opacity-5 hover:bg-none focus:outline-none"
+          className="absolute left-0 -top-2 z-10 w-full origin-top-right -translate-y-full transform divide-y rounded-lg  bg-white shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none"
           key={element}
         >
           <div className="">
