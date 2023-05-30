@@ -1,17 +1,26 @@
 import { CodeMessagesProps } from "app/home/HomeChat"
+import Image from "next/image"
 import React from "react"
 import { parseText } from "utils/parseText"
 import GenerateCode from "../GenerateCode"
+
+const LogoCodeGenius = () => (
+  <Image
+    src={"/logo/code-genius.svg"}
+    width={32}
+    height={32}
+    className={"right-8"}
+    alt="Code Genius"
+  />
+)
 
 export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
   ({
     generatedMessages,
     fontColor,
-    logoCodeGenius,
   }: {
     generatedMessages: []
     fontColor?: string
-    logoCodeGenius?: React.ReactNode
   }) => {
     return (
       <>
@@ -23,8 +32,8 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                 if (item.hasOwnProperty("text")) {
                   return (
                     <div key={idx} className="flex">
-                      <div className="ml-6">
-                        {logoCodeGenius ? logoCodeGenius : null}
+                      <div className="ml-6 flex items-center justify-center">
+                        <LogoCodeGenius />
                       </div>
                       <div
                         className={`mx-auto ml-3 w-[92%] rounded-lg bg-purple-400 p-2`}

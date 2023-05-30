@@ -95,3 +95,12 @@ export const Jasmine = () => (
     height={24}
   />
 )
+export const Python = () => (
+  <Image
+    loading="eager"
+    alt="Python"
+    src={"/icons/python.png"}
+    width={24}
+    height={24}
+  />
+)

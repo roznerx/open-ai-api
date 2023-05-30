@@ -18,12 +18,14 @@ export default function Container({ session }) {
   const [smartSelected, setSmartSelected] = useState(true)
   const { setShowSignInModal } = useSignInModal({})
   const [openSecondayNavBar, setOpenSecondaryNavBar] = useState(false)
+  const [chatHasStarted, setChatHasStarted] = useState(false)
   const [testSelected, setTestSelected] = useState(false)
   const [improveSelected, setImproveSelected] = useState(false)
   const [bugSelected] = useState(false)
   const [mode, setMode] = useState<ModeTypes>("smart")
   const [docSelected, setDocSelected] = useState(false)
   const [prompt, setPrompt] = useState("")
+  const [generatedCode, setGeneratedCode] = useState<String>("")
   const [codeSentence, setCodeSentence] = useState("")
   const [langElement, setLangElement] = useState<LandElementType>("Language")
   const [testFrameworkElement, setTestFrameworkElement] =
@@ -41,30 +43,52 @@ export default function Container({ session }) {
 
       if (smartSelected || search === "smart") {
         setPrompt(
-          `Make sure to use this context: ${codeSentence}${
-            codeSentence.slice(-1) === "." ? "" : "."
-          }  Make sure to prefix all code explanations with "//" so it can be read as code comments. Never add code comments at the end of the line. If a comment has more than 10 words, continue in the next line. Last but not least, only reply with code, without additional explanations.`,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Context: " +
+                codeSentence +
+                ". Ensure that if a code comment consists of more than 10 words, proceed to the subsequent line."
+          } `,
         )
         setMode("smart")
         setSmartSelected(true)
       }
       if (testSelected || search === "test") {
         setPrompt(
-          `Generate a unit test and listen for the user's feedback, context: "${codeSentence}".`,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Generate a unit test and listen for the user's feedback, context: " +
+                codeSentence +
+                "."
+          }`,
         )
         setMode("test")
         setTestSelected(true)
       }
       if (improveSelected || search === "improve") {
         setPrompt(
-          `Improve and propose performance boost based on the provided code: \`${codeSentence}\`. Make sure to comment on the improvements at the end, in short code comments.`,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Improve and propose performance boost based on the provided context: " +
+                codeSentence +
+                ". Make sure to comment on the improvements at the end, in short code comments."
+          }`,
         )
         setMode("improve")
         setImproveSelected(true)
       }
       if (docSelected || search === "docs") {
         setPrompt(
-          `Create documentation for the provided code: "${codeSentence}". Document the code as code comments. Don't use long sentences`,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Create code documentation for the provided context:" +
+                codeSentence +
+                "."
+          }`,
         )
         setMode("docs")
         setDocSelected(true)
@@ -82,6 +106,7 @@ export default function Container({ session }) {
     lib,
     testFrameworkElement,
     testLibElement,
+    chatHasStarted,
   ])
 
   return (
@@ -89,6 +114,7 @@ export default function Container({ session }) {
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <Navigation
         mode={mode}
+        setGeneratedCode={setGeneratedCode}
         setMode={setMode}
         setOpenSecondaryNavBar={setOpenSecondaryNavBar}
         openSecondayNavBar={openSecondayNavBar}
@@ -102,6 +128,9 @@ export default function Container({ session }) {
         setTestSelected={setTestSelected}
       />
       <Client
+        setGeneratedCode={setGeneratedCode}
+        generatedCode={generatedCode}
+        setChatHasStarted={setChatHasStarted}
         testLibElement={testLibElement}
         setTestLib={setTestLib}
         userCredits={userCredits}

@@ -17,16 +17,23 @@ import FooterSection from "./footer-section"
 import { getCodeGeniusPlaceHolder } from "utils/strings"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { generateCode } from "utils/generateCode"
-import { CombinedMessages } from "app/components/shared/Messages"
-import Image from "next/image"
+import { CombinedMessages } from "app/components/shared/CombinedMessages"
 
-let langElements: LandElementType[] = ["Language", "Typescript", "Javascript"]
+let langElements: LandElementType[] = [
+  "Language",
+  "Typescript",
+  "Javascript",
+  "Python",
+]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
 
 let testFrameworkElements: TestingElementType[] = ["Jest", "Mocha", "Jasmine"]
 let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
+  setChatHasStarted,
+  setGeneratedCode,
+  generatedCode,
   testFrameworkElement,
   setTestLib,
   setTestFrameworkElement,
@@ -47,9 +54,6 @@ export default function Client({
   setCodeSentence,
   improveSelected,
 }) {
-  console.log("testFrameworkElement", testFrameworkElement)
-  console.log("testLibElement", testLibElement)
-
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
@@ -59,7 +63,7 @@ export default function Client({
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [questionName, setQuestionName] = useState("")
-  const [generatedCode, setGeneratedCode] = useState<String>("")
+
   const controller = new AbortController()
   const [scrollHeight, setScrollHeight] = useState(0)
   const chatContainerRef = useRef<HTMLDivElement>(null)
@@ -74,28 +78,63 @@ export default function Client({
   useEffect(() => {
     switch (mode) {
       case "smart":
-        codeMessages.current[0].content = `You are an AI software development assistant which is specialized in providing code ideas/suggestions. Make sure tu use ${langElement} and ${lib}.`
+        codeMessages.current = [
+          {
+            role: "system",
+            content: "",
+          },
+        ]
+        codeMessages.current[0].content = `You are an AI software development assistant which is specialized in 
+        providing code exaamples and suggestions. ${
+          langElement && lib
+            ? "Make sure tu use " + langElement + " and " + lib + "."
+            : ""
+        }`
         break
       case "test":
+        codeMessages.current = [
+          {
+            role: "system",
+            content: "",
+          },
+        ]
         codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of background in unit testing, integration testing and e2e testing. 
-        Make sure tu use ${langElement} and ${lib}, ${testFrameworkElement} and ${testLibElement}.`
+        Make sure tu use ${testFrameworkElement} and ${testLibElement}.`
         break
       case "improve":
+        codeMessages.current = [
+          {
+            role: "system",
+            content: "",
+          },
+        ]
         codeMessages.current[0].content =
           "You are a helpful and specialized AI software assistant which is specialized in code performance and customization."
         break
       case "docs":
-        codeMessages.current[0].content =
-          "You are an AI software assistant which is specialized in providing code documentation. Requeriments: Use short sentences to make it easy to read (max 20 words per line)."
+        codeMessages.current = [
+          {
+            role: "system",
+            content: "",
+          },
+        ]
+        codeMessages.current[0].content = `You are an AI software assistant which is specialized in providing code documentation.
+          Make sure to use format docs using MDX syntax. Don't output code.`
         break
-
       default:
+        codeMessages.current = [
+          {
+            role: "system",
+            content: "",
+          },
+        ]
         codeMessages.current[0].content =
-          "You are an AI software development assistant which is specialized in providing code ideas/suggestions."
-
+          "You are an AI software development assistant which is specialized in providing code examples and suggestions."
         break
     }
-  }, [langElement, lib, mode, testFrameworkElement, testLibElement])
+    console.log("codeMessages.current: ", codeMessages.current)
+  }, [langElement, lib, mode, testFrameworkElement, testLibElement, setMode])
+
   useEffect(() => {
     if (chatContainerRef && chatContainerRef.current) {
       setScrollHeight(chatContainerRef.current?.scrollHeight)
@@ -152,15 +191,16 @@ export default function Client({
   }
 
   const onCodeGeneration = () => {
+    setChatHasStarted(true)
     if (!creditsLeft || creditsLeft === 0) {
       setCreditsModaIsOpen(true)
       return false
     }
     generateCompletion()
   }
-  const onSaveCode = () => {
-    setShowSavePromptModal(true)
-  }
+  // const onSaveCode = () => {
+  //   setShowSavePromptModal(true)
+  // }
 
   const onSaveQuestionModal = () => {
     const payload = {
@@ -232,20 +272,9 @@ export default function Client({
     () => generatedCode.split("<>").filter((i) => i !== ""),
     [generatedCode],
   )
-  const LogoCodeGenius = useMemo(
-    () => (
-      <Image
-        src={"/logo/code-genius.svg"}
-        width={32}
-        height={32}
-        className={"right-8"}
-        alt="Code Genius"
-      />
-    ),
-    [],
-  )
 
   const clearPanel = () => {
+    setChatHasStarted(false)
     setGeneratedCode("")
     setCodeSentence("")
     setMode(mode)
@@ -272,14 +301,12 @@ export default function Client({
             onValueChange={(code) => setCodeSentence(code)}
           />
           {generatedMessages && (
-            <CombinedMessages
-              logoCodeGenius={LogoCodeGenius}
-              generatedMessages={generatedMessages}
-            />
+            <CombinedMessages generatedMessages={generatedMessages} />
           )}
         </div>
       </div>
       <FooterSection
+        stopGeneration={stopGeneration}
         clearPanel={clearPanel}
         testFrameworkElements={testFrameworkElements}
         testLibElements={testLibElements}
@@ -290,7 +317,6 @@ export default function Client({
         mode={mode}
         setUserHasAResponse={setUserHasAResponse}
         generatedCode={generatedCode}
-        onSaveCode={onSaveCode}
         langElement={langElement}
         libElements={libElements}
         langElements={langElements}

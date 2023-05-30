@@ -5,6 +5,7 @@ import SideBar from "app/components/shared/SideBar"
 
 export default function Navigation({
   mode,
+  setGeneratedCode,
   smartSelected,
   setMode,
   setOpenSecondaryNavBar,
@@ -33,6 +34,7 @@ export default function Navigation({
       />
       {openSecondayNavBar && (
         <SecondaryNavBar
+          setGeneratedCode={setGeneratedCode}
           setOpenSecondayNavBar={setOpenSecondaryNavBar}
           isCodeModeSelected={isCodeModeSelected}
           openSecondayNavBar={openSecondayNavBar}

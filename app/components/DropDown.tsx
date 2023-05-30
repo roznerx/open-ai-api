@@ -13,6 +13,7 @@ import {
   JavascriptIcon,
   Jest,
   Mocha,
+  Python,
   ReactIcon,
   RTL,
   TypescriptIcon,
@@ -28,6 +29,7 @@ export type LandElementType =
   | "UI Library"
   | "Typescript"
   | "Javascript"
+  | "Python"
   | "React"
   | "Vue"
   | "Angular"
@@ -43,6 +45,7 @@ export type libTestingElementType = "React Testing" | "Chai" | "Testing Lib"
 interface DropDownProps {
   element: LandElementType | TestingElementType | libTestingElementType
   bgColor?: string
+  // eslint-disable-next-line unused-imports/no-unused-vars
   setElement: (vibe: LandElementType) => void
   elements: LandElementType[] | TestingElementType[] | libTestingElementType[]
 }
@@ -56,7 +59,7 @@ export default function DropDown({
   return (
     <Menu
       as="div"
-      className={`absolute w-32 rounded-lg sm:w-44 ${
+      className={`absolute w-32 rounded-lg sm:w-48 ${
         bgColor ? bgColor : "bg-purple-800"
       }  text-left font-sans text-white`}
     >
@@ -67,6 +70,7 @@ export default function DropDown({
         <div className="ml-2 inline-flex">
           {element === "Javascript" && <JavascriptIcon />}
           {element === "Typescript" && <TypescriptIcon />}
+          {element === "Python" && <Python />}
           {element === "React" && <ReactIcon />}
           {element === "Vue" && <VueJSIcon />}
           {element === "Angular" && <AngularIcon />}
@@ -115,6 +119,7 @@ export default function DropDown({
                     )}
                   >
                     {item === "Javascript" && <JavascriptIcon />}
+                    {item === "Python" && <Python />}
                     {item === "Typescript" && (
                       <Image
                         loading="eager"
