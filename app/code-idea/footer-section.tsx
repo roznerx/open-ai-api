@@ -174,15 +174,17 @@ export default function FooterSection({
               </div>
             </MaterialTooltip>
           </div>
-          <Button
-            onClick={() => {
-              onCodeGeneration()
-              setUserHasAResponse(false)
-            }}
-            loading={loading}
-            variant="mint"
-            text="Generate"
-          />
+          <div className="mr-4">
+            <Button
+              onClick={() => {
+                onCodeGeneration()
+                setUserHasAResponse(false)
+              }}
+              loading={loading}
+              variant="mint"
+              text="Generate"
+            />
+          </div>
         </div>
       </section>
     </>
