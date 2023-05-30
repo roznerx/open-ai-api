@@ -43,9 +43,13 @@ export default function Container({ session }) {
 
       if (smartSelected || search === "smart") {
         setPrompt(
-          `Context: ${codeSentence}${
-            codeSentence.slice(-1) === "." ? "" : "."
-          } If a code comment has more than 10 words, continue in the next line. `,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Context: " +
+                codeSentence +
+                ". Ensure that if a code comment consists of more than 10 words, proceed to the subsequent line."
+          } `,
         )
         setMode("smart")
         setSmartSelected(true)
@@ -65,14 +69,26 @@ export default function Container({ session }) {
       }
       if (improveSelected || search === "improve") {
         setPrompt(
-          `Improve and propose performance boost based on the provided context: \`${codeSentence}\`. Make sure to comment on the improvements at the end, in short code comments.`,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Improve and propose performance boost based on the provided context: " +
+                codeSentence +
+                ". Make sure to comment on the improvements at the end, in short code comments."
+          }`,
         )
         setMode("improve")
         setImproveSelected(true)
       }
       if (docSelected || search === "docs") {
         setPrompt(
-          `Create code documentation for the provided context: "${codeSentence}".`,
+          `${
+            chatHasStarted
+              ? codeSentence
+              : "Create code documentation for the provided context:" +
+                codeSentence +
+                "."
+          }`,
         )
         setMode("docs")
         setDocSelected(true)
