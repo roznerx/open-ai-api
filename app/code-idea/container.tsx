@@ -25,6 +25,7 @@ export default function Container({ session }) {
   const [mode, setMode] = useState<ModeTypes>("smart")
   const [docSelected, setDocSelected] = useState(false)
   const [prompt, setPrompt] = useState("")
+  const [generatedCode, setGeneratedCode] = useState<String>("")
   const [codeSentence, setCodeSentence] = useState("")
   const [langElement, setLangElement] = useState<LandElementType>("Language")
   const [testFrameworkElement, setTestFrameworkElement] =
@@ -97,6 +98,7 @@ export default function Container({ session }) {
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <Navigation
         mode={mode}
+        setGeneratedCode={setGeneratedCode}
         setMode={setMode}
         setOpenSecondaryNavBar={setOpenSecondaryNavBar}
         openSecondayNavBar={openSecondayNavBar}
@@ -110,6 +112,8 @@ export default function Container({ session }) {
         setTestSelected={setTestSelected}
       />
       <Client
+        setGeneratedCode={setGeneratedCode}
+        generatedCode={generatedCode}
         setChatHasStarted={setChatHasStarted}
         testLibElement={testLibElement}
         setTestLib={setTestLib}

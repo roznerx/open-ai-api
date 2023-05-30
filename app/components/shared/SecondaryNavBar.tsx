@@ -8,6 +8,7 @@ const colors: any = tailwindConfig.theme?.extend?.colors
 //write type definitions for the bellow component props
 export default function SecondaryNavBar({
   isCodeModeSelected,
+  setGeneratedCode,
   setOpenSecondayNavBar,
   openSecondayNavBar,
   improveSelected,
@@ -33,7 +34,7 @@ export default function SecondaryNavBar({
     return () => {
       document.removeEventListener("keydown", handleKeyPress)
     }
-  }, [])
+  }, [setOpenSecondayNavBar])
 
   return (
     <div
@@ -63,6 +64,7 @@ export default function SecondaryNavBar({
           setTestSelected(false)
           setDocSelected(false)
           setImproveSelected(false)
+          setGeneratedCode("")
         }}
       >
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
@@ -91,6 +93,7 @@ export default function SecondaryNavBar({
           setSmartSelected(false)
           setDocSelected(false)
           setImproveSelected(false)
+          setGeneratedCode("")
         }}
       >
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
@@ -115,6 +118,7 @@ export default function SecondaryNavBar({
           setSmartSelected(false)
           setTestSelected(false)
           setDocSelected(false)
+          setGeneratedCode("")
         }}
       >
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
@@ -143,6 +147,7 @@ export default function SecondaryNavBar({
           setSmartSelected(false)
           setTestSelected(false)
           setImproveSelected(false)
+          setGeneratedCode("")
         }}
       >
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">

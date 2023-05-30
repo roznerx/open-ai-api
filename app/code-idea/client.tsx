@@ -27,6 +27,8 @@ let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
   setChatHasStarted,
+  setGeneratedCode,
+  generatedCode,
   testFrameworkElement,
   setTestLib,
   setTestFrameworkElement,
@@ -59,7 +61,7 @@ export default function Client({
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [questionName, setQuestionName] = useState("")
-  const [generatedCode, setGeneratedCode] = useState<String>("")
+
   const controller = new AbortController()
   const [scrollHeight, setScrollHeight] = useState(0)
   const chatContainerRef = useRef<HTMLDivElement>(null)
