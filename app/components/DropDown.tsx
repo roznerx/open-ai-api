@@ -13,6 +13,7 @@ import {
   JavascriptIcon,
   Jest,
   Mocha,
+  Python,
   ReactIcon,
   RTL,
   TypescriptIcon,
@@ -28,6 +29,7 @@ export type LandElementType =
   | "UI Library"
   | "Typescript"
   | "Javascript"
+  | "Python"
   | "React"
   | "Vue"
   | "Angular"
@@ -67,6 +69,7 @@ export default function DropDown({
         <div className="ml-2 inline-flex">
           {element === "Javascript" && <JavascriptIcon />}
           {element === "Typescript" && <TypescriptIcon />}
+          {element === "Python" && <Python />}
           {element === "React" && <ReactIcon />}
           {element === "Vue" && <VueJSIcon />}
           {element === "Angular" && <AngularIcon />}
@@ -115,6 +118,7 @@ export default function DropDown({
                     )}
                   >
                     {item === "Javascript" && <JavascriptIcon />}
+                    {item === "Python" && <Python />}
                     {item === "Typescript" && (
                       <Image
                         loading="eager"

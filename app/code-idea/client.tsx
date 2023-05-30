@@ -19,7 +19,12 @@ import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 
-let langElements: LandElementType[] = ["Language", "Typescript", "Javascript"]
+let langElements: LandElementType[] = [
+  "Language",
+  "Typescript",
+  "Javascript",
+  "Python",
+]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
 
 let testFrameworkElements: TestingElementType[] = ["Jest", "Mocha", "Jasmine"]
@@ -49,9 +54,6 @@ export default function Client({
   setCodeSentence,
   improveSelected,
 }) {
-  console.log("testFrameworkElement", testFrameworkElement)
-  console.log("testLibElement", testLibElement)
-
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
