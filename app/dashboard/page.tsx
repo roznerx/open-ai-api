@@ -10,41 +10,53 @@ export const metadata = {
 }
 
 export default async function Dashboard() {
+  const session = await getServerSession(authOptions)
+  if (!session) {
+    redirect("/?referer=/dashboard")
+  }
   let harperUser
   let opConfirmation = false
   let totalCredits: number = 0
   let purchasedCredits: number = 0
-  const session = await getServerSession(authOptions)
   let existingCredits: string = ""
-
-  if (!session) {
-    redirect("/?referer=/dashboard")
-  }
 
   //@ts-ignore
   const userId = session && session.user?.id
 
   //@ts-ignore
   if (session && session.user?.id) {
-    harperUser = await harperClient({
-      operation: "sql",
-      sql: `SELECT * FROM Auth.Users WHERE id = "${userId}"`,
-    })
+    harperUser = await harperClient(
+      {
+        operation: "sql",
+        sql: `SELECT * FROM Auth.Users WHERE id = "${userId}"`,
+      },
+      false,
+    )
   }
-  // console.log("user in the server:", user)
+  console.log("userId:", userId)
 
-  const checkoutSession = await harperClient({
-    operation: "sql",
-    //@ts-ignore
-    sql: `SELECT * FROM Auth.CheckoutSessions WHERE userId = "${userId}" AND credits > 0 ORDER BY __createdtime__ DESC LIMIT 1`,
-  })
-  // console.log("checkoutSession:", checkoutSession[0])
-  if (userId && harperUser[0]) {
+  const checkoutSession = await harperClient(
+    {
+      operation: "sql",
+      //@ts-ignore
+      sql: `SELECT * FROM Auth.CheckoutSessions WHERE userId = "${userId}" AND credits > 0 ORDER BY __createdtime__ ASC LIMIT 1`,
+    },
+    false,
+  )
+  console.log("checkoutSession:", checkoutSession[0])
+  console.log("harperUser[0]:", harperUser[0])
+  if (harperUser[0] && !checkoutSession[0]) {
+    totalCredits = harperUser[0]?.credits
+  } else if (userId && harperUser[0] && checkoutSession[0]) {
     //Store existing credits
     existingCredits = harperUser[0]?.credits
 
+    // console.log("checkoutSession[0]?.credits", checkoutSession[0]?.credits)
+
     purchasedCredits =
       checkoutSession.length > 0 ? checkoutSession[0]?.credits : 0
+
+    console.log("purchasedCredits:", purchasedCredits)
 
     totalCredits =
       purchasedCredits > 0
@@ -77,21 +89,51 @@ export default async function Dashboard() {
     }
 
     if (checkoutSession[0]) {
-      const updatedOp = await harperClient({
-        operation: "update",
-        schema: "Auth",
-        table: "CheckoutSessions",
-        hash_values: [
-          {
-            id: checkoutSession[0]?.id,
-          },
-        ],
-        records: [updatedCheckout],
-      })
+      const updatedOp = await harperClient(
+        {
+          operation: "update",
+          schema: "Auth",
+          table: "CheckoutSessions",
+          hash_values: [
+            {
+              id: checkoutSession[0]?.id,
+            },
+          ],
+          records: [updatedCheckout],
+        },
+        false,
+      )
+      console.log("updatedOp:", updatedOp)
+
       if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
         opConfirmation = true
-        // console.log("pasa por server render")
-        // SendCongratsEmail(session, purchasedCredits)
+        console.log("entro en confirmation")
+        const fetchUrl = `${
+          process.env.NEXTAUTH_URL
+        }/api/email/generate-credits-html?name=${
+          session?.user?.name
+        }&credits=${purchasedCredits}&ts${new Date().getTime()}`
+
+        const headers = new Headers()
+        headers.append("Content-Type", "application/json")
+
+        const response = await fetch(fetchUrl, {
+          method: "GET",
+          next: { revalidate: 0 },
+          headers: headers,
+        })
+        const { html } = await response.json()
+        console.log("The HTML is: ", html)
+
+        const payload = {
+          name: session?.user?.name,
+          html,
+        }
+        await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+          method: "POST",
+          next: { revalidate: 0 },
+          body: JSON.stringify(payload),
+        })
       }
     }
   }
