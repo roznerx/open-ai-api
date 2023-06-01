@@ -2,7 +2,7 @@
 
 import { Dialog, Transition } from "@headlessui/react"
 import Loading from "app/suspenseLoading"
-import { SidebarClose } from "lucide-react"
+import { X } from "lucide-react"
 import { Inter } from "next/font/google"
 import { Fragment, useState } from "react"
 
@@ -14,7 +14,7 @@ interface Props {
   errorMessage?: Error
   title?: string
   name?: string
-  purchasedCredits?: number
+  purchasedCredits?: string
   setIsOpen: (arg: boolean) => void
 }
 
@@ -120,11 +120,7 @@ export default function ContactFormModal({
                   className="relative block cursor-pointer"
                   onClick={() => setIsOpen(false)}
                 >
-                  <SidebarClose
-                    size={25}
-                    className="absolute right-3"
-                    color="white"
-                  />
+                  <X size={25} className="absolute right-3" color="white" />
                 </div>
                 <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:p-12">
                   {loading && !thanksMessage && (
@@ -288,18 +284,18 @@ export default function ContactFormModal({
                         className="relative text-2xl leading-6 text-white sm:text-left sm:text-3xl"
                       >
                         <div className="flex flex-col items-center justify-center">
-                          <span className="-mt-12 text-3xl font-semibold">
-                            Thanks for your purchase 🧞‍♂️
+                          <span className="-mt-6 text-3xl">
+                            Thank you,{" "}
+                            <span className="font-semibold">{clientName}</span>!
                           </span>
                           {/* {clientName && (
                             <span className="mt-2">{clientName}!</span>
                           )} */}
                         </div>
                       </Dialog.Title>
-                      <p className="text-sm mt-4 w-[65%] text-center text-white">
-                        You have now{" "}
-                        <span className="text-3xl">{purchasedCredits}</span>{" "}
-                        credits extra to create with Code Genius.
+                      <p className="text-sm w-[65%] pt-8 text-center text-white">
+                        You have now {purchasedCredits} credits extra to create
+                        with Code Genius.
                       </p>
                     </div>
                   )}
