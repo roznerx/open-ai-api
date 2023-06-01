@@ -19,7 +19,6 @@ export default function PromptCard({
   hasScale,
   title,
   button,
-
   order = "",
   imageSrc,
   text,
@@ -32,7 +31,7 @@ export default function PromptCard({
     <div
       className={`${order} mt-4 flex ${
         size === "large"
-          ? cardWidth + " h-60"
+          ? cardWidth + " h-48"
           : "h-38 w-[100%] sm:h-56 sm:w-[23%]"
       } 
       cursor-pointer justify-between rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
