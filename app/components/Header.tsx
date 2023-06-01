@@ -5,6 +5,8 @@ import UserDropdown from "app/components/auth/UserDropdown"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import useWindowSize from "hooks/use-window-size"
+import Feedback from "./Feedback"
+import { useState } from "react"
 
 export default function Header({
   session,
@@ -17,6 +19,7 @@ export default function Header({
   setShowSignInModal: any
 }) {
   const pathname = usePathname()
+  const [showWidget, setShowWidget] = useState(false)
   const { isMobile } = useWindowSize()
   const shouldHideLogo =
     isMobile &&
@@ -56,18 +59,31 @@ export default function Header({
               </div>
             </Link>
           </div>
-          <div className="flex h-8">
+          <div className="flex h-8 gap-4">
+            {session && pathname !== "/" && (
+              <div className="mr-5 hidden flex-col items-end transition-all sm:flex">
+                <button
+                  onClick={() => setShowWidget((prev) => !prev)}
+                  className="mt-2 mr-3 flex h-6 w-28 items-center justify-center rounded-lg border border-gray-300 bg-purple-900 p-5 text-gray-200 hover:cursor-pointer hover:text-gray-50"
+                >
+                  <span>Feedback</span>
+                </button>
+                <Feedback
+                  session={session}
+                  setShowWidget={setShowWidget}
+                  showWidget={showWidget}
+                />
+              </div>
+            )}
             <div
               onClick={() => setShowSignInModal(true)}
-              className={`my-auto mt-2 mr-4 flex w-32 cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
-                !session
-                  ? "bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0]"
-                  : "bg-transparent"
+              className={`my-auto mt-2 mr-4 flex w-36 cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
+                !session ? "border border-mint" : "bg-transparent"
               }  p-[1.5px] font-sans`}
             >
               {!session && (
-                <div className={`relative h-9 w-32 rounded-lg bg-purple-900`}>
-                  <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-white">
+                <div className={`relative h-[37px] w-36 rounded-lg`}>
+                  <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-200 hover:text-gray-50">
                     {!userHasAccount ? "Sign In" : "Sign Up"}
                   </p>
                 </div>
