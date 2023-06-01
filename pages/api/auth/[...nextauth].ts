@@ -23,29 +23,34 @@ export const authOptions: AuthOptions = {
     }),
   ],
   events: {
-    async signIn({ user, profile }) {
+    async signIn({ user }) {
       //@ts-ignore
-      // if (user && user?.registered) {
-      //   const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email?name=${user.name}`
-      //   const headers = new Headers()
-      //   headers.append("Content-Type", "application/json")
-      //   try {
-      //     const response = await fetch(fetchUrl, {
-      //       method: "GET",
-      //       headers: headers,
-      //     })
-      //     const { html } = await response.json()
-      //     //@ts-ignore
-      //     await sendWelcomeEmail({
-      //       name: user && user?.name,
-      //       html,
-      //       identifier: user && user?.email,
-      //       provider: { server, from },
-      //     })
-      //   } catch (error) {
-      //     console.error("error::", error)
-      //   }
-      // }
+      if (user && user?.registered) {
+        const fetchUrl = `${process.env.NEXTAUTH_URL}/api/email/generate-html-email?name=${user.name}`
+        const headers = new Headers()
+        headers.append("Content-Type", "application/json")
+        try {
+          const response = await fetch(fetchUrl, {
+            method: "GET",
+            next: { revalidate: 0 },
+            headers: headers,
+          })
+          const { html } = await response.json()
+          const payload = {
+            isNewUser: true,
+            name: user?.name,
+            email: user?.email,
+            html,
+          }
+          await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+            method: "POST",
+            next: { revalidate: 0 },
+            body: JSON.stringify(payload),
+          })
+        } catch (error) {
+          console.error("error::", error)
+        }
+      }
     },
   },
 

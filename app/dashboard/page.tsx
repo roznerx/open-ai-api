@@ -123,10 +123,10 @@ export default async function Dashboard() {
           headers: headers,
         })
         const { html } = await response.json()
-        console.log("The HTML is: ", html)
 
         const payload = {
           name: session?.user?.name,
+          email: session?.user?.email,
           html,
         }
         await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {

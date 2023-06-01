@@ -193,19 +193,18 @@ export async function SendCongratsEmail(session, credits) {
     headers: headers,
   })
   const { html } = await response.json()
-
+  console.log("The HTML is: ", html)
   //Send congrats email to the user
-  const payload = {
-    name: userName,
-    credits,
-    html,
-    isNewPuchase: true,
-    contactEmail: userEmail,
-    message: "Congratulations! Your credits have been added to your account.",
-  }
+  // const payload = {
+  //   name: userName,
+  //   credits,
+  //   html,
+  //   isNewPuchase: true,
+  //   contactEmail: userEmail,
+  // }
 
-  await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
-    method: "POST",
-    body: JSON.stringify(payload),
-  })
+  // await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+  //   method: "POST",
+  //   body: JSON.stringify(payload),
+  // })
 }

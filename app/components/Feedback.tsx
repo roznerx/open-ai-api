@@ -1,11 +1,15 @@
-import { Heart } from "lucide-react"
+import { Heart, Loader2 } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 export default function Feedback({ showWidget, setShowWidget, session }) {
   const [userMessage, setUserMessage] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const [likeHeart, setLikeHeart] = useState(false)
+  const [emailHasBeenSent, setEmailHasBeenSent] = useState(false)
 
   const onMessageSubmit = async () => {
+    setIsLoading(true)
+
     const payload = {
       name: session?.user?.name,
       message: userMessage,
@@ -14,6 +18,8 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
       method: "POST",
       body: JSON.stringify(payload),
     })
+    setIsLoading(false)
+    setUserMessage("Thanks for your feedback!")
   }
 
   const inputRef = useRef<any>(null)
@@ -54,6 +60,7 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
                   ref={inputRef}
                   rows={4}
                   cols={32}
+                  value={userMessage}
                   onChange={(e) => setUserMessage(e.target.value)}
                   className="w-full resize-none rounded-xl border border-gray-500 bg-purple-900 p-4 text-white outline-none placeholder:text-gray-300 focus:border-gray-500 focus:outline-none focus:ring-0 "
                   placeholder={`Please, add your feedback here`}
@@ -66,7 +73,9 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
               onClick={() => onMessageSubmit()}
               className="flex h-6 w-28 items-center justify-center rounded-lg border border-gray-500 bg-purple-900 p-5 text-gray-300 hover:cursor-pointer hover:text-gray-100"
             >
-              <span>Send</span>
+              <span>
+                {isLoading ? <Loader2 className="animate-spin" /> : "Send"}
+              </span>
             </button>
           </div>
         </div>
