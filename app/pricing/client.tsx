@@ -12,6 +12,7 @@ import Header from "app/components/Header"
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import Footer from "app/components/Footer"
+import { useRouter } from "next/navigation"
 
 //Theme colors
 const colors: any = tailwindConfig.theme?.extend?.colors
@@ -25,7 +26,7 @@ export default function Client({ session }: ClientPropTye) {
   const [credits, setCredits] = React.useState<number>(initialCreditsValue)
   const { setShowSignInModal, SignInModal } = useSignInModal({})
   const [loadingStripe, setLoadingStripe] = React.useState<boolean>(false)
-
+  const router = useRouter()
   const [priceId, setPrecieId] = React.useState<string>("")
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
@@ -39,7 +40,7 @@ export default function Client({ session }: ClientPropTye) {
     } else if (credits === 150) {
       setPrecieId(PRICE_IDS[150])
     }
-  }, [credits])
+  }, [PRICE_IDS, credits])
 
   const getCreditPrice = () => {
     switch (credits) {
@@ -94,7 +95,7 @@ export default function Client({ session }: ClientPropTye) {
           confirmed: false,
         }),
       })
-      location.href = stripeSession?.session?.url
+      router.push(stripeSession?.session?.url)
     }
   }
 
