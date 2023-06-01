@@ -1,6 +1,5 @@
 "use client"
 
-import dynamic from "next/dynamic"
 import Lottie from "lottie-react"
 import Image from "next/image"
 
@@ -11,7 +10,7 @@ import { motion } from "framer-motion"
 
 import Button from "app/components/Button"
 import Link from "next/link"
-import { Loader2 } from "lucide-react"
+import ShowCaseCard from "./ShowCaseCard"
 
 const interactivity: any = {
   mode: "scroll",
@@ -33,12 +32,6 @@ const interactivity: any = {
     },
   ],
 }
-
-const ShowCaseCard = dynamic(() => import("./ShowCaseCard"), {
-  loading: () => (
-    <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
-  ),
-})
 
 export const AISuggestions = () => {
   return (
@@ -110,9 +103,8 @@ export default function Feature({ setShowSignInModal, session }) {
           </motion.p>
         </div>
         <div className="mb-24 grid grid-cols-1 gap-1 sm:grid-cols-2">
-          <div className="mx-auto mb-2 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
+          <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
             <AISuggestions />
-            {/* <CodeDocumentation /> */}
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <motion.h3
@@ -135,7 +127,7 @@ export default function Feature({ setShowSignInModal, session }) {
               efficient, and error-free.
             </motion.p>
           </div>
-          <div className="mx-auto mb-2 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
+          <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
             <AIGeneration />
             {/* <CodeDocumentation /> */}
           </div>
@@ -160,15 +152,15 @@ export default function Feature({ setShowSignInModal, session }) {
               and reliable.
             </motion.p>
           </div>
-          <div className="mx-auto mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
+          <div className="mx-auto mb-10 mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
             <CodeDocumentation />
           </div>
-          <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
+          <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
             <motion.h3
               initial={{ opacity: 0 }}
               whileInView={{ opacity: 1 }}
               viewport={{ once: true }}
-              className="mx-auto w-[80%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-0 sm:text-left"
+              className="mx-auto w-[90%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-0 sm:text-left"
             >
               Create code documentation in seconds
             </motion.h3>
@@ -184,7 +176,7 @@ export default function Feature({ setShowSignInModal, session }) {
             </motion.p>
           </div>
         </div>
-        <div className="my-20">
+        <div className="my-14 sm:my-20">
           <ShowCaseCard
             title="Chat with Code Genius and ask anything you want!"
             description="Writing great code can be a challenging and time-consuming task, but with Code Genius you can take your skills to the next level! Explore the possibilities!"
@@ -195,23 +187,4 @@ export default function Feature({ setShowSignInModal, session }) {
       </section>
     </>
   )
-}
-
-{
-  /* <motion.div
-            whileHover={{ scale: 1.5 }}
-            transition={{ type: "spring", velocity: 1 }}
-            animate={{
-              x:
-                verticalScroll < 500
-                  ? 320
-                  : verticalScroll >= 500 && verticalScroll < 1200
-                  ? verticalScroll - window.screen.height
-                  : verticalScroll - window.screen.height,
-            }}
-            className={`-ml-50 fixed top-[500px] z-0 mx-auto hidden ${
-              verticalScroll > 0 ? "sm:block" : "hidden"
-            }  } brightness-25 h-[550px] w-[1250px] bg-gradient-radial from-gradient-dark/40 via-transparent
-            to-transparent `}
-          ></motion.div> */
 }

@@ -7,19 +7,7 @@ export function parseText(text = "", delimiter = "```") {
     const cleanedParts = parts[i]
 
     if (isInCodeBlock) {
-      cleanedParts
-        .replace("js", "")
-        .replace("jsx", "")
-        .replace("x", "")
-        .replace("java", "")
-        .replace("type", "")
-        .replace("vue", "")
-        .replace("script", "")
-        .replace("typescript", "")
-        .replace("javascript", "")
-        .replace("html", "")
-        .trim()
-      result.push({ code: cleanedParts })
+      result.push({ code: cleanedParts.trim() })
       isInCodeBlock = false
     } else {
       // console.log("Text Parts", parts[i])

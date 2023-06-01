@@ -114,7 +114,7 @@ export const SignInModal = ({
             </button>
           </div>
         </div>
-        <p className="mx-auto w-3/4 py-6 text-center text-gray-400">
+        <p className="mx-auto w-2/4 py-6 text-center text-[11px] text-gray-400">
           By continuing, you agree to our{" "}
           <Link href="/terms" className="underline">
             Terms

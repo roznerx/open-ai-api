@@ -22,13 +22,13 @@ export default function ChatContainer({ messages, useFullHeight }: any) {
   ])
 
   return (
-    <div className="mx-auto ml-4 flex max-h-[75vh] max-w-[100vw] pb-6 sm:mt-3 sm:w-[900px] sm:max-w-[900px]">
+    <div className="mx-auto flex pb-6 sm:mt-3 sm:w-full ">
       <div
         ref={chatContainerRef}
         className={`mx-auto overflow-y-scroll  ${
-          useFullHeight ? "max-h-[75vh]" : "max-h-[320px]"
-        } w-[95%] rounded-md bg-purple-400
-       p-2 font-sans text-white sm:w-[900px]`}
+          useFullHeight ? "max-h-[75vh] sm:max-h-[80vh]" : "max-h-[320px]"
+        } w-[80%] rounded-md bg-purple-400
+       font-sans text-white `}
       >
         {messages}
       </div>

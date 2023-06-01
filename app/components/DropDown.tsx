@@ -1,14 +1,12 @@
 import { Menu, Transition } from "@headlessui/react"
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from "@heroicons/react/20/solid"
+import { Check, ChevronDown, ChevronUp } from "lucide-react"
+
 import Image from "next/image"
 import React, { Fragment } from "react"
 import {
   AngularIcon,
   Chai,
+  Cypress,
   Jasmine,
   JavascriptIcon,
   Jest,
@@ -37,16 +35,19 @@ export type LandElementType =
 export type TestingElementType =
   | "Jest"
   | "Mocha"
+  | "Cypress"
   | "Chai"
   | "Jasmine"
   | "Testing Tool"
+
 export type libTestingElementType = "React Testing" | "Chai" | "Testing Lib"
 
 interface DropDownProps {
   element: LandElementType | TestingElementType | libTestingElementType
   bgColor?: string
+  testFrameworkElement?: string
   // eslint-disable-next-line unused-imports/no-unused-vars
-  setElement: (vibe: LandElementType) => void
+  setElement: (item) => void
   elements: LandElementType[] | TestingElementType[] | libTestingElementType[]
 }
 
@@ -61,14 +62,15 @@ export default function DropDown({
       as="div"
       className={`absolute w-32 rounded-lg sm:w-48 ${
         bgColor ? bgColor : "bg-purple-800"
-      }  text-left font-sans text-white`}
+      }  cursor-pointer text-left font-sans text-white`}
     >
       <Menu.Button
         as="div"
-        className="inline-flex w-full justify-between border-none py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-transparent"
+        className="inline-flex w-full justify-between border-none py-2 shadow-sm hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
         <div className="ml-2 inline-flex">
           {element === "Javascript" && <JavascriptIcon />}
+          {element === "Cypress" && <Cypress />}
           {element === "Typescript" && <TypescriptIcon />}
           {element === "Python" && <Python />}
           {element === "React" && <ReactIcon />}
@@ -81,12 +83,12 @@ export default function DropDown({
           {element === "Jasmine" && <Jasmine />}
           <span className="ml-3">{element}</span>
         </div>
-        <div className="">
-          <ChevronUpIcon
+        <div className="pr-2">
+          <ChevronUp
             className="mr-2 ml-2 h-5 w-5 ui-open:hidden sm:mr-1"
             aria-hidden="true"
           />
-          <ChevronDownIcon
+          <ChevronDown
             className="mr-1 ml-2 hidden h-5 w-5 ui-open:block"
             aria-hidden="true"
           />
@@ -103,7 +105,7 @@ export default function DropDown({
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items
-          className="absolute left-0 -top-2 z-10 w-full origin-top-right -translate-y-full transform divide-y rounded-lg  bg-white shadow-lg ring-1 ring-black ring-opacity-5 hover:bg-none focus:outline-none"
+          className="absolute left-0 -top-2 z-10 w-full origin-top-right -translate-y-full transform divide-y rounded-lg  bg-white shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none"
           key={element}
         >
           <div className="">
@@ -130,6 +132,7 @@ export default function DropDown({
                       />
                     )}
                     {item === "React" && <ReactIcon />}
+                    {item === "Cypress" && <Cypress />}
                     {item === "Vue" && <VueJSIcon />}
                     {item === "Angular" && <AngularIcon />}
                     {item === "React Testing" && <RTL />}
@@ -140,7 +143,9 @@ export default function DropDown({
 
                     <span>{item}</span>
                     {element === item ? (
-                      <CheckIcon className="text-bold h-4 w-4" />
+                      <div className="absolute right-2 pt-1">
+                        <Check className="text-bold h-4 w-4 " />
+                      </div>
                     ) : null}
                   </button>
                 )}

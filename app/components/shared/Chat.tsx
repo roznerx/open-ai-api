@@ -1,42 +1,41 @@
 import "./chat.css"
 
-import { parseText } from "utils/parseText"
-import GenerateCode from "../GenerateCode"
 import { useEffect, useState } from "react"
 import ChatContainer from "app/home/ChatContainer"
-import { CodeMessagesProps } from "app/home/HomeChat"
+
 import PromptCard from "./PromptCard"
+import { CombinedMessages } from "./CombinedMessages"
 
-export const Messages: React.FC<CodeMessagesProps> = ({
-  generatedMessages,
-}) => {
-  return (
-    <>
-      {generatedMessages.map((generatedMessage) => {
-        const result = parseText(generatedMessage)
+// export const Messages: React.FC<CodeMessagesProps> = ({
+//   generatedMessages,
+// }) => {
+//   return (
+//     <>
+//       {generatedMessages.map((generatedMessage) => {
+//         const result = parseText(generatedMessage)
 
-        return (
-          result.length &&
-          result.map((item: any) => {
-            if (item.hasOwnProperty("code")) {
-              // eslint-disable-next-line react/jsx-key
-              return <GenerateCode align="start" generatedCode={item.code} />
-            }
+//         return (
+//           result.length &&
+//           result.map((item: any) => {
+//             if (item.hasOwnProperty("code")) {
+//               // eslint-disable-next-line react/jsx-key
+//               return <GenerateCode align="start" generatedCode={item.code} />
+//             }
 
-            if (item.hasOwnProperty("text")) {
-              return (
-                // eslint-disable-next-line react/jsx-key
-                <p className="rounded-lg bg-purple-400 p-2 text-left leading-7">
-                  {item.text}
-                </p>
-              )
-            }
-          })
-        )
-      })}
-    </>
-  )
-}
+//             if (item.hasOwnProperty("text")) {
+//               return (
+//                 // eslint-disable-next-line react/jsx-key
+//                 <p className="rounded-lg bg-purple-400 p-2 text-left leading-7">
+//                   {item.text}
+//                 </p>
+//               )
+//             }
+//           })
+//         )
+//       })}
+//     </>
+//   )
+// }
 
 export default function Chat({ generatedResponse, setCodeSentence }) {
   const [prompt, setPrompt] = useState("")
@@ -54,7 +53,9 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
           <ChatContainer
             useFullHeight
             useFullWidth
-            messages={<Messages generatedMessages={generatedResponse} />}
+            messages={
+              <CombinedMessages generatedMessages={generatedResponse} />
+            }
           />
         </div>
       )}

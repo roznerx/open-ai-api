@@ -10,7 +10,6 @@ import InputChat from "app/components/shared/InputChat"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
 
 export default function Client({ session }) {
-  const [loading, setLoading] = useState(false)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const { setShowSignInModal } = useSignInModal({})
   const [reader, setReader] =
@@ -55,7 +54,7 @@ export default function Client({ session }) {
       },
     ]
     setCodeSentence("")
-    generateCode(setLoading, setReader, setGeneratedCode, codeMessages, userId)
+    generateCode(setReader, setGeneratedCode, codeMessages, userId)
   }
 
   const onCodeGeneration = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -77,44 +76,12 @@ export default function Client({ session }) {
       ]
       setCodeSentence("")
       //Generate Code funciton
-      generateCode(
-        setLoading,
-        setReader,
-        setGeneratedCode,
-        codeMessages,
-        userId,
-      )
+      generateCode(setReader, setGeneratedCode, codeMessages, userId)
     }
   }
 
   // const onSaveCode = () => {
   //   setShowSavePromptModal(true)
-  // }
-
-  // const onSaveQuestionModal = () => {
-  //   const payload = {
-  //     userId,
-  //     questionName,
-  //     prompt: generatedCode,
-  //   }
-  //   fetch("/api/prompt/save", {
-  //     method: "POST",
-  //     body: JSON.stringify(payload),
-  //   }).then((res) => console.log("res:", res))
-  // }
-
-  // const stopGeneration = async () => {
-  //   setLoading(false)
-  //   controller.abort()
-  //   if (!reader) {
-  //     return
-  //   }
-  //   try {
-  //     await reader.cancel()
-  //   } catch (error: any) {
-  //   } finally {
-  //     setReader(null)
-  //   }
   // }
 
   const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
@@ -123,13 +90,13 @@ export default function Client({ session }) {
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       {generatedMessages.length === 0 && (
-        <div className="mx-auto mt-12 mb-12 w-full">
-          <h2 className=" w-full font-sans text-3xl text-gray-200 ">
-            Chat with our code assistant
+        <div className="mx-auto w-full pt-20 sm:pt-10">
+          <h2 className="w-full font-sans text-3xl text-gray-200 ">
+            Chat with your coding assistant
           </h2>
         </div>
       )}
-      <div className="mt-2">
+      <div className="mt-16 sm:mt-0">
         <Chat
           generatedResponse={generatedMessages}
           setCodeSentence={setCodeSentence}
@@ -152,7 +119,12 @@ export default function Client({ session }) {
         buttonLink="/pricing"
         setIsOpen={setCreditsModaIsOpen}
       />
-      {/* <Modal
+    </>
+  )
+}
+
+{
+  /* <Modal
         body="Our servers are taking longer than expected. We suggest
         rewording your instruction or input to get a faster result."
         isOpen={modaIsOpen}
@@ -168,7 +140,5 @@ export default function Client({ session }) {
         savePropmptName
         buttonText="Save"
         setIsOpen={setShowSavePromptModal}
-      /> */}
-    </>
-  )
+      /> */
 }

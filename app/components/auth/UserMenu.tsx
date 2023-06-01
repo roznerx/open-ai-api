@@ -72,7 +72,6 @@ export default function UserMenu({ session, email, image }) {
                 {({ active }) => (
                   <Link
                     href="/code-idea"
-                    shallow
                     className={`flex w-full cursor-pointer items-center justify-start ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}

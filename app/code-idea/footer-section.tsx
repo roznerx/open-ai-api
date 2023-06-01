@@ -29,8 +29,6 @@ export default function FooterSection({
   setLib,
   onCodeGeneration,
 }: any) {
-  console.log("Mode", mode)
-
   const [copied, toggleCopy] = useState(false)
 
   const { copy } = useClipboard()
@@ -91,14 +89,16 @@ export default function FooterSection({
                   setElement={(item) => setTestFrameworkElement(item)}
                 />
               </div>
-              <div className={`ml-0 hidden sm:ml-56 sm:block`}>
-                <DropDown
-                  bgColor="bg-purple-500"
-                  elements={testLibElements}
-                  element={testLibElement}
-                  setElement={(item) => setTestLib(item)}
-                />
-              </div>
+              {testFrameworkElement !== "Cypress" && (
+                <div className={`ml-0 hidden sm:ml-56 sm:block`}>
+                  <DropDown
+                    bgColor="bg-purple-500"
+                    elements={testLibElements}
+                    element={testLibElement}
+                    setElement={(item) => setTestLib(item)}
+                  />
+                </div>
+              )}
             </>
           )}
 
