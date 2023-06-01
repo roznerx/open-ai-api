@@ -1,14 +1,12 @@
 import { Menu, Transition } from "@headlessui/react"
-import {
-  CheckIcon,
-  ChevronDownIcon,
-  ChevronUpIcon,
-} from "@heroicons/react/20/solid"
+import { Check, ChevronDown, ChevronUp } from "lucide-react"
+
 import Image from "next/image"
 import React, { Fragment } from "react"
 import {
   AngularIcon,
   Chai,
+  Cypress,
   Jasmine,
   JavascriptIcon,
   Jest,
@@ -37,16 +35,19 @@ export type LandElementType =
 export type TestingElementType =
   | "Jest"
   | "Mocha"
+  | "Cypress"
   | "Chai"
   | "Jasmine"
   | "Testing Tool"
+
 export type libTestingElementType = "React Testing" | "Chai" | "Testing Lib"
 
 interface DropDownProps {
   element: LandElementType | TestingElementType | libTestingElementType
   bgColor?: string
+  testFrameworkElement?: string
   // eslint-disable-next-line unused-imports/no-unused-vars
-  setElement: (vibe: LandElementType) => void
+  setElement: (item) => void
   elements: LandElementType[] | TestingElementType[] | libTestingElementType[]
 }
 
@@ -69,6 +70,7 @@ export default function DropDown({
       >
         <div className="ml-2 inline-flex">
           {element === "Javascript" && <JavascriptIcon />}
+          {element === "Cypress" && <Cypress />}
           {element === "Typescript" && <TypescriptIcon />}
           {element === "Python" && <Python />}
           {element === "React" && <ReactIcon />}
@@ -81,12 +83,12 @@ export default function DropDown({
           {element === "Jasmine" && <Jasmine />}
           <span className="ml-3">{element}</span>
         </div>
-        <div className="">
-          <ChevronUpIcon
+        <div className="pr-2">
+          <ChevronUp
             className="mr-2 ml-2 h-5 w-5 ui-open:hidden sm:mr-1"
             aria-hidden="true"
           />
-          <ChevronDownIcon
+          <ChevronDown
             className="mr-1 ml-2 hidden h-5 w-5 ui-open:block"
             aria-hidden="true"
           />
@@ -130,6 +132,7 @@ export default function DropDown({
                       />
                     )}
                     {item === "React" && <ReactIcon />}
+                    {item === "Cypress" && <Cypress />}
                     {item === "Vue" && <VueJSIcon />}
                     {item === "Angular" && <AngularIcon />}
                     {item === "React Testing" && <RTL />}
@@ -140,7 +143,9 @@ export default function DropDown({
 
                     <span>{item}</span>
                     {element === item ? (
-                      <CheckIcon className="text-bold h-4 w-4" />
+                      <div className="absolute right-2 pt-1">
+                        <Check className="text-bold h-4 w-4 " />
+                      </div>
                     ) : null}
                   </button>
                 )}

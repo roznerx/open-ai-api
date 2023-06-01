@@ -1,5 +1,6 @@
 "use client"
 
+import useWindowSize from "hooks/use-window-size"
 import React from "react"
 import { CopyBlock, dracula } from "react-code-blocks"
 import tailwindConfig from "tailwind.config.js"
@@ -23,6 +24,8 @@ function GenerateCode({
   generatedCode,
   langElement,
 }: GenerateCode) {
+  const { isMobile } = useWindowSize()
+  const minWidth = isMobile ? "90vw" : "850px"
   return (
     <>
       <div
@@ -32,23 +35,26 @@ function GenerateCode({
           .substring(generatedCode.indexOf("**") + 0)
           .replace(regex, "")
           .replace("javascript", "")
-          .replace("js", "")
           .replace("python", "")
           .replace("```", "")
           .replace("typescript", "")
           .replace("jsx", "")
+          .replace("tsx", "")
           .split("**::")
           .map((generated, idx) => {
             return (
               <div
                 key={idx}
-                className="overflow-x-auto overflow-y-scroll text-left font-mono sm:min-w-[100%] sm:max-w-[100%]"
+                className="mx-auto max-w-[100%] overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
               >
                 <CopyBlock
                   showLineNumbers
                   wrapLongLines
                   customStyle={{
                     maxWidth: "95%",
+                    minWidth: minWidth,
+                    with: "100%",
+                    margin: "0 auto",
                     borderRadius: "0.6rem",
                     border: `0.5px solid ${themeColors.purple[500]}`,
                   }}

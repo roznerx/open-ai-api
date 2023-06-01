@@ -19,15 +19,16 @@ import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 
-let langElements: LandElementType[] = [
-  "Language",
-  "Typescript",
-  "Javascript",
-  "Python",
-]
+let langElements: LandElementType[] = ["Typescript", "Javascript", "Python"]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
 
-let testFrameworkElements: TestingElementType[] = ["Jest", "Mocha", "Jasmine"]
+let testFrameworkElements: TestingElementType[] = [
+  "Jest",
+  "Cypress",
+  "Mocha",
+  "Jasmine",
+]
+
 let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
@@ -68,6 +69,17 @@ export default function Client({
   const [scrollHeight, setScrollHeight] = useState(0)
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const placeHolderText = getCodeGeniusPlaceHolder(mode)
+
+  // const searchParams = useSearchParams()
+
+  // useEffect(() => {
+  //   if (searchParams) {
+  //     const framework = searchParams.get("framework")
+
+  //     setTestFrameworkElement(framework)
+  //   }
+  // }, [searchParams, setTestFrameworkElement])
+
   const codeMessages = useRef([
     {
       role: "system",
@@ -99,7 +111,11 @@ export default function Client({
           },
         ]
         codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of background in unit testing, integration testing and e2e testing. 
-        Make sure tu use ${testFrameworkElement} and ${testLibElement}.`
+        Make sure tu use  ${
+          testFrameworkElement === "Cypress"
+            ? testFrameworkElement + " as the test framework"
+            : testFrameworkElement + " and " + testLibElement
+        }.`
         break
       case "improve":
         codeMessages.current = [

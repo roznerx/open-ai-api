@@ -4,7 +4,7 @@ import React from "react"
 import { parseText } from "utils/parseText"
 import GenerateCode from "../GenerateCode"
 
-const LogoCodeGenius = () => (
+const LogoCodeGenius = React.memo(() => (
   <Image
     src={"/logo/code-genius.svg"}
     width={32}
@@ -12,7 +12,7 @@ const LogoCodeGenius = () => (
     className={"right-8"}
     alt="Code Genius"
   />
-)
+))
 
 export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
   ({
@@ -31,12 +31,12 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
             ? result.map((item: any, idx) => {
                 if (item.hasOwnProperty("text")) {
                   return (
-                    <div key={idx} className="flex">
+                    <div key={idx} className="mr-9 flex">
                       <div className="ml-6 flex items-center justify-center">
                         <LogoCodeGenius />
                       </div>
                       <div
-                        className={`mx-auto ml-3 w-[92%] rounded-lg bg-purple-400 p-2`}
+                        className={`mx-auto ml-3 w-full rounded-lg bg-purple-400 p-2`}
                       >
                         <p
                           style={{ borderRadius: "0px" }}
