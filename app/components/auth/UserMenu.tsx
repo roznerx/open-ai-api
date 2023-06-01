@@ -15,20 +15,23 @@ import { Fragment } from "react"
 export default function UserMenu({ session, email, image }) {
   const { isMobile } = useWindowSize()
   return (
-    <div className="absolute top-4 right-2 z-50 w-56 text-right sm:mr-7">
+    <div className="absolute top-4 right-2 z-50 w-auto text-right sm:mr-7">
       <Menu as="div" className="relative inline-block text-left">
         <div className="flex items-start justify-between">
           <Menu.Button className="text-sm inline-flex h-12 w-full justify-center rounded-full border-[1px] border-purple-500 bg-purple-500 px-4 py-2 font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
             <div className="mr-1 flex">
-              <Image
-                alt="Profile Picture"
-                className="mr-0 w-8 rounded-full sm:mr-2"
-                src={
-                  image || `https://avatars.dicebear.com/api/micah/${email}.svg`
-                }
-                width={40}
-                height={40}
-              />
+              {image && (
+                <Image
+                  alt="Profile Picture"
+                  className="mr-0 w-8 rounded-full sm:mr-2"
+                  src={
+                    image ||
+                    `https://avatars.dicebear.com/api/micah/${email}.svg`
+                  }
+                  width={40}
+                  height={40}
+                />
+              )}
 
               {!isMobile && <span className="mt-1">{session?.user?.name}</span>}
             </div>
