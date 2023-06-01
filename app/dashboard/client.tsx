@@ -1,14 +1,15 @@
 "use client"
 
 import PromptCard from "app/components/shared/PromptCard"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
+
 import React, { useEffect } from "react"
-import { Confetti } from "utils/confetti"
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import GradientButton from "app/components/buttons/gradientButton"
+import { Confetti } from "utils/confetti"
 
 const UpgradeAccount = () => (
   <Link href="/pricing">
@@ -24,14 +25,12 @@ export default function Client({
 }) {
   const { setShowSignInModal } = useSignInModal({})
   const searchParams = useSearchParams()
-
+  const router = useRouter()
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
 
-  console.log("purchasedCredits", purchasedCredits)
-
   useEffect(() => {
-    if (searchParams && searchParams.has("success")) {
+    if (opConfirmation && searchParams && searchParams.has("success")) {
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
@@ -39,11 +38,8 @@ export default function Client({
       //SEND CONFETI
       Confetti()
     }
-  }, [])
+  }, [opConfirmation, searchParams])
 
-  console.log("purchasedCredits", purchasedCredits)
-
-  const router = useRouter()
   //@ts-ignore
   const clientName = session && session?.user && session?.user?.name
   return (
@@ -70,7 +66,7 @@ export default function Client({
             imageSrc="/dashboard/credits.svg"
             onClick={undefined}
             title={credits}
-            text="Credits Available"
+            text="Available Credits"
           />
 
           <PromptCard
