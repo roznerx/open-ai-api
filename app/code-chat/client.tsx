@@ -80,54 +80,16 @@ export default function Client({ session }) {
     }
   }
 
-  // const onSaveCode = () => {
-  //   setShowSavePromptModal(true)
-  // }
-
-  // const onSaveQuestionModal = () => {
-  //   const payload = {
-  //     userId,
-  //     questionName,
-  //     prompt: generatedCode,
-  //   }
-  //   fetch("/api/prompt/save", {
-  //     method: "POST",
-  //     body: JSON.stringify(payload),
-  //   }).then((res) => console.log("res:", res))
-  // }
-
-  // const stopGeneration = async () => {
-  //   setLoading(false)
-  //   controller.abort()
-  //   if (!reader) {
-  //     return
-  //   }
-  //   try {
-  //     await reader.cancel()
-  //   } catch (error: any) {
-  //   } finally {
-  //     setReader(null)
-  //   }
-  // }
-
   const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
 
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-      {generatedMessages.length === 0 && (
-        <div className="mx-auto mt-12 mb-12 w-full">
-          <h2 className=" w-full font-sans text-3xl text-gray-200 ">
-            Chat with our code assistant
-          </h2>
-        </div>
-      )}
-      <div className="mt-2">
-        <Chat
-          generatedResponse={generatedMessages}
-          setCodeSentence={setCodeSentence}
-        />
-      </div>
+      <Chat
+        generatedResponse={generatedMessages}
+        setCodeSentence={setCodeSentence}
+      />
+
       {/* Chat input container */}
       <InputChat
         inputRef={inputRef}
