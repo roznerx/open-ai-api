@@ -154,7 +154,9 @@ function SideBar({
   ) : (
     <div
       className={`absolute top-0 left-0 z-50 h-full rounded-r-lg  font-sans   ${
-        showMobileMenu ? "w-80 bg-purple-700" : "w-16 bg-none"
+        showMobileMenu
+          ? "w-80 border-r border-gray-600 bg-purple-700 "
+          : "w-16 bg-none"
       } flex-row items-start `}
     >
       <div
