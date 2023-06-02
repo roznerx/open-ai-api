@@ -4,9 +4,6 @@ import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
 import { HarperDBAdapter } from "adapters/harperdb"
 
-const server = process.env.EMAIL_SERVER
-const from = process.env.EMAIL_FROM
-
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
   adapter: HarperDBAdapter(),

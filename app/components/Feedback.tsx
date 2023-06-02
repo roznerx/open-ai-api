@@ -4,12 +4,15 @@ import { useEffect, useRef, useState } from "react"
 export default function Feedback({ showWidget, setShowWidget, session }) {
   const [userMessage, setUserMessage] = useState("")
   const [isLoading, setIsLoading] = useState(false)
+  const [userPressSent, setUserPressSent] = useState(false)
   const [likeHeart, setLikeHeart] = useState(false)
-  const [emailHasBeenSent, setEmailHasBeenSent] = useState(false)
 
   const onMessageSubmit = async () => {
+    setUserPressSent(true)
+    if (userMessage === "") {
+      return false
+    }
     setIsLoading(true)
-
     const payload = {
       name: session?.user?.name,
       message: userMessage,
@@ -65,6 +68,11 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
                   className="w-full resize-none rounded-xl border border-gray-500 bg-purple-900 p-4 text-white outline-none placeholder:text-gray-300 focus:border-gray-500 focus:outline-none focus:ring-0 "
                   placeholder={`Please, add your feedback here`}
                 ></textarea>
+                {userPressSent && userMessage === "" ? (
+                  <span className="my-1 mx-auto text-[14px] text-mint">
+                    Please add few words in the text area.
+                  </span>
+                ) : null}
               </div>
             </div>
           </div>
