@@ -28,7 +28,10 @@ export default function Header({
       pathname === "/dashboard")
   return (
     <>
-      <div id="site-header" className={`absolute top-0 w-full`}>
+      <div
+        id="site-header"
+        className={`absolute top-0 z-30 w-full bg-purple-900`}
+      >
         <div className="flex items-center justify-between">
           <div
             className={` ${
@@ -59,12 +62,13 @@ export default function Header({
               </div>
             </Link>
           </div>
-          <div className="flex h-8 gap-4">
+          <div className="flex h-8 ">
             {session && pathname !== "/" && (
-              <div className="mr-5 hidden flex-col items-end transition-all sm:flex">
+              <div className="-mr-5 hidden flex-col items-end transition-all sm:flex">
                 <button
                   onClick={() => setShowWidget((prev) => !prev)}
-                  className="mt-2 mr-3 flex h-6 w-28 items-center justify-center rounded-lg border border-gray-300 bg-purple-900 p-5 text-gray-200 hover:cursor-pointer hover:text-gray-50"
+                  className="mt-3.5 mr-3 flex h-4 w-28 items-center justify-center rounded-lg border
+                   border-gray-300 bg-purple-900 p-4 text-gray-200 hover:cursor-pointer hover:text-gray-50"
                 >
                   <span>Feedback</span>
                 </button>
@@ -77,12 +81,14 @@ export default function Header({
             )}
             <div
               onClick={() => setShowSignInModal(true)}
-              className={`my-auto mt-2 mr-4 flex w-36 cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
+              className={`my-auto mt-2 mr-4 flex ${
+                !session ? "w-32" : "w-12"
+              } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
                 !session ? "border border-mint" : "bg-transparent"
               }  p-[1.5px] font-sans`}
             >
               {!session && (
-                <div className={`relative h-[37px] w-36 rounded-lg`}>
+                <div className={`relative h-[37px] w-32 rounded-lg`}>
                   <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-200 hover:text-gray-50">
                     {!userHasAccount ? "Sign In" : "Sign Up"}
                   </p>
