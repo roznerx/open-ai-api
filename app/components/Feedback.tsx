@@ -6,7 +6,12 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
   const [isLoading, setIsLoading] = useState(false)
   const [userPressSent, setUserPressSent] = useState(false)
   const [likeHeart, setLikeHeart] = useState(false)
-
+  const textAreaRef = useRef<any>(null)
+  useEffect(() => {
+    if (showWidget) {
+      textAreaRef.current.focus()
+    }
+  }, [showWidget])
   const onMessageSubmit = async () => {
     setUserPressSent(true)
     if (userMessage === "") {
@@ -25,16 +30,10 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
     setUserMessage("Thanks for your feedback!")
   }
 
-  const inputRef = useRef<any>(null)
-  useEffect(() => {
-    if (inputRef && inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [inputRef])
   return (
     <>
       <div
-        className={` z-50 mt-2 ${
+        className={`z-50 mt-2  ${
           showWidget ? "block" : "hidden"
         }  max-w-md rounded-full px-1 pb-3 font-sans sm:mx-auto`}
       >
@@ -60,16 +59,16 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
             <div className="flex flex-col items-center py-6">
               <div className="flex w-full flex-col px-3">
                 <textarea
-                  ref={inputRef}
+                  ref={textAreaRef}
                   rows={4}
                   cols={32}
                   value={userMessage}
                   onChange={(e) => setUserMessage(e.target.value)}
                   className="w-full resize-none rounded-xl border border-gray-500 bg-purple-900 p-4 text-white outline-none placeholder:text-gray-300 focus:border-gray-500 focus:outline-none focus:ring-0 "
-                  placeholder={`Please, add your feedback here`}
+                  placeholder={`Add your message here`}
                 ></textarea>
                 {userPressSent && userMessage === "" ? (
-                  <span className="my-1 mx-auto text-[14px] text-mint">
+                  <span className="my-1 ml-3 text-[14px] text-gray-300">
                     Please add few words in the text area.
                   </span>
                 ) : null}
