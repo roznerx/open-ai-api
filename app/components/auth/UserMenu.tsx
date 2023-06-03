@@ -1,41 +1,40 @@
 import { Menu, Transition } from "@headlessui/react"
-import useWindowSize from "hooks/use-window-size"
-import {
-  ChevronDown,
-  Code,
-  LayoutDashboard,
-  LogOut,
-  MessageSquare,
-} from "lucide-react"
+import { Code, LayoutDashboard, LogOut, MessageSquare } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 import Link from "next/link"
 import { Fragment } from "react"
 
 export default function UserMenu({ session, email, image }) {
-  const { isMobile } = useWindowSize()
   return (
-    <div className="absolute top-4 right-2 z-50 w-56 text-right sm:mr-7">
+    <div className="absolute top-4 right-4 z-50 w-auto text-right sm:right-2 sm:mr-7">
       <Menu as="div" className="relative inline-block text-left">
         <div className="flex items-start justify-between">
-          <Menu.Button className="text-sm inline-flex h-12 w-full justify-center rounded-full border-[1px] border-purple-500 bg-purple-500 px-4 py-2 font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+          <Menu.Button className="text-sm inline-flex h-12 w-12 justify-center rounded-full border-[1px] border-purple-500 bg-purple-500 px-1  py-2 font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
             <div className="mr-1 flex">
-              <Image
-                alt="Profile Picture"
-                className="mr-0 w-8 rounded-full sm:mr-2"
-                src={
-                  image || `https://avatars.dicebear.com/api/micah/${email}.svg`
-                }
-                width={40}
-                height={40}
-              />
+              {image && (
+                <Image
+                  alt="Profile Picture"
+                  className="ml-1 w-8 rounded-full"
+                  src={
+                    image ||
+                    `https://avatars.dicebear.com/api/micah/${email}.svg`
+                  }
+                  width={40}
+                  height={40}
+                />
+              )}
 
-              {!isMobile && <span className="mt-1">{session?.user?.name}</span>}
+              {!image && (
+                <span className="mt-1">
+                  {session?.user?.name.split(" ")[0].substring(0, 1)}
+                </span>
+              )}
             </div>
-            <ChevronDown
-              className="ml-2 -mr-1 mt-1 h-6 w-5 font-medium text-violet-200 hover:text-violet-100"
+            {/* <ChevronDown
+              className="mt-1 h-6 w-5 font-bold text-gray-200"
               aria-hidden="true"
-            />
+            /> */}
           </Menu.Button>
         </div>
         <Transition
@@ -47,7 +46,7 @@ export default function UserMenu({ session, email, image }) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute  right-0 mt-2 w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="h-11">
               <Menu.Item>
                 {({ active }) => (

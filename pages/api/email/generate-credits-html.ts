@@ -19,7 +19,7 @@ export default async function handler(req, res) {
   <!--        <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5"> 
             We’re so glad you’re here! Thanks for joining us. </mj-text>-->
           <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">
-            Now you have ${credits} credits available in your account, to use however you want! Feel free to explore the following Code Genius features.</mj-text>
+            You have now ${credits} credits available in your account, to use however you want! Feel free to explore the following Code Genius features.</mj-text>
           <mj-divider border-width="1px" border-color="#292B45"></mj-divider>
         </mj-column>
       </mj-section>
@@ -32,8 +32,8 @@ export default async function handler(req, res) {
       
       <mj-section>
         <mj-column>
-          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">If you need to improve a function, document code, test code or you simply want to get suggestions for a code idea, then this is feature you are looking for.</mj-text>
-          <mj-button background-color="#A1FFE0" color="#1D1D29" align="left" border-radius="10px" font-family="helvetica" font-weight="bold" font-size="18px">Go to code Idea</mj-button>
+          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">If you need to generate tests for your code, improve the performance, document it or you simply want to get suggestions for a code idea, this is feature you are looking for.</mj-text>
+          <mj-button href="http://www.code-genius.dev/code-idea" background-color="#A1FFE0" color="#1D1D29" align="left" border-radius="10px" font-family="helvetica" font-weight="bold" font-size="18px">Go to code Idea</mj-button>
         </mj-column>
         <mj-column>
           <mj-image width="200px" src="https://www.code-genius.dev/email/code-idea.png"></mj-image>
@@ -51,8 +51,8 @@ export default async function handler(req, res) {
       </mj-section>
       <mj-section>
         <mj-column>
-          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">Go to the Chat page and get the answers you are looking for, chat with Coge Genius.</mj-text>
-          <mj-button background-color="#A1FFE0" color="#1D1D29" align="left" border-radius="10px" font-family="helvetica" font-weight="bold" font-size="18px">Go to Chat</mj-button>
+          <mj-text font-style="normal" font-size="18px" font-family="Helvetica Neue" color="#A9A8B0" line-height="1.5">Explore the Chat page and get the answers you are looking for, chat with Coge Genius.</mj-text>
+          <mj-button href="http://www.code-genius.dev/code-chat" background-color="#A1FFE0" color="#1D1D29" align="left" border-radius="10px" font-family="helvetica" font-weight="bold" font-size="18px">Go to Chat</mj-button>
         </mj-column>
         <mj-column>
           <mj-image width="190px" src="https://www.code-genius.dev/email/chat-idea.png"></mj-image>
@@ -71,7 +71,21 @@ export default async function handler(req, res) {
           </mj-text>
         </mj-column>
          </mj-section>
-  
+         <mj-section>
+         <mj-column width="100%">
+           <mj-text color="#FFF" font-size="18px" font-family="Helvetica Neue" font-weight="bold" line-height="1.5" align="center" >
+              We would love to see what you’re building with Genius Code! Please tag us and follow us!
+            </mj-text>
+            <mj-social font-size="15px" icon-size="30px" mode="horizontal" padding="0" align="center">
+              <mj-social-element name="youtube" href="https://www.youtube.com/channel/UCpse6cfLu3KmQwEXfLpWaXQ" background-color="#A1A0A0">
+              </mj-social-element>
+              <mj-social-element name="twitter" href="https://twitter.com/CodeGeniusDev" background-color="#A1A0A0">
+              </mj-social-element>
+              <mj-social-element name="linkedin" href="https://www.linkedin.com/company/93388566" background-color="#A1A0A0">
+              </mj-social-element>
+            </mj-social>
+        </mj-column>
+      </mj-section>
   
     </mj-body>
   </mjml>`,

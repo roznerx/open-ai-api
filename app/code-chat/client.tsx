@@ -80,28 +80,16 @@ export default function Client({ session }) {
     }
   }
 
-  // const onSaveCode = () => {
-  //   setShowSavePromptModal(true)
-  // }
-
   const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
 
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-      {generatedMessages.length === 0 && (
-        <div className="mx-auto w-full pt-20 sm:pt-10">
-          <h2 className="w-full font-sans text-3xl text-gray-200 ">
-            Chat with your coding assistant
-          </h2>
-        </div>
-      )}
-      <div className="mt-16 sm:mt-0">
-        <Chat
-          generatedResponse={generatedMessages}
-          setCodeSentence={setCodeSentence}
-        />
-      </div>
+      <Chat
+        generatedResponse={generatedMessages}
+        setCodeSentence={setCodeSentence}
+      />
+
       {/* Chat input container */}
       <InputChat
         inputRef={inputRef}

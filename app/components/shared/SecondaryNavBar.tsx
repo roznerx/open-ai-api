@@ -41,7 +41,7 @@ export default function SecondaryNavBar({
       id="secondary-sidebar"
       className={`${isCodeModeSelected ? "hidden" : "block"}
       ${sidebarOpen ? "block" : "hidden"}
-      absolute top-0 left-[64px] z-20 h-auto min-h-screen flex-col
+      absolute top-0 left-[64px] z-40 h-auto min-h-screen flex-col
       items-start bg-purple-800 pl-0 transition-transform duration-700
         sm:flex sm:translate-x-0`}
     >

@@ -12,8 +12,6 @@ import Image from "next/image"
 import { generateCodeWithTurbo } from "utils/generateCode"
 import { parseText } from "utils/parseText"
 
-import ChatContainer from "./ChatContainer"
-import GenerateCode from "app/components/GenerateCode"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
@@ -27,6 +25,17 @@ export interface CodeMessagesProps {
 }
 
 const Modal = dynamic(() => import("app/components/Modal"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
+  ),
+})
+const ChatContainer = dynamic(() => import("./ChatContainer"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
+  ),
+})
+
+const GenerateCode = dynamic(() => import("app/components/GenerateCode"), {
   loading: () => (
     <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
   ),
@@ -54,7 +63,9 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const { SignInModal, setShowSignInModal } = useSignInModal({
     tip: "Get 25 credits for free today 🏆 ",
   })
+
   const [generatedCode, setGeneratedCode] = useState<string>("")
+
   const codeMessages = useRef([
     {
       role: "system",

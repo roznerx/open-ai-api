@@ -1,14 +1,15 @@
 "use client"
 
-import PromptCard from "app/components/shared/PromptCard"
-import { useRouter, useSearchParams } from "next/navigation"
+import { useSearchParams, useRouter } from "next/navigation"
 import Link from "next/link"
+
 import React, { useEffect } from "react"
-import { Confetti } from "utils/confetti"
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import GradientButton from "app/components/buttons/gradientButton"
+import { Confetti } from "utils/confetti"
+import PromptCard from "app/components/shared/PromptCard"
 
 const UpgradeAccount = () => (
   <Link href="/pricing">
@@ -24,14 +25,12 @@ export default function Client({
 }) {
   const { setShowSignInModal } = useSignInModal({})
   const searchParams = useSearchParams()
-
+  const router = useRouter()
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
 
-  console.log("purchasedCredits", purchasedCredits)
-
   useEffect(() => {
-    if (searchParams && searchParams.has("success")) {
+    if (opConfirmation && searchParams && searchParams.has("success")) {
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
@@ -39,11 +38,8 @@ export default function Client({
       //SEND CONFETI
       Confetti()
     }
-  }, [])
+  }, [opConfirmation, searchParams])
 
-  console.log("purchasedCredits", purchasedCredits)
-
-  const router = useRouter()
   //@ts-ignore
   const clientName = session && session?.user && session?.user?.name
   return (
@@ -56,27 +52,28 @@ export default function Client({
         setIsOpen={setOpenContactForm}
       />
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-      <div className="mx-auto h-full w-[95%] dark:bg-purple-900 sm:ml-16">
-        <div className="flex flex-row">
-          <span className="text-md absolute top-24 ml-2 font-bold text-white sm:top-28 sm:ml-10 sm:text-2xl">
+      <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
+        {/* <div className="flex flex-row">
+          <span className="text-md absolute top-24 ml-2 font-bold text-white sm:top-28 sm:ml-24 sm:text-2xl">
             Welcome, {clientName}!
           </span>
-        </div>
-        <div className="mt-12 flex w-full grow-0 flex-col items-center justify-between gap-4 pt-8 sm:mt-24 sm:flex-row sm:flex-wrap sm:justify-center">
+        </div> */}
+
+        <div className="mt-24 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
           <PromptCard
             size="large"
             hasScale
-            order="order-2 sm:order-1"
+            order="order-1 sm:order-1"
             imageSrc="/dashboard/credits.svg"
             onClick={undefined}
             title={credits}
-            text="Credits Available"
+            text="Available Credits"
           />
 
           <PromptCard
             size="large"
             hasScale
-            order="order-1 sm:order-2"
+            order="order-2 sm:order-2"
             button={<UpgradeAccount />}
             title={credits > 10 ? "Premium" : "Free"}
             text="Subscription Plan"

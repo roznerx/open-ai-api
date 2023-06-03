@@ -230,7 +230,7 @@ export default function Client({
   }
 
   function getCodeGeniusMode() {
-    if (smartSelected && mode !== "test") {
+    if (smartSelected && mode === "smart") {
       return (
         <div className="mt-5 inline-flex font-sans">
           <span className="ml-5  text-2xl font-semibold text-white">
@@ -246,7 +246,7 @@ export default function Client({
           </span>{" "}
         </div>
       )
-    } else if (improveSelected) {
+    } else if (improveSelected || mode === "improve") {
       return (
         <div className="mt-5 inline-flex font-sans">
           <span className="ml-5  text-2xl font-semibold text-white">
@@ -254,7 +254,7 @@ export default function Client({
           </span>{" "}
         </div>
       )
-    } else if (docSelected) {
+    } else if (docSelected || mode === "docs") {
       return (
         <div className="mt-5 inline-flex font-sans">
           <span className="ml-5  text-2xl font-semibold text-white">

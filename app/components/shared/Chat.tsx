@@ -47,9 +47,9 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
   }, [prompt, setCodeSentence])
 
   return (
-    <div className="flex items-center justify-center overflow-scroll rounded-md sm:mx-auto sm:flex-row ">
+    <div className="mt-18 flex h-auto items-center justify-center overflow-scroll rounded-md sm:mx-auto sm:mt-0 sm:flex-row ">
       {generatedResponse.length > 0 && (
-        <div className="mt-8">
+        <div className="mt-24 sm:mt-0">
           <ChatContainer
             useFullHeight
             useFullWidth
@@ -61,7 +61,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
       )}
       {generatedResponse.length === 0 && (
         <>
-          <div className="mx-auto mt-4 flex w-full flex-col items-center justify-center sm:max-w-[1000px] sm:flex-row sm:flex-wrap sm:items-start sm:justify-start sm:gap-6">
+          <div className="mb-20 grid max-h-[80vh] grid-cols-1 place-items-center gap-3 overflow-y-auto pt-24 sm:col-span-2 sm:grid-cols-4">
             <PromptCard
               onClick={setPrompt}
               title="Create React App"

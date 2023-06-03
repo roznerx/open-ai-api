@@ -21,7 +21,7 @@ export default async function handler(req, res) {
         <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
           We’re so glad you’re here! Thanks for joining us. </mj-text>
         <mj-text font-style="normal" font-size="18px" font-weight="" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
-          Now you have 25 credits available to use however you want!Whether you’re learning how to code, or you already have been doing it for a while we think our features will help you on your code journey.</mj-text>
+          You have now 25 credits available to use however you want!Whether you’re learning how to code, or you already have been doing it for a while we think our features will help you on your code journey.</mj-text>
         <mj-text font-style="normal" font-size="18px" font-weight="" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
           Have fun! <div></div>
           – Genius Code Team
@@ -69,11 +69,11 @@ export default async function handler(req, res) {
             We would love to see what you’re building with Genius Code! Please tag us and follow us!
           </mj-text>
           <mj-social font-size="15px" icon-size="30px" mode="horizontal" padding="0" align="center">
-            <mj-social-element name="youtube" href="https://mjml.io/" background-color="#A1A0A0">
+            <mj-social-element name="youtube" href="https://www.youtube.com/channel/UCpse6cfLu3KmQwEXfLpWaXQ" background-color="#A1A0A0">
             </mj-social-element>
-            <mj-social-element name="twitter" href="https://mjml.io/" background-color="#A1A0A0">
+            <mj-social-element name="twitter" href="https://twitter.com/CodeGeniusDev" background-color="#A1A0A0">
             </mj-social-element>
-            <mj-social-element name="linkedin" href="https://mjml.io/" background-color="#A1A0A0">
+            <mj-social-element name="linkedin" href="https://www.linkedin.com/company/93388566" background-color="#A1A0A0">
             </mj-social-element>
           </mj-social>
       </mj-column>
