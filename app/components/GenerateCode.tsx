@@ -11,6 +11,7 @@ type GenerateCode = {
   isCodeIdea?: boolean
   backgroundColor?: string
   align?: string
+  width?: string
   themeColors?: any
   borderRadius?: string
   onSaveCode?: () => void
@@ -45,15 +46,15 @@ function GenerateCode({
             return (
               <div
                 key={idx}
-                className="mx-auto max-w-[100%] overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
+                className="mx-auto w-[100%] max-w-[100%] overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
               >
                 <CopyBlock
                   showLineNumbers
                   wrapLongLines
                   customStyle={{
-                    maxWidth: "95%",
+                    maxWidth: "95vw",
                     minWidth: minWidth,
-                    with: "100%",
+                    with: "95vw",
                     margin: "0 auto",
                     borderRadius: "0.6rem",
                     border: `0.5px solid ${themeColors.purple[500]}`,

@@ -15,13 +15,7 @@ const LogoCodeGenius = React.memo(() => (
 ))
 
 export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
-  ({
-    generatedMessages,
-    fontColor,
-  }: {
-    generatedMessages: []
-    fontColor?: string
-  }) => {
+  ({ generatedMessages, fontColor }) => {
     return (
       <>
         {generatedMessages.map((generatedMessage) => {

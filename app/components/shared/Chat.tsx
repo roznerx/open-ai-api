@@ -5,54 +5,26 @@ import ChatContainer from "app/home/ChatContainer"
 
 import PromptCard from "./PromptCard"
 import { CombinedMessages } from "./CombinedMessages"
-
-// export const Messages: React.FC<CodeMessagesProps> = ({
-//   generatedMessages,
-// }) => {
-//   return (
-//     <>
-//       {generatedMessages.map((generatedMessage) => {
-//         const result = parseText(generatedMessage)
-
-//         return (
-//           result.length &&
-//           result.map((item: any) => {
-//             if (item.hasOwnProperty("code")) {
-//               // eslint-disable-next-line react/jsx-key
-//               return <GenerateCode align="start" generatedCode={item.code} />
-//             }
-
-//             if (item.hasOwnProperty("text")) {
-//               return (
-//                 // eslint-disable-next-line react/jsx-key
-//                 <p className="rounded-lg bg-purple-400 p-2 text-left leading-7">
-//                   {item.text}
-//                 </p>
-//               )
-//             }
-//           })
-//         )
-//       })}
-//     </>
-//   )
-// }
+import useWindowSize from "hooks/use-window-size"
 
 export default function Chat({ generatedResponse, setCodeSentence }) {
   const [prompt, setPrompt] = useState("")
-
+  const { isMobile } = useWindowSize()
   useEffect(() => {
     if (prompt !== "") {
       setCodeSentence(prompt)
     }
   }, [prompt, setCodeSentence])
 
+  const chatWidth = isMobile ? "90vw" : "900px"
+
   return (
-    <div className="mt-18 flex h-auto items-center justify-center overflow-scroll rounded-md sm:mx-auto sm:mt-0 sm:flex-row ">
+    <div className="flex h-screen items-start justify-start overflow-scroll rounded-md sm:mx-auto sm:mt-0 sm:flex-row ">
       {generatedResponse.length > 0 && (
-        <div className="mt-24 sm:mt-0">
+        <div className="mt-24 sm:mt-12">
           <ChatContainer
             useFullHeight
-            useFullWidth
+            width={chatWidth}
             messages={
               <CombinedMessages generatedMessages={generatedResponse} />
             }
