@@ -50,7 +50,8 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
               <Heart
                 onClick={() => setLikeHeart(true)}
                 className="ml-2 cursor-pointer"
-                fill={likeHeart ? "white" : "transparent"}
+                color="#7477FB"
+                fill={likeHeart ? "#7477FB" : "transparent"}
                 size={20}
               />
             </span>

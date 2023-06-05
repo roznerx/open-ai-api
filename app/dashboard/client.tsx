@@ -95,9 +95,9 @@ export default function Client({
             onClick={() => {
               router.push("/code-idea?mode=imrove")
             }}
-            title="Code Improvement"
+            title="Code Improvements"
             order="order-6"
-            text="Improve your code, find alternative ways to make your code more efficient."
+            text="Improve the perfomance  of your App."
             imageSrc="/dashboard/bug.svg"
           />
 
@@ -107,7 +107,7 @@ export default function Client({
             }}
             order="order-4"
             title="Test Generation"
-            text="Generate test cases that cover  your code is thoroughly tested and reliable."
+            text="Generate reliable unit test cases  in seconds."
             imageSrc="/dashboard/test.svg"
           />
 
@@ -118,7 +118,7 @@ export default function Client({
             order="order-5"
             title="Documentation"
             imageSrc="/dashboard/documentation.svg"
-            text="Generate clear and concise documentation for your code, helping you saving precious time."
+            text="Generate clear and concise documentation."
           />
         </div>
       </div>

@@ -11,7 +11,7 @@ type CardProps = {
   mb?: string
   order?: string
   button?: ReactNode
-  imageSrc?: string //react ReactNode
+  imageSrc?: any
   onClick?: (text: string) => void
 }
 export default function PromptCard({
@@ -24,9 +24,11 @@ export default function PromptCard({
   onClick,
   size,
 }: CardProps) {
+  const altImg = imageSrc.split("/")[2].split(".")[0]
+
   return (
     <div
-      className={`${order}  flex ${
+      className={`${order} relative flex ${
         size === "large"
           ? "h-56 w-[80%] sm:col-span-2 sm:w-full"
           : "h-38 w-[80%] sm:h-52 sm:w-[250px]"
@@ -38,6 +40,7 @@ export default function PromptCard({
     >
       <div className="mx-auto w-full">
         <motion.div
+          className="absolute top-2 left-4"
           initial={{ scale: 0 }}
           animate={{
             scale: hasScale ? 1 : 0,
@@ -48,7 +51,8 @@ export default function PromptCard({
         >
           {imageSrc && (
             <Image
-              alt="Dashboard"
+              title={altImg}
+              alt={altImg}
               src={imageSrc}
               width={40}
               height={40}
@@ -56,7 +60,9 @@ export default function PromptCard({
             />
           )}
         </motion.div>
-        <h5 className="mb-1 text-left text-2xl font-bold tracking-tight text-white">
+        <h5
+          className={`mt-4 text-left text-2xl font-bold tracking-tight text-white`}
+        >
           {title}
         </h5>
         <p className="text-sm pt-2 text-left font-normal text-gray-200">

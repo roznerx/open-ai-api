@@ -1,14 +1,18 @@
 "use client"
 
+import { usePathname } from "next/navigation"
 import React, { useEffect, useRef } from "react"
 
 export default function ChatContainer({
+  pathName,
   messages,
+  isMobile,
   useFullHeight,
-  width = null,
 }: any) {
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const [scrollHeight, setScrollHeight] = React.useState(0)
+  const pathname = usePathname()
+  console.log("pathname:", pathname)
 
   useEffect(() => {
     if (chatContainerRef && chatContainerRef.current) {
@@ -26,13 +30,15 @@ export default function ChatContainer({
   ])
 
   return (
-    <div className="mx-auto flex pb-6 sm:mt-3 sm:ml-4 ">
+    <div className="mx-auto flex sm:ml-4 ">
       <div
         ref={chatContainerRef}
-        className={` mt-6 overflow-y-scroll sm:mt-0  ${
-          useFullHeight ? "max-h-[75vh] sm:max-h-[80vh]" : "max-h-[320px]"
-        } ${width ? `w-[${width}]` : "w-screen"}  rounded-md bg-purple-400
-       font-sans text-white `}
+        className={`overflow-y-scroll ${
+          useFullHeight ? "max-h-[75vh] sm:max-h-[75vh]" : "max-h-[320px]"
+        } ${
+          isMobile ? "w-screen" : "w-[900px]"
+        } rounded-md bg-purple-400 font-sans
+       text-white sm:mt-2 `}
       >
         {messages}
       </div>

@@ -85,6 +85,7 @@ export default function Client({ session }) {
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
+
       <Chat
         generatedResponse={generatedMessages}
         setCodeSentence={setCodeSentence}

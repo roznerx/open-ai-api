@@ -6,31 +6,33 @@ import Link from "next/link"
 import { Fragment } from "react"
 
 export default function UserMenu({ session, email, image }) {
-  return (
-    <div className="absolute top-4 right-4 z-50 w-auto text-right sm:right-2 sm:mr-7">
-      <Menu as="div" className="relative inline-block text-left">
-        <div className="flex items-start justify-between">
-          <Menu.Button className="text-sm inline-flex h-12 w-12 justify-center rounded-full border-[1px] border-purple-500 bg-purple-500 px-1  py-2 font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
-            <div className="mr-1 flex">
-              {image && (
-                <Image
-                  alt="Profile Picture"
-                  className="ml-1 w-8 rounded-full"
-                  src={
-                    image ||
-                    `https://avatars.dicebear.com/api/micah/${email}.svg`
-                  }
-                  width={40}
-                  height={40}
-                />
-              )}
+  console.log("image", image)
 
-              {!image && (
-                <span className="mt-1">
+  return (
+    <div className="absolute top-4 right-4 z-50 w-auto text-center sm:right-2 sm:mr-7">
+      <Menu as="div" className="relative">
+        <div className="flex items-center justify-center">
+          <Menu.Button className="text-sm flex h-12 w-12 items-center justify-center rounded-full border-[1px]  border-gray-500 bg-purple-500  font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
+            {image && (
+              <Image
+                alt="Profile Picture"
+                className="ml-1 w-8 rounded-full bg-black"
+                src={
+                  image || `https://avatars.dicebear.com/api/micah/${email}.svg`
+                }
+                width={40}
+                height={40}
+              />
+            )}
+
+            {!image && (
+              <div className="flex items-center justify-center">
+                <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium ">
                   {session?.user?.name.split(" ")[0].substring(0, 1)}
                 </span>
-              )}
-            </div>
+              </div>
+            )}
+
             {/* <ChevronDown
               className="mt-1 h-6 w-5 font-bold text-gray-200"
               aria-hidden="true"
