@@ -54,12 +54,12 @@ export default function Client({
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
         <div className="absolute top-28 z-30 w-full bg-transparent">
-          <h2 className="mx-auto flex w-full items-start justify-center text-5xl text-white">
+          <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-5xl text-gray-200 sm:items-start">
             Welcome, {clientName}!
           </h2>
         </div>
 
-        <div className="mt-24 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+        <div className="mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-24 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
           <PromptCard
             size="large"
             hasScale

@@ -30,7 +30,7 @@ export default function PromptCard({
     <div
       className={`${order} relative flex ${
         size === "large"
-          ? "h-56 w-[80%] sm:col-span-2 sm:w-full"
+          ? "h-56 w-[80%] flex-col sm:col-span-2 sm:w-full"
           : "h-38 w-[80%] sm:h-52 sm:w-[250px]"
       } 
       cursor-pointer items-center justify-center rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
@@ -40,7 +40,7 @@ export default function PromptCard({
     >
       <div className="mx-auto w-full">
         <motion.div
-          className="absolute top-2 left-4"
+          className="absolute top-2 left-5 sm:left-4"
           initial={{ scale: 0 }}
           animate={{
             scale: hasScale ? 1 : 0,
@@ -61,11 +61,17 @@ export default function PromptCard({
           )}
         </motion.div>
         <h5
-          className={`mt-4 text-left text-2xl font-bold tracking-tight text-white`}
+          className={`mt-8 ${
+            size === "large" ? "text-center" : "text-left"
+          } text-2xl font-bold tracking-tight text-white sm:mt-4`}
         >
           {title}
         </h5>
-        <p className="text-sm pt-2 text-left font-normal text-gray-200">
+        <p
+          className={`${
+            size === "large" ? "text-center" : "text-left"
+          } text-sm pt-2 font-normal text-gray-200`}
+        >
           {text}
         </p>
       </div>

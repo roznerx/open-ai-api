@@ -138,7 +138,7 @@ export default async function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex">
       <SideBar setOpenSecondaryNavBar={undefined} />
       <div className="mx-auto w-full dark:bg-purple-900">
         <Client

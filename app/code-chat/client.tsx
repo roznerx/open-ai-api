@@ -85,8 +85,8 @@ export default function Client({ session }) {
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-      <div className="absolute top-24 z-30 w-full bg-transparent sm:top-12">
-        <h2 className="mx-auto flex w-full items-start justify-center text-3xl text-white sm:text-5xl">
+      <div className="absolute top-16 z-30 w-full bg-transparent sm:top-12">
+        <h2 className="mx-auto flex w-full items-start justify-center text-3xl text-gray-200 sm:text-5xl">
           Chat with a coding expert
         </h2>
       </div>
