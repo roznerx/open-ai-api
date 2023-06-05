@@ -16,7 +16,7 @@ export default function UserMenu({ session, email, image }) {
             {image && (
               <Image
                 alt="Profile Picture"
-                className="ml-1 w-8 rounded-full bg-black"
+                className="w-8 rounded-full bg-black"
                 src={
                   image || `https://avatars.dicebear.com/api/micah/${email}.svg`
                 }

@@ -20,9 +20,9 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
   const chatWidth = isMobile ? "90vw" : "900px"
 
   return (
-    <div className="mt-20 flex h-screen items-start justify-start overflow-scroll rounded-md sm:mx-auto sm:flex-row ">
+    <div className="justify-star mx-auto flex items-start overflow-scroll rounded-md sm:mx-auto sm:flex-row">
       {generatedResponse.length > 0 && (
-        <div className="mt-24 sm:mt-12">
+        <div className="mx-auto mt-24 w-full sm:mt-12">
           <ChatContainer
             isMobile={isMobile}
             useFullHeight
@@ -35,7 +35,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
       )}
       {generatedResponse.length === 0 && (
         <>
-          <div className="grid h-screen grid-cols-1 place-content-center gap-3 overflow-y-auto sm:col-span-2 sm:grid-cols-4">
+          <div className="grid h-full max-h-[65vh] grid-cols-1 place-items-center items-center justify-center gap-3 overflow-y-auto pt-32 sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
             <PromptCard
               imageSrc="/icons/react.png"
               onClick={setPrompt}

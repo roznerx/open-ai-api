@@ -1,4 +1,4 @@
-import { Heart, Loader2 } from "lucide-react"
+import { Loader2 } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
 export default function Feedback({ showWidget, setShowWidget, session }) {
@@ -47,13 +47,13 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
           <div className="border-b border-gray-500 py-3">
             <span className="sm:text-lg mx-auto flex flex-wrap items-center justify-center text-center font-sans text-gray-200">
               Your feedback matter to us
-              <Heart
+              {/* <Heart
                 onClick={() => setLikeHeart(true)}
                 className="ml-2 cursor-pointer"
                 color="#7477FB"
                 fill={likeHeart ? "#7477FB" : "transparent"}
                 size={20}
-              />
+              /> */}
             </span>
           </div>
           <div className="flex w-full flex-col items-center bg-purple-500 ">

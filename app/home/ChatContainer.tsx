@@ -1,18 +1,14 @@
 "use client"
 
-import { usePathname } from "next/navigation"
 import React, { useEffect, useRef } from "react"
 
 export default function ChatContainer({
-  pathName,
   messages,
   isMobile,
   useFullHeight,
 }: any) {
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const [scrollHeight, setScrollHeight] = React.useState(0)
-  const pathname = usePathname()
-  console.log("pathname:", pathname)
 
   useEffect(() => {
     if (chatContainerRef && chatContainerRef.current) {
