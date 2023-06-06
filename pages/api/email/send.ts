@@ -17,7 +17,7 @@ export default async function handler(
     : `Code Genius </> ${bodyRequest.name}`
   try {
     const data = await resend.sendEmail({
-      from: "delivered@resend.dev",
+      from: "welcome@code-genius.dev",
       to: bodyRequest.email,
       subject: subject,
       html: bodyRequest.html,
