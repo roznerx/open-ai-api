@@ -37,6 +37,8 @@ function GenerateCode({
           .replace(regex, "")
           .replace("javascript", "")
           .replace("python", "")
+          .replace("html", "")
+          .replace("sql", "")
           .replace("```", "")
           .replace("typescript", "")
           .replace("jsx", "")
