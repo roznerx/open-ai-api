@@ -1,13 +1,13 @@
 import compileMjml from "mjml"
 
 export default async function handler(req, res) {
-  console.dir("user info", req.body.user)
-  //Get name query parameter from req.body
-  const query = req.query
-  const { name } = query
+  try {
+    //Get name query parameter from req.body
+    const query = req.query
+    const { name } = query
 
-  const html = compileMjml(
-    `<mjml>
+    const html = compileMjml(
+      `<mjml>
   <mj-body background-color="#101018">
     <mj-section>
       <mj-column>
@@ -80,6 +80,10 @@ export default async function handler(req, res) {
     </mj-section>
   </mj-body>
 </mjml>`,
-  )
-  return res.status(200).send(html)
+    )
+
+    return res.status(200).json(html)
+  } catch (error) {
+    return res.status(500).json({ error })
+  }
 }

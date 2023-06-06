@@ -52,8 +52,7 @@ export const authOptions: AuthOptions = {
   },
 
   callbacks: {
-    async signIn({ user, account, profile }) {
-      console.log("profile:", profile)
+    async signIn({ user, account }) {
       return user || account ? true : false
     },
     async session({ session, user }) {
