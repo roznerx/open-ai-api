@@ -119,7 +119,6 @@ export default async function Dashboard() {
 
         const response = await fetch(fetchUrl, {
           method: "GET",
-          next: { revalidate: 0 },
           headers: headers,
         })
         const { html } = await response.json()

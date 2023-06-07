@@ -29,10 +29,10 @@ export const authOptions: AuthOptions = {
         try {
           const response = await fetch(fetchUrl, {
             method: "GET",
-            next: { revalidate: 0 },
-            headers: headers,
+            headers,
           })
           const { html } = await response.json()
+
           const payload = {
             isNewUser: true,
             name: user?.name,
@@ -41,11 +41,10 @@ export const authOptions: AuthOptions = {
           }
           await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
             method: "POST",
-            next: { revalidate: 0 },
             body: JSON.stringify(payload),
           })
         } catch (error) {
-          console.error("error::", error)
+          console.error("error sending welcome email: ", error)
         }
       }
     },
