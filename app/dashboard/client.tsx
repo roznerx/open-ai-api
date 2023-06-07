@@ -17,6 +17,12 @@ const UpgradeAccount = () => (
   </Link>
 )
 
+const ChatButton = () => (
+  <Link href="/code-chat">
+    <GradientButton width="200px" text="Coding Chat" />
+  </Link>
+)
+
 export default function Client({
   session,
   credits,
@@ -65,9 +71,10 @@ export default function Client({
             hasScale
             order="order-1 sm:order-1"
             imageSrc="/dashboard/credits.svg"
-            onClick={undefined}
+            button={<ChatButton />}
             title={credits}
             text="Available Credits"
+            onClick={undefined}
           />
 
           <PromptCard

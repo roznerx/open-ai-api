@@ -31,7 +31,7 @@ export default function PromptCard({
       className={`${order} relative flex ${
         size === "large"
           ? "h-56 w-[80%] flex-col sm:col-span-2 sm:w-full"
-          : "h-38 w-[80%] sm:h-52 sm:w-[250px]"
+          : "h-38 w-[80%] sm:h-52 sm:w-[280px]"
       } 
       cursor-pointer items-center justify-center rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
       onClick={() => {
