@@ -20,9 +20,9 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
   const chatWidth = isMobile ? "90vw" : "900px"
 
   return (
-    <div className="justify-star mx-auto flex items-start overflow-scroll rounded-md sm:mx-auto sm:flex-row">
+    <div className="mx-auto flex overflow-scroll rounded-md sm:mx-auto sm:flex-row">
       {generatedResponse.length > 0 && (
-        <div className="mx-auto mt-24 w-full sm:mt-12">
+        <div className="mx-auto mt-24 w-full">
           <ChatContainer
             isMobile={isMobile}
             useFullHeight
@@ -34,8 +34,8 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
         </div>
       )}
       {generatedResponse.length === 0 && (
-        <>
-          <div className="grid h-full max-h-[65vh] grid-cols-1 place-items-center items-center justify-center gap-3 overflow-y-auto pt-32 sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
+        <div className="flex items-center justify-center">
+          <div className="grid max-h-[65vh] grid-cols-1 place-items-center gap-4 overflow-y-auto sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
             <PromptCard
               imageSrc="/icons/react.png"
               onClick={setPrompt}
@@ -85,7 +85,7 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
               text="Explain how to use Jest with React Testing Library"
             />
           </div>
-        </>
+        </div>
       )}
     </div>
   )

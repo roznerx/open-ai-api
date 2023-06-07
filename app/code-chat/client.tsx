@@ -90,12 +90,13 @@ export default function Client({ session }) {
           Chat with a coding expert
         </h2>
       </div>
+      {/* Chat Container */}
       <Chat
         generatedResponse={generatedMessages}
         setCodeSentence={setCodeSentence}
       />
 
-      {/* Chat input container */}
+      {/* Chat Input at the bottom */}
       <InputChat
         inputRef={inputRef}
         codeSentence={codeSentence}
