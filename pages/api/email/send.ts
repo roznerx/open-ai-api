@@ -12,6 +12,7 @@ export default async function handler(
   if (!bodyRequest) {
     return res.status(400).json({ done: false })
   }
+
   const subject = bodyRequest?.isNewUser
     ? `Welcome to Code Genius ${bodyRequest.name} 🤩`
     : `Code Genius </> ${bodyRequest.name}`

@@ -58,16 +58,6 @@ export default async function RootLayout({
       <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
         <head>
           <link rel="icon" href="/favicon.ico" />
-          <link
-            rel="alternate"
-            hrefLang="en-US"
-            href="https://code-genius.dev"
-          ></link>
-          <link
-            rel="alternate"
-            media="only screen and (max-width: 640px)"
-            href="https://code-genius.dev"
-          ></link>
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
         <body suppressHydrationWarning={true} className="bg-purple-900">

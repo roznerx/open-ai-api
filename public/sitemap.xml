@@ -1,26 +1,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
     <loc>https://www.code-genius.dev/</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2023-06-04</lastmod>
+    </url>
+    <url>
+    <loc>https://www.code-genius.dev/?ref=producthunt</loc>
+    <lastmod>2023-06-04</lastmod>
     </url>
     <url>
     <loc>https://www.code-genius.dev/code-idea</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2023-06-04</lastmod>
     </url>
     <url>
     <loc>https://www.code-genius.dev/code-chat</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2023-06-04</lastmod>
     </url>
     <url>
     <loc>https://www.code-genius.dev/pricing</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2023-06-04</lastmod>
     </url>
     <url>
     <loc>https://www.code-genius.dev/privacy</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2023-06-04</lastmod>
     </url>
     <url>
     <loc>https://www.code-genius.dev/terms-and-conditions</loc>
-    <lastmod>2023-05-29</lastmod>
+    <lastmod>2023-06-04</lastmod>
     </url>
 </urlset>

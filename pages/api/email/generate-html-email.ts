@@ -1,13 +1,12 @@
 import compileMjml from "mjml"
 
 export default async function handler(req, res) {
-  console.dir("user info", req.body.user)
-  //Get name query parameter from req.body
-  const query = req.query
-  const { name } = query
+  try {
+    //Get name query parameter from req.body
+    const name = req.query.name
 
-  const html = compileMjml(
-    `<mjml>
+    const html = compileMjml(
+      `<mjml>
   <mj-body background-color="#101018">
     <mj-section>
       <mj-column>
@@ -21,7 +20,7 @@ export default async function handler(req, res) {
         <mj-text font-style="normal" font-size="18px" font-weight="normal" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
           We’re so glad you’re here! Thanks for joining us. </mj-text>
         <mj-text font-style="normal" font-size="18px" font-weight="" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
-          You have now 25 credits available to use however you want!Whether you’re learning how to code, or you already have been doing it for a while we think our features will help you on your code journey.</mj-text>
+          You have now 25 credits available to use however you want!Whether you are learning how to code, or you already have been doing it for a while we think our features will help you on your code journey.</mj-text>
         <mj-text font-style="normal" font-size="18px" font-weight="" font-family="Helvetica Neue" color="#FFF" line-height="1.5">
           Have fun! <div></div>
           – Genius Code Team
@@ -65,8 +64,8 @@ export default async function handler(req, res) {
     </mj-section>
     <mj-section>
        <mj-column width="100%">
-         <mj-text color="#FFF" font-size="18px" font-family="Helvetica Neue" font-weight="bold" line-height="1.5" align="center" >
-            We would love to see what you’re building with Genius Code! Please tag us and follow us!
+         <mj-text color="#FFF" font-size="18px" font-family="Helvetica Neue" font-weight="bold" line-height="1.5" align="center">
+            We would love to see what you are building with Genius Code! Please tag us and follow us!
           </mj-text>
           <mj-social font-size="15px" icon-size="30px" mode="horizontal" padding="0" align="center">
             <mj-social-element name="youtube" href="https://www.youtube.com/channel/UCpse6cfLu3KmQwEXfLpWaXQ" background-color="#A1A0A0">
@@ -80,6 +79,11 @@ export default async function handler(req, res) {
     </mj-section>
   </mj-body>
 </mjml>`,
-  )
-  return res.status(200).send(html)
+      { minify: true },
+    )
+
+    return res.status(200).send(html)
+  } catch (error) {
+    return res.status(500).json({ error })
+  }
 }

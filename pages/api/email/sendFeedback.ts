@@ -15,7 +15,7 @@ export default async function handler(
   }
   try {
     const data = await resend.sendEmail({
-      from: "delivered@resend.dev",
+      from: "feedback@code-genius.dev",
       to: "geniuscodeai@gmail.com",
       subject: `New client feedback from: ${bodyRequest.name}`,
       react: EmailTemplate({
