@@ -45,12 +45,13 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                   )
                 } else {
                   return (
-                    <GenerateCode
-                      key={idx}
-                      borderRadius="none"
-                      align="start"
-                      generatedCode={item.code}
-                    />
+                    <div className="mx-2" key={idx}>
+                      <GenerateCode
+                        borderRadius="none"
+                        align="start"
+                        generatedCode={item.code}
+                      />
+                    </div>
                   )
                 }
               })
