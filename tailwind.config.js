@@ -27,7 +27,7 @@ module.exports = {
         {
           lineHeight: "34px",
           fontWeight: "400",
-          letterSpacing: "0.5px",
+          letterSpacing: "-0.02em",
         },
       ],
       "3xl": [
@@ -39,7 +39,7 @@ module.exports = {
         },
       ],
       "4xl": [
-        "48px",
+        "40px",
         {
           lineHeight: "58.09px",
           fontWeight: "600",
@@ -47,7 +47,7 @@ module.exports = {
         },
       ],
       "5xl": [
-        "44px",
+        "48px",
         {
           lineHeight: "45.3px",
           letterSpacing: "-0.02em",
