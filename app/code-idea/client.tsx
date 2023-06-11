@@ -32,6 +32,8 @@ let testFrameworkElements: TestingElementType[] = [
 let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
+  userName,
+  chatHasStarted,
   setChatHasStarted,
   setGeneratedCode,
   generatedCode,
@@ -55,6 +57,7 @@ export default function Client({
   setCodeSentence,
   improveSelected,
 }) {
+  console.log("userName", userName)
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
@@ -148,7 +151,6 @@ export default function Client({
           "You are an AI software development assistant which is specialized in providing code examples and suggestions."
         break
     }
-    console.log("codeMessages.current: ", codeMessages.current)
   }, [langElement, lib, mode, testFrameworkElement, testLibElement, setMode])
 
   useEffect(() => {
@@ -182,7 +184,7 @@ export default function Client({
   }, [userCredits])
 
   const generateCompletion = async () => {
-    // setLoading(true)
+    setLoading(true)
 
     codeMessages.current = [
       ...codeMessages.current,
@@ -191,9 +193,8 @@ export default function Client({
         content: prompt,
       },
     ]
-    console.log("codeMessages :", codeMessages.current)
+    // console.log("codeMessages :", codeMessages.current)
 
-    setCodeSentence("")
     generateCode(
       setReader,
       setGeneratedCode,
@@ -202,6 +203,7 @@ export default function Client({
       setUserHasAResponse,
       setCreditsLeft,
       setCreditsModaIsOpen,
+      setLoading,
     )
   }
 
@@ -283,14 +285,19 @@ export default function Client({
     setQuestionName(event.target.value)
   }
 
-  const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
-
   const clearPanel = () => {
     setChatHasStarted(false)
     setGeneratedCode("")
     setCodeSentence("")
     setMode(mode)
   }
+
+  const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
+
+  const showUserMessage =
+    (mode === "smart" || mode === "improve") &&
+    chatHasStarted &&
+    codeSentence.length > 0
 
   return (
     <div className="w-full sm:ml-10">
@@ -312,8 +319,31 @@ export default function Client({
             highlight={(code) => highlight(code, languages.js)}
             onValueChange={(code) => setCodeSentence(code)}
           />
+          {showUserMessage ? (
+            <div className="mr-9 mb-1 flex ">
+              <div className="ml-5 flex w-full items-center justify-center">
+                <div className="flex items-start justify-start">
+                  <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium">
+                    {userName}
+                  </span>
+                </div>
+                <div className="mx-auto ml-3 w-full rounded-lg bg-purple-400 p-2">
+                  <p
+                    style={{ borderRadius: "0px" }}
+                    className="ml-2 text-left leading-7 text-white"
+                  >
+                    {codeSentence}
+                  </p>
+                </div>
+              </div>
+            </div>
+          ) : null}
           {generatedMessages && (
-            <CombinedMessages generatedMessages={generatedMessages} />
+            <CombinedMessages
+              loading={loading}
+              userName={userName}
+              generatedMessages={generatedMessages}
+            />
           )}
         </div>
       </div>

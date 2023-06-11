@@ -1,4 +1,4 @@
-export function parseText(text = "", delimiter = "```") {
+export function parseText({ text = "", delimiter = "```" }) {
   const parts = text.split(delimiter)
   // console.log("parts with delimiter:", parts)
   const result: any = []

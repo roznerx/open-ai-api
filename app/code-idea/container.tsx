@@ -128,8 +128,10 @@ export default function Container({ session }) {
         setTestSelected={setTestSelected}
       />
       <Client
+        userName={session?.user?.name?.substring(0, 1)}
         setGeneratedCode={setGeneratedCode}
         generatedCode={generatedCode}
+        chatHasStarted={chatHasStarted}
         setChatHasStarted={setChatHasStarted}
         testLibElement={testLibElement}
         setTestLib={setTestLib}

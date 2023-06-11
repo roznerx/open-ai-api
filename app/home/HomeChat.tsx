@@ -22,6 +22,9 @@ import useWindowSize from "hooks/use-window-size"
 export interface CodeMessagesProps {
   generatedMessages: string[]
   fontColor?: string
+  loading?: boolean
+  userName?: any
+  userPrompt?: any
 }
 
 const Modal = dynamic(() => import("app/components/Modal"), {

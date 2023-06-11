@@ -99,6 +99,7 @@ export async function generateCode(
   setUserHasAResponse?: any,
   setCreditsLeft?: any,
   setCreditsModaIsOpen?: any,
+  setLoading?: any,
 ) {
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
@@ -147,6 +148,10 @@ export async function generateCode(
     return `There was an error with your request ${error}`
   } finally {
     setReader(null)
+    if (typeof setLoading === "function") {
+      setLoading(false)
+    }
+
     if (typeof setUserHasAResponse === "function") {
       setUserHasAResponse(true)
     }

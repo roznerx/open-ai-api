@@ -11,6 +11,7 @@ import { CREDITS_MODAL_COPY } from "@/lib/constants"
 
 export default function Client({ session }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
+  const [loading, setLoading] = useState(false)
   const { setShowSignInModal } = useSignInModal({})
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
@@ -20,6 +21,8 @@ export default function Client({ session }) {
   // const [questionName, setQuestionName] = useState("")
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
+  const userName = session && session.user?.name
+
   // const controller = new AbortController()
   const inputRef = useRef<any>(null)
   useEffect(() => {
@@ -42,6 +45,7 @@ export default function Client({ session }) {
   ])
 
   const onArrowPress = () => {
+    setLoading(true)
     if (!userCredits || userCredits === 0) {
       setCreditsModaIsOpen(true)
       return false
@@ -53,8 +57,8 @@ export default function Client({ session }) {
         content: codeSentence,
       },
     ]
-    setCodeSentence("")
-    generateCode(setReader, setGeneratedCode, codeMessages, userId)
+    // setCodeSentence("")
+    generateCode(setReader, setGeneratedCode, codeMessages, userId, setLoading)
   }
 
   const onCodeGeneration = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -74,9 +78,15 @@ export default function Client({ session }) {
           content: codeSentence,
         },
       ]
-      setCodeSentence("")
+      // setCodeSentence("")
       //Generate Code funciton
-      generateCode(setReader, setGeneratedCode, codeMessages, userId)
+      generateCode(
+        setReader,
+        setGeneratedCode,
+        codeMessages,
+        userId,
+        setLoading,
+      )
     }
   }
 
@@ -88,6 +98,9 @@ export default function Client({ session }) {
 
       {/* Chat Container */}
       <Chat
+        loading={loading}
+        userName={userName}
+        codeSentence={codeSentence}
         generatedResponse={generatedMessages}
         setCodeSentence={setCodeSentence}
       />
