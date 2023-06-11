@@ -36,6 +36,7 @@ export default function Container({ session }) {
   const searchParams = useSearchParams()
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
+  const userImage = session?.user?.image || {}
 
   useEffect(() => {
     if (searchParams) {
@@ -128,6 +129,7 @@ export default function Container({ session }) {
         setTestSelected={setTestSelected}
       />
       <Client
+        userImage={userImage}
         setGeneratedCode={setGeneratedCode}
         generatedCode={generatedCode}
         setChatHasStarted={setChatHasStarted}

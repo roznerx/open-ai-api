@@ -91,14 +91,14 @@ export const fetchWithTurbo = async (
   return response
 }
 
-export async function generateCode(
+export async function generateCodeCompletion(
   setReader: any,
   setGeneratedCode: any,
   codeMessages: any,
   userId: any,
-  setUserHasAResponse?: any,
   setCreditsLeft?: any,
   setCreditsModaIsOpen?: any,
+  setLoading?: any,
 ) {
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
@@ -138,18 +138,22 @@ export async function generateCode(
       // console.log("chunkValue: ", chunkValue)
 
       setGeneratedCode((prev) => prev + chunkValue)
+      // const generatedMessages = generatedCode.filter((i) => i !== "").join()
+      //fill the thrird argument with the updateCallback
 
+      // console.log("generated generatedCode:", generatedCode)
       if (done) {
-        setGeneratedCode((prev) => prev + "<>")
+        //Do somehting here
       }
     }
   } catch (error) {
     return `There was an error with your request ${error}`
   } finally {
     setReader(null)
-    if (typeof setUserHasAResponse === "function") {
-      setUserHasAResponse(true)
+    if (typeof setLoading === "function") {
+      setLoading(false)
     }
+
     //✨ Make some credits update Magic ✨
     const data = await updateApiCallsAndCredits(userId, tokensCount)
 

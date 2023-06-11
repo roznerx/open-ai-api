@@ -10,7 +10,6 @@ const notify = () => toast("Code copied!")
 
 export default function FooterSection({
   mode,
-  setUserHasAResponse,
   setTestFrameworkElement,
   testFrameworkElement,
   testFrameworkElements,
@@ -178,7 +177,6 @@ export default function FooterSection({
             <Button
               onClick={() => {
                 onCodeGeneration()
-                setUserHasAResponse(false)
               }}
               loading={loading}
               variant="mint"

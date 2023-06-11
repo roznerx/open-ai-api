@@ -6,8 +6,6 @@ import Link from "next/link"
 import { Fragment } from "react"
 
 export default function UserMenu({ session, email, image }) {
-  console.log("image", image)
-
   return (
     <div className="absolute top-4 right-4 z-50 w-auto text-center sm:right-2 sm:mr-7">
       <Menu as="div" className="relative">

@@ -5,7 +5,7 @@ import { KeyboardEvent, useState, useRef, useEffect } from "react"
 import Chat from "app/components/shared/Chat"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
-import { generateCode } from "utils/generateCode"
+import { generateCodeCompletion } from "utils/generateCode"
 import InputChat from "app/components/shared/InputChat"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
 
@@ -15,6 +15,7 @@ export default function Client({ session }) {
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
+  const [isLoading, setIsLoading] = useState(false)
   const [generatedCode, setGeneratedCode] = useState<string>("")
   // const [showSavePromptModal, setShowSavePromptModal] = useState(false)
   // const [questionName, setQuestionName] = useState("")
@@ -42,6 +43,7 @@ export default function Client({ session }) {
   ])
 
   const onArrowPress = () => {
+    setIsLoading(true)
     if (!userCredits || userCredits === 0) {
       setCreditsModaIsOpen(true)
       return false
@@ -54,10 +56,17 @@ export default function Client({ session }) {
       },
     ]
     setCodeSentence("")
-    generateCode(setReader, setGeneratedCode, codeMessages, userId)
+    generateCodeCompletion(
+      setReader,
+      setGeneratedCode,
+      codeMessages,
+      userId,
+      setIsLoading,
+    )
   }
 
   const onCodeGeneration = (e: KeyboardEvent<HTMLTextAreaElement>) => {
+    setIsLoading(true)
     if (!userCredits || userCredits === 0) {
       setCreditsModaIsOpen(true)
       return false
@@ -76,7 +85,13 @@ export default function Client({ session }) {
       ]
       setCodeSentence("")
       //Generate Code funciton
-      generateCode(setReader, setGeneratedCode, codeMessages, userId)
+      generateCodeCompletion(
+        setReader,
+        setGeneratedCode,
+        codeMessages,
+        userId,
+        setIsLoading,
+      )
     }
   }
 
