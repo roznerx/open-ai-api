@@ -32,7 +32,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                 if (item.hasOwnProperty("text")) {
                   return (
                     <div key={idx} className="flex">
-                      <div className="ml-6 flex items-center justify-center">
+                      {/* <div className="ml-6 flex items-center justify-center">
                         <LogoCodeGenius />
                       </div>
                       <div
@@ -46,7 +46,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                         >
                           {item.text}
                         </p>
-                      </div>
+                      </div> */}
                     </div>
                   )
                 } else {
