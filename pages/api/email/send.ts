@@ -1,3 +1,4 @@
+import WelcomeEmail from "app/email/welcome"
 import type { NextApiRequest, NextApiResponse } from "next"
 
 import { Resend } from "resend"
@@ -14,14 +15,14 @@ export default async function handler(
   }
 
   const subject = bodyRequest?.isNewUser
-    ? `Welcome to Code Genius ${bodyRequest.name} 🤩`
+    ? `Welcome to Code Genius ${bodyRequest.name}! 🎉`
     : `Code Genius </> ${bodyRequest.name}`
   try {
     const data = await resend.sendEmail({
       from: "welcome@code-genius.dev",
       to: bodyRequest.email,
       subject: subject,
-      html: bodyRequest.html,
+      react: WelcomeEmail({ username: bodyRequest.name }),
     })
 
     res.status(200).json(data)
