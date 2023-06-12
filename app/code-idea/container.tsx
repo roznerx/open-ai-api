@@ -59,9 +59,9 @@ export default function Container({ session }) {
           `${
             chatHasStarted
               ? codeSentence
-              : "Generate a unit test and listen for the user's feedback, context: " +
+              : "Generate a unit using this context: " +
                 codeSentence +
-                "."
+                ". Don't add explanations, only code."
           }`,
         )
         setMode("test")
