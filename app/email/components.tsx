@@ -8,7 +8,6 @@ import {
   Section,
   Button,
 } from "@react-email/components"
-import useWindowSize from "hooks/use-window-size"
 import React from "react"
 
 export const RowWithImage = ({
@@ -18,14 +17,11 @@ export const RowWithImage = ({
   imageUrl,
   buttonText = "Click here",
 }) => {
-  const { isMobile } = useWindowSize()
-
   const textColumnStyle = {
     flex: 1,
     color: "#fff",
-    paddingLeft: isMobile ? "20px" : "0px",
     fontSize: "16px",
-    width: isMobile ? "100%" : "80%",
+    width: "80%",
     verticalAlign: "top",
   }
 
@@ -50,7 +46,7 @@ export const RowWithImage = ({
 
   const titleStyle = {
     color: "#fff",
-    textAlign: isMobile ? ("center" as const) : ("left" as const),
+    textAlign: "left" as const,
     fontSize: "20px",
     fntWeight: "600",
   }
@@ -70,32 +66,21 @@ export const RowWithImage = ({
   return (
     <Row style={rowStyle}>
       <Text style={titleStyle}>{title}</Text>
-      {isMobile && (
+      <Text style={textColumnStyle}>{text}</Text>
+      <Section>
+        <Button style={button} href={buttonLink}>
+          {buttonText}
+        </Button>
+      </Section>
+      <Column style={imageColumnStyle}>
         <Img
           src={imageUrl}
           width={248}
           height={138}
           alt="Image"
-          style={{ ...imageStyle, margin: "0 auto" }}
+          style={imageStyle}
         />
-      )}
-      <Text style={textColumnStyle}>{text}</Text>
-      <Section style={{ marginLeft: isMobile ? "20px" : "0px" }}>
-        <Button style={button} href={buttonLink}>
-          {buttonText}
-        </Button>
-      </Section>
-      {!isMobile && (
-        <Column style={imageColumnStyle}>
-          <Img
-            src={imageUrl}
-            width={248}
-            height={138}
-            alt="Image"
-            style={imageStyle}
-          />
-        </Column>
-      )}
+      </Column>
     </Row>
   )
 }

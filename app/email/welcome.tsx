@@ -81,7 +81,7 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
             <Row>
               <Column>
                 <RowWithImage
-                  title="💡 Create you code Idea"
+                  title="Create your code idea 💡"
                   buttonText="Go to code your idea"
                   buttonLink={`${baseUrl}/code-idea`}
                   text="If you need to improve a function, document code, test code or you simply want to get suggestions for a code idea, then this is feature you are looking for."
@@ -97,7 +97,7 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
             <Row>
               <Column>
                 <RowWithImage
-                  title="💬 Chat with Code Genius"
+                  title="Chat with Code Genius 💬"
                   buttonText="Chat with Code Genius"
                   buttonLink={`${baseUrl}/code-chat`}
                   text="Need some inspiration? Go to Genius Code and start the conversation. We promise, you will get the answers you are looking for."
