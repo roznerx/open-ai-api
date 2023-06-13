@@ -38,6 +38,7 @@ export default function Client({
   return (
     <>
       <SignInModal />
+      <div className="absolute -right-[300px] -top-[300px] items-center justify-center before:absolute before:left-0 before:top-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-mint/20 before:to-blue/30 before:blur-[120px] before:content-['']  md:mx-auto md:h-[950px] md:w-[950px] lg:flex"></div>
       <HeaderWrapper
         setShowSignInModal={setShowSignInModal}
         showSignInModal={showSignInModal}

@@ -43,16 +43,14 @@ export const SignInModal = ({
             <h1
               className={`mt-6 text-center font-sans text-[28px] font-[700] text-white`}
             >
-              {userHasAccount
-                ? "Login to your account"
-                : "Sign up now to create your account"}
+              {userHasAccount ? "Login to your account" : "Create your account"}
             </h1>
           </div>
-          <h6 className="sm:text-xl 4 mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200 ">
+          <h6 className="sm:text-xl  mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200 ">
             Unleash your coding potential with Code Genius
           </h6>
           {tip && (
-            <p className="text-md mx-auto w-full text-center font-sans text-gray-200">
+            <p className="text-md mx-auto -mt-3 w-full text-center font-sans text-gray-200">
               {tip}
             </p>
           )}
@@ -114,7 +112,7 @@ export const SignInModal = ({
             </button>
           </div>
         </div>
-        <p className="mx-auto w-2/4 py-6 text-center text-[11px] text-gray-400">
+        <p className=" mx-auto w-[80%] py-6 text-center text-[14px] text-gray-400">
           By continuing, you agree to our{" "}
           <Link href="/terms" className="underline">
             Terms

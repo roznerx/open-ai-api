@@ -59,8 +59,8 @@ export default function Client({
       />
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
-        <div className="absolute top-28 z-30 w-full bg-transparent">
-          <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-5xl text-gray-200 sm:items-start">
+        <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
+          <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-3xl text-gray-200 sm:items-start sm:text-5xl">
             Welcome, {clientName}!
           </h2>
         </div>
@@ -72,8 +72,8 @@ export default function Client({
             order="order-1 sm:order-1"
             imageSrc="/dashboard/credits.svg"
             button={<ChatButton />}
-            title={credits}
-            text="Available Credits"
+            title={`${credits} Credits`}
+            text="Available"
             onClick={undefined}
           />
 

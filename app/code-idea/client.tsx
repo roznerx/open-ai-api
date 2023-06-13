@@ -318,14 +318,14 @@ export default function Client({
             onValueChange={(code) => setCodeSentence(code)}
           />
           {showUserMessage ? (
-            <div className="mr-9 mb-1 flex ">
-              <div className="ml-5 flex w-full items-center justify-center">
+            <div className="mb-1 flex ">
+              <div className="ml-1 flex w-full items-center justify-center">
                 <div className="flex items-start justify-start">
                   <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium">
                     {userName}
                   </span>
                 </div>
-                <div className="mx-auto ml-3 w-full rounded-lg bg-purple-400 p-2">
+                <div className="mx-auto ml-[6px] w-[90%] rounded-lg bg-purple-400 p-2">
                   <p
                     style={{ borderRadius: "0px" }}
                     className="ml-2 text-left leading-7 text-white"

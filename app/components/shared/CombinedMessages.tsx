@@ -39,7 +39,9 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                             <LogoCodeGenius />
                           )}
                         </div>
-                        <div className={` w-full rounded-lg bg-purple-400 p-2`}>
+                        <div
+                          className={`ml-2 w-full rounded-lg bg-purple-400 p-2`}
+                        >
                           <p
                             style={{ borderRadius: "0px" }}
                             className={`ml-2 text-left leading-7 ${

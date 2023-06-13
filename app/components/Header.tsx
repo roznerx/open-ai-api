@@ -30,7 +30,7 @@ export default function Header({
     <>
       <div
         id="site-header"
-        className={`absolute top-0 z-30 w-full bg-purple-900`}
+        className={`absolute top-0 z-20 w-full bg-transparent`}
       >
         <div className="flex items-center justify-between">
           <div
@@ -88,9 +88,11 @@ export default function Header({
               }  p-[1.5px] font-sans`}
             >
               {!session && (
-                <div className={`relative h-[37px] w-32 rounded-lg`}>
+                <div
+                  className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
+                >
                   <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-200 hover:text-gray-50">
-                    {!userHasAccount ? "Sign In" : "Sign Up"}
+                    {!userHasAccount ? "Sign In" : "Sign up"}
                   </p>
                 </div>
               )}
