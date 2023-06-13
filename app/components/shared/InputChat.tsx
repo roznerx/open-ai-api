@@ -22,16 +22,8 @@ export default function InputChat({
           placeholder={"Ask to Code Genius.."}
         />
         <button className="absolute right-8 top-2 rounded-lg bg-purple-700 hover:bg-purple-900 disabled:hover:bg-transparent sm:right-0">
-          {/* <Image
-            className="mb-1 mr-2 py-2 pb-1 pl-2 text-white"
-            alt="Send"
-            width={30}
-            height={30}
-            src="/home/send.svg"
-            onClick={() => onArrowPress()}
-          /> */}
           <Send
-            className="mb-2 mr-2 rotate-45 pt-1  pl-2 text-mint"
+            className="mb-2 mr-2 rotate-45 pt-1 pl-2 text-mint"
             width={25}
             height={25}
             onClick={() => onArrowPress()}

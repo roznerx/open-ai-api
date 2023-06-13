@@ -95,8 +95,6 @@ export default function Client({ session }) {
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-
-      {/* Chat Container */}
       <Chat
         loading={loading}
         userName={userName}
@@ -104,8 +102,6 @@ export default function Client({ session }) {
         generatedResponse={generatedMessages}
         setCodeSentence={setCodeSentence}
       />
-
-      {/* Chat Input at the bottom */}
       <InputChat
         inputRef={inputRef}
         codeSentence={codeSentence}

@@ -1,12 +1,9 @@
 import DropDown from "app/components/DropDown"
 import Button from "app/components/Button"
-import toast, { Toaster } from "react-hot-toast"
-import useClipboard from "utils/useClipboard"
-import { useState } from "react"
 import { Hand, XCircle } from "lucide-react"
 import { MaterialTooltip } from "app/components/material-components"
 
-const notify = () => toast("Code copied!")
+// const notify = () => toast("Code copied!")
 
 export default function FooterSection({
   mode,
@@ -29,29 +26,29 @@ export default function FooterSection({
   setLib,
   onCodeGeneration,
 }: any) {
-  const [copied, toggleCopy] = useState(false)
+  // const [copied, toggleCopy] = useState(false)
 
-  const { copy } = useClipboard()
+  // const { copy } = useClipboard()
 
-  const text =
-    generatedCode.length > 0 &&
-    generatedCode
-      .substring(generatedCode.indexOf("**") + 0)
-      .replace("**", "")
-      .replace("tsx", "")
-      .replace("", "")
-      .split("**::")
-      .join("")
+  // const text =
+  //   generatedCode.length > 0 &&
+  //   generatedCode
+  //     .substring(generatedCode.indexOf("**") + 0)
+  //     .replace("**", "")
+  //     .replace("tsx", "")
+  //     .replace("", "")
+  //     .split("**::")
+  //     .join("")
 
-  const copyHandler = () => {
-    copy(text)
-    toggleCopy(!copied)
-    notify()
-  }
+  // const copyHandler = () => {
+  //   copy(text)
+  //   toggleCopy(!copied)
+  //   notify()
+  // }
 
   return (
     <>
-      <Toaster />
+      {/* <Toaster /> */}
       <section
         className="fixed bottom-0 left-0 z-40 flex h-16 w-[101%] items-center
           justify-between border-t-[1px] border-purple-500 bg-purple-800"
