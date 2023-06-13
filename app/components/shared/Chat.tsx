@@ -50,13 +50,13 @@ export default function Chat({
                 imageSrc="/icons/react.png"
                 onClick={setPrompt}
                 title="Create React App"
-                text="How to use the Create React App npm package"
+                text="How to use the Create React App npm package?"
               />
               <PromptCard
                 onClick={setPrompt}
                 imageSrc="/icons/nextjs.png"
                 title="Create Next App"
-                text="How to use the the Create Next App npm package"
+                text="How should I use the Create Next App npm package?"
               />
               <PromptCard
                 onClick={setPrompt}
@@ -86,7 +86,7 @@ export default function Chat({
                 onClick={setPrompt}
                 imageSrc="/icons/db.ico"
                 title="Database"
-                text="What's the best Database with Typescript support"
+                text="What's the best Database with Typescript support?"
               />
               <PromptCard
                 onClick={setPrompt}

@@ -159,7 +159,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   )
 
   const hasContent = generatedMessages.length > 0
-  const chatWidth = isMobile ? "95%" : "900px"
+
   return (
     <>
       <SignInModal />
@@ -201,7 +201,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
         <div className="h-[330px] sm:h-[380px] sm:w-[930px]">
           {generatedMessages.length > 0 && (
             <ChatContainer
-              width={chatWidth}
+              isMobile={isMobile}
               messages={
                 <CombinedMessages generatedMessages={generatedMessages} />
               }
