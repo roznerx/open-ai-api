@@ -99,7 +99,7 @@ export default function Client({
           },
         ]
         codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of background in unit testing, integration testing and e2e testing. 
-        Make sure tu use ${testFrameworkElement} and ${testLibElement}.`
+        Make sure tu use ${testFrameworkElement} and ${testLibElement}. Don't add explanations to the code.`
         break
       case "improve":
         codeMessages.current = [
