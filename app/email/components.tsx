@@ -1,4 +1,11 @@
-import { Link, Column, Img, Row, Text, Section } from "@react-email/components"
+import {
+  Column,
+  Img,
+  Row,
+  Text,
+  Section,
+  Button,
+} from "@react-email/components"
 import React from "react"
 
 export const RowWithImage = ({
@@ -43,7 +50,39 @@ export const RowWithImage = ({
       <Text style={titleStyle}>{title}</Text>
       <Text style={textColumnStyle}>{text}</Text>
       <Section>
-        <Link
+        <Button pY={19} style={button} href={buttonLink}>
+          {buttonText}
+        </Button>
+      </Section>
+      <Column style={imageColumnStyle}>
+        <Img
+          src={imageUrl}
+          width={248}
+          height={138}
+          alt="Image"
+          style={imageStyle}
+        />
+      </Column>
+    </Row>
+  )
+}
+
+const button = {
+  paddingTop: "7px",
+  backgroundColor: "#A1FFE0",
+  borderRadius: "10px",
+  color: "#101018",
+  fontSize: "18px",
+  fontWeight: 500,
+  textDecoration: "none",
+  textAlign: "center" as const,
+  display: "block",
+  width: "230px",
+  height: "40px",
+}
+
+{
+  /* <Link
           href={buttonLink}
           style={{
             color: "#101018",
@@ -58,17 +97,5 @@ export const RowWithImage = ({
           }}
         >
           {buttonText}
-        </Link>
-      </Section>
-      <Column style={imageColumnStyle}>
-        <Img
-          src={imageUrl}
-          width={248}
-          height={138}
-          alt="Image"
-          style={imageStyle}
-        />
-      </Column>
-    </Row>
-  )
+        </Link> */
 }
