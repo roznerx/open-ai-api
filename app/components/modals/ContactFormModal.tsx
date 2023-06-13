@@ -139,7 +139,7 @@ export default function ContactFormModal({
                         as="h1"
                         className="font-poppins text-center text-2xl leading-6 text-white sm:text-left sm:text-3xl"
                       >
-                        {title ? title : `Talk to an expert`}
+                        {title ? title : `Talk to us`}
                       </Dialog.Title>
                       <Dialog.Title
                         as="h1"
@@ -147,7 +147,7 @@ export default function ContactFormModal({
                       >
                         {isClientFeedback
                           ? `This is the error message descriptoin:`
-                          : `We will be happy to answer all your questions`}
+                          : `We will be happy to answer all your questions.`}
                       </Dialog.Title>
 
                       <hr className="border-1 border-purple-500" />
