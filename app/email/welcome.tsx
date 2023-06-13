@@ -42,43 +42,38 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
                 <Text style={{ ...paragraph, fontWeight: "500" }}>
                   Welcome {username}!
                 </Text>
+                <Text
+                  style={{
+                    ...paragraph,
+                    marginTop: "16px",
+                  }}
+                >
+                  We’re glad you are here! Thanks for joining us. <br /> Now you
+                  have 25 credits available to try Code Genius.
+                  <br />
+                  Whether you are learning to code, or you already have been
+                  doing it for a while we think our features will help you on
+                  your code journey.
+                </Text>
+                <Text
+                  style={{
+                    ...paragraph,
+                    marginTop: "16px",
+                    paddingBottom: "16px",
+                  }}
+                >
+                  Have fun!
+                </Text>
+                <Text
+                  style={{
+                    ...paragraph,
+                    marginTop: "4px",
+                    paddingBottom: "4px",
+                  }}
+                >
+                  – Genius Code Team
+                </Text>
               </Section>
-
-              {/* <Text style={{ ...paragraph, paddingBottom: "16px" }}>
-                
-                </Text> */}
-              <Text
-                style={{
-                  ...paragraph,
-                  marginTop: "16px",
-                  paddingBottom: "16px",
-                }}
-              >
-                We’re glad you are here! Thanks for joining us. <br /> Now you
-                have 25 credits available to try Code Genius.
-                <br />
-                Whether you are learning to code, or you already have been doing
-                it for a while we think our features will help you on your code
-                journey.
-              </Text>
-              <Text
-                style={{
-                  ...paragraph,
-                  marginTop: "16px",
-                  paddingBottom: "16px",
-                }}
-              >
-                Have fun!
-              </Text>
-              <Text
-                style={{
-                  ...paragraph,
-                  marginTop: "4px",
-                  paddingBottom: "4px",
-                }}
-              >
-                – Genius Code Team
-              </Text>
             </Row>
           </Section>
 

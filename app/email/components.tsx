@@ -50,7 +50,7 @@ export const RowWithImage = ({
       <Text style={titleStyle}>{title}</Text>
       <Text style={textColumnStyle}>{text}</Text>
       <Section>
-        <Button pY={19} style={button} href={buttonLink}>
+        <Button style={button} href={buttonLink}>
           {buttonText}
         </Button>
       </Section>
