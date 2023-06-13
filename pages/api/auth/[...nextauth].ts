@@ -22,21 +22,21 @@ export const authOptions: AuthOptions = {
   events: {
     async signIn({ user }) {
       //@ts-ignore
-      // if (user && user?.registered) {
-      try {
-        const payload = {
-          isNewUser: true,
-          name: user?.name,
-          email: user?.email,
+      if (user && user?.registered) {
+        try {
+          const payload = {
+            isNewUser: true,
+            name: user?.name,
+            email: user?.email,
+          }
+          await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+            method: "POST",
+            body: JSON.stringify(payload),
+          })
+        } catch (error) {
+          console.error("error sending welcome email: ", error)
         }
-        await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
-          method: "POST",
-          body: JSON.stringify(payload),
-        })
-      } catch (error) {
-        console.error("error sending welcome email: ", error)
       }
-      // }
     },
   },
 
