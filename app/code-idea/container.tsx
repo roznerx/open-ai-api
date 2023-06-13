@@ -114,6 +114,7 @@ export default function Container({ session }) {
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <Navigation
         mode={mode}
+        setCodeSentence={setCodeSentence}
         setGeneratedCode={setGeneratedCode}
         setMode={setMode}
         setOpenSecondaryNavBar={setOpenSecondaryNavBar}
@@ -128,8 +129,10 @@ export default function Container({ session }) {
         setTestSelected={setTestSelected}
       />
       <Client
+        userName={session?.user?.name?.substring(0, 1)}
         setGeneratedCode={setGeneratedCode}
         generatedCode={generatedCode}
+        chatHasStarted={chatHasStarted}
         setChatHasStarted={setChatHasStarted}
         testLibElement={testLibElement}
         setTestLib={setTestLib}

@@ -10,18 +10,21 @@ import React, {
 import dynamic from "next/dynamic"
 import Image from "next/image"
 import { generateCodeWithTurbo } from "utils/generateCode"
-import { parseText } from "utils/parseText"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { Loader2 } from "lucide-react"
+import { CombinedMessages } from "app/components/shared/CombinedMessages"
+import useWindowSize from "hooks/use-window-size"
 
 export interface CodeMessagesProps {
-  generatedMessages: any
-  logoCodeGenius?: any
+  generatedMessages: string[]
   fontColor?: string
+  loading?: boolean
+  userName?: any
+  userPrompt?: any
 }
 
 const Modal = dynamic(() => import("app/components/Modal"), {
@@ -30,12 +33,6 @@ const Modal = dynamic(() => import("app/components/Modal"), {
   ),
 })
 const ChatContainer = dynamic(() => import("./ChatContainer"), {
-  loading: () => (
-    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
-  ),
-})
-
-const GenerateCode = dynamic(() => import("app/components/GenerateCode"), {
   loading: () => (
     <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
   ),
@@ -54,14 +51,14 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     existingCredits === 0 ? true : false,
   )
   const userId = session && session.user?.id
-
+  const { isMobile } = useWindowSize()
   const [userApiCalls, setUserApiCalls] = useState<number>(apiCalls)
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
-    tip: "Get 25 credits for free today 🏆 ",
+    tip: "Redeem your initial 25 credits 🎁",
   })
 
   const [generatedCode, setGeneratedCode] = useState<string>("")
@@ -161,44 +158,6 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     [generatedCode],
   )
 
-  const LiveDemoMessages: React.FC<CodeMessagesProps> = React.memo(
-    ({ generatedMessages }) => {
-      return (
-        <>
-          {generatedMessages.map((generatedMessage) => {
-            const result = parseText(generatedMessage)
-
-            return result.length
-              ? result.map((item: any, idx) => {
-                  if (item.hasOwnProperty("text")) {
-                    return (
-                      <div key={idx} className="rounded-lg bg-purple-400 p-2">
-                        <p
-                          style={{ borderRadius: "0px" }}
-                          className="ml-2 text-left leading-7"
-                        >
-                          {item.text}
-                        </p>
-                      </div>
-                    )
-                  } else {
-                    return (
-                      <GenerateCode
-                        key={idx}
-                        borderRadius="none"
-                        align="start"
-                        generatedCode={item.code}
-                      />
-                    )
-                  }
-                })
-              : null
-          })}
-        </>
-      )
-    },
-  )
-
   const hasContent = generatedMessages.length > 0
 
   return (
@@ -239,11 +198,12 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
             />
           </button>
         </div>
-        <div className="h-[330px] w-full sm:h-[380px] sm:w-[930px]">
+        <div className="h-[330px] sm:h-[380px] sm:w-[930px]">
           {generatedMessages.length > 0 && (
             <ChatContainer
+              isMobile={isMobile}
               messages={
-                <LiveDemoMessages generatedMessages={generatedMessages} />
+                <CombinedMessages generatedMessages={generatedMessages} />
               }
             />
           )}

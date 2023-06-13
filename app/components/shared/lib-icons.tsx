@@ -21,6 +21,16 @@ export const VueJSIcon = React.memo(() => (
   />
 ))
 
+export const Cypress = React.memo(() => (
+  <Image
+    loading="eager"
+    alt="Vue JS"
+    src={"/icons/cypress.webp"}
+    width={24}
+    height={24}
+  />
+))
+
 export const AngularIcon = React.memo(() => (
   <Image
     loading="eager"

@@ -1,5 +1,6 @@
 "use client"
 
+import useWindowSize from "hooks/use-window-size"
 import React from "react"
 import { CopyBlock, dracula } from "react-code-blocks"
 import tailwindConfig from "tailwind.config.js"
@@ -10,6 +11,7 @@ type GenerateCode = {
   isCodeIdea?: boolean
   backgroundColor?: string
   align?: string
+  width?: string
   themeColors?: any
   borderRadius?: string
   onSaveCode?: () => void
@@ -23,6 +25,8 @@ function GenerateCode({
   generatedCode,
   langElement,
 }: GenerateCode) {
+  const { isMobile } = useWindowSize()
+  const minWidth = isMobile ? "90vw" : "850px"
   return (
     <>
       <div
@@ -32,23 +36,28 @@ function GenerateCode({
           .substring(generatedCode.indexOf("**") + 0)
           .replace(regex, "")
           .replace("javascript", "")
-          .replace("js", "")
           .replace("python", "")
+          .replace("html", "")
+          .replace("sql", "")
           .replace("```", "")
           .replace("typescript", "")
           .replace("jsx", "")
+          .replace("tsx", "")
           .split("**::")
           .map((generated, idx) => {
             return (
               <div
                 key={idx}
-                className="overflow-x-auto overflow-y-scroll text-left font-mono sm:min-w-[100%] sm:max-w-[100%]"
+                className="mx-auto w-[100%] max-w-[100%] overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
               >
                 <CopyBlock
                   showLineNumbers
                   wrapLongLines
                   customStyle={{
-                    maxWidth: "95%",
+                    maxWidth: "95vw",
+                    minWidth: minWidth,
+                    with: "95vw",
+                    margin: "0 auto",
                     borderRadius: "0.6rem",
                     border: `0.5px solid ${themeColors.purple[500]}`,
                   }}

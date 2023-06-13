@@ -10,8 +10,6 @@ import { useSignInModal } from "./components/modals/SignInModal"
 import Script from "next/script"
 import SuperHero from "./home/SuperHero"
 import { Loader2 } from "lucide-react"
-import Link from "next/link"
-import Image from "next/image"
 
 const HeaderWrapper = dynamic(
   () => import("./components/shared/HeaderWrapper"),
@@ -54,7 +52,7 @@ export default function Client({
         loggedUserData={loggedUserData}
       />
       <Feature session={session} setShowSignInModal={setShowSignInModal} />
-      <div className="mt-5 flex justify-center">
+      {/* <div className="mt-5 flex justify-center">
         <Link
           href="https://www.producthunt.com/posts/code-genius?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-code&#0045;genius"
           target="_blank"
@@ -66,7 +64,7 @@ export default function Client({
             height={54}
           />
         </Link>
-      </div>
+      </div> */}
       <Script
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-WHLZCV41W9"

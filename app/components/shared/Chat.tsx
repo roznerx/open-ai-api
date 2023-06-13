@@ -1,45 +1,21 @@
 import "./chat.css"
 
-import { parseText } from "utils/parseText"
-import GenerateCode from "../GenerateCode"
 import { useEffect, useState } from "react"
 import ChatContainer from "app/home/ChatContainer"
-import { CodeMessagesProps } from "app/home/HomeChat"
+
 import PromptCard from "./PromptCard"
+import { CombinedMessages } from "./CombinedMessages"
+import useWindowSize from "hooks/use-window-size"
 
-export const Messages: React.FC<CodeMessagesProps> = ({
-  generatedMessages,
-}) => {
-  return (
-    <>
-      {generatedMessages.map((generatedMessage) => {
-        const result = parseText(generatedMessage)
-
-        return (
-          result.length &&
-          result.map((item: any) => {
-            if (item.hasOwnProperty("code")) {
-              // eslint-disable-next-line react/jsx-key
-              return <GenerateCode align="start" generatedCode={item.code} />
-            }
-
-            if (item.hasOwnProperty("text")) {
-              return (
-                // eslint-disable-next-line react/jsx-key
-                <p className="rounded-lg bg-purple-400 p-2 text-left leading-7">
-                  {item.text}
-                </p>
-              )
-            }
-          })
-        )
-      })}
-    </>
-  )
-}
-
-export default function Chat({ generatedResponse, setCodeSentence }) {
+export default function Chat({
+  userName,
+  loading,
+  codeSentence,
+  generatedResponse,
+  setCodeSentence,
+}) {
   const [prompt, setPrompt] = useState("")
+  const { isMobile } = useWindowSize()
 
   useEffect(() => {
     if (prompt !== "") {
@@ -47,63 +23,81 @@ export default function Chat({ generatedResponse, setCodeSentence }) {
     }
   }, [prompt, setCodeSentence])
 
+  const chatWidth = isMobile ? "90vw" : "900px"
+
   return (
-    <div className="mt-18 flex h-auto items-center justify-center overflow-scroll rounded-md sm:mx-auto sm:mt-0 sm:flex-row ">
-      {generatedResponse.length > 0 && (
-        <div className="mt-24 sm:mt-0">
-          <ChatContainer
-            useFullHeight
-            useFullWidth
-            messages={<Messages generatedMessages={generatedResponse} />}
-          />
-        </div>
-      )}
-      {generatedResponse.length === 0 && (
-        <>
-          <div className="mb-20 grid max-h-[80vh] grid-cols-1 place-items-center gap-3 overflow-y-auto pt-24 sm:col-span-2 sm:grid-cols-4">
-            <PromptCard
-              onClick={setPrompt}
-              title="Create React App"
-              text="How to use the Create React App npm package"
-            />
-            <PromptCard
-              onClick={setPrompt}
-              title="Create Next App"
-              text="How to use the the Create Next App npm package"
-            />
-            <PromptCard
-              onClick={setPrompt}
-              title="Typescript"
-              text="Explain how to use Typescript with React"
-            />
-            <PromptCard
-              onClick={setPrompt}
-              title="Development"
-              text="What are the best practice in software development"
-            />
-            <PromptCard
-              onClick={setPrompt}
-              title="Python"
-              text="How to create a function in Python?"
-            />
-            <PromptCard
-              onClick={setPrompt}
-              title="AWS"
-              text="Explain how to use the AWS API"
-            />
-            <PromptCard
-              onClick={setPrompt}
-              title="Database"
-              text="What's the best Database with Typescript support"
-            />
-            <PromptCard
-              onClick={setPrompt}
-              title="React Testing"
-              text="Explain how to use Jest with React Testing Library"
+    <>
+      <div className="mx-auto flex overflow-scroll rounded-md sm:mx-auto sm:flex-row">
+        {generatedResponse.length > 0 && (
+          <div className="mx-auto mt-24 w-full">
+            <ChatContainer
+              loading={loading}
+              userName={userName}
+              codeSentence={codeSentence}
+              isMobile={isMobile}
+              useFullHeight
+              width={chatWidth}
+              messages={
+                <CombinedMessages generatedMessages={generatedResponse} />
+              }
             />
           </div>
-        </>
-      )}
-    </div>
+        )}
+        {generatedResponse.length === 0 && (
+          <div className="flex items-center justify-center">
+            <div className="grid max-h-[65vh] grid-cols-1 place-items-center gap-4 overflow-y-auto sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
+              <PromptCard
+                imageSrc="/icons/react.png"
+                onClick={setPrompt}
+                title="Create React App"
+                text="How to use the Create React App npm package?"
+              />
+              <PromptCard
+                onClick={setPrompt}
+                imageSrc="/icons/nextjs.png"
+                title="Create Next App"
+                text="How should I use the Create Next App npm package?"
+              />
+              <PromptCard
+                onClick={setPrompt}
+                imageSrc="/icons/typescript.png"
+                title="Typescript"
+                text="Explain how to use Typescript with React"
+              />
+              <PromptCard
+                onClick={setPrompt}
+                title="Vue JS"
+                imageSrc="/icons/vue.png"
+                text="Explain how to bootstrap a Vue JS App"
+              />
+              <PromptCard
+                onClick={setPrompt}
+                imageSrc="/icons/python.png"
+                title="Python"
+                text="How to create a function in Python?"
+              />
+              <PromptCard
+                onClick={setPrompt}
+                imageSrc="/icons/aws.png"
+                title="AWS"
+                text="Explain how to use the AWS API"
+              />
+              <PromptCard
+                onClick={setPrompt}
+                imageSrc="/icons/db.ico"
+                title="Database"
+                text="What's the best Database with Typescript support?"
+              />
+              <PromptCard
+                onClick={setPrompt}
+                imageSrc="/icons/rtl.png"
+                title="React Testing Lib"
+                text="Explain how to use Jest with React Testing Library"
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </>
   )
 }

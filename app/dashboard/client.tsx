@@ -17,6 +17,12 @@ const UpgradeAccount = () => (
   </Link>
 )
 
+const ChatButton = () => (
+  <Link href="/code-chat">
+    <GradientButton width="200px" text="Coding Chat" />
+  </Link>
+)
+
 export default function Client({
   session,
   credits,
@@ -53,21 +59,22 @@ export default function Client({
       />
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
-        {/* <div className="flex flex-row">
-          <span className="text-md absolute top-24 ml-2 font-bold text-white sm:top-28 sm:ml-24 sm:text-2xl">
+        <div className="absolute top-28 z-30 w-full bg-transparent">
+          <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-5xl text-gray-200 sm:items-start">
             Welcome, {clientName}!
-          </span>
-        </div> */}
+          </h2>
+        </div>
 
-        <div className="mt-24 grid grid-cols-1 place-items-center gap-4 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+        <div className="mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-24 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
           <PromptCard
             size="large"
             hasScale
             order="order-1 sm:order-1"
             imageSrc="/dashboard/credits.svg"
-            onClick={undefined}
+            button={<ChatButton />}
             title={credits}
             text="Available Credits"
+            onClick={undefined}
           />
 
           <PromptCard
@@ -95,9 +102,9 @@ export default function Client({
             onClick={() => {
               router.push("/code-idea?mode=imrove")
             }}
-            title="Code Improvement"
+            title="Code Improvements"
             order="order-6"
-            text="Improve your code, find alternative ways to make your code more efficient."
+            text="Improve the perfomance  of your App."
             imageSrc="/dashboard/bug.svg"
           />
 
@@ -107,7 +114,7 @@ export default function Client({
             }}
             order="order-4"
             title="Test Generation"
-            text="Generate test cases that cover  your code is thoroughly tested and reliable."
+            text="Generate reliable unit test cases  in seconds."
             imageSrc="/dashboard/test.svg"
           />
 
@@ -118,7 +125,7 @@ export default function Client({
             order="order-5"
             title="Documentation"
             imageSrc="/dashboard/documentation.svg"
-            text="Generate clear and concise documentation for your code, helping you saving precious time."
+            text="Generate clear and concise documentation."
           />
         </div>
       </div>

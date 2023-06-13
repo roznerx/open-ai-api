@@ -17,7 +17,7 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex w-screen items-center justify-center px-4 text-center sm:h-screen">
+      <main className="flex min-h-screen w-screen px-4 text-center">
         <Client session={session} />
       </main>
     </>

@@ -43,8 +43,7 @@ export default async function Dashboard() {
     },
     false,
   )
-  console.log("checkoutSession:", checkoutSession[0])
-  console.log("harperUser[0]:", harperUser[0])
+
   if (harperUser[0] && !checkoutSession[0]) {
     totalCredits = harperUser[0]?.credits
   } else if (userId && harperUser[0] && checkoutSession[0]) {
@@ -138,7 +137,7 @@ export default async function Dashboard() {
   }
 
   return (
-    <div className="flex flex-col">
+    <div className="flex">
       <SideBar setOpenSecondaryNavBar={undefined} />
       <div className="mx-auto w-full dark:bg-purple-900">
         <Client
