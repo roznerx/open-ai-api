@@ -3,7 +3,7 @@ import Button from "app/components/Button"
 import toast, { Toaster } from "react-hot-toast"
 import useClipboard from "utils/useClipboard"
 import { useState } from "react"
-import { Copy, Hand, PlusSquare } from "lucide-react"
+import { Hand, XCircle } from "lucide-react"
 import { MaterialTooltip } from "app/components/material-components"
 
 const notify = () => toast("Code copied!")
@@ -117,45 +117,6 @@ export default function FooterSection({
           <div className="flex">
             <MaterialTooltip
               className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-              content="Clear Pannel"
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: 25 },
-              }}
-            >
-              <div
-                data-tooltip-target="clear-pannel"
-                onClick={() => clearPanel()}
-                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
-              >
-                <PlusSquare
-                  width={24}
-                  height={24}
-                  className="mx-auto mt-2 text-white hover:text-mint"
-                />
-              </div>
-            </MaterialTooltip>
-            <MaterialTooltip
-              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-              content="Copy Code"
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: 25 },
-              }}
-            >
-              <div
-                onClick={() => copyHandler()}
-                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
-              >
-                <Copy
-                  width={24}
-                  height={24}
-                  className="mx-auto mt-2 text-white hover:text-mint"
-                />
-              </div>
-            </MaterialTooltip>
-            <MaterialTooltip
-              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
               content="Stop Generation"
               animate={{
                 mount: { scale: 1, y: 0 },
@@ -173,6 +134,45 @@ export default function FooterSection({
                 />
               </div>
             </MaterialTooltip>
+            <MaterialTooltip
+              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+              content="Clear Pannel"
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+              }}
+            >
+              <div
+                data-tooltip-target="clear-pannel"
+                onClick={() => clearPanel()}
+                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+              >
+                <XCircle
+                  width={24}
+                  height={24}
+                  className="mx-auto mt-2 text-white hover:text-mint"
+                />
+              </div>
+            </MaterialTooltip>
+            {/* <MaterialTooltip
+              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+              content="Copy Code"
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+              }}
+            >
+              <div
+                onClick={() => copyHandler()}
+                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
+              >
+                <Copy
+                  width={24}
+                  height={24}
+                  className="mx-auto mt-2 text-white hover:text-mint"
+                />
+              </div>
+            </MaterialTooltip> */}
           </div>
           <div className="mr-4">
             <Button
