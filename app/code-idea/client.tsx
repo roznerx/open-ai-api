@@ -152,15 +152,16 @@ export default function Client({
     }
   }, [langElement, lib, mode, testFrameworkElement, testLibElement, setMode])
 
-  useEffect(() => {
-    if (chatContainerRef && chatContainerRef.current) {
-      setScrollHeight(chatContainerRef.current?.scrollHeight)
-      chatContainerRef.current?.scrollTo({
-        top: scrollHeight - chatContainerRef.current.offsetHeight,
-        behavior: "smooth",
-      })
-    }
-  }, [chatContainerRef, chatContainerRef?.current?.scrollHeight, scrollHeight])
+  // Auto scroll to bottom.
+  // useEffect(() => {
+  //   if (chatContainerRef && chatContainerRef.current) {
+  //     setScrollHeight(chatContainerRef.current?.scrollHeight)
+  //     chatContainerRef.current?.scrollTo({
+  //       top: scrollHeight - chatContainerRef.current.offsetHeight,
+  //       behavior: "smooth",
+  //     })
+  //   }
+  // }, [chatContainerRef, chatContainerRef?.current?.scrollHeight, scrollHeight])
 
   //Clean up previous code responses
   useEffect(() => {

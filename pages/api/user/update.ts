@@ -22,10 +22,7 @@ export default async function handler(req, res) {
         ],
         records: [bodyRequest.updatedUser],
       })
-      console.log(
-        "User updated Operation regarding user credits update:",
-        updatedOp,
-      )
+
       if (updatedOp.update_hashes[0] !== "") {
         return res
           .status(200)
