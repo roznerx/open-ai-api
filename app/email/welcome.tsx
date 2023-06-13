@@ -38,7 +38,7 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
 
           <Section style={{ paddingBottom: "20px" }}>
             <Row>
-              <Section style={{ marginTop: 20 }}>
+              <Section style={{ marginTop: 20, padding: "20px" }}>
                 <Text style={{ ...paragraph, fontWeight: "500" }}>
                   Welcome {username}!
                 </Text>

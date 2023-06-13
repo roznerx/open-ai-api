@@ -15,18 +15,11 @@ export const RowWithImage = ({
   imageUrl,
   buttonText = "Click here",
 }) => {
-  const rowStyle = {
-    display: "flex",
-    marginTop: "40px",
-    marginBottom: "60px",
-    paddingRight: "12px",
-  }
-
   const textColumnStyle = {
     flex: 1,
     color: "#fff",
     fontSize: "16px",
-    width: "80%",
+    width: "50%",
     verticalAlign: "top",
   }
   const titleStyle = {
@@ -35,9 +28,16 @@ export const RowWithImage = ({
     fntWeight: "600",
   }
 
+  const rowStyle = {
+    display: "flex",
+    marginTop: "40px",
+    marginBottom: "60px",
+    paddingRight: "12px",
+  }
+
   const imageColumnStyle = {
     flex: 1,
-    width: "30%",
+    width: "50%",
   }
 
   const imageStyle = {
@@ -68,7 +68,7 @@ export const RowWithImage = ({
 }
 
 const button = {
-  paddingTop: "7px",
+  paddingTop: "10px",
   backgroundColor: "#A1FFE0",
   borderRadius: "10px",
   color: "#101018",
@@ -79,23 +79,4 @@ const button = {
   display: "block",
   width: "230px",
   height: "40px",
-}
-
-{
-  /* <Link
-          href={buttonLink}
-          style={{
-            color: "#101018",
-            display: "block",
-            textAlign: "center",
-            padding: "8px 5px",
-            fontWeight: 500,
-            backgroundColor: "#A1FFE0",
-            width: "230px",
-            height: "40px",
-            borderRadius: "8px",
-          }}
-        >
-          {buttonText}
-        </Link> */
 }
