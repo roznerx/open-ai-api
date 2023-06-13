@@ -1,3 +1,5 @@
+"use client"
+
 import {
   Column,
   Img,
@@ -6,6 +8,7 @@ import {
   Section,
   Button,
 } from "@react-email/components"
+import useWindowSize from "hooks/use-window-size"
 import React from "react"
 
 export const RowWithImage = ({
@@ -15,29 +18,48 @@ export const RowWithImage = ({
   imageUrl,
   buttonText = "Click here",
 }) => {
+  const { isMobile } = useWindowSize()
+
   const textColumnStyle = {
     flex: 1,
     color: "#fff",
+    paddingLeft: isMobile ? "20px" : "0px",
     fontSize: "16px",
-    width: "50%",
+    width: isMobile ? "100%" : "80%",
     verticalAlign: "top",
   }
+
+  const imageColumnStyle = {
+    flex: 1,
+    width: "30%",
+  }
+
+  const button = {
+    paddingTop: "10px",
+    backgroundColor: "#A1FFE0",
+    borderRadius: "10px",
+    color: "#101018",
+    fontSize: "18px",
+    fontWeight: 500,
+    textDecoration: "none",
+    textAlign: "center" as const,
+    display: "block",
+    width: "230px",
+    height: "40px",
+  }
+
   const titleStyle = {
     color: "#fff",
+    textAlign: isMobile ? ("center" as const) : ("left" as const),
     fontSize: "20px",
     fntWeight: "600",
   }
 
   const rowStyle = {
     display: "flex",
-    marginTop: "40px",
+    marginTop: "20px",
     marginBottom: "60px",
     paddingRight: "12px",
-  }
-
-  const imageColumnStyle = {
-    flex: 1,
-    width: "50%",
   }
 
   const imageStyle = {
@@ -48,35 +70,32 @@ export const RowWithImage = ({
   return (
     <Row style={rowStyle}>
       <Text style={titleStyle}>{title}</Text>
-      <Text style={textColumnStyle}>{text}</Text>
-      <Section>
-        <Button style={button} href={buttonLink}>
-          {buttonText}
-        </Button>
-      </Section>
-      <Column style={imageColumnStyle}>
+      {isMobile && (
         <Img
           src={imageUrl}
           width={248}
           height={138}
           alt="Image"
-          style={imageStyle}
+          style={{ ...imageStyle, margin: "0 auto" }}
         />
-      </Column>
+      )}
+      <Text style={textColumnStyle}>{text}</Text>
+      <Section style={{ marginLeft: isMobile ? "20px" : "0px" }}>
+        <Button style={button} href={buttonLink}>
+          {buttonText}
+        </Button>
+      </Section>
+      {!isMobile && (
+        <Column style={imageColumnStyle}>
+          <Img
+            src={imageUrl}
+            width={248}
+            height={138}
+            alt="Image"
+            style={imageStyle}
+          />
+        </Column>
+      )}
     </Row>
   )
-}
-
-const button = {
-  paddingTop: "10px",
-  backgroundColor: "#A1FFE0",
-  borderRadius: "10px",
-  color: "#101018",
-  fontSize: "18px",
-  fontWeight: 500,
-  textDecoration: "none",
-  textAlign: "center" as const,
-  display: "block",
-  width: "230px",
-  height: "40px",
 }

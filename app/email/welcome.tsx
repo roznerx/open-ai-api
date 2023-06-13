@@ -50,8 +50,8 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
               have 25 credits available to try Code Genius.
               <br />
               Whether you are learning to code, or you already have been doing
-              it for a while we think our features will help you on your code
-              journey.
+              it for a while
+              <br /> we think our features will help you on your code journey.
             </Text>
             <Text
               style={{
@@ -81,7 +81,7 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
             <Row>
               <Column>
                 <RowWithImage
-                  title="💡 Code Idea"
+                  title="💡 Create you code Idea"
                   buttonText="Go to code your idea"
                   buttonLink={`${baseUrl}/code-idea`}
                   text="If you need to improve a function, document code, test code or you simply want to get suggestions for a code idea, then this is feature you are looking for."
