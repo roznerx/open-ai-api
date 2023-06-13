@@ -113,10 +113,10 @@ export default function FooterSection({
             />
           </div> */}
         </div>
-        <div className="mx-auto flex items-center gap-28 sm:mr-8 sm:items-center sm:justify-center sm:gap-0">
+        <div className="mx-auto flex items-center gap-48 sm:mr-8 sm:items-center sm:justify-center sm:gap-0">
           <div className="flex">
             <MaterialTooltip
-              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+              className="-mt-3  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
               content="Stop Generation"
               animate={{
                 mount: { scale: 1, y: 0 },

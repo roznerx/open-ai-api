@@ -8,14 +8,13 @@ import React, {
   useState,
 } from "react"
 import dynamic from "next/dynamic"
-import Image from "next/image"
 import { generateCodeWithTurbo } from "utils/generateCode"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
-import { Loader2 } from "lucide-react"
+import { Loader2, Send } from "lucide-react"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useWindowSize from "hooks/use-window-size"
 
@@ -187,13 +186,11 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
                 : ""
             }
           />
-          <button className="absolute right-4 top-[6px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1">
-            <Image
-              className="mb-1 mr-2 pt-2 pb-1 pl-2 text-white"
-              alt="Send"
-              width={24}
-              height={24}
-              src="/home/send.svg"
+          <button className="absolute right-4 top-[4px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1">
+            <Send
+              className="mb-2 mr-2 rotate-45 pt-1  pl-2 text-mint"
+              width={25}
+              height={25}
               onClick={() => onArrowPress()}
             />
           </button>

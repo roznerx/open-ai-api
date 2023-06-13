@@ -50,7 +50,7 @@ export default function ChatContainer({
                     {userName.substring(0, 1)}
                   </span>
                 </div>
-                <div className="mx-auto ml-2 w-full rounded-lg bg-purple-400 p-2">
+                <div className="mx-auto ml-3 w-full rounded-lg bg-purple-400 p-2">
                   <p
                     style={{ borderRadius: "0px" }}
                     className="text-left leading-7 text-white"
