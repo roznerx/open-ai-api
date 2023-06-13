@@ -2,10 +2,12 @@
 
 import SecondaryNavBar from "app/components/shared/SecondaryNavBar"
 import SideBar from "app/components/shared/SideBar"
+import { useEffect } from "react"
 
 export default function Navigation({
   mode,
   setGeneratedCode,
+  setCodeSentence,
   smartSelected,
   setMode,
   setOpenSecondaryNavBar,
@@ -20,6 +22,11 @@ export default function Navigation({
 }) {
   const isCodeModeSelected =
     smartSelected | improveSelected | testSelected | docSelected
+
+  useEffect(() => {
+    setGeneratedCode("")
+    setCodeSentence("")
+  }, [mode, setCodeSentence, setGeneratedCode])
 
   return (
     <>

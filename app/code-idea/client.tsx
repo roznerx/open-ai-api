@@ -57,7 +57,6 @@ export default function Client({
   setCodeSentence,
   improveSelected,
 }) {
-  console.log("userName", userName)
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
@@ -295,9 +294,7 @@ export default function Client({
   const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
 
   const showUserMessage =
-    (mode === "smart" || mode === "improve") &&
-    chatHasStarted &&
-    codeSentence.length > 0
+    mode === "smart" && chatHasStarted && codeSentence.length > 0
 
   return (
     <div className="w-full sm:ml-10">

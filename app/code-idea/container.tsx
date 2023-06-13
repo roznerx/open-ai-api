@@ -114,6 +114,7 @@ export default function Container({ session }) {
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <Navigation
         mode={mode}
+        setCodeSentence={setCodeSentence}
         setGeneratedCode={setGeneratedCode}
         setMode={setMode}
         setOpenSecondaryNavBar={setOpenSecondaryNavBar}
