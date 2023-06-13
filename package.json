@@ -22,7 +22,7 @@
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.112.0",
     "mjml": "^4.14.1",
-    "next": "13.4.4",
+    "next": "13.4.5",
     "next-auth": "^4.21.1",
     "nodemailer": "^6.9.1",
     "prismjs": "^1.29.0",
