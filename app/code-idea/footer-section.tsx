@@ -50,13 +50,13 @@ export default function FooterSection({
     <>
       {/* <Toaster /> */}
       <section
-        className="fixed bottom-0 left-0 z-40 flex h-16 w-[101%] items-center
-          justify-between border-t-[1px] border-purple-500 bg-purple-800"
+        className="fixed bottom-0 left-0 z-40 h-16 w-full border-t-[1px] border-purple-500
+          bg-purple-800 sm:flex sm:items-center sm:justify-between"
       >
-        <div className="mb-10 ml-6 sm:ml-16">
+        <div className="mb-10 ml-6 hidden sm:ml-16 sm:block">
           {mode === "smart" && (
             <>
-              <div className="hidden sm:ml-4 sm:block">
+              <div className="sm:ml-4">
                 <DropDown
                   bgColor="bg-purple-500"
                   elements={langElements}
@@ -65,7 +65,7 @@ export default function FooterSection({
                 />
               </div>
               {langElement !== "Python" && (
-                <div className={`ml-0 hidden sm:ml-56 sm:block`}>
+                <div className={`ml-0 sm:ml-56`}>
                   <DropDown
                     bgColor="bg-purple-500"
                     elements={libElements}
@@ -78,7 +78,7 @@ export default function FooterSection({
           )}
           {mode === "test" && (
             <>
-              <div className="hidden sm:ml-4 sm:block">
+              <div className="sm:ml-4">
                 <DropDown
                   bgColor="bg-purple-500"
                   elements={testFrameworkElements}
@@ -87,7 +87,7 @@ export default function FooterSection({
                 />
               </div>
               {testFrameworkElement !== "Cypress" && (
-                <div className={`ml-0 hidden sm:ml-56 sm:block`}>
+                <div className={`ml-0 sm:ml-56`}>
                   <DropDown
                     bgColor="bg-purple-500"
                     elements={testLibElements}
@@ -98,19 +98,8 @@ export default function FooterSection({
               )}
             </>
           )}
-
-          {/* <div
-            onClick={onSaveCode}
-            className="absolute hidden h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500 sm:left-[470px] sm:bottom-[10.5px] sm:block"
-          >
-            <Save
-              width={24}
-              height={24}
-              className="mx-auto mt-2 text-white hover:text-mint"
-            />
-          </div> */}
         </div>
-        <div className="mx-auto flex items-center gap-48 sm:mr-8 sm:items-center sm:justify-center sm:gap-0">
+        <div className="mr-3 flex justify-end pt-3 sm:mx-auto sm:mr-0 sm:items-center sm:gap-0 sm:pt-0">
           <div className="flex">
             <MaterialTooltip
               className="-mt-3  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
@@ -171,7 +160,7 @@ export default function FooterSection({
               </div>
             </MaterialTooltip> */}
           </div>
-          <div className="mr-4">
+          <div className="flex sm:mr-4">
             <Button
               onClick={() => {
                 onCodeGeneration()
