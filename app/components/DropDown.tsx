@@ -60,13 +60,13 @@ export default function DropDown({
   return (
     <Menu
       as="div"
-      className={`absolute w-32 rounded-lg sm:w-48 ${
+      className={`absolute w-32 rounded-lg  sm:w-48 ${
         bgColor ? bgColor : "bg-purple-800"
-      }  cursor-pointer text-left font-sans text-white`}
+      } cursor-pointer text-left font-sans text-white shadow-md `}
     >
       <Menu.Button
         as="div"
-        className="inline-flex w-full justify-between border-none py-2 shadow-sm hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
+        className="inline-flex w-full justify-between border-none py-2 shadow-sm  hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75"
       >
         <div className="ml-2 inline-flex">
           {element === "Javascript" && <JavascriptIcon />}

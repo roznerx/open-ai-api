@@ -40,7 +40,11 @@ export default function PromptCard({
     >
       <div className="mx-auto w-full">
         <motion.div
-          className="absolute top-2 left-5 sm:left-4"
+          className={`absolute ${
+            size !== "large"
+              ? "top-2 "
+              : "left-[140px] top-4 mx-auto sm:left-6 sm:top-8 sm:ml-40"
+          }  `}
           initial={{ scale: 0 }}
           animate={{
             scale: hasScale ? 1 : 0,
@@ -54,6 +58,7 @@ export default function PromptCard({
               title={altImg}
               alt={altImg}
               src={imageSrc}
+              priority
               width={40}
               height={40}
               className="mb-2"

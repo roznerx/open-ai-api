@@ -8,14 +8,13 @@ import React, {
   useState,
 } from "react"
 import dynamic from "next/dynamic"
-import Image from "next/image"
 import { generateCodeWithTurbo } from "utils/generateCode"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
-import { Loader2 } from "lucide-react"
+import { Loader2, Send } from "lucide-react"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useWindowSize from "hooks/use-window-size"
 
@@ -58,7 +57,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const [codeSentence, setCodeSentence] = useState("")
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
-    tip: "Redeem your initial 25 credits 🎁",
+    tip: "Redeem your initial 25 credits.",
   })
 
   const [generatedCode, setGeneratedCode] = useState<string>("")
@@ -176,7 +175,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
         <div className="relative mt-2 h-12 w-full text-center sm:w-[900px]">
           <input
             ref={textareaRef}
-            className="font-lg h-12 w-[95%] rounded-lg bg-purple-400 py-2.5 
+            className="font-lg z-40 h-12 w-[95%] rounded-lg bg-purple-400 py-2.5 
              pl-3 pr-12 text-white outline-0 placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-white hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 sm:w-[900px]"
             value={codeSentence}
             onChange={(e) => setCodeSentence(e.target.value)}
@@ -187,13 +186,11 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
                 : ""
             }
           />
-          <button className="absolute right-4 top-[6px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1">
-            <Image
-              className="mb-1 mr-2 pt-2 pb-1 pl-2 text-white"
-              alt="Send"
-              width={24}
-              height={24}
-              src="/home/send.svg"
+          <button className="absolute right-4 top-[4px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1">
+            <Send
+              className="mb-2 mr-2 rotate-45 pt-1  pl-2 text-mint"
+              width={25}
+              height={25}
               onClick={() => onArrowPress()}
             />
           </button>

@@ -41,7 +41,7 @@ export default function ChatContainer({
         } mt-2 rounded-md bg-purple-400 font-sans
        text-white sm:mt-2 `}
       >
-        {codeSentence?.length > 0 && pathName === "/code-chat" && loading ? (
+        {codeSentence?.length > 0 && pathName === "/code-chat" ? (
           <div className="mx-auto mt-2 flex overflow-scroll rounded-md sm:mx-auto sm:flex-row">
             <div className="mr-9 mb-1 flex ">
               <div className="ml-1 flex w-full items-center justify-center">
@@ -50,11 +50,8 @@ export default function ChatContainer({
                     {userName.substring(0, 1)}
                   </span>
                 </div>
-                <div className="mx-auto ml-2 w-full rounded-lg bg-purple-400 p-2">
-                  <p
-                    style={{ borderRadius: "0px" }}
-                    className="text-left leading-7 text-white"
-                  >
+                <div className="mx-auto ml-1 w-full rounded-lg bg-purple-400 p-2">
+                  <p className="ml-1 text-left leading-7 text-white">
                     {codeSentence}
                   </p>
                 </div>
