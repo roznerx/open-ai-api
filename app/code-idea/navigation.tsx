@@ -41,6 +41,7 @@ export default function Navigation({
       />
       {openSecondayNavBar && (
         <SecondaryNavBar
+          mode={mode}
           setGeneratedCode={setGeneratedCode}
           setOpenSecondayNavBar={setOpenSecondaryNavBar}
           isCodeModeSelected={isCodeModeSelected}

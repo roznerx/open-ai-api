@@ -12,17 +12,16 @@ import { useSearchParams } from "next/navigation"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import Header from "app/components/Header"
 
-export type ModeTypes = "smart" | "test" | "improve" | "docs"
+export type ModeTypes = "smart" | "test" | "improve" | "docs" | ""
 
 export default function Container({ session }) {
-  const [smartSelected, setSmartSelected] = useState(true)
+  const [smartSelected, setSmartSelected] = useState(false)
   const { setShowSignInModal } = useSignInModal({})
   const [openSecondayNavBar, setOpenSecondaryNavBar] = useState(false)
   const [chatHasStarted, setChatHasStarted] = useState(false)
   const [testSelected, setTestSelected] = useState(false)
   const [improveSelected, setImproveSelected] = useState(false)
-  const [bugSelected] = useState(false)
-  const [mode, setMode] = useState<ModeTypes>("smart")
+  const [mode, setMode] = useState<ModeTypes>("")
   const [docSelected, setDocSelected] = useState(false)
   const [prompt, setPrompt] = useState("")
   const [generatedCode, setGeneratedCode] = useState<String>("")
@@ -98,7 +97,6 @@ export default function Container({ session }) {
     searchParams,
     smartSelected,
     testSelected,
-    bugSelected,
     docSelected,
     codeSentence,
     improveSelected,
@@ -108,6 +106,27 @@ export default function Container({ session }) {
     testLibElement,
     chatHasStarted,
   ])
+
+  useEffect(() => {
+    if (mode) {
+      switch (mode) {
+        case "smart":
+          setSmartSelected(true)
+          break
+        case "test":
+          setTestSelected(true)
+          break
+        case "improve":
+          setImproveSelected(true)
+          break
+        case "docs":
+          setDocSelected(true)
+          break
+        default:
+          break
+      }
+    }
+  }, [mode])
 
   return (
     <>

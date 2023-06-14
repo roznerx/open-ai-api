@@ -7,6 +7,7 @@ import tailwindConfig from "tailwind.config"
 const colors: any = tailwindConfig.theme?.extend?.colors
 //write type definitions for the bellow component props
 export default function SecondaryNavBar({
+  mode,
   isCodeModeSelected,
   setGeneratedCode,
   setOpenSecondayNavBar,
@@ -70,12 +71,12 @@ export default function SecondaryNavBar({
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
           <Code
             size={26}
-            color={smartSelected ? colors.mint : "white"}
+            color={smartSelected && mode === "smart" ? colors.mint : "white"}
             className="cursor-pointer border-purple-300"
           />
           <p
             className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
-              smartSelected ? "text-mint" : "text-white"
+              smartSelected && mode === "smart" ? "text-mint" : "text-white"
             } `}
           >
             Smart Suggestions
@@ -97,10 +98,13 @@ export default function SecondaryNavBar({
         }}
       >
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
-          <CurlyBraces size={26} color={testSelected ? colors.mint : "white"} />
+          <CurlyBraces
+            size={26}
+            color={testSelected && mode === "test" ? colors.mint : "white"}
+          />
           <p
             className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"} ${
-              testSelected ? "text-mint" : "text-white"
+              testSelected && mode === "test" ? "text-mint" : "text-white"
             } `}
           >
             Test Generation
@@ -123,13 +127,15 @@ export default function SecondaryNavBar({
       >
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
           <Rocket
-            color={improveSelected ? colors.mint : "white"}
+            color={
+              improveSelected && mode === "improve" ? colors.mint : "white"
+            }
             size={26}
             className="cursor-pointer border-purple-300 "
           />
           <p
             className={`ml-4 w-[200px] ${sidebarOpen ? "block" : "hidden"}  ${
-              improveSelected ? "text-mint" : "text-white"
+              improveSelected && mode === "improve" ? "text-mint" : "text-white"
             }`}
           >
             Improve Code
@@ -151,10 +157,13 @@ export default function SecondaryNavBar({
         }}
       >
         <div className="inline-flex h-auto cursor-pointer rounded-md py-3 pl-4 hover:bg-purple-500">
-          <FileCode size={26} color={docSelected ? colors.mint : "white"} />
+          <FileCode
+            size={26}
+            color={docSelected && mode === "docs" ? colors.mint : "white"}
+          />
           <p
             className={`ml-4 w-[200px] ${
-              docSelected ? "text-mint" : "text-white"
+              docSelected && mode === "docs" ? "text-mint" : "text-white"
             } ${sidebarOpen ? "block" : "hidden"} `}
           >
             Docs Generation

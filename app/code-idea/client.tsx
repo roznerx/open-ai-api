@@ -68,19 +68,9 @@ export default function Client({
   const [questionName, setQuestionName] = useState("")
 
   const controller = new AbortController()
-  const [scrollHeight, setScrollHeight] = useState(0)
+
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const placeHolderText = getCodeGeniusPlaceHolder(mode)
-
-  // const searchParams = useSearchParams()
-
-  // useEffect(() => {
-  //   if (searchParams) {
-  //     const framework = searchParams.get("framework")
-
-  //     setTestFrameworkElement(framework)
-  //   }
-  // }, [searchParams, setTestFrameworkElement])
 
   const codeMessages = useRef([
     {
@@ -215,9 +205,6 @@ export default function Client({
     }
     generateCompletion()
   }
-  // const onSaveCode = () => {
-  //   setShowSavePromptModal(true)
-  // }
 
   const onSaveQuestionModal = () => {
     const payload = {
@@ -251,7 +238,7 @@ export default function Client({
     } else if (improveSelected || mode === "improve") {
       return (
         <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
+          <span className="ml-5 text-2xl font-semibold text-white">
             Improve Code
           </span>{" "}
         </div>
@@ -259,7 +246,7 @@ export default function Client({
     } else if (docSelected || mode === "docs") {
       return (
         <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
+          <span className="ml-5 text-2xl font-semibold text-white">
             Docs generation
           </span>{" "}
         </div>
