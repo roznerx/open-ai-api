@@ -60,7 +60,7 @@ export default function DropDown({
   return (
     <Menu
       as="div"
-      className={`absolute w-32 rounded-lg border border-mint sm:w-48 ${
+      className={`absolute w-32 rounded-lg  sm:w-48 ${
         bgColor ? bgColor : "bg-purple-800"
       } cursor-pointer text-left font-sans text-white shadow-md `}
     >
