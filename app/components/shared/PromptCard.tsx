@@ -58,6 +58,7 @@ export default function PromptCard({
               title={altImg}
               alt={altImg}
               src={imageSrc}
+              priority
               width={40}
               height={40}
               className="mb-2"
