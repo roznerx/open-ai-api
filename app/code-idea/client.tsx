@@ -325,7 +325,7 @@ export default function Client({
                     {userName}
                   </span>
                 </div>
-                <div className="mx-auto ml-[6px] w-[90%] rounded-lg bg-purple-400 p-2">
+                <div className="mx-auto ml-[6px] mr-2 w-[96%] rounded-lg bg-purple-400 p-2">
                   <p
                     style={{ borderRadius: "0px" }}
                     className="ml-2 text-left leading-7 text-white"

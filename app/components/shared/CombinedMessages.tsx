@@ -27,8 +27,8 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                 if (item.hasOwnProperty("text")) {
                   return (
                     item.text !== "" && (
-                      <div key={idx} className="mr-9 flex">
-                        <div className="ml-2 flex items-center justify-center">
+                      <div key={idx} className="mx-2 flex">
+                        <div className="flex items-center justify-center">
                           {generatedMessages.length === 0 ? (
                             <div className="flex items-center justify-center">
                               <span className="mx-auto flex h-10 w-10 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium ">
@@ -36,15 +36,15 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                               </span>
                             </div>
                           ) : (
-                            <LogoCodeGenius />
+                            <div className="mr-2">
+                              <LogoCodeGenius />
+                            </div>
                           )}
                         </div>
-                        <div
-                          className={`ml-2 w-full rounded-lg bg-purple-400 p-2`}
-                        >
+                        <div className={`w-full rounded-lg bg-purple-400 p-2`}>
                           <p
                             style={{ borderRadius: "0px" }}
-                            className={`ml-2 text-left leading-7 ${
+                            className={`ml-1 text-left leading-7 ${
                               fontColor ? fontColor : "text-white"
                             }`}
                           >
