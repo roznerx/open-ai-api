@@ -23,6 +23,7 @@ export interface OpenAITurboPayload {
   messages: any
   top_p: number
   stream?: boolean
+  temperature?: number
 }
 
 export async function OpenAIStream(payload: OpenAIStreamPayload) {
@@ -54,13 +55,6 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
           try {
             const json = JSON.parse(data)
             const text = json.choices[0].text
-            // if (
-            //   (counter < 2 && (text.match(/\n/) || []).length) ||
-            //   text.match(/::/)
-            // ) {
-            //   // this is a prefix character (i.e., "\n\n"), do nothing
-            //   return
-            // }
             const queue = encoder.encode(text)
             controller.enqueue(queue)
             counter++
