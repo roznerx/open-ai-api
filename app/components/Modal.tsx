@@ -80,7 +80,7 @@ export default function MyModal({
                   )}
                   <Dialog.Title
                     as="p"
-                    className="text-md mx-auto w-full p-4 font-sans leading-6 text-white"
+                    className="text-md mx-auto -mt-3 w-full p-4 font-sans leading-6 text-white"
                   >
                     {body}
                   </Dialog.Title>
@@ -105,14 +105,16 @@ export default function MyModal({
                     {!buttonLink ? (
                       <button
                         type="button"
-                        className="text-sm inline-flex min-w-[145px] justify-end rounded-md border border-transparent bg-mint px-10 py-3 font-sans font-medium text-black  focus:outline-none  "
+                        className="text-sm mx-auto inline-flex min-w-[125px] justify-center rounded-md border border-transparent bg-mint px-10 py-3 font-sans font-medium text-black/90 focus:outline-none  "
                         onClick={() => {
                           setIsOpen(false)
                           if (typeof onSave === "function") {
                             onSave()
                           }
                         }}
-                      ></button>
+                      >
+                        {buttonText}
+                      </button>
                     ) : (
                       <Link
                         href={buttonLink}

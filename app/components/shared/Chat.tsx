@@ -91,7 +91,7 @@ export default function Chat({
               <PromptCard
                 onClick={setPrompt}
                 imageSrc="/icons/rtl.png"
-                title="React Testing Lib"
+                title="React Testing Library"
                 text="Explain how to use Jest with React Testing Library"
               />
             </div>

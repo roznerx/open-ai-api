@@ -31,7 +31,7 @@ export default function Container({ session }) {
   const [testFrameworkElement, setTestFrameworkElement] =
     useState<TestingElementType>("Testing Tool")
   const [testLibElement, setTestLib] =
-    useState<libTestingElementType>("Testing Lib")
+    useState<libTestingElementType>("Testing Library")
   const [lib, setLib] = useState<LandElementType>("UI Library")
   const searchParams = useSearchParams()
   const userId = session && session.user?.id

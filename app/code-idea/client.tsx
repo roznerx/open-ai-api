@@ -193,7 +193,7 @@ export default function Client({
         content: prompt,
       },
     ]
-    // console.log("codeMessages :", codeMessages.current)
+    console.log("codeMessages :", codeMessages.current)
 
     generateCode(
       setReader,
@@ -208,11 +208,12 @@ export default function Client({
   }
 
   const onCodeGeneration = () => {
-    setChatHasStarted(true)
-    if (!creditsLeft || creditsLeft === 0) {
-      setCreditsModaIsOpen(true)
+    //Validate testing tools.
+    if (mode === "test" && testFrameworkElement === "Testing Tool") {
+      setModaIsOpen(true)
       return false
     }
+
     generateCompletion()
   }
   // const onSaveCode = () => {
@@ -375,11 +376,13 @@ export default function Client({
         buttonLink="/pricing"
         setIsOpen={setCreditsModaIsOpen}
       />
+
       <Modal
-        body="Our servers are taking longer than expected. We suggest
-        rewording your instruction or input to get a faster result."
+        isCreditsModal
+        title="Configure your testing tools."
+        body="You have the option to select a testing framework and, if desired, a testing library. You are welcome to utilize the dropdown menus located in the bottom left corner."
         isOpen={modaIsOpen}
-        buttonText="Ok"
+        buttonText="Got it"
         setIsOpen={setModaIsOpen}
       />
       <Modal
