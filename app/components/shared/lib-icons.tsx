@@ -25,7 +25,7 @@ export const Cypress = React.memo(() => (
   <Image
     loading="eager"
     alt="Vue JS"
-    src={"/icons/cypress.webp"}
+    src={"/icons/cypress.png"}
     width={24}
     height={24}
   />
@@ -101,6 +101,15 @@ export const Jasmine = () => (
     loading="eager"
     alt="Jest Testing Framework"
     src={"/icons/jasmine.png"}
+    width={24}
+    height={24}
+  />
+)
+export const Enzyme = () => (
+  <Image
+    loading="eager"
+    alt="Enzyme"
+    src={"/icons/enzyme.png"}
     width={24}
     height={24}
   />

@@ -25,11 +25,15 @@ let libElements: LandElementType[] = ["React", "Vue", "Angular"]
 let testFrameworkElements: TestingElementType[] = [
   "Jest",
   "Cypress",
-  "Mocha",
   "Jasmine",
+  "Mocha",
 ]
 
-let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
+let testLibElements: libTestingElementType[] = [
+  "React Testing",
+  "Enzyme",
+  "Chai",
+]
 
 export default function Client({
   userName,
@@ -116,8 +120,8 @@ export default function Client({
         Make sure tu use  ${
           testFrameworkElement === "Cypress"
             ? testFrameworkElement + " as the test framework"
-            : testFrameworkElement + " and " + testLibElement
-        }. Do not output additional explanations.`
+            : testFrameworkElement + " and " + testLibElement + " Library"
+        }.`
         break
       case "improve":
         codeMessages.current = [
@@ -210,6 +214,11 @@ export default function Client({
   const onCodeGeneration = () => {
     //Validate testing tools.
     if (mode === "test" && testFrameworkElement === "Testing Tool") {
+      setModaIsOpen(true)
+      return false
+    }
+
+    if (mode === "smart" && langElement === "Language") {
       setModaIsOpen(true)
       return false
     }
@@ -379,8 +388,14 @@ export default function Client({
 
       <Modal
         isCreditsModal
-        title="Configure your testing tools."
-        body="You have the option to select a testing framework and, if desired, a testing library. You are welcome to utilize the dropdown menus located in the bottom left corner."
+        title={`Configure your ${
+          mode === "smart" ? " programming languages" : "testing tools"
+        }`}
+        body={`${
+          mode === "smart"
+            ? " You have the option to select programming languages, and if desired, a UI library, to help give you a better suggestion. Use the dropdown menus located in the bottom left corner."
+            : "You have the option to select a testing framework and, if desired, a testing library. Use the dropdown menus located in the bottom left corner."
+        }`}
         isOpen={modaIsOpen}
         buttonText="Got it"
         setIsOpen={setModaIsOpen}
