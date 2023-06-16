@@ -21,13 +21,27 @@ import React, { useState } from "react"
 import tailwindConfig from "tailwind.config"
 import { MaterialTooltip } from "../material-components"
 
-function SideBar({ mode, setMode }: { mode?: string; setMode?: any }) {
+function SideBar({
+  mode,
+  setMode,
+  setGeneratedCode,
+}: {
+  mode?: string
+  setMode?: any
+  setGeneratedCode?: any
+}) {
   const pathname = usePathname()
   const router = useRouter()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
+
+  // useEffect(() => {
+  //   if (mode) {
+  //     setGeneratedCode("")
+  //   }
+  // }, [mode, setGeneratedCode])
 
   const CodeIdeaMode = ({ size }) => {
     if (mode === "smart") {

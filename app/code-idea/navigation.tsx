@@ -1,31 +1,11 @@
 "use client"
 
-// import SecondaryNavBar from "app/components/shared/SecondaryNavBar"
 import SideBar from "app/components/shared/SideBar"
 
-export default function Navigation({ mode }) {
+export default function Navigation({ mode, setGeneratedCode }) {
   return (
     <>
-      <SideBar mode={mode} />
+      <SideBar mode={mode} setGeneratedCode={setGeneratedCode} />
     </>
   )
-}
-
-{
-  /* {openSecondayNavBar && (
-  <SecondaryNavBar
-    setGeneratedCode={setGeneratedCode}
-    setOpenSecondayNavBar={setOpenSecondaryNavBar}
-    isCodeModeSelected={isCodeModeSelected}
-    openSecondayNavBar={openSecondayNavBar}
-    improveSelected={improveSelected}
-    setImproveSelected={setImproveSelected}
-    smartSelected={smartSelected}
-    setSmartSelected={setSmartSelected}
-    testSelected={testSelected}
-    setTestSelected={setTestSelected}
-    docSelected={docSelected}
-    setDocSelected={setDocSelected}
-  />
-)} */
 }

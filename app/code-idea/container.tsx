@@ -28,6 +28,7 @@ export default function Container({ session }) {
       const search = searchParams.get("mode")
 
       if (search === "smart") {
+        setMode("smart")
         setPrompt(
           `${
             chatHasStarted
@@ -37,9 +38,9 @@ export default function Container({ session }) {
                 ". Ensure that if a code comment consists of more than 10 words, proceed to the subsequent line."
           } `,
         )
-        setMode("smart")
       }
       if (search === "test") {
+        setMode("test")
         setPrompt(
           `${
             chatHasStarted
@@ -49,9 +50,9 @@ export default function Container({ session }) {
                 "."
           }`,
         )
-        setMode("test")
       }
       if (search === "improve") {
+        setMode("improve")
         setPrompt(
           `${
             chatHasStarted
@@ -61,9 +62,9 @@ export default function Container({ session }) {
                 ". Make sure to comment on the improvements at the end, in short code comments."
           }`,
         )
-        setMode("improve")
       }
       if (search === "docs") {
+        setMode("docs")
         setPrompt(
           `${
             chatHasStarted
@@ -73,7 +74,6 @@ export default function Container({ session }) {
                 "."
           }`,
         )
-        setMode("docs")
       }
     }
   }, [searchParams, codeSentence, langElement, lib, chatHasStarted])
@@ -81,7 +81,7 @@ export default function Container({ session }) {
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-      <Navigation mode={mode} />
+      <Navigation setGeneratedCode={setGeneratedCode} mode={mode} />
       <Client
         userName={session?.user?.name?.substring(0, 1)}
         setGeneratedCode={setGeneratedCode}
