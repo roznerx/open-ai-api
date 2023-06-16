@@ -18,6 +18,7 @@ import { getCodeGeniusPlaceHolder } from "utils/strings"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
+import useCodeGeniusMood from "hooks/useCodeGeniusMood"
 
 let langElements: LandElementType[] = ["Typescript", "Javascript", "Python"]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
@@ -37,9 +38,6 @@ export default function Client({
   setChatHasStarted,
   setGeneratedCode,
   generatedCode,
-  testFrameworkElement,
-  setTestLib,
-  setTestFrameworkElement,
   userId,
   userCredits,
   lib,
@@ -48,15 +46,14 @@ export default function Client({
   prompt,
   setLib,
   langElement,
-  testLibElement,
   codeSentence,
-  testSelected,
-  smartSelected,
-  docSelected,
   setLangElement,
   setCodeSentence,
-  improveSelected,
 }) {
+  const [testLibElement, setTestLib] =
+    useState<libTestingElementType>("Testing Library")
+  const [testFrameworkElement, setTestFrameworkElement] =
+    useState<TestingElementType>("Testing Tool")
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
@@ -66,11 +63,10 @@ export default function Client({
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [questionName, setQuestionName] = useState("")
-
   const controller = new AbortController()
-
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const placeHolderText = getCodeGeniusPlaceHolder(mode)
+  const codeGeniusMood = useCodeGeniusMood()
 
   const codeMessages = useRef([
     {
@@ -142,17 +138,6 @@ export default function Client({
     }
   }, [langElement, lib, mode, testFrameworkElement, testLibElement, setMode])
 
-  // Auto scroll to bottom.
-  // useEffect(() => {
-  //   if (chatContainerRef && chatContainerRef.current) {
-  //     setScrollHeight(chatContainerRef.current?.scrollHeight)
-  //     chatContainerRef.current?.scrollTo({
-  //       top: scrollHeight - chatContainerRef.current.offsetHeight,
-  //       behavior: "smooth",
-  //     })
-  //   }
-  // }, [chatContainerRef, chatContainerRef?.current?.scrollHeight, scrollHeight])
-
   //Clean up previous code responses
   useEffect(() => {
     if (generatedCode.length > 0 && !reader && !userHasAResponse) {
@@ -204,6 +189,7 @@ export default function Client({
       return false
     }
     generateCompletion()
+    setCodeSentence("")
   }
 
   const onSaveQuestionModal = () => {
@@ -216,42 +202,6 @@ export default function Client({
       method: "POST",
       body: JSON.stringify(payload),
     }).then((res) => console.log("res:", res))
-  }
-
-  function getCodeGeniusMode() {
-    if (smartSelected && mode === "smart") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
-            Smart suggestions
-          </span>{" "}
-        </div>
-      )
-    } else if (testSelected || mode === "test") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
-            Test generation
-          </span>{" "}
-        </div>
-      )
-    } else if (improveSelected || mode === "improve") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5 text-2xl font-semibold text-white">
-            Improve Code
-          </span>{" "}
-        </div>
-      )
-    } else if (docSelected || mode === "docs") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5 text-2xl font-semibold text-white">
-            Docs generation
-          </span>{" "}
-        </div>
-      )
-    }
   }
 
   const stopGeneration = async () => {
@@ -276,7 +226,6 @@ export default function Client({
     setChatHasStarted(false)
     setGeneratedCode("")
     setCodeSentence("")
-    setMode(mode)
   }
 
   const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
@@ -293,7 +242,11 @@ export default function Client({
       >
         <div className="w-full">
           <div className="mx-auto  w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
-            {getCodeGeniusMode()}
+            <div className="mt-5 inline-flex font-sans">
+              <span className="ml-5 text-2xl font-semibold text-white">
+                {codeGeniusMood}
+              </span>
+            </div>
           </div>
           <Editor
             padding={20}

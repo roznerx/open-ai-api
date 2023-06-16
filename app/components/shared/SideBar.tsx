@@ -16,34 +16,15 @@ import {
 import Image from "next/image"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import React, { useState } from "react"
 import tailwindConfig from "tailwind.config"
 import { MaterialTooltip } from "../material-components"
 
-function SideBar({
-  setSmartSelected,
-  setImproveSelected,
-  setDocSelected,
-  setTestSelected,
-  setOpenSecondaryNavBar,
-  mode,
-  setMode,
-}: {
-  setOpenSecondaryNavBar: any
-  mode?: string
-  setMode?: any
-  setSmartSelected?: any
-  setImproveSelected?: any
-  setDocSelected?: any
-  setTestSelected?: any
-}) {
+function SideBar({ mode, setMode }: { mode?: string; setMode?: any }) {
   const pathname = usePathname()
-
+  const router = useRouter()
   const [showMobileMenu, setShowMobileMenu] = useState(false)
-
-  // const [searchTerm, setSearchTerm] = useState("")
-  // const userIsSearching = searchTerm !== ""
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
@@ -112,25 +93,72 @@ function SideBar({
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="Code Idea"
+        content="Suggestions Mode"
       >
         <div
           onClick={() => {
-            if (typeof setOpenSecondaryNavBar !== "undefined") {
-              setOpenSecondaryNavBar((prevState) => !prevState)
-            }
+            router.push("/code-idea?mode=smart")
           }}
           className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
         >
           <Link href="/code-idea">
-            <CodeIdeaMode size={26} />
+            <Code size={26} color={mode === "smart" ? colors.mint : "white"} />
           </Link>
         </div>
       </MaterialTooltip>
       <MaterialTooltip
         placement="right-start"
+        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+        content="Testing Mode"
+      >
+        <div
+          onClick={() => {
+            router.push("/code-idea?mode=test")
+          }}
+          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
+        >
+          <CurlyBraces
+            size={25}
+            color={mode === "test" ? colors.mint : "white"}
+          />
+        </div>
+      </MaterialTooltip>
+      <MaterialTooltip
+        placement="right-start"
+        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+        content="Optimization Mode"
+      >
+        <div
+          onClick={() => {
+            router.push("/code-idea?mode=improve")
+          }}
+          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
+        >
+          <Rocket
+            size={26}
+            color={mode === "improve" ? colors.mint : "white"}
+          />
+        </div>
+      </MaterialTooltip>
+      <MaterialTooltip
+        placement="right-start"
+        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+        content="Documentation Mode"
+      >
+        <div
+          onClick={() => {
+            router.push("/code-idea?mode=docs")
+          }}
+          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
+        >
+          <FileCode size={26} color={mode === "docs" ? colors.mint : "white"} />
+        </div>
+      </MaterialTooltip>
+
+      <MaterialTooltip
+        placement="right-start"
         className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="Chat"
+        content="AI Chat"
       >
         <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
           <Link href="/code-chat">
@@ -141,15 +169,6 @@ function SideBar({
           </Link>
         </div>
       </MaterialTooltip>
-      {/* <div className="mt-8 cursor-pointer">
-        <SearchBar
-          userIsSearching={userIsSearching}
-          sidebarOpen={sidebarOpen}
-          setSidebarOpen={setSidebarOpen}
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-        />
-      </div> */}
     </div>
   ) : (
     <div
@@ -266,10 +285,6 @@ function SideBar({
                 size={26}
                 onClick={() => {
                   setMode("smart")
-                  setSmartSelected(true)
-                  setImproveSelected(false)
-                  setTestSelected(false)
-                  setDocSelected(false)
                   setShowMobileMenu((prevState) => !prevState)
                 }}
                 color={"white"}
@@ -280,10 +295,6 @@ function SideBar({
               <Rocket
                 onClick={() => {
                   setMode("improve")
-                  setImproveSelected(true)
-                  setSmartSelected(false)
-                  setTestSelected(false)
-                  setDocSelected(false)
                   setShowMobileMenu((prevState) => !prevState)
                 }}
                 color={"white"}
@@ -295,10 +306,6 @@ function SideBar({
               <CurlyBraces
                 onClick={() => {
                   setMode("test")
-                  setTestSelected(true)
-                  setImproveSelected(false)
-                  setSmartSelected(false)
-                  setDocSelected(false)
                   setShowMobileMenu((prevState) => !prevState)
                 }}
                 size={26}
@@ -310,10 +317,6 @@ function SideBar({
               <FileCode
                 onClick={() => {
                   setMode("docs")
-                  setDocSelected(true)
-                  setImproveSelected(false)
-                  setSmartSelected(false)
-                  setTestSelected(false)
                   setShowMobileMenu((prevState) => !prevState)
                 }}
                 size={26}
@@ -330,4 +333,16 @@ function SideBar({
   )
 }
 
-export default React.memo(SideBar)
+export default SideBar
+
+{
+  /* <div className="mt-8 cursor-pointer">
+        <SearchBar
+          userIsSearching={userIsSearching}
+          sidebarOpen={sidebarOpen}
+          setSidebarOpen={setSidebarOpen}
+          searchTerm={searchTerm}
+          setSearchTerm={setSearchTerm}
+        />
+      </div> */
+}
