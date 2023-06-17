@@ -37,12 +37,6 @@ function SideBar({
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
 
-  // useEffect(() => {
-  //   if (mode) {
-  //     setGeneratedCode("")
-  //   }
-  // }, [mode, setGeneratedCode])
-
   const CodeIdeaMode = ({ size }) => {
     if (mode === "smart") {
       return (
@@ -111,6 +105,9 @@ function SideBar({
       >
         <div
           onClick={() => {
+            if (pathname === "/code-idea") {
+              setGeneratedCode("")
+            }
             router.push("/code-idea?mode=smart")
           }}
           className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
@@ -127,6 +124,9 @@ function SideBar({
       >
         <div
           onClick={() => {
+            if (pathname === "/code-idea") {
+              setGeneratedCode("")
+            }
             router.push("/code-idea?mode=test")
           }}
           className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
@@ -144,6 +144,9 @@ function SideBar({
       >
         <div
           onClick={() => {
+            if (pathname === "/code-idea") {
+              setGeneratedCode("")
+            }
             router.push("/code-idea?mode=improve")
           }}
           className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
@@ -161,6 +164,9 @@ function SideBar({
       >
         <div
           onClick={() => {
+            if (pathname === "/code-idea") {
+              setGeneratedCode("")
+            }
             router.push("/code-idea?mode=docs")
           }}
           className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"

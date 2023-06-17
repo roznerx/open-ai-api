@@ -98,12 +98,13 @@ export default function Client({
             content: "",
           },
         ]
-        codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of background in unit testing, integration testing and e2e testing. 
+        codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of 
+        background in unit testing, integration testing and e2e testing. 
         Make sure tu use  ${
           testFrameworkElement === "Cypress"
             ? testFrameworkElement + " as the test framework"
             : testFrameworkElement + " and " + testLibElement
-        }. Do not output additional explanations.`
+        }. Only add minimal explanations to the code you output. Always output code delimited by triple backticks.`
         break
       case "improve":
         codeMessages.current = [
