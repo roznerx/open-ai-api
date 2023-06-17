@@ -171,7 +171,7 @@ export default function Client({
     ]
     // console.log("codeMessages :", codeMessages.current)
 
-    generateCode(
+    generateCode({
       setReader,
       setGeneratedCode,
       codeMessages,
@@ -180,7 +180,7 @@ export default function Client({
       setCreditsLeft,
       setCreditsModaIsOpen,
       setLoading,
-    )
+    })
   }
 
   const onCodeGeneration = () => {

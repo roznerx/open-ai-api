@@ -99,7 +99,7 @@ export async function generateCode({
   userId,
   setUserHasAResponse,
   setCreditsLeft,
-  setCreditsModalIsOpen,
+  setCreditsModaIsOpen,
   setLoading,
 }: {
   setReader?: (reader: any) => void
@@ -108,7 +108,7 @@ export async function generateCode({
   userId?: string
   setUserHasAResponse?: (hasResponse: boolean) => void
   setCreditsLeft?: (creditsLeft: number) => void
-  setCreditsModalIsOpen?: (isOpen: boolean) => void
+  setCreditsModaIsOpen?: (isOpen: boolean) => void
   setLoading?: (loading: boolean) => void
 }) {
   const response = await fetch("/api/generateWithTurbo", {
@@ -170,9 +170,9 @@ export async function generateCode({
     //✨ Make some credits update Magic ✨
     if (userId) {
       const data = await updateApiCallsAndCredits(userId, tokensCount)
-      if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModalIsOpen) {
+      if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModaIsOpen) {
         setCreditsLeft(0)
-        setCreditsModalIsOpen(true)
+        setCreditsModaIsOpen(true)
       }
     }
 
