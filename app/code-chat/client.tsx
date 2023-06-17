@@ -22,6 +22,7 @@ export default function Client({ session }) {
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
   const userName = session && session.user?.name
+  console.log("loading", loading)
 
   // const controller = new AbortController()
   const inputRef = useRef<any>(null)
@@ -57,8 +58,14 @@ export default function Client({ session }) {
         content: codeSentence,
       },
     ]
-    // setCodeSentence("")
-    generateCode(setReader, setGeneratedCode, codeMessages, userId, setLoading)
+
+    generateCode({
+      setReader,
+      setGeneratedCode,
+      codeMessages,
+      userId,
+      setLoading,
+    })
   }
 
   const onCodeGeneration = (e: KeyboardEvent<HTMLTextAreaElement>) => {
@@ -71,6 +78,7 @@ export default function Client({ session }) {
       return false
     }
     if (e.key === "Enter") {
+      setLoading(true)
       codeMessages.current = [
         ...codeMessages.current,
         {
@@ -78,15 +86,15 @@ export default function Client({ session }) {
           content: codeSentence,
         },
       ]
-      // setCodeSentence("")
+
       //Generate Code funciton
-      generateCode(
+      generateCode({
         setReader,
         setGeneratedCode,
         codeMessages,
         userId,
         setLoading,
-      )
+      })
     }
   }
 
