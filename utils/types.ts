@@ -137,3 +137,12 @@ export type UseCompletionOptions = {
    */
   body?: object
 }
+
+export interface CodeMessagesProps {
+  generatedMessages: Message[]
+  fontColor?: string
+  bg?: string
+  loading?: boolean
+  userName?: any
+  userPrompt?: any
+}

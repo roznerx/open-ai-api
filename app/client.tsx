@@ -2,10 +2,6 @@
 
 import dynamic from "next/dynamic"
 
-// import HomeChat from "./home/HomeChat"
-import Feature from "./home/Feature"
-import HomeChat from "./home/HomeChat"
-
 import { useSignInModal } from "./components/modals/SignInModal"
 import Script from "next/script"
 import SuperHero from "./home/SuperHero"
@@ -23,6 +19,18 @@ const HeaderWrapper = dynamic(
     ),
   },
 )
+
+const HomeChat = dynamic(() => import("./home/HomeChat"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
+  ),
+})
+
+const Feature = dynamic(() => import("./home/Feature"), {
+  loading: () => (
+    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
+  ),
+})
 
 export default function Client({
   session,

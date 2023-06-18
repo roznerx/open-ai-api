@@ -7,19 +7,8 @@ import { useSignInModal } from "app/components/modals/SignInModal"
 
 import { AI_MOOD, CREDITS_MODAL_COPY } from "@/lib/constants"
 import { Loader2, Send } from "lucide-react"
-import { CombinedMessages } from "app/components/shared/CombinedMessages"
-import useWindowSize from "hooks/use-window-size"
-import { useChat } from "hooks/use-chat"
-import { Message } from "ai"
 
-export interface CodeMessagesProps {
-  generatedMessages: Message[]
-  fontColor?: string
-  bg?: string
-  loading?: boolean
-  userName?: any
-  userPrompt?: any
-}
+import { useChat } from "hooks/use-chat"
 
 const Modal = dynamic(() => import("app/components/Modal"), {
   loading: () => (
@@ -38,6 +27,19 @@ const Hero = dynamic(() => import("./Hero"), {
   ),
 })
 
+const CombinedMessages = dynamic(
+  () => import("app/components/shared/CombinedMessages"),
+  {
+    loading: () => (
+      <Loader2
+        size={20}
+        color="white"
+        className="hidden h-8 w-8 animate-spin"
+      />
+    ),
+  },
+)
+
 export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
   const textareaRef = useRef<any>(null)
@@ -51,8 +53,6 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   // }, [])
   const userId = session && session.user?.id
   const userName = session && session.user?.name
-
-  const { isMobile } = useWindowSize()
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
     tip: "Redeem your initial 25 credits.",
@@ -100,7 +100,6 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
         <div className="h-[330px] sm:h-[380px] sm:w-[930px]">
           {messages.length > 0 && (
             <ChatContainer
-              isMobile={isMobile}
               messages={
                 <CombinedMessages
                   bg="transparent"

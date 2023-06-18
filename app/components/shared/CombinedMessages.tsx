@@ -1,8 +1,8 @@
-import { CodeMessagesProps } from "app/home/HomeChat"
 import { User } from "lucide-react"
 import Image from "next/image"
 import React from "react"
 import { parseText } from "utils/parseText"
+import { CodeMessagesProps } from "utils/types"
 import GenerateCode from "../GenerateCode"
 
 const LogoCodeGenius = React.memo(() => (
@@ -76,3 +76,5 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
     </>
   )
 }
+
+export default CombinedMessages
