@@ -55,7 +55,7 @@ export async function generateCodeWithTurbo(
     setReader(null)
     //✨ Make some credits update Magic ✨
     if (userId) {
-      const data = await updateApiCallsAndCredits(userId, tokensCount)
+      const data = await updateApiCallsAndCredits(userId)
 
       if (data?.creditsLeft === 0) {
         setCreditsModaIsOpen(true)
@@ -169,7 +169,7 @@ export async function generateCode({
     }
     //✨ Make some credits update Magic ✨
     if (userId) {
-      const data = await updateApiCallsAndCredits(userId, tokensCount)
+      const data = await updateApiCallsAndCredits(userId)
       if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModaIsOpen) {
         setCreditsLeft(0)
         setCreditsModaIsOpen(true)

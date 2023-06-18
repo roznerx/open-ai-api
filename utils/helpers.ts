@@ -23,7 +23,7 @@ export const usePortal = (selectId: string = getId()): HTMLElement | null => {
       document.body.appendChild(el)
     }
     setElSnapshot(el)
-  }, [])
+  }, [id])
 
   return elSnapshot
 }
@@ -32,10 +32,7 @@ export const getId = () => {
   return Math.random().toString(32).slice(2, 10)
 }
 
-export async function updateApiCallsAndCredits(
-  userId: string,
-  tokensCount: number,
-) {
+export async function updateApiCallsAndCredits(userId: string) {
   let data: any = {}
   //Update API CALLS
   const response = await fetch("/api/credits/update", {
@@ -45,7 +42,6 @@ export async function updateApiCallsAndCredits(
     },
     body: JSON.stringify({
       userId: userId,
-      tokensCount: tokensCount,
     }),
   })
   const apiCallUpdateResponse = await response.json()

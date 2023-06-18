@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Chat from "app/components/shared/Chat"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
@@ -9,11 +9,11 @@ import { AI_MOOD, CREDITS_MODAL_COPY } from "@/lib/constants"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "hooks/use-chat"
+import { updateApiCallsAndCredits } from "utils/helpers"
 
 export default function Client({ session }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const { setShowSignInModal } = useSignInModal({})
-  const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
   const userName = session && session.user?.name
   const {
@@ -26,7 +26,29 @@ export default function Client({ session }) {
     handleSubmit,
   } = useChat({
     initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
+    onFinish: async () => {
+      if (session) {
+        const data = await updateApiCallsAndCredits(session.user?.id)
+
+        if (data?.creditsLeft === 0) {
+          setCreditsModaIsOpen(true)
+        }
+      }
+    },
   })
+
+  useEffect(() => {
+    if (!userCredits || userCredits === 0) {
+      setCreditsModaIsOpen(true)
+    }
+  }, [userCredits])
+
+  useEffect(() => {
+    if (session.user && !session.user.credits && isLoading) {
+      stop()
+      setCreditsModaIsOpen(true)
+    }
+  }, [session, stop, isLoading])
 
   return (
     <>

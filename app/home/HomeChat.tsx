@@ -90,7 +90,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
       stop()
       setCreditsModaIsOpen(true)
     }
-  }, [session, existingCredits, stop, isLoading])
+  }, [session, stop, isLoading])
 
   const hasContent = messages.length > 0
 

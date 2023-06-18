@@ -13,10 +13,8 @@ export default async function handler(req, res) {
     apiCalls: existingUser[0]?.apiCalls
       ? Number(existingUser[0]?.apiCalls) + 1
       : 1,
-    tokensCount: existingUser[0]?.tokensCount
-      ? Number(existingUser[0]?.tokensCount) + bodyRequest.tokensCount
-      : bodyRequest.tokensCount,
   }
+
   if (existingUser && existingUser[0]) {
     //Update the user API calls
     try {
