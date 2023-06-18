@@ -104,13 +104,11 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
         >
           <input
             ref={textareaRef}
-            className="font-lg z-40 h-12 w-[95%] rounded-lg bg-purple-400 py-2.5 
-             pl-3 pr-12 text-white outline-0 placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-white hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 sm:w-[900px]"
+            className="font-lg z-40 h-12 w-[95%] rounded-lg bg-purple-400 py-2.5 pl-3 
+             pr-12 text-white caret-mint/70 outline-0 placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-white/60 placeholder:text-white hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 sm:w-[900px]"
             value={inputValue}
             onChange={handleInputChange}
-            placeholder={
-              messages.length <= 0 ? "What is your next Code Idea?" : ""
-            }
+            placeholder={"What is your next Code Idea?"}
           />
           <button
             type="submit"
