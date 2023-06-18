@@ -86,7 +86,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   }, [userApiCalls, session, stop, isLoading, setShowSignInModal])
 
   useEffect(() => {
-    if (session.user && !session.user.credits && isLoading) {
+    if (session?.user && !session?.user?.credits && isLoading) {
       stop()
       setCreditsModaIsOpen(true)
     }
