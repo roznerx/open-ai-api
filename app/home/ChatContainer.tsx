@@ -17,7 +17,7 @@ export default function ChatContainer({
           useFullHeight ? "max-h-[75vh] sm:max-h-[75vh]" : "max-h-[320px]"
         } ${
           isMobile ? "w-[95vw]" : "w-[900px]"
-        } mt-2 rounded-md bg-purple-400 font-sans
+        } mt-2 rounded-md bg-transparent font-sans
        text-white sm:mt-2 `}
       >
         {messages}

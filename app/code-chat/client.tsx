@@ -5,7 +5,7 @@ import Chat from "app/components/shared/Chat"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import InputChat from "app/components/shared/InputChat"
-import { CREDITS_MODAL_COPY } from "@/lib/constants"
+import { AI_MOOD, CREDITS_MODAL_COPY } from "@/lib/constants"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "hooks/use-chat"
@@ -25,9 +25,7 @@ export default function Client({ session }) {
     handleInputChange,
     handleSubmit,
   } = useChat({
-    initialMessages: [
-      { id: "1", role: "system", content: "You are a software assistant" },
-    ],
+    initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
   })
 
   return (

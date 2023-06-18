@@ -1,4 +1,5 @@
 import { CodeMessagesProps } from "app/home/HomeChat"
+import { User } from "lucide-react"
 import Image from "next/image"
 import React from "react"
 import { parseText } from "utils/parseText"
@@ -17,6 +18,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
   generatedMessages,
   fontColor,
   userName,
+  bg = "bg-purple-400",
 }) => {
   return (
     <>
@@ -27,13 +29,17 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
           ? result.map((item: any, idx) => {
               if (item.hasOwnProperty("text")) {
                 return (
-                  <div key={idx} className="mx-2 flex">
+                  <div key={idx} className="mx-2 mt-2 flex">
                     <div className="flex items-center justify-center">
-                      <div className="">
+                      <div className="mr-2">
                         {item.role === "user" ? (
                           <div className="flex items-center justify-center">
                             <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium">
-                              {userName.substring(0, 1)}
+                              {userName ? (
+                                userName.substring(0, 1)
+                              ) : (
+                                <User size={20} color="white" />
+                              )}
                             </span>
                           </div>
                         ) : item.text !== "" ? (
@@ -41,10 +47,10 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
                         ) : null}
                       </div>
                     </div>
-                    <div className={`w-full rounded-lg bg-purple-400 p-2`}>
+                    <div className={`w-full rounded-lg ${bg} p-2`}>
                       <p
                         style={{ borderRadius: "0px" }}
-                        className={`ml-1 text-left leading-7 ${
+                        className={`ml-1  text-left leading-7 ${
                           fontColor ? fontColor : "text-white"
                         }`}
                       >

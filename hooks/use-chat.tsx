@@ -112,10 +112,12 @@ export function useChat({
           body: JSON.stringify({
             messages: sendExtraMessageFields
               ? messagesSnapshot
-              : messagesSnapshot.map(({ role, content }) => ({
-                  role,
-                  content,
-                })),
+              : messagesSnapshot
+                  .filter((m) => m.role !== "assistant")
+                  .map(({ role, content }) => ({
+                    role,
+                    content,
+                  })),
             ...extraMetadataRef.current.body,
           }),
           headers: extraMetadataRef.current.headers || {},
