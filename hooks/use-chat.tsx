@@ -54,6 +54,7 @@ export function useChat({
   sendExtraMessageFields,
   onResponse,
   onFinish,
+  onStart,
   onError,
   headers,
   body,
@@ -61,6 +62,11 @@ export function useChat({
   // Generate an unique id for the chat if not provided.
   const hookId = useId()
   const chatId = id || hookId
+
+  //Run the onStart callback if provided.
+  if (onStart) {
+    onStart()
+  }
 
   // Store the chat state in SWR, using the chatId as the key to share states.
   const { data, mutate } = useSWR<Message[]>([api, chatId], null, {
@@ -234,7 +240,7 @@ export function useChat({
   const stop = useCallback(() => {
     console.log("outside")
     if (abortControllerRef.current) {
-      console.log("aborting")
+      console.log("aborting request")
 
       abortControllerRef.current.abort()
       abortControllerRef.current = null

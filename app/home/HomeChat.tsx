@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import dynamic from "next/dynamic"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
@@ -9,6 +9,8 @@ import { AI_MOOD, CREDITS_MODAL_COPY } from "@/lib/constants"
 import { Loader2, Send } from "lucide-react"
 
 import { useChat } from "hooks/use-chat"
+import useWindowSize from "hooks/use-window-size"
+import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
 const Modal = dynamic(() => import("app/components/Modal"), {
   loading: () => (
@@ -42,16 +44,18 @@ const CombinedMessages = dynamic(
 
 export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
+  const [userApiCalls, setUserApiCalls] = useState<number>(apiCalls)
   const textareaRef = useRef<any>(null)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(
     existingCredits === 0 ? true : false,
   )
-  // useEffect(() => {
-  //   if (textareaRef && textareaRef.current) {
-  //     textareaRef.current.focus()
-  //   }
-  // }, [])
-  const userId = session && session.user?.id
+  const { isMobile } = useWindowSize()
+  useEffect(() => {
+    if (textareaRef && textareaRef.current && !isMobile) {
+      textareaRef.current.focus()
+    }
+  }, [isMobile])
+
   const userName = session && session.user?.name
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
@@ -59,12 +63,34 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
   })
   const {
     messages,
+    isLoading,
     input: inputValue,
     handleInputChange,
     handleSubmit,
+    stop,
   } = useChat({
     initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
+    onFinish: async () => {
+      if (!session) {
+        const response = await updateAnonymousUserUsage(ip)
+        setUserApiCalls(response?.apiCalls)
+      }
+    },
   })
+
+  useEffect(() => {
+    if (!session && userApiCalls >= 10 && isLoading) {
+      stop()
+      setShowSignInModal(true)
+    }
+  }, [userApiCalls, session, stop, isLoading, setShowSignInModal])
+
+  useEffect(() => {
+    if (session.user && !session.user.credits && isLoading) {
+      stop()
+      setCreditsModaIsOpen(true)
+    }
+  }, [session, existingCredits, stop, isLoading])
 
   const hasContent = messages.length > 0
 
