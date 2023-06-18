@@ -1,123 +1,57 @@
 "use client"
 
-import Modal from "app/components/Modal"
-import { KeyboardEvent, useState, useRef, useEffect } from "react"
+import { useState } from "react"
 import Chat from "app/components/shared/Chat"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
-import { generateCode } from "utils/generateCode"
 import InputChat from "app/components/shared/InputChat"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
+import MyModal from "app/components/Modal"
+import { Hand } from "lucide-react"
+import { useChat } from "hooks/use-chat"
 
 export default function Client({ session }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
-  const [loading, setLoading] = useState(false)
   const { setShowSignInModal } = useSignInModal({})
-  const [reader, setReader] =
-    useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
-  const [codeSentence, setCodeSentence] = useState("")
-  const [generatedCode, setGeneratedCode] = useState<string>("")
-  // const [showSavePromptModal, setShowSavePromptModal] = useState(false)
-  // const [questionName, setQuestionName] = useState("")
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
   const userName = session && session.user?.name
-  console.log("loading", loading)
-
-  // const controller = new AbortController()
-  const inputRef = useRef<any>(null)
-  useEffect(() => {
-    if (inputRef && inputRef.current) {
-      inputRef.current.focus()
-    }
-  }, [])
-  useEffect(() => {
-    if (!userCredits || userCredits === 0) {
-      setCreditsModaIsOpen(true)
-    }
-  }, [userCredits])
-
-  const codeMessages = useRef([
-    {
-      role: "system",
-      content:
-        "You are a robust and cleaver programming software assistant specializing in Javascript and Typescript. But your knowledge extends to a wide variety of programming skills. Follow user instructions to the letter.",
-    },
-  ])
-
-  const onArrowPress = () => {
-    setLoading(true)
-    if (!userCredits || userCredits === 0) {
-      setCreditsModaIsOpen(true)
-      return false
-    }
-    codeMessages.current = [
-      ...codeMessages.current,
-      {
-        role: "user",
-        content: codeSentence,
-      },
-    ]
-
-    generateCode({
-      setReader,
-      setGeneratedCode,
-      codeMessages,
-      userId,
-      setLoading,
-    })
-  }
-
-  const onCodeGeneration = (e: KeyboardEvent<HTMLTextAreaElement>) => {
-    if (!userCredits || userCredits === 0) {
-      setCreditsModaIsOpen(true)
-      return false
-    }
-
-    if (codeSentence.length === 0 || codeSentence === "") {
-      return false
-    }
-    if (e.key === "Enter") {
-      setLoading(true)
-      codeMessages.current = [
-        ...codeMessages.current,
-        {
-          role: "user",
-          content: codeSentence,
-        },
-      ]
-
-      //Generate Code funciton
-      generateCode({
-        setReader,
-        setGeneratedCode,
-        codeMessages,
-        userId,
-        setLoading,
-      })
-    }
-  }
-
-  const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
+  const {
+    messages,
+    setInput,
+    stop,
+    isLoading,
+    input: inputValue,
+    handleInputChange,
+    handleSubmit,
+  } = useChat({
+    initialMessages: [
+      { id: "1", role: "system", content: "You are a software assistant" },
+    ],
+  })
 
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <Chat
-        loading={loading}
+        setInput={setInput}
         userName={userName}
-        codeSentence={codeSentence}
-        generatedResponse={generatedMessages}
-        setCodeSentence={setCodeSentence}
+        messages={messages.slice(1)}
       />
       <InputChat
-        inputRef={inputRef}
-        codeSentence={codeSentence}
-        setCodeSentence={setCodeSentence}
-        onCodeGeneration={onCodeGeneration}
-        onArrowPress={onArrowPress}
+        inputValue={inputValue}
+        handleInputChange={handleInputChange}
+        handleSubmit={handleSubmit}
       />
-      <Modal
+      {isLoading && (
+        <div
+          className="absolute top-48 right-4 h-12 w-12 cursor-pointer"
+          onClick={() => stop()}
+        >
+          <Hand size={32} color="white" />
+        </div>
+      )}
+      <MyModal
         title={CREDITS_MODAL_COPY.title}
         isCreditsModal
         body={CREDITS_MODAL_COPY.description}
