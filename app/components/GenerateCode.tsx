@@ -27,7 +27,6 @@ function GenerateCode({
 }: GenerateCode) {
   const { isMobile } = useWindowSize()
   const minWidth = isMobile ? "90vw" : "850px"
-  console.log("minWidth", minWidth)
 
   return (
     <>
