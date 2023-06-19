@@ -98,7 +98,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
             value={inputValue}
             onChange={handleInputChange}
             placeholder={
-              messages.length === 0 ? "What is your next Code Idea?" : ""
+              messages.length === 1 ? "What is your next Code Idea?" : ""
             }
           />
           <button
