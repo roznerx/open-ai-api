@@ -50,6 +50,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     existingCredits === 0 ? true : false,
   )
   const { isMobile } = useWindowSize()
+
   useEffect(() => {
     if (textareaRef && textareaRef.current && !isMobile) {
       textareaRef.current.focus()

@@ -27,6 +27,8 @@ function GenerateCode({
 }: GenerateCode) {
   const { isMobile } = useWindowSize()
   const minWidth = isMobile ? "90vw" : "850px"
+  console.log("minWidth", minWidth)
+
   return (
     <>
       <div
@@ -39,7 +41,6 @@ function GenerateCode({
           .replace("python", "")
           .replace("html", "")
           .replace("sql", "")
-          .replace("```", "")
           .replace("typescript", "")
           .replace("jsx", "")
           .replace("tsx", "")
@@ -48,16 +49,15 @@ function GenerateCode({
             return (
               <div
                 key={idx}
-                className="mx-auto w-[100%] max-w-[100%] overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
+                className="mx-auto flex w-[100%] max-w-[100%] items-end justify-end overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
               >
                 <CopyBlock
                   showLineNumbers
                   wrapLongLines
                   customStyle={{
-                    maxWidth: "95vw",
+                    maxWidth: minWidth,
                     minWidth: minWidth,
                     with: "95vw",
-                    margin: "0 auto",
                     borderRadius: "0.6rem",
                     border: `0.5px solid ${themeColors.purple[500]}`,
                   }}

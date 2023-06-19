@@ -2,11 +2,7 @@
 
 import React, { useRef } from "react"
 
-export default function ChatContainer({
-  messages,
-  isMobile,
-  useFullHeight,
-}: any) {
+export default function ChatContainer({ messages, useFullHeight }: any) {
   const chatContainerRef = useRef<HTMLDivElement>(null)
 
   return (
@@ -15,10 +11,8 @@ export default function ChatContainer({
         ref={chatContainerRef}
         className={`overflow-y-scroll ${
           useFullHeight ? "max-h-[75vh] sm:max-h-[75vh]" : "max-h-[320px]"
-        } ${
-          isMobile ? "w-[95vw]" : "w-[900px]"
-        } mt-2 rounded-md bg-transparent font-sans
-       text-white sm:mt-2 `}
+        } mt-2 w-[90vw] rounded-md bg-transparent font-sans text-white
+       sm:mt-2 sm:w-[900px] `}
       >
         {messages}
       </div>
