@@ -19,6 +19,7 @@ import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useCodeGeniusMood from "hooks/useCodeGeniusMood"
+import { usePathname } from "next/navigation"
 
 let langElements: LandElementType[] = ["Typescript", "Javascript", "Python"]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
@@ -50,6 +51,7 @@ export default function Client({
   setLangElement,
   setCodeSentence,
 }) {
+  const pathName = usePathname()
   const [testLibElement, setTestLib] =
     useState<libTestingElementType>("Testing Library")
   const [testFrameworkElement, setTestFrameworkElement] =
@@ -169,7 +171,7 @@ export default function Client({
         content: prompt,
       },
     ]
-    // console.log("codeMessages :", codeMessages.current)
+    console.log("codeMessages :", codeMessages.current)
 
     generateCode({
       setReader,
@@ -184,6 +186,17 @@ export default function Client({
   }
 
   const onCodeGeneration = () => {
+    //Validate testing tools.
+    if (mode === "test" && testFrameworkElement === "Testing Tool") {
+      setModaIsOpen(true)
+      return false
+    }
+
+    if (mode === "smart" && langElement === "Language") {
+      setModaIsOpen(true)
+      return false
+    }
+
     setChatHasStarted(true)
     if (!creditsLeft || creditsLeft === 0) {
       setCreditsModaIsOpen(true)
@@ -279,6 +292,7 @@ export default function Client({
           ) : null}
           {generatedMessages && (
             <CombinedMessages
+              pathName={pathName}
               loading={loading}
               userName={userName}
               generatedMessages={generatedMessages}
@@ -317,10 +331,17 @@ export default function Client({
         setIsOpen={setCreditsModaIsOpen}
       />
       <Modal
-        body="Our servers are taking longer than expected. We suggest
-        rewording your instruction or input to get a faster result."
+        isCreditsModal
+        title={`Configure your ${
+          mode === "smart" ? "programming languages" : "testing tools"
+        }`}
+        body={`${
+          mode === "smart"
+            ? " You have the option to select programming languages, and if desired, a UI library, to help give you a better suggestion. Use the dropdown menus located in the bottom left corner."
+            : "You have the option to select a testing framework and, if desired, a testing library. Use the dropdown menus located in the bottom left corner."
+        }`}
         isOpen={modaIsOpen}
-        buttonText="Ok"
+        buttonText="Got it"
         setIsOpen={setModaIsOpen}
       />
       <Modal

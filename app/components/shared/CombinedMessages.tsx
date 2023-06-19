@@ -1,7 +1,7 @@
 import { User } from "lucide-react"
 import Image from "next/image"
 import React from "react"
-import { parseText } from "utils/parseText"
+import { parseText, legacyParseText } from "utils/parseText"
 import { CodeMessagesProps } from "utils/types"
 import GenerateCode from "../GenerateCode"
 
@@ -15,6 +15,7 @@ const LogoCodeGenius = React.memo(() => (
 ))
 
 export const CombinedMessages: React.FC<CodeMessagesProps> = ({
+  pathName,
   generatedMessages,
   fontColor,
   userName,
@@ -23,7 +24,10 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
   return (
     <>
       {generatedMessages.map((message) => {
-        const result = parseText({ message })
+        const result =
+          pathName !== "/code-idea"
+            ? parseText({ message })
+            : legacyParseText({ text: message })
 
         return result.length
           ? result.map((item: any, idx) => {

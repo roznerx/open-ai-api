@@ -4,8 +4,6 @@ import {
   ReconnectInterval,
 } from "eventsource-parser"
 
-type Messages = [any]
-
 export interface OpenAIStreamPayload {
   model: string
   prompt: string
@@ -29,8 +27,6 @@ export interface OpenAITurboPayload {
 export async function OpenAIStream(payload: OpenAIStreamPayload) {
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
-
-  let counter = 0
 
   const res = await fetch("https://api.openai.com/v1/completions", {
     headers: {
@@ -57,7 +53,6 @@ export async function OpenAIStream(payload: OpenAIStreamPayload) {
             const text = json.choices[0].text
             const queue = encoder.encode(text)
             controller.enqueue(queue)
-            counter++
           } catch (e) {
             // maybe parse error
             controller.error(e)
