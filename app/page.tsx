@@ -35,7 +35,7 @@ export default async function Page() {
   const userHasAccount = csrfTokenValue !== "" && csrfTokenValue !== undefined
   return (
     <>
-      <main className={`mx-auto max-w-max pb-10`}>
+      <main className={`mx-auto w-full max-w-max pb-10`}>
         <Client
           loggedUserData={loggedUserData}
           session={session}

@@ -25,7 +25,7 @@ export default function Header({
     <>
       <div
         id="site-header"
-        className={`absolute top-0 z-20 w-full bg-transparent`}
+        className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
         <div className="flex items-center justify-between">
           <div className={`ml-4 mt-4 sm:ml-14`}>
@@ -52,30 +52,23 @@ export default function Header({
             </Link>
           </div>
           <div className="flex h-8 ">
-            <div className={`group relative ${!session ? "block" : "hidden"}`}>
-              <div
-                className={`${
-                  !session ? "block" : "hidden"
-                } absolute inset-0.5 h-10 w-32 animate-tilt rounded-lg bg-gradient-to-r from-blue/75 to-white/75 opacity-40 blur transition duration-500 group-hover:opacity-80 group-hover:duration-200`}
-              />
-              <div
-                onClick={() => setShowSignInModal(true)}
-                className={`my-auto mt-2 mr-4 flex ${
-                  !session ? "w-32" : "w-12"
-                } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
-                  !session ? "border border-mint" : "bg-transparent"
-                }  p-[1.5px] font-sans`}
-              >
-                {!session && (
-                  <div
-                    className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
-                  >
-                    <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
-                      {!userHasAccount ? "Sign In" : "Sign up"}
-                    </p>
-                  </div>
-                )}
-              </div>
+            <div
+              onClick={() => setShowSignInModal(true)}
+              className={`my-auto mt-2 mr-4 flex ${
+                !session ? "w-32" : "w-12"
+              } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
+                !session ? "border border-mint" : "bg-transparent"
+              }  p-[1.5px] font-sans`}
+            >
+              {!session && (
+                <div
+                  className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
+                >
+                  <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
+                    {!userHasAccount ? "Sign In" : "Sign up"}
+                  </p>
+                </div>
+              )}
             </div>
             {session && pathname !== "/" && (
               <div className="mr-24 hidden flex-col items-end transition-all sm:flex ">
