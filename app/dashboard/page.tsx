@@ -106,7 +106,6 @@ export default async function Dashboard() {
 
       if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
         opConfirmation = true
-        console.log("entro en confirmation")
         const fetchUrl = `${
           process.env.NEXTAUTH_URL
         }/api/email/generate-credits-html?name=${

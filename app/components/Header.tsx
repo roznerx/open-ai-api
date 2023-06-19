@@ -10,12 +10,10 @@ import Feedback from "./Feedback"
 
 export default function Header({
   session,
-  shouldHideLogo,
   userHasAccount,
   setShowSignInModal,
 }: {
   session?: any
-  shouldHideLogo?: any
   showSignInModal?: any
   userHasAccount?: any
   setShowSignInModal: any
@@ -33,17 +31,15 @@ export default function Header({
           <div className={`ml-4 mt-4 sm:ml-14`}>
             <Link href="/" className={` flex sm:mx-0`}>
               <div className={`mt-1 flex sm:ml-7`}>
-                {!shouldHideLogo && (
-                  <>
-                    <Image
-                      src={"/logo/code-genius.svg"}
-                      width={32}
-                      height={32}
-                      className={"right-8"}
-                      alt="Code Genius"
-                    />
-                  </>
-                )}
+                <>
+                  <Image
+                    src={"/logo/code-genius.svg"}
+                    width={32}
+                    height={32}
+                    className={"right-8 hidden sm:block"}
+                    alt="Code Genius"
+                  />
+                </>
                 <h1
                   className={`sm:text-xl ${
                     pathname === "/" ? "ml-3" : "ml-12"
