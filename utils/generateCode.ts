@@ -1,3 +1,4 @@
+/* eslint-disable unused-imports/no-unused-vars */
 import { updateApiCallsAndCredits } from "./helpers"
 
 export async function generateCodeWithTurbo(
@@ -54,7 +55,7 @@ export async function generateCodeWithTurbo(
     setReader(null)
     //✨ Make some credits update Magic ✨
     if (userId) {
-      const data = await updateApiCallsAndCredits(userId, tokensCount)
+      const data = await updateApiCallsAndCredits(userId)
 
       if (data?.creditsLeft === 0) {
         setCreditsModaIsOpen(true)
@@ -91,16 +92,25 @@ export const fetchWithTurbo = async (
   return response
 }
 
-export async function generateCode(
-  setReader: any,
-  setGeneratedCode: any,
-  codeMessages: any,
-  userId: any,
-  setUserHasAResponse?: any,
-  setCreditsLeft?: any,
-  setCreditsModaIsOpen?: any,
-  setLoading?: any,
-) {
+export async function generateCode({
+  setReader,
+  setGeneratedCode,
+  codeMessages,
+  userId,
+  setUserHasAResponse,
+  setCreditsLeft,
+  setCreditsModaIsOpen,
+  setLoading,
+}: {
+  setReader?: (reader: any) => void
+  setGeneratedCode: any
+  codeMessages?: any
+  userId?: string
+  setUserHasAResponse?: (hasResponse: boolean) => void
+  setCreditsLeft?: (creditsLeft: number) => void
+  setCreditsModaIsOpen?: (isOpen: boolean) => void
+  setLoading?: (loading: boolean) => void
+}) {
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
     headers: {
@@ -124,7 +134,9 @@ export async function generateCode(
 
   const newReader = data.getReader()
   //Set Reader
-  setReader(newReader)
+  if (typeof setReader === "function") {
+    setReader(newReader)
+  }
   //Text decoder
   const decoder = new TextDecoder()
 
@@ -136,8 +148,6 @@ export async function generateCode(
       done = doneReading
       tokensCount++
       let chunkValue = decoder.decode(value)
-      // console.log("chunkValue: ", chunkValue)
-
       setGeneratedCode((prev) => prev + chunkValue)
 
       if (done) {
@@ -147,7 +157,9 @@ export async function generateCode(
   } catch (error) {
     return `There was an error with your request ${error}`
   } finally {
-    setReader(null)
+    if (typeof setReader === "function") {
+      setReader(null)
+    }
     if (typeof setLoading === "function") {
       setLoading(false)
     }
@@ -156,11 +168,12 @@ export async function generateCode(
       setUserHasAResponse(true)
     }
     //✨ Make some credits update Magic ✨
-    const data = await updateApiCallsAndCredits(userId, tokensCount)
-
-    if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModaIsOpen) {
-      setCreditsLeft(0)
-      setCreditsModaIsOpen(true)
+    if (userId) {
+      const data = await updateApiCallsAndCredits(userId)
+      if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModaIsOpen) {
+        setCreditsLeft(0)
+        setCreditsModaIsOpen(true)
+      }
     }
 
     //RESET TOKENS COUNT.

@@ -100,7 +100,7 @@ export default function Client({
 
           <PromptCard
             onClick={() => {
-              router.push("/code-idea?mode=imrove")
+              router.push("/code-idea?mode=improve")
             }}
             title="Code Improvements"
             order="order-6"

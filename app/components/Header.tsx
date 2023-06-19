@@ -4,28 +4,25 @@ import Link from "next/link"
 import UserDropdown from "app/components/auth/UserDropdown"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import useWindowSize from "hooks/use-window-size"
-import Feedback from "./Feedback"
+
 import { useState } from "react"
+import Feedback from "./Feedback"
 
 export default function Header({
   session,
+  shouldHideLogo,
   userHasAccount,
   setShowSignInModal,
 }: {
   session?: any
+  shouldHideLogo?: any
   showSignInModal?: any
   userHasAccount?: any
   setShowSignInModal: any
 }) {
   const pathname = usePathname()
   const [showWidget, setShowWidget] = useState(false)
-  const { isMobile } = useWindowSize()
-  const shouldHideLogo =
-    isMobile &&
-    (pathname == "/code-idea" ||
-      pathname === "/code-chat" ||
-      pathname === "/dashboard")
+
   return (
     <>
       <div
@@ -33,11 +30,7 @@ export default function Header({
         className={`absolute top-0 z-20 w-full bg-transparent`}
       >
         <div className="flex items-center justify-between">
-          <div
-            className={` ${
-              pathname === "/pricing" ? "ml-4" : "ml-4"
-            } mt-4 sm:ml-14`}
-          >
+          <div className={`ml-4 mt-4 sm:ml-14`}>
             <Link href="/" className={` flex sm:mx-0`}>
               <div className={`mt-1 flex sm:ml-7`}>
                 {!shouldHideLogo && (
@@ -63,8 +56,33 @@ export default function Header({
             </Link>
           </div>
           <div className="flex h-8 ">
+            <div className={`group relative ${!session ? "block" : "hidden"}`}>
+              <div
+                className={`${
+                  !session ? "block" : "hidden"
+                } absolute inset-0.5 h-10 w-32 animate-tilt rounded-lg bg-gradient-to-r from-blue/75 to-white/75 opacity-40 blur transition duration-500 group-hover:opacity-80 group-hover:duration-200`}
+              />
+              <div
+                onClick={() => setShowSignInModal(true)}
+                className={`my-auto mt-2 mr-4 flex ${
+                  !session ? "w-32" : "w-12"
+                } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
+                  !session ? "border border-mint" : "bg-transparent"
+                }  p-[1.5px] font-sans`}
+              >
+                {!session && (
+                  <div
+                    className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
+                  >
+                    <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
+                      {!userHasAccount ? "Sign In" : "Sign up"}
+                    </p>
+                  </div>
+                )}
+              </div>
+            </div>
             {session && pathname !== "/" && (
-              <div className="-mr-5 hidden flex-col items-end transition-all sm:flex">
+              <div className="mr-24 hidden flex-col items-end transition-all sm:flex ">
                 <button
                   onClick={() => setShowWidget((prev) => !prev)}
                   className="mt-3.5 mr-3 flex h-4 w-28 items-center justify-center rounded-lg border
@@ -79,24 +97,6 @@ export default function Header({
                 />
               </div>
             )}
-            <div
-              onClick={() => setShowSignInModal(true)}
-              className={`my-auto mt-2 mr-4 flex ${
-                !session ? "w-32" : "w-12"
-              } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
-                !session ? "border border-mint" : "bg-transparent"
-              }  p-[1.5px] font-sans`}
-            >
-              {!session && (
-                <div
-                  className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
-                >
-                  <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-200 hover:text-gray-50">
-                    {!userHasAccount ? "Sign In" : "Sign up"}
-                  </p>
-                </div>
-              )}
-            </div>
           </div>
           <UserDropdown session={session} />
         </div>

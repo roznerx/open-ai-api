@@ -1,16 +1,9 @@
 "use client"
 
 import React from "react"
-import dynamic from "next/dynamic"
 import Image from "next/image"
 import Link from "next/link"
-import { Loader2 } from "lucide-react"
-
-const ContactFormModal = dynamic(() => import("./modals/ContactFormModal"), {
-  loading: () => (
-    <Loader2 size={20} color="white" className="h-8 w-8 animate-spin" />
-  ),
-})
+import ContactFormModal from "./modals/ContactFormModal"
 
 export default function Footer({ session }: { session: any }) {
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)

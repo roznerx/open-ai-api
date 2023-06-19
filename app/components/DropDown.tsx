@@ -7,7 +7,6 @@ import {
   AngularIcon,
   Chai,
   Cypress,
-  Enzyme,
   Jasmine,
   JavascriptIcon,
   Jest,
@@ -41,11 +40,7 @@ export type TestingElementType =
   | "Jasmine"
   | "Testing Tool"
 
-export type libTestingElementType =
-  | "React Testing"
-  | "Chai"
-  | "Testing Library"
-  | "Enzyme"
+export type libTestingElementType = "React Testing" | "Chai" | "Testing Library"
 
 interface DropDownProps {
   element: LandElementType | TestingElementType | libTestingElementType
@@ -84,9 +79,8 @@ export default function DropDown({
           {element === "React Testing" && <RTL />}
           {element === "Chai" && <Chai />}
           {element === "Jest" && <Jest />}
-          {element === "Jasmine" && <Jasmine />}
-          {element === "Enzyme" && <Enzyme />}
           {element === "Mocha" && <Mocha />}
+          {element === "Jasmine" && <Jasmine />}
           <span className="ml-3">{element}</span>
         </div>
         <div className="pr-2">
@@ -146,7 +140,6 @@ export default function DropDown({
                     {item === "Jest" && <Jest />}
                     {item === "Mocha" && <Mocha />}
                     {item === "Jasmine" && <Jasmine />}
-                    {item === "Enzyme" && <Enzyme />}
 
                     <span>{item}</span>
                     {element === item ? (

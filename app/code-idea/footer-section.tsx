@@ -16,7 +16,6 @@ export default function FooterSection({
   clearPanel,
   stopGeneration,
   setTestLib,
-  generatedCode,
   langElement,
   langElements,
   loading,

@@ -18,6 +18,7 @@ import { getCodeGeniusPlaceHolder } from "utils/strings"
 import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
+import useCodeGeniusMood from "hooks/useCodeGeniusMood"
 
 let langElements: LandElementType[] = ["Typescript", "Javascript", "Python"]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
@@ -25,15 +26,11 @@ let libElements: LandElementType[] = ["React", "Vue", "Angular"]
 let testFrameworkElements: TestingElementType[] = [
   "Jest",
   "Cypress",
-  "Jasmine",
   "Mocha",
+  "Jasmine",
 ]
 
-let testLibElements: libTestingElementType[] = [
-  "React Testing",
-  "Enzyme",
-  "Chai",
-]
+let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
   userName,
@@ -41,9 +38,6 @@ export default function Client({
   setChatHasStarted,
   setGeneratedCode,
   generatedCode,
-  testFrameworkElement,
-  setTestLib,
-  setTestFrameworkElement,
   userId,
   userCredits,
   lib,
@@ -52,15 +46,14 @@ export default function Client({
   prompt,
   setLib,
   langElement,
-  testLibElement,
   codeSentence,
-  testSelected,
-  smartSelected,
-  docSelected,
   setLangElement,
   setCodeSentence,
-  improveSelected,
 }) {
+  const [testLibElement, setTestLib] =
+    useState<libTestingElementType>("Testing Library")
+  const [testFrameworkElement, setTestFrameworkElement] =
+    useState<TestingElementType>("Testing Tool")
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
@@ -70,21 +63,10 @@ export default function Client({
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [questionName, setQuestionName] = useState("")
-
   const controller = new AbortController()
-  const [scrollHeight, setScrollHeight] = useState(0)
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const placeHolderText = getCodeGeniusPlaceHolder(mode)
-
-  // const searchParams = useSearchParams()
-
-  // useEffect(() => {
-  //   if (searchParams) {
-  //     const framework = searchParams.get("framework")
-
-  //     setTestFrameworkElement(framework)
-  //   }
-  // }, [searchParams, setTestFrameworkElement])
+  const codeGeniusMood = useCodeGeniusMood()
 
   const codeMessages = useRef([
     {
@@ -116,12 +98,13 @@ export default function Client({
             content: "",
           },
         ]
-        codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of background in unit testing, integration testing and e2e testing. 
+        codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of 
+        background in unit testing, integration testing and e2e testing. 
         Make sure tu use  ${
           testFrameworkElement === "Cypress"
             ? testFrameworkElement + " as the test framework"
-            : testFrameworkElement + " and " + testLibElement + " Library"
-        }.`
+            : testFrameworkElement + " and " + testLibElement
+        }. Only add minimal explanations to the code you output. Always output code delimited by triple backticks.`
         break
       case "improve":
         codeMessages.current = [
@@ -156,17 +139,6 @@ export default function Client({
     }
   }, [langElement, lib, mode, testFrameworkElement, testLibElement, setMode])
 
-  // Auto scroll to bottom.
-  // useEffect(() => {
-  //   if (chatContainerRef && chatContainerRef.current) {
-  //     setScrollHeight(chatContainerRef.current?.scrollHeight)
-  //     chatContainerRef.current?.scrollTo({
-  //       top: scrollHeight - chatContainerRef.current.offsetHeight,
-  //       behavior: "smooth",
-  //     })
-  //   }
-  // }, [chatContainerRef, chatContainerRef?.current?.scrollHeight, scrollHeight])
-
   //Clean up previous code responses
   useEffect(() => {
     if (generatedCode.length > 0 && !reader && !userHasAResponse) {
@@ -197,9 +169,9 @@ export default function Client({
         content: prompt,
       },
     ]
-    console.log("codeMessages :", codeMessages.current)
+    // console.log("codeMessages :", codeMessages.current)
 
-    generateCode(
+    generateCode({
       setReader,
       setGeneratedCode,
       codeMessages,
@@ -208,26 +180,18 @@ export default function Client({
       setCreditsLeft,
       setCreditsModaIsOpen,
       setLoading,
-    )
+    })
   }
 
   const onCodeGeneration = () => {
-    //Validate testing tools.
-    if (mode === "test" && testFrameworkElement === "Testing Tool") {
-      setModaIsOpen(true)
+    setChatHasStarted(true)
+    if (!creditsLeft || creditsLeft === 0) {
+      setCreditsModaIsOpen(true)
       return false
     }
-
-    if (mode === "smart" && langElement === "Language") {
-      setModaIsOpen(true)
-      return false
-    }
-
     generateCompletion()
+    setCodeSentence("")
   }
-  // const onSaveCode = () => {
-  //   setShowSavePromptModal(true)
-  // }
 
   const onSaveQuestionModal = () => {
     const payload = {
@@ -239,42 +203,6 @@ export default function Client({
       method: "POST",
       body: JSON.stringify(payload),
     }).then((res) => console.log("res:", res))
-  }
-
-  function getCodeGeniusMode() {
-    if (smartSelected && mode === "smart") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
-            Smart suggestions
-          </span>{" "}
-        </div>
-      )
-    } else if (testSelected || mode === "test") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
-            Test generation
-          </span>{" "}
-        </div>
-      )
-    } else if (improveSelected || mode === "improve") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
-            Improve Code
-          </span>{" "}
-        </div>
-      )
-    } else if (docSelected || mode === "docs") {
-      return (
-        <div className="mt-5 inline-flex font-sans">
-          <span className="ml-5  text-2xl font-semibold text-white">
-            Docs generation
-          </span>{" "}
-        </div>
-      )
-    }
   }
 
   const stopGeneration = async () => {
@@ -299,7 +227,6 @@ export default function Client({
     setChatHasStarted(false)
     setGeneratedCode("")
     setCodeSentence("")
-    setMode(mode)
   }
 
   const generatedMessages = generatedCode.split("<>").filter((i) => i !== "")
@@ -316,7 +243,11 @@ export default function Client({
       >
         <div className="w-full">
           <div className="mx-auto  w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
-            {getCodeGeniusMode()}
+            <div className="mt-5 inline-flex font-sans">
+              <span className="ml-5 text-2xl font-semibold text-white">
+                {codeGeniusMood}
+              </span>
+            </div>
           </div>
           <Editor
             padding={20}
@@ -385,19 +316,11 @@ export default function Client({
         buttonLink="/pricing"
         setIsOpen={setCreditsModaIsOpen}
       />
-
       <Modal
-        isCreditsModal
-        title={`Configure your ${
-          mode === "smart" ? " programming languages" : "testing tools"
-        }`}
-        body={`${
-          mode === "smart"
-            ? " You have the option to select programming languages, and if desired, a UI library, to help give you a better suggestion. Use the dropdown menus located in the bottom left corner."
-            : "You have the option to select a testing framework and, if desired, a testing library. Use the dropdown menus located in the bottom left corner."
-        }`}
+        body="Our servers are taking longer than expected. We suggest
+        rewording your instruction or input to get a faster result."
         isOpen={modaIsOpen}
-        buttonText="Got it"
+        buttonText="Ok"
         setIsOpen={setModaIsOpen}
       />
       <Modal

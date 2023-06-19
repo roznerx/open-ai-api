@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react"
+import { customAlphabet } from "nanoid"
 import useSSR from "./useSSR"
 
 export const createElement = (id: string): HTMLElement => {
@@ -22,7 +23,7 @@ export const usePortal = (selectId: string = getId()): HTMLElement | null => {
       document.body.appendChild(el)
     }
     setElSnapshot(el)
-  }, [])
+  }, [id])
 
   return elSnapshot
 }
@@ -31,10 +32,7 @@ export const getId = () => {
   return Math.random().toString(32).slice(2, 10)
 }
 
-export async function updateApiCallsAndCredits(
-  userId: string,
-  tokensCount: number,
-) {
+export async function updateApiCallsAndCredits(userId: string) {
   let data: any = {}
   //Update API CALLS
   const response = await fetch("/api/credits/update", {
@@ -44,7 +42,6 @@ export async function updateApiCallsAndCredits(
     },
     body: JSON.stringify({
       userId: userId,
-      tokensCount: tokensCount,
     }),
   })
   const apiCallUpdateResponse = await response.json()
@@ -76,4 +73,15 @@ export async function updateApiCallsAndCredits(
     data = apiCallUpdateResponse
   }
   return data ? data : {}
+}
+
+// 7-character random string
+export const nanoid = customAlphabet(
+  "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+  7,
+)
+
+const decoder = new TextDecoder()
+export function decodeAIStreamChunk(chunk: Uint8Array): string {
+  return decoder.decode(chunk)
 }

@@ -2,10 +2,11 @@ import { Menu, Transition } from "@headlessui/react"
 import { Code, LayoutDashboard, LogOut, MessageSquare } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
-import Link from "next/link"
+import { useRouter } from "next/navigation"
 import { Fragment } from "react"
 
 export default function UserMenu({ session, email, image }) {
+  const router = useRouter()
   return (
     <div className="absolute top-4 right-4 z-50 w-auto text-center sm:right-2 sm:mr-7">
       <Menu as="div" className="relative">
@@ -30,11 +31,6 @@ export default function UserMenu({ session, email, image }) {
                 </span>
               </div>
             )}
-
-            {/* <ChevronDown
-              className="mt-1 h-6 w-5 font-bold text-gray-200"
-              aria-hidden="true"
-            /> */}
           </Menu.Button>
         </div>
         <Transition
@@ -50,8 +46,8 @@ export default function UserMenu({ session, email, image }) {
             <div className="h-11">
               <Menu.Item>
                 {({ active }) => (
-                  <Link
-                    href="/dashboard"
+                  <div
+                    onClick={() => router.push("/dashboard")}
                     className={`flex w-full cursor-pointer items-center justify-start ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
@@ -62,15 +58,15 @@ export default function UserMenu({ session, email, image }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>Dashboard</span>
-                  </Link>
+                  </div>
                 )}
               </Menu.Item>
             </div>
             <div className="h-11">
               <Menu.Item>
                 {({ active }) => (
-                  <Link
-                    href="/code-idea"
+                  <div
+                    onClick={() => router.push("/code-idea")}
                     className={`flex w-full cursor-pointer items-center justify-start ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
@@ -81,15 +77,15 @@ export default function UserMenu({ session, email, image }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>Code Idea</span>
-                  </Link>
+                  </div>
                 )}
               </Menu.Item>
             </div>
             <div className="h-11">
               <Menu.Item>
                 {({ active }) => (
-                  <Link
-                    href="/code-chat"
+                  <div
+                    onClick={() => router.push("/code-chat")}
                     className={`flex w-full cursor-pointer items-center justify-start ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
@@ -100,7 +96,7 @@ export default function UserMenu({ session, email, image }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>Chat</span>
-                  </Link>
+                  </div>
                 )}
               </Menu.Item>
             </div>
