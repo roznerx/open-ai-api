@@ -98,27 +98,8 @@ export default function FooterSection({
             </>
           )}
         </div>
-        <div className="mr-3 flex justify-end pt-3 sm:mx-auto sm:mr-0 sm:items-center sm:gap-0 sm:pt-0">
-          <div className="flex">
-            <MaterialTooltip
-              className="-mt-3  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-              content="Stop Generation"
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: 25 },
-              }}
-            >
-              <div
-                onClick={() => stopGeneration()}
-                className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
-              >
-                <Hand
-                  width={24}
-                  height={24}
-                  className="mx-auto mt-2  text-white hover:text-mint"
-                />
-              </div>
-            </MaterialTooltip>
+        <div className="mr-3 flex justify-between pt-3 sm:mx-auto sm:mr-0 sm:items-center sm:justify-end sm:gap-0 sm:pt-0">
+          <div className="ml-4 flex sm:ml-0">
             <MaterialTooltip
               className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
               content="Clear Pannel"
@@ -139,25 +120,25 @@ export default function FooterSection({
                 />
               </div>
             </MaterialTooltip>
-            {/* <MaterialTooltip
-              className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-              content="Copy Code"
+            <MaterialTooltip
+              className="-mt-3  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
+              content="Stop Generation"
               animate={{
                 mount: { scale: 1, y: 0 },
                 unmount: { scale: 0, y: 25 },
               }}
             >
               <div
-                onClick={() => copyHandler()}
+                onClick={() => stopGeneration()}
                 className={`mr-3 h-[40px] w-[40px] cursor-pointer rounded-md bg-purple-500`}
               >
-                <Copy
+                <Hand
                   width={24}
                   height={24}
-                  className="mx-auto mt-2 text-white hover:text-mint"
+                  className="mx-auto mt-2  text-white hover:text-mint"
                 />
               </div>
-            </MaterialTooltip> */}
+            </MaterialTooltip>
           </div>
           <div className="flex sm:mr-4">
             <Button
