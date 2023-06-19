@@ -97,8 +97,8 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
           />
           <button
             type="submit"
-            title="Submit your question"
-            aria-label="Submit your question"
+            title="Submit your prompt"
+            aria-label="Submit your prompt"
             className="absolute right-4 top-[4px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1"
           >
             <Send
