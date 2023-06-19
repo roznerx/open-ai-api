@@ -1,16 +1,13 @@
 "use client"
 
-import dynamic from "next/dynamic"
-
 import { useSignInModal } from "./components/modals/SignInModal"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
-import HomeChat from "./home/HomeChat"
+
 import Script from "next/script"
 import SuperHero from "./home/SuperHero"
-
-const Feature = dynamic(() => import("./home/Feature"), {
-  loading: () => null,
-})
+import Feature from "./home/Feature"
+import HomeChat from "./home/HomeChat"
+import Hero from "./home/Hero"
 
 export default function Client({
   session,
@@ -40,6 +37,7 @@ export default function Client({
         session={session}
         loggedUserData={loggedUserData}
       />
+      <Hero />
       <Feature session={session} setShowSignInModal={setShowSignInModal} />
       <Script
         strategy="afterInteractive"

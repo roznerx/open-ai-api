@@ -66,8 +66,17 @@ module.exports = {
     extend: {
       animation: {
         tilt: "tilt 10s infinite linear",
+        bounceArrow: "bounce 1s infinite",
       },
       keyframes: {
+        bounce: {
+          "0%, 100%": {
+            transform: "translateY(0)",
+          },
+          "50%": {
+            transform: "translateY(-25px)",
+          },
+        },
         tilt: {
           "0%, 50%, 100%": {
             transform: "rotate(0deg)",

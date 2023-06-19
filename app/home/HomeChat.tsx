@@ -19,10 +19,6 @@ const ChatContainer = dynamic(() => import("./ChatContainer"), {
   loading: () => null,
 })
 
-const Hero = dynamic(() => import("./Hero"), {
-  loading: () => null,
-})
-
 const CombinedMessages = dynamic(
   () => import("app/components/shared/CombinedMessages"),
   {
@@ -81,8 +77,6 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     }
   }, [session, stop, isLoading])
 
-  const hasContent = messages.length > 0
-
   return (
     <>
       <SignInModal />
@@ -103,6 +97,8 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
           />
           <button
             type="submit"
+            title="Submit your question"
+            aria-label="Submit your question"
             className="absolute right-4 top-[4px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1"
           >
             <Send
@@ -125,7 +121,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
             />
           )}
         </div>
-        <Hero hasContent={hasContent} />
+
         <Modal
           title={CREDITS_MODAL_COPY.title}
           isCreditsModal

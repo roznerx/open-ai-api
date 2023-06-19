@@ -1,25 +1,15 @@
 "use client"
 
-import { motion } from "framer-motion"
 import { ArrowDown } from "lucide-react"
 
-export default function Hero({ hasContent }) {
+export default function Hero() {
   return (
     <div
-      className={`mb-10  ${
-        hasContent ? "pt-16 sm:pt-0" : "pt-0"
-      } flex flex-col items-center justify-center font-sans opacity-60 `}
+      className={`mb-10 flex flex-col items-center justify-center pt-16 font-sans opacity-60 sm:pt-0`}
     >
-      <motion.div
-        animate={{ y: [-30, 0] }}
-        transition={{
-          ease: "easeOut",
-          duration: 2.5,
-          repeat: Infinity,
-        }}
-      >
+      <div className="duration-2000 flex h-12 w-12 animate-bounceArrow items-center justify-center">
         <ArrowDown size={30} color="white" />
-      </motion.div>
+      </div>
       <p className="text-[13px] text-white">Scroll</p>
     </div>
   )
