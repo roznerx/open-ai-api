@@ -20,6 +20,7 @@ import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useCodeGeniusMood from "hooks/useCodeGeniusMood"
 import { usePathname } from "next/navigation"
+import useWindowSize from "hooks/use-window-size"
 
 let langElements: LandElementType[] = ["Typescript", "Javascript", "Python"]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
@@ -52,6 +53,7 @@ export default function Client({
   setCodeSentence,
 }) {
   const pathName = usePathname()
+  const { isMobile } = useWindowSize()
   const [testLibElement, setTestLib] =
     useState<libTestingElementType>("Testing Library")
   const [testFrameworkElement, setTestFrameworkElement] =
@@ -163,15 +165,14 @@ export default function Client({
 
   const generateCompletion = async () => {
     setLoading(true)
-
+    setChatHasStarted(true)
     codeMessages.current = [
       ...codeMessages.current,
       {
         role: "user",
-        content: prompt,
+        content: codeSentence,
       },
     ]
-    console.log("codeMessages :", codeMessages.current)
 
     generateCode({
       setReader,
@@ -187,23 +188,25 @@ export default function Client({
 
   const onCodeGeneration = () => {
     //Validate testing tools.
-    if (mode === "test" && testFrameworkElement === "Testing Tool") {
+    if (
+      !isMobile &&
+      mode === "test" &&
+      testFrameworkElement === "Testing Tool"
+    ) {
       setModaIsOpen(true)
       return false
     }
 
-    if (mode === "smart" && langElement === "Language") {
+    if (!isMobile && mode === "smart" && langElement === "Language") {
       setModaIsOpen(true)
       return false
     }
 
-    setChatHasStarted(true)
     if (!creditsLeft || creditsLeft === 0) {
       setCreditsModaIsOpen(true)
       return false
     }
     generateCompletion()
-    setCodeSentence("")
   }
 
   const onSaveQuestionModal = () => {
