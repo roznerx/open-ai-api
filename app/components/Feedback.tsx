@@ -5,7 +5,7 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
   const [userMessage, setUserMessage] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [userPressSent, setUserPressSent] = useState(false)
-  const [likeHeart, setLikeHeart] = useState(false)
+
   const textAreaRef = useRef<any>(null)
   useEffect(() => {
     if (showWidget) {

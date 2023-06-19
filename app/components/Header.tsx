@@ -4,28 +4,25 @@ import Link from "next/link"
 import UserDropdown from "app/components/auth/UserDropdown"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
-import useWindowSize from "hooks/use-window-size"
+
 import { useState } from "react"
 import Feedback from "./Feedback"
 
 export default function Header({
   session,
+  shouldHideLogo,
   userHasAccount,
   setShowSignInModal,
 }: {
   session?: any
+  shouldHideLogo?: any
   showSignInModal?: any
   userHasAccount?: any
   setShowSignInModal: any
 }) {
   const pathname = usePathname()
   const [showWidget, setShowWidget] = useState(false)
-  const { isMobile } = useWindowSize()
-  const shouldHideLogo =
-    isMobile &&
-    (pathname == "/code-idea" ||
-      pathname === "/code-chat" ||
-      pathname === "/dashboard")
+
   return (
     <>
       <div
@@ -33,11 +30,7 @@ export default function Header({
         className={`absolute top-0 z-20 w-full bg-transparent`}
       >
         <div className="flex items-center justify-between">
-          <div
-            className={` ${
-              pathname === "/pricing" ? "ml-4" : "ml-4"
-            } mt-4 sm:ml-14`}
-          >
+          <div className={`ml-4 mt-4 sm:ml-14`}>
             <Link href="/" className={` flex sm:mx-0`}>
               <div className={`mt-1 flex sm:ml-7`}>
                 {!shouldHideLogo && (

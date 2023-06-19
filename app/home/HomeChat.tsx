@@ -6,39 +6,27 @@ import dynamic from "next/dynamic"
 import { useSignInModal } from "app/components/modals/SignInModal"
 
 import { AI_MOOD, CREDITS_MODAL_COPY } from "@/lib/constants"
-import { Loader2, Send } from "lucide-react"
+import { Send } from "lucide-react"
 
 import { useChat } from "hooks/use-chat"
 import useWindowSize from "hooks/use-window-size"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
 const Modal = dynamic(() => import("app/components/Modal"), {
-  loading: () => (
-    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
-  ),
+  loading: () => null,
 })
 const ChatContainer = dynamic(() => import("./ChatContainer"), {
-  loading: () => (
-    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
-  ),
+  loading: () => null,
 })
 
 const Hero = dynamic(() => import("./Hero"), {
-  loading: () => (
-    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
-  ),
+  loading: () => null,
 })
 
 const CombinedMessages = dynamic(
   () => import("app/components/shared/CombinedMessages"),
   {
-    loading: () => (
-      <Loader2
-        size={20}
-        color="white"
-        className="hidden h-8 w-8 animate-spin"
-      />
-    ),
+    loading: () => null,
   },
 )
 
