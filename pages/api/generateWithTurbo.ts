@@ -9,15 +9,34 @@ export const config = {
 }
 
 const handler = async (req: Request): Promise<any> => {
-  const { messages } = (await req.json()) as {
-    messages?: []
+  const {
+    messages,
+    functions = [
+      {
+        name: "getMovies",
+        description: "Get a collection of movies and it's metadata",
+        parameters: {
+          type: "string",
+          properties: {
+            query: {
+              type: "string",
+              description: "The query string for a movie",
+            },
+          },
+          required: ["query"],
+        },
+      },
+    ],
+  } = (await req.json()) as {
+    messages?: string[]
+    functions?: any
   }
 
   const payload: OpenAITurboPayload = {
     model: "gpt-3.5-turbo-0613",
     messages,
-    top_p: 0.3,
-    temperature: 0.7,
+    functions: functions,
+    function_call: "auto",
     stream: true,
   }
 

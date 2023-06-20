@@ -33,7 +33,10 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
           ? result.map((item: any, idx) => {
               if (item.hasOwnProperty("text")) {
                 return (
-                  <div key={idx} className="mx-2 mt-2 flex">
+                  <div
+                    key={idx}
+                    className="mx-4 mt-2 flex w-full sm:mx-auto sm:w-3/4 "
+                  >
                     <div className="flex items-center justify-center">
                       <div className="mr-2">
                         {item.role === "user" ? (
