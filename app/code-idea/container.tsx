@@ -96,7 +96,6 @@ export default function Container({ session }) {
         lib={lib}
         langElement={langElement}
         setLangElement={setLangElement}
-        prompt={prompt}
         codeSentence={codeSentence}
         setCodeSentence={setCodeSentence}
       />

@@ -51,16 +51,18 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
                         ) : null}
                       </div>
                     </div>
-                    <div className={`w-full rounded-lg ${bg} p-2`}>
-                      <p
-                        style={{ borderRadius: "0px" }}
-                        className={`ml-1 text-left leading-7 ${
-                          fontColor ? fontColor : "text-white"
-                        }`}
-                      >
-                        {item.text}
-                      </p>
-                    </div>
+                    {item.text !== "" && (
+                      <div className={`w-full rounded-lg ${bg} p-2`}>
+                        <p
+                          style={{ borderRadius: "0px" }}
+                          className={`ml-1 text-left leading-7 ${
+                            fontColor ? fontColor : "text-white"
+                          }`}
+                        >
+                          {item.text}
+                        </p>
+                      </div>
+                    )}
                   </div>
                 )
               } else {

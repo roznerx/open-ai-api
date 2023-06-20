@@ -19,7 +19,7 @@ export interface OpenAIStreamPayload {
 export interface OpenAITurboPayload {
   model: string
   messages: any
-  top_p: number
+  top_p?: number
   stream?: boolean
   temperature?: number
 }

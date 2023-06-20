@@ -45,7 +45,6 @@ export default function Client({
   lib,
   mode,
   setMode,
-  prompt,
   setLib,
   langElement,
   codeSentence,
@@ -103,12 +102,12 @@ export default function Client({
           },
         ]
         codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of 
-        background in unit testing, integration testing and e2e testing. 
-        Make sure tu use  ${
+        background in unit, integration, and e2e testing. Make sure tu use  ${
           testFrameworkElement === "Cypress"
             ? testFrameworkElement + " as the test framework"
             : testFrameworkElement + " and " + testLibElement
-        }. Only add minimal explanations to the code you output. Always output code delimited by triple backticks.`
+        }. Anticipate to the reasons a test would fail and reduce the test failure at minimum. 
+        Only ouptut passing tests and always output code delimited by triple backticks.`
         break
       case "improve":
         codeMessages.current = [
@@ -173,6 +172,7 @@ export default function Client({
         content: codeSentence,
       },
     ]
+    console.log("codeMessages.current", codeMessages.current)
 
     generateCode({
       setReader,
