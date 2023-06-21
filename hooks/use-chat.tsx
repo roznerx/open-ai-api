@@ -1,50 +1,13 @@
+
 import { useCallback, useId, useRef, useEffect, useState } from "react"
 import useSWRMutation from "swr/mutation"
 import useSWR from "swr"
-import { nanoid, decodeAIStreamChunk } from "../utils"
+import { nanoid, createChunkDecoder } from "../utils"
 
-import type { Message, CreateMessage, UseChatOptions } from "../utils/types"
+import type { Message, CreateMessage, UseChatOptions, UseChatHelpers } from "../utils/types"
 export type { Message, CreateMessage, UseChatOptions }
 
-export type UseChatHelpers = {
-  /** Current messages in the chat */
-  messages: Message[]
-  /** The error object of the API request */
-  error: undefined | Error
-  /**
-   * Append a user message to the chat list. This triggers the API call to fetch
-   * the assistant's response.
-   */
-  append: (
-    message: Message | CreateMessage,
-  ) => Promise<string | null | undefined>
-  /**
-   * Reload the last AI chat response for the given chat history. If the last
-   * message isn't from the assistant, it will request the API to generate a
-   * new response.
-   */
-  reload: () => Promise<string | null | undefined>
-  /**
-   * Abort the current request immediately, keep the generated tokens if any.
-   */
-  stop: () => void
-  /**
-   * Update the `messages` state locally. This is useful when you want to
-   * edit the messages on the client, and then trigger the `reload` method
-   * manually to regenerate the AI response.
-   */
-  setMessages: (messages: Message[]) => void
-  /** The current value of the input */
-  input: string
-  /** setState-powered method to update the input value */
-  setInput: React.Dispatch<React.SetStateAction<string>>
-  /** An input/textarea-ready onChange handler to control the value of the input */
-  handleInputChange: (e: any) => void
-  /** Form submission handler to automattically reset input and append a user message  */
-  handleSubmit: (e: React.FormEvent<HTMLFormElement>) => void
-  /** Whether the API request is in progress */
-  isLoading: boolean
-}
+
 
 export function useChat({
   api = "/api/chat",
@@ -158,6 +121,7 @@ export function useChat({
         const createdAt = new Date()
         const replyId = nanoid()
         const reader = res.body.getReader()
+        const decode = createChunkDecoder()
 
         while (true) {
           const { done, value } = await reader.read()
@@ -165,7 +129,7 @@ export function useChat({
             break
           }
           // Update the chat state with the new message tokens.
-          result += decodeAIStreamChunk(value)
+          result += decode(value)
           mutate(
             [
               ...messagesSnapshot,
