@@ -79,7 +79,7 @@ export default function Feature({ setShowSignInModal, session }) {
         <div className="mx-auto mt-28 mb-8 w-full p-4 text-center sm:w-[60%]">
           <h2 className="mx-auto bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl">
             The AI programming genius that helps you coding faster, easier, and
-            more efficient!
+            more efficient.
           </h2>
           <p className="text-xl my-8 text-gray-200 sm:text-2xl">
             Writing great code can be a challenging and time-consuming task, but
@@ -93,7 +93,7 @@ export default function Feature({ setShowSignInModal, session }) {
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h3 className="mx-auto w-[100%] text-center text-4xl font-bold text-white sm:ml-0 sm:w-[80%] sm:pl-3 sm:text-left">
-              Improve your code and get suggestions
+              Boost your code performance with AI
             </h3>
             <p className="my-auto mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
               Code Genius analyzes your code in real-time, offering smart
@@ -107,10 +107,10 @@ export default function Feature({ setShowSignInModal, session }) {
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h4 className="mx-auto w-[90%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-4 sm:text-left md:w-[85%]">
-              Save time generating code tests
+              Generate unit tests in seconds
             </h4>
             <p className="mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
-              Writing tests can be a tedious and time-consuming task. With Code
+              Writing unit tests can be a tedious and time-consuming task. With Code
               Genius you can automatically generate test cases that cover a wide
               range of scenarios, ensuring that your code is thoroughly tested
               and reliable.
@@ -121,7 +121,7 @@ export default function Feature({ setShowSignInModal, session }) {
           </div>
           <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
             <h5 className="mx-auto w-[90%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-0 sm:text-left">
-              Create code documentation in seconds
+              Create code documentation faster
             </h5>
             <p className="mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
               Good documentation is key to writing maintainable code. With Code
