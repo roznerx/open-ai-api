@@ -118,7 +118,7 @@ export default function Client({
           },
         ]
         codeMessages.current[0].content =
-          "You are a helpful and specialized AI software assistant which is specialized in code performance and customization."
+          "You are a recommendation agent, who gives the user movies recommendations based on movie rating."
         break
       case "docs":
         codeMessages.current = [
@@ -173,6 +173,7 @@ export default function Client({
         content: codeSentence,
       },
     ]
+    console.log("codeMessages.current:", codeMessages.current)
 
     generateCode({
       setReader,

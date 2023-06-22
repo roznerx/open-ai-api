@@ -1,4 +1,5 @@
 /* eslint-disable unused-imports/no-unused-vars */
+
 import { updateApiCallsAndCredits } from "./helpers"
 
 export async function generateCodeWithTurbo(
@@ -6,8 +7,10 @@ export async function generateCodeWithTurbo(
   codeMessages,
   setReader,
   setGeneratedCode,
-  userId = null,
-  setCreditsModaIsOpen,
+  functions,
+  functionsMessage,
+  setCodeSentence,
+  setIsLoading
 ) {
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
@@ -15,19 +18,21 @@ export async function generateCodeWithTurbo(
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      messages: [...codeMessages.current],
+      messages: [...codeMessages.current, functionsMessage],
+      functions,
+      stream: true,
     }),
   })
 
   if (!response.ok) {
-    return
+    throw Error(response.statusText)
   }
 
   // This data is a ReadableStream
   const data = response.body
 
   if (!data) {
-    return
+    throw Error(response.statusText)
   }
 
   const newReader = data.getReader()
@@ -36,7 +41,8 @@ export async function generateCodeWithTurbo(
   }
   const decoder = new TextDecoder()
   let done = false
-  let tokensCount = 0
+  setCodeSentence('')
+  setIsLoading(false)
   try {
     while (!done) {
       const { value, done: doneReading } = await newReader.read()
@@ -52,45 +58,11 @@ export async function generateCodeWithTurbo(
   } catch (error) {
     return `There was an error with your request ${error}`
   } finally {
+    setGeneratedCode((prev) => prev + "<>")
     setReader(null)
-    //✨ Make some credits update Magic ✨
-    if (userId) {
-      const data = await updateApiCallsAndCredits(userId)
-
-      if (data?.creditsLeft === 0) {
-        setCreditsModaIsOpen(true)
-      }
-
-      //RESET TOKENS COUNT.
-      tokensCount = 0
-    }
   }
 }
 
-export const fetchWithTurbo = async (
-  assintanceMood: string,
-  prompt: string,
-) => {
-  const response = await fetch("/api/generateWithTurbo", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      messages: [
-        {
-          role: "system",
-          content: assintanceMood,
-        },
-        {
-          role: "user",
-          content: prompt,
-        },
-      ],
-    }),
-  })
-  return response
-}
 
 export async function generateCode({
   setReader,
@@ -118,8 +90,10 @@ export async function generateCode({
     },
     body: JSON.stringify({
       messages: [...codeMessages.current],
+      stream: true,
     }),
   })
+
 
   if (!response.ok) {
     return

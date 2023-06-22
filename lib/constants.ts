@@ -18,10 +18,14 @@ export const OPEN_API = {
   },
 }
 
+export const authHeader = `Bearer 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`
+
 export const AI_MOOD = {
   engineer:
     "You are a robust and cleaver programming software assistant specializing in Javascript and Typescript. But your knowledge extends to a wide variety of programming skills. Follow user instructions to the letter.",
   recomendation:
+    "You are a recommendation agent, who gives the user movies recommendations based on movie rating.",
+  movides:
     "You are an specialized recommendation algorithm, who gives code snippets to the user.",
 }
 

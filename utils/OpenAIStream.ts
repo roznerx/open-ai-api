@@ -18,33 +18,18 @@ export interface OpenAIStreamPayload {
 }
 export interface OpenAITurboPayload {
   model: string
-  messages?: string[]
-  functions?: []
-  function_call: string
+  messages: any
+  functions?: any
   top_p?: number
   stream?: boolean
   temperature?: number
-}
-
-const fetchOptions = { method: "GET", headers: { accept: "application/json" } }
-const MOVIES_ENDPOINT =
-  "https://api.themoviedb.org/3/search/movie?api_key=a0471c3efcac73e624b948daeda6085f"
-
-// Function to fetch movies from the API
-async function fetchMovies(searchTerm) {
-  const response = await fetch(
-    `${MOVIES_ENDPOINT}&query=${searchTerm}`,
-    fetchOptions,
-  )
-  const data = await response.json()
-  return data
 }
 
 export async function OpenAIStream(payload: OpenAIStreamPayload) {
   const encoder = new TextEncoder()
   const decoder = new TextDecoder()
 
-  const res = await fetch("https://api.openai.com/v1/chat/completions", {
+  const res = await fetch("https://api.openai.com/v1/completions", {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${process.env.OPENAI_API_KEY ?? ""}`,
@@ -101,6 +86,7 @@ export async function OpenAITurboStream(payload: OpenAITurboPayload) {
     method: "POST",
     body: JSON.stringify(payload),
   })
+  
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -114,17 +100,9 @@ export async function OpenAITurboStream(payload: OpenAITurboPayload) {
             return
           }
           try {
-            //Handle API response.
             const json = JSON.parse(data)
-            if (json.choices[0]["finish_reason"] === "function_call") {
-              const functionName = json.choices[0].message.function_call.name
-              return {
-                finish_reason: "function_call",
-                functionName,
-              }
-            }
-
             const text = json.choices[0].delta.content
+            console.log("text:", text)
             const queue = encoder.encode(text)
             controller.enqueue(queue)
             // counter++

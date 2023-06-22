@@ -1,18 +1,14 @@
-import { User } from "lucide-react"
-import Image from "next/image"
 import React from "react"
-import { parseText, legacyParseText } from "utils/parseText"
 import { CodeMessagesProps } from "utils/types"
-import GenerateCode from "../GenerateCode"
 
-const LogoCodeGenius = React.memo(() => (
-  <Image
-    src={"/logo/code-genius.svg"}
-    width={33}
-    height={33}
-    alt="Code Genius"
-  />
-))
+// const LogoCodeGenius = React.memo(() => (
+//   <Image
+//     src={"/logo/code-genius.svg"}
+//     width={33}
+//     height={33}
+//     alt="Code Genius"
+//   />
+// ))
 
 export const CombinedMessages: React.FC<CodeMessagesProps> = ({
   pathName,
@@ -23,7 +19,20 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
 }) => {
   return (
     <>
-      {generatedMessages.map((message) => {
+      {generatedMessages.map((message, idx) => {
+        return (
+          <>
+            <div key={idx} className={`w-full rounded-lg ${bg} p-2`}>
+              <p className={`px-4 text-left w-[900px] leading-7 text-white`}>
+                {message}
+              </p>
+            </div>
+          </>
+        )
+      })}
+      {/* {generatedMessages.map((message) => {
+        // console.log('message');
+        
         const result =
           pathName !== "/code-idea"
             ? parseText({ message })
@@ -79,7 +88,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = ({
               }
             })
           : null
-      })}
+      })} */}
     </>
   )
 }
