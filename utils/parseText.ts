@@ -16,7 +16,7 @@ export function parseText({ message, delimiter = "```" }) {
 }
 
 export function legacyParseText({ text = "", delimiter = "```" }) {
-  console.log("text:: in legacy parse:", text)
+  
   const parts = text.split(delimiter)
 
   const result: any = []

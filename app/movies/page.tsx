@@ -1,4 +1,4 @@
-"use client"
+'use client'
 
 import { authHeader } from "@/lib/constants"
 import { useSignInModal } from "app/components/modals/SignInModal"
@@ -15,30 +15,20 @@ import React, {
   useRef,
   useState,
 } from "react"
-
 import { generateCodeWithTurbo } from "utils/generateCode"
 
-const fetchOptions =  { method: 'GET', headers: { accept: 'application/json'} };
-const MOVIES_ENDPOINT =
-    "https://api.themoviedb.org/3/search/movie?api_key=a0471c3efcac73e624b948daeda6085f";
 
-  // Function to fetch movies from the API
-  async function getMovies(args: { query: string; }) {
-    const response = await fetch(`${MOVIES_ENDPOINT}&query=${args.query}`, fetchOptions)
-    const data = await response.json();
-    return data;
-  }
 
-  const functions = [
+const functions = [
     {
-      name: "getMovies",
-      description: "Get a collection of movies and it's metadata",
+      name: "getInfo",
+      description: "Get updating information and metadata about anything",
       parameters: {
         type: "object",
         properties: {
           query: {
             type: "string",
-            description: "The query string for a movie",
+            description: "The user query stringing to search for",
           },
         },
         required: ["query"],
@@ -48,7 +38,7 @@ const MOVIES_ENDPOINT =
 
 
 export default function Page() {
-  const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
+  const { setShowSignInModal, showSignInModal } = useSignInModal({
     userHasAccount: true,
   })
   const textareaRef = useRef<any>(null)
@@ -63,7 +53,7 @@ export default function Page() {
   const codeMessages = useRef([
     {
       role: "system",
-      content: `You are a recommendation agent, who gives the user movies recommendations based on movie rating.`,
+      content: `You are a useful agent who knows specific and updated information about any topic in general`,
     },
   ])
 
@@ -96,8 +86,8 @@ export default function Page() {
         },
         method: "POST",
         body: JSON.stringify({
-          messages: [...codeMessages.current],
           model: "gpt-3.5-turbo-0613",
+          messages: [...codeMessages.current],
           functions: functions,
           function_call: "auto",
         }),
@@ -111,24 +101,19 @@ export default function Page() {
         // const functionName = json.choices[0].message.function_call.function
         //parse functino arguments
         const functionArguments = JSON.parse(json.choices[0].message.function_call.arguments)
-        const functionContent = await getMovies(functionArguments)
-        console.log("functionContent:", functionContent.results)
         
-        // console.log("Payload: ", [...codeMessages.current, { role: "function", "name": "getMovies", content: JSON.stringify(functionContent.results.splice(0, 3)) }])
-        const functionsMessage = { role: "function", "name": "getMovies", content: JSON.stringify(functionContent.results) }
+        console.log("functionArguments:", functionArguments)
+
+        // const functionContent = await getInfo(functionArguments)
+        const info = await fetch(`/api/search?query=${functionArguments.query}`)
+        const data = await info.json()    
+        const infoDescription = data.info.map((item) => item.description)
+        console.log("infoDescription:", infoDescription)
+        //Function meesage
+        const functionsMessage = { role: "function", "name": "getInfo", content: JSON.stringify(infoDescription) }
         
         generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode, functions, functionsMessage, setCodeSentence, setIsLoading)
 
-        // await fetch("/api/generateWithTurbo", {
-        //   method: "POST",
-        //   headers: {
-        //     "Content-Type": "application/json",
-        //   },
-        //   body: JSON.stringify({
-        //     messages: [...codeMessages.current, { role: "function", "name": "getMovies", content: JSON.stringify(functionContent.results.splice(0, 3)) }],
-        //     functions: functions
-        //   }),
-        // })  
         
       } 
 
@@ -168,13 +153,14 @@ export default function Page() {
       // const functionName = json.choices[0].message.function_call.function
       //parse functino arguments
       const functionArguments = JSON.parse(json.choices[0].message.function_call.arguments)
-      const functionContent = await getMovies(functionArguments)
-      console.log("functionContent:", functionContent.results)
+      // console.log("functionArguments:", functionArguments)
+      const functionContent = await fetch(`/api/search`)
+      // console.log("functionContent:", functionContent)
       
-      // console.log("Payload: ", [...codeMessages.current, { role: "function", "name": "getMovies", content: JSON.stringify(functionContent.results.splice(0, 3)) }])
-      const functionsMessage = { role: "function", "name": "getMovies", content: JSON.stringify(functionContent.results) }
+      // // console.log("Payload: ", [...codeMessages.current, { role: "function", "name": "getMovies", content: JSON.stringify(functionContent.results.splice(0, 3)) }])
+      // const functionsMessage = { role: "function", "name": "getInfo", content: JSON.stringify(functionContent.results) }
       
-      generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode, functions, functionsMessage, setCodeSentence, setIsLoading)
+      // generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode, functions, functionsMessage, setCodeSentence, setIsLoading)
       
       
     } 
@@ -196,7 +182,7 @@ export default function Page() {
         userHasAccount={null}
       />
       <div className="relative ml-1 flex w-full flex-col items-center justify-center font-sans sm:mx-auto sm:w-full">
-      <h1 className="mt-36 mb-24 text-4xl font-extrabold leading-none tracking-tight text-white/70 md:text-5xl lg:text-6xl ">Film App</h1>
+      <h1 className="mt-36 mb-24 text-4xl font-extrabold leading-none tracking-tight text-white/70 md:text-5xl lg:text-6xl ">Fucntion Calling Demo</h1>
         <div className="relative mt-2 h-12 w-full text-center sm:w-[900px]">
           <input
             className="font-lg h-12 w-[95%] rounded-lg bg-purple-400 py-2.5 
