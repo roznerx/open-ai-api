@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "@codesandbox/sandpack-react": "^2.6.7",
+    "@formatjs/intl-localematcher": "^0.4.0",
     "@headlessui/react": "^1.7.7",
     "@headlessui/tailwindcss": "^0.1.2",
     "@material-tailwind/react": "^2.0.1",
@@ -23,6 +24,7 @@
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.112.0",
     "mjml": "^4.14.1",
+    "negotiator": "^0.6.3",
     "next": "13.4.6",
     "next-auth": "^4.22.1",
     "nodemailer": "^6.9.1",
