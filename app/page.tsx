@@ -1,20 +1,27 @@
 import { getServerSession } from "next-auth"
+
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { cookies } from "next/headers"
 import Client from "./client"
 import Footer from "./components/Footer"
 import { harperClient } from "@/lib/harperdb"
+import { getDictionary } from "./(lang)/dictionaries"
 
 export const metadata = {
   title: "Code Genius | Enhance your coding skills with the help of AI",
   description:
     "Code Genius is the AI tool that will help you find solutions quickly and avoid repetitive tasks. Use it to improve code quality and chat with an expert coding assistant.",
 }
+
 export default async function Page() {
   let loggedUserData
   const cookieStore = cookies()
   const session = await getServerSession(authOptions)
   const userIp = cookieStore.get("user-ip")?.value || ""
+  const locale = cookieStore.get("locale")
+  console.log("locale:", locale)
+  const dictionary = await getDictionary(locale && (locale.value as string))
+  console.log("dictionary:", dictionary)
 
   const anonymousUserData = await harperClient({
     operation: "sql",
@@ -37,6 +44,7 @@ export default async function Page() {
     <>
       <main className={`mx-auto w-full max-w-max pb-10`}>
         <Client
+          translations={dictionary}
           loggedUserData={loggedUserData}
           session={session}
           userHasAccount={userHasAccount}

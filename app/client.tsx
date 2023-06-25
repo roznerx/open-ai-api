@@ -10,12 +10,14 @@ import HomeChat from "./home/HomeChat"
 import Hero from "./home/Hero"
 
 export default function Client({
+  translations,
   session,
   userHasAccount,
   ip,
   apiCalls,
   loggedUserData,
 }) {
+  console.log("translations:", translations)
   const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
     userHasAccount,
   })

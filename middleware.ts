@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
 import { getLocale } from "utils/getLocale"
 
-let locales = ["en-US", "es", "pt"]
+let locales = ["en", "es", "pt"]
 
 export async function middleware(request: NextRequest) {
   const acceptLangHeader = request.headers.get("accept-language")
@@ -20,21 +20,19 @@ export async function middleware(request: NextRequest) {
     })
   }
 
-  // Check if there is any supported locale in the pathname
-  const pathname = request.nextUrl.pathname
-  const pathnameIsMissingLocale = locales.every(
-    (locale) =>
-      !pathname.startsWith(`/${locale}/`) && pathname !== `/${locale}`,
-  )
-
-  // Redirect if there is no locale
-  if (pathnameIsMissingLocale) {
-    const locale = getLocale(acceptLangHeader as string, locales)
-
-    // e.g. incoming request is /products
-    // The new URL is now /en-US/products
-    return NextResponse.redirect(new URL(`/${locale}/${pathname}`, request.url))
+  const locale = getLocale(acceptLangHeader as string, locales)
+  console.log("locale:", locale)
+  //Set user's locale
+  if (locale) {
+    response.cookies.set("locale", locale, {
+      httpOnly: false,
+    })
   }
 
   return response
+}
+
+export const config = {
+  // Matcher ignoring `/_next/` and `/api/`
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 }

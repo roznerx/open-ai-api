@@ -2,6 +2,7 @@ import "../styles/globals.css"
 import SessionProvider from "./provider"
 import { Inter, Roboto_Mono } from "next/font/google"
 import { Metadata } from "next"
+import { cookies } from "next/headers"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -53,9 +54,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const cookieStore = cookies()
+  const locale = cookieStore.get("locale")
+
   return (
     <>
-      <html lang="en" className={`${inter.variable} ${roboto_mono.variable}`}>
+      <html
+        lang={locale?.value}
+        className={`${inter.variable} ${roboto_mono.variable}`}
+      >
         <head>
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />

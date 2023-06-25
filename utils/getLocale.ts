@@ -5,7 +5,10 @@ export function getLocale(acceptLangHeader: string, locales: string[]) {
   let headers = { "accept-language": acceptLangHeader }
   let languages = new Negotiator({ headers }).languages()
 
-  let defaultLocale = "en-US"
-
-  return match(languages, locales, defaultLocale) // -> 'en-US'
+  let defaultLocale = "en"
+  try {
+    return match(languages, locales, defaultLocale)
+  } catch (_e) {
+    return defaultLocale
+  }
 }
