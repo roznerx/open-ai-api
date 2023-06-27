@@ -1,10 +1,35 @@
 {
+  "lang": "en",
   "home": {
-    "header": {},
-    "hero": {},
-    "superHero": {},
-    "chat": {},
-    "feature": {}
+    "header": {
+      "register": "Sign Up",
+      "login": "Sign In"
+    },
+    "chat": {
+      "placeholder": "What is your next Code Idea?"
+    },
+    "feature": {
+      "title": "The AI programming genius that helps you coding faster, easier, and more efficient.",
+      "subtitle": "Writing great code can be a challenging and time-consuming task, but with Code Genius you can take your skills to the next level! Explore the possibilities!"
+    },
+    "superHero": {
+      "title": "Create Genius Code",
+      "subtitle": "Take your code ideas to the next level with the power of AI.",
+      "smart": {
+        "title": "Boost your code performance with AI",
+        "subtitle": "Code Genius analyzes your code in real-time, offering smart suggestions and code improvements. From enhancing syntax to optimizing algorithms, Code Genius ensures your code is clean, efficient, and error-free."
+      },
+      "test": {
+        "title": "Generate unit tests in seconds",
+        "subtitle": "Writing unit tests can be a tedious and time-consuming task. With Code Genius you can automatically generate test cases that cover a wide range of scenarios, ensuring that your code is thoroughly tested and reliable."
+      },
+      "docs": {
+        "title": "Create code documentation faster",
+        "subtitle": "Good documentation is key to writing maintainable code. With Code Genius, you can automatically generate clear and concise documentation for your code."
+      }
+    },
+
+    "hero": {}
   },
   "pricing": {},
   "chat": {},

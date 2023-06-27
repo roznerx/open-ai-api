@@ -26,7 +26,13 @@ const CombinedMessages = dynamic(
   },
 )
 
-export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
+export default function HomeChat({
+  ip,
+  apiCalls,
+  session,
+  loggedUserData,
+  translations,
+}) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
   const [userApiCalls, setUserApiCalls] = useState<number>(apiCalls)
   const textareaRef = useRef<any>(null)
@@ -91,9 +97,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
              pr-12 text-white caret-mint/70 outline-0 placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60 placeholder:text-white hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 sm:w-[900px]"
             value={inputValue}
             onChange={handleInputChange}
-            placeholder={
-              messages.length === 1 ? "What is your next Code Idea?" : ""
-            }
+            placeholder={messages.length === 1 ? translations?.placeholder : ""}
           />
           <button
             type="submit"

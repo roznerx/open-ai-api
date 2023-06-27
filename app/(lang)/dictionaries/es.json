@@ -1,10 +1,33 @@
 {
+  "lang": "es",
   "home": {
-    "header": {},
-    "hero": {},
-    "superHero": {},
-    "chat": {},
-    "feature": {}
+    "header": {
+      "register": "Regístrate",
+      "login": "Logueate"
+    },
+    "chat": {
+      "placeholder": "Cuál es tu próxima idea?"
+    },
+    "feature": {
+      "title": "El genio de la programación que te ayuda a codificar más rápido, más fácil y de manera más eficiente.",
+      "subtitle": "Escribir código con altos extándares de calidad puede ser una tarea desafiante y llevar mucho tiempo Code Genius llevará tus habilidades al siguiente nivel. Las posibilidades son infinitas.",
+      "smart": {
+        "title": "Aumente el rendimiento de su código",
+        "subtitle": "Code Genius analiza tu código en tiempo real y ofrece sugerencias inteligentes y mejoras de rendimiento. Enfocate a añadir valor al producto, nosotros garantizamos que el código sea limpio, eficiente y libre de errores."
+      },
+      "test": {
+        "title": "Genera tests unitarios en segundos",
+        "subtitle": "Escribir pruebas unitarias puede ser una tarea tediosa y que consume mucho tiempo. Con Code Genius puedes generar automáticamente casos de prueba que cubren una amplia gama de escenarios, asegurando que tu código sea exhaustivamente probado y confiable."
+      },
+      "docs": {
+        "title": "Crea documentación de una forma sencilla y eficiente",
+        "subtitle": "Una buena documentación es clave para escribir un código mantenible. Con Code Genius, puedes generar automáticamente una documentación clara y concisa para tu código."
+      }
+    },
+    "superHero": {
+      "title": "Crea código de genios",
+      "subtitle": "Lleva tus ideas a otro nivel con el poder y la ayuda de la Inteligencia Artificial"
+    }
   },
   "pricing": {},
   "chat": {},

@@ -9,6 +9,7 @@ import { useState } from "react"
 import Feedback from "./Feedback"
 
 export default function Header({
+  translations,
   session,
   userHasAccount,
   setShowSignInModal,
@@ -16,8 +17,10 @@ export default function Header({
   session?: any
   showSignInModal?: any
   userHasAccount?: any
+  translations?: any
   setShowSignInModal: any
 }) {
+  console.log("translations:", translations)
   const pathname = usePathname()
   const [showWidget, setShowWidget] = useState(false)
 
@@ -65,7 +68,9 @@ export default function Header({
                   className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
                 >
                   <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
-                    {!userHasAccount ? "Sign In" : "Sign up"}
+                    {!userHasAccount
+                      ? translations?.login
+                      : translations?.register}
                   </p>
                 </div>
               )}
@@ -87,7 +92,7 @@ export default function Header({
               </div>
             )}
           </div>
-          <UserDropdown session={session} />
+          <UserDropdown translations={translations} session={session} />
         </div>
       </div>
     </>

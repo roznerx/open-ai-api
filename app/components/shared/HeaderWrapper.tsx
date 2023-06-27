@@ -2,6 +2,7 @@
 import Header from "../Header"
 
 export default function HeaderWrapper({
+  translations,
   session,
   userHasAccount,
   setShowSignInModal,
@@ -10,6 +11,7 @@ export default function HeaderWrapper({
   return (
     <>
       <Header
+        translations={translations}
         showSignInModal={showSignInModal}
         session={session}
         userHasAccount={userHasAccount}

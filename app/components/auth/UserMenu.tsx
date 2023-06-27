@@ -5,7 +5,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Fragment } from "react"
 
-export default function UserMenu({ session, email, image }) {
+export default function UserMenu({ session, email, image, translations }) {
   const router = useRouter()
   return (
     <div className="absolute top-4 right-4 z-50 w-auto text-center sm:right-2 sm:mr-7">

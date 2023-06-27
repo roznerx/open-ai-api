@@ -16,11 +16,13 @@ export const metadata = {
 export default async function Page() {
   let loggedUserData
   const cookieStore = cookies()
+
   const session = await getServerSession(authOptions)
   const userIp = cookieStore.get("user-ip")?.value || ""
-  const locale = cookieStore.get("locale")
-  console.log("locale:", locale)
-  const dictionary = await getDictionary(locale && (locale.value as string))
+  const locale = cookieStore.get("locale") || { value: "en" }
+
+  const dictionary = await getDictionary(locale?.value as string)
+
   console.log("dictionary:", dictionary)
 
   const anonymousUserData = await harperClient({
