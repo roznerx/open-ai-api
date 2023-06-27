@@ -6,13 +6,16 @@
       "login": "Logueate"
     },
     "chat": {
-      "placeholder": "Cuál es tu próxima idea?"
+      "placeholder": "Cuál es tu próxima idea?",
+      "cta": "Ir al chat",
+      "title": "Chatea con el genio del código. Preguntale lo que quieras",
+      "subtitle": "Escribir código performante y bien estructurado puede ser un desafío que requiere tiempo. Code Genius fue diseñado para mejorar tus habilidades y descubrir nuevas posibilidades. ¡Explora todas las opciones disponibles!"
     },
     "feature": {
       "title": "El genio de la programación que te ayuda a codificar más rápido, más fácil y de manera más eficiente.",
       "subtitle": "Escribir código con altos extándares de calidad puede ser una tarea desafiante y llevar mucho tiempo Code Genius llevará tus habilidades al siguiente nivel. Las posibilidades son infinitas.",
       "smart": {
-        "title": "Aumente el rendimiento de su código",
+        "title": "Aumente la performance de tu código",
         "subtitle": "Code Genius analiza tu código en tiempo real y ofrece sugerencias inteligentes y mejoras de rendimiento. Enfocate a añadir valor al producto, nosotros garantizamos que el código sea limpio, eficiente y libre de errores."
       },
       "test": {
@@ -29,8 +32,49 @@
       "subtitle": "Lleva tus ideas a otro nivel con el poder y la ayuda de la Inteligencia Artificial"
     }
   },
+  "dashboard": {
+    "welcome": "Bienvenido",
+    "credits": "Creditos",
+    "available": "Disponibles",
+    "ctaChat": "Chat de código",
+    "ctaUpgrade": "Actualiza tu plan",
+    "subscription": "Subscription Plan",
+    "smart": {
+      "title": "Obtiene Sugerencias",
+      "subtitle": "Obtiene sugerencias inteligentes y creativas."
+    },
+    "performance": {
+      "title": "Mejoras de rendiemiento",
+      "subtitle": "Mejora la performance de tu código."
+    },
+    "test": {
+      "title": "Genera Tests",
+      "subtitle": "Con nuestro modo de testing, nunca fue tan fácil generar tests."
+    },
+    "docs": {
+      "title": "Documentación",
+      "subtitle": "Usa el modo docs para generar documentación se segundos."
+    }
+  },
   "pricing": {},
   "chat": {},
   "cideIdea": {},
-  "footer": {}
+  "footer": {
+    "pricing": "Precios",
+    "contact": "Contacto",
+    "discord": "Discord",
+    "terms": "Términos",
+    "privacy": "Privacidad",
+    "copy": "© Copyright 2023. Todos los derechos reservados."
+  },
+  "modals": {
+    "signIn": {
+      "title": "Logueate en tu cuenta",
+      "subtitle": "Descubre todo tu potencial con Code Genius",
+      "byContinuing": "Continuando, tu aceptas nuestra",
+      "acknowledge": "y reconoces nuestros",
+      "terms": "términos y condiciones",
+      "privacy": "política de privacidad"
+    }
+  }
 }

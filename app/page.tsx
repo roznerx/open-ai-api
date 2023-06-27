@@ -15,15 +15,13 @@ export const metadata = {
 
 export default async function Page() {
   let loggedUserData
-  const cookieStore = cookies()
 
   const session = await getServerSession(authOptions)
+  const cookieStore = cookies()
   const userIp = cookieStore.get("user-ip")?.value || ""
   const locale = cookieStore.get("locale") || { value: "en" }
 
   const dictionary = await getDictionary(locale?.value as string)
-
-  console.log("dictionary:", dictionary)
 
   const anonymousUserData = await harperClient({
     operation: "sql",
@@ -53,7 +51,7 @@ export default async function Page() {
           ip={userIp}
           apiCalls={userUsage?.apiCalls}
         />
-        <Footer session={session} />
+        <Footer session={session} translations={dictionary?.footer} />
       </main>
     </>
   )

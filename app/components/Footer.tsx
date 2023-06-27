@@ -5,7 +5,13 @@ import Image from "next/image"
 import Link from "next/link"
 import ContactFormModal from "./modals/ContactFormModal"
 
-export default function Footer({ session }: { session: any }) {
+export default function Footer({
+  session,
+  translations,
+}: {
+  session: any
+  translations: any
+}) {
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   return (
     <>
@@ -41,13 +47,13 @@ export default function Footer({ session }: { session: any }) {
               prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
             >
-              Pricing
+              {translations?.pricing}
             </Link>
             <div
               onClick={() => setOpenContactForm(true)}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
             >
-              Contact
+              {translations?.contact}
             </div>
             <Link
               href="https://discord.gg/3tbJD8vZQw"
@@ -60,21 +66,19 @@ export default function Footer({ session }: { session: any }) {
               prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
             >
-              Terms
+              {translations?.terms}
             </Link>
             <Link
               href="/privacy"
               prefetch={false}
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
             >
-              Privacy
+              {translations?.privacy}
             </Link>
           </div>
         </div>
         <div className="w-ful m-auto content-center border-t border-gray-400 py-4">
-          <p className="w-[80vw] text-center">
-            © Copyright 2023. All rights reserved.
-          </p>
+          <p className="w-[80vw] text-center">{translations?.copy}</p>
         </div>
       </footer>
     </>

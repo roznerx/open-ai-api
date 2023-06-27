@@ -10,11 +10,13 @@ import Link from "next/link"
 
 export const SignInModal = ({
   tip,
+  translations,
   userHasAccount,
   showSignInModal,
   setShowSignInModal,
 }: {
   showSignInModal: boolean
+  translations: any
   userHasAccount?: boolean
   tip?: string
   setShowSignInModal: Dispatch<SetStateAction<boolean>>
@@ -43,11 +45,11 @@ export const SignInModal = ({
             <h1
               className={`mt-6 text-center font-sans text-[28px] font-[700] text-white`}
             >
-              {userHasAccount ? "Login to your account" : "Create your account"}
+              {userHasAccount ? translations.title : translations.titleCreate}
             </h1>
           </div>
           <h6 className="sm:text-xl  mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200 ">
-            Unleash your coding potential with Code Genius
+            {translations.subtitle}
           </h6>
           {tip && (
             <p className="text-md mx-auto -mt-3 w-full text-center font-sans text-gray-200">
@@ -113,13 +115,13 @@ export const SignInModal = ({
           </div>
         </div>
         <p className=" mx-auto w-[80%] py-6 text-center text-[14px] text-gray-400">
-          By continuing, you agree to our{" "}
+          {translations.byContinuing}{" "}
           <Link href="/terms" className="underline">
-            Terms
+            {translations.privacy}
           </Link>{" "}
-          and acknowledge our{" "}
+          {translations.acknowledge}{" "}
           <Link href="/terms-and-conditions" className="underline">
-            Privacy policy
+            {translations.terms}
           </Link>
         </p>
       </div>

@@ -12,9 +12,11 @@ const SignInModal = dynamic(
 export function useSignInModal({
   userHasAccount,
   tip,
+  translations,
 }: {
   userHasAccount?: boolean
   tip?: string
+  translations: any
 }) {
   const [showSignInModal, setShowSignInModal] = useState(false)
 
@@ -22,6 +24,7 @@ export function useSignInModal({
     return showSignInModal ? (
       <SignInModal
         tip={tip}
+        translations={translations}
         userHasAccount={userHasAccount}
         showSignInModal={showSignInModal}
         setShowSignInModal={setShowSignInModal}

@@ -20,6 +20,7 @@ export default function Client({
   console.log("translations:", translations)
   const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
     userHasAccount,
+    translations: translations?.modals?.signIn,
   })
 
   return (
@@ -43,7 +44,7 @@ export default function Client({
       />
       <Hero />
       <Feature
-        translations={translations?.home?.feature}
+        translations={translations?.home}
         session={session}
         setShowSignInModal={setShowSignInModal}
       />

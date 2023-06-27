@@ -11,29 +11,31 @@ import GradientButton from "app/components/buttons/gradientButton"
 import { Confetti } from "utils/confetti"
 import PromptCard from "app/components/shared/PromptCard"
 
-const UpgradeAccount = () => (
+const UpgradeAccount = ({ text }) => (
   <Link href="/pricing">
-    <GradientButton width="200px" text="Upgrade Account" />
+    <GradientButton width="200px" text={text} />
   </Link>
 )
 
-const ChatButton = () => (
+const ChatButton = ({ text }) => (
   <Link href="/code-chat">
-    <GradientButton width="200px" text="Coding Chat" />
+    <GradientButton width="200px" text={text} />
   </Link>
 )
 
 export default function Client({
+  translations,
   session,
   credits,
   purchasedCredits,
   opConfirmation,
 }) {
-  const { setShowSignInModal } = useSignInModal({})
+  const { setShowSignInModal } = useSignInModal({ translations })
   const searchParams = useSearchParams()
   const router = useRouter()
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
+  const { dashboard } = translations
 
   useEffect(() => {
     if (opConfirmation && searchParams && searchParams.has("success")) {
@@ -61,7 +63,7 @@ export default function Client({
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
         <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
           <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-3xl text-gray-200 sm:items-start sm:text-5xl">
-            Welcome, {clientName}!
+            {dashboard.welcome}, {clientName}!
           </h2>
         </div>
 
@@ -71,9 +73,9 @@ export default function Client({
             hasScale
             order="order-1 sm:order-1"
             imageSrc="/dashboard/credits.svg"
-            button={<ChatButton />}
-            title={`${credits} Credits`}
-            text="Available"
+            button={<ChatButton text={dashboard.ctaChat} />}
+            title={`${credits} ${dashboard.credits}`}
+            text={dashboard.available}
             onClick={undefined}
           />
 
@@ -81,9 +83,9 @@ export default function Client({
             size="large"
             hasScale
             order="order-2 sm:order-2"
-            button={<UpgradeAccount />}
+            button={<UpgradeAccount text={dashboard.ctaUpgrade} />}
             title={credits > 10 ? "Premium" : "Free"}
-            text="Subscription Plan"
+            text={dashboard.subscription}
             imageSrc="/dashboard/code-box.svg"
             onClick={undefined}
           />
@@ -93,8 +95,8 @@ export default function Client({
               router.push("/code-idea?mode=smart")
             }}
             order="order-3"
-            title="Smart Suggestions"
-            text="Catch errors and optimize your code as you go."
+            title={dashboard.smart.title}
+            text={dashboard.smart.subtitle}
             imageSrc="/dashboard/smart.svg"
           />
 
@@ -102,9 +104,9 @@ export default function Client({
             onClick={() => {
               router.push("/code-idea?mode=improve")
             }}
-            title="Code Improvements"
+            title={dashboard.performance.title}
             order="order-6"
-            text="Improve the perfomance  of your App."
+            text={dashboard.performance.subtitle}
             imageSrc="/dashboard/bug.svg"
           />
 
@@ -113,8 +115,8 @@ export default function Client({
               router.push("/code-idea?mode=test")
             }}
             order="order-4"
-            title="Test Generation"
-            text="Generate reliable unit test cases  in seconds."
+            title={dashboard.test.title}
+            text={dashboard.test.subtitle}
             imageSrc="/dashboard/test.svg"
           />
 
@@ -123,9 +125,9 @@ export default function Client({
               router.push("/code-idea?mode=docs")
             }}
             order="order-5"
-            title="Documentation"
+            title={dashboard.docs.title}
             imageSrc="/dashboard/documentation.svg"
-            text="Generate clear and concise documentation."
+            text={dashboard.docs.subtitle}
           />
         </div>
       </div>

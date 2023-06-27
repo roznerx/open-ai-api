@@ -10,8 +10,8 @@ import Header from "app/components/Header"
 
 export type ModeTypes = "smart" | "test" | "improve" | "docs"
 
-export default function Container({ session }) {
-  const { setShowSignInModal } = useSignInModal({})
+export default function Container({ session, translations }) {
+  const { setShowSignInModal } = useSignInModal({ translations })
   const [chatHasStarted, setChatHasStarted] = useState(false)
   const [mode, setMode] = useState<ModeTypes>("smart")
   const [prompt, setPrompt] = useState("")

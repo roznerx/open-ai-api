@@ -1,6 +1,8 @@
 import { harperClient } from "@/lib/harperdb"
+import { getDictionary } from "app/(lang)/dictionaries"
 import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"
+import { cookies } from "next/headers"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import Client from "./client"
@@ -14,12 +16,14 @@ export default async function Dashboard() {
   if (!session) {
     redirect("/?referer=/dashboard")
   }
+  const cookieStore = cookies()
   let harperUser
   let opConfirmation = false
   let totalCredits: number = 0
   let purchasedCredits: number = 0
   let existingCredits: string = ""
-
+  const locale = cookieStore.get("locale") || { value: "en" }
+  const dictionary = await getDictionary(locale?.value as string)
   //@ts-ignore
   const userId = session && session.user?.id
 
@@ -140,6 +144,7 @@ export default async function Dashboard() {
       <SideBar />
       <div className="mx-auto w-full dark:bg-purple-900">
         <Client
+          translations={dictionary}
           session={session}
           credits={totalCredits}
           purchasedCredits={purchasedCredits}
