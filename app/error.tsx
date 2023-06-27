@@ -4,7 +4,6 @@ import { useSession } from "next-auth/react"
 import { motion } from "framer-motion"
 import React, { useEffect } from "react"
 import Header from "./components/Header"
-import { useSignInModal } from "./components/modals/SignInModal"
 import GradientButton from "./components/buttons/gradientButton"
 import ContactFormModal from "./components/modals/ContactFormModal"
 import Footer from "./components/Footer"
@@ -19,7 +18,6 @@ export default function ErrorLog({
   const session = useSession()
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
 
-  const { setShowSignInModal, showSignInModal } = useSignInModal({})
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error)
@@ -38,10 +36,10 @@ export default function ErrorLog({
         setIsOpen={setOpenContactForm}
       />
       <Header
-        showSignInModal={showSignInModal}
+        showSignInModal={false}
         session={session?.data}
         userHasAccount={true}
-        setShowSignInModal={setShowSignInModal}
+        setShowSignInModal={null}
       />
       <div className="mx-auto mt-28 mb-8 w-full p-4 text-center sm:w-[60%]">
         <motion.h2 className="mx-auto bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl">
@@ -66,7 +64,7 @@ export default function ErrorLog({
           </div>
         </motion.div>
       </div>
-      <Footer session={session?.data} />
+      <Footer translations={null} session={session?.data} />
     </>
   )
 }

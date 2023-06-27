@@ -19,12 +19,13 @@ const colors: any = tailwindConfig.theme?.extend?.colors
 
 type ClientPropTye = {
   session: any
+  translations: any
 }
 
-export default function Client({ session }: ClientPropTye) {
+export default function Client({ session, translations }: ClientPropTye) {
   const initialCreditsValue = 50
   const [credits, setCredits] = React.useState<number>(initialCreditsValue)
-  const { setShowSignInModal, SignInModal } = useSignInModal({})
+  const { setShowSignInModal, SignInModal } = useSignInModal({ translations })
   const [loadingStripe, setLoadingStripe] = React.useState<boolean>(false)
   const router = useRouter()
   const [priceId, setPrecieId] = React.useState<string>("")
@@ -295,7 +296,7 @@ export default function Client({ session }: ClientPropTye) {
       <div className="mt-10 w-full">
         <Faqs />
       </div>
-      <Footer session={session?.data} />
+      <Footer translations={translations} session={session?.data} />
     </>
   )
 }

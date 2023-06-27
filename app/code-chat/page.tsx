@@ -2,6 +2,8 @@ import { authOptions } from "pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
 import Client from "./client"
+import { cookies } from "next/headers"
+import { getDictionary } from "app/(lang)/dictionaries"
 
 export const metadata = {
   title: "Code Chat",
@@ -15,10 +17,15 @@ export default async function Page() {
     redirect("/?action=authenticate&referer=/code-chat")
   }
 
+  const cookieStore = cookies()
+  const locale = cookieStore.get("locale") || { value: "en" }
+
+  const dictionary = await getDictionary(locale?.value as string)
+
   return (
     <>
       <main className="flex min-h-screen w-screen px-4 text-center">
-        <Client session={session} />
+        <Client session={session} translations={dictionary} />
       </main>
     </>
   )

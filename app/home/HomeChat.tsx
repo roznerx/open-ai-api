@@ -51,6 +51,7 @@ export default function HomeChat({
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
     tip: "Redeem your initial 25 credits.",
+    translations,
   })
   const {
     messages,

@@ -11,9 +11,9 @@ import { Hand } from "lucide-react"
 import { useChat } from "hooks/use-chat"
 import { updateApiCallsAndCredits } from "utils/helpers"
 
-export default function Client({ session }) {
+export default function Client({ session, translations }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
-  const { setShowSignInModal } = useSignInModal({})
+  const { setShowSignInModal } = useSignInModal({ translations })
   const userCredits = session && session.user?.credits
   const userName = session && session.user?.name
   const {
