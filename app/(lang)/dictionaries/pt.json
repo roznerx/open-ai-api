@@ -139,6 +139,79 @@
       }
     }
   },
+  "privacy": {
+    "title": "Política de privacidade",
+    "intro1": "Nós, da Code Genius, (junto com nossas afiliadas, 'CodeGenius', 'nós', 'nosso' ou 'nos'), e acessível a partir de",
+    "intro2": ", respeitamos sua privacidade e estamos comprometidos em manter seguras quaisquer informações que obtivermos de você ou sobre você. Uma de nossas principais prioridades é a privacidade de nossos visitantes. Este documento de Política de Privacidade contém os tipos de informações que a Code Genius coleta e registra, e como as utilizamos. Se você tiver perguntas adicionais ou precisar de mais informações sobre nossa Política de Privacidade, não hesite em",
+    "contactUs": "entrar em contato conosco.",
+    "thisPrivacy": "Esta Política de privacidade se aplica apenas às nossas atividades online e é válida para os visitantes do nosso site no que diz respeito às informações que eles compartilham e/ou coletam na Code Genius. Esta política não se aplica a nenhuma informação coletada offline ou por meio de canais diferentes deste site. Conteúdo Ao utilizar nosso site, você concorda com nossa Política de Privacidade e aceita seus termos.",
+    "personal": {
+      "title": "1. Informações pessoais",
+      "collect": "Coletamos informações que, por si só ou em combinação com outras informações, podem ser usadas para identificá-lo, da seguinte forma: Podemos coletar informações pessoais se",
+      "collect1": "você criar uma conta",
+      "collect2": "para usar nossos serviços ou se comunicar conosco das seguintes maneiras:",
+      "list": {
+        "1": "Informações do usuário: Quando você cria uma conta conosco, coletamos informações associadas à sua conta, incluindo seu nome completo, endereço de e-mail e avatar do provedor de OAuth (em conjunto, 'Informações da conta').",
+        "2": "Não coletamos outros tipos de informações, como suas credenciais pessoais para acessar nosso site ou informações de cartão de pagamento.",
+        "3": "Conteúdo do usuário: Quando você utiliza nossos serviços, podemos coletar informações pessoais que estão incluídas nas entradas, uploads de arquivos ou comentários que você fornece aos nossos serviços.",
+        "4": "Informações de comunicação: Se você se comunicar conosco, podemos coletar seu nome, informações de contato e o conteúdo de qualquer mensagem que você enviar ('Informações de comunicação').",
+        "5": "Dados de uso: Podemos coletar automaticamente informações sobre o uso dos nossos serviços, como os tipos de conteúdo que você visualiza ou interage, os recursos que você utiliza e as ações que você realiza, além do seu fuso horário, país, datas e horários de acesso, agente do usuário e versão, tipo de computador ou dispositivo móvel, conexão de computador e endereço IP.",
+        "6": "Utilizamos cookies para operar e gerenciar nossos serviços, e para melhorar sua experiência neles. Um 'cookie' é uma informação enviada ao seu navegador por um site que você visita. Você pode configurar seu navegador para aceitar todos os cookies, recusar todos os cookies ou ser notificado sempre que um cookie for oferecido, para que você possa decidir se o aceita ou não. No entanto, recusar um cookie pode, em alguns casos, impedir que você utilize ou afetar negativamente a funcionalidade ou determinadas áreas ou recursos de um site. Para obter mais detalhes sobre cookies, visite o site",
+        "7": "All About Cookies"
+      }
+    },
+    "infoUsage": {
+      "title": "2. Como usamos informações pessoais",
+      "title2": "Podemos usar informações pessoais para os seguintes fins:",
+      "list": {
+        "1": "Fornecer, administrar, manter e/ou analisar os serviços",
+        "2": "Melhorar nossos serviços e produtos",
+        "3": "Comunicar-se com você",
+        "4": "Prevenir fraude, atividades criminosas ou uso indevido de nossos serviços, e garantir a segurança de nossos sistemas de computador, arquitetura e redes",
+        "5": "Cumprir obrigações legais e processos legais e proteger nossos direitos, privacidade, segurança ou propriedade, e/ou os de nossas afiliadas, você ou outras partes terceiras."
+      }
+    },
+    "disclosure": {
+      "title": "3. Divulgação de informações pessoais",
+      "title2": "Em certas circunstâncias, podemos fornecer suas informações pessoais a terceiros sem aviso prévio, a menos que exigido por lei:",
+      "list": {
+        "1": "Fornecedores e prestadores de serviços: Para nos ajudar a atender às necessidades das operações comerciais e realizar determinados serviços e funções, podemos fornecer informações pessoais a fornecedores e prestadores de serviços, incluindo provedores de serviços em nuvem e outros provedores de serviços de tecnologia da informação, serviços de gerenciamento de eventos, software de comunicação por e-mail e serviços de boletins informativos por e-mail, e serviços de análise da web. Conforme nossas instruções, essas partes acessarão, processarão ou armazenarão informações pessoais apenas no curso do desempenho de suas funções para nós.",
+        "2": "Transferências comerciais: Se participarmos de transações estratégicas, reorganizações, falências, administrações judiciais ou transições de serviço para outro provedor (coletivamente, uma 'Transação'), suas informações pessoais e outras informações podem ser divulgadas no processo de due diligence a partes contrapartes e outros que auxiliam na Transação e serem transferidas para um sucessor ou afiliado como parte dessa Transação, juntamente com outros ativos.",
+        "3": "Requisitos legais: Se formos obrigados a fazê-lo por lei ou acreditarmos de boa fé que tal ação é necessária para (i) cumprir uma obrigação legal, incluindo requisitos de segurança nacional ou aplicação da lei, (ii) proteger e defender nossos direitos ou propriedade, (iii) prevenir fraude, (iv) agir em circunstâncias urgentes para proteger a segurança pessoal dos usuários dos serviços ou do público, ou (v) proteger contra responsabilidade legal.",
+        "4": "Afiliadas: Podemos divulgar informações pessoais a nossas afiliadas, o que significa uma entidade que controla, é controlada por ou está sob controle comum com a Code Genius. Nossas afiliadas podem usar as informações pessoais que compartilhamos de acordo com esta Política de Privacidade."
+      }
+    },
+    "dataRights": {
+      "title": "4. Seus dados e direitos",
+      "title2": "Dependendo da localização, as pessoas na EEE, no Reino Unido e em todo o mundo podem ter certas regulamentações em relação às suas informações pessoais. Por exemplo, você pode ter direito a:",
+      "list": {
+        "1": "Acessar suas informações pessoais.",
+        "2": "Excluir suas informações pessoais.",
+        "3": "Corrigir ou atualizar suas informações pessoais.",
+        "4": "Transferir suas informações pessoais para outro local.",
+        "5": "Retirar seu consentimento para o processamento de suas informações pessoais quando nos baseamos no consentimento como base legal para o processamento.",
+        "6": "Opor-se a ou restringir o processamento de suas informações pessoais quando nos baseamos em interesses legítimos como base legal para o processamento."
+      }
+    },
+    "links": {
+      "title": "5. Links e outros sites",
+      "p1": "O Serviço pode conter links para outros sites que não são operados ou controlados pela Code Genius, incluindo serviços de redes sociais ('Sites de terceiros'). As informações que você compartilha com os Sites de terceiros estarão sujeitas às políticas de privacidade e aos termos de serviço específicos dos Sites de terceiros, e não a esta Política de Privacidade. Ao fornecer esses links, não implicamos que endossamos ou revisamos esses sites. Entre em contato diretamente com os Sites de terceiros para obter informações sobre suas práticas e políticas de privacidade."
+    },
+    "security": {
+      "title": "6. Segurança e retenção",
+      "p1": "Implementamos medidas técnicas, administrativas e organizacionais comercialmente razoáveis para proteger as informações pessoais online e offline contra perda, uso indevido e acesso não autorizado, divulgação, alteração ou destruição. No entanto, nenhuma transmissão pela Internet ou e-mail é totalmente segura ou livre de erros. Em particular, os e-mails enviados de ou para nós podem não ser seguros. Portanto, você deve ter cuidado especial ao decidir quais informações nos enviar por meio do Serviço ou por e-mail. Além disso, não somos responsáveis pela violação de qualquer configuração de privacidade ou medida de segurança contida no Serviço ou em sites de terceiros. Retemos suas informações pessoais apenas pelo tempo necessário para fornecer nossos serviços ou para outros fins comerciais legítimos, como resolver disputas, razões de segurança e proteção, ou cumprir nossas obrigações legais. O período durante o qual retemos suas informações pessoais dependerá de vários fatores, como a quantidade, natureza e sensibilidade das informações, nosso propósito para o processamento das informações e qualquer requisito legal. Também podemos anonimizar ou desidentificar suas informações pessoais (para que não possam mais ser associadas a você) para fins de pesquisa, melhoria ou estatística, sem aviso prévio."
+    },
+    "changes": {
+      "title": "7. Alterações na política de privacidade",
+      "p1": "Podemos alterar esta Política de privacidade a qualquer momento. Quando o fizermos, publicaremos uma versão atualizada nesta página, a menos que a lei aplicável exija outro tipo de notificação. Ao continuar a utilizar o nosso serviço ou fornecer informações pessoais após a publicação de uma Política de privacidade atualizada ou após notificação por outros meios, você aceita a Política de privacidade revisada."
+    },
+    "contact": {
+      "title": "8. Como entrar em contato conosco",
+      "please": "Por favor",
+      "support": "entre em contato com o suporte",
+      "p1": "se você tiver alguma pergunta ou preocupação que ainda não tenha sido abordada nesta Política de privacidade."
+    }
+  },
   "footer": {
     "pricing": "Preços",
     "contact": "Contato",
