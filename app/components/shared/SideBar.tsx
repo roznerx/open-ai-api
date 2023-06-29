@@ -18,9 +18,11 @@ import { MaterialTooltip } from "../material-components"
 import MobileSideBar from "./MobileSideBar"
 
 const SideBar = ({
+  translations,
   mode,
   setGeneratedCode,
 }: {
+  translations: any
   mode?: string
   setMode?: any
   setGeneratedCode?: any
@@ -30,6 +32,7 @@ const SideBar = ({
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
+  console.log("translations", translations)
 
   return !isMobile ? (
     <div
@@ -40,7 +43,7 @@ const SideBar = ({
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="Dashboard"
+        content={translations?.dashboard}
       >
         <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
           <Link href="/dashboard">
@@ -56,7 +59,7 @@ const SideBar = ({
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="Suggestions Mode"
+        content={translations?.suggestions}
       >
         <div
           onClick={() => {
@@ -75,7 +78,7 @@ const SideBar = ({
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="Testing Mode"
+        content={translations?.testing}
       >
         <div
           onClick={() => {
@@ -95,7 +98,7 @@ const SideBar = ({
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="Optimization Mode"
+        content={translations?.optimization}
       >
         <div
           onClick={() => {
@@ -115,7 +118,7 @@ const SideBar = ({
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="Documentation Mode"
+        content={translations?.docs}
       >
         <div
           onClick={() => {
@@ -133,7 +136,7 @@ const SideBar = ({
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content="AI Chat"
+        content={translations?.chat}
       >
         <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
           <Link href="/code-chat">

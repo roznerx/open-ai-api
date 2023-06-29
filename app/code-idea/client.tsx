@@ -40,6 +40,7 @@ export default function Client({
   setChatHasStarted,
   setGeneratedCode,
   generatedCode,
+  translations,
   userId,
   userCredits,
   lib,
@@ -68,8 +69,8 @@ export default function Client({
   const [questionName, setQuestionName] = useState("")
   const controller = new AbortController()
   const chatContainerRef = useRef<HTMLDivElement>(null)
-  const placeHolderText = getCodeGeniusPlaceHolder(mode)
-  const codeGeniusMood = useCodeGeniusMood()
+  const placeHolderText = getCodeGeniusPlaceHolder(mode, translations)
+  const codeGeniusMood = useCodeGeniusMood(translations)
 
   const codeMessages = useRef([
     {
@@ -304,6 +305,7 @@ export default function Client({
         </div>
       </div>
       <FooterSection
+        translations={translations.footer}
         stopGeneration={stopGeneration}
         clearPanel={clearPanel}
         testFrameworkElements={testFrameworkElements}

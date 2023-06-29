@@ -41,11 +41,11 @@
     "subscription": "Subscription Plan",
     "smart": {
       "title": "Obtiene Sugerencias",
-      "subtitle": "Obtiene sugerencias inteligentes y creativas."
+      "subtitle": "Obtiene sugerencias de código usando tus lenguajes de programación."
     },
     "performance": {
-      "title": "Mejoras de rendiemiento",
-      "subtitle": "Mejora la performance de tu código."
+      "title": "Rendiemiento",
+      "subtitle": "Mejora la performance de tu código obteniendo mejoras de rendimiento y legibilidad."
     },
     "test": {
       "title": "Genera Tests",
@@ -53,12 +53,92 @@
     },
     "docs": {
       "title": "Documentación",
-      "subtitle": "Usa el modo docs para generar documentación se segundos."
+      "subtitle": "Usa el modo docs para generar documentación en segundos."
     }
   },
-  "pricing": {},
-  "chat": {},
-  "cideIdea": {},
+  "sidebar": {
+    "dashboard": "Home",
+    "suggestions": "Sugerencias",
+    "testing": "Pruebas",
+    "optimization": "Optimización",
+    "docs": "Documentación",
+    "chat": "Conversación"
+  },
+  "codeIdea": {
+    "footer": {
+      "lang": "Lenguaje",
+      "lib": "Librería UI",
+      "clear": "Limpiar Panel",
+      "stop": "Abortar Generación",
+      "generate": "Generar"
+    },
+    "mode": {
+      "smart": "Sugerencias",
+      "test": "Pruebas",
+      "improve": "Optimización",
+      "docs": "Documentación"
+    },
+    "placeholder": {
+      "smart": "Consejo: Utiliza los menús desplegables en la parte inferior para seleccionar el lenguaje de programación, luego haz click en 'Generar'.",
+      "test": "Consejo: Inserta tu función, selecciona las herramientas de prueba deseadas y obtén el resultado de la prueba.",
+      "improve": "Consejo: Pega tu función y espera por las optimizaciones y mejoras de rendimiento.",
+      "docs": "Pega tu función o componente aquí y haz clic en 'Generar'."
+    }
+  },
+  "chat": {
+    "cards": {
+      "react": "Dime como usar el paquete de NPM: Create React App",
+      "next": "Dime como usar el paquete de NPM: Create Next App?",
+      "ts": "Dime cuáles son las mejores prácticas para usar Typescript",
+      "vue": "Dime como crear una App con Vue JS",
+      "python": "Dime como se define una función en Python",
+      "aws": "Dime como usar la API de AWS",
+      "db": "Recomienda una base de datos  con soporte Typescript",
+      "rtl": "Dime como usar Jest con React Testing Library"
+    }
+  },
+  "pricing": {
+    "title": "Solo paga lo que usas",
+    "subtitle1": "Sin cargos ocultos. Sin facturas sorpresa. Sin facturas de suscripción.",
+    "subtitle2": "Solo paga lo que uses.",
+    "faqs": {
+      "1": {
+        "title": "¿Puedo probar Code Genius de forma gratuita?",
+        "desc": "Sí. Todos los usuarios recién registrados obtienen 25 créditos gratuitos para probar la aplicación."
+      },
+      "2": {
+        "title": "¿Cómo se calcula el consumo de créditos?",
+        "desc": "Dos llamadas a la API representan un crédito, sin importar cuántos tokens (palabras) consuman esas llamadas a la API. Si una respuesta de la API tiene menos de 10 tokens (diez palabras), no la contamos."
+      },
+      "3": {
+        "title": "¿Ofrecen soporte técnico?",
+        "desc": "Sí, todos los usuarios que han comprado créditos tienen acceso a soporte técnico."
+      }
+    },
+    "premium": {
+      "title": "Premium",
+      "cta": "Obtén más créditos",
+      "features": {
+        "smart": "Sugerencias inteligentes",
+        "test": "Generación de pruebas",
+        "improve": "Mejoras de código",
+        "docs": "Generación de documentación",
+        "chat": "Chatea con Code Genius "
+      }
+    },
+    "enterprice": {
+      "title": "Empresas",
+      "cta": "Contáctanos",
+      "perUser": "Por usuario, por mes.",
+      "features": {
+        "1": "Todo en Premium mas:",
+        "2": "Uso ilimitado",
+        "3": "Asistente de chat personalizado",
+        "4": "Guardar y editar ideas de código",
+        "5": "Soporte 24/7"
+      }
+    }
+  },
   "footer": {
     "pricing": "Precios",
     "contact": "Contacto",

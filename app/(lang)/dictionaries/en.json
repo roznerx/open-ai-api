@@ -58,6 +58,89 @@
       "subtitle": "Generate clear and concise documentation in seconds."
     }
   },
+  "sidebar": {
+    "dashboard": "Dashboard",
+    "suggestions": "Suggestions",
+    "testing": "Testing",
+    "optimization": "Optimization",
+    "docs": "Documentation",
+    "chat": "Chat"
+  },
+  "codeIdea": {
+    "footer": {
+      "lang": "Lenguage",
+      "lib": "UI Library",
+      "clear": "Clear Panel",
+      "stop": "Stop generation",
+      "generate": "Generate"
+    },
+    "mode": {
+      "smart": "Suggestions",
+      "test": "Testing",
+      "improve": "Optimization",
+      "docs": "Documentation"
+    },
+    "placeholder": {
+      "smart": "Tip: Use the dropdowns at the bottom to select your language and framework, then ask for code ideas.",
+      "test": "Tip: Insert your function, select the desired testing tools, and obtain the test.",
+      "improve": "Tip: Paste your function and wait for optimizations and performance improvements.",
+      "docs": "Tip: Paste your function or component here and click Generate. Wait for the documentation to appear."
+    }
+  },
+  "chat": {
+    "cards": {
+      "react": "Explain how to use the create react app npm package",
+      "next": "How should I use the Create Next App npm package?",
+      "ts": "Explain how to use Typescript",
+      "vue": "Explain how to bootstrap a Vue JS App",
+      "python": "How to create a function in Python?",
+      "aws": "Explain how to use the AWS API",
+      "db": "What's the best Database with Typescript support?",
+      "rtl": "Explain how to use Jest with React Testing Library"
+    }
+  },
+  "pricing": {
+    "title": "Only pay what you use",
+    "subtitle1": "No hidden fees. No surprise bills. No subscription bills.",
+    "subtitle2": "Only pay what you use.",
+    "faqs": {
+      "1": {
+        "title": "Can I try Code Genius for free?",
+        "desc": "Yes. All newly registered users get 25 free-of-charge credits to test the application."
+      },
+      "2": {
+        "title": "How is credit consumption calculated?",
+        "desc": "Two API calls represent one credit, no matter how many tokens those API calls consume. If an API response has less than 10 tokens (ten words) we do not count it."
+      },
+      "3": {
+        "title": "Do you offer technical support?",
+        "desc": "Yes. All users who have purchased credits have technical support."
+      }
+    },
+    "premium": {
+      "title": "Premium",
+      "cta": "Get More Credits",
+      "features": {
+        "smart": "Smart suggestions",
+        "test": "Test Generation",
+        "improve": "Code Improvements",
+        "docs": "Docs Generation",
+        "chat": "Code Genius Chat"
+      }
+    },
+    "enterprice": {
+      "title": "Enterprise",
+      "cta": "Contact Us",
+      "perUser": "Per user, per month.",
+      "features": {
+        "1": "Everything in Premium plus",
+        "2": "Unlimited usage",
+        "3": "Customized chat assistant",
+        "4": "Save and edit code ideas",
+        "5": "Priority support"
+      }
+    }
+  },
   "footer": {
     "pricing": "Pricing",
     "contact": "Contact",
@@ -76,8 +159,5 @@
       "terms": "Terms",
       "privacy": "Privacy Policy"
     }
-  },
-  "pricing": {},
-  "chat": {},
-  "cideIdea": {}
+  }
 }

@@ -6,7 +6,7 @@ import PromptCard from "./PromptCard"
 import { CombinedMessages } from "./CombinedMessages"
 import useWindowSize from "hooks/use-window-size"
 
-export default function Chat({ userName, messages, setInput }) {
+export default function Chat({ userName, messages, setInput, translations }) {
   const { isMobile } = useWindowSize()
 
   const chatWidth = isMobile ? "90vw" : "900px"
@@ -34,63 +34,51 @@ export default function Chat({ userName, messages, setInput }) {
             <div className="grid max-h-[65vh] grid-cols-1 place-items-center gap-4 overflow-y-auto sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
               <PromptCard
                 imageSrc="/icons/react.png"
-                onClick={() =>
-                  setInput("Explain how to use the create react app package")
-                }
+                onClick={() => setInput(translations.cards.react)}
                 title="Create React App"
-                text="Explain how to use the create react app package"
+                text={translations.cards.react}
               />
               <PromptCard
-                onClick={() =>
-                  setInput("How should I use the Create Next App npm package?")
-                }
+                onClick={() => setInput(translations.cards.next)}
                 imageSrc="/icons/nextjs.png"
                 title="Create Next App"
-                text="How should I use the Create Next App npm package?"
+                text={translations.cards.next}
               />
               <PromptCard
-                onClick={() =>
-                  setInput("Explain how to use Typescript with React")
-                }
+                onClick={() => setInput(translations.cards.ts)}
                 imageSrc="/icons/typescript.png"
                 title="Typescript"
-                text="Explain how to use Typescript with React"
+                text={translations.cards.ts}
               />
               <PromptCard
-                onClick={() =>
-                  setInput("Explain how to bootstrap a Vue JS App")
-                }
+                onClick={() => setInput(translations.cards.vue)}
                 title="Vue JS"
                 imageSrc="/icons/vue.png"
-                text="Explain how to bootstrap a Vue JS App"
+                text={translations.cards.vue}
               />
               <PromptCard
                 imageSrc="/icons/python.png"
                 title="Python"
-                onClick={() => setInput("How to create a function in Python?")}
-                text="How to create a function in Python?"
+                onClick={() => setInput(translations.cards.python)}
+                text={translations.cards.python}
               />
               <PromptCard
                 imageSrc="/icons/aws.png"
                 title="AWS"
-                onClick={() => setInput("Explain how to use the AWS API")}
-                text="Explain how to use the AWS API"
+                onClick={() => setInput(translations.cards.aws)}
+                text={translations.cards.aws}
               />
               <PromptCard
                 imageSrc="/icons/db.ico"
                 title="Database"
-                onClick={() =>
-                  setInput("What's the best Database with Typescript support?")
-                }
-                text="What's the best Database with Typescript support?"
+                onClick={() => setInput(translations.cards.db)}
+                text={translations.cards.db}
               />
               <PromptCard
-                onClick={() =>
-                  setInput("Explain how to use Jest with React Testing Library")
-                }
+                onClick={() => setInput(translations.cards.rtl)}
                 imageSrc="/icons/rtl.png"
                 title="React Testing Library"
-                text="Explain how to use Jest with React Testing Library"
+                text={translations.cards.rtl}
               />
             </div>
           </div>

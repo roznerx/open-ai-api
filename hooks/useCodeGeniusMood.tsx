@@ -1,7 +1,7 @@
 import { useSearchParams } from "next/navigation"
 import { useEffect, useState } from "react"
 
-export const useCodeGeniusMood = () => {
+export const useCodeGeniusMood = (translations) => {
   const searchParams = useSearchParams()
   const [codeGeniusMood, setCodeGeniusMood] = useState("")
 
@@ -9,16 +9,16 @@ export const useCodeGeniusMood = () => {
     if (searchParams) {
       const mode: any = searchParams.get("mode") || "smart"
       if (mode === "smart") {
-        setCodeGeniusMood("Suggestions")
+        setCodeGeniusMood(translations.mode.smart)
       } else if (mode === "test") {
-        setCodeGeniusMood("Testing")
+        setCodeGeniusMood(translations.mode.test)
       } else if (mode === "improve") {
-        setCodeGeniusMood("Optimization")
+        setCodeGeniusMood(translations.mode.improve)
       } else if (mode === "docs") {
-        setCodeGeniusMood("Documentation")
+        setCodeGeniusMood(translations.mode.docs)
       }
     }
-  }, [searchParams])
+  }, [searchParams, translations.mode])
 
   return codeGeniusMood
 }

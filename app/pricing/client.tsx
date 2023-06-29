@@ -117,13 +117,13 @@ export default function Client({ session, translations }: ClientPropTye) {
           whileInView={{ opacity: 1 }}
           className="mx-auto mb-3 w-[80%] text-4xl font-semibold text-white dark:text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight"
         >
-          Only pay what you use
+          {translations.pricing.title}
         </motion.h2>
         <p className="mx-auto mt-8 w-[80%] text-gray-300 sm:w-full">
-          No hidden fees. No surprise bills. No subscription bills.{" "}
+          {translations.pricing.subtitle1}{" "}
           <span className="font-medium text-gray-200">
             {" "}
-            Only pay what you use.
+            {translations.pricing.subtitle2}
           </span>
         </p>
 
@@ -138,7 +138,7 @@ export default function Client({ session, translations }: ClientPropTye) {
               className="mx-auto"
             />
             <h3 className="my-2 mb-2 text-2xl font-semibold text-mint">
-              Premium
+              {translations.pricing.premium.title}
             </h3>
             <div className="my-4 flex items-center justify-center">
               <span className="text-center text-5xl font-semibold">
@@ -193,7 +193,7 @@ export default function Client({ session, translations }: ClientPropTye) {
                       <span className="ml-2">Redirecting..</span>
                     </div>
                   ) : (
-                    "Get More Credits"
+                    translations.pricing.premium.cta
                   )}
                 </button>
               </div>
@@ -207,23 +207,23 @@ export default function Client({ session, translations }: ClientPropTye) {
               <li className="flex w-full space-x-3 self-center">
                 {/* <!-- Icon --> */}
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span> Smart suggestions</span>
+                <span>{translations.pricing.premium.features.smart}</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Test Generation</span>
+                <span> {translations.pricing.premium.features.test}</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Code Improvements</span>
+                <span> {translations.pricing.premium.features.improve}</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Docs Generation</span>
+                <span> {translations.pricing.premium.features.docs}</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Code Genius Chat</span>
+                <span> {translations.pricing.premium.features.chat}</span>
               </li>
             </ul>
           </div>
@@ -239,14 +239,14 @@ export default function Client({ session, translations }: ClientPropTye) {
             <h3
               className={`mt-2 mb-4 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
             >
-              Enterprise
+              {translations.pricing.enterprice.title}
             </h3>
             <div className="my-4 flex flex-col items-center justify-center">
               <span className="mr-2 text-center text-5xl font-semibold">
                 $ 20 USD
               </span>
               <span className="text-sm my-2 inline-block pt-2 text-center">
-                Per user, per month.
+                {translations.pricing.enterprice.perUser}
               </span>
             </div>
             <div
@@ -260,7 +260,7 @@ export default function Client({ session, translations }: ClientPropTye) {
                   type="submit"
                   className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
                 >
-                  Contact Us
+                  {translations.pricing.enterprice.cta}
                 </button>
               </div>
             </div>
@@ -270,33 +270,33 @@ export default function Client({ session, translations }: ClientPropTye) {
             >
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Everything in Premium plus</span>
+                <span>{translations.pricing.enterprice.features["1"]}</span>
               </li>
               <li className="flex w-full space-x-3">
                 {/* <!-- Icon --> */}
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Unlimited usage</span>
+                <span>{translations.pricing.enterprice.features["2"]}</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Customized chat assistant</span>
+                <span>{translations.pricing.enterprice.features["3"]}</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Save and edit code ideas</span>
+                <span>{translations.pricing.enterprice.features["4"]}</span>
               </li>
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>Priority support</span>
+                <span>{translations.pricing.enterprice.features["5"]}</span>
               </li>
             </ul>
           </div>
         </section>
       </div>
       <div className="mt-10 w-full">
-        <Faqs />
+        <Faqs translations={translations.pricing.faqs} />
       </div>
-      <Footer translations={translations} session={session?.data} />
+      <Footer translations={translations.footer} session={session?.data} />
     </>
   )
 }

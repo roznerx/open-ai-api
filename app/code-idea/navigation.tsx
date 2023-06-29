@@ -2,10 +2,14 @@
 
 import SideBar from "app/components/shared/SideBar"
 
-export default function Navigation({ mode, setGeneratedCode }) {
+export default function Navigation({ mode, setGeneratedCode, translations }) {
   return (
     <>
-      <SideBar mode={mode} setGeneratedCode={setGeneratedCode} />
+      <SideBar
+        mode={mode}
+        setGeneratedCode={setGeneratedCode}
+        translations={translations}
+      />
     </>
   )
 }

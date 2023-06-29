@@ -1,14 +1,160 @@
 {
   "lang": "pt",
   "home": {
-    "header": {},
-    "hero": {},
-    "superHero": {},
-    "chat": {},
-    "feature": {}
+    "header": {
+      "register": "Registrar",
+      "login": "Entrar"
+    },
+    "chat": {
+      "placeholder": "Qual é a sua próxima ideia?",
+      "cta": "Ir para o chat",
+      "title": "Converse com o gênio do código. Pergunte o que quiser.",
+      "subtitle": "Escrever código performático e bem estruturado pode ser um desafio que requer tempo. Code Genius foi projetado para melhorar suas habilidades e descobrir novas possibilidades. Explore todas as opções disponíveis!"
+    },
+    "feature": {
+      "title": "O gênio da programação que ajuda você a codificar mais rápido, mais fácil e de maneira mais eficiente.",
+      "subtitle": "Escrever código com altos padrões de qualidade pode ser uma tarefa desafiadora e demorada. Code Genius levará suas habilidades para o próximo nível. As possibilidades são infinitas.",
+      "smart": {
+        "title": "Aumente o desempenho do seu código",
+        "subtitle": "Code Genius analisa seu código em tempo real e oferece sugestões inteligentes e melhorias de desempenho. Concentre-se em adicionar valor ao produto, nós garantimos que o código seja limpo, eficiente e livre de erros."
+      },
+      "test": {
+        "title": "Gere testes unitários em segundos",
+        "subtitle": "Escrever testes unitários pode ser uma tarefa tediosa e demorada. Com o Code Genius, você pode gerar automaticamente casos de teste que abrangem uma ampla variedade de cenários, garantindo que seu código seja amplamente testado e confiável."
+      },
+      "docs": {
+        "title": "Crie documentação de forma simples e eficiente",
+        "subtitle": "Uma boa documentação é fundamental para escrever um código sustentável. Com o Code Genius, você pode gerar automaticamente uma documentação clara e concisa para o seu código."
+      }
+    },
+    "superHero": {
+      "title": "Crie código de gênios",
+      "subtitle": "Leve suas ideias para outro nível com o poder e a ajuda da Inteligência Artificial."
+    }
   },
-  "pricing": {},
-  "chat": {},
-  "cideIdea": {},
-  "footer": {}
+  "dashboard": {
+    "welcome": "Bem-vindo",
+    "credits": "Créditos",
+    "available": "Disponíveis",
+    "ctaChat": "Chat de código",
+    "ctaUpgrade": "Atualize seu plano",
+    "subscription": "Plano de assinatura",
+    "smart": {
+      "title": "Obtenha sugestões",
+      "subtitle": "Obtenha sugestões de código usando suas linguagens de programação."
+    },
+    "performance": {
+      "title": "Desempenho",
+      "subtitle": "Melhore o desempenho do seu código obtendo melhorias de desempenho e legibilidade."
+    },
+    "test": {
+      "title": "Gere testes",
+      "subtitle": "Com nosso modo de teste, nunca foi tão fácil gerar testes."
+    },
+    "docs": {
+      "title": "Documentação",
+      "subtitle": "Use o modo de documentação para gerar documentação em segundos."
+    }
+  },
+  "sidebar": {
+    "dashboard": "Início",
+    "suggestions": "Sugestões",
+    "testing": "Testes",
+    "optimization": "Otimização",
+    "docs": "Documentação",
+    "chat": "Conversa"
+  },
+  "codeIdea": {
+    "footer": {
+      "lang": "Idioma",
+      "lib": "Biblioteca UI",
+      "clear": "Limpar Painel",
+      "stop": "Abortar Geração",
+      "generate": "Gerar"
+    },
+    "mode": {
+      "smart": "Sugestões",
+      "test": "Testes",
+      "improve": "Otimização",
+      "docs": "Documentação"
+    },
+    "placeholder": {
+      "smart": "Dica: Use os menus suspensos na parte inferior para selecionar a linguagem de programação, em seguida, clique em 'Gerar'.",
+      "test": "Dica: Insira sua função, selecione as ferramentas de teste desejadas e obtenha o resultado do teste.",
+      "improve": "Dica: Cole sua função e aguarde otimizações e melhorias de desempenho.",
+      "docs": "Cole sua função ou componente aqui e clique em 'Gerar'."
+    }
+  },
+  "chat": {
+    "cards": {
+      "react": "Me diga como usar o pacote NPM: Create React App",
+      "next": "Me diga como usar o pacote NPM: Create Next App?",
+      "ts": "Me diga as melhores práticas para usar o Typescript",
+      "vue": "Me diga como criar um aplicativo com Vue JS",
+      "python": "Me diga como definir uma função em Python",
+      "aws": "Me diga como usar a API da AWS",
+      "db": "Recomende um banco de dados com suporte a Typescript",
+      "rtl": "Me diga como usar o Jest com React Testing Library"
+    }
+  },
+  "pricing": {
+    "title": "Pague apenas pelo que você usa",
+    "subtitle1": "Sem custos ocultos. Sem faturas surpresa. Sem faturas de assinatura.",
+    "subtitle2": "Pague apenas pelo que você usa.",
+    "faqs": {
+      "1": {
+        "title": "Posso experimentar o Code Genius gratuitamente?",
+        "desc": "Sim. Todos os usuários recém-registrados recebem 25 créditos gratuitos para testar o aplicativo."
+      },
+      "2": {
+        "title": "Como o consumo de créditos é calculado?",
+        "desc": "Duas chamadas de API representam um crédito, independentemente da quantidade de tokens (palavras) consumidos nessas chamadas de API. Se uma resposta da API tiver menos de 10 tokens (dez palavras), ela não será contada."
+      },
+      "3": {
+        "title": "Vocês oferecem suporte técnico?",
+        "desc": "Sim, todos os usuários que compraram créditos têm acesso ao suporte técnico."
+      }
+    },
+    "premium": {
+      "title": "Premium",
+      "cta": "Obtenha mais créditos",
+      "features": {
+        "smart": "Sugestões inteligentes",
+        "test": "Geração de testes",
+        "improve": "Melhorias de código",
+        "docs": "Geração de documentação",
+        "chat": "Converse com o Code Genius"
+      }
+    },
+    "enterprise": {
+      "title": "Empresas",
+      "cta": "Entre em contato",
+      "perUser": "Por usuário, por mês.",
+      "features": {
+        "1": "Tudo do Premium mais:",
+        "2": "Uso ilimitado",
+        "3": "Assistente de chat personalizado",
+        "4": "Salvar e editar ideias de código",
+        "5": "Suporte 24/7"
+      }
+    }
+  },
+  "footer": {
+    "pricing": "Preços",
+    "contact": "Contato",
+    "discord": "Discord",
+    "terms": "Termos",
+    "privacy": "Privacidade",
+    "copy": "© Direitos Autorais 2023. Todos os direitos reservados."
+  },
+  "modals": {
+    "signIn": {
+      "title": "Faça login em sua conta",
+      "subtitle": "Descubra todo o seu potencial com o Code Genius",
+      "byContinuing": "Ao continuar, você aceita nossos",
+      "acknowledge": "e reconhece nossa",
+      "terms": "política de termos",
+      "privacy": "política de privacidade"
+    }
+  }
 }

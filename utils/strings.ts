@@ -1,13 +1,15 @@
-export function getCodeGeniusPlaceHolder(mode: string) {
+export function getCodeGeniusPlaceHolder(mode: string, translations: any) {
+  console.log("trans", translations)
+
   switch (mode) {
     case "smart":
-      return "Tip: Use the dropdowns at the bottom to select your language and framework, then ask for code ideas."
+      return translations.placeholder.smart
     case "test":
-      return "Tip: Insert your function, select the desired testing tools, and obtain the test."
+      return translations.placeholder.test
     case "improve":
-      return "Tip: Paste your function and wait for optimizations and performance improvements."
+      return translations.placeholder.improve
     case "docs":
-      return "Tip: Paste your function or component here and click Generate. Wait for the documentation to appear."
+      return translations.placeholder.docs
     default:
       return ""
   }

@@ -4,6 +4,7 @@ import { redirect } from "next/navigation"
 import Client from "./client"
 import { cookies } from "next/headers"
 import { getDictionary } from "app/(lang)/dictionaries"
+import SideBar from "app/components/shared/SideBar"
 
 export const metadata = {
   title: "Code Chat",
@@ -24,8 +25,9 @@ export default async function Page() {
 
   return (
     <>
+      <SideBar translations={dictionary.sidebar} />
       <main className="flex min-h-screen w-screen px-4 text-center">
-        <Client session={session} translations={dictionary} />
+        <Client session={session} translations={dictionary?.chat} />
       </main>
     </>
   )

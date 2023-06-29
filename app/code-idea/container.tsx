@@ -17,11 +17,16 @@ export default function Container({ session, translations }) {
   const [prompt, setPrompt] = useState("")
   const [generatedCode, setGeneratedCode] = useState<String>("")
   const [codeSentence, setCodeSentence] = useState("")
-  const [langElement, setLangElement] = useState<LandElementType>("Language")
-  const [lib, setLib] = useState<LandElementType>("UI Library")
+  const [langElement, setLangElement] = useState<LandElementType>(
+    translations.codeIdea.footer.lang,
+  )
+  const [lib, setLib] = useState<LandElementType>(
+    translations.codeIdea.footer.lib,
+  )
   const searchParams = useSearchParams()
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
+  console.log("translations", translations)
 
   useEffect(() => {
     if (searchParams) {
@@ -81,9 +86,14 @@ export default function Container({ session, translations }) {
   return (
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
-      <Navigation setGeneratedCode={setGeneratedCode} mode={mode} />
+      <Navigation
+        translations={translations.sidebar}
+        setGeneratedCode={setGeneratedCode}
+        mode={mode}
+      />
       <Client
         userName={session?.user?.name?.substring(0, 1)}
+        translations={translations.codeIdea}
         setGeneratedCode={setGeneratedCode}
         generatedCode={generatedCode}
         chatHasStarted={chatHasStarted}

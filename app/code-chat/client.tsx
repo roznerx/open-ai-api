@@ -54,6 +54,7 @@ export default function Client({ session, translations }) {
     <>
       <Header session={session} setShowSignInModal={setShowSignInModal} />
       <Chat
+        translations={translations}
         setInput={setInput}
         userName={userName}
         messages={messages.slice(1)}

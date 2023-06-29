@@ -6,6 +6,7 @@ import { MaterialTooltip } from "app/components/material-components"
 // const notify = () => toast("Code copied!")
 
 export default function FooterSection({
+  translations,
   mode,
   setUserHasAResponse,
   setTestFrameworkElement,
@@ -25,26 +26,6 @@ export default function FooterSection({
   setLib,
   onCodeGeneration,
 }: any) {
-  // const [copied, toggleCopy] = useState(false)
-
-  // const { copy } = useClipboard()
-
-  // const text =
-  //   generatedCode.length > 0 &&
-  //   generatedCode
-  //     .substring(generatedCode.indexOf("**") + 0)
-  //     .replace("**", "")
-  //     .replace("tsx", "")
-  //     .replace("", "")
-  //     .split("**::")
-  //     .join("")
-
-  // const copyHandler = () => {
-  //   copy(text)
-  //   toggleCopy(!copied)
-  //   notify()
-  // }
-
   return (
     <>
       {/* <Toaster /> */}
@@ -102,7 +83,7 @@ export default function FooterSection({
           <div className="ml-4 flex sm:ml-0">
             <MaterialTooltip
               className="-mt-3 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-              content="Clear Pannel"
+              content={translations.clear}
               animate={{
                 mount: { scale: 1, y: 0 },
                 unmount: { scale: 0, y: 25 },
@@ -122,7 +103,7 @@ export default function FooterSection({
             </MaterialTooltip>
             <MaterialTooltip
               className="-mt-3  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-              content="Stop Generation"
+              content={translations.stop}
               animate={{
                 mount: { scale: 1, y: 0 },
                 unmount: { scale: 0, y: 25 },
@@ -148,7 +129,7 @@ export default function FooterSection({
               }}
               loading={loading}
               variant="mint"
-              text="Generate"
+              text={translations.generate}
             />
           </div>
         </div>
@@ -156,3 +137,23 @@ export default function FooterSection({
     </>
   )
 }
+
+// const [copied, toggleCopy] = useState(false)
+
+// const { copy } = useClipboard()
+
+// const text =
+//   generatedCode.length > 0 &&
+//   generatedCode
+//     .substring(generatedCode.indexOf("**") + 0)
+//     .replace("**", "")
+//     .replace("tsx", "")
+//     .replace("", "")
+//     .split("**::")
+//     .join("")
+
+// const copyHandler = () => {
+//   copy(text)
+//   toggleCopy(!copied)
+//   notify()
+// }
