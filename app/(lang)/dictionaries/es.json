@@ -3,28 +3,28 @@
   "home": {
     "header": {
       "register": "Regístrate",
-      "login": "Login"
+      "login": "Regístrate"
     },
     "chat": {
       "placeholder": "Cuál es tu próxima idea?",
       "cta": "Ir al chat",
       "title": "Chatea con el genio del código. Preguntale lo que quieras",
-      "subtitle": "Escribir código performante y bien estructurado puede ser un desafío que requiere tiempo. Code Genius fue diseñado para mejorar tus habilidades y descubrir nuevas posibilidades. ¡Explora todas las opciones disponibles!"
+      "subtitle": "Escribir código bien estructurado puede ser un desafío que requiere tiempo. Code Genius fue diseñado para mejorar tus habilidades y descubrir nuevas posibilidades. ¡Explora todas las opciones disponibles!"
     },
     "feature": {
-      "title": "El genio de la programación que te ayuda a codificar más rápido, más fácil y de manera más eficiente.",
-      "subtitle": "Escribir código con altos extándares de calidad puede ser una tarea desafiante y llevar mucho tiempo Code Genius llevará tus habilidades al siguiente nivel. Las posibilidades son infinitas.",
+      "title": "El genio de la programación que te ayuda a realizar tus tareas más rápido, más fácil y de manera más eficiente.",
+      "subtitle": "Escribir código con altos estándares de calidad puede ser una tarea desafiante y llevar mucho tiempo Code Genius llevará tus habilidades al siguiente nivel. Las posibilidades son infinitas.",
       "smart": {
-        "title": "Aumente la performance de tu código",
+        "title": "Aumenta el rendimiento de tu código",
         "subtitle": "Code Genius analiza tu código en tiempo real y ofrece sugerencias inteligentes y mejoras de rendimiento. Enfocate a añadir valor al producto, nosotros garantizamos que el código sea limpio, eficiente y libre de errores."
       },
       "test": {
         "title": "Genera tests unitarios en segundos",
-        "subtitle": "Escribir pruebas unitarias puede ser una tarea tediosa y que consume mucho tiempo. Con Code Genius puedes generar automáticamente casos de prueba que cubren una amplia gama de escenarios, asegurando que tu código sea exhaustivamente probado y confiable."
+        "subtitle": "Escribir test puede ser una tarea tediosa que consume mucho tiempo. Con Code Genius puedes generar tests que cubran una amplia gama de escenarios, asegurando que tu código sea exhaustivamente probado y confiable."
       },
       "docs": {
         "title": "Crea documentación de una forma sencilla y eficiente",
-        "subtitle": "Una buena documentación es clave para escribir un código mantenible. Con Code Genius, puedes generar automáticamente una documentación clara y concisa para tu código."
+        "subtitle": "Una buena documentación es clave para escribir un código fácil de mantener. Con Code Genius, puedes generar automáticamente una documentación clara y concisa para tu código."
       }
     },
     "superHero": {
@@ -40,20 +40,20 @@
     "ctaUpgrade": "Actualiza tu plan",
     "subscription": "Subscription Plan",
     "smart": {
-      "title": "Obtiene Sugerencias",
-      "subtitle": "Obtiene sugerencias de código usando tus lenguajes de programación."
+      "title": "Sugerencias de código",
+      "subtitle": "Obtén sugerencias de código usando tus lenguajes de programación favoritos."
     },
     "performance": {
-      "title": "Rendiemiento",
-      "subtitle": "Mejora la performance de tu código obteniendo mejoras de rendimiento y legibilidad."
+      "title": "Optimiza de código",
+      "subtitle": "Mejora tu código obteniendo mejoras de lectura y rendimiento."
     },
     "test": {
-      "title": "Genera Tests",
-      "subtitle": "Con nuestro modo de testing, nunca fue tan fácil generar tests."
+      "title": "Pruebas de código",
+      "subtitle": "La generación de pruebas de código con Code Genius te permite automatizar la creación de tests de código."
     },
     "docs": {
       "title": "Documentación",
-      "subtitle": "Usa el modo docs para generar documentación en segundos."
+      "subtitle": "Genera documentación clara y precisa en segundos."
     }
   },
   "sidebar": {
@@ -79,7 +79,7 @@
       "docs": "Documentación"
     },
     "placeholder": {
-      "smart": "Consejo: Utiliza los menús desplegables en la parte inferior para seleccionar el lenguaje de programación, luego haz click en 'Generar'.",
+      "smart": "Consejo: Utiliza los menus desplegables en la parte inferior para seleccionar el lenguaje de programación, luego haz click en 'Generar'.",
       "test": "Consejo: Inserta tu función, selecciona las herramientas de prueba deseadas y obtén el resultado de la prueba.",
       "improve": "Consejo: Pega tu función y espera por las optimizaciones y mejoras de rendimiento.",
       "docs": "Pega tu función o componente aquí y haz clic en 'Generar'."
@@ -87,14 +87,14 @@
   },
   "chat": {
     "cards": {
-      "react": "Dime como usar el paquete de NPM: Create React App",
-      "next": "Dime como usar el paquete de NPM: Create Next App?",
-      "ts": "Dime cuáles son las mejores prácticas para usar Typescript",
-      "vue": "Dime como crear una App con Vue JS",
-      "python": "Dime como se define una función en Python",
-      "aws": "Dime como usar la API de AWS",
-      "db": "Recomienda una base de datos  con soporte Typescript",
-      "rtl": "Dime como usar Jest con React Testing Library"
+      "react": "¿Cómo uso el paquete de NPM: Create React App?",
+      "next": "¿Cómo uso el paquete de NPM: Create Next App?",
+      "ts": "¿Cuáles son las mejores prácticas para usar Typescript?",
+      "vue": "¿Cómo creo una App con Vue JS"?,
+      "python": "¿Cómo se define una función en Python?",
+      "aws": "¿Cómo uso la API de AWS?",
+      "db": "¿Recomiendame una base de datos que soporte Typescript?",
+      "rtl": "¿Cómo uso Jest con React Testing Library?"
     }
   },
   "pricing": {
@@ -161,7 +161,7 @@
       }
     },
     "infoUsage": {
-      "title": "2. Cómo utilizamos la información personal",
+      "title": "2. ¿Cómo utilizamos la información personal?",
       "title2": "Podemos utilizar la información personal para los siguientes fines:",
       "list": {
         "1": "Proporcionar, administrar, mantener y/o analizar los servicios",
@@ -213,7 +213,7 @@
     }
   },
   "terms": {
-    "title": "Términos de Uso",
+    "title": "Términos de uso",
     "subtitle": "Gracias por utilizar Code Genius. El compañero de inteligencia artificial para desarrolladores.",
     "first": {
       "title": "1. Acuerdo",
@@ -259,7 +259,7 @@
   },
   "modals": {
     "signIn": {
-      "title": "Logueate en tu cuenta",
+      "title": "Regístrate",
       "subtitle": "Descubre todo tu potencial con Code Genius",
       "byContinuing": "Continuando, tu aceptas nuestra",
       "acknowledge": "y reconoces nuestros",
