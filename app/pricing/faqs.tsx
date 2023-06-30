@@ -4,7 +4,6 @@ import { Disclosure } from "@headlessui/react"
 import { ChevronUp } from "lucide-react"
 
 export default function Faqs({ translations: faqs }) {
-  // console.log("translations faqs:", translations)
   return (
     <div className="mx-auto w-full px-4 md:w-[990px]">
       <div className="w-full rounded-2xl bg-purple-500 p-2">

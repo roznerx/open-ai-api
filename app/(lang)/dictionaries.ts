@@ -7,7 +7,6 @@ const dictionaries = {
 }
 
 export const getDictionary = async (locale) => {
-  console.log("locale in get dictionarie:", locale)
   const functionToCall = dictionaries[locale]
-  return functionToCall()
+  return await functionToCall()
 }

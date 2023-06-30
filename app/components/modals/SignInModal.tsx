@@ -19,7 +19,6 @@ export function useSignInModal({
   translations: any
 }) {
   const [showSignInModal, setShowSignInModal] = useState(false)
-  console.log("translations", translations)
 
   const SignInModalCallback = useCallback(() => {
     return showSignInModal ? (

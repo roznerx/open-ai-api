@@ -1,4 +1,5 @@
 import { getServerSession } from "next-auth"
+import { headers } from "next/headers"
 
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { cookies } from "next/headers"
@@ -19,9 +20,10 @@ export default async function Page() {
   const session = await getServerSession(authOptions)
   const cookieStore = cookies()
   const userIp = cookieStore.get("user-ip")?.value || ""
-  const locale = cookieStore.get("locale") || { value: "en" }
+  const headersList = headers()
+  const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
 
-  const dictionary = await getDictionary(locale?.value as string)
+  const dictionary = await getDictionary(lang)
 
   const anonymousUserData = await harperClient({
     operation: "sql",

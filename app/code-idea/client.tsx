@@ -173,7 +173,7 @@ export default function Client({
         content: codeSentence,
       },
     ]
-    console.log("codeMessages.current", codeMessages.current)
+    // console.log("codeMessages.current", codeMessages.current)
 
     generateCode({
       setReader,

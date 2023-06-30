@@ -90,10 +90,10 @@ export default function Feature({ setShowSignInModal, session, translations }) {
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h3 className="mx-auto w-[100%] text-center text-4xl font-bold text-white sm:ml-0 sm:w-[80%] sm:pl-3 sm:text-left">
-              {translations?.feature?.smart.title}
+              {translations?.feature?.smart?.title}
             </h3>
             <p className="my-auto mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
-              {translations?.feature?.smart.subtitle}
+              {translations?.feature?.smart?.subtitle}
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
@@ -101,10 +101,10 @@ export default function Feature({ setShowSignInModal, session, translations }) {
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h4 className="mx-auto w-[90%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-4 sm:text-left md:w-[85%]">
-              {translations?.feature?.test.title}
+              {translations?.feature?.test?.title}
             </h4>
             <p className="mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
-              {translations?.feature?.test.subtitle}
+              {translations?.feature?.test?.subtitle}
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
@@ -112,10 +112,10 @@ export default function Feature({ setShowSignInModal, session, translations }) {
           </div>
           <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
             <h5 className="mx-auto w-[90%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-0 sm:text-left">
-              {translations?.feature?.docs.title}
+              {translations?.feature?.docs?.title}
             </h5>
             <p className="mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
-              {translations?.feature?.docs.subtitle}
+              {translations?.feature?.docs?.subtitle}
             </p>
           </div>
         </div>

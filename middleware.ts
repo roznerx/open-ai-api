@@ -1,11 +1,7 @@
 import { NextRequest, NextResponse } from "next/server"
-import { getLocale } from "utils/getLocale"
-
-let locales = ["en", "es", "pt"]
 
 export async function middleware(request: NextRequest) {
   // const pathname = request.nextUrl.pathname
-  const acceptLangHeader = request.headers.get("accept-language")
 
   const response = NextResponse.next()
 
@@ -17,15 +13,6 @@ export async function middleware(request: NextRequest) {
 
   if (ip) {
     response.cookies.set("user-ip", ip, {
-      httpOnly: false,
-    })
-  }
-
-  const locale = getLocale(acceptLangHeader as string, locales)
-  console.log("locale in middleware:", locale)
-  //Set user's locale
-  if (locale) {
-    response.cookies.set("locale", locale, {
       httpOnly: false,
     })
   }

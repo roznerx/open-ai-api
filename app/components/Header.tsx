@@ -20,7 +20,6 @@ export default function Header({
   translations?: any
   setShowSignInModal: any
 }) {
-  console.log("translations:", translations)
   const pathname = usePathname()
   const [showWidget, setShowWidget] = useState(false)
 

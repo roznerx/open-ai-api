@@ -17,7 +17,6 @@ export default function Client({
   apiCalls,
   loggedUserData,
 }) {
-  console.log("translations:", translations)
   const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
     userHasAccount,
     translations: translations?.modals?.signIn,
