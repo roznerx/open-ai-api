@@ -22,8 +22,9 @@ export default async function Page() {
   const userIp = cookieStore.get("user-ip")?.value || ""
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
-
   const dictionary = await getDictionary(lang)
+
+  console.log("LANG", lang)
 
   const anonymousUserData = await harperClient({
     operation: "sql",

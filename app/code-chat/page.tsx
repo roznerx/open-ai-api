@@ -2,7 +2,7 @@ import { authOptions } from "pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth"
 import { redirect } from "next/navigation"
 import Client from "./client"
-import { cookies } from "next/headers"
+import { headers } from "next/headers"
 import { getDictionary } from "app/(lang)/dictionaries"
 import SideBar from "app/components/shared/SideBar"
 
@@ -18,10 +18,9 @@ export default async function Page() {
     redirect("/?action=authenticate&referer=/code-chat")
   }
 
-  const cookieStore = cookies()
-  const locale = cookieStore.get("locale") || { value: "en" }
-
-  const dictionary = await getDictionary(locale?.value as string)
+  const headersList = headers()
+  const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
+  const dictionary = await getDictionary(lang)
 
   return (
     <>
