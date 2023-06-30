@@ -6,9 +6,9 @@
       "login": "Regístrate"
     },
     "chat": {
-      "placeholder": "Cuál es tu próxima idea?",
+      "placeholder": "¿Cuál es tu próxima idea?",
       "cta": "Ir al chat",
-      "title": "Chatea con el genio del código. Preguntale lo que quieras",
+      "title": "Chatea con el genio del código. Pregúntale lo que quieras",
       "subtitle": "Escribir código bien estructurado puede ser un desafío que requiere tiempo. Code Genius fue diseñado para mejorar tus habilidades y descubrir nuevas posibilidades. ¡Explora todas las opciones disponibles!"
     },
     "feature": {
@@ -34,11 +34,11 @@
   },
   "dashboard": {
     "welcome": "Bienvenido",
-    "credits": "Creditos",
+    "credits": "Créditos",
     "available": "Disponibles",
     "ctaChat": "Chat de código",
     "ctaUpgrade": "Actualiza tu plan",
-    "subscription": "Subscription Plan",
+    "subscription": "Plan de suscripción",
     "smart": {
       "title": "Sugerencias de código",
       "subtitle": "Obtén sugerencias de código usando tus lenguajes de programación favoritos."
@@ -69,7 +69,7 @@
       "lang": "Lenguaje",
       "lib": "Librería UI",
       "clear": "Limpiar Panel",
-      "stop": "Abortar Generación",
+      "stop": "Parar",
       "generate": "Generar"
     },
     "mode": {
@@ -82,7 +82,7 @@
       "smart": "Consejo: Utiliza los menus desplegables en la parte inferior para seleccionar el lenguaje de programación, luego haz click en 'Generar'.",
       "test": "Consejo: Inserta tu función, selecciona las herramientas de prueba deseadas y obtén el resultado de la prueba.",
       "improve": "Consejo: Pega tu función y espera por las optimizaciones y mejoras de rendimiento.",
-      "docs": "Pega tu función o componente aquí y haz clic en 'Generar'."
+      "docs": "Pega tu función o componente y haz clic en 'Generar'."
     }
   },
   "chat": {
