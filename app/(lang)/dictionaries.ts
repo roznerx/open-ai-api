@@ -1,4 +1,5 @@
 import "server-only"
+const supportedLocales = ["en", "es", "pt"]
 
 const dictionaries = {
   en: () => import("./dictionaries/en.json").then((module) => module.default),
@@ -7,6 +8,10 @@ const dictionaries = {
 }
 
 export const getDictionary = async (locale) => {
+  if (!supportedLocales.includes(locale)) {
+    locale = "en"
+  }
+
   const functionToCall = dictionaries[locale]
   return await functionToCall()
 }
