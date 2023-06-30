@@ -47,6 +47,8 @@ export default async function Dashboard() {
     },
     false,
   )
+  console.log("checkoutSession[0]", checkoutSession[0])
+  console.log("totalCredits", harperUser[0]?.credits)
 
   if (harperUser[0] && !checkoutSession[0]) {
     totalCredits = harperUser[0]?.credits
@@ -58,8 +60,6 @@ export default async function Dashboard() {
 
     purchasedCredits =
       checkoutSession.length > 0 ? checkoutSession[0]?.credits : 0
-
-    console.log("purchasedCredits:", purchasedCredits)
 
     totalCredits =
       purchasedCredits > 0
@@ -91,51 +91,48 @@ export default async function Dashboard() {
       credits: 0,
     }
 
-    if (checkoutSession[0]) {
-      const updatedOp = await harperClient(
-        {
-          operation: "update",
-          schema: "Auth",
-          table: "CheckoutSessions",
-          hash_values: [
-            {
-              id: checkoutSession[0]?.id,
-            },
-          ],
-          records: [updatedCheckout],
-        },
-        false,
-      )
-      // console.log("updatedOp:", updatedOp)
+    const updatedOp = await harperClient(
+      {
+        operation: "update",
+        schema: "Auth",
+        table: "CheckoutSessions",
+        hash_values: [
+          {
+            id: checkoutSession[0]?.id,
+          },
+        ],
+        records: [updatedCheckout],
+      },
+      false,
+    )
 
-      if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
-        opConfirmation = true
-        const fetchUrl = `${
-          process.env.NEXTAUTH_URL
-        }/api/email/generate-credits-html?name=${
-          session?.user?.name
-        }&credits=${purchasedCredits}&ts${new Date().getTime()}`
+    if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
+      opConfirmation = true
+      const fetchUrl = `${
+        process.env.NEXTAUTH_URL
+      }/api/email/generate-credits-html?name=${
+        session?.user?.name
+      }&credits=${purchasedCredits}&ts${new Date().getTime()}`
 
-        const headers = new Headers()
-        headers.append("Content-Type", "application/json")
+      const headers = new Headers()
+      headers.append("Content-Type", "application/json")
 
-        const response = await fetch(fetchUrl, {
-          method: "GET",
-          headers: headers,
-        })
-        const { html } = await response.json()
+      const response = await fetch(fetchUrl, {
+        method: "GET",
+        headers: headers,
+      })
+      const { html } = await response.json()
 
-        const payload = {
-          name: session?.user?.name,
-          email: session?.user?.email,
-          html,
-        }
-        await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
-          method: "POST",
-          next: { revalidate: 0 },
-          body: JSON.stringify(payload),
-        })
+      const payload = {
+        name: session?.user?.name,
+        email: session?.user?.email,
+        html,
       }
+      await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+        method: "POST",
+        next: { revalidate: 0 },
+        body: JSON.stringify(payload),
+      })
     }
   }
 

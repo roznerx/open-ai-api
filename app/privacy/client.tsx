@@ -4,9 +4,14 @@ import { useSignInModal } from "app/components/modals/SignInModal"
 import HeaderWrapper from "app/components/shared/HeaderWrapper"
 import Link from "next/link"
 
-export default function Client({ session, translations }) {
+export default function Client({
+  session,
+  translations,
+  modalTranslations,
+  headerTranslations,
+}) {
   const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
-    translations,
+    translations: modalTranslations,
   })
 
   return (
@@ -15,7 +20,7 @@ export default function Client({ session, translations }) {
         <div className="mx-auto max-w-max pb-10">
           <SignInModal />
           <HeaderWrapper
-            translations={translations}
+            translations={headerTranslations}
             setShowSignInModal={setShowSignInModal}
             showSignInModal={showSignInModal}
             session={session}
@@ -34,7 +39,7 @@ export default function Client({ session, translations }) {
               <Link href="mailto:info@code-genius.dev">
                 {translations.contactUs}
               </Link>
-              .{translations.thisPrivacy}
+              {translations.thisPrivacy}
             </p>
 
             <h2 className="m-4 text-2xl font-medium text-white">

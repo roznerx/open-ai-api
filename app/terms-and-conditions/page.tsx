@@ -15,11 +15,17 @@ export default async function Page() {
   const locale = cookieStore.get("locale") || { value: "en" }
 
   const dictionary = await getDictionary(locale?.value as string)
+  console.log("dictionary:", dictionary)
 
   return (
     <div className="flex min-h-screen flex-nowrap">
       <div className="mx-auto max-w-max pb-10">
-        <Client translations={dictionary} session={session} />
+        <Client
+          headerTranslations={dictionary.home.header}
+          modalTranslations={dictionary.modals.signIn}
+          translations={dictionary.terms}
+          session={session}
+        />
         <Footer translations={dictionary.footer} session={session} />
       </div>
     </div>
