@@ -44,12 +44,12 @@
     "welcome": "Bienvenido",
     "credits": "Créditos",
     "available": "Disponibles",
-    "ctaChat": "Chatea con Code Genius",
+    "ctaChat": "Ir al Chat",
     "ctaUpgrade": "Actualiza tu plan",
     "subscription": "Plan de suscripción",
     "smart": {
       "title": "Sugerencias de código",
-      "subtitle": "Obtén sugerencias de código usando tus lenguajes de programación favoritos."
+      "subtitle": "Obtén sugerencias para tu código usando tus lenguajes de preferidos."
     },
     "performance": {
       "title": "Optimiza de código",
@@ -57,7 +57,7 @@
     },
     "test": {
       "title": "Pruebas de código",
-      "subtitle": "La generación de pruebas de código con Code Genius te permite automatizar la creación de tests de código."
+      "subtitle": "La generación de tests te permite automatizar y ahorrar valioso tiempo."
     },
     "docs": {
       "title": "Documentación",
