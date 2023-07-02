@@ -25,7 +25,9 @@ type ClientPropTye = {
 export default function Client({ session, translations }: ClientPropTye) {
   const initialCreditsValue = 50
   const [credits, setCredits] = React.useState<number>(initialCreditsValue)
-  const { setShowSignInModal, SignInModal } = useSignInModal({ translations })
+  const { setShowSignInModal, SignInModal } = useSignInModal({
+    translations: translations?.modals?.signIn,
+  })
   const [loadingStripe, setLoadingStripe] = React.useState<boolean>(false)
   const router = useRouter()
   const [priceId, setPrecieId] = React.useState<string>("")
