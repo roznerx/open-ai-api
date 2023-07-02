@@ -21,7 +21,6 @@ export default function Client({
     userHasAccount,
     translations: translations?.modals?.signIn,
   })
-  console.log("translations en client", translations)
 
   return (
     <>
