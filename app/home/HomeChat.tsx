@@ -5,7 +5,7 @@ import dynamic from "next/dynamic"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
 
-import { AI_MOOD, CREDITS_MODAL_COPY } from "@/lib/constants"
+import { AI_MOOD } from "@/lib/constants"
 import { Send } from "lucide-react"
 
 import { useChat } from "hooks/use-chat"
@@ -32,6 +32,7 @@ export default function HomeChat({
   session,
   loggedUserData,
   translations,
+  creditsModalTranslations,
 }) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
   const [userApiCalls, setUserApiCalls] = useState<number>(apiCalls)
@@ -128,11 +129,11 @@ export default function HomeChat({
         </div>
 
         <Modal
-          title={CREDITS_MODAL_COPY.title}
+          title={creditsModalTranslations.title}
           isCreditsModal
-          body={CREDITS_MODAL_COPY.description}
+          body={creditsModalTranslations.description}
           isOpen={creditsModaIsOpen}
-          buttonText={CREDITS_MODAL_COPY.callToAction}
+          buttonText={creditsModalTranslations.cta}
           buttonLink="/pricing"
           setIsOpen={setCreditsModaIsOpen}
         />

@@ -1,10 +1,12 @@
 import { Send } from "lucide-react"
 
 export default function InputChat({
+  translations,
   inputValue,
   handleInputChange,
   handleSubmit,
 }) {
+  console.log("translations:", translations)
   return (
     <div className="fixed bottom-4 left-0 right-0 z-20 mx-auto h-14 w-full bg-transparent">
       <div className="relative mx-auto mt-2 h-12 w-full sm:w-[900px]">
@@ -20,7 +22,7 @@ export default function InputChat({
                sm:w-[900px]"
           value={inputValue}
           onChange={handleInputChange}
-          placeholder={"Ask to Code Genius.."}
+          placeholder={translations?.ask}
         />
         <button className="absolute right-8 top-2 rounded-lg bg-purple-700 hover:bg-purple-900 disabled:hover:bg-transparent sm:right-0">
           <Send

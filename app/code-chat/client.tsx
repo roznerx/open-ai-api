@@ -5,13 +5,18 @@ import Chat from "app/components/shared/Chat"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import InputChat from "app/components/shared/InputChat"
-import { AI_MOOD, CREDITS_MODAL_COPY } from "@/lib/constants"
+import { AI_MOOD } from "@/lib/constants"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "hooks/use-chat"
 import { updateApiCallsAndCredits } from "utils/helpers"
 
-export default function Client({ session, translations }) {
+export default function Client({
+  session,
+  translations,
+  headerTranslations,
+  modalTranslations,
+}) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const { setShowSignInModal } = useSignInModal({ translations })
   const userCredits = session && session.user?.credits
@@ -52,7 +57,11 @@ export default function Client({ session, translations }) {
 
   return (
     <>
-      <Header session={session} setShowSignInModal={setShowSignInModal} />
+      <Header
+        translations={headerTranslations}
+        session={session}
+        setShowSignInModal={setShowSignInModal}
+      />
       <Chat
         translations={translations}
         setInput={setInput}
@@ -60,6 +69,7 @@ export default function Client({ session, translations }) {
         messages={messages.slice(1)}
       />
       <InputChat
+        translations={translations}
         inputValue={inputValue}
         handleInputChange={handleInputChange}
         handleSubmit={handleSubmit}
@@ -73,11 +83,11 @@ export default function Client({ session, translations }) {
         </div>
       )}
       <MyModal
-        title={CREDITS_MODAL_COPY.title}
+        title={modalTranslations.title}
         isCreditsModal
-        body={CREDITS_MODAL_COPY.description}
+        body={modalTranslations.description}
         isOpen={creditsModaIsOpen}
-        buttonText={CREDITS_MODAL_COPY.callToAction}
+        buttonText={modalTranslations.cta}
         buttonLink="/pricing"
         setIsOpen={setCreditsModaIsOpen}
       />

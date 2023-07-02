@@ -21,6 +21,7 @@ export default function Client({
     userHasAccount,
     translations: translations?.modals?.signIn,
   })
+  console.log("translations en client", translations)
 
   return (
     <>
@@ -36,6 +37,7 @@ export default function Client({
       <SuperHero translations={translations?.home?.superHero} />
       <HomeChat
         translations={translations?.home?.chat}
+        creditsModalTranslations={translations?.modals?.moreCredits}
         ip={ip}
         apiCalls={apiCalls}
         session={session}

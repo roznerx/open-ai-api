@@ -103,7 +103,11 @@ export default function Client({ session, translations }: ClientPropTye) {
   return (
     <>
       <SignInModal />
-      <Header session={session} setShowSignInModal={setShowSignInModal} />
+      <Header
+        translations={translations.home.header}
+        session={session}
+        setShowSignInModal={setShowSignInModal}
+      />
       <PaymentModal isOpen={openPayment} setIsOpen={setOpenPayment} />
       <ContactFormModal
         clientName={session && session?.user && session?.user?.name}

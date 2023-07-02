@@ -85,7 +85,11 @@ export default function Container({ session, translations }) {
 
   return (
     <>
-      <Header session={session} setShowSignInModal={setShowSignInModal} />
+      <Header
+        session={session}
+        translations={translations.home.header}
+        setShowSignInModal={setShowSignInModal}
+      />
       <Navigation
         translations={translations.sidebar}
         setGeneratedCode={setGeneratedCode}

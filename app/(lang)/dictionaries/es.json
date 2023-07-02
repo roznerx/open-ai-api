@@ -2,8 +2,16 @@
   "lang": "es",
   "home": {
     "header": {
+      "menu": {
+        "dashboard": "Home",
+        "pricing": "Ver precios",
+        "chat": "Ir al chat",
+        "codeIdeas": "Código",
+        "logOut": "Cerrar sesión"
+      },
+      "feedback": "Comentarios",
       "register": "Regístrate",
-      "login": "Regístrate"
+      "login": "Login"
     },
     "chat": {
       "placeholder": "¿Cuál es tu próxima idea?",
@@ -36,7 +44,7 @@
     "welcome": "Bienvenido",
     "credits": "Créditos",
     "available": "Disponibles",
-    "ctaChat": "Chat de código",
+    "ctaChat": "Chatea con Code Genius",
     "ctaUpgrade": "Actualiza tu plan",
     "subscription": "Plan de suscripción",
     "smart": {
@@ -62,7 +70,7 @@
     "testing": "Pruebas",
     "optimization": "Optimización",
     "docs": "Documentación",
-    "chat": "Conversación"
+    "chat": "Chatea con Code Genius"
   },
   "codeIdea": {
     "footer": {
@@ -86,6 +94,7 @@
     }
   },
   "chat": {
+    "ask": "Pregúntale a Code Genius..",
     "cards": {
       "react": "¿Cómo uso el paquete de NPM: Create React App?",
       "next": "¿Cómo uso el paquete de NPM: Create Next App?",
@@ -260,11 +269,17 @@
   "modals": {
     "signIn": {
       "title": "Regístrate",
+      "loading": "Cargando...",
       "subtitle": "Descubre todo tu potencial con Code Genius",
       "byContinuing": "Continuando, tu aceptas nuestra",
       "acknowledge": "y reconoces nuestros",
       "terms": "términos y condiciones",
       "privacy": "política de privacidad"
+    },
+    "moreCredits": {
+      "title": "Obten más créditos",
+      "description": "Obten más crédito para acceder a funcionalidades y servicios exclusivos para miembros de Code Genius. Puedes ver todas las opciones disponibles haciendo click en el botón de abajo.",
+      "cta": "Ver opciones"
     }
   }
 }

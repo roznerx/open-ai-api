@@ -2,6 +2,14 @@
   "lang": "en",
   "home": {
     "header": {
+      "menu": {
+        "dashboard": "Dashboard",
+        "pricing": "Pricing",
+        "chat": "Chat",
+        "codeIdeas": "Code Ideas",
+        "logOut": "Log Out"
+      },
+      "feedback": "Feedback",
       "register": "Sign Up",
       "login": "Sign In"
     },
@@ -88,6 +96,7 @@
     }
   },
   "chat": {
+    "ask": "Ask to Code Genius..",
     "cards": {
       "react": "Explain how to use the create react app npm package",
       "next": "How should I use the Create Next App npm package?",
@@ -261,6 +270,7 @@
   },
   "modals": {
     "signIn": {
+      "loading": "Loading...",
       "title": "Login to your account",
       "titleCreate": "Create your account",
       "subtitle": "Unleash your coding potential with Code Genius",
@@ -268,6 +278,11 @@
       "acknowledge": "and acknowledge our",
       "terms": "Terms",
       "privacy": "Privacy Policy"
+    },
+    "moreCredits": {
+      "title": "Get mode credits",
+      "description": "Level up your experience! Add more credits for non-stop access to our awesome features and services. Don't miss out on incredible opportunities!",
+      "cta": "See Options"
     }
   }
 }

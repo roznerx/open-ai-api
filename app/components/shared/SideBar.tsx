@@ -32,7 +32,6 @@ const SideBar = ({
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
-  console.log("translations", translations)
 
   return !isMobile ? (
     <div

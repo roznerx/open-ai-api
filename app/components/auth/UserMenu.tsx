@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation"
 import { Fragment } from "react"
 
 export default function UserMenu({ session, email, image, translations }) {
+  console.log("translations en user menu:", translations)
   const router = useRouter()
   return (
     <div className="absolute top-4 right-4 z-50 w-auto text-center sm:right-2 sm:mr-7">
@@ -57,7 +58,7 @@ export default function UserMenu({ session, email, image, translations }) {
                       height={45}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
-                    <span>Dashboard</span>
+                    <span>{translations.menu.dashboard}</span>
                   </div>
                 )}
               </Menu.Item>
@@ -76,7 +77,7 @@ export default function UserMenu({ session, email, image, translations }) {
                       height={45}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
-                    <span>Code Idea</span>
+                    <span>{translations.menu.codeIdeas}</span>
                   </div>
                 )}
               </Menu.Item>
@@ -95,7 +96,7 @@ export default function UserMenu({ session, email, image, translations }) {
                       height={45}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
-                    <span>Chat</span>
+                    <span>{translations.menu.chat}</span>
                   </div>
                 )}
               </Menu.Item>
@@ -116,7 +117,7 @@ export default function UserMenu({ session, email, image, translations }) {
                       height={45}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
-                    <span>Log Out</span>
+                    <span>{translations.menu.logOut}</span>
                   </div>
                 )}
               </Menu.Item>

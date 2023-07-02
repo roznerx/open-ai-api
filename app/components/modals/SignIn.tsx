@@ -77,7 +77,7 @@ export const SignInModal = ({
             >
               {signInClickedGoogle ? (
                 <p className="text-sm font-[700] text-gray-800 sm:text-[20px]">
-                  Loading...
+                  {translations.loading}
                 </p>
               ) : (
                 <div className="mt-1 inline-flex content-center justify-center justify-items-center gap-2 ">

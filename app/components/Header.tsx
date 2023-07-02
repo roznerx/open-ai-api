@@ -67,7 +67,7 @@ export default function Header({
                   className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
                 >
                   <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
-                    {!userHasAccount
+                    {userHasAccount
                       ? translations?.login
                       : translations?.register}
                   </p>

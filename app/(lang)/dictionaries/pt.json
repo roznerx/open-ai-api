@@ -2,6 +2,14 @@
   "lang": "pt",
   "home": {
     "header": {
+      "menu": {
+        "dashboard": "Início",
+        "pricing": "Ver preços",
+        "chat": "Ir para o chat",
+        "codeIdeas": "Ideias de código",
+        "logOut": "Sair"
+      },
+      "feedback": "Feedback",
       "register": "Registrar",
       "login": "Entrar"
     },
@@ -86,6 +94,7 @@
     }
   },
   "chat": {
+    "ask": "Faça uma pergunta ao Code Genius...",
     "cards": {
       "react": "Me diga como usar o pacote NPM: Create React App",
       "next": "Me diga como usar o pacote NPM: Create Next App?",
@@ -261,11 +270,17 @@
   "modals": {
     "signIn": {
       "title": "Faça login em sua conta",
+      "loading": "Carregando...",
       "subtitle": "Descubra todo o seu potencial com o Code Genius",
       "byContinuing": "Ao continuar, você aceita nossos",
       "acknowledge": "e reconhece nossa",
       "terms": "política de termos",
       "privacy": "política de privacidade"
+    },
+    "moreCredits": {
+      "title": "Obtenha mais créditos",
+      "description": "Aumente a sua experiência! Adicione mais créditos para ter acesso contínuo às nossas incríveis funcionalidades e serviços. Não perca oportunidades incríveis!",
+      "cta": "Ver opções"
     }
   }
 }

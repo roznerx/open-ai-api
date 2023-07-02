@@ -40,9 +40,8 @@ export default async function Page() {
   }
 
   const userUsage = (anonymousUserData && anonymousUserData[0]) || {}
-  const csrfTokenValue = cookieStore.get("next-auth.csrf-token")?.value
+  const csrfTokenValue = cookieStore.has("next-auth.csrf-token")
 
-  const userHasAccount = csrfTokenValue !== "" && csrfTokenValue !== undefined
   return (
     <>
       <main className={`mx-auto w-full max-w-max pb-10`}>
@@ -50,7 +49,7 @@ export default async function Page() {
           translations={dictionary}
           loggedUserData={loggedUserData}
           session={session}
-          userHasAccount={userHasAccount}
+          userHasAccount={csrfTokenValue}
           ip={userIp}
           apiCalls={userUsage?.apiCalls}
         />
