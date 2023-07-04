@@ -20,6 +20,7 @@ export default function Header({
   translations?: any
   setShowSignInModal: any
 }) {
+  console.log("translations:", translations)
   const pathname = usePathname()
   const [showWidget, setShowWidget] = useState(false)
 
@@ -81,9 +82,10 @@ export default function Header({
                   className="mt-3.5 mr-3 flex h-4 w-28 items-center justify-center rounded-lg border
                    border-gray-300 bg-purple-900 p-4 text-gray-200 hover:cursor-pointer hover:text-gray-50"
                 >
-                  <span>Feedback</span>
+                  <span>{translations?.feedback?.title}</span>
                 </button>
                 <Feedback
+                  translations={translations?.feedback}
                   session={session}
                   setShowWidget={setShowWidget}
                   showWidget={showWidget}

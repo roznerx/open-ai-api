@@ -2,6 +2,12 @@
   "lang": "en",
   "home": {
     "header": {
+      "feedback": {
+        "title": "Feedback",
+        "desc": "Your feedback matter to us",
+        "placeholder": "Add your message here",
+        "cta": "Send"
+      },
       "menu": {
         "dashboard": "Dashboard",
         "pricing": "Pricing",
@@ -9,7 +15,6 @@
         "codeIdeas": "Code Ideas",
         "logOut": "Log Out"
       },
-      "feedback": "Feedback",
       "register": "Sign Up",
       "login": "Sign In"
     },

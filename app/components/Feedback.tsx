@@ -1,7 +1,12 @@
 import { Loader2 } from "lucide-react"
 import { useEffect, useRef, useState } from "react"
 
-export default function Feedback({ showWidget, setShowWidget, session }) {
+export default function Feedback({
+  showWidget,
+  setShowWidget,
+  session,
+  translations,
+}) {
   const [userMessage, setUserMessage] = useState("")
   const [isLoading, setIsLoading] = useState(false)
   const [userPressSent, setUserPressSent] = useState(false)
@@ -45,15 +50,8 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
             {/* <X size={20} className="text-gray-300" /> */}
           </span>
           <div className="border-b border-gray-500 py-3">
-            <span className="sm:text-lg mx-auto flex flex-wrap items-center justify-center text-center font-sans text-gray-200">
-              Your feedback matter to us
-              {/* <Heart
-                onClick={() => setLikeHeart(true)}
-                className="ml-2 cursor-pointer"
-                color="#7477FB"
-                fill={likeHeart ? "#7477FB" : "transparent"}
-                size={20}
-              /> */}
+            <span className="sm:text-lg mx-auto flex w-full flex-wrap items-center justify-center px-1 text-center font-sans text-gray-200">
+              {translations?.desc}
             </span>
           </div>
           <div className="flex w-full flex-col items-center bg-purple-500 ">
@@ -66,7 +64,7 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
                   value={userMessage}
                   onChange={(e) => setUserMessage(e.target.value)}
                   className="w-full resize-none rounded-xl border border-gray-500 bg-purple-900 p-4 text-white outline-none placeholder:text-gray-300 focus:border-gray-500 focus:outline-none focus:ring-0 "
-                  placeholder={`Add your message here`}
+                  placeholder={translations?.placeholder}
                 ></textarea>
                 {userPressSent && userMessage === "" ? (
                   <span className="my-1 ml-3 text-[14px] text-gray-300">
@@ -82,7 +80,11 @@ export default function Feedback({ showWidget, setShowWidget, session }) {
               className="flex h-6 w-28 items-center justify-center rounded-lg border border-gray-500 bg-purple-900 p-5 text-gray-300 hover:cursor-pointer hover:text-gray-100"
             >
               <span>
-                {isLoading ? <Loader2 className="animate-spin" /> : "Send"}
+                {isLoading ? (
+                  <Loader2 className="animate-spin" />
+                ) : (
+                  translations?.cta
+                )}
               </span>
             </button>
           </div>

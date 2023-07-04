@@ -2,6 +2,12 @@
   "lang": "es",
   "home": {
     "header": {
+      "feedback": {
+        "title": "Comentarios",
+        "desc": "Tus comentarios son importantes",
+        "placeholder": "Agrega tu mensaje aquí",
+        "cta": "Enviar"
+      },
       "menu": {
         "dashboard": "Home",
         "pricing": "Ver precios",
@@ -9,7 +15,6 @@
         "codeIdeas": "Código",
         "logOut": "Cerrar sesión"
       },
-      "feedback": "Comentarios",
       "register": "Regístrate",
       "login": "Login"
     },

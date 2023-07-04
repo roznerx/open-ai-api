@@ -15,7 +15,6 @@ import {
 } from "app/components/DropDown"
 import FooterSection from "./footer-section"
 import { getCodeGeniusPlaceHolder } from "utils/strings"
-import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useCodeGeniusMood from "hooks/useCodeGeniusMood"
@@ -41,6 +40,7 @@ export default function Client({
   setGeneratedCode,
   generatedCode,
   translations,
+  modalTranslations,
   userId,
   userCredits,
   lib,
@@ -71,6 +71,8 @@ export default function Client({
   const chatContainerRef = useRef<HTMLDivElement>(null)
   const placeHolderText = getCodeGeniusPlaceHolder(mode, translations)
   const codeGeniusMood = useCodeGeniusMood(translations)
+
+  console.log("translations?.modals?.moreCredits", translations)
 
   const codeMessages = useRef([
     {
@@ -327,11 +329,11 @@ export default function Client({
         onCodeGeneration={onCodeGeneration}
       />
       <Modal
-        title={CREDITS_MODAL_COPY.title}
+        title={modalTranslations?.title}
         isCreditsModal
-        body={CREDITS_MODAL_COPY.description}
+        body={modalTranslations?.description}
         isOpen={creditsModaIsOpen}
-        buttonText={CREDITS_MODAL_COPY.callToAction}
+        buttonText={modalTranslations?.cta}
         buttonLink="/pricing"
         setIsOpen={setCreditsModaIsOpen}
       />

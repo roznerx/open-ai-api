@@ -23,7 +23,7 @@ type ClientPropTye = {
 }
 
 export default function Client({ session, translations }: ClientPropTye) {
-  const initialCreditsValue = 50
+  const initialCreditsValue = 100
   const [credits, setCredits] = React.useState<number>(initialCreditsValue)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
