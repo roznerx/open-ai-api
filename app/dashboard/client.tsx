@@ -25,6 +25,7 @@ const ChatButton = ({ text }) => (
 
 export default function Client({
   translations,
+  headerTranslations,
   session,
   credits,
   purchasedCredits,
@@ -59,7 +60,11 @@ export default function Client({
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-      <Header session={session} setShowSignInModal={setShowSignInModal} />
+      <Header
+        translations={headerTranslations}
+        session={session}
+        setShowSignInModal={setShowSignInModal}
+      />
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
         <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
           <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-3xl text-gray-200 sm:items-start sm:text-5xl">

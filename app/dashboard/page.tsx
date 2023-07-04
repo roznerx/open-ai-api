@@ -37,7 +37,6 @@ export default async function Dashboard() {
       false,
     )
   }
-  console.log("userId:", userId)
 
   const checkoutSession = await harperClient(
     {
@@ -142,6 +141,7 @@ export default async function Dashboard() {
       <div className="mx-auto w-full dark:bg-purple-900">
         <Client
           translations={dictionary}
+          headerTranslations={dictionary.home.header}
           session={session}
           credits={totalCredits}
           purchasedCredits={purchasedCredits}
