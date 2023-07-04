@@ -43,9 +43,7 @@
         "title": "Create code documentation faster",
         "subtitle": "Good documentation is key to writing maintainable code. With Code Genius, you can automatically generate clear and concise documentation for your code."
       }
-    },
-
-    "hero": {}
+    }
   },
   "dashboard": {
     "welcome": "Welcome",

@@ -26,7 +26,11 @@
     },
     "feature": {
       "title": "A IA genial que ajuda você a programar mais rápido, mais fácil e de maneira mais eficiente.",
-      "subtitle": "Escrever código com altos padrões de qualidade pode ser uma tarefa desafiadora e demorada. Code Genius levará suas habilidades para o próximo nível. As possibilidades são infinitas.",
+      "subtitle": "Escrever código com altos padrões de qualidade pode ser uma tarefa desafiadora e demorada. Code Genius levará suas habilidades para o próximo nível. As possibilidades são infinitas."
+    },
+    "superHero": {
+      "title": "Crie código de gênios",
+      "subtitle": "Leve suas ideias para outro nível com o poder e a ajuda da Inteligência Artificial.",
       "smart": {
         "title": "Aumente o desempenho do seu código",
         "subtitle": "Code Genius analisa seu código em tempo real e oferece sugestões inteligentes e melhorias de desempenho. Concentre-se em adicionar valor ao produto, nós garantimos que o código seja limpo, eficiente e livre de erros."
@@ -39,10 +43,6 @@
         "title": "Crie documentação de forma simples e eficiente",
         "subtitle": "Uma boa documentação é fundamental para escrever um código sustentável. Com o Code Genius, você pode gerar automaticamente uma documentação clara e concisa para o seu código."
       }
-    },
-    "superHero": {
-      "title": "Crie código de gênios",
-      "subtitle": "Leve suas ideias para outro nível com o poder e a ajuda da Inteligência Artificial."
     }
   },
   "dashboard": {
