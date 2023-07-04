@@ -111,13 +111,23 @@
     "subtitle1": "Sin cargos ocultos. Sin facturas sorpresa. Sin facturas de suscripción.",
     "subtitle2": "Solo paga lo que uses.",
     "faqs": {
+      "title": "Preguntas frecuentes",
+      "desc": "Si no encuentras la respuesta a tu pregunta, por favor, ponte en contacto con nuestro soporte aquí",
       "1": {
-        "title": "¿Puedo probar Code Genius de forma gratuita?",
-        "desc": "Sí. Todos los usuarios recién registrados obtienen 25 créditos gratuitos para probar la aplicación."
+        "title": "¿Qué es Code Genius?",
+        "desc": "Code Genius es la herramienta con IA más práctica y potente para ayudar a los desarrolladores a completar sus tareas más rápidamente."
       },
       "2": {
-        "title": "¿Cómo se calcula el consumo de créditos?",
-        "desc": "Dos llamadas a la API representan un crédito, sin importar cuántos tokens (palabras) consuman esas llamadas a la API. Si una respuesta de la API tiene menos de 10 tokens (diez palabras), no la contamos."
+        "title": "¿Qué puedo hacer con Code Genius?",
+        "desc": "Code Genius tiene las siguientes características: sugerencias de código inteligentes, generación de pruebas, mejoras de código y generación de documentación."
+      },
+      "2.1": {
+        "title": "¿Por qué debería usar Code Genius?",
+        "desc": "Code Genius es mejor que otros competidores de IA, incluyendo los populares complementos de VS Code. Con Code Genius, puedes generar una prueba para tu componente en segundos, utilizando tus herramientas favoritas."
+      },
+      "2.2": {
+        "title": "¿Puedo usar Code Genius de forma gratuita?",
+        "desc": "Sí. Ofrecemos 25 créditos de forma gratuita para que lo pruebes y veas los beneficios por ti mismo."
       },
       "3": {
         "title": "¿Ofrecen soporte técnico?",
