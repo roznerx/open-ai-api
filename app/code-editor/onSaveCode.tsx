@@ -21,7 +21,7 @@ export default function SaveCode({
         questionName,
         prompt: code,
       }
-      console.log("payload", payload)
+
       fetch("/api/prompt/update", {
         method: "POST",
         body: JSON.stringify(payload),

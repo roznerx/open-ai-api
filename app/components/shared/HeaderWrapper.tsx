@@ -8,8 +8,6 @@ export default function HeaderWrapper({
   setShowSignInModal,
   showSignInModal,
 }) {
-  // console.log("HeaderWrapper translations:", translations)
-
   return (
     <>
       <Header

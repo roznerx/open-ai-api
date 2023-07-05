@@ -46,8 +46,6 @@ export default async function Dashboard() {
     },
     false,
   )
-  console.log("checkoutSession[0]", checkoutSession[0])
-  console.log("totalCredits", harperUser[0]?.credits)
 
   if (harperUser[0] && !checkoutSession[0]) {
     totalCredits = harperUser[0]?.credits

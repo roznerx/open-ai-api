@@ -23,7 +23,7 @@ export default function ErrorLog({
     console.error(error)
   }, [error])
   const userName = session?.data?.user?.name ?? ""
-  console.log("userName:", userName)
+
   return (
     <>
       <ContactFormModal
