@@ -35,12 +35,19 @@ export type LandElementType =
 export type TestingElementType =
   | "Jest"
   | "Mocha"
+  | "MDX Docs"
+  | "Inline Docs"
+  | "Mocha"
   | "Cypress"
   | "Chai"
   | "Jasmine"
   | "Testing Tool"
 
-export type libTestingElementType = "React Testing" | "Chai" | "Testing Library"
+export type libTestingElementType =
+  | "React Testing"
+  | "Chai"
+  | "Testing Library"
+  | "Options"
 
 interface DropDownProps {
   element: LandElementType | TestingElementType | libTestingElementType

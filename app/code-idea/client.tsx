@@ -60,6 +60,7 @@ export default function Client({
     useState<TestingElementType>("Testing Tool")
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
+  const [docOptions, setDocOptions] = useState("Options")
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const [showSavePromptModal, setShowSavePromptModal] = useState(false)
@@ -72,7 +73,7 @@ export default function Client({
   const placeHolderText = getCodeGeniusPlaceHolder(mode, translations)
   const codeGeniusMood = useCodeGeniusMood(translations)
 
-  console.log("translations?.modals?.moreCredits", translations)
+  console.log("docOptions:", docOptions)
 
   const codeMessages = useRef([
     {
@@ -129,8 +130,12 @@ export default function Client({
             content: "",
           },
         ]
-        codeMessages.current[0].content = `You are an AI software assistant which is specialized in providing code documentation.
-          Make sure to use format docs using MDX syntax. Don't output code.`
+        codeMessages.current[0].content = `Your task as an AI software assistant, providing code documentation. 
+        Requeriments: ${
+          docOptions === "Inline Docs"
+            ? "Make sure to document the code by outputing the same code with comments next to the code, explaining the logic."
+            : "Make sure to use MDX and Markdown syntax to format the documentation."
+        }.`
         break
       default:
         codeMessages.current = [
@@ -143,7 +148,15 @@ export default function Client({
           "You are an AI software development assistant which is specialized in providing code examples and suggestions."
         break
     }
-  }, [langElement, lib, mode, testFrameworkElement, testLibElement, setMode])
+  }, [
+    langElement,
+    lib,
+    mode,
+    testFrameworkElement,
+    testLibElement,
+    setMode,
+    docOptions,
+  ])
 
   //Clean up previous code responses
   useEffect(() => {
@@ -311,6 +324,8 @@ export default function Client({
         stopGeneration={stopGeneration}
         clearPanel={clearPanel}
         testFrameworkElements={testFrameworkElements}
+        setDocOptions={setDocOptions}
+        docOptions={docOptions}
         testLibElements={testLibElements}
         testLibElement={testLibElement}
         setTestLib={setTestLib}

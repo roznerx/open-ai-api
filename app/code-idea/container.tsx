@@ -74,9 +74,7 @@ export default function Container({ session, translations }) {
           `${
             chatHasStarted
               ? codeSentence
-              : "Create code documentation for the provided context:" +
-                codeSentence +
-                "."
+              : "Add documentation for this code:" + codeSentence + "."
           }`,
         )
       }

@@ -14,6 +14,8 @@ export default function FooterSection({
   testFrameworkElements,
   testLibElement,
   testLibElements,
+  setDocOptions,
+  docOptions,
   clearPanel,
   stopGeneration,
   setTestLib,
@@ -76,6 +78,18 @@ export default function FooterSection({
                   />
                 </div>
               )}
+            </>
+          )}
+          {mode === "docs" && (
+            <>
+              <div className="sm:ml-4">
+                <DropDown
+                  bgColor="bg-purple-500"
+                  elements={["MDX Docs", "Inline Docs"]}
+                  element={docOptions}
+                  setElement={(item) => setDocOptions(item)}
+                />
+              </div>
             </>
           )}
         </div>
