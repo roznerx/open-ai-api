@@ -1,12 +1,43 @@
 import { Menu, Transition } from "@headlessui/react"
-import { Code, LayoutDashboard, LogOut, MessageSquare } from "lucide-react"
+import { Crisp } from "crisp-sdk-web"
+import {
+  Code,
+  LayoutDashboard,
+  LogOut,
+  MessageCircle,
+  MessageSquare,
+} from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
-import { Fragment } from "react"
+import { Fragment, useEffect, useState } from "react"
 
 export default function UserMenu({ session, email, image, translations }) {
   const router = useRouter()
+  const [openingSupport, setOpeningSupport] = useState(false)
+
+  useEffect(() => {
+    Crisp.configure("12685b82-e8b5-43a2-a596-d2d559d02e5a", {
+      autoload: true,
+    })
+    Crisp.chat.hide()
+  }, [])
+
+  useEffect(() => {
+    if (session?.user?.email) {
+      Crisp.user.setEmail(session.user.email)
+      Crisp.user.setNickname(session.user.name || session.user.email)
+    }
+  }, [session])
+
+  useEffect(() => {
+    Crisp.chat.onChatOpened(() => {
+      setOpeningSupport(false)
+    })
+    Crisp.chat.onChatClosed(() => {
+      Crisp.chat.hide()
+    })
+  }, [])
   return (
     <div className="absolute top-4 right-4 z-50 w-auto text-center sm:right-2 sm:mr-7">
       <Menu as="div" className="relative">
@@ -43,6 +74,29 @@ export default function UserMenu({ session, email, image, translations }) {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+            <div className="h-11">
+              <Menu.Item>
+                {({ active }) => (
+                  <div
+                    onClick={() => {
+                      setOpeningSupport(true)
+                      Crisp.chat.open()
+                      Crisp.chat.show()
+                    }}
+                    className={`flex w-full cursor-pointer items-center justify-start ${
+                      active ? "bg-purple-800 text-white" : "text-gray-200"
+                    } `}
+                  >
+                    <MessageCircle
+                      width={45}
+                      height={45}
+                      className={`text-sm items-start rounded-md px-2 py-2`}
+                    />
+                    <span>{translations.menu.support}</span>
+                  </div>
+                )}
+              </Menu.Item>
+            </div>
             <div className="h-11">
               <Menu.Item>
                 {({ active }) => (

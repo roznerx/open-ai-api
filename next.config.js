@@ -36,7 +36,6 @@ const nextConfig = {
 
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
-    style-src 'self' 'unsafe-inline';
     img-src * blob: data:;
     media-src 'none';
     connect-src *;

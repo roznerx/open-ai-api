@@ -1,6 +1,7 @@
 import "../styles/globals.css"
 import SessionProvider from "./provider"
 import { Inter, Roboto_Mono } from "next/font/google"
+
 import { Metadata } from "next"
 import { cookies } from "next/headers"
 

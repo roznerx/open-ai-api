@@ -2,7 +2,6 @@
 
 import { useSignInModal } from "./components/modals/SignInModal"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
-
 import Script from "next/script"
 import SuperHero from "./home/SuperHero"
 import HomeChat from "./home/HomeChat"
