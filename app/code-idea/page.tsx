@@ -13,7 +13,7 @@ export default async function Page() {
   const session = await getServerSession(authOptions)
 
   if (!session) {
-    redirect("/")
+    redirect("/?referer=/code-idea")
   }
 
   const headersList = headers()
