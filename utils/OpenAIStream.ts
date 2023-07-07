@@ -121,6 +121,4 @@ export async function OpenAITurboStream(payload: OpenAITurboPayload) {
   })
 
   return stream
-
-  // Log the generated text from the GPT-3 and GPT-3.5-Turbo models to the console
 }
