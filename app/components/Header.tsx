@@ -56,22 +56,22 @@ export default function Header({
           <div className="flex h-8">
             {!session && (
               <Link href={"/pricing"}>
-                <p className="mt-4 mr-4 cursor-pointer font-mono text-white">
+                <p className="mt-4 mr-1 cursor-pointer font-mono text-white">
                   Pricing
                 </p>
               </Link>
             )}
             <div
               onClick={() => setShowSignInModal(true)}
-              className={`my-auto mt-2 mr-4 flex ${
-                !session ? "w-32" : "w-12"
+              className={`my-auto mt-2 mr-2 flex ${
+                !session ? "w-auto" : "w-12"
               } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
                 !session ? "border border-mint" : "bg-transparent"
               }  p-[1.5px] font-sans`}
             >
               {!session && (
                 <div
-                  className={`relative h-[37px] w-32 rounded-lg bg-purple-700`}
+                  className={`relative h-[37px] w-auto rounded-lg bg-purple-700`}
                 >
                   <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
                     {userHasAccount
