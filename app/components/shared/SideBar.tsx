@@ -131,7 +131,6 @@ const SideBar = ({
           <FileCode size={26} color={mode === "docs" ? colors.mint : "white"} />
         </div>
       </MaterialTooltip>
-
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"

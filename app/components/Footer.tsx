@@ -42,6 +42,12 @@ export default function Footer({
             </Link>
           </div>
           <div className="mt-8 flex sm:pt-2">
+            <div
+              onClick={() => setOpenContactForm(true)}
+              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
+            >
+              {translations?.contact}
+            </div>
             <Link
               href="/pricing"
               prefetch={false}
@@ -49,12 +55,6 @@ export default function Footer({
             >
               {translations?.pricing}
             </Link>
-            <div
-              onClick={() => setOpenContactForm(true)}
-              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
-            >
-              {translations?.contact}
-            </div>
             <Link
               href="https://discord.gg/3tbJD8vZQw"
               className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
@@ -64,14 +64,14 @@ export default function Footer({
             <Link
               href="/terms-and-conditions"
               prefetch={false}
-              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
+              className="hidden cursor-pointer px-4 sm:block sm:px-2 sm:text-[16px]"
             >
               {translations?.terms}
             </Link>
             <Link
               href="/privacy"
               prefetch={false}
-              className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
+              className="hidden cursor-pointer px-4 sm:block sm:px-2 sm:text-[16px]"
             >
               {translations?.privacy}
             </Link>

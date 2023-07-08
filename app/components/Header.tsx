@@ -31,22 +31,20 @@ export default function Header({
       >
         <div className="flex items-center justify-between">
           <div className={`ml-4 mt-4 sm:ml-14`}>
-            <Link href="/" className={` flex sm:mx-0`}>
+            <Link href="/" className={``}>
               <div className={`mt-1 flex sm:ml-7`}>
-                <>
-                  <Image
-                    src={"/logo/code-genius.svg"}
-                    width={32}
-                    height={32}
-                    className={"right-8 hidden sm:block"}
-                    alt="Code Genius"
-                  />
-                </>
+                <Image
+                  src={"/logo/code-genius.svg"}
+                  width={32}
+                  height={32}
+                  className={`right-1  ${!session ? "ml-2" : "ml-10"}`}
+                  alt="Code Genius"
+                />
                 <h1
                   className={`sm:text-xl ${
-                    pathname === "/" ? "ml-3" : "ml-12"
+                    !session ? "ml-3" : "ml-2"
                   } sm:text-xl mt-1  bg-gradient-to-r from-[#A1FFE0]
-                    to-[#2C9DC0] bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:leading-6`}
+                    to-[#2C9DC0] bg-clip-text font-sans text-2xl font-bold tracking-tight text-transparent sm:ml-2 sm:text-3xl sm:leading-6`}
                 >
                   Code Genius
                 </h1>
@@ -56,14 +54,14 @@ export default function Header({
           <div className="flex h-8">
             {!session && (
               <Link href={"/pricing"}>
-                <p className="mt-4 mr-1 cursor-pointer font-mono text-white">
-                  Pricing
+                <p className="mt-4 mr-2 cursor-pointer font-mono text-white ">
+                  {translations.menu.pricing}
                 </p>
               </Link>
             )}
             <div
               onClick={() => setShowSignInModal(true)}
-              className={`my-auto mt-2 mr-2 flex ${
+              className={`my-auto mt-2 mr-4 flex ${
                 !session ? "w-auto" : "w-12"
               } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
                 !session ? "border border-mint" : "bg-transparent"
