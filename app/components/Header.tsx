@@ -53,7 +53,14 @@ export default function Header({
               </div>
             </Link>
           </div>
-          <div className="flex h-8 ">
+          <div className="flex h-8">
+            {!session && (
+              <Link href={"/pricing"}>
+                <p className="mt-4 mr-4 cursor-pointer font-mono text-white">
+                  Pricing
+                </p>
+              </Link>
+            )}
             <div
               onClick={() => setShowSignInModal(true)}
               className={`my-auto mt-2 mr-4 flex ${
@@ -74,6 +81,7 @@ export default function Header({
                 </div>
               )}
             </div>
+
             {session && pathname !== "/" && (
               <div className="mr-24 hidden flex-col items-end transition-all sm:flex ">
                 <button

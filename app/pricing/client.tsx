@@ -2,7 +2,6 @@
 
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
-import { motion } from "framer-motion"
 import Image from "next/image"
 import React, { useEffect } from "react"
 import tailwindConfig from "tailwind.config"
@@ -20,9 +19,14 @@ const colors: any = tailwindConfig.theme?.extend?.colors
 type ClientPropTye = {
   session: any
   translations: any
+  userHasAccount: any
 }
 
-export default function Client({ session, translations }: ClientPropTye) {
+export default function Client({
+  session,
+  translations,
+  userHasAccount,
+}: ClientPropTye) {
   const initialCreditsValue = 100
   const [credits, setCredits] = React.useState<number>(initialCreditsValue)
   const { setShowSignInModal, SignInModal } = useSignInModal({
@@ -106,6 +110,7 @@ export default function Client({ session, translations }: ClientPropTye) {
     <>
       <SignInModal />
       <Header
+        userHasAccount={userHasAccount}
         translations={translations.home.header}
         session={session}
         setShowSignInModal={setShowSignInModal}
@@ -117,14 +122,9 @@ export default function Client({ session, translations }: ClientPropTye) {
         setIsOpen={setOpenContactForm}
       />
       <div className=" mx-auto my-6 px-4 pt-20">
-        <motion.h2
-          whileHover={{ scale: 1.1 }}
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          className="mx-auto mb-3 w-[80%] text-4xl font-semibold text-white dark:text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight"
-        >
+        <h2 className="mx-auto mb-3 w-[80%] text-4xl font-semibold text-white dark:text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
           {translations.pricing.title}
-        </motion.h2>
+        </h2>
         <p className="mx-auto mt-8 w-[80%] text-gray-300 sm:w-full">
           {translations.pricing.subtitle1}{" "}
           <span className="font-medium text-gray-200">

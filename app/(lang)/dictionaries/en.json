@@ -113,9 +113,9 @@
     }
   },
   "pricing": {
-    "title": "Only pay what you use",
-    "subtitle1": "No hidden fees. No surprise bills. No subscription bills.",
-    "subtitle2": "Only pay what you use.",
+    "title": "Only pay for what you use",
+    "subtitle1": "Our pricing model is simple and flexible. No hidden fees. No surprise bills. No subscription bills.",
+    "subtitle2": "Only pay for what you use.",
     "faqs": {
       "title": "Frequently Asked Questions",
       "desc": "If you can't find the answer to your question, please contact our support here",
@@ -161,7 +161,7 @@
       "perUser": "Per user, per month.",
       "features": {
         "1": "Everything in Premium plus",
-        "2": "Unlimited usage",
+        "2": "Unlimited token usage",
         "3": "Customized chat assistant",
         "4": "Save and edit code ideas",
         "5": "Priority support"

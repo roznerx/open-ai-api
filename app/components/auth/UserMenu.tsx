@@ -1,12 +1,6 @@
 import { Menu, Transition } from "@headlessui/react"
 import { Crisp } from "crisp-sdk-web"
-import {
-  Code,
-  LayoutDashboard,
-  LogOut,
-  MessageCircle,
-  MessageSquare,
-} from "lucide-react"
+import { Code, Gem, LayoutDashboard, LogOut, MessageSquare } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -74,30 +68,26 @@ export default function UserMenu({ session, email, image, translations }) {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items className="absolute right-0 mt-2 w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-            <div className="h-11">
+            <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
                   <div
-                    onClick={() => {
-                      setOpeningSupport(true)
-                      Crisp.chat.open()
-                      Crisp.chat.show()
-                    }}
+                    onClick={() => router.push("/pricing")}
                     className={`flex w-full cursor-pointer items-center justify-start ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
                   >
-                    <MessageCircle
-                      width={45}
-                      height={45}
+                    <Gem
+                      width={35}
+                      height={35}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
-                    <span>{translations.menu.support}</span>
+                    <span>{translations.menu.pricing}</span>
                   </div>
                 )}
               </Menu.Item>
             </div>
-            <div className="h-11">
+            <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
                   <div
@@ -107,8 +97,8 @@ export default function UserMenu({ session, email, image, translations }) {
                     } `}
                   >
                     <LayoutDashboard
-                      width={45}
-                      height={45}
+                      width={35}
+                      height={35}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.dashboard}</span>
@@ -116,7 +106,7 @@ export default function UserMenu({ session, email, image, translations }) {
                 )}
               </Menu.Item>
             </div>
-            <div className="h-11">
+            <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
                   <div
@@ -126,8 +116,8 @@ export default function UserMenu({ session, email, image, translations }) {
                     } `}
                   >
                     <Code
-                      width={45}
-                      height={45}
+                      width={35}
+                      height={35}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.codeIdeas}</span>
@@ -135,7 +125,7 @@ export default function UserMenu({ session, email, image, translations }) {
                 )}
               </Menu.Item>
             </div>
-            <div className="h-11">
+            <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
                   <div
@@ -145,8 +135,8 @@ export default function UserMenu({ session, email, image, translations }) {
                     } `}
                   >
                     <MessageSquare
-                      width={45}
-                      height={45}
+                      width={35}
+                      height={35}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.chat}</span>
@@ -154,7 +144,7 @@ export default function UserMenu({ session, email, image, translations }) {
                 )}
               </Menu.Item>
             </div>
-            <div className="h-11">
+            <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
                   <div
@@ -166,8 +156,8 @@ export default function UserMenu({ session, email, image, translations }) {
                     } `}
                   >
                     <LogOut
-                      width={45}
-                      height={45}
+                      width={35}
+                      height={35}
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.logOut}</span>
