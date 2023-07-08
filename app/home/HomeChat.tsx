@@ -129,11 +129,11 @@ export default function HomeChat({
         </div>
 
         <Modal
-          title={creditsModalTranslations.title}
+          title={creditsModalTranslations?.title}
           isCreditsModal
-          body={creditsModalTranslations.description}
+          body={creditsModalTranslations?.description}
           isOpen={creditsModaIsOpen}
-          buttonText={creditsModalTranslations.cta}
+          buttonText={creditsModalTranslations?.cta}
           buttonLink="/pricing"
           setIsOpen={setCreditsModaIsOpen}
         />

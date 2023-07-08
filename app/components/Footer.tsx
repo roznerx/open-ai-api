@@ -12,6 +12,8 @@ export default function Footer({
   session: any
   translations: any
 }) {
+  console.log("footer translations", translations)
+
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   return (
     <>

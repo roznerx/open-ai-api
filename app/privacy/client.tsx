@@ -112,7 +112,7 @@ export default function Client({
               </ul>
             </div>
             <h2 className="m-4 text-2xl font-medium text-white">
-              {translations.links.title}
+              {translations?.links?.title}
             </h2>
             <p className="p-4 text-white">{translations.links.p1}</p>
             <h2 className="m-4 text-2xl font-medium text-white">

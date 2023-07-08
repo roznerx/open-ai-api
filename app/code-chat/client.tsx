@@ -5,11 +5,11 @@ import Chat from "app/components/shared/Chat"
 import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import InputChat from "app/components/shared/InputChat"
-import { AI_MOOD } from "@/lib/constants"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "hooks/use-chat"
 import { updateApiCallsAndCredits } from "utils/helpers"
+import { AI_MOOD } from "@/lib/constants"
 
 export default function Client({
   session,
@@ -83,11 +83,11 @@ export default function Client({
         </div>
       )}
       <MyModal
-        title={modalTranslations.title}
+        title={modalTranslations?.title}
         isCreditsModal
-        body={modalTranslations.description}
+        body={modalTranslations?.description}
         isOpen={creditsModaIsOpen}
-        buttonText={modalTranslations.cta}
+        buttonText={modalTranslations?.cta}
         buttonLink="/pricing"
         setIsOpen={setCreditsModaIsOpen}
       />

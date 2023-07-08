@@ -95,8 +95,8 @@ export default function Container({ session, translations }) {
       />
       <Client
         userName={session?.user?.name?.substring(0, 1)}
-        translations={translations.codeIdea}
-        modalTranslations={translations.modals.moreCredits}
+        translations={translations?.codeIdea}
+        modalTranslations={translations?.modals?.moreCredits}
         setGeneratedCode={setGeneratedCode}
         generatedCode={generatedCode}
         chatHasStarted={chatHasStarted}
