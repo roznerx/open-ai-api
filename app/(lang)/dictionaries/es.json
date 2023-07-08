@@ -127,6 +127,10 @@
         "title": "¿Qué puedo hacer con Code Genius?",
         "desc": "Code Genius tiene las siguientes características: sugerencias de código inteligentes, generación de pruebas, mejoras de código y generación de documentación. Chat con Code Genius y mucho más"
       },
+      "2.a": {
+        "title": "¿Cómo maneja Code Genius la privacidad?",
+        "desc": "Entendemos que la privacidad del código es muy importante, en serio. No almacenamos ningún código que envíes a Code Genius. Solo lo utilizamos para generar sugerencias, pruebas, mejoras y documentación."
+      },
       "2.1": {
         "title": "¿Por qué debería usar Code Genius?",
         "desc": "Code Genius es mejor que otros competidores de IA, incluyendo los populares complementos de VS Code. Con Code Genius, puedes generar una prueba para tu componente en segundos, utilizando tus herramientas favoritas."

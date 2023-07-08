@@ -127,6 +127,10 @@
         "title": "What can I do with Code Genius?",
         "desc": "Code Genius has the following features: Smart Code suggestions. Test Generation. Code Improvements. Documentation Generation. Code Genius Chat and more!"
       },
+      "2.a": {
+        "title": "How Code Genius handles Privacy?",
+        "desc": "We understand that code privacy is very important, seriously. We don't store any code you send to Code Genius. We only use it to generate suggestions, tests, improvements, and documentation."
+      },
       "2.1": {
         "title": "Why should I use Code Genius?",
         "desc": "Code Genius is better than other AI competitors, including popular VS Code plugins. With Code Genius you can generate a test for you component in seconds, using your favorite tools."
