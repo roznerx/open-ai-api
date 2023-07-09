@@ -29,8 +29,12 @@ export default function Header({
         id="site-header"
         className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
-        <div className="flex items-center justify-between">
-          <div className={`ml-4 mt-4 sm:ml-14`}>
+        <div
+          className={`flex  ${
+            !session ? "justify-between" : "mt-2 justify-center"
+          } sm:justify-between`}
+        >
+          <div className={`mt-2 sm:ml-14`}>
             <Link href="/" className={``}>
               <div className={`mt-1 flex sm:ml-7`}>
                 <Image
@@ -44,18 +48,18 @@ export default function Header({
                   className={`sm:text-xl ${
                     !session ? "ml-3" : "ml-2"
                   } sm:text-xl mt-1  bg-gradient-to-r from-[#A1FFE0]
-                    to-[#2C9DC0] bg-clip-text font-sans text-2xl font-bold tracking-tight text-transparent sm:ml-2 sm:text-3xl sm:leading-6`}
+                    to-[#2C9DC0] bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:text-3xl sm:leading-6`}
                 >
                   Code Genius
                 </h1>
               </div>
             </Link>
           </div>
-          <div className="flex h-8">
+          <div className="mt-2 flex h-8 sm:mt-0">
             {!session && (
               <Link href={"/pricing"}>
-                <p className="mt-4 mr-2 cursor-pointer font-mono text-white ">
-                  {translations.menu.pricing}
+                <p className="mt-4 mr-3 cursor-pointer font-sans text-white sm:mr-16 ">
+                  {translations?.menu?.pricing}
                 </p>
               </Link>
             )}
@@ -69,7 +73,7 @@ export default function Header({
             >
               {!session && (
                 <div
-                  className={`relative h-[37px] w-auto rounded-lg bg-purple-700`}
+                  className={`relative h-[37px] w-auto rounded-lg bg-purple-700 px-2`}
                 >
                   <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
                     {userHasAccount

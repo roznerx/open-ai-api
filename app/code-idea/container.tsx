@@ -89,6 +89,7 @@ export default function Container({ session, translations }) {
         setShowSignInModal={setShowSignInModal}
       />
       <Navigation
+        menuTranslations={translations.home.header.menu}
         translations={translations.sidebar}
         setGeneratedCode={setGeneratedCode}
         mode={mode}

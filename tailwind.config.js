@@ -67,8 +67,17 @@ module.exports = {
       animation: {
         tilt: "tilt 10s infinite linear",
         bounceArrow: "bounce 1s infinite",
+        pulseCustom: "custom 5s linear infinite",
       },
       keyframes: {
+        custom: {
+          "0%, 100%": {
+            opacity: "1",
+          },
+          "50%": {
+            opacity: ".5",
+          },
+        },
         bounce: {
           "0%, 100%": {
             transform: "translateY(0)",

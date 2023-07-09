@@ -1,19 +1,26 @@
 import {
   MessageSquare,
   Code2,
-  Home,
   LayoutDashboard,
   Rocket,
   CurlyBraces,
   FileCode,
   Menu,
   ArrowLeft,
+  LogOut,
 } from "lucide-react"
+import { signOut } from "next-auth/react"
 
 import Link from "next/link"
 import { useState } from "react"
 
-export default function MobileSideBar({ router, pathname, colors, mode }) {
+export default function MobileSideBar({
+  router,
+  pathname,
+  colors,
+  mode,
+  translations,
+}) {
   const [showMobileMenu, setShowMobileMenu] = useState(false)
 
   return (
@@ -46,22 +53,6 @@ export default function MobileSideBar({ router, pathname, colors, mode }) {
         }`}
       >
         <Link
-          href="/"
-          className={`mt-8 w-[100%] ${
-            pathname === "/" ? "bg-purple-500" : "bg-none"
-          } cursor-pointer`}
-        >
-          <div className="ml-4 inline-flex h-[50px] w-auto items-start justify-start rounded-md pr-2">
-            <Home
-              width={26}
-              height={26}
-              color={pathname === "/" ? colors.mint : "white"}
-              className="ml-1.5"
-            />
-            <p className="text-sm ml-4 pt-1 text-white">Home</p>
-          </div>
-        </Link>
-        <Link
           href="/dashboard"
           className={`w-[100%] ${
             pathname === "/dashboard" ? "bg-purple-500" : "bg-none"
@@ -74,7 +65,9 @@ export default function MobileSideBar({ router, pathname, colors, mode }) {
               color={pathname === "/dashboard" ? colors.mint : "white"}
               className="ml-1.5"
             />
-            <p className="text-sm ml-4 pt-1 text-white">Dashboard</p>
+            <p className="text-sm ml-4 pt-1 text-white">
+              {translations?.dashboard}
+            </p>
           </div>
         </Link>
         <Link
@@ -90,7 +83,7 @@ export default function MobileSideBar({ router, pathname, colors, mode }) {
               color={pathname === "/code-chat" ? colors.mint : "white"}
               className="ml-1.5 text-white"
             />
-            <p className="text-sm ml-4 pb-1 text-white">Code Chat</p>
+            <p className="text-sm ml-4 pb-1 text-white">{translations?.chat}</p>
           </div>
         </Link>
         <div
@@ -112,7 +105,9 @@ export default function MobileSideBar({ router, pathname, colors, mode }) {
               color={mode === "smart" ? colors.mint : "white"}
               className={`ml-1.5 cursor-pointer border-purple-300`}
             />
-            <p className="text-sm ml-4 pb-1 text-white">Suggestions mode</p>
+            <p className="text-sm ml-4 pb-1 text-white">
+              {translations.mode.smart}
+            </p>
           </div>
         </div>
         <div
@@ -134,7 +129,9 @@ export default function MobileSideBar({ router, pathname, colors, mode }) {
               size={26}
               className={`cursor-pointer`}
             />
-            <p className="text-sm ml-4 pb-1 text-white">Improvements mode</p>
+            <p className="text-sm ml-4 pb-1 text-white">
+              {translations.mode.improve}
+            </p>
           </div>
         </div>
         <div
@@ -156,7 +153,9 @@ export default function MobileSideBar({ router, pathname, colors, mode }) {
               color={mode === "test" ? colors.mint : "white"}
               className={`cursor-pointer`}
             />
-            <p className="text-sm ml-4 pb-1 text-white">Testing mode</p>
+            <p className="text-sm ml-4 pb-1 text-white">
+              {translations.mode.test}
+            </p>
           </div>
         </div>
         <div
@@ -177,7 +176,28 @@ export default function MobileSideBar({ router, pathname, colors, mode }) {
               size={26}
               color={mode === "docs" ? colors.mint : "white"}
             />
-            <p className="text-sm ml-4 pb-1 text-white">Docs mode</p>
+            <p className="text-sm ml-4 pb-1 text-white">
+              {translations.mode.docs}
+            </p>
+          </div>
+        </div>
+        <div
+          className={`absolute bottom-1 left-1 w-[100%] cursor-pointer text-white ${
+            pathname === "/code-idea" && mode === "docs"
+              ? "bg-purple-500"
+              : "bg-none"
+          }`}
+        >
+          <div
+            onClick={() => signOut()}
+            className={`flex w-full cursor-pointer items-center justify-start`}
+          >
+            <LogOut
+              width={35}
+              height={35}
+              className={`text-sm items-start rounded-md px-2 py-2`}
+            />
+            <span>{translations.logOut}</span>
           </div>
         </div>
       </div>

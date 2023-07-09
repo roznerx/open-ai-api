@@ -14,7 +14,13 @@
         "pricing": "Pricing",
         "chat": "Chat",
         "codeIdeas": "Code Ideas",
-        "logOut": "Log Out"
+        "logOut": "Log Out",
+        "mode": {
+          "smart": "Suggestions",
+          "test": "Testing",
+          "improve": "Optimization",
+          "docs": "Documentation"
+        }
       },
       "register": "Sign Up",
       "login": "Sign In"

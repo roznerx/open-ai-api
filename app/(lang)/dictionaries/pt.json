@@ -14,7 +14,13 @@
         "pricing": "Ver preços",
         "chat": "Ir para o chat",
         "codeIdeas": "Ideias de código",
-        "logOut": "Sair"
+        "logOut": "Sair",
+        "mode": {
+          "smart": "Sugestões",
+          "test": "Testes",
+          "improve": "Otimização",
+          "docs": "Documentação"
+        }
       },
       "register": "Registrar",
       "login": "Entrar"

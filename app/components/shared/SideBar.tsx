@@ -19,10 +19,12 @@ import MobileSideBar from "./MobileSideBar"
 
 const SideBar = ({
   translations,
+  menuTranslations,
   mode,
   setGeneratedCode,
 }: {
   translations: any
+  menuTranslations: any
   mode?: string
   setMode?: any
   setGeneratedCode?: any
@@ -54,7 +56,6 @@ const SideBar = ({
           </Link>
         </div>
       </MaterialTooltip>
-
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
@@ -62,7 +63,10 @@ const SideBar = ({
       >
         <div
           onClick={() => {
-            if (pathname === "/code-idea") {
+            if (
+              pathname === "/code-idea" &&
+              typeof setGeneratedCode === "function"
+            ) {
               setGeneratedCode("")
             }
             router.push("/code-idea?mode=smart")
@@ -81,7 +85,10 @@ const SideBar = ({
       >
         <div
           onClick={() => {
-            if (pathname === "/code-idea") {
+            if (
+              pathname === "/code-idea" &&
+              typeof setGeneratedCode === "function"
+            ) {
               setGeneratedCode("")
             }
             router.push("/code-idea?mode=test")
@@ -101,7 +108,10 @@ const SideBar = ({
       >
         <div
           onClick={() => {
-            if (pathname === "/code-idea") {
+            if (
+              pathname === "/code-idea" &&
+              typeof setGeneratedCode === "function"
+            ) {
               setGeneratedCode("")
             }
             router.push("/code-idea?mode=improve")
@@ -121,7 +131,10 @@ const SideBar = ({
       >
         <div
           onClick={() => {
-            if (pathname === "/code-idea") {
+            if (
+              pathname === "/code-idea" &&
+              typeof setGeneratedCode === "function"
+            ) {
               setGeneratedCode("")
             }
             router.push("/code-idea?mode=docs")
@@ -148,6 +161,7 @@ const SideBar = ({
     </div>
   ) : (
     <MobileSideBar
+      translations={menuTranslations}
       pathname={pathname}
       router={router}
       mode={mode}

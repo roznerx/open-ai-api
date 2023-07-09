@@ -40,7 +40,7 @@ export default function UserMenu({ session, email, image, translations }) {
     })
   }, [])
   return (
-    <div className="absolute top-4 right-4 z-50 w-auto text-center sm:right-2 sm:mr-7">
+    <div className="z-50w-auto absolute top-4 right-4 text-center sm:right-2 sm:mr-7">
       <Menu as="div" className="relative">
         <div className="flex items-center justify-center">
           <Menu.Button className="text-sm flex h-12 w-12 items-center justify-center rounded-full border-[1px]  border-gray-500 bg-purple-500  font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
@@ -74,7 +74,7 @@ export default function UserMenu({ session, email, image, translations }) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0  mt-2 w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items className="absolute right-0  mt-2  hidden w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (

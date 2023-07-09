@@ -24,7 +24,10 @@ export default async function Page() {
 
   return (
     <>
-      <SideBar translations={dictionary.sidebar} />
+      <SideBar
+        translations={dictionary.sidebar}
+        menuTranslations={dictionary?.home?.header?.menu}
+      />
       <main className="flex min-h-screen w-screen px-4 text-center">
         <Client
           session={session}

@@ -7,6 +7,7 @@ import Client from "./client"
 import Footer from "./components/Footer"
 import { harperClient } from "@/lib/harperdb"
 import { getDictionary } from "./(lang)/dictionaries"
+import SideBar from "./components/shared/SideBar"
 
 export const metadata = {
   title: "Code Genius | Enhance your coding skills with the help of AI",
@@ -44,6 +45,12 @@ export default async function Page() {
 
   return (
     <>
+      {session && (
+        <SideBar
+          translations={dictionary.sidebar}
+          menuTranslations={dictionary?.home?.header?.menu}
+        />
+      )}
       <main className={`mx-auto w-full max-w-max pb-10`}>
         <Client
           translations={dictionary}

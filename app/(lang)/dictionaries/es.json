@@ -11,10 +11,16 @@
       "menu": {
         "support": "Soporte",
         "dashboard": "Home",
-        "pricing": "Ver precios",
+        "pricing": "Precios",
         "chat": "Ir al chat",
         "codeIdeas": "Código",
-        "logOut": "Cerrar sesión"
+        "logOut": "Cerrar sesión",
+        "mode": {
+          "smart": "Sugerencias",
+          "test": "Pruebas",
+          "improve": "Optimización",
+          "docs": "Documentación"
+        }
       },
       "register": "Regístrate",
       "login": "Login"
