@@ -208,7 +208,7 @@ export default function Client({
             {/* <!-- List --> */}
             <ul
               role="list"
-              className="my-6 ml-20 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
+              className="my-6 ml-16 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
             >
               <li className="flex w-full space-x-3 self-center">
                 {/* <!-- Icon --> */}
@@ -272,7 +272,7 @@ export default function Client({
             </div>
             <ul
               role="list"
-              className="my-6 ml-20 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
+              className="my-6 ml-16 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
             >
               <li className="flex w-full space-x-3">
                 <Check color={colors.mint} className="mt-[2px]" size={20} />
