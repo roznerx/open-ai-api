@@ -41,7 +41,7 @@ export default function UserMenu({ session, email, image, translations }) {
     })
   }, [])
   return (
-    <div className="z-50w-auto absolute top-4 right-4 text-center sm:right-2 sm:mr-7">
+    <div className="z-50w-auto absolute top-5 right-4 text-center sm:right-3">
       <Menu as="div" className="relative">
         <div className="flex items-center justify-center">
           <Menu.Button className="text-sm flex h-12 w-12 items-center justify-center rounded-full border-[1px]  border-gray-500 bg-purple-500  font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
