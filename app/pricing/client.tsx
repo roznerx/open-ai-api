@@ -27,7 +27,7 @@ export default function Client({
   translations,
   userHasAccount,
 }: ClientPropTye) {
-  const initialCreditsValue = 100
+  const initialCreditsValue = 50
   const [credits, setCredits] = React.useState<number>(initialCreditsValue)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
@@ -249,7 +249,7 @@ export default function Client({
             </h3>
             <div className="my-4 flex flex-col items-center justify-center">
               <span className="mr-2 text-center text-5xl font-semibold">
-                $ 20 USD
+                $ 15 USD
               </span>
               <span className="text-sm my-2 inline-block pt-2 text-center">
                 {translations.pricing.enterprice.perUser}

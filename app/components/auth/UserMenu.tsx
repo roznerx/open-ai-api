@@ -1,5 +1,6 @@
 import { Menu, Transition } from "@headlessui/react"
 import { Crisp } from "crisp-sdk-web"
+import useWindowSize from "hooks/use-window-size"
 import {
   Code,
   Gem,
@@ -16,7 +17,7 @@ import { Fragment, useEffect, useState } from "react"
 export default function UserMenu({ session, email, image, translations }) {
   const router = useRouter()
   const [openingSupport, setOpeningSupport] = useState(false)
-
+  const { isMobile } = useWindowSize()
   useEffect(() => {
     Crisp.configure("12685b82-e8b5-43a2-a596-d2d559d02e5a", {
       autoload: true,
@@ -74,7 +75,11 @@ export default function UserMenu({ session, email, image, translations }) {
           leaveFrom="transform opacity-100 scale-100"
           leaveTo="transform opacity-0 scale-95"
         >
-          <Menu.Items className="absolute right-0  mt-2  hidden w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <Menu.Items
+            className={`absolute right-0  mt-2 ${
+              isMobile ? "hidden" : "block"
+            }  w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
+          >
             <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
