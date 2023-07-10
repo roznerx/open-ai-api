@@ -30,25 +30,25 @@ export default function Header({
         className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
         <div
-          className={`mt-2 flex ${
+          className={`mt-2 flex items-center justify-center ${
             !session ? "justify-between" : "justify-center"
           } sm:justify-between`}
         >
-          <div className={`mt-2 ${pathname !== "/" ? "ml-20" : "ml-8"}`}>
+          <div className={`mt-1 ${pathname !== "/" ? "ml-20" : "ml-6"}`}>
             <Link href="/" className={``}>
               <div className={`mt-1 flex`}>
                 <Image
                   src={"/logo/code-genius.svg"}
                   width={32}
                   height={32}
-                  className={`right-1  ${!session ? "ml-2" : "ml-2"}`}
+                  className={`mt-1`}
                   alt="Code Genius"
                 />
                 <h1
                   className={`sm:text-xl ${
                     !session ? "ml-3" : "ml-2"
-                  } sm:text-xl mt-1  bg-gradient-to-r from-[#A1FFE0]
-                    to-[#2C9DC0] bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:text-3xl sm:leading-6`}
+                  } sm:text-xl mt-1 bg-gradient-to-r  from-[#A1FFE0] to-[#2C9DC0]
+                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:mt-2 sm:ml-2 sm:text-3xl sm:leading-6`}
                 >
                   Code Genius
                 </h1>
