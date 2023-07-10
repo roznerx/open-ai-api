@@ -30,13 +30,13 @@ export default function Header({
         className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
         <div
-          className={`mt-2 flex items-center justify-center ${
-            !session ? "justify-between" : "justify-center"
-          } sm:justify-between`}
+          className={`mt-5 flex w-full items-center ${
+            pathname == "/" && !session ? "justify-between" : "justify-center"
+          } sm:items-start sm:justify-between`}
         >
-          <div className={`mt-1 ${pathname !== "/" ? "ml-20" : "ml-6"}`}>
+          <div className={`${pathname !== "/" ? "sm:ml-20" : "sm:ml-1"} ml-2`}>
             <Link href="/" className={``}>
-              <div className={`mt-1 flex`}>
+              <div className={`flex`}>
                 <Image
                   src={"/logo/code-genius.svg"}
                   width={32}
@@ -45,29 +45,25 @@ export default function Header({
                   alt="Code Genius"
                 />
                 <h1
-                  className={`sm:text-xl ${
-                    !session ? "ml-3" : "ml-2"
-                  } sm:text-xl mt-1 bg-gradient-to-r  from-[#A1FFE0] to-[#2C9DC0]
-                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:mt-2 sm:ml-2 sm:text-3xl sm:leading-6`}
+                  className={`sm:text-xl sm:text-xl ml-2 mt-1 bg-gradient-to-tl from-[#A1FFE0] to-[#2C9DC0]
+                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:mt-2 sm:ml-2 sm:leading-6`}
                 >
                   Code Genius
                 </h1>
               </div>
             </Link>
           </div>
-          <div className="mt-2 flex h-8 sm:mt-0">
+          <div className="mr-1 mb-3 flex h-8 pb-2 sm:mt-0">
             {!session && (
               <Link href={"/pricing"}>
-                <p className="mt-4 mr-3 cursor-pointer font-sans text-white sm:mr-6 ">
+                <p className="mt-4 mr-3 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
                   {translations?.menu?.pricing}
                 </p>
               </Link>
             )}
             <div
               onClick={() => setShowSignInModal(true)}
-              className={`my-auto mt-2 mr-4 flex ${
-                !session ? "w-auto" : "w-12"
-              } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-6 ${
+              className={`my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-6 ${
                 !session ? "border border-mint" : "bg-transparent"
               }  p-[1.5px] font-sans`}
             >
@@ -88,7 +84,7 @@ export default function Header({
               <div className="mr-24 hidden flex-col items-end transition-all sm:flex ">
                 <button
                   onClick={() => setShowWidget((prev) => !prev)}
-                  className="mt-3.5 mr-3 flex h-4 w-28 items-center justify-center rounded-lg border
+                  className="mt-1 mr-3 flex h-4 w-28 items-center justify-center rounded-lg border
                    border-gray-300 bg-purple-900 p-4 text-gray-200 hover:cursor-pointer hover:text-gray-50"
                 >
                   <span>{translations?.feedback?.title}</span>

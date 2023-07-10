@@ -72,7 +72,7 @@ export default function Client({
           </h2>
         </div>
 
-        <div className="mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-24 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+        <div className="mt-60 mb-12 grid grid-cols-1 place-items-center gap-4 sm:mt-24 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
           <PromptCard
             size="large"
             hasScale

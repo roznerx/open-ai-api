@@ -1,13 +1,14 @@
 import {
   MessageSquare,
   Code2,
-  LayoutDashboard,
   Rocket,
   CurlyBraces,
   FileCode,
   Menu,
   ArrowLeft,
   LogOut,
+  Home,
+  Gem,
 } from "lucide-react"
 import { signOut } from "next-auth/react"
 
@@ -59,7 +60,7 @@ export default function MobileSideBar({
           } cursor-pointer`}
         >
           <div className="ml-4 mt-5 inline-flex h-[50px] w-auto items-start justify-start rounded-md pr-2">
-            <LayoutDashboard
+            <Home
               width={26}
               height={26}
               color={pathname === "/dashboard" ? colors.mint : "white"}
@@ -101,7 +102,8 @@ export default function MobileSideBar({
             className=" ml-4 mt-5 inline-flex h-[50px] w-full items-start justify-start rounded-md pr-2"
           >
             <Code2
-              size={26}
+              width={26}
+              height={26}
               color={mode === "smart" ? colors.mint : "white"}
               className={`ml-1.5 cursor-pointer border-purple-300`}
             />
@@ -126,8 +128,9 @@ export default function MobileSideBar({
           >
             <Rocket
               color={mode === "improve" ? colors.mint : "white"}
-              size={26}
-              className={`cursor-pointer`}
+              width={26}
+              height={26}
+              className={`ml-1.5 cursor-pointer`}
             />
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.mode.improve}
@@ -151,7 +154,7 @@ export default function MobileSideBar({
             <CurlyBraces
               size={26}
               color={mode === "test" ? colors.mint : "white"}
-              className={`cursor-pointer`}
+              className={`ml-1.5 cursor-pointer`}
             />
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.mode.test}
@@ -175,6 +178,7 @@ export default function MobileSideBar({
             <FileCode
               size={26}
               color={mode === "docs" ? colors.mint : "white"}
+              className={`ml-1.5 cursor-pointer`}
             />
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.mode.docs}
@@ -182,7 +186,29 @@ export default function MobileSideBar({
           </div>
         </div>
         <div
-          className={`absolute bottom-1 left-1 w-[100%] cursor-pointer text-white ${
+          className={`w-[100%] cursor-pointer ${
+            pathname === "/pricing" ? "bg-purple-500" : "bg-none"
+          }`}
+        >
+          <div
+            onClick={() => {
+              router.push("/pricing")
+              setShowMobileMenu((prevState) => !prevState)
+            }}
+            className={`ml-4 mt-5 inline-flex h-[50px] w-full items-start justify-start rounded-md pr-2`}
+          >
+            <Gem
+              size={26}
+              color={pathname === "/pricing" ? colors.mint : "white"}
+              className={`ml-1.5 cursor-pointer`}
+            />
+            <p className="text-sm ml-4 pb-1 text-white">
+              {translations.pricing}
+            </p>
+          </div>
+        </div>
+        <div
+          className={`absolute bottom-2 left-4 w-[100%] cursor-pointer text-white ${
             pathname === "/code-idea" && mode === "docs"
               ? "bg-purple-500"
               : "bg-none"
@@ -192,12 +218,10 @@ export default function MobileSideBar({
             onClick={() => signOut()}
             className={`flex w-full cursor-pointer items-center justify-start`}
           >
-            <LogOut
-              width={35}
-              height={35}
-              className={`text-sm items-start rounded-md px-2 py-2`}
-            />
-            <span>{translations.logOut}</span>
+            <LogOut size={26} className={`ml-1.5 cursor-pointer `} />
+            <span className="text-sm ml-2  text-white">
+              {translations.logOut}
+            </span>
           </div>
         </div>
       </div>
