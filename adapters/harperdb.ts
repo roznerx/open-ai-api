@@ -14,7 +14,7 @@ export function HarperDBAdapter(): Adapter {
       //Define a new user with the initial credits gifted.
       const newUser = {
         ...user,
-        credits: 25,
+        credits: 10,
       }
 
       const result = await harperClient({

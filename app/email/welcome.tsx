@@ -47,7 +47,7 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
               }}
             >
               We’re glad you are here! Thanks for joining us. <br /> Now you
-              have 25 credits available to try Code Genius.
+              have 10 credits available to try Code Genius.
               <br />
               Whether you are learning to code, or you already have been doing
               it for a while

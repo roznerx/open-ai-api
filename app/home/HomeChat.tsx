@@ -51,7 +51,7 @@ export default function HomeChat({
   const userName = session && session.user?.name
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
-    tip: "Redeem your initial 25 credits.",
+    tip: "Get your initial 10 credits for free. 💸",
     translations,
   })
   const {
