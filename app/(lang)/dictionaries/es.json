@@ -43,7 +43,7 @@
         "subtitle": "Code Genius analiza tu código en tiempo real y ofrece sugerencias inteligentes y mejoras de rendimiento. Enfocate a añadir valor al producto, nosotros garantizamos que el código sea limpio, eficiente y libre de errores."
       },
       "test": {
-        "title": "Genera tests unitarios en segundos",
+        "title": "Genera tests unitarios en segundos te ahorra valiso tiempo",
         "subtitle": "Escribir test puede ser una tarea tediosa que consume mucho tiempo. Con Code Genius puedes generar tests que cubran una amplia gama de escenarios, asegurando que tu código sea exhaustivamente probado y confiable."
       },
       "docs": {
@@ -69,11 +69,11 @@
     },
     "test": {
       "title": "Pruebas de código",
-      "subtitle": "La generación de tests te permite automatizar y ahorrar tiempo valioso."
+      "subtitle": "La generación de tests te permite automatizar y validar tus componentes."
     },
     "docs": {
       "title": "Documentación",
-      "subtitle": "Genera documentación clara y precisa en segundos."
+      "subtitle": "Generar documentación clara y precisa en segundos te ahorrará tiempo valioso."
     }
   },
   "sidebar": {

@@ -20,8 +20,8 @@ export default function Footer({
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-      <footer className="mx-auto flex w-[80vw] flex-col font-sans text-white">
-        <div className="w-ful flex flex-col items-center justify-center py-4 sm:flex-row sm:items-start sm:justify-between">
+      <footer className="mx-auto flex w-[95vw] flex-col font-sans text-white">
+        <div className="flex flex-col items-center justify-center py-4 sm:flex-row sm:items-start sm:justify-between">
           <div className="justify-center">
             <Link href="/" className={`mt-7 flex sm:mx-0 sm:ml-2`}>
               <Image
@@ -78,7 +78,7 @@ export default function Footer({
           </div>
         </div>
         <div className="w-ful m-auto content-center border-t border-gray-400 py-4">
-          <p className="w-[80vw] text-center">{translations?.copy}</p>
+          <p className="w-[95vw] text-center">{translations?.copy}</p>
         </div>
       </footer>
     </>

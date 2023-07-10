@@ -72,29 +72,7 @@ export default function Client({
           </h2>
         </div>
 
-        <div className="mt-60 mb-12 grid grid-cols-1 place-items-center gap-4 sm:mt-24 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
-          <PromptCard
-            size="large"
-            hasScale
-            order="order-1 sm:order-1"
-            imageSrc="/dashboard/credits.svg"
-            button={<ChatButton text={dashboard.ctaChat} />}
-            title={`${credits} ${dashboard.credits}`}
-            text={dashboard.available}
-            onClick={undefined}
-          />
-
-          <PromptCard
-            size="large"
-            hasScale
-            order="order-2 sm:order-2"
-            button={<UpgradeAccount text={dashboard.ctaUpgrade} />}
-            title={credits > 10 ? "Premium" : "Free"}
-            text={dashboard.subscription}
-            imageSrc="/dashboard/code-box.svg"
-            onClick={undefined}
-          />
-
+        <div className="mt-60 mb-12 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
           <PromptCard
             onClick={() => {
               router.push("/code-idea?mode=smart")
@@ -133,6 +111,27 @@ export default function Client({
             title={dashboard.docs.title}
             imageSrc="/dashboard/documentation.svg"
             text={dashboard.docs.subtitle}
+          />
+          <PromptCard
+            size="large"
+            hasScale
+            order="order-7 sm:order-7"
+            imageSrc="/dashboard/credits.svg"
+            button={<ChatButton text={dashboard.ctaChat} />}
+            title={`${credits} ${dashboard.credits}`}
+            text={dashboard.available}
+            onClick={undefined}
+          />
+
+          <PromptCard
+            size="large"
+            hasScale
+            order="order-8 sm:order-8"
+            button={<UpgradeAccount text={dashboard.ctaUpgrade} />}
+            title={credits > 10 ? "Premium" : "Free"}
+            text={dashboard.subscription}
+            imageSrc="/dashboard/code-box.svg"
+            onClick={undefined}
           />
         </div>
       </div>

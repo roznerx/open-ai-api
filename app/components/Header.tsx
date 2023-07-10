@@ -34,7 +34,13 @@ export default function Header({
             pathname == "/" && !session ? "justify-between" : "justify-center"
           } sm:items-start sm:justify-between`}
         >
-          <div className={`${pathname !== "/" ? "sm:ml-20" : "sm:ml-4"} ml-2`}>
+          <div
+            className={`${
+              pathname !== "/" && pathname !== "/pricing"
+                ? "sm:ml-20"
+                : "sm:ml-4"
+            } ml-2`}
+          >
             <Link href="/">
               <div className={`flex`}>
                 <Image

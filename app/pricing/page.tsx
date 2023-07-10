@@ -1,5 +1,4 @@
 import { getDictionary } from "app/(lang)/dictionaries"
-import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"
 import { cookies, headers } from "next/headers"
 import { authOptions } from "pages/api/auth/[...nextauth]"
@@ -19,12 +18,6 @@ export default async function Page() {
   const csrfTokenValue = cookieStore.has("next-auth.csrf-token")
   return (
     <>
-      {session && (
-        <SideBar
-          translations={dictionary.sidebar}
-          menuTranslations={dictionary?.home?.header?.menu}
-        />
-      )}
       <main className="flex w-full flex-col items-center justify-center text-center">
         <Client
           userHasAccount={csrfTokenValue}
