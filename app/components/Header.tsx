@@ -58,7 +58,7 @@ export default function Header({
           <div className="mt-2 flex h-8 sm:mt-0">
             {!session && (
               <Link href={"/pricing"}>
-                <p className="mt-4 mr-3 cursor-pointer font-sans text-white sm:mr-16 ">
+                <p className="mt-4 mr-3 cursor-pointer font-sans text-white sm:mr-6 ">
                   {translations?.menu?.pricing}
                 </p>
               </Link>
@@ -67,7 +67,7 @@ export default function Header({
               onClick={() => setShowSignInModal(true)}
               className={`my-auto mt-2 mr-4 flex ${
                 !session ? "w-auto" : "w-12"
-              } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-16 ${
+              } cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-6 ${
                 !session ? "border border-mint" : "bg-transparent"
               }  p-[1.5px] font-sans`}
             >
