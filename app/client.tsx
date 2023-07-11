@@ -24,7 +24,7 @@ export default function Client({
 
   return (
     <>
-      <div className="absolute right-0 -top-[300px] animate-pulseCustom items-center justify-center before:absolute before:left-0 before:top-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-mint/20 before:to-blue/30 before:blur-[120px]  before:content-[''] md:mx-auto md:h-[950px] md:w-[950px] lg:flex"></div>
+      <div className="absolute inset-0 animate-pulseCustom before:absolute before:inset-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-mint/30 before:to-blue/20 before:blur-[120px] before:content-[''] md:mx-auto md:h-[950px] md:w-[950px] lg:flex"></div>
       <SignInModal />
       <HeaderWrapper
         translations={translations?.home?.header}
