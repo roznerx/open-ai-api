@@ -1,4 +1,4 @@
-'use client'
+"use client"
 
 import { authHeader } from "@/lib/constants"
 import { useSignInModal } from "app/components/modals/SignInModal"
@@ -17,25 +17,22 @@ import React, {
 } from "react"
 import { generateCodeWithTurbo } from "utils/generateCode"
 
-
-
 const functions = [
-    {
-      name: "getInfo",
-      description: "Get updating information and metadata about anything",
-      parameters: {
-        type: "object",
-        properties: {
-          query: {
-            type: "string",
-            description: "The user query stringing to search for",
-          },
+  {
+    name: "getInfo",
+    description: "Get updating information and metadata about anything",
+    parameters: {
+      type: "object",
+      properties: {
+        query: {
+          type: "string",
+          description: "The user query stringing to search for",
         },
-        required: ["query"],
       },
+      required: ["query"],
     },
-  ] 
-
+  },
+]
 
 export default function Page() {
   const { setShowSignInModal, showSignInModal } = useSignInModal({
@@ -64,14 +61,13 @@ export default function Page() {
   }, [])
 
   const onCodeGeneration = async (e: KeyboardEvent<HTMLInputElement>) => {
-
     if (codeSentence.length === 0 || codeSentence === "") {
       return false
     }
 
     if (e.key === "Enter") {
       setIsLoading(true)
-      
+
       codeMessages.current = [
         ...codeMessages.current,
         {
@@ -79,44 +75,61 @@ export default function Page() {
           content: codeSentence,
         },
       ]
-      let initialResponse = await fetch("https://api.openai.com/v1/chat/completions", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: authHeader,
-        },
-        method: "POST",
-        body: JSON.stringify({
-          model: "gpt-3.5-turbo-0613",
-          messages: [...codeMessages.current],
-          functions: functions,
-          function_call: "auto",
-        }),
-      })
-    
-      const json = await initialResponse.json()
-      
 
-      if (json.choices[0].finish_reason === "function_call") { 
+      let initialResponse = await fetch(
+        "https://api.openai.com/v1/chat/completions",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: authHeader,
+          },
+          method: "POST",
+          body: JSON.stringify({
+            model: "gpt-3.5-turbo-0613",
+            messages: [...codeMessages.current],
+            functions: functions,
+            function_call: "auto",
+          }),
+        },
+      )
+
+      const json = await initialResponse.json()
+
+      if (json.choices[0].finish_reason === "function_call") {
         //parse name of the function
         // const functionName = json.choices[0].message.function_call.function
         //parse functino arguments
-        const functionArguments = JSON.parse(json.choices[0].message.function_call.arguments)
-        
+        const functionArguments = JSON.parse(
+          json.choices[0].message.function_call.arguments,
+        )
+
         console.log("functionArguments:", functionArguments)
 
         // const functionContent = await getInfo(functionArguments)
         const info = await fetch(`/api/search?query=${functionArguments.query}`)
-        const data = await info.json()    
+        const data = await info.json()
         const infoDescription = data.info.map((item) => item.description)
-        console.log("infoDescription:", infoDescription)
+
         //Function meesage
-        const functionsMessage = { role: "function", "name": "getInfo", content: JSON.stringify(infoDescription) }
-        
-        generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode, functions, functionsMessage, setCodeSentence, setIsLoading)
+        const functionsMessage = {
+          role: "function",
+          name: "getInfo",
+          content: JSON.stringify(
+            infoDescription.join("").replace(/(<([^>]+)>)/gi, ""),
+          ),
+        }
 
-        
-      } 
-
+        generateCodeWithTurbo(
+          reader,
+          codeMessages,
+          setReader,
+          setGeneratedCode,
+          functions,
+          functionsMessage,
+          setCodeSentence,
+          setIsLoading,
+        )
+      }
     }
   }
 
@@ -131,40 +144,41 @@ export default function Page() {
       },
     ]
 
-    let initialResponse = await fetch("https://api.openai.com/v1/chat/completions", {
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: authHeader,
+    let initialResponse = await fetch(
+      "https://api.openai.com/v1/chat/completions",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: authHeader,
+        },
+        method: "POST",
+        body: JSON.stringify({
+          messages: [...codeMessages.current],
+          model: "gpt-3.5-turbo-0613",
+          functions: functions,
+          function_call: "auto",
+        }),
       },
-      method: "POST",
-      body: JSON.stringify({
-        messages: [...codeMessages.current],
-        model: "gpt-3.5-turbo-0613",
-        functions: functions,
-        function_call: "auto",
-      }),
-    })
-  
-    const json = await initialResponse.json()
-    
+    )
 
-    if (json.choices[0].finish_reason === "function_call") { 
+    const json = await initialResponse.json()
+
+    if (json.choices[0].finish_reason === "function_call") {
       //parse name of the function
       // const functionName = json.choices[0].message.function_call.function
       //parse functino arguments
-      const functionArguments = JSON.parse(json.choices[0].message.function_call.arguments)
+      const functionArguments = JSON.parse(
+        json.choices[0].message.function_call.arguments,
+      )
       // console.log("functionArguments:", functionArguments)
       const functionContent = await fetch(`/api/search`)
       // console.log("functionContent:", functionContent)
-      
+
       // // console.log("Payload: ", [...codeMessages.current, { role: "function", "name": "getMovies", content: JSON.stringify(functionContent.results.splice(0, 3)) }])
       // const functionsMessage = { role: "function", "name": "getInfo", content: JSON.stringify(functionContent.results) }
-      
+
       // generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode, functions, functionsMessage, setCodeSentence, setIsLoading)
-      
-      
-    } 
-    
+    }
   }
 
   const generatedMessages = useMemo(
@@ -182,7 +196,9 @@ export default function Page() {
         userHasAccount={null}
       />
       <div className="relative ml-1 flex w-full flex-col items-center justify-center font-sans sm:mx-auto sm:w-full">
-      <h1 className="mt-36 mb-24 text-4xl font-extrabold leading-none tracking-tight text-white/70 md:text-5xl lg:text-6xl ">Fucntion Calling Demo</h1>
+        <h1 className="mt-36 mb-24 text-4xl font-extrabold leading-none tracking-tight text-white/70 md:text-5xl lg:text-6xl ">
+          Llamado a Funciones
+        </h1>
         <div className="relative mt-2 h-12 w-full text-center sm:w-[900px]">
           <input
             className="font-lg h-12 w-[95%] rounded-lg bg-purple-400 py-2.5 
@@ -191,9 +207,7 @@ export default function Page() {
             onChange={(e) => setCodeSentence(e.target.value)}
             onKeyDown={(e) => onCodeGeneration(e)}
             placeholder={
-              generatedMessages.length <= 0
-                ? "Ask me anyting about movies"
-                : ""
+              generatedMessages.length <= 0 ? "Ask me anyting about movies" : ""
             }
           />
           <button className="absolute right-4 top-[6px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1">

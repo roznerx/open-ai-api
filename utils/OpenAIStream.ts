@@ -86,7 +86,6 @@ export async function OpenAITurboStream(payload: OpenAITurboPayload) {
     method: "POST",
     body: JSON.stringify(payload),
   })
-  
 
   const stream = new ReadableStream({
     async start(controller) {
@@ -101,8 +100,8 @@ export async function OpenAITurboStream(payload: OpenAITurboPayload) {
           }
           try {
             const json = JSON.parse(data)
+            console.log("json:", json)
             const text = json.choices[0].delta.content
-            console.log("text:", text)
             const queue = encoder.encode(text)
             controller.enqueue(queue)
             // counter++
