@@ -10,7 +10,7 @@ export default function ChatContainer({ messages, useFullHeight }: any) {
       <div
         ref={chatContainerRef}
         className={`overflow-y-scroll ${
-          useFullHeight ? "max-h-[75vh] sm:max-h-[75vh]" : "max-h-[320px]"
+          useFullHeight ? "max-h-[75vh] sm:max-h-[75vh]" : "max-h-[380px]"
         } mt-2 w-[90vw] rounded-md bg-transparent font-sans text-white
        sm:mt-2 sm:w-[900px] `}
       >

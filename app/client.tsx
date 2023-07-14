@@ -8,6 +8,8 @@ import SuperHero from "./home/SuperHero"
 import HomeChat from "./home/HomeChat"
 import Hero from "./home/Hero"
 import Feature from "./home/Feature"
+import ShowCaseCard from "./home/ShowCaseCard"
+import Button from "./components/Button"
 
 export default function Client({
   translations,
@@ -21,7 +23,17 @@ export default function Client({
     userHasAccount,
     translations: translations?.modals?.signIn,
   })
-
+  const CreateAccountButton = (
+    <Button
+      buttonTextColor="dark"
+      variant="mint"
+      loading={false}
+      text={translations?.header?.register}
+      onClick={() => {
+        setShowSignInModal(true)
+      }}
+    />
+  )
   return (
     <>
       <div className="absolute inset-0 animate-pulseCustom before:absolute before:inset-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-mint/30 before:to-blue/20 before:blur-[120px] before:content-[''] md:mx-auto md:h-[950px] md:w-[950px] lg:flex"></div>
@@ -42,6 +54,13 @@ export default function Client({
         session={session}
         loggedUserData={loggedUserData}
       />
+      <div className="my-14 sm:my-20">
+        <ShowCaseCard
+          videoSrc="static/side-by-side-epic.mp4"
+          title={translations?.showCase?.title}
+          description={translations?.showCase?.subtitle}
+        />
+      </div>
       <Hero />
       <Feature
         translations={translations?.home}

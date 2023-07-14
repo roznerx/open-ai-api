@@ -5,6 +5,7 @@ const nextConfig = {
   images: {
     domains: [
       "avatars.githubusercontent.com",
+      "avatar.vercel.sh",
       "lh3.googleusercontent.com",
       "api.producthunt.com",
       "tailwindui.com",
@@ -37,7 +38,6 @@ const nextConfig = {
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
     img-src * blob: data:;
-    media-src 'none';
     connect-src *;
 `
 

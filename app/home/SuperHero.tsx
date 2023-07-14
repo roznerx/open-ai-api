@@ -22,7 +22,7 @@ sm:flex sm:w-full sm:text-6xl"
         >
           {translations.title}
         </motion.h2>
-        <p className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans text-white sm:text-2xl">
+        <p className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans text-white sm:text-3xl">
           {translations.subtitle}
         </p>
       </section>

@@ -68,9 +68,11 @@ export default async function RootLayout({
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
-        <body suppressHydrationWarning={true} className="bg-purple-900">
+        <body suppressHydrationWarning={true} className="">
           <SessionProvider>
-            <div className="flex min-h-screen flex-nowrap">{children}</div>
+            <div className="flex min-h-screen flex-nowrap bg-purple-900">
+              {children}
+            </div>
           </SessionProvider>
         </body>
       </html>

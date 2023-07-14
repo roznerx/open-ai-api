@@ -1,7 +1,6 @@
 "use client"
 
 import Lottie from "lottie-react"
-import Image from "next/image"
 
 import Suggestions from "../../animations/smartImprovements.json"
 import TestGeneration from "../../animations/generating-tests.json"
@@ -9,7 +8,6 @@ import codeDocumentation from "../../animations/codeDocumentation.json"
 
 import Button from "app/components/Button"
 import Link from "next/link"
-import ShowCaseCard from "./ShowCaseCard"
 import React from "react"
 
 const interactivity: any = {
@@ -119,7 +117,7 @@ export default function Feature({ setShowSignInModal, session, translations }) {
             </p>
           </div>
         </div>
-        <div className="my-14 sm:my-20">
+        {/* <div className="my-14 sm:my-20">
           <ShowCaseCard
             title={translations?.chat?.title}
             description={translations?.chat?.subtitle}
@@ -133,7 +131,7 @@ export default function Feature({ setShowSignInModal, session, translations }) {
             }
             button={!session ? CreateAccountButton : GoAndExploreChat}
           />
-        </div>
+        </div> */}
       </section>
     </>
   )

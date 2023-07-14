@@ -51,6 +51,8 @@ function GenerateCode({
                 className="mx-auto flex w-[100%] max-w-[100%] items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
               >
                 <CopyBlock
+                  onCopy={() => null}
+                  copied={false}
                   showLineNumbers
                   wrapLongLines
                   customStyle={{
@@ -65,6 +67,7 @@ function GenerateCode({
                   codeBlock
                   theme={{
                     ...dracula,
+                    mode: "dark",
                     textColor: "#ffffff",
                     stringColor: themeColors.purple[300],
                     attributeColor: themeColors.purple[300],
