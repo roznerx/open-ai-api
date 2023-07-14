@@ -3,7 +3,7 @@ import { Crisp } from "crisp-sdk-web"
 import useWindowSize from "hooks/use-window-size"
 import {
   Code,
-  Gem,
+  Coins,
   LayoutDashboard,
   LogOut,
   MessageCircle,
@@ -84,25 +84,6 @@ export default function UserMenu({ session, email, image, translations }) {
               <Menu.Item>
                 {({ active }) => (
                   <div
-                    onClick={() => router.push("/pricing")}
-                    className={`flex w-full cursor-pointer items-center justify-start ${
-                      active ? "bg-purple-800 text-white" : "text-gray-200"
-                    } `}
-                  >
-                    <Gem
-                      width={35}
-                      height={35}
-                      className={`text-sm items-start rounded-md px-2 py-2`}
-                    />
-                    <span>{translations.menu.pricing}</span>
-                  </div>
-                )}
-              </Menu.Item>
-            </div>
-            <div className="h-auto">
-              <Menu.Item>
-                {({ active }) => (
-                  <div
                     onClick={() => {
                       setOpeningSupport(true)
                       Crisp.chat.open()
@@ -175,6 +156,25 @@ export default function UserMenu({ session, email, image, translations }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.chat}</span>
+                  </div>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="h-auto">
+              <Menu.Item>
+                {({ active }) => (
+                  <div
+                    onClick={() => router.push("/pricing")}
+                    className={`flex w-full cursor-pointer items-center justify-start ${
+                      active ? "bg-purple-800 text-white" : "text-gray-200"
+                    } `}
+                  >
+                    <Coins
+                      width={35}
+                      height={35}
+                      className={`text-sm items-start rounded-md px-2 py-2`}
+                    />
+                    <span>{translations.menu.pricing}</span>
                   </div>
                 )}
               </Menu.Item>
