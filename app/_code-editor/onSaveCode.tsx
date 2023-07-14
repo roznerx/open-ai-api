@@ -1,4 +1,4 @@
-import { useSandpack } from "@codesandbox/sandpack-react"
+// import { useSandpack } from "@codesandbox/sandpack-react"
 import { useEffect } from "react"
 
 export default function SaveCode({
@@ -9,27 +9,27 @@ export default function SaveCode({
   questionName,
   setIsSaving,
 }) {
-  const { sandpack } = useSandpack()
-  const { files, activeFile, resetFile } = sandpack
+  // const { sandpack } = useSandpack()
+  // const { files, activeFile, resetFile } = sandpack
 
-  const code = files[activeFile].code
+  // const code = files[activeFile].code
 
-  useEffect(() => {
-    if (code && isSaving) {
-      const payload = {
-        id,
-        questionName,
-        prompt: code,
-      }
+  // useEffect(() => {
+  //   if (code && isSaving) {
+  //     const payload = {
+  //       id,
+  //       questionName,
+  //       prompt: code,
+  //     }
 
-      fetch("/api/prompt/update", {
-        method: "POST",
-        body: JSON.stringify(payload),
-      })
-        .then((res) => console.log("res:", res))
-        .finally(() => setIsSaving(false))
-    }
-  }, [isSaving, code])
+  //     fetch("/api/prompt/update", {
+  //       method: "POST",
+  //       body: JSON.stringify(payload),
+  //     })
+  //       .then((res) => console.log("res:", res))
+  //       .finally(() => setIsSaving(false))
+  //   }
+  // }, [isSaving, code])
   useEffect(() => {
     if (isReseting) {
     }
@@ -39,7 +39,7 @@ export default function SaveCode({
     return <p>Saving..</p>
   }
   if (isReseting) {
-    resetFile("/App.tsx")
+    // resetFile("/App.tsx")
     setIsReseting(false)
   }
   return null

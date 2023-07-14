@@ -1,21 +1,16 @@
 "use client"
 
-import {
-  SandpackPreview,
-  SandpackCodeEditor,
-  SandpackLayout,
-  SandpackProvider,
-} from "@codesandbox/sandpack-react"
-import useWindowSize from "hooks/use-window-size"
-
-import { useState } from "react"
-
-import SaveCode from "./onSaveCode"
+// import {
+//   SandpackPreview,
+//   SandpackCodeEditor,
+//   SandpackLayout,
+//   SandpackProvider,
+// } from "@codesandbox/sandpack-react"
 
 export default function Editor({ questionName, prompt, id }) {
-  const [isSaving, setIsSaving] = useState(false)
-  const [isReseting, setIsReseting] = useState(false)
-  const { isMobile } = useWindowSize()
+  // const [isSaving, setIsSaving] = useState(false)
+  // const [isReseting, setIsReseting] = useState(false)
+  // const { isMobile } = useWindowSize()
 
   return (
     <>
@@ -24,7 +19,7 @@ export default function Editor({ questionName, prompt, id }) {
           {" "}
           Question Name: <span className="italic">{questionName}</span>
         </h3>
-        {prompt && prompt.length > 0 && (
+        {/* {prompt && prompt.length > 0 && (
           <SandpackProvider
             options={{
               visibleFiles: ["/App.tsx"],
@@ -75,7 +70,7 @@ export default function Editor({ questionName, prompt, id }) {
               )}
             </SandpackLayout>
           </SandpackProvider>
-        )}
+        )} */}
       </div>
     </>
   )
