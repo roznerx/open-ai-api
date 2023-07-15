@@ -12,7 +12,7 @@ const inter = Inter({
 export default function SuperHero({ translations }) {
   return (
     <>
-      <section className={`${inter.variable}  mt-36 mb-5 font-sans`}>
+      <section className={`${inter.variable}  mb-5 mt-36 font-sans`}>
         <motion.h2
           initial={{ opacity: 0, scale: 0.5, y: 20 }}
           animate={{ opacity: 1, scale: 1, y: -10 }}
@@ -24,10 +24,14 @@ sm:flex sm:w-full sm:text-6xl"
         </motion.h2>
         <p className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans text-white sm:text-3xl">
           {translations.subtitle}
-          <span className="relative inline-flex">
-            <span className="text-[12px] text-mint">✦</span>
-            <span className="absolute bottom-2 left-2 text-[18px] text-mint">
-              ✦
+          <span className="relative">
+            <span className="absolute left-2 top-1 ml-2 inline-flex sm:top-0">
+              <span className="absolute top-1 sm:relative sm:top-0">
+                <span className="text-[12px] text-mint">✦</span>
+                <span className="absolute bottom-2 left-2 text-[18px] text-mint">
+                  ✦
+                </span>
+              </span>
             </span>
           </span>
         </p>
