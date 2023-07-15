@@ -24,6 +24,12 @@ sm:flex sm:w-full sm:text-6xl"
         </motion.h2>
         <p className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans text-white sm:text-3xl">
           {translations.subtitle}
+          <span className="relative inline-flex">
+            <span className="text-[12px] text-mint">✦</span>
+            <span className="absolute bottom-2 left-2 text-[18px] text-mint">
+              ✦
+            </span>
+          </span>
         </p>
       </section>
     </>

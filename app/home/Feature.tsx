@@ -87,7 +87,10 @@ export default function Feature({ setShowSignInModal, session, translations }) {
             <AISuggestions />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
-            <h3 className="mx-auto w-[100%] text-center text-4xl font-bold text-white sm:ml-0 sm:w-[80%] sm:pl-3 sm:text-left">
+            <h3
+              className="mx-auto w-[100%]  bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-4xl font-bold text-transparent sm:ml-0 sm:w-[80%] sm:pl-3
+                    sm:text-left"
+            >
               {translations?.superHero?.smart?.title}
             </h3>
             <p className="my-auto mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
@@ -98,7 +101,7 @@ export default function Feature({ setShowSignInModal, session, translations }) {
             <AIGeneration />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
-            <h4 className="mx-auto w-[90%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-4 sm:text-left md:w-[85%]">
+            <h4 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-4 sm:text-left md:w-[85%]">
               {translations?.superHero?.test?.title}
             </h4>
             <p className="mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
@@ -109,7 +112,7 @@ export default function Feature({ setShowSignInModal, session, translations }) {
             <CodeDocumentation />
           </div>
           <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
-            <h5 className="mx-auto w-[90%] pl-3 text-center text-4xl font-bold sm:mx-0 sm:mt-0 sm:text-left">
+            <h5 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-0 sm:text-left">
               {translations?.superHero?.docs?.title}
             </h5>
             <p className="mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">

@@ -1,4 +1,5 @@
 "use client"
+import dynamic from "next/dynamic"
 
 import { useSignInModal } from "./components/modals/SignInModal"
 
@@ -8,8 +9,11 @@ import SuperHero from "./home/SuperHero"
 import HomeChat from "./home/HomeChat"
 import Hero from "./home/Hero"
 import Feature from "./home/Feature"
-import ShowCaseCard from "./home/ShowCaseCard"
 import Button from "./components/Button"
+
+const ShowCaseCard = dynamic(() => import("./home/ShowCaseCard"), {
+  loading: () => null,
+})
 
 export default function Client({
   translations,

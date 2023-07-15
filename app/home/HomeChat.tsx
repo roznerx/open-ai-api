@@ -105,12 +105,12 @@ export default function HomeChat({
             type="submit"
             title="Submit your prompt"
             aria-label="Submit your prompt"
-            className="absolute right-4 top-[4px] rounded-lg bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1"
+            className="absolute right-4 top-[2px] h-11 rounded-lg border-mint bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1"
           >
             <Send
-              className="mb-2 mr-2 rotate-45 pt-1  pl-2 text-mint"
-              width={25}
-              height={25}
+              className="mx-auto mr-2 -mt-1 flex rotate-45 pl-2 text-mint"
+              width={30}
+              height={30}
             />
           </button>
         </form>
