@@ -10,6 +10,7 @@ import HomeChat from "./home/HomeChat"
 import Hero from "./home/Hero"
 import Feature from "./home/Feature"
 import Button from "./components/Button"
+import { requestFullscreen } from "utils"
 
 const ShowCaseCard = dynamic(() => import("./home/ShowCaseCard"), {
   loading: () => null,
@@ -34,7 +35,15 @@ export default function Client({
       variant="mint"
       loading={false}
       text={`${translations?.showCase?.seeVideo} →`}
-      onClick={() => null}
+      onClick={() => {
+        const video = document.getElementById("codevspilot") as HTMLVideoElement
+        if (video) {
+          video.play()
+          video.addEventListener("playing", function () {
+            requestFullscreen(video)
+          })
+        }
+      }}
     />
   )
   return (

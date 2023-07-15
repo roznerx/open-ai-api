@@ -28,14 +28,15 @@ export default function ShowCaseCard({
             {description}
           </p>
           {button && (
-            <div className="ml-4 mt-4 flex justify-center sm:items-start sm:justify-start">
+            <div className="ml-4 mt-8 flex justify-center sm:items-start sm:justify-start">
               {button}
             </div>
           )}
         </div>
         {videoSrc && (
           <video
-            className="mx-auto mr-6 mt-12 sm:mt-20"
+            id="codevspilot"
+            className="mx-auto mr-6 mt-12 rounded-lg sm:mt-20"
             width="400"
             height="321"
             poster="static/codevspilot.svg"

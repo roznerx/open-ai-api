@@ -78,8 +78,8 @@
   },
   "showCase": {
     "title": "Why should I try Code Genius?",
-    "subtitle": "We conducted a research and discovered that compared to other VS Code plugins, Code Genius offers a remarkable 60% increase in efficiency.",
-    "seeVideo": "See the video"
+    "subtitle": "We conducted a research and discovered that compared to other VS Code plugins, we offers a 60% increase in test generation efficiency.",
+    "seeVideo": "Watch video"
   },
   "sidebar": {
     "credits": "Créditos",
