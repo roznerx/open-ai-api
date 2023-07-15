@@ -54,7 +54,8 @@
   },
   "showCase": {
     "title": "Por que devo experimentar o Code Genius?",
-    "subtitle": "Realizamos uma pesquisa e descobrimos que, comparado a outros plugins do VS Code, o Code Genius oferece um aumento notável de 60% na eficiência. Veja o vídeo"
+    "subtitle": "Realizamos uma pesquisa e descobrimos que, comparado a outros plugins do VS Code, o Code Genius oferece um aumento notável de 60% na eficiência.",
+    "seeVideo": "Veja o vídeo"
   },
   "dashboard": {
     "welcome": "Bem-vindo",

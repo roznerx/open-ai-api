@@ -23,15 +23,14 @@ export default function Client({
     userHasAccount,
     translations: translations?.modals?.signIn,
   })
-  const CreateAccountButton = (
+
+  const SeeVideoButton = (
     <Button
       buttonTextColor="dark"
       variant="mint"
       loading={false}
-      text={translations?.header?.register}
-      onClick={() => {
-        setShowSignInModal(true)
-      }}
+      text={`${translations?.showCase?.seeVideo} →`}
+      onClick={() => null}
     />
   )
   return (
@@ -59,6 +58,7 @@ export default function Client({
           videoSrc="static/side-by-side-epic.mp4"
           title={translations?.showCase?.title}
           description={translations?.showCase?.subtitle}
+          button={SeeVideoButton}
         />
       </div>
       <Hero />
