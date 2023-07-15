@@ -24,7 +24,7 @@ export default function ShowCaseCard({
           <h3 className="absolute top-8 mx-auto mb-8 flex w-[90%] items-center justify-center bg-gradient-to-r from-mint to-blue bg-clip-text p-2 text-center text-4xl font-bold leading-[44px] text-transparent sm:ml-0 sm:w-full sm:pl-3 sm:text-5xl">
             {title}
           </h3>
-          <p className="mx-2 mt-28 p-2 text-center text-2xl text-gray-200 sm:mt-20 sm:text-left sm:text-3xl">
+          <p className="mx-2 mt-28 p-2 pt-10 text-center text-2xl text-gray-200 sm:mt-20 sm:pt-4 sm:text-left sm:text-3xl">
             {description}
           </p>
           {button && (
@@ -35,7 +35,7 @@ export default function ShowCaseCard({
         </div>
         {videoSrc && (
           <video
-            className="mx-auto mr-6 mt-16"
+            className="mx-auto mr-6 mt-12 sm:mt-20"
             width="400"
             height="321"
             poster="static/codevspilot.svg"
