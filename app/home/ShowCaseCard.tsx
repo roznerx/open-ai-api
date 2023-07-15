@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactNode } from "react"
+import { ReactNode, useEffect } from "react"
 
 type ShowCaseCardProps = {
   image?: any
@@ -17,6 +17,12 @@ export default function ShowCaseCard({
   image,
   button,
 }: ShowCaseCardProps) {
+  useEffect(() => {
+    const video = document.getElementById("codevspilot") as HTMLVideoElement
+    video.addEventListener("ended", function () {
+      video.load()
+    })
+  }, [])
   return (
     <div className="relative mx-auto flex h-auto w-[90%] items-center rounded-2xl border border-mint bg-purple-700 p-6 text-center font-sans shadow-xl outline-none focus-visible:ring-2 sm:min-h-[404px] sm:w-[80%] md:h-[5.625rem]">
       <div className="flex w-full flex-col pr-2 sm:flex-row">
