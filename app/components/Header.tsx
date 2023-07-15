@@ -21,6 +21,10 @@ export default function Header({
   setShowSignInModal: any
 }) {
   const pathname = usePathname()
+  const shouldJustifyBetween =
+    pathname == "/pricing" ||
+    pathname == "/terms-and-conditions" ||
+    pathname == "/privacy"
   const [showWidget, setShowWidget] = useState(false)
 
   return (
@@ -31,7 +35,9 @@ export default function Header({
       >
         <div
           className={`mt-5 flex w-full items-center ${
-            pathname == "/" && !session ? "justify-between" : "justify-center"
+            pathname == "/" || (shouldJustifyBetween && !session)
+              ? "justify-between"
+              : "justify-center"
           } sm:items-start sm:justify-between`}
         >
           <div
@@ -52,17 +58,17 @@ export default function Header({
                 />
                 <h1
                   className={`sm:text-xl sm:text-xl ml-2 mt-1 bg-gradient-to-tl from-[#A1FFE0] to-[#2C9DC0]
-                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:mt-2 sm:ml-2 sm:leading-6`}
+                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                 >
                   Code Genius
                 </h1>
               </div>
             </Link>
           </div>
-          <div className="mr-1 mb-3 flex h-8 pb-2 sm:mt-0">
+          <div className="mb-3 mr-1 flex h-8 pb-2 sm:mt-0">
             {!session && (
               <Link href={"/pricing"}>
-                <p className="mt-4 mr-3 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
+                <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
                   {translations?.menu?.pricing}
                 </p>
               </Link>
@@ -90,7 +96,7 @@ export default function Header({
               <div className="mr-24 hidden flex-col items-end transition-all sm:flex ">
                 <button
                   onClick={() => setShowWidget((prev) => !prev)}
-                  className="mt-1 mr-3 flex h-4 w-28 items-center justify-center rounded-lg border
+                  className="mr-3 mt-1 flex h-4 w-28 items-center justify-center rounded-lg border
                    border-gray-300 bg-purple-900 p-4 text-gray-200 hover:cursor-pointer hover:text-gray-50"
                 >
                   <span>{translations?.feedback?.title}</span>
