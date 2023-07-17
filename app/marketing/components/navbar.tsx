@@ -7,7 +7,7 @@ import { signIn, signOut } from "next-auth/react"
 import Image from "next/image"
 
 const navigation = [
-  { name: "Dashboard", href: "/markeing" },
+  { name: "Dashboard", href: "/marketing" },
   { name: "Users", href: "/marketing/users" },
 ]
 
@@ -26,7 +26,7 @@ export default function Navbar({ user }: { user: any }) {
             <div className="flex h-16 justify-between">
               <div className="flex">
                 <div className="flex flex-shrink-0 items-center">
-                    <Image src="/code-genius.svg" width={32} height={32} alt="" />
+                  <Image src="/code-genius.svg" width={32} height={32} alt="" />
                 </div>
                 <div className="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
                   {navigation.map((item) => (
@@ -53,7 +53,7 @@ export default function Navbar({ user }: { user: any }) {
                       <span className="sr-only">Open user menu</span>
                       <Image
                         className="h-8 w-8 rounded-full"
-                        src={user?.image || 'https://avatar.vercel.sh/leerob'}
+                        src={user?.image || "https://avatar.vercel.sh/leerob"}
                         height={32}
                         width={32}
                         alt={`${user?.name || "placeholder"} avatar`}
@@ -107,7 +107,7 @@ export default function Navbar({ user }: { user: any }) {
           </div>
 
           <Disclosure.Panel className="sm:hidden">
-            <div className="space-y-1 pt-2 pb-3">
+            <div className="space-y-1 pb-3 pt-2">
               {navigation.map((item) => (
                 <Disclosure.Button
                   key={item.name}
@@ -125,7 +125,7 @@ export default function Navbar({ user }: { user: any }) {
                 </Disclosure.Button>
               ))}
             </div>
-            <div className="border-t border-gray-200 pt-4 pb-3">
+            <div className="border-t border-gray-200 pb-3 pt-4">
               {user ? (
                 <>
                   <div className="flex items-center px-4">
