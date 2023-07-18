@@ -71,8 +71,14 @@ module.exports = {
         tilt: "tilt 10s infinite linear",
         bounceArrow: "bounce 1s infinite",
         pulseCustom: "custom 5s linear infinite",
+        bounceRight: "bounceRight 2s ease-in-out infinite ",
       },
       keyframes: {
+        bounceRight: {
+          "0%": { transform: "translateX(-15%) rotate(45deg)" },
+          "50%": { transform: "translateX(10%) rotate(45deg)" },
+          "100%": { transform: "translateX(-15%) rotate(45deg)" },
+        },
         custom: {
           "0%, 100%": {
             opacity: "1",

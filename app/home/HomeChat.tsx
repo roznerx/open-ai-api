@@ -108,7 +108,7 @@ export default function HomeChat({
             className="absolute right-4 top-[2px] h-11 rounded-lg border-mint bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1"
           >
             <Send
-              className="mx-auto mr-2 -mt-1 flex rotate-45 pl-2 text-mint"
+              className="mx-auto -mt-1 mr-2 flex animate-bounceRight pl-2 text-mint"
               width={30}
               height={30}
             />
@@ -127,7 +127,6 @@ export default function HomeChat({
             />
           )}
         </div>
-
         <Modal
           title={creditsModalTranslations?.title}
           isCreditsModal

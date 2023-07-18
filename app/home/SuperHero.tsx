@@ -13,12 +13,15 @@ export default function SuperHero({ translations }) {
     <>
       <section className={`${inter.variable}  mb-5 mt-36 font-sans`}>
         <h2
-          className="z-40 mx-auto w-[95%] cursor-default items-center justify-center bg-gradient-to-r from-mint to-blue bg-clip-text p-3 text-center text-4xl font-semibold text-transparent
-sm:flex sm:w-full sm:text-6xl"
+          className="z-40 mx-auto w-[95%] cursor-default items-center justify-center bg-gradient-to-r from-mint
+           to-blue bg-clip-text p-3 text-center text-4xl font-semibold text-transparent sm:flex sm:w-full sm:text-6xl"
         >
           {translations.title}
         </h2>
-        <p className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans text-white sm:text-3xl">
+        <p
+          className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans
+         text-white sm:text-3xl"
+        >
           {translations.subtitle}
           <span className="relative">
             <span className="absolute left-2 top-1 ml-2 inline-flex sm:top-0">
