@@ -22,6 +22,7 @@ export default function Header({
 }) {
   const pathname = usePathname()
   const shouldJustifyBetween =
+    pathname == "/" ||
     pathname == "/pricing" ||
     pathname == "/terms-and-conditions" ||
     pathname == "/privacy"
@@ -35,7 +36,7 @@ export default function Header({
       >
         <div
           className={`mt-5 flex w-full items-center ${
-            pathname == "/" || (shouldJustifyBetween && !session)
+            shouldJustifyBetween && !session
               ? "justify-between"
               : "justify-center"
           } sm:items-start sm:justify-between`}
@@ -44,8 +45,8 @@ export default function Header({
             className={`${
               pathname !== "/" && pathname !== "/pricing"
                 ? "sm:ml-20"
-                : "sm:ml-4"
-            } ml-2`}
+                : "sm:ml-6"
+            } ml-4 pt-2`}
           >
             <Link href="/">
               <div className={`flex`}>
