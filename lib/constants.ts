@@ -41,6 +41,9 @@ export const PRICE_IDS = {
   100: "price_1N9L7vKrxiA7kR6cauPCI281",
   150: "price_1N9L93KrxiA7kR6cJvbFzuBX",
 }
+export const SUBSCRIPTION_PRICES = {
+  premium: "price_1NV12EKrxiA7kR6cSNKwhn1f",
+}
 export const TESTING_PRICE_IDS = {
   50: "price_1N33VNKrxiA7kR6cPePbRpyr",
   100: "price_1N36C1KrxiA7kR6cykNsuT7L",

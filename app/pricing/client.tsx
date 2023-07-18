@@ -6,7 +6,7 @@ import Image from "next/image"
 import React, { useEffect } from "react"
 import tailwindConfig from "tailwind.config"
 import { Check, Loader2 } from "lucide-react"
-import { getPriceIds } from "@/lib/constants"
+import { SUBSCRIPTION_PRICES } from "@/lib/constants"
 import Header from "app/components/Header"
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
@@ -27,8 +27,7 @@ export default function Client({
   translations,
   userHasAccount,
 }: ClientPropTye) {
-  const initialCreditsValue = 50
-  const [credits, setCredits] = React.useState<number>(initialCreditsValue)
+  const [subscription, setSubscription] = React.useState<boolean>(false)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
@@ -37,28 +36,10 @@ export default function Client({
   const [priceId, setPrecieId] = React.useState<string>("")
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
-  const PRICE_IDS = getPriceIds()
 
   useEffect(() => {
-    if (credits === 50) {
-      setPrecieId(PRICE_IDS[50])
-    } else if (credits === 100) {
-      setPrecieId(PRICE_IDS[100])
-    } else if (credits === 150) {
-      setPrecieId(PRICE_IDS[150])
-    }
-  }, [PRICE_IDS, credits])
-
-  const getCreditPrice = () => {
-    switch (credits) {
-      case 50:
-        return 5.0
-      case 100:
-        return 8.0
-      case 150:
-        return 15.0
-    }
-  }
+    setPrecieId(SUBSCRIPTION_PRICES.premium)
+  }, [])
 
   const submitPaymentInstruction = async (e) => {
     e.preventDefault()
@@ -74,7 +55,6 @@ export default function Client({
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        credits,
         priceUID: priceId,
         userId: session?.user?.id,
       }),
@@ -92,7 +72,6 @@ export default function Client({
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          credits,
           email: session?.user?.email,
           userId: session?.user?.id,
           name: session?.user?.name,
@@ -148,40 +127,11 @@ export default function Client({
             </h3>
             <div className="my-4 flex items-center justify-center">
               <span className="text-center text-5xl font-semibold">
-                $ {getCreditPrice()} USD
+                $ 5.00 USD
               </span>
             </div>
-            <div className="my-4 mx-auto">
-              <button
-                onClick={() => setCredits(50)}
-                className={`text-xs leading-sm active:bg-bg-morado ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border 
-                  hover:border-morado  hover:bg-purple-500 focus:bg-morado ${
-                    credits === 50
-                      ? "border-morado bg-morado"
-                      : "bg-transparent"
-                  } `}
-              >
-                50
-              </button>
-              <button
-                onClick={() => setCredits(100)}
-                className={`text-xs leading-sm hover:bg-purple-1000 ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border hover:border-morado focus:bg-morado  ${
-                  credits === 100 ? "border-morado bg-morado" : "bg-transparent"
-                } `}
-              >
-                100
-              </button>
-              <button
-                onClick={() => setCredits(150)}
-                className={`text-xs leading-sm ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border hover:border-morado hover:bg-purple-500 focus:bg-morado ${
-                  credits === 150 ? "border-morado bg-morado" : "bg-transparent"
-                } `}
-              >
-                150
-              </button>
-            </div>
             <div
-              className={`my-4 mx-auto mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+              className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
       rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono hover:font-semibold
     sm:items-start sm:justify-center`}
             >
@@ -243,7 +193,7 @@ export default function Client({
               className="mx-auto"
             />
             <h3
-              className={`mt-2 mb-4 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
+              className={`mb-4 mt-2 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
             >
               {translations.pricing.enterprice.title}
             </h3>
@@ -257,7 +207,7 @@ export default function Client({
             </div>
             <div
               onClick={() => setOpenContactForm(true)}
-              className={`my-4 mx-auto mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+              className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
       rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono  hover:font-semibold
     sm:items-start sm:justify-center`}
             >
