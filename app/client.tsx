@@ -7,15 +7,16 @@ import { useSignInModal } from "./components/modals/SignInModal"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
 import Script from "next/script"
 import SuperHero from "./home/SuperHero"
-import Feature from "./home/Feature"
+
 import Hero from "./home/Hero"
 
 import Loading from "./pricing/loading"
 import HomeChat from "./home/HomeChat"
 
-
-
 const ShowCaseCard = dynamic(() => import("./home/ShowCaseCard"), {
+  loading: () => <Loading />,
+})
+const Feature = dynamic(() => import("./home/Feature"), {
   loading: () => <Loading />,
 })
 
@@ -31,7 +32,6 @@ export default function Client({
     userHasAccount,
     translations: translations?.modals?.signIn,
   })
-
 
   return (
     <>
@@ -62,11 +62,7 @@ export default function Client({
         />
       </div>
       <Hero />
-      <Feature
-        translations={translations?.home}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
-      />
+      <Feature translations={translations?.home} />
       <Script
         strategy="afterInteractive"
         src="https://www.googletagmanager.com/gtag/js?id=G-WHLZCV41W9"
