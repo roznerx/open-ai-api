@@ -7,13 +7,15 @@ import HeaderWrapper from "./components/shared/HeaderWrapper"
 import Script from "next/script"
 import SuperHero from "./home/SuperHero"
 import HomeChat from "./home/HomeChat"
-import Hero from "./home/Hero"
 import Feature from "./home/Feature"
-import Button from "./components/Button"
-import { requestFullscreen } from "utils"
+import Hero from "./home/Hero"
+
+import Loading from "./pricing/loading"
+
+
 
 const ShowCaseCard = dynamic(() => import("./home/ShowCaseCard"), {
-  loading: () => null,
+  loading: () => <Loading />,
 })
 
 export default function Client({
@@ -29,23 +31,7 @@ export default function Client({
     translations: translations?.modals?.signIn,
   })
 
-  const SeeVideoButton = (
-    <Button
-      buttonTextColor="dark"
-      variant="mint"
-      loading={false}
-      text={`${translations?.showCase?.seeVideo} →`}
-      onClick={() => {
-        const video = document.getElementById("codevspilot") as HTMLVideoElement
-        if (video) {
-          video.play()
-          video.addEventListener("playing", function () {
-            requestFullscreen(video)
-          })
-        }
-      }}
-    />
-  )
+
   return (
     <>
       <div className="absolute inset-0 animate-pulseCustom before:absolute before:inset-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-mint/30 before:to-blue/20 before:blur-[120px] before:content-[''] md:mx-auto md:h-[950px] md:w-[950px] lg:flex"></div>
@@ -71,7 +57,7 @@ export default function Client({
           videoSrc="static/side-by-side-epic.mp4"
           title={translations?.showCase?.title}
           description={translations?.showCase?.subtitle}
-          button={SeeVideoButton}
+          buttonText={`${translations?.showCase?.seeVideo} →`}
         />
       </div>
       <Hero />

@@ -1,21 +1,26 @@
 "use client"
-
-import { ReactNode, useEffect } from "react"
-
 type ShowCaseCardProps = {
   image?: any
   title: string
   description?: string
+  buttonText?: string
   button?: ReactNode
   videoSrc?: string
 }
 
+import Button from "app/components/Button"
+import { ReactNode, useEffect } from "react"
+import { requestFullscreen } from "utils"
+
+
+
+
 export default function ShowCaseCard({
   title,
   description,
+  buttonText,
   videoSrc,
   image,
-  button,
 }: ShowCaseCardProps) {
   useEffect(() => {
     const video = document.getElementById("codevspilot") as HTMLVideoElement
@@ -33,9 +38,23 @@ export default function ShowCaseCard({
           <p className="mx-2 mt-28 p-2 pt-10 text-center text-2xl text-gray-200 sm:mt-20 sm:pt-4 sm:text-left sm:text-3xl">
             {description}
           </p>
-          {button && (
+          {buttonText && (
             <div className="ml-4 mt-8 flex justify-center sm:items-start sm:justify-start">
-              {button}
+             <Button
+      buttonTextColor="dark"
+      variant="mint"
+      loading={false}
+      text={buttonText}
+      onClick={() => {
+        const video = document.getElementById("codevspilot") as HTMLVideoElement
+        if (video) {
+          video.play()
+          video.addEventListener("playing", function () {
+            requestFullscreen(video)
+          })
+        }
+      }}
+    />
             </div>
           )}
         </div>
