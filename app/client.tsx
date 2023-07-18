@@ -1,4 +1,5 @@
 "use client"
+
 import dynamic from "next/dynamic"
 
 import { useSignInModal } from "./components/modals/SignInModal"
@@ -6,11 +7,11 @@ import { useSignInModal } from "./components/modals/SignInModal"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
 import Script from "next/script"
 import SuperHero from "./home/SuperHero"
-import HomeChat from "./home/HomeChat"
 import Feature from "./home/Feature"
 import Hero from "./home/Hero"
 
 import Loading from "./pricing/loading"
+import HomeChat from "./home/HomeChat"
 
 
 

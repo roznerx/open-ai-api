@@ -74,10 +74,10 @@ export default function Feature({ setShowSignInModal, session, translations }) {
   return (
     <>
       <section className={`mt-8 font-sans text-white`}>
-        <div className="mx-auto mt-28 mb-8 w-full p-4 text-center sm:w-[60%]">
-          <h2 className="mx-auto bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl">
+        <div className="mx-auto mb-8 mt-28 w-full p-4 text-center sm:w-[60%]">
+          <h3 className="mx-auto bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl">
             {translations?.feature?.title}
-          </h2>
+          </h3>
           <p className="text-xl my-8 text-gray-200 sm:text-2xl">
             {translations?.feature?.subtitle}
           </p>
@@ -87,12 +87,12 @@ export default function Feature({ setShowSignInModal, session, translations }) {
             <AISuggestions />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
-            <h3
+            <h4
               className="mx-auto w-[100%]  bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-4xl font-bold text-transparent sm:ml-0 sm:w-[80%] sm:pl-3
                     sm:text-left"
             >
               {translations?.superHero?.smart?.title}
-            </h3>
+            </h4>
             <p className="my-auto mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
               {translations?.superHero?.smart?.subtitle}
             </p>
