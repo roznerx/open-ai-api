@@ -151,7 +151,7 @@ export default function Client({
                 $ {getCreditPrice()} USD
               </span>
             </div>
-            <div className="my-4 mx-auto">
+            <div className="mx-auto my-4">
               <button
                 onClick={() => setCredits(50)}
                 className={`text-xs leading-sm active:bg-bg-morado ml-4 inline-flex w-16 cursor-pointer items-center justify-center rounded-full border border-white px-3 py-1 font-bold uppercase text-white hover:border 
@@ -181,8 +181,8 @@ export default function Client({
               </button>
             </div>
             <div
-              className={`my-4 mx-auto mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono hover:font-semibold
+              className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] hover:font-semibold
     sm:items-start sm:justify-center`}
             >
               <div
@@ -243,7 +243,7 @@ export default function Client({
               className="mx-auto"
             />
             <h3
-              className={`mt-2 mb-4 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
+              className={`mb-4 mt-2 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
             >
               {translations.pricing.enterprice.title}
             </h3>
@@ -257,8 +257,8 @@ export default function Client({
             </div>
             <div
               onClick={() => setOpenContactForm(true)}
-              className={`my-4 mx-auto mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono  hover:font-semibold
+              className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] hover:font-semibold
     sm:items-start sm:justify-center`}
             >
               <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-purple-500">

@@ -1,6 +1,6 @@
 import "../styles/globals.css"
 import SessionProvider from "./provider"
-import { Inter, Roboto_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
 
 import { Metadata } from "next"
 import { headers } from "next/headers"
@@ -9,11 +9,6 @@ const inter = Inter({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sans",
-})
-const roboto_mono = Roboto_Mono({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-roboto-mono",
 })
 
 export const metadata: Metadata = {
@@ -24,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Code Genius",
     description:
-      "Code Genius helps developers and companies reach their goals sooner.",
+      "Code Genius helps developers and companies reach their goals faster.",
     url: "https://code-genius.dev",
     siteName: "Code Genius",
     locale: "en-US",
@@ -48,17 +43,12 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
-  
 
   return (
     <>
-      <html
-        lang={lang}
-        className={`${inter.variable} ${roboto_mono.variable}`}
-      >
+      <html lang={lang} className={`${inter.variable}`}>
         <head>
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />

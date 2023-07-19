@@ -48,7 +48,7 @@ function GenerateCode({
             return (
               <div
                 key={idx}
-                className="mx-auto flex w-[100%] max-w-[100%] items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
+                className="mx-auto flex w-[100%] max-w-[100%] items-center justify-center overflow-x-auto overflow-y-scroll text-left sm:max-w-[100%]"
               >
                 <CopyBlock
                   onCopy={() => null}
