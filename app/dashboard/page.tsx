@@ -105,31 +105,35 @@ export default async function Dashboard() {
 
     if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
       opConfirmation = true
-      const fetchUrl = `${
-        process.env.NEXTAUTH_URL
-      }/api/email/generate-credits-html?name=${
-        session?.user?.name
-      }&credits=${purchasedCredits}&ts${new Date().getTime()}`
+      /**
+       * Move this logic to the Stripe Webhook
+       **/
 
-      const headers = new Headers()
-      headers.append("Content-Type", "application/json")
+      // const fetchUrl = `${
+      //   process.env.NEXTAUTH_URL
+      // }/api/email/generate-credits-html?name=${
+      //   session?.user?.name
+      // }&credits=${purchasedCredits}&ts${new Date().getTime()}`
 
-      const response = await fetch(fetchUrl, {
-        method: "GET",
-        headers: headers,
-      })
-      const { html } = await response.json()
+      // const headers = new Headers()
+      // headers.append("Content-Type", "application/json")
 
-      const payload = {
-        name: session?.user?.name,
-        email: session?.user?.email,
-        html,
-      }
-      await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
-        method: "POST",
-        next: { revalidate: 0 },
-        body: JSON.stringify(payload),
-      })
+      // const response = await fetch(fetchUrl, {
+      //   method: "GET",
+      //   headers: headers,
+      // })
+      // const { html } = await response.json()
+
+      // const payload = {
+      //   name: session?.user?.name,
+      //   email: session?.user?.email,
+      //   html,
+      // }
+      // await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+      //   method: "POST",
+      //   next: { revalidate: 0 },
+      //   body: JSON.stringify(payload),
+      // })
     }
   }
 
