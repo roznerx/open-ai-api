@@ -49,7 +49,7 @@ export default async function Page() {
           menuTranslations={dictionary?.home?.header?.menu}
         />
       )}
-      <main className={`mx-auto w-full max-w-max pb-10`}>
+      <main>
         <Client
           translations={dictionary}
           loggedUserData={loggedUserData}

@@ -16,7 +16,7 @@ export function useSignInModal({
 }: {
   userHasAccount?: boolean
   tip?: string
-  translations: any
+  translations?: any
 }) {
   const [showSignInModal, setShowSignInModal] = useState(false)
 

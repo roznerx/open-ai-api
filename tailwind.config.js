@@ -68,7 +68,7 @@ module.exports = {
     current: "currentColor",
     extend: {
       animation: {
-        tilt: "tilt 10s infinite linear",
+        tilt: "tilt 3s infinite linear",
         bounceArrow: "bounce 1s infinite",
         pulseCustom: "custom 5s linear infinite",
         bounceRight: "bounceRight 2s ease-in-out infinite ",
@@ -96,7 +96,7 @@ module.exports = {
           },
         },
         tilt: {
-          "0%, 50%, 100%": {
+          "0%": {
             transform: "rotate(0deg)",
           },
           "25%": {
