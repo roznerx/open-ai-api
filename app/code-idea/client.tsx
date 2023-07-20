@@ -18,7 +18,7 @@ import { getCodeGeniusPlaceHolder } from "utils/strings"
 import { generateCode } from "utils/generateCode"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useCodeGeniusMood from "hooks/useCodeGeniusMood"
-import { usePathname } from "next/navigation"
+import { usePathname, useSearchParams } from "next/navigation"
 import useWindowSize from "hooks/use-window-size"
 
 let langElements: LandElementType[] = ["Typescript", "Javascript", "Python"]
@@ -26,6 +26,8 @@ let libElements: LandElementType[] = ["React", "Vue", "Angular"]
 
 let testFrameworkElements: TestingElementType[] = [
   "Jest",
+  "AVA",
+  "Vitest",
   "Cypress",
   "Mocha",
   "Jasmine",
@@ -36,6 +38,8 @@ let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 export default function Client({
   userName,
   chatHasStarted,
+  langTranslation,
+  libTranslation,
   setChatHasStarted,
   setGeneratedCode,
   generatedCode,
@@ -53,6 +57,7 @@ export default function Client({
   setCodeSentence,
 }) {
   const pathName = usePathname()
+  const searchParams = useSearchParams()
   const { isMobile } = useWindowSize()
   const [testLibElement, setTestLib] =
     useState<libTestingElementType>("Testing Library")
@@ -60,6 +65,7 @@ export default function Client({
     useState<TestingElementType>("Testing Tool")
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
+  const [prompt, setPrompt] = useState("")
   const [docOptions, setDocOptions] = useState("Options")
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
@@ -73,7 +79,7 @@ export default function Client({
   const placeHolderText = getCodeGeniusPlaceHolder(mode, translations)
   const codeGeniusMood = useCodeGeniusMood(translations)
 
-  console.log("docOptions:", docOptions)
+  console.log("testFrameworkElement", testFrameworkElement)
 
   const codeMessages = useRef([
     {
@@ -92,11 +98,11 @@ export default function Client({
           },
         ]
         codeMessages.current[0].content = `You are an AI software development assistant which is specialized in 
-        providing code exaamples and suggestions. ${
-          langElement && lib
+        providing code snippets and suggestions. ${
+          langElement !== langTranslation && lib !== libTranslation
             ? "Make sure tu use " + langElement + " and " + lib + "."
-            : ""
-        }`
+            : "Make sure tu use Javascript and ReactJS."
+        } If a code comment consists of more than 10 words, proceed to the subsequent line.`
         break
       case "test":
         codeMessages.current = [
@@ -105,13 +111,8 @@ export default function Client({
             content: "",
           },
         ]
-        codeMessages.current[0].content = `You are an specialized AI software assistant with a lot of 
-        background in unit, integration, and e2e testing. Make sure tu use  ${
-          testFrameworkElement === "Cypress"
-            ? testFrameworkElement + " as the test framework"
-            : testFrameworkElement + " and " + testLibElement
-        }. Anticipate to the reasons a test would fail and reduce the test failure at minimum. 
-        Only ouptut passing tests and always output code delimited by triple backticks.`
+        codeMessages.current[0].content = `You are an specialized AI software assistant with a 
+        strong background in unit, integration, and e2e testing.`
         break
       case "improve":
         codeMessages.current = [
@@ -121,7 +122,7 @@ export default function Client({
           },
         ]
         codeMessages.current[0].content =
-          "You are a helpful and specialized AI software assistant which is specialized in code performance and customization."
+          "You are a helpful and specialized AI software assistant which is specialized in code performance and customization.  Make sure to comment on the improvements at the end, in short code comments."
         break
       case "docs":
         codeMessages.current = [
@@ -156,7 +157,67 @@ export default function Client({
     testLibElement,
     setMode,
     docOptions,
+    langTranslation,
+    libTranslation,
   ])
+
+  useEffect(() => {
+    if (searchParams) {
+      const search = searchParams.get("mode")
+      switch (search) {
+        case "smart":
+          setMode("smart")
+          break
+        case "test":
+          setMode("test")
+          break
+        case "improve":
+          setMode("improve")
+          break
+        case "docs":
+          setMode("docs")
+          break
+        default:
+          setMode("smart")
+      }
+    }
+  }, [searchParams, setMode])
+
+  //SET USER MESSAGES.
+  useEffect(() => {
+    if (mode === "smart") {
+      setPrompt(`${"Context: " + codeSentence + "."} `)
+    }
+    if (mode === "test") {
+      setPrompt(
+        `${
+          `Generate a unit test, using this code as a context: ` +
+          codeSentence +
+          `. Make sure to use ${
+            testFrameworkElement !== "Testing Tool"
+              ? testFrameworkElement
+              : "Jest"
+          }. ${
+            testLibElement !== "Testing Library"
+              ? `Also, use ${testLibElement}.`
+              : ""
+          }`
+        }`,
+      )
+    }
+    if (mode === "improve") {
+      setPrompt(
+        `${
+          "Improve and propose performance boost based on the provided context: " +
+          codeSentence +
+          "."
+        }`,
+      )
+    }
+    if (mode === "docs") {
+      setPrompt(`${"Add documentation for this code:" + codeSentence + "."}`)
+    }
+  }, [codeSentence, mode, testFrameworkElement, testLibElement])
 
   //Clean up previous code responses
   useEffect(() => {
@@ -185,10 +246,10 @@ export default function Client({
       ...codeMessages.current,
       {
         role: "user",
-        content: codeSentence,
+        content: prompt,
       },
     ]
-    // console.log("codeMessages.current", codeMessages.current)
+    console.log("codeMessages.current", codeMessages.current)
 
     generateCode({
       setReader,
@@ -285,7 +346,7 @@ export default function Client({
             padding={20}
             textareaId="code-editor"
             placeholder={placeHolderText}
-            className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
+            className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
             value={codeSentence}
             highlight={(code) => highlight(code, languages.js)}
             onValueChange={(code) => setCodeSentence(code)}

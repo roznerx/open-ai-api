@@ -5,6 +5,7 @@ import Image from "next/image"
 import React, { Fragment } from "react"
 import {
   AngularIcon,
+  AVA,
   Chai,
   Cypress,
   Jasmine,
@@ -15,6 +16,7 @@ import {
   ReactIcon,
   RTL,
   TypescriptIcon,
+  Vitest,
   VueJSIcon,
 } from "./shared/lib-icons"
 
@@ -35,6 +37,8 @@ export type LandElementType =
 export type TestingElementType =
   | "Jest"
   | "Mocha"
+  | "AVA"
+  | "Vitest"
   | "MDX Docs"
   | "Inline Docs"
   | "Mocha"
@@ -86,17 +90,19 @@ export default function DropDown({
           {element === "React Testing" && <RTL />}
           {element === "Chai" && <Chai />}
           {element === "Jest" && <Jest />}
+          {element === "AVA" && <AVA />}
+          {element === "Vitest" && <Vitest />}
           {element === "Mocha" && <Mocha />}
           {element === "Jasmine" && <Jasmine />}
           <span className="ml-3">{element}</span>
         </div>
         <div className="pr-2">
           <ChevronUp
-            className="mr-2 ml-2 h-5 w-5 ui-open:hidden sm:mr-1"
+            className="ml-2 mr-2 h-5 w-5 ui-open:hidden sm:mr-1"
             aria-hidden="true"
           />
           <ChevronDown
-            className="mr-1 ml-2 hidden h-5 w-5 ui-open:block"
+            className="ml-2 mr-1 hidden h-5 w-5 ui-open:block"
             aria-hidden="true"
           />
         </div>
@@ -112,7 +118,7 @@ export default function DropDown({
         leaveTo="transform opacity-0 scale-95"
       >
         <Menu.Items
-          className="absolute left-0 -top-2 z-10 w-full origin-top-right -translate-y-full transform divide-y rounded-lg  bg-white shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none"
+          className="absolute -top-2 left-0 z-10 w-full origin-top-right -translate-y-full transform divide-y rounded-lg  bg-white shadow-lg ring-1 ring-black ring-opacity-5  focus:outline-none"
           key={element}
         >
           <div className="">
@@ -145,9 +151,10 @@ export default function DropDown({
                     {item === "React Testing" && <RTL />}
                     {item === "Chai" && <Chai />}
                     {item === "Jest" && <Jest />}
+                    {item === "AVA" && <AVA />}
+                    {item === "Vitest" && <Vitest />}
                     {item === "Mocha" && <Mocha />}
                     {item === "Jasmine" && <Jasmine />}
-
                     <span>{item}</span>
                     {element === item ? (
                       <div className="absolute right-2 pt-1">

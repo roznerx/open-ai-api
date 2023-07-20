@@ -87,6 +87,26 @@ export const Jest = () => (
     height={24}
   />
 )
+export const AVA = () => (
+  <Image
+    loading="eager"
+    alt="AVA Test Runner"
+    src={"/icons/ava.png"}
+    width={24}
+    height={24}
+  />
+)
+
+export const Vitest = () => (
+  <Image
+    loading="eager"
+    alt="Vitest Testing Runner"
+    src={"/icons/vitest.png"}
+    width={24}
+    height={24}
+  />
+)
+
 export const Mocha = () => (
   <Image
     loading="eager"
