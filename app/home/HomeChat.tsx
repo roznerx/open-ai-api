@@ -10,9 +10,7 @@ import { useChat } from "hooks/use-chat"
 import useWindowSize from "hooks/use-window-size"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
-const HomeChatInput = dynamic(() => import("./HomeChatInput"), {
-  loading: () => null,
-})
+import HomeChatInput from "./HomeChatInput"
 
 const Modal = dynamic(() => import("app/components/Modal"), {
   loading: () => null,
