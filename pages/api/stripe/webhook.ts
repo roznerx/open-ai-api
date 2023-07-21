@@ -38,8 +38,9 @@ export default async function webhookHandler(
 
     // This is your Stripe CLI webhook secret for testing your endpoint locally.
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET_TEST
-    console.log("Pasa por aqui")
 
+    let subscription
+    let status
     let event: Stripe.Event
     try {
       if (!sig || !webhookSecret) return
@@ -52,18 +53,20 @@ export default async function webhookHandler(
     if (relevantEvents.has(event.type)) {
       try {
         if (event.type === "checkout.session.completed") {
-          const checkoutSession = event.data.object as Stripe.Checkout.Session
-          console.log("checkoutSession:", checkoutSession)
+          subscription = event.data.object as Stripe.Checkout.Session
+          console.log("subscription:", subscription)
+          status = subscription.status
+          console.log("status:", status)
 
-          if (
-            checkoutSession.client_reference_id === null ||
-            checkoutSession.customer === null
-          ) {
-            console.log({
-              message: "Missing items in Stripe webhook callback",
-            })
-            return
-          }
+          // if (
+          //   checkoutSession.client_reference_id === null ||
+          //   checkoutSession.customer === null
+          // ) {
+          //   console.log({
+          //     message: "Missing items in Stripe webhook callback",
+          //   })
+          //   return
+          // }
 
           // for subscription updates
         } else if (event.type === "customer.subscription.deleted") {

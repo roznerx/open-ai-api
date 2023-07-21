@@ -81,6 +81,8 @@ export default function Client({
           confirmed: false,
         }),
       })
+      console.log("stripeSession?.session", stripeSession?.session)
+
       router.push(stripeSession?.session?.url)
     }
   }
