@@ -69,7 +69,7 @@ module.exports = {
     extend: {
       animation: {
         tilt: "tilt 3s infinite linear",
-        bounceArrow: "bounce 1s infinite",
+        bounceArrow: "bounce 2s infinite",
         pulseCustom: "custom 5s linear infinite",
         bounceRight: "bounceRight 2s ease-in-out infinite ",
       },
