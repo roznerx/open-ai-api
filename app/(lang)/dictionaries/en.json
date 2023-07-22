@@ -301,7 +301,7 @@
   "modals": {
     "signIn": {
       "loading": "Loading...",
-      "title": "Login to your account",
+      "title": "Access your account",
       "titleCreate": "Create your account",
       "subtitle": "Unleash your coding potential with Code Genius",
       "byContinuing": "By continuing, you agree to our",

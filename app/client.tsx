@@ -11,6 +11,8 @@ import Hero from "./home/Hero"
 import ShowCaseCard from "./home/ShowCaseCard"
 import Feature from "./home/Feature"
 import HomeChat from "./home/HomeChat"
+import { useEffect } from "react"
+import { useSearchParams } from "next/navigation"
 
 export default function Client({
   translations,
@@ -20,11 +22,18 @@ export default function Client({
   apiCalls,
   loggedUserData,
 }) {
+  const searchParams = useSearchParams()
   const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
-    tip: "Get your initial 10 credits for free. Sign in to get more.",
+    tip: "Redeem your free initial 10 credits.",
     userHasAccount,
     translations: translations?.modals?.signIn,
   })
+
+  useEffect(() => {
+    if (searchParams && searchParams.get("action") === "signUp") {
+      setShowSignInModal(true)
+    }
+  }, [setShowSignInModal, searchParams])
 
   return (
     <>

@@ -299,7 +299,8 @@
   },
   "modals": {
     "signIn": {
-      "title": "Regístrate",
+      "title": "Accede a Code Genius",
+      "titleCreate": "Crea tu cuenta",
       "loading": "Cargando...",
       "subtitle": "Descubre todo tu potencial con Code Genius",
       "byContinuing": "Continuando, tu aceptas nuestra",
