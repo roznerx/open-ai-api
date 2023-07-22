@@ -4,6 +4,7 @@ import { cookies, headers } from "next/headers"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 
 import Client from "./client"
+import SideBar from "app/components/shared/SideBar"
 
 export const metadata = {
   title: "Pricing",
@@ -19,6 +20,12 @@ export default async function Page() {
   return (
     <>
       <main className="flex w-full flex-col items-center justify-center text-center">
+        {session && (
+          <SideBar
+            translations={dictionary.sidebar}
+            menuTranslations={dictionary?.home?.header?.menu}
+          />
+        )}
         <Client
           userHasAccount={csrfTokenValue}
           translations={dictionary}

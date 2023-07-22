@@ -216,7 +216,7 @@ export default function ContactFormModal({
                         )}
 
                         {isClientFeedback && (
-                          <div className="font-mono text-gray-200">
+                          <div className="text-gray-200">
                             <textarea
                               name="howCanWeHelp"
                               id="howCanWeHelp"

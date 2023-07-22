@@ -26,10 +26,8 @@ export default function MobileSideBar({
 
   return (
     <div
-      className={`absolute top-0 left-0 z-50 h-full rounded-r-lg  font-sans   ${
-        showMobileMenu
-          ? "w-80 border-r border-gray-600 bg-purple-700 "
-          : "w-16 bg-none"
+      className={`absolute left-0 top-0 z-50 h-full rounded-r-lg font-sans duration-100 ${
+        showMobileMenu ? "w-80  bg-purple-700 " : "w-16 bg-none"
       } flex-row items-start `}
     >
       <div
@@ -40,10 +38,10 @@ export default function MobileSideBar({
       >
         <div className="p-3">
           {!showMobileMenu ? (
-            <Menu color="white" className="mt-4 ml-3" />
+            <Menu color="white" className="ml-3 mt-6" />
           ) : (
             <div className="flex justify-between">
-              <ArrowLeft className="mt-5 ml-4" color="white" />
+              <ArrowLeft className="ml-4 mt-5" color="white" />
             </div>
           )}
         </div>

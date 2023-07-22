@@ -1,8 +1,8 @@
 import { getServerSession } from "next-auth"
-import { headers } from "next/headers"
+import { headers, cookies } from "next/headers"
 
 import { authOptions } from "pages/api/auth/[...nextauth]"
-import { cookies } from "next/headers"
+
 import Client from "./client"
 import Footer from "./components/Footer"
 import { harperClient } from "@/lib/harperdb"
@@ -24,8 +24,6 @@ export default async function Page() {
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(lang)
-
-  console.log("LANG", lang)
 
   const anonymousUserData = await harperClient({
     operation: "sql",
@@ -51,7 +49,7 @@ export default async function Page() {
           menuTranslations={dictionary?.home?.header?.menu}
         />
       )}
-      <main className={`mx-auto w-full max-w-max pb-10`}>
+      <main>
         <Client
           translations={dictionary}
           loggedUserData={loggedUserData}

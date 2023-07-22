@@ -68,11 +68,17 @@ module.exports = {
     current: "currentColor",
     extend: {
       animation: {
-        tilt: "tilt 10s infinite linear",
-        bounceArrow: "bounce 1s infinite",
+        tilt: "tilt 3s infinite linear",
+        bounceArrow: "bounce 2s infinite",
         pulseCustom: "custom 5s linear infinite",
+        bounceRight: "bounceRight 2s ease-in-out infinite ",
       },
       keyframes: {
+        bounceRight: {
+          "0%": { transform: "translateX(-15%) rotate(45deg)" },
+          "50%": { transform: "translateX(10%) rotate(45deg)" },
+          "100%": { transform: "translateX(-15%) rotate(45deg)" },
+        },
         custom: {
           "0%, 100%": {
             opacity: "1",
@@ -90,7 +96,7 @@ module.exports = {
           },
         },
         tilt: {
-          "0%, 50%, 100%": {
+          "0%": {
             transform: "rotate(0deg)",
           },
           "25%": {
@@ -103,7 +109,6 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
-        mono: ["var(--font-roboto-mono)"],
       },
       colors: {
         specialBlue: "#6ea9d7",

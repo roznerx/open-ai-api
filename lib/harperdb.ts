@@ -14,7 +14,9 @@ export async function harperClient(body, cache = true) {
     body: JSON.stringify(body),
   }
   const harperURL = process.env.HARPER_DATABASE_URL || ""
+
   const response = await fetch(harperURL, requestOptions)
+
   const result = await response.text()
 
   // return result

@@ -1,14 +1,7 @@
 import { Menu, Transition } from "@headlessui/react"
 import { Crisp } from "crisp-sdk-web"
 import useWindowSize from "hooks/use-window-size"
-import {
-  Code,
-  Coins,
-  LayoutDashboard,
-  LogOut,
-  MessageCircle,
-  MessageSquare,
-} from "lucide-react"
+import { Coins, LayoutDashboard, LogOut, MessageCircle } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -41,7 +34,7 @@ export default function UserMenu({ session, email, image, translations }) {
     })
   }, [])
   return (
-    <div className="z-50w-auto absolute top-5 right-4 text-center sm:right-3">
+    <div className="z-50w-auto absolute right-4 top-5 text-center sm:right-3">
       <Menu as="div" className="relative">
         <div className="flex items-center justify-center">
           <Menu.Button className="text-sm flex h-12 w-12 items-center justify-center rounded-full border-[1px]  border-gray-500 bg-purple-500  font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
@@ -76,7 +69,7 @@ export default function UserMenu({ session, email, image, translations }) {
           leaveTo="transform opacity-0 scale-95"
         >
           <Menu.Items
-            className={`absolute right-0  mt-2 ${
+            className={`absolute right-0 mt-2 ${
               isMobile ? "hidden" : "block"
             }  w-56 origin-top-right divide-y-[1.5px] divide-purple-400 rounded-md border-[1px] border-purple-500  bg-purple-600 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none`}
           >
@@ -89,7 +82,7 @@ export default function UserMenu({ session, email, image, translations }) {
                       Crisp.chat.open()
                       Crisp.chat.show()
                     }}
-                    className={`flex w-full cursor-pointer items-center justify-start ${
+                    className={` flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
                   >
@@ -108,7 +101,7 @@ export default function UserMenu({ session, email, image, translations }) {
                 {({ active }) => (
                   <div
                     onClick={() => router.push("/dashboard")}
-                    className={`flex w-full cursor-pointer items-center justify-start ${
+                    className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
                   >
@@ -126,46 +119,8 @@ export default function UserMenu({ session, email, image, translations }) {
               <Menu.Item>
                 {({ active }) => (
                   <div
-                    onClick={() => router.push("/code-idea")}
-                    className={`flex w-full cursor-pointer items-center justify-start ${
-                      active ? "bg-purple-800 text-white" : "text-gray-200"
-                    } `}
-                  >
-                    <Code
-                      width={35}
-                      height={35}
-                      className={`text-sm items-start rounded-md px-2 py-2`}
-                    />
-                    <span>{translations.menu.codeIdeas}</span>
-                  </div>
-                )}
-              </Menu.Item>
-            </div>
-            <div className="h-auto">
-              <Menu.Item>
-                {({ active }) => (
-                  <div
-                    onClick={() => router.push("/code-chat")}
-                    className={`flex w-full cursor-pointer items-center justify-start ${
-                      active ? "bg-purple-800 text-white" : "text-gray-200"
-                    } `}
-                  >
-                    <MessageSquare
-                      width={35}
-                      height={35}
-                      className={`text-sm items-start rounded-md px-2 py-2`}
-                    />
-                    <span>{translations.menu.chat}</span>
-                  </div>
-                )}
-              </Menu.Item>
-            </div>
-            <div className="h-auto">
-              <Menu.Item>
-                {({ active }) => (
-                  <div
                     onClick={() => router.push("/pricing")}
-                    className={`flex w-full cursor-pointer items-center justify-start ${
+                    className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
                   >
@@ -184,7 +139,7 @@ export default function UserMenu({ session, email, image, translations }) {
                 {({ active }) => (
                   <div
                     onClick={() => signOut()}
-                    className={`flex w-full cursor-pointer items-center justify-start ${
+                    className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
                       active
                         ? "rounded-md bg-purple-800 text-white"
                         : "text-gray-200"

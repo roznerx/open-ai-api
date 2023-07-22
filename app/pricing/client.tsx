@@ -10,7 +10,6 @@ import { SUBSCRIPTION_PRICES } from "@/lib/constants"
 import Header from "app/components/Header"
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
-import Footer from "app/components/Footer"
 import { useRouter } from "next/navigation"
 
 //Theme colors
@@ -139,7 +138,7 @@ export default function Client({
             >
               <div
                 onClick={submitPaymentInstruction}
-                className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-purple-500"
+                className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-black"
               >
                 <button
                   type="submit"
@@ -210,10 +209,10 @@ export default function Client({
             <div
               onClick={() => setOpenContactForm(true)}
               className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono  hover:font-semibold
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
     sm:items-start sm:justify-center`}
             >
-              <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-purple-500">
+              <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-black">
                 <button
                   type="submit"
                   className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
@@ -254,7 +253,6 @@ export default function Client({
       <div className="mt-10 w-full">
         <Faqs translations={translations.pricing.faqs} />
       </div>
-      <Footer translations={translations.footer} session={session?.data} />
     </>
   )
 }

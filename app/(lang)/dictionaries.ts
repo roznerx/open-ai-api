@@ -9,7 +9,6 @@ const dictionaries = {
 }
 
 export const getDictionary = async (locale) => {
-  console.log("locale:", locale)
   if (!supportedLocales.includes(locale)) {
     locale = "en"
   }
