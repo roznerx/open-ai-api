@@ -10,7 +10,6 @@ import { getPriceIds } from "@/lib/constants"
 import Header from "app/components/Header"
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
-import Footer from "app/components/Footer"
 import { useRouter } from "next/navigation"
 
 //Theme colors
@@ -302,7 +301,6 @@ export default function Client({
       <div className="mt-10 w-full">
         <Faqs translations={translations.pricing.faqs} />
       </div>
-      <Footer translations={translations.footer} session={session?.data} />
     </>
   )
 }
