@@ -43,9 +43,7 @@ export default function Header({
         >
           <div
             className={`${
-              pathname !== "/" && pathname !== "/pricing"
-                ? "sm:ml-20"
-                : "sm:ml-6"
+              pathname !== "/" && session ? "sm:ml-20" : "sm:ml-6"
             } ml-4 pt-2`}
           >
             <Link href="/">
@@ -93,8 +91,8 @@ export default function Header({
               )}
             </div>
 
-            {session && pathname !== "/" && (
-              <div className="mr-24 hidden flex-col items-end transition-all sm:flex ">
+            {session && (
+              <div className="mr-14 mt-1 hidden flex-col items-end transition-all sm:flex ">
                 <button
                   onClick={() => setShowWidget((prev) => !prev)}
                   className="mr-3 mt-1 flex h-4 w-28 items-center justify-center rounded-lg border

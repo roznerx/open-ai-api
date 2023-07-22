@@ -182,12 +182,12 @@ export default function Client({
             </div>
             <div
               className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] hover:font-semibold
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
     sm:items-start sm:justify-center`}
             >
               <div
                 onClick={submitPaymentInstruction}
-                className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-purple-500"
+                className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-black"
               >
                 <button
                   type="submit"
@@ -258,10 +258,10 @@ export default function Client({
             <div
               onClick={() => setOpenContactForm(true)}
               className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] hover:font-semibold
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
     sm:items-start sm:justify-center`}
             >
-              <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-purple-500">
+              <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-black">
                 <button
                   type="submit"
                   className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"

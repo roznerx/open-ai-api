@@ -26,7 +26,7 @@ export default function Button({
     <button
       className={`${
         hidden ? "hidden" : null
-      }  "bg-mint" h-10 w-40 rounded-full bg-black px-4 py-2 font-sans font-medium ${
+      }  "bg-mint" h-10 w-40 rounded-lg bg-black px-4 py-2 font-sans font-medium hover:bg-mint/80 ${
         variant === "mint" ? "bg-mint" : "bg-transparent"
       }  hover:font-semibold ${
         buttonTextColor === "dark" || typeof buttonTextColor === "undefined"
