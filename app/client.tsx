@@ -57,14 +57,13 @@ export default function Client({
         loggedUserData={loggedUserData}
       />
       <Hero />
-
       <ShowCaseCard
         videoSrc="static/side-by-side-epic.mp4"
         title={translations?.showCase?.title}
+        showArrowInButton={true}
         description={translations?.showCase?.subtitle}
-        buttonText={`${translations?.showCase?.seeVideo} →`}
+        buttonText={`${translations?.showCase?.seeVideo}`}
       />
-
       <Feature translations={translations?.home} />
       <Script
         strategy="afterInteractive"

@@ -3,6 +3,7 @@ type ShowCaseCardProps = {
   image?: any
   title: string
   description?: string
+  showArrowInButton?: boolean
   buttonText?: string
   button?: ReactNode
   videoSrc?: string
@@ -14,6 +15,7 @@ import { requestFullscreen } from "utils"
 
 export default function ShowCaseCard({
   title,
+  showArrowInButton,
   description,
   buttonText,
   videoSrc,
@@ -42,6 +44,7 @@ export default function ShowCaseCard({
                 <Button
                   buttonTextColor="dark"
                   variant="mint"
+                  showArrow={showArrowInButton}
                   loading={false}
                   text={buttonText}
                   onClick={() => {
