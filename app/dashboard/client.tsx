@@ -12,8 +12,10 @@ import { Confetti } from "utils/confetti"
 import { PromptCard as DashboardCard } from "app/components/shared/PromptCard"
 import { useSession } from "next-auth/react"
 
-const UpgradeAccount = ({ text, isPremium }) => (
-  <Link href={isPremium ? "/settings" : "/pricing"}>
+const UpgradeAccount = ({ text, isPremium, subId, userId }) => (
+  <Link
+    href={isPremium ? `/settings?subId=${subId}&userId=${userId}` : "/pricing"}
+  >
     <GradientButton width="200px" text={text} />
   </Link>
 )
@@ -32,8 +34,17 @@ export default function Client({ translations, headerTranslations }) {
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const { dashboard } = translations
   const { data: session, status } = useSession()
+  console.log("session:", session)
+  console.log("status:", status)
 
   const userName = session?.user?.name
+
+  const subscriptionHasBeenDeleted =
+    searchParams?.has("action") &&
+    searchParams.get("action") === "subscription-deleted"
+
+  const isPremium =
+    !subscriptionHasBeenDeleted && !!session?.user?.subscriptionId === true
 
   useEffect(() => {
     if (
@@ -50,17 +61,30 @@ export default function Client({ translations, headerTranslations }) {
     }
   }, [searchParams, session])
 
-  // useEffect(() => {
-  //   if (session && session?.user?.subscriptionId) {
-  //     const stripeData = getSubsctriptionData(session.user.subscriptionId)
-  //     console.log("stripeData:", stripeData)
-  //   }
-  // }, [session])
+  useEffect(() => {
+    if (
+      searchParams &&
+      searchParams.has("action") &&
+      searchParams.get("action") === "subscription-deleted"
+    ) {
+      //SORRY TO SEE YOU GO MESSAGE
+      setThanksMessage(true)
+      setOpenContactForm(true)
+    }
+  }, [searchParams, router])
+
+  console.log(
+    "expression",
+    !!session?.user?.subscriptionId && !subscriptionHasBeenDeleted,
+  )
 
   return (
     <>
       <ContactFormModal
         thanksMessage={thanksMessage}
+        isUnSubscribed={
+          searchParams && searchParams.get("action") === "subscription-deleted"
+        }
         clientName={userName}
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
@@ -135,15 +159,21 @@ export default function Client({ translations, headerTranslations }) {
             button={
               <UpgradeAccount
                 text={
-                  !!session?.user?.subscriptionId
+                  !!session?.user?.subscriptionId && !subscriptionHasBeenDeleted
                     ? dashboard.ctaSettings
                     : dashboard.ctaUpgrade
                 }
-                isPremium={!!session?.user?.subscriptionId}
+                subId={session?.user?.subscriptionId}
+                userId={session?.user?.id}
+                isPremium={isPremium}
               />
             }
-            title={session?.user?.subscriptionId ? "Subscribed" : "Free Plan"}
-            text={dashboard.subscription}
+            title={dashboard.subscription}
+            text={
+              isPremium
+                ? dashboard.premiumSubscription
+                : dashboard.freeSubscription
+            }
             imageSrc="/dashboard/code-box.svg"
             onClick={undefined}
           />

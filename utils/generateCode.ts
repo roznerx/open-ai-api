@@ -1,5 +1,4 @@
 /* eslint-disable unused-imports/no-unused-vars */
-import { updateApiCallsAndCredits } from "./helpers"
 
 export async function generateCodeWithTurbo(
   reader,
@@ -53,17 +52,9 @@ export async function generateCodeWithTurbo(
     return `There was an error with your request ${error}`
   } finally {
     setReader(null)
+    //RESET TOKENS COUNT.
+    tokensCount = 0
     //✨ Make some credits update Magic ✨
-    if (userId) {
-      const data = await updateApiCallsAndCredits(userId)
-
-      if (data?.creditsLeft === 0) {
-        setCreditsModaIsOpen(true)
-      }
-
-      //RESET TOKENS COUNT.
-      tokensCount = 0
-    }
   }
 }
 
@@ -167,14 +158,8 @@ export async function generateCode({
     if (typeof setUserHasAResponse === "function") {
       setUserHasAResponse(true)
     }
-    //✨ Make some credits update Magic ✨
-    if (userId) {
-      const data = await updateApiCallsAndCredits(userId)
-      if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModaIsOpen) {
-        setCreditsLeft(0)
-        setCreditsModaIsOpen(true)
-      }
-    }
+
+    // setCreditsModaIsOpen(true)
 
     //RESET TOKENS COUNT.
     tokensCount = 0

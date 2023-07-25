@@ -66,13 +66,14 @@ export default async function webhookHandler(
 
             updateUserSubscription(userId, subscriptionId)
 
-            // return res.status(200).json({ hello: "Hola" })
+            return res.status(200).json({ ok: true })
           }
 
           //Send EMAIL to CLIENT
 
           // for subscription updates
         } else {
+          return res.status(200).json({ ok: false })
         }
       } catch (error) {
         return res

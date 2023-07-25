@@ -19,21 +19,25 @@ export default async function handler(req, res) {
   if (existingUser && existingUser[0]) {
     //Update the user Object
     try {
-      const updatedOp = await harperClient({
-        operation: "update",
-        schema: "Auth",
-        table: "Users",
-        hash_values: [
-          {
-            id: existingUser[0]?.id,
-          },
-        ],
-        records: [payloadToUpdate],
-      })
+      const updatedOp = await harperClient(
+        {
+          operation: "update",
+          schema: "Auth",
+          table: "Users",
+          hash_values: [
+            {
+              id: existingUser[0]?.id,
+            },
+          ],
+          records: [payloadToUpdate],
+        },
+        false,
+      )
 
       if (updatedOp.update_hashes[0] !== "") {
         return res.status(200).json({ user: payloadToUpdate })
       }
+      return res.status(200).json({ ok: true })
     } catch (error) {
       console.log("error updating user credits", error)
       res.status(500).json({ ok: false, error: error.message })

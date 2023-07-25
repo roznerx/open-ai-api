@@ -16,7 +16,6 @@ export default async function Layout({
   return (
     <div className={`h-full w-full bg-gray-50 font-sans ${inter.variable}`}>
       <Suspense>
-        {/* @ts-expect-error Server Component */}
         <Nav />
       </Suspense>
       {children}

@@ -24,6 +24,8 @@ const nextConfig = {
   },
   experimental: {
     appDir: true,
+    serverActions: true,
+    useDeploymentIdServerActions: true,
   },
   headers() {
     return [

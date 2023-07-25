@@ -1,18 +1,23 @@
 import { getDictionary } from "app/(lang)/dictionaries"
 import SideBar from "app/components/shared/SideBar"
-import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
-import { redirect } from "next/navigation"
-import { authOptions } from "pages/api/auth/[...nextauth]"
 import Client from "./client"
+import { getServerSession } from "next-auth"
+import { authOptions } from "pages/api/auth/[...nextauth]"
+import { redirect } from "next/navigation"
 
 export const metadata = {
   title: "AI Dashboard",
 }
 
+// interface SearchParamsDashboard extends Params {
+//   action: string
+// }
+export const dynamic = "force-dynamic"
+
 export default async function Dashboard() {
   const session = await getServerSession(authOptions)
-  console.log("session:", session)
+
   if (!session) {
     redirect("/?referer=/dashboard")
   }
