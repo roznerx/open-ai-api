@@ -14,7 +14,7 @@ type CardProps = {
   imageSrc?: any
   onClick?: (text: string) => void
 }
-export default function PromptCard({
+export function PromptCard({
   hasScale,
   title,
   button,

@@ -10,7 +10,7 @@ interface Props {
   isOpen: boolean
   thanksMessage?: boolean
   isClientFeedback?: boolean
-  clientName?: string
+  clientName?: string | null
   errorMessage?: Error
   title?: string
   name?: string
@@ -43,7 +43,6 @@ export default function ContactFormModal({
   errorMessage,
   isOpen,
   setIsOpen,
-  purchasedCredits,
   clientName,
   thanksMessage,
 }: Props) {
@@ -294,8 +293,8 @@ export default function ContactFormModal({
                         </div>
                       </Dialog.Title>
                       <p className="text-sm w-[65%] pt-8 text-center text-white">
-                        You have now {purchasedCredits} credits extra to create
-                        with Code Genius.
+                        You have been subscribed to the Code Genius Premium
+                        plan.
                       </p>
                     </div>
                   )}

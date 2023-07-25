@@ -8,7 +8,6 @@ import InputChat from "app/components/shared/InputChat"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "hooks/use-chat"
-import { updateApiCallsAndCredits } from "utils/helpers"
 import { AI_MOOD } from "@/lib/constants"
 
 export default function Client({
@@ -32,21 +31,9 @@ export default function Client({
   } = useChat({
     initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
     onFinish: async () => {
-      if (session) {
-        const data = await updateApiCallsAndCredits(session.user?.id)
-
-        if (data?.creditsLeft === 0) {
-          setCreditsModaIsOpen(true)
-        }
-      }
+      //count tokens??
     },
   })
-
-  useEffect(() => {
-    if (!userCredits || userCredits === 0) {
-      setCreditsModaIsOpen(true)
-    }
-  }, [userCredits])
 
   useEffect(() => {
     if (session.user && !session.user.credits && isLoading) {
@@ -76,7 +63,7 @@ export default function Client({
       />
       {isLoading && (
         <div
-          className="absolute top-48 right-4 h-12 w-12 cursor-pointer"
+          className="absolute right-4 top-48 h-12 w-12 cursor-pointer"
           onClick={() => stop()}
         >
           <Hand size={32} color="white" />

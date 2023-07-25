@@ -3,10 +3,18 @@ import { harperClient } from "lib/harperdb"
 export default async function handler(req, res) {
   const bodyRequest = req.body
 
-  const existingUser = await harperClient({
-    operation: "sql",
-    sql: `SELECT * FROM Auth.Users WHERE id = "${bodyRequest.userId}"`,
-  })
+  const existingUser = await harperClient(
+    {
+      operation: "sql",
+      sql: `SELECT * FROM Auth.Users WHERE id = "${bodyRequest.userId}"`,
+    },
+    false,
+  )
+
+  const payloadToUpdate = {
+    ...existingUser[0],
+    subscriptionId: bodyRequest.subscriptionId,
+  }
 
   if (existingUser && existingUser[0]) {
     //Update the user Object
@@ -20,13 +28,11 @@ export default async function handler(req, res) {
             id: existingUser[0]?.id,
           },
         ],
-        records: [bodyRequest.updatedUser],
+        records: [payloadToUpdate],
       })
 
       if (updatedOp.update_hashes[0] !== "") {
-        return res
-          .status(200)
-          .json({ creditsLeft: bodyRequest.updatedUser.credits, ok: true })
+        return res.status(200).json({ user: payloadToUpdate })
       }
     } catch (error) {
       console.log("error updating user credits", error)

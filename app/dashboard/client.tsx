@@ -9,10 +9,11 @@ import Header from "app/components/Header"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import GradientButton from "app/components/buttons/gradientButton"
 import { Confetti } from "utils/confetti"
-import PromptCard from "app/components/shared/PromptCard"
+import { PromptCard as DashboardCard } from "app/components/shared/PromptCard"
+import { useSession } from "next-auth/react"
 
-const UpgradeAccount = ({ text }) => (
-  <Link href="/pricing">
+const UpgradeAccount = ({ text, isPremium }) => (
+  <Link href={isPremium ? "/settings" : "/pricing"}>
     <GradientButton width="200px" text={text} />
   </Link>
 )
@@ -23,23 +24,23 @@ const ChatButton = ({ text }) => (
   </Link>
 )
 
-export default function Client({
-  translations,
-  headerTranslations,
-  session,
-  credits,
-  purchasedCredits,
-  opConfirmation,
-}) {
+export default function Client({ translations, headerTranslations }) {
   const { setShowSignInModal } = useSignInModal({ translations })
   const searchParams = useSearchParams()
   const router = useRouter()
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const { dashboard } = translations
+  const { data: session, status } = useSession()
+
+  const userName = session?.user?.name
 
   useEffect(() => {
-    if (opConfirmation && searchParams && searchParams.has("success")) {
+    if (
+      searchParams &&
+      searchParams.has("success") &&
+      session?.user?.subscriptionId
+    ) {
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
@@ -47,16 +48,20 @@ export default function Client({
       //SEND CONFETI
       Confetti()
     }
-  }, [opConfirmation, searchParams])
+  }, [searchParams, session])
 
-  //@ts-ignore
-  const clientName = session && session?.user && session?.user?.name
+  // useEffect(() => {
+  //   if (session && session?.user?.subscriptionId) {
+  //     const stripeData = getSubsctriptionData(session.user.subscriptionId)
+  //     console.log("stripeData:", stripeData)
+  //   }
+  // }, [session])
+
   return (
     <>
       <ContactFormModal
-        purchasedCredits={purchasedCredits}
         thanksMessage={thanksMessage}
-        clientName={clientName}
+        clientName={userName}
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
@@ -68,12 +73,12 @@ export default function Client({
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
         <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
           <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-3xl text-gray-200 sm:items-start sm:text-5xl">
-            {dashboard.welcome}, {clientName}!
+            {dashboard.welcome}, {userName}!
           </h2>
         </div>
 
-        <div className="mt-60 mb-12 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
-          <PromptCard
+        <div className="mb-12 mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+          <DashboardCard
             onClick={() => {
               router.push("/code-idea?mode=smart")
             }}
@@ -83,7 +88,7 @@ export default function Client({
             imageSrc="/dashboard/smart.svg"
           />
 
-          <PromptCard
+          <DashboardCard
             onClick={() => {
               router.push("/code-idea?mode=improve")
             }}
@@ -93,7 +98,7 @@ export default function Client({
             imageSrc="/dashboard/bug.svg"
           />
 
-          <PromptCard
+          <DashboardCard
             onClick={() => {
               router.push("/code-idea?mode=test")
             }}
@@ -103,7 +108,7 @@ export default function Client({
             imageSrc="/dashboard/test.svg"
           />
 
-          <PromptCard
+          <DashboardCard
             onClick={() => {
               router.push("/code-idea?mode=docs")
             }}
@@ -112,23 +117,32 @@ export default function Client({
             imageSrc="/dashboard/documentation.svg"
             text={dashboard.docs.subtitle}
           />
-          <PromptCard
+          <DashboardCard
             size="large"
             hasScale
             order="order-7 sm:order-7"
             imageSrc="/dashboard/credits.svg"
             button={<ChatButton text={dashboard.ctaChat} />}
-            title={`${credits} ${dashboard.credits}`}
+            title={`Total Usage`}
             text={dashboard.available}
             onClick={undefined}
           />
 
-          <PromptCard
+          <DashboardCard
             size="large"
             hasScale
             order="order-8 sm:order-8"
-            button={<UpgradeAccount text={dashboard.ctaUpgrade} />}
-            title={credits > 10 ? "Premium" : "Free"}
+            button={
+              <UpgradeAccount
+                text={
+                  !!session?.user?.subscriptionId
+                    ? dashboard.ctaSettings
+                    : dashboard.ctaUpgrade
+                }
+                isPremium={!!session?.user?.subscriptionId}
+              />
+            }
+            title={session?.user?.subscriptionId ? "Subscribed" : "Free Plan"}
             text={dashboard.subscription}
             imageSrc="/dashboard/code-box.svg"
             onClick={undefined}

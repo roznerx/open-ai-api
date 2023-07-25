@@ -4,6 +4,7 @@ import { Readable } from "node:stream"
 import Stripe from "stripe"
 
 import { stripe } from "lib/stripe"
+import { updateUserSubscription } from "utils/helpers"
 
 // Stripe requires the raw body to construct the event.
 export const config = {
@@ -37,7 +38,7 @@ export default async function webhookHandler(
     const sig = req.headers["stripe-signature"]
 
     // This is your Stripe CLI webhook secret for testing your endpoint locally.
-    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET_TEST
+    const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
 
     let subscription
     let status
@@ -55,27 +56,23 @@ export default async function webhookHandler(
         if (event.type === "checkout.session.completed") {
           subscription = event.data.object as Stripe.Checkout.Session
           console.log("subscription:", subscription)
-          status = subscription.status
-          console.log("status:", status)
+          // status = subscription.status
+          // console.log("status:", status)
+          console.log("customer subscription:", subscription.customer)
+          //Update the user
+          if (subscription.status === "complete") {
+            const userId = subscription?.metadata?.user_id
+            const subscriptionId = subscription?.subscription
 
-          // if (
-          //   checkoutSession.client_reference_id === null ||
-          //   checkoutSession.customer === null
-          // ) {
-          //   console.log({
-          //     message: "Missing items in Stripe webhook callback",
-          //   })
-          //   return
-          // }
+            updateUserSubscription(userId, subscriptionId)
+
+            // return res.status(200).json({ hello: "Hola" })
+          }
+
+          //Send EMAIL to CLIENT
 
           // for subscription updates
-        } else if (event.type === "customer.subscription.deleted") {
-          const subscriptionDeleted = event.data.object as Stripe.Subscription
-
-          const stripeId = subscriptionDeleted.customer.toString()
-          console.log("subscription deleted::stripeId:", stripeId)
         } else {
-          throw new Error("Unhandled relevant event!")
         }
       } catch (error) {
         return res

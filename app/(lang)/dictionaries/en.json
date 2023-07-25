@@ -58,7 +58,8 @@
     "available": "Available",
     "ctaChat": "Go to Chat",
     "ctaUpgrade": "Upgrade",
-    "subscription": "Subscription Plan",
+    "ctaSettings": "Settings",
+    "subscription": "Premium Plan",
     "smart": {
       "title": "Smart Suggestions",
       "subtitle": "Catch errors and optimize your code as you go."

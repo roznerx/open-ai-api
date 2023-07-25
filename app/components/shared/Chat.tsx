@@ -2,7 +2,7 @@ import "./chat.css"
 
 import ChatContainer from "app/home/ChatContainer"
 
-import PromptCard from "./PromptCard"
+import { PromptCard } from "./PromptCard"
 import { CombinedMessages } from "./CombinedMessages"
 import useWindowSize from "hooks/use-window-size"
 

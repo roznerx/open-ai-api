@@ -26,7 +26,6 @@ export default function Client({
   translations,
   userHasAccount,
 }: ClientPropTye) {
-  const [subscription, setSubscription] = React.useState<boolean>(false)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
@@ -58,30 +57,12 @@ export default function Client({
         userId: session?.user?.id,
       }),
     })
-    // console.log("response:", response)
 
     const stripeSession = await response.json()
 
     // setLoadingStripe(false)
 
     if (stripeSession) {
-      await fetch("/api/checkout/save", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: session?.user?.email,
-          userId: session?.user?.id,
-          name: session?.user?.name,
-          checkoutURL: stripeSession?.session?.url,
-          created: stripeSession?.session?.created,
-          amount: stripeSession?.session?.amount_total,
-          confirmed: false,
-        }),
-      })
-      console.log("stripeSession?.session", stripeSession?.session)
-
       router.push(stripeSession?.session?.url)
     }
   }
