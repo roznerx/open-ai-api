@@ -3,7 +3,6 @@ import SessionProvider from "./provider"
 import { Inter } from "next/font/google"
 
 import { Metadata } from "next"
-import { headers } from "next/headers"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -43,12 +42,9 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const headersList = headers()
-  const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
-
   return (
     <>
-      <html lang={lang} className={`${inter.variable}`}>
+      <html lang="en" className={`${inter.variable}`}>
         <head>
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />
