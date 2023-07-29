@@ -40,7 +40,7 @@ export default function Feedback({
       <div
         className={`z-50 mt-2  ${
           showWidget ? "block" : "hidden"
-        }  max-w-md rounded-full px-1 pb-3 font-sans sm:mx-auto`}
+        }  font-inter max-w-md rounded-full px-1 pb-3 sm:mx-auto`}
       >
         <div className="relative flex h-72 flex-col rounded-xl border border-gray-500 bg-purple-500 shadow-lg">
           <span
@@ -50,7 +50,7 @@ export default function Feedback({
             {/* <X size={20} className="text-gray-300" /> */}
           </span>
           <div className="border-b border-gray-500 py-3">
-            <span className="sm:text-lg mx-auto flex w-full flex-wrap items-center justify-center px-1 text-center font-sans text-gray-200">
+            <span className="sm:text-lg font-inter mx-auto flex w-full flex-wrap items-center justify-center px-1 text-center text-gray-200">
               {translations?.desc}
             </span>
           </div>
@@ -74,7 +74,7 @@ export default function Feedback({
               </div>
             </div>
           </div>
-          <div className="absolute right-4 bottom-3">
+          <div className="absolute bottom-3 right-4">
             <button
               onClick={() => onMessageSubmit()}
               className="flex h-6 w-28 items-center justify-center rounded-lg border border-gray-500 bg-purple-900 p-5 text-gray-300 hover:cursor-pointer hover:text-gray-100"

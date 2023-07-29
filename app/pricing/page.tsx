@@ -19,7 +19,7 @@ export default async function Page() {
   const csrfTokenValue = cookieStore.has("next-auth.csrf-token")
   return (
     <>
-      <main className="flex w-full flex-col items-center justify-center text-center">
+      <main className="flex w-full flex-col items-center justify-center bg-purple-900 text-center">
         {session && (
           <SideBar
             translations={dictionary.sidebar}

@@ -5,7 +5,7 @@ import Nav from "./components/nav"
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-sans",
+  variable: "--font-inter",
 })
 
 export default async function Layout({
@@ -14,7 +14,7 @@ export default async function Layout({
   children: React.ReactNode
 }) {
   return (
-    <div className={`h-full w-full bg-gray-50 font-sans ${inter.variable}`}>
+    <div className={`font-inter h-full w-full bg-gray-50 ${inter.variable}`}>
       <Suspense>
         {/* @ts-expect-error Server Component */}
         <Nav />

@@ -37,7 +37,7 @@ export default function UserMenu({ session, email, image, translations }) {
     <div className="z-50w-auto absolute right-4 top-5 text-center sm:right-3">
       <Menu as="div" className="relative">
         <div className="flex items-center justify-center">
-          <Menu.Button className="text-sm flex h-12 w-12 items-center justify-center rounded-full border-[1px]  border-gray-500 bg-purple-500  font-sans font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
+          <Menu.Button className="text-sm font-inter flex h-12 w-12 items-center justify-center rounded-full  border-[1px] border-gray-500  bg-purple-500 font-medium text-white hover:bg-purple-500 hover:bg-opacity-40 focus:outline-none focus-visible:ring-2 focus-visible:ring-white ">
             {image && (
               <Image
                 alt="Profile Picture"

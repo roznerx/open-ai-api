@@ -73,14 +73,14 @@ export default function MyModal({
                   {isCreditsModal && (
                     <Dialog.Title
                       as="h1"
-                      className="mx-auto w-[80%] p-4 font-sans text-2xl font-medium text-white"
+                      className="font-inter mx-auto w-[80%] p-4 text-2xl font-medium text-white"
                     >
                       {title}
                     </Dialog.Title>
                   )}
                   <Dialog.Title
                     as="p"
-                    className="text-md mx-auto -mt-3 w-full p-4 font-sans leading-6 text-white"
+                    className="text-md font-inter mx-auto -mt-3 w-full p-4 leading-6 text-white"
                   >
                     {body}
                   </Dialog.Title>
@@ -89,7 +89,7 @@ export default function MyModal({
                       <p className="text-sm text-gray-500">
                         {savePropmptName && (
                           <input
-                            className="focus:shadow-outline leading-tightb w-full appearance-none rounded border-none bg-purple-800 py-2 px-3 text-gray-300 shadow focus:outline-none "
+                            className="focus:shadow-outline leading-tightb w-full appearance-none rounded border-none bg-purple-800 px-3 py-2 text-gray-300 shadow focus:outline-none "
                             value={propmptName}
                             onChange={handleInputChange}
                             id="question-name"
@@ -105,7 +105,7 @@ export default function MyModal({
                     {!buttonLink ? (
                       <button
                         type="button"
-                        className="text-sm mx-auto inline-flex min-w-[125px] justify-center rounded-md border border-transparent bg-mint px-10 py-3 font-sans font-medium text-black/90 focus:outline-none  "
+                        className="text-sm font-inter mx-auto inline-flex min-w-[125px] justify-center rounded-md border border-transparent bg-mint px-10 py-3 font-medium text-black/90 focus:outline-none  "
                         onClick={() => {
                           setIsOpen(false)
                           if (typeof onSave === "function") {

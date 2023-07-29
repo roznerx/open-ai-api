@@ -25,7 +25,7 @@ const initialFormValues: FormValues = {
 }
 
 const inter = Inter({
-  variable: "--font-sans",
+  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["100", "300", "400", "600", "700"],
 })
@@ -70,7 +70,7 @@ export default function PaymentModal({ isOpen, setIsOpen }: Props) {
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
         <div
-          className={`${inter.variable} fixed inset-0 overflow-y-auto font-sans`}
+          className={`${inter.variable} font-inter fixed inset-0 overflow-y-auto`}
         >
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
@@ -102,7 +102,7 @@ export default function PaymentModal({ isOpen, setIsOpen }: Props) {
                   </Dialog.Title>
                   <Dialog.Title
                     as="h1"
-                    className={`text-xs sm:text-lg text-center font-sans leading-10 text-gray-200 sm:text-left`}
+                    className={`text-xs sm:text-lg font-inter text-center leading-10 text-gray-200 sm:text-left`}
                   >
                     Add your Card Information to continue:
                   </Dialog.Title>
@@ -112,7 +112,7 @@ export default function PaymentModal({ isOpen, setIsOpen }: Props) {
                     <div className="flex flex-col gap-2">
                       <label
                         htmlFor="nameOnCard"
-                        className="font-sans text-[13px] text-purple-300"
+                        className="font-inter text-[13px] text-purple-300"
                       >
                         Name on Card
                       </label>
@@ -130,7 +130,7 @@ export default function PaymentModal({ isOpen, setIsOpen }: Props) {
                     <div className="flex flex-col gap-2">
                       <label
                         htmlFor="cardNumber"
-                        className="font-sans text-[13px] text-purple-300"
+                        className="font-inter text-[13px] text-purple-300"
                       >
                         Card Number
                       </label>
@@ -149,14 +149,14 @@ export default function PaymentModal({ isOpen, setIsOpen }: Props) {
                       <div className="flex-grow-1 flex flex-col gap-2">
                         <label
                           htmlFor="expires"
-                          className="font-sans text-[13px] text-purple-300"
+                          className="font-inter text-[13px] text-purple-300"
                         >
                           Expires
                         </label>
                         <input
                           name="expires"
                           id="expires"
-                          className="block w-full rounded-md border border-purple-500 bg-purple-700 p-3 font-sans text-white placeholder:text-purple-300 focus:border-purple-500 focus:ring-purple-400"
+                          className="font-inter block w-full rounded-md border border-purple-500 bg-purple-700 p-3 text-white placeholder:text-purple-300 focus:border-purple-500 focus:ring-purple-400"
                           placeholder="MM/YY"
                           maxLength={5}
                           value={formValues.expires}
@@ -167,7 +167,7 @@ export default function PaymentModal({ isOpen, setIsOpen }: Props) {
                       <div className="flex-grow-1 flex flex-col gap-2">
                         <label
                           htmlFor="cvc"
-                          className="font-sans text-[13px] text-purple-300"
+                          className="font-inter text-[13px] text-purple-300"
                         >
                           CVC
                         </label>
@@ -187,7 +187,7 @@ export default function PaymentModal({ isOpen, setIsOpen }: Props) {
                       <div className="basis-5/4">
                         <button
                           type="submit"
-                          className="w-full rounded-md border-2 border-transparent bg-mint px-10 py-3 font-sans text-black"
+                          className="font-inter w-full rounded-md border-2 border-transparent bg-mint px-10 py-3 text-black"
                         >
                           Continue
                         </button>

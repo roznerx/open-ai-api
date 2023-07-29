@@ -15,7 +15,7 @@ export default function Client({
 
   return (
     <>
-      <div className="flex min-h-screen flex-nowrap font-sans">
+      <div className="font-inter flex min-h-screen flex-nowrap">
         <div className="mx-auto max-w-max pb-10">
           <SignInModal />
           <HeaderWrapper

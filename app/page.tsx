@@ -43,23 +43,25 @@ export default async function Page() {
 
   return (
     <>
-      {session && (
-        <SideBar
-          translations={dictionary.sidebar}
-          menuTranslations={dictionary?.home?.header?.menu}
-        />
-      )}
-      <main>
-        <Client
-          translations={dictionary}
-          loggedUserData={loggedUserData}
-          session={session}
-          userHasAccount={csrfTokenValue}
-          ip={userIp}
-          apiCalls={userUsage?.apiCalls}
-        />
-        <Footer session={session} translations={dictionary?.footer} />
-      </main>
+      <div className="flex min-h-screen flex-nowrap bg-purple-900">
+        {session && (
+          <SideBar
+            translations={dictionary.sidebar}
+            menuTranslations={dictionary?.home?.header?.menu}
+          />
+        )}
+        <main>
+          <Client
+            translations={dictionary}
+            loggedUserData={loggedUserData}
+            session={session}
+            userHasAccount={csrfTokenValue}
+            ip={userIp}
+            apiCalls={userUsage?.apiCalls}
+          />
+          <Footer session={session} translations={dictionary?.footer} />
+        </main>
+      </div>
     </>
   )
 }

@@ -134,7 +134,7 @@ export default async function Dashboard() {
   }
 
   return (
-    <div className="flex">
+    <div className="flex bg-purple-900">
       <SideBar
         translations={dictionary.sidebar}
         menuTranslations={dictionary?.home?.header?.menu}

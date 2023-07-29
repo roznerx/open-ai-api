@@ -15,7 +15,7 @@ export default function Editor({ questionName, prompt, id }) {
   return (
     <>
       <div>
-        <h3 className="my-3 ml-2 font-sans text-gray-200">
+        <h3 className="font-inter my-3 ml-2 text-gray-200">
           {" "}
           Question Name: <span className="italic">{questionName}</span>
         </h3>

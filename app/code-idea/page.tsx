@@ -29,7 +29,7 @@ export default async function Page() {
 
   return (
     <main
-      className={`flex w-full flex-row items-start justify-start bg-purple-900 font-sans ${roboto_mono.variable}`}
+      className={`font-inter flex min-h-screen w-full flex-row flex-nowrap items-start justify-start bg-purple-900 ${roboto_mono.variable}`}
     >
       <Container translations={dictionary} session={session} />
     </main>

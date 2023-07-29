@@ -56,8 +56,8 @@ export default function Header({
                   alt="Code Genius"
                 />
                 <h1
-                  className={`sm:text-xl sm:text-xl ml-2 mt-1 bg-gradient-to-tl from-[#A1FFE0] to-[#2C9DC0]
-                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
+                  className={`sm:text-xl sm:text-xl font-inter ml-2 mt-1 bg-gradient-to-tl from-[#A1FFE0]
+                    to-[#2C9DC0] bg-clip-text text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                 >
                   Code Genius
                 </h1>
@@ -67,7 +67,7 @@ export default function Header({
           <div className="mb-3 mr-1 flex h-8 pb-2 sm:mt-0">
             {!session && (
               <Link href={"/pricing"}>
-                <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
+                <p className="font-inter mr-3 mt-4 hidden cursor-pointer text-white sm:mr-6 sm:block ">
                   {translations?.menu?.pricing}
                 </p>
               </Link>
@@ -76,7 +76,7 @@ export default function Header({
               onClick={() => setShowSignInModal(true)}
               className={`my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-6 ${
                 !session ? "border border-mint" : "bg-transparent"
-              }  p-[1.5px] font-sans`}
+              }  font-inter p-[1.5px]`}
             >
               {!session && (
                 <div

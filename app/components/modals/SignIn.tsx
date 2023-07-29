@@ -43,16 +43,16 @@ export const SignInModal = ({
         <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:px-12">
           <div className="mt-8 flex flex-col items-center justify-center sm:mt-0">
             <h1
-              className={`mt-6 text-center font-sans text-[28px] font-[700] text-white`}
+              className={`font-inter mt-6 text-center text-[28px] font-[700] text-white`}
             >
               {userHasAccount ? translations.title : translations.titleCreate}
             </h1>
           </div>
-          <h6 className="sm:text-xl  mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200 ">
+          <h6 className="sm:text-xl  font-inter mx-auto w-full text-center text-[16px] font-medium text-gray-200 ">
             {translations.subtitle}
           </h6>
           {tip && (
-            <p className="text-md mx-auto -mt-3 w-full text-center font-sans text-gray-200">
+            <p className="text-md font-inter mx-auto -mt-3 w-full text-center text-gray-200">
               {tip}
             </p>
           )}
