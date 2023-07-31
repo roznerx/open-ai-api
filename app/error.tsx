@@ -4,11 +4,7 @@ import { useSession } from "next-auth/react"
 import dynamic from "next/dynamic"
 
 import React, { useEffect } from "react"
-import { useSignInModal } from "./components/modals/SignInModal"
 
-const Header = dynamic(() => import("./components/Header"), {
-  loading: () => null,
-})
 const GradientButton = dynamic(
   () => import("./components/buttons/gradientButton"),
   {
@@ -31,7 +27,7 @@ export default function ErrorLog({
 }) {
   const session = useSession()
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
-  const { SignInModal } = useSignInModal({})
+
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error)
@@ -40,7 +36,6 @@ export default function ErrorLog({
 
   return (
     <>
-      <SignInModal />
       <ContactFormModal
         name={userName}
         isClientFeedback
