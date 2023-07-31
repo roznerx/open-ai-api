@@ -9,6 +9,8 @@ import useWindowSize from "hooks/use-window-size"
 import Git from "../icons/git"
 import Link from "next/link"
 import { useSignInModal } from "./SignInModal"
+import { X } from "lucide-react"
+import { usePathname, useRouter } from "next/navigation"
 
 export const SignInModal = ({
   tip,
@@ -22,9 +24,11 @@ export const SignInModal = ({
   tip?: string
 }) => {
   const [signInClickedGitHub, setSignInClickedGitHub] = useState<boolean>(false)
-  const [referer, setReferer] = useState<string>("/dashboard")
+
   const [signInClickedGoogle, setSignInClickedGoogle] = useState<boolean>(false)
   const { isMobile } = useWindowSize()
+  const router = useRouter()
+  const pathname = usePathname()
 
   const { setShowSignInModal } = useSignInModal({
     userHasAccount,
@@ -33,7 +37,16 @@ export const SignInModal = ({
 
   return (
     <BaseModal showModal={showSignInModal} setShowModal={setShowSignInModal}>
-      <div className="bg-purple-800 p-4 sm:h-auto sm:w-[504.01px] sm:rounded-2xl">
+      <div className="relative bg-purple-800 p-4 sm:h-auto sm:w-[504.01px] sm:rounded-2xl">
+        <X
+          onClick={() => {
+            router.replace(pathname || "/")
+            setShowSignInModal(false)
+          }}
+          className="absolute right-3 top-2 cursor-pointer rounded-full border border-white"
+          size={20}
+          color="white"
+        />
         <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:px-12">
           <div className="mt-8 flex flex-col items-center justify-center sm:mt-0">
             <h1
@@ -66,7 +79,7 @@ export const SignInModal = ({
               }
               onClick={() => {
                 setSignInClickedGoogle(true)
-                signIn("google", { callbackUrl: referer })
+                signIn("google", { callbackUrl: "/dashboard" })
               }}
             >
               {signInClickedGoogle ? (
@@ -92,7 +105,7 @@ export const SignInModal = ({
               }
               onClick={() => {
                 setSignInClickedGitHub(true)
-                signIn("github", { callbackUrl: referer })
+                signIn("github", { callbackUrl: "/dashboard" })
               }}
             >
               {signInClickedGitHub ? (
