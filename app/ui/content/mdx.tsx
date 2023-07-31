@@ -138,7 +138,7 @@ export function MDX({ code, images, tweets, repos, className }: MDXProps) {
     <article
       data-mdx-container
       className={cn(
-        "prose prose-gray prose-headings:relative prose-headings:scroll-mt-20 prose-headings:font-display prose-headings:font-bold max-w-none transition-all",
+        "prose prose-gray prose-headings:relative prose-headings:scroll-mt-20 prose-headings:font-pro prose-headings:font-bold max-w-none transition-all",
         className,
       )}
     >

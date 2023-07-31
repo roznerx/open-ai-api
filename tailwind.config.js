@@ -109,6 +109,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
+        pro: ["var(--font-pro)"],
       },
       colors: {
         specialBlue: "#6ea9d7",

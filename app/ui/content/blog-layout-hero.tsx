@@ -3,7 +3,6 @@
 import { BLOG_CATEGORIES } from "@/lib/constants/content"
 import { cn } from "@/lib/utils"
 import MaxWidthWrapper from "app/components/shared/max-width-wrapper"
-import Image from "next/image"
 import Link from "next/link"
 import { useParams, useRouter } from "next/navigation"
 
@@ -15,23 +14,10 @@ export default function BlogLayoutHero() {
   return (
     <MaxWidthWrapper className="bg-purple-500">
       <div className="max-w-screen-sm py-16">
-        <div className="inline-flex">
-          <Link
-            className={`mt-2`}
-            href={{
-              pathname: "/",
-            }}
-          >
-            <Image
-              src={"/logo/code-genius.svg"}
-              width={40}
-              height={40}
-              alt="Code Genius"
-            />
-          </Link>
-          <h1 className="font-display ml-2 text-3xl font-extrabold text-mint sm:text-4xl">
+        <div className="inline-flex items-center justify-center">
+          <h2 className="ml-2 font-sans text-3xl font-extrabold text-mint sm:text-4xl">
             {data?.title || "Code Genius Blog"}
-          </h1>
+          </h2>
         </div>
         <p className="text-xl mt-4 text-gray-200">
           {data?.description || "Latest news and updates from Code Genius."}

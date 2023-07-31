@@ -3,7 +3,7 @@ import { Globe, Link2, Settings, Webhook } from "lucide-react"
 
 export const BLOG_CATEGORIES: {
   title: string
-  slug: "company" | "education" | "customer-stories" | "ai"
+  slug: "company" | "education" | "customer-stories"
   description: string
 }[] = [
   {

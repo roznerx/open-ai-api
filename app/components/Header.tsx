@@ -18,7 +18,7 @@ export default function Header({
   showSignInModal?: any
   userHasAccount?: any
   translations?: any
-  setShowSignInModal: any
+  setShowSignInModal?: any
 }) {
   const pathname = usePathname()
   const shouldJustifyBetween =

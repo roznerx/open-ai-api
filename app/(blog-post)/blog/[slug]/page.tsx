@@ -3,10 +3,11 @@ import { allBlogPosts } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Author from "#/ui/content/author"
+import { fontPro } from "@/styles/fonts"
 import { MDX } from "#/ui/content/mdx"
 import { getBlurDataURL } from "@/lib/images"
 import { Metadata } from "next"
-import { constructMetadata, formatDate } from "@/lib/utils"
+import { cn, constructMetadata, formatDate } from "@/lib/utils"
 import { getTweet } from "react-tweet/api"
 import BlurImage from "#/ui/blur-image"
 import { BLOG_CATEGORIES } from "@/lib/constants/content"
@@ -71,10 +72,11 @@ export default async function BlogArticle({
       )) ||
     []
 
-  console.log("relatedArticles:", relatedArticles)
   return (
     <>
-      <MaxWidthWrapper className="bg-purple-500">
+      <MaxWidthWrapper
+        className={cn(fontPro.variable, "bg-purple-500 font-pro")}
+      >
         <div className="flex max-w-screen-sm flex-col space-y-4 pt-16">
           <div className="flex items-center space-x-4">
             <Link
@@ -90,14 +92,16 @@ export default async function BlogArticle({
               {formatDate(data.publishedAt)}
             </time>
           </div>
-          <h1 className="font-display text-3xl font-extrabold text-mint sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-mint sm:text-4xl">
             {data.title}
           </h1>
           <p className="text-xl text-gray-200">{data.summary}</p>
         </div>
       </MaxWidthWrapper>
 
-      <div className="relative h-full">
+      <div
+        className={cn(fontPro.variable, "relative h-full font-pro text-2xl")}
+      >
         <div className="absolute top-52 h-full w-full" />
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 py-10">
           <div className="relative col-span-4 mb-10 flex flex-col space-y-8 bg-white sm:rounded-xl sm:border sm:border-gray-200 md:col-span-3">

@@ -24,7 +24,7 @@ export default function BlogCard({
         priority={priority}
       />
       <div className="rounded-b-lg bg-white p-6">
-        <h2 className="font-display line-clamp-1 text-2xl font-bold text-gray-700">
+        <h2 className="line-clamp-1 font-pro text-2xl font-bold text-gray-700">
           {data.title}
         </h2>
         <p className="mt-2 line-clamp-2 text-gray-500">{data.summary}</p>
