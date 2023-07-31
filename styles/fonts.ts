@@ -8,6 +8,6 @@ export const inter = Inter({
 
 export const fontPro = Source_Serif_4({
   variable: "--font-pro",
-  weight: "300",
+  weight: ["300", "400", "500", "600"],
   subsets: ["latin"],
 })

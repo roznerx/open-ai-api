@@ -64,6 +64,7 @@ export default async function BlogArticle({
   const category = BLOG_CATEGORIES.find(
     (category) => category.slug === data.categories[0],
   )!
+  console.log("category:", category)
 
   const relatedArticles =
     (data.related &&
@@ -77,7 +78,7 @@ export default async function BlogArticle({
       <MaxWidthWrapper
         className={cn(fontPro.variable, "bg-purple-500 font-pro")}
       >
-        <div className="flex max-w-screen-sm flex-col space-y-4 pt-16">
+        <div className="flex flex-col space-y-4 pt-16">
           <div className="flex items-center space-x-4">
             <Link
               href={`/blog/category/${category.slug}`}
@@ -92,7 +93,7 @@ export default async function BlogArticle({
               {formatDate(data.publishedAt)}
             </time>
           </div>
-          <h1 className="text-3xl font-extrabold text-mint sm:text-4xl">
+          <h1 className=" text-3xl font-extrabold text-mint sm:text-4xl">
             {data.title}
           </h1>
           <p className="text-xl text-gray-200">{data.summary}</p>
@@ -100,9 +101,12 @@ export default async function BlogArticle({
       </MaxWidthWrapper>
 
       <div
-        className={cn(fontPro.variable, "relative h-full font-pro text-2xl")}
+        className={cn(
+          fontPro.variable,
+          "relative h-full bg-purple-500 font-pro text-2xl",
+        )}
       >
-        <div className="absolute top-52 h-full w-full" />
+        {/* <div className="absolute top-52 h-full w-full" /> */}
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 py-10">
           <div className="relative col-span-4 mb-10 flex flex-col space-y-8 bg-white sm:rounded-xl sm:border sm:border-gray-200 md:col-span-3">
             <BlurImage
@@ -121,7 +125,7 @@ export default async function BlogArticle({
               className="px-5 pb-20 pt-4 sm:px-10"
             />
           </div>
-          <div className="sticky top-20 col-span-1 mt-48 hidden flex-col divide-y divide-gray-200 self-start sm:flex">
+          <div className="sticky top-20 col-span-1 mt-48 hidden flex-col divide-y divide-gray-200 self-start bg-purple-500 sm:flex">
             <div className="flex flex-col space-y-4 py-5">
               <p className="text-sm text-gray-200">Written by</p>
               <Author username={data.author} />

@@ -1,15 +1,22 @@
 import Logo from "app/components/shared/Logo"
 import { Globe, Link2, Settings, Webhook } from "lucide-react"
 
+export type CategoriesType = "company" | "education" | "customer-stories" | "ai"
+
 export const BLOG_CATEGORIES: {
   title: string
-  slug: "company" | "education" | "customer-stories"
+  slug: CategoriesType
   description: string
 }[] = [
   {
     title: "Company updates",
     slug: "company",
     description: "The latest news from Code Genius",
+  },
+  {
+    title: "AI updates",
+    slug: "ai",
+    description: "The latest news from AI",
   },
 ]
 

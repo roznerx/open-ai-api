@@ -35,8 +35,8 @@ export const BlogPost = defineDocumentType(() => ({
       type: "list",
       of: {
         type: "enum",
-        options: ["company", "education", "customer-stories"],
-        default: "company",
+        options: ["company", "education", "customer-stories", "ai"],
+        default: "ai",
       },
       required: true,
     },

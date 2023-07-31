@@ -62,11 +62,18 @@ export default function Header({
           </div>
           <div className="mb-3 mr-1 flex h-8 pb-2 sm:mt-0">
             {!session && (
-              <Link href={"/pricing"}>
-                <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
-                  {translations?.menu?.pricing}
-                </p>
-              </Link>
+              <>
+                <Link href={"/pricing"}>
+                  <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
+                    {translations?.menu?.pricing}
+                  </p>
+                </Link>
+                <Link href={"/blog"}>
+                  <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
+                    Blog
+                  </p>
+                </Link>
+              </>
             )}
             <div
               onClick={() => router.push(`${pathname}/?action=signUp`)}

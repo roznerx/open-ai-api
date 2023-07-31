@@ -17,7 +17,7 @@ export default function Footer({
   const pathName = usePathname()
   const shouldShowFooter =
     pathName == "/" ||
-    pathName == "/blog" ||
+    pathName?.startsWith("/blog") ||
     pathName == "/terms-and-conditions" ||
     pathName == "/privacy"
   return (
@@ -29,7 +29,11 @@ export default function Footer({
             isOpen={openContactForm}
             setIsOpen={setOpenContactForm}
           />
-          <div className="mx-auto flex w-screen flex-col bg-purple-900  font-sans text-white">
+          <div
+            className={`mx-auto flex w-screen flex-col ${
+              pathName?.startsWith("/blog") ? "bg-purple-500" : "bg-purple-900"
+            }  font-sans text-white`}
+          >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="justify-center">
                 <Link href="/" className={`mt-7 flex sm:mx-0 sm:ml-2`}>

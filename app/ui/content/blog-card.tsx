@@ -1,7 +1,11 @@
+"use client"
+
 import { BlogPost } from "contentlayer/generated"
 import BlurImage from "../blur-image"
 import { formatDate } from "@/lib/utils"
 import Link from "next/link"
+import { Chip } from "@material-tailwind/react"
+import Author from "./author"
 
 export default function BlogCard({
   data,
@@ -24,12 +28,19 @@ export default function BlogCard({
         priority={priority}
       />
       <div className="rounded-b-lg bg-white p-6">
-        <h2 className="line-clamp-1 font-pro text-2xl font-bold text-gray-700">
-          {data.title}
-        </h2>
+        <div className="flex justify-between">
+          <h2 className="line-clamp-1 font-pro text-2xl font-semibold text-gray-700">
+            {data.title}
+          </h2>
+          <Chip
+            className="w-auto bg-blue text-center text-white"
+            value={data.categories}
+            size="sm"
+          />
+        </div>
         <p className="mt-2 line-clamp-2 text-gray-500">{data.summary}</p>
         <div className="mt-4 flex items-center space-x-2">
-          {/* <Author username={data.author} imageOnly /> */}
+          <Author username={data.author} imageOnly />
           <time dateTime={data.publishedAt} className="text-sm text-gray-500">
             {formatDate(data.publishedAt)}
           </time>
