@@ -7,7 +7,6 @@ import React, { useEffect } from "react"
 import tailwindConfig from "tailwind.config"
 import { Check, Loader2 } from "lucide-react"
 import { getPriceIds } from "@/lib/constants"
-import Header from "app/components/Header"
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { useRouter } from "next/navigation"
@@ -18,14 +17,9 @@ const colors: any = tailwindConfig.theme?.extend?.colors
 type ClientPropTye = {
   session: any
   translations: any
-  userHasAccount: any
 }
 
-export default function Client({
-  session,
-  translations,
-  userHasAccount,
-}: ClientPropTye) {
+export default function Client({ session, translations }: ClientPropTye) {
   const initialCreditsValue = 50
   const [credits, setCredits] = React.useState<number>(initialCreditsValue)
   const { setShowSignInModal, SignInModal } = useSignInModal({
@@ -108,12 +102,7 @@ export default function Client({
   return (
     <>
       <SignInModal />
-      <Header
-        userHasAccount={userHasAccount}
-        translations={translations.home.header}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
-      />
+
       <PaymentModal isOpen={openPayment} setIsOpen={setOpenPayment} />
       <ContactFormModal
         clientName={session && session?.user && session?.user?.name}

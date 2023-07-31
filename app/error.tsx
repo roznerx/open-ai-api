@@ -6,8 +6,6 @@ import dynamic from "next/dynamic"
 import React, { useEffect } from "react"
 import { useSignInModal } from "./components/modals/SignInModal"
 
-import translations from "app/(lang)/dictionaries/en.json"
-
 const Header = dynamic(() => import("./components/Header"), {
   loading: () => null,
 })
@@ -33,11 +31,7 @@ export default function ErrorLog({
 }) {
   const session = useSession()
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
-  const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
-    tip: "Get your initial 10 credits for free. Sign in to get more.",
-
-    translations: translations?.modals?.signIn,
-  })
+  const { SignInModal } = useSignInModal({})
   useEffect(() => {
     // Log the error to an error reporting service
     console.error(error)
@@ -55,12 +49,6 @@ export default function ErrorLog({
         clientName={userName}
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
-      />
-      <Header
-        showSignInModal={showSignInModal}
-        session={session?.data}
-        userHasAccount={true}
-        setShowSignInModal={setShowSignInModal}
       />
       <div className="mx-auto mb-8 mt-28 w-full p-4 text-center sm:w-[60%]">
         <h2 className="mx-auto bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl">

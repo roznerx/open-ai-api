@@ -1,45 +1,39 @@
+"use client"
+
 import { signIn } from "next-auth/react"
-import { useState, Dispatch, SetStateAction, useEffect } from "react"
+import { useState } from "react"
 import Image from "next/image"
 import BaseModal from "app/components/modals/BaseModal"
 import GmailLogo from "public/icons/gmail.svg"
 import useWindowSize from "hooks/use-window-size"
 import Git from "../icons/git"
-import { useSearchParams } from "next/navigation"
 import Link from "next/link"
+import { useSignInModal } from "./SignInModal"
 
 export const SignInModal = ({
   tip,
   translations,
   userHasAccount,
   showSignInModal,
-  setShowSignInModal,
 }: {
   showSignInModal: boolean
   translations: any
   userHasAccount?: boolean
   tip?: string
-  setShowSignInModal: Dispatch<SetStateAction<boolean>>
 }) => {
-  const searchParams = useSearchParams()
   const [signInClickedGitHub, setSignInClickedGitHub] = useState<boolean>(false)
   const [referer, setReferer] = useState<string>("/dashboard")
   const [signInClickedGoogle, setSignInClickedGoogle] = useState<boolean>(false)
   const { isMobile } = useWindowSize()
 
-  useEffect(() => {
-    if (searchParams && searchParams.get("referer")) {
-      const referer = (searchParams.get("referer") as string) || "/code-idea"
-      setReferer(referer)
-    }
-  }, [searchParams])
+  const { setShowSignInModal } = useSignInModal({
+    userHasAccount,
+    translations: translations?.modals?.signIn,
+  })
 
   return (
     <BaseModal showModal={showSignInModal} setShowModal={setShowSignInModal}>
-      {/* MAIN DIV - BACKGROUND*/}
       <div className="bg-purple-800 p-4 sm:h-auto sm:w-[504.01px] sm:rounded-2xl">
-        {/* INNER DIV - FLEX CONTAINER */}
-        {/* TITLE + SUBTITLE */}
         <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:px-12">
           <div className="mt-8 flex flex-col items-center justify-center sm:mt-0">
             <h1
@@ -56,9 +50,9 @@ export const SignInModal = ({
               {tip}
             </p>
           )}
-          {/* DIVIDER */}
+
           <hr className="border-1 border-purple-500 sm:w-[384.01px]" />
-          {/* BUTTONS */}
+
           <div
             className={`flex ${
               isMobile ? "flex-row" : "flex-col"
@@ -91,7 +85,6 @@ export const SignInModal = ({
                 </div>
               )}
             </button>
-            {/* GITHUB BUTTON */}
             <button
               disabled={signInClickedGitHub}
               className={

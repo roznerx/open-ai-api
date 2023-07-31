@@ -4,12 +4,11 @@ import useWindowSize from "hooks/use-window-size"
 import { Coins, LayoutDashboard, LogOut, MessageCircle } from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import Link from "next/link"
 import { Fragment, useEffect, useState } from "react"
 
 export default function UserMenu({ session, email, image, translations }) {
-  const router = useRouter()
-  const [openingSupport, setOpeningSupport] = useState(false)
+  const [, setOpeningSupport] = useState(false)
   const { isMobile } = useWindowSize()
   useEffect(() => {
     Crisp.configure("12685b82-e8b5-43a2-a596-d2d559d02e5a", {
@@ -99,8 +98,8 @@ export default function UserMenu({ session, email, image, translations }) {
             <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
-                  <div
-                    onClick={() => router.push("/dashboard")}
+                  <Link
+                    href="/dashboard"
                     className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
@@ -111,15 +110,15 @@ export default function UserMenu({ session, email, image, translations }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.dashboard}</span>
-                  </div>
+                  </Link>
                 )}
               </Menu.Item>
             </div>
             <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
-                  <div
-                    onClick={() => router.push("/pricing")}
+                  <Link
+                    href="/pricing"
                     className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}
@@ -130,7 +129,7 @@ export default function UserMenu({ session, email, image, translations }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.pricing}</span>
-                  </div>
+                  </Link>
                 )}
               </Menu.Item>
             </div>

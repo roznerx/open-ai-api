@@ -3,6 +3,8 @@ import { Dispatch, SetStateAction, useCallback, useEffect, useRef } from "react"
 import { AnimatePresence, motion } from "framer-motion"
 import Leaflet from "app/components/shared/Leaflet"
 import useWindowSize from "hooks/use-window-size"
+import { useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 
 export default function BaseModal({
   children,
@@ -14,14 +16,17 @@ export default function BaseModal({
   setShowModal: Dispatch<SetStateAction<boolean>>
 }) {
   const desktopModalRef = useRef(null)
+  const router = useRouter()
+  const pathname = usePathname()
 
   const onKeyDown = useCallback(
     (e: KeyboardEvent) => {
       if (e.key === "Escape") {
+        router.replace(pathname || "/")
         setShowModal(false)
       }
     },
-    [setShowModal],
+    [pathname, router, setShowModal],
   )
 
   useEffect(() => {

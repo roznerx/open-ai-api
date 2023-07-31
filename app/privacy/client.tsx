@@ -1,16 +1,10 @@
 "use client"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
-import HeaderWrapper from "app/components/shared/HeaderWrapper"
 import Link from "next/link"
 
-export default function Client({
-  session,
-  translations,
-  modalTranslations,
-  headerTranslations,
-}) {
-  const { SignInModal, setShowSignInModal, showSignInModal } = useSignInModal({
+export default function Client({ translations, modalTranslations }) {
+  const { SignInModal } = useSignInModal({
     translations: modalTranslations,
   })
 
@@ -19,13 +13,7 @@ export default function Client({
       <div className="flex min-h-screen flex-nowrap font-sans">
         <div className="mx-auto max-w-max pb-10">
           <SignInModal />
-          <HeaderWrapper
-            translations={headerTranslations}
-            setShowSignInModal={setShowSignInModal}
-            showSignInModal={showSignInModal}
-            session={session}
-            userHasAccount={undefined}
-          />
+
           <div className="mx-auto mt-28 w-[80%]">
             <h1 className="my-3 ml-4 text-3xl font-medium text-white">
               {translations.title}
