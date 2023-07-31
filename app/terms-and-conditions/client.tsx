@@ -1,18 +1,10 @@
 "use client"
 
-import { useSignInModal } from "app/components/modals/SignInModal"
-
-export default function Client({ translations, modalTranslations }) {
-  const { SignInModal } = useSignInModal({
-    translations: modalTranslations,
-  })
-
+export default function Client({ translations }) {
   return (
     <>
       <div className="flex min-h-screen flex-nowrap font-sans">
         <div className="mx-auto max-w-max pb-10">
-          <SignInModal />
-
           <div className="mx-auto mt-28 w-[80%]">
             <h1 className="my-3 ml-4  text-3xl font-medium text-white">
               {translations.title}

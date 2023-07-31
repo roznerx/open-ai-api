@@ -12,8 +12,6 @@ export default function Client({ translations, modalTranslations }) {
     <>
       <div className="flex min-h-screen flex-nowrap font-sans">
         <div className="mx-auto max-w-max pb-10">
-          <SignInModal />
-
           <div className="mx-auto mt-28 w-[80%]">
             <h1 className="my-3 ml-4 text-3xl font-medium text-white">
               {translations.title}
