@@ -32,7 +32,7 @@ export default function Header({
         className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
         <div
-          className={`mt-5 flex w-full items-center ${
+          className={`mt-2 flex w-full items-center ${
             shouldJustifyBetween && !session
               ? "justify-between"
               : "justify-center"
@@ -49,12 +49,11 @@ export default function Header({
                   src={"/logo/code-genius.svg"}
                   width={32}
                   height={32}
-                  className={`mt-1`}
                   alt="Code Genius"
                 />
                 <h1
-                  className={`sm:text-xl sm:text-xl ml-2 mt-1 bg-gradient-to-tl from-mint to-blue
-                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
+                  className={`sm:text-xl sm:text-xl ml-2 bg-gradient-to-tl from-mint to-blue
+                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
                 >
                   Code Genius
                 </h1>
