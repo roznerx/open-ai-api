@@ -79,8 +79,6 @@ export default function Client({
   const placeHolderText = getCodeGeniusPlaceHolder(mode, translations)
   const codeGeniusMood = useCodeGeniusMood(translations)
 
-  console.log("testFrameworkElement", testFrameworkElement)
-
   const codeMessages = useRef([
     {
       role: "system",

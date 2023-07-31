@@ -3,6 +3,13 @@ import SessionProvider from "./provider"
 import { Inter } from "next/font/google"
 
 import { Metadata } from "next"
+import HeaderWrapper from "./components/shared/HeaderWrapper"
+import { getDictionary } from "./(lang)/dictionaries"
+import { getServerSession } from "next-auth"
+import { authOptions } from "pages/api/auth/[...nextauth]"
+import Script from "next/script"
+import SideBar from "./components/shared/SideBar"
+import Footer from "./components/Footer"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -42,6 +49,8 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  const session = await getServerSession(authOptions)
+  const translations = await getDictionary("en")
   return (
     <>
       <html lang="en" className={`${inter.variable}`}>
@@ -49,12 +58,37 @@ export default async function RootLayout({
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
-        <body suppressHydrationWarning={true} className="">
-          <SessionProvider>
+        <body>
+          <SessionProvider translations={translations?.modals?.signIn}>
             <div className="flex min-h-screen flex-nowrap bg-purple-900">
+              {session && (
+                <SideBar
+                  translations={translations.sidebar}
+                  menuTranslations={translations?.home?.header?.menu}
+                />
+              )}
+              <HeaderWrapper
+                translations={translations?.home?.header}
+                session={session}
+              />
               {children}
             </div>
+            <Footer session={session} translations={translations?.footer} />
           </SessionProvider>
+          <Script
+            strategy="afterInteractive"
+            src="https://www.googletagmanager.com/gtag/js?id=G-WHLZCV41W9"
+          />
+          <Script
+            id="google-analytics"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-WHLZCV41W9');`,
+            }}
+          />
         </body>
       </html>
     </>
