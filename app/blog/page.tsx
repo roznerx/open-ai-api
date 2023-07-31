@@ -4,7 +4,7 @@ import BlogCard from "#/ui/content/blog-card"
 import { allBlogPosts } from "contentlayer/generated"
 
 export const metadata = constructMetadata({
-  title: "Blog – Dub",
+  title: "Blog – Code Genius",
   description: "Latest news and updates from Dub.",
 })
 
