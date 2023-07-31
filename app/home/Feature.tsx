@@ -1,8 +1,5 @@
 import React from "react"
-import Lottie from "lottie-react"
-import Suggestions from "../../animations/smartImprovements.json"
-import TestGeneration from "../../animations/generating-tests.json"
-import codeDocumentation from "../../animations/codeDocumentation.json"
+import Image from "next/image"
 
 const interactivity: any = {
   mode: "scroll",
@@ -39,7 +36,12 @@ export default function Feature({ translations }) {
         </div>
         <div className="mb-24 grid grid-cols-1 gap-1 sm:grid-cols-2">
           <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
-            <Lottie interactivity={interactivity} animationData={Suggestions} />
+            <Image
+              src="/home/ai-dev.svg"
+              width={420}
+              height={235}
+              alt="Automate development process with AI"
+            />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h4
@@ -53,9 +55,11 @@ export default function Feature({ translations }) {
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
-            <Lottie
-              interactivity={interactivity}
-              animationData={TestGeneration}
+            <Image
+              src="/home/dev-test.svg"
+              width={420}
+              height={235}
+              alt="Generate tests in seconds"
             />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
@@ -67,9 +71,11 @@ export default function Feature({ translations }) {
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
-            <Lottie
-              interactivity={interactivity}
-              animationData={codeDocumentation}
+            <Image
+              src="/home/dev-docs.svg"
+              width={420}
+              height={235}
+              alt="Generate docs in seconds"
             />
           </div>
           <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
