@@ -47,7 +47,7 @@
         "subtitle": "Writing unit tests can be a tedious and time-consuming task. With Code Genius you can automatically generate test cases that cover a wide range of scenarios, ensuring that your code is thoroughly tested and reliable."
       },
       "docs": {
-        "title": "Create code documentation faster",
+        "title": "Create code documentation",
         "subtitle": "Good documentation is key to writing maintainable code. With Code Genius, you can automatically generate clear and concise documentation for your code."
       }
     }

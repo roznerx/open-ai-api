@@ -5,8 +5,7 @@ import Link from "next/link"
 
 import React, { useEffect } from "react"
 import ContactFormModal from "app/components/modals/ContactFormModal"
-import Header from "app/components/Header"
-import { useSignInModal } from "app/components/modals/SignInModal"
+
 import GradientButton from "app/components/buttons/gradientButton"
 import { Confetti } from "utils/confetti"
 import PromptCard from "app/components/shared/PromptCard"
@@ -25,13 +24,11 @@ const ChatButton = ({ text }) => (
 
 export default function Client({
   translations,
-  headerTranslations,
   session,
   credits,
   purchasedCredits,
   opConfirmation,
 }) {
-  const { setShowSignInModal } = useSignInModal({ translations })
   const searchParams = useSearchParams()
   const router = useRouter()
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
@@ -60,11 +57,6 @@ export default function Client({
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-      <Header
-        translations={headerTranslations}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
-      />
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
         <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
           <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-3xl text-gray-200 sm:items-start sm:text-5xl">
@@ -72,7 +64,7 @@ export default function Client({
           </h2>
         </div>
 
-        <div className="mt-60 mb-12 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+        <div className="mb-12 mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
           <PromptCard
             onClick={() => {
               router.push("/code-idea?mode=smart")

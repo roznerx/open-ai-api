@@ -1,15 +1,26 @@
 import React from "react"
-import dynamic from "next/dynamic"
+import Image from "next/image"
 
-const AIGeneration = dynamic(() =>
-  import("./utils").then((mod) => mod.AIGeneration),
-)
-const AISuggestions = dynamic(() =>
-  import("./utils").then((mod) => mod.AISuggestions),
-)
-const CodeDocumentation = dynamic(() =>
-  import("./utils").then((mod) => mod.CodeDocumentation),
-)
+const interactivity: any = {
+  mode: "scroll",
+  actions: [
+    {
+      visibility: [0, 0.2],
+      type: "stop",
+      frames: [0],
+    },
+    {
+      visibility: [0.2, 0.5],
+      type: "seek",
+      frames: [0, 135],
+    },
+    {
+      visibility: [0.5, 0.9],
+      type: "stop",
+      frames: [150],
+    },
+  ],
+}
 
 export default function Feature({ translations }) {
   return (
@@ -25,7 +36,12 @@ export default function Feature({ translations }) {
         </div>
         <div className="mb-24 grid grid-cols-1 gap-1 sm:grid-cols-2">
           <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
-            <AISuggestions />
+            <Image
+              src="/home/ai-dev.svg"
+              width={420}
+              height={235}
+              alt="Automate development process with AI"
+            />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h4
@@ -39,7 +55,12 @@ export default function Feature({ translations }) {
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
-            <AIGeneration />
+            <Image
+              src="/home/dev-test.svg"
+              width={420}
+              height={235}
+              alt="Generate tests in seconds"
+            />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h4 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-4 sm:text-left md:w-[85%]">
@@ -50,7 +71,12 @@ export default function Feature({ translations }) {
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
-            <CodeDocumentation />
+            <Image
+              src="/home/dev-docs.svg"
+              width={420}
+              height={235}
+              alt="Generate docs in seconds"
+            />
           </div>
           <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
             <h5 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-0 sm:text-left">

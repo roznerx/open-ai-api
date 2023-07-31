@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from "react"
 import Chat from "app/components/shared/Chat"
-import Header from "app/components/Header"
-import { useSignInModal } from "app/components/modals/SignInModal"
+
+// import { useSignInModal } from "app/components/modals/SignInModal"
 import InputChat from "app/components/shared/InputChat"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
@@ -11,14 +11,9 @@ import { useChat } from "hooks/use-chat"
 import { updateApiCallsAndCredits } from "utils/helpers"
 import { AI_MOOD } from "@/lib/constants"
 
-export default function Client({
-  session,
-  translations,
-  headerTranslations,
-  modalTranslations,
-}) {
+export default function Client({ session, translations, modalTranslations }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
-  const { setShowSignInModal } = useSignInModal({ translations })
+  // const { setShowSignInModal } = useSignInModal({ translations })
   const userCredits = session && session.user?.credits
   const userName = session && session.user?.name
   const {
@@ -57,11 +52,6 @@ export default function Client({
 
   return (
     <>
-      <Header
-        translations={headerTranslations}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
-      />
       <Chat
         translations={translations}
         setInput={setInput}
@@ -76,7 +66,7 @@ export default function Client({
       />
       {isLoading && (
         <div
-          className="absolute top-48 right-4 h-12 w-12 cursor-pointer"
+          className="absolute right-4 top-48 h-12 w-12 cursor-pointer"
           onClick={() => stop()}
         >
           <Hand size={32} color="white" />

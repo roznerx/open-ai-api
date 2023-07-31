@@ -31,7 +31,6 @@ export default async function Page() {
       <main className="flex min-h-screen w-screen px-4 text-center">
         <Client
           session={session}
-          headerTranslations={dictionary.home.header}
           translations={dictionary?.chat}
           modalTranslations={dictionary?.modals?.moreCredits}
         />

@@ -18,12 +18,7 @@ export default async function Page() {
   return (
     <div className="flex min-h-screen flex-nowrap">
       <div className="mx-auto max-w-max pb-10">
-        <Client
-          headerTranslations={dictionary.home.header}
-          modalTranslations={dictionary.modals.signIn}
-          translations={dictionary.terms}
-          session={session}
-        />
+        <Client translations={dictionary.terms} />
         <Footer translations={dictionary.footer} session={session} />
       </div>
     </div>

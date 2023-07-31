@@ -4,10 +4,8 @@ import { headers, cookies } from "next/headers"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 
 import Client from "./client"
-import Footer from "./components/Footer"
 import { harperClient } from "@/lib/harperdb"
 import { getDictionary } from "./(lang)/dictionaries"
-import SideBar from "./components/shared/SideBar"
 
 export const metadata = {
   title: "Code Genius | Enhance your coding skills with the help of AI",
@@ -39,29 +37,18 @@ export default async function Page() {
   }
 
   const userUsage = (anonymousUserData && anonymousUserData[0]) || {}
-  const csrfTokenValue = cookieStore.has("next-auth.csrf-token")
 
   return (
     <>
-      <div className="flex min-h-screen flex-nowrap bg-purple-900">
-        {session && (
-          <SideBar
-            translations={dictionary.sidebar}
-            menuTranslations={dictionary?.home?.header?.menu}
-          />
-        )}
-        <main>
-          <Client
-            translations={dictionary}
-            loggedUserData={loggedUserData}
-            session={session}
-            userHasAccount={csrfTokenValue}
-            ip={userIp}
-            apiCalls={userUsage?.apiCalls}
-          />
-          <Footer session={session} translations={dictionary?.footer} />
-        </main>
-      </div>
+      <main>
+        <Client
+          translations={dictionary}
+          loggedUserData={loggedUserData}
+          session={session}
+          ip={userIp}
+          apiCalls={userUsage?.apiCalls}
+        />
+      </main>
     </>
   )
 }
