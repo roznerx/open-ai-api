@@ -26,7 +26,7 @@ export default function MobileSideBar({
 
   return (
     <div
-      className={`font-inter absolute left-0 top-0 z-50 h-full rounded-r-lg duration-100 ${
+      className={`absolute left-0 top-0 z-50 h-full rounded-r-lg font-sans duration-100 ${
         showMobileMenu ? "w-80  bg-purple-700 " : "w-16 bg-none"
       } flex-row items-start `}
     >

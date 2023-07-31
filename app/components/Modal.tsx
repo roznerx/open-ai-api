@@ -73,14 +73,14 @@ export default function MyModal({
                   {isCreditsModal && (
                     <Dialog.Title
                       as="h1"
-                      className="font-inter mx-auto w-[80%] p-4 text-2xl font-medium text-white"
+                      className="mx-auto w-[80%] p-4 font-sans text-2xl font-medium text-white"
                     >
                       {title}
                     </Dialog.Title>
                   )}
                   <Dialog.Title
                     as="p"
-                    className="text-md font-inter mx-auto -mt-3 w-full p-4 leading-6 text-white"
+                    className="text-md mx-auto -mt-3 w-full p-4 font-sans leading-6 text-white"
                   >
                     {body}
                   </Dialog.Title>
@@ -105,7 +105,7 @@ export default function MyModal({
                     {!buttonLink ? (
                       <button
                         type="button"
-                        className="text-sm font-inter mx-auto inline-flex min-w-[125px] justify-center rounded-md border border-transparent bg-mint px-10 py-3 font-medium text-black/90 focus:outline-none  "
+                        className="text-sm mx-auto inline-flex min-w-[125px] justify-center rounded-md border border-transparent bg-mint px-10 py-3 font-sans font-medium text-black/90 focus:outline-none  "
                         onClick={() => {
                           setIsOpen(false)
                           if (typeof onSave === "function") {

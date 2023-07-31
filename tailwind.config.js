@@ -108,7 +108,7 @@ module.exports = {
         },
       },
       fontFamily: {
-        default: ["var(--font-inter)", "system-ui", "sans-serif"],
+        sans: ["var(--font-sans)"],
       },
       colors: {
         specialBlue: "#6ea9d7",

@@ -14,7 +14,7 @@ const CodeDocumentation = dynamic(() =>
 export default function Feature({ translations }) {
   return (
     <>
-      <section className={`font-inter mt-8 text-white`}>
+      <section className={`mt-8 font-sans text-white`}>
         <div className="mx-auto mb-8 mt-28 w-full p-4 text-center sm:w-[60%]">
           <h3 className="mx-auto bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-center text-3xl font-bold text-transparent sm:text-4xl">
             {translations?.feature?.title}

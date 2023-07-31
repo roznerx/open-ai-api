@@ -3,20 +3,36 @@
 import { BLOG_CATEGORIES } from "@/lib/constants/content"
 import { cn } from "@/lib/utils"
 import MaxWidthWrapper from "app/components/shared/max-width-wrapper"
+import Image from "next/image"
 import Link from "next/link"
-import { useParams } from "next/navigation"
+import { useParams, useRouter } from "next/navigation"
 
 export default function BlogLayoutHero() {
   const { slug } = useParams() as { slug?: string }
-
+  const router = useRouter()
   const data = BLOG_CATEGORIES.find((category) => category.slug === slug)
 
   return (
     <MaxWidthWrapper className="bg-purple-500">
       <div className="max-w-screen-sm py-16">
-        <h1 className="font-display text-3xl font-extrabold text-mint sm:text-4xl">
-          {data?.title || "Code Genius Updates"}
-        </h1>
+        <div className="inline-flex">
+          <Link
+            className={`mt-2`}
+            href={{
+              pathname: "/",
+            }}
+          >
+            <Image
+              src={"/logo/code-genius.svg"}
+              width={40}
+              height={40}
+              alt="Code Genius"
+            />
+          </Link>
+          <h1 className="font-display ml-2 text-3xl font-extrabold text-mint sm:text-4xl">
+            {data?.title || "Code Genius Blog"}
+          </h1>
+        </div>
         <p className="text-xl mt-4 text-gray-200">
           {data?.description || "Latest news and updates from Code Genius."}
         </p>
@@ -30,7 +46,6 @@ export default function BlogLayoutHero() {
               active={category.slug === slug}
             />
           ))}
-          <CategoryLink title="Changelog" href="/changelog" active={false} />
         </div>
       </div>
     </MaxWidthWrapper>

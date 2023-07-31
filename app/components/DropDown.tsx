@@ -73,7 +73,7 @@ export default function DropDown({
       as="div"
       className={`absolute w-32 rounded-lg  sm:w-48 ${
         bgColor ? bgColor : "bg-purple-800"
-      } font-inter cursor-pointer text-left text-white shadow-md `}
+      } cursor-pointer text-left font-sans text-white shadow-md `}
     >
       <Menu.Button
         as="div"

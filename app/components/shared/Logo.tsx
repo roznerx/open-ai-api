@@ -14,8 +14,8 @@ export default function Logo({ className }: { className?: string }) {
       />
       <h1
         className={cn(
-          `text-lg sm:text-xl sm:text-xl font-inter ml-2
-        mt-1 bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text text-2xl font-bold tracking-tight text-transparent  sm:leading-6`,
+          `text-lg sm:text-xl sm:text-xl ml-2 mt-1
+        bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text font-sans text-2xl font-bold tracking-tight text-transparent  sm:leading-6`,
           className,
         )}
       >

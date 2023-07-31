@@ -31,7 +31,7 @@ const initialFormValues: FormValues = {
 }
 
 const inter = Inter({
-  variable: "--font-inter",
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["100", "300", "400", "600", "700"],
 })
@@ -99,7 +99,7 @@ export default function ContactFormModal({
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
         <div
-          className={`${inter.variable} font-inter fixed inset-0 overflow-y-auto`}
+          className={`${inter.variable} fixed inset-0 overflow-y-auto font-sans`}
         >
           <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
@@ -143,7 +143,7 @@ export default function ContactFormModal({
                       </Dialog.Title>
                       <Dialog.Title
                         as="h1"
-                        className={`text-sm sm:text-md font-inter text-center leading-10 text-gray-200 sm:text-left`}
+                        className={`text-sm sm:text-md text-center font-sans leading-10 text-gray-200 sm:text-left`}
                       >
                         {isClientFeedback
                           ? `This is the error message descriptoin:`
@@ -158,7 +158,7 @@ export default function ContactFormModal({
                             <div className="flex flex-col gap-2">
                               <label
                                 htmlFor="name"
-                                className="font-inter text-[13px] text-purple-300"
+                                className="font-sans text-[13px] text-purple-300"
                               >
                                 Name
                               </label>
@@ -177,7 +177,7 @@ export default function ContactFormModal({
                             <div className="flex flex-col gap-2">
                               <label
                                 htmlFor="workEmail"
-                                className="font-inter text-[13px] text-purple-300"
+                                className="font-sans text-[13px] text-purple-300"
                               >
                                 Email
                               </label>
@@ -196,7 +196,7 @@ export default function ContactFormModal({
                             <div className="flex-grow-1 flex flex-col gap-2">
                               <label
                                 htmlFor="howCanWeHelp"
-                                className="font-inter text-[13px] text-purple-300"
+                                className="font-sans text-[13px] text-purple-300"
                               >
                                 Message
                               </label>
@@ -234,7 +234,7 @@ export default function ContactFormModal({
                             <button
                               type="submit"
                               onClick={(e) => handleSubmit(e)}
-                              className="font-inter w-full rounded-md border-2 border-transparent bg-mint px-10 py-3 text-black"
+                              className="w-full rounded-md border-2 border-transparent bg-mint px-10 py-3 font-sans text-black"
                             >
                               Send
                             </button>
@@ -278,7 +278,7 @@ export default function ContactFormModal({
                     </div>
                   )}
                   {thanksMessage && (
-                    <div className="font-inter flex w-full flex-col items-center justify-center">
+                    <div className="flex w-full flex-col items-center justify-center font-sans">
                       <Dialog.Title
                         as="h3"
                         className="relative text-2xl leading-6 text-white sm:text-left sm:text-3xl"

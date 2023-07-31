@@ -3,19 +3,9 @@ import { Globe, Link2, Settings, Webhook } from "lucide-react"
 
 export const BLOG_CATEGORIES: {
   title: string
-  slug: "company" | "education" | "customer-stories"
+  slug: "company" | "education" | "customer-stories" | "ai"
   description: string
 }[] = [
-  {
-    title: "Education",
-    slug: "education",
-    description: "Educational content about link management.",
-  },
-  {
-    title: "Customer Stories",
-    slug: "customer-stories",
-    description: "Learn how Dub customers use Dub.",
-  },
   {
     title: "Company updates",
     slug: "company",

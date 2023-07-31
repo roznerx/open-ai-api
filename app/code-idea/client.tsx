@@ -336,7 +336,7 @@ export default function Client({
       >
         <div className="w-full">
           <div className="mx-auto  w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
-            <div className="font-inter mt-5 inline-flex">
+            <div className="mt-5 inline-flex font-sans">
               <span className="ml-5 text-2xl font-semibold text-white">
                 {codeGeniusMood}
               </span>

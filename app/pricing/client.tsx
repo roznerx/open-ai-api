@@ -190,7 +190,7 @@ export default function Client({
               >
                 <button
                   type="submit"
-                  className="text-sm font-inter px-1 py-3 text-center text-white sm:mx-auto sm:px-2"
+                  className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
                 >
                   {loadingStripe ? (
                     <div className="flex h-8">
@@ -263,7 +263,7 @@ export default function Client({
               <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-black">
                 <button
                   type="submit"
-                  className="text-sm font-inter px-1 py-3 text-center text-white sm:mx-auto sm:px-2"
+                  className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
                 >
                   {translations.pricing.enterprice.cta}
                 </button>

@@ -15,8 +15,8 @@ export default function InputChat({
               handleSubmit(e)
             }
           }}
-          className="font-lg placeholder:font-inter mx-2 h-12 w-[90%] resize-none rounded-lg bg-purple-400 py-2.5 pl-3  
-               pr-12 text-white outline-0 placeholder:pl-3 placeholder:pt-1 placeholder:text-[16px]
+          className="font-lg mx-2 h-12 w-[90%] resize-none rounded-lg bg-purple-400 py-2.5 pl-3 pr-12  
+               text-white outline-0 placeholder:pl-3 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px]
                placeholder:text-gray-300 hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 
                sm:w-[900px]"
           value={inputValue}

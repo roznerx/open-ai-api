@@ -3,7 +3,7 @@
 import { Inter } from "next/font/google"
 
 const inter = Inter({
-  variable: "--font-inter",
+  variable: "--font-sans",
   subsets: ["latin"],
   weight: ["100", "300", "400", "600", "700"],
 })
@@ -11,7 +11,7 @@ const inter = Inter({
 export default function SuperHero({ translations }) {
   return (
     <>
-      <section className={`${inter.variable}  font-inter mb-5 mt-36`}>
+      <section className={`${inter.variable}  mb-5 mt-36 font-sans`}>
         <h2
           className="z-40 mx-auto w-[95%] cursor-default items-center justify-center bg-gradient-to-r from-mint
            to-blue bg-clip-text p-3 text-center text-4xl font-semibold text-transparent sm:flex sm:w-full sm:text-6xl"
@@ -19,7 +19,7 @@ export default function SuperHero({ translations }) {
           {translations.title}
         </h2>
         <p
-          className="text-lg font-inter z-40 mt-2 w-[100%] items-center justify-center px-3 text-center
+          className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans
          text-white sm:text-3xl"
         >
           {translations.subtitle}

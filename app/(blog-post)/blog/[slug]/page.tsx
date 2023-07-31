@@ -44,7 +44,7 @@ export default async function BlogArticle({
   }
 }) {
   const data = allBlogPosts.find((post) => post.slug === params.slug)
-  console.log("allBlogPosts:", data)
+
   if (!data) {
     notFound()
   }
@@ -97,7 +97,7 @@ export default async function BlogArticle({
         </div>
       </MaxWidthWrapper>
 
-      <div className="relative">
+      <div className="relative h-full">
         <div className="absolute top-52 h-full w-full" />
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 py-10">
           <div className="relative col-span-4 mb-10 flex flex-col space-y-8 bg-white sm:rounded-xl sm:border sm:border-gray-200 md:col-span-3">
