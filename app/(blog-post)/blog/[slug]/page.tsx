@@ -84,21 +84,21 @@ export default async function BlogArticle({
           <div className="flex items-center space-x-4">
             <Link
               href={`/blog/category/${category.slug}`}
-              className="text-sm rounded-full border border-gray-200 bg-white px-4 py-1.5 font-semibold text-gray-700 shadow-[inset_10px_-50px_94px_0_rgb(199,199,199,0.1)] backdrop-blur transition-all hover:border-gray-300 hover:bg-white/50"
+              className="text-sm rounded-full border border-none bg-morado px-4 py-1.5 font-semibold text-white"
             >
               {category.title}
             </Link>
             <time
               dateTime={data.publishedAt}
-              className="text-sm text-gray-200 transition-colors hover:text-gray-800"
+              className="text-sm text-purple-900 transition-colors hover:text-gray-800"
             >
               {formatDate(data.publishedAt)}
             </time>
           </div>
-          <h1 className=" text-3xl font-extrabold text-mint sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-purple-900 sm:text-4xl">
             {data.title}
           </h1>
-          <p className="text-xl text-gray-200">{data.summary}</p>
+          <p className="my-4 pb-4 text-2xl text-purple-900">{data.summary}</p>
         </div>
       </MaxWidthWrapper>
 
@@ -109,10 +109,10 @@ export default async function BlogArticle({
         )}
       >
         {/* <div className="absolute top-52 h-full w-full" /> */}
-        <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 py-10">
-          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 bg-white sm:rounded-xl sm:border sm:border-gray-200 md:col-span-3">
+        <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 sm:py-10">
+          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-white md:col-span-3">
             <BlurImage
-              className="aspect-[1200/630] rounded-t-xl object-cover"
+              className="aspect-[1200/630] object-cover sm:rounded-t-xl"
               src={data.image}
               blurDataURL={thumbnailBlurhash}
               width={1200}
