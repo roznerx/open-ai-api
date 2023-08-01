@@ -12,35 +12,25 @@ export default function BlogLayoutHero() {
   const data = BLOG_CATEGORIES.find((category) => category.slug === slug)
 
   return (
-    <MaxWidthWrapper className="bg-purple-500">
+    <MaxWidthWrapper className="bg-gradient-to-r from-mint to-blue">
       <div className=" py-16">
         <div className="flex items-center justify-center">
-          <h2 className="ml-2 font-sans text-3xl font-extrabold text-mint sm:text-4xl">
+          <h2 className="ml-2 font-sans text-3xl font-extrabold text-purple-900 sm:text-4xl">
             {data?.title || "Code Genius Blog"}
           </h2>
         </div>
-        <div className="flex items-center justify-center">
-          <h3 className="mt-4 text-3xl text-gray-200">
-            {data?.description || "Latest news and updates about Code and AI"}
+        <div className="flex items-center justify-center  text-purple-900">
+          <h3 className="mt-4 text-3xl ">
+            {data?.description ||
+              "Find out the latest news of AI, our new features and more."}
           </h3>
-        </div>
-        <div className="mt-6 flex items-center space-x-4">
-          <CategoryLink title="All" href="/blog" active={!slug} />
-          {BLOG_CATEGORIES.map((category) => (
-            <CategoryLink
-              key={category.slug}
-              title={category.title}
-              href={`/blog/category/${category.slug}`}
-              active={category.slug === slug}
-            />
-          ))}
         </div>
       </div>
     </MaxWidthWrapper>
   )
 }
 
-const CategoryLink = ({
+export const CategoryLink = ({
   title,
   href,
   active,
@@ -53,10 +43,10 @@ const CategoryLink = ({
     <Link
       href={href}
       className={cn("border-b-2  border-transparent py-1", {
-        "border-mint text-mint": active,
+        "border-morado text-mint": active,
       })}
     >
-      <div className="text-sm active:bg-green rounded-md px-3 py-2 text-gray-200 transition-all hover:bg-mint hover:text-purple-800">
+      <div className="text-sm active:bg-green rounded-md px-3 py-2 text-gray-200 transition-all hover:bg-morado hover:text-white">
         {title}
       </div>
     </Link>

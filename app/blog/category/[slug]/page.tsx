@@ -5,6 +5,7 @@ import { Metadata } from "next"
 import { constructMetadata } from "@/lib/utils"
 import { getBlurDataURL } from "@/lib/images"
 import BlogCard from "#/ui/content/blog-card"
+import CategoryNav from "app/blog/category-nav"
 
 export async function generateStaticParams() {
   return BLOG_CATEGORIES.map((category) => ({
@@ -55,7 +56,16 @@ export default async function BlogCategory({
       })),
   )
 
-  return articles.map((article, idx) => (
-    <BlogCard key={article.slug} data={article} priority={idx <= 1} />
-  ))
+  return (
+    <>
+      <CategoryNav />
+      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 gap-8 px-2.5 py-10 md:grid-cols-3 lg:px-20">
+        {articles.map((article, idx) => {
+          return (
+            <BlogCard key={article.slug} data={article} priority={idx <= 1} />
+          )
+        })}
+      </div>
+    </>
+  )
 }

@@ -64,7 +64,6 @@ export default async function BlogArticle({
   const category = BLOG_CATEGORIES.find(
     (category) => category.slug === data.categories[0],
   )!
-  console.log("category:", category)
 
   const relatedArticles =
     (data.related &&
@@ -76,7 +75,10 @@ export default async function BlogArticle({
   return (
     <>
       <MaxWidthWrapper
-        className={cn(fontPro.variable, "bg-purple-500 font-pro")}
+        className={cn(
+          fontPro.variable,
+          "bg-gradient-to-r from-mint to-blue font-pro",
+        )}
       >
         <div className="flex flex-col space-y-4 pt-16">
           <div className="flex items-center space-x-4">

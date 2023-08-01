@@ -11,17 +11,9 @@ export default async function BlogLayout({
 }) {
   return (
     <>
-      <main
-        className={cn(
-          fontPro.variable,
-          "flex w-screen flex-col bg-gradient-to-b from-mint to-blue",
-        )}
-      >
+      <main className={cn(fontPro.variable, "flex w-screen flex-col")}>
         <BlogLayoutHero />
-
-        <MaxWidthWrapper className="grid grid-cols-1 gap-8 py-10 md:grid-cols-2">
-          {children}
-        </MaxWidthWrapper>
+        <MaxWidthWrapper>{children}</MaxWidthWrapper>
       </main>
     </>
   )

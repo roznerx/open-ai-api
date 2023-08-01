@@ -5,5 +5,5 @@ export default async function PostLayout({
 }: {
   children: ReactNode
 }) {
-  return <div className="flex w-screen flex-col ">{children}</div>
+  return <div className="flex w-screen flex-col">{children}</div>
 }

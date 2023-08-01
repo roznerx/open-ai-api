@@ -2,6 +2,7 @@ import { getBlurDataURL } from "@/lib/images"
 import { constructMetadata } from "@/lib/utils"
 import BlogCard from "#/ui/content/blog-card"
 import { allBlogPosts } from "contentlayer/generated"
+import CategoryNav from "./category-nav"
 
 export const metadata = constructMetadata({
   title: "Blog – Code Genius",
@@ -18,9 +19,16 @@ export default async function Blog() {
         blurDataURL: await getBlurDataURL(post.image),
       })),
   )
-  // console.log("articles", articles)
-
-  return articles.map((article, idx) => {
-    return <BlogCard key={article.slug} data={article} priority={idx <= 1} />
-  })
+  return (
+    <>
+      <CategoryNav />
+      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 gap-8 px-2.5 py-10 md:grid-cols-3 lg:px-20">
+        {articles.map((article, idx) => {
+          return (
+            <BlogCard key={article.slug} data={article} priority={idx <= 1} />
+          )
+        })}
+      </div>
+    </>
+  )
 }
