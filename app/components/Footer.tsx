@@ -31,11 +31,7 @@ export default function Footer({
             setIsOpen={setOpenContactForm}
           />
           <div
-            className={`mx-auto flex w-screen flex-col ${
-              pathName?.startsWith("/blog")
-                ? "bg-gradient-to-b from-mint to-blue"
-                : "bg-purple-900"
-            }  font-sans text-white`}
+            className={`mx-auto flex w-screen flex-col border-t border-gray-200 bg-purple-900 font-sans text-white`}
           >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="justify-center">
@@ -44,21 +40,12 @@ export default function Footer({
                     src={"/logo/code-genius.svg"}
                     width={32}
                     height={32}
-                    className={
-                      pathName?.startsWith("/blog")
-                        ? "rounded-full bg-purple-500 p-1"
-                        : ""
-                    }
                     alt="Code Genius"
                   />
 
                   <h1
                     className={`text-lg sm:text-xl sm:text-xl ml-3 mt-2 
-                    ${
-                      pathName?.startsWith("/blog")
-                        ? "bg-purple-900"
-                        : "bg-gradient-to-r from-mint to-blue"
-                    }
+                    bg-gradient-to-r from-mint to-blue
                   bg-clip-text
                  font-sans text-2xl font-bold tracking-tight text-transparent max-md:pt-4 max-sm:pt-0 sm:leading-6`}
                   >
@@ -66,12 +53,7 @@ export default function Footer({
                   </h1>
                 </Link>
               </div>
-              <div
-                className={cn("mt-8 flex text-gray-300 sm:pt-2", {
-                  "font-semibold text-purple-500":
-                    pathName?.startsWith("/blog"),
-                })}
-              >
+              <div className={cn("mt-8 flex text-white sm:pt-2")}>
                 <div
                   onClick={() => setOpenContactForm(true)}
                   className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
@@ -116,7 +98,7 @@ export default function Footer({
             >
               <p
                 className={cn("text-center font-normal text-gray-300", {
-                  "text-purple-500": pathName?.startsWith("/blog"),
+                  "text-white": pathName?.startsWith("/blog"),
                 })}
               >
                 {translations?.copy}

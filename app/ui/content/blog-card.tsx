@@ -17,7 +17,7 @@ export default function BlogCard({
   priority?: boolean
 }) {
   return (
-    <Link href={`/blog/${data.slug}`} className="rounded-lg ">
+    <Link href={`/blog/${data.slug}`} className="rounded-lg">
       <BlurImage
         className="aspect-[1200/630] rounded-t-xl object-cover"
         src={data.image}

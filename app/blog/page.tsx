@@ -22,7 +22,7 @@ export default async function Blog() {
   return (
     <>
       <CategoryNav />
-      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 gap-8 px-2.5 py-10 md:grid-cols-3 lg:px-20">
+      <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 justify-start gap-8 px-2.5 py-10 md:grid-cols-3 lg:px-5">
         {articles.map((article, idx) => {
           return (
             <BlogCard key={article.slug} data={article} priority={idx <= 1} />

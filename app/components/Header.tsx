@@ -21,6 +21,7 @@ export default function Header({
   const pathName = usePathname()
   const shouldJustifyBetween =
     pathName == "/" ||
+    pathName?.startsWith("/blog") ||
     pathName == "/pricing" ||
     pathName == "/terms-and-conditions" ||
     pathName == "/privacy"
@@ -50,11 +51,6 @@ export default function Header({
                   src={"/logo/code-genius.svg"}
                   width={32}
                   height={32}
-                  className={
-                    pathName?.startsWith("/blog")
-                      ? "rounded-full bg-purple-500 p-1"
-                      : ""
-                  }
                   alt="Code Genius"
                 />
                 <h1

@@ -46,7 +46,7 @@ export const CategoryLink = ({
         "border-morado text-mint": active,
       })}
     >
-      <div className="text-sm active:bg-green rounded-md px-3 py-2 text-gray-200 transition-all hover:bg-morado hover:text-white">
+      <div className="text-sm active:bg-green rounded-md px-3 py-2 text-white transition-all hover:bg-gray-400/70 hover:text-white">
         {title}
       </div>
     </Link>
