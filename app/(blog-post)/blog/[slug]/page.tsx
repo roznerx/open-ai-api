@@ -37,6 +37,8 @@ export async function generateMetadata({
   })
 }
 
+export const dynamic = "force-static"
+
 export default async function BlogArticle({
   params,
 }: {
@@ -84,7 +86,7 @@ export default async function BlogArticle({
           <div className="flex items-center space-x-4">
             <Link
               href={`/blog/category/${category.slug}`}
-              className="text-sm rounded-full border border-none bg-morado px-4 py-1.5 font-semibold text-white"
+              className="text-sm rounded-full border border-none bg-purple-900 px-4 py-1.5 font-semibold text-white"
             >
               {category.title}
             </Link>
@@ -105,7 +107,7 @@ export default async function BlogArticle({
       <div
         className={cn(
           fontPro.variable,
-          "relative h-full bg-purple-500 font-pro text-2xl",
+          "relative h-full bg-purple-500 font-pro",
         )}
       >
         {/* <div className="absolute top-52 h-full w-full" /> */}
@@ -124,11 +126,11 @@ export default async function BlogArticle({
               code={data.body.code}
               images={images}
               tweets={tweets}
-              className="px-5 pb-20 pt-4 sm:px-10"
+              className="px-5 pb-20 pt-4 text-2xl sm:px-10"
             />
           </div>
-          <div className="sticky top-20 col-span-1 mt-48 hidden flex-col divide-y divide-gray-200 self-start bg-purple-500 sm:flex">
-            <div className="flex flex-col space-y-4 py-5">
+          <div className="text-xs sticky top-8 col-span-1 hidden flex-col divide-y divide-gray-200 self-start bg-purple-500 sm:flex">
+            <div className="text-xs flex flex-col space-y-4 py-5">
               <p className="text-sm text-gray-200">Written by</p>
               <Author username={data.author} />
             </div>

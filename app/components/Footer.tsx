@@ -31,7 +31,10 @@ export default function Footer({
             setIsOpen={setOpenContactForm}
           />
           <div
-            className={`mx-auto flex w-screen flex-col border-t border-gray-200 bg-purple-900 font-sans text-white`}
+            className={cn(
+              "mx-auto flex w-screen flex-col border-t border-gray-200 bg-purple-900 font-sans text-white",
+              { "border-mint": pathName?.startsWith("/blog") },
+            )}
           >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="justify-center">
