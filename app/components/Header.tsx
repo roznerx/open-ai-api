@@ -47,12 +47,14 @@ export default function Header({
           >
             <Link href="/">
               <div className={`flex`}>
+                {/* <div className="mx-auto ml-1 h-8 w-8 rounded-full border border-black"> */}
                 <Image
                   src={"/logo/code-genius.svg"}
                   width={32}
                   height={32}
                   alt="Code Genius"
                 />
+                {/* </div> */}
                 <h1
                   className={`sm:text-xl sm:text-xl ml-2  ${
                     pathName?.startsWith("/blog")

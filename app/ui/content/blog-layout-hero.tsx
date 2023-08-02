@@ -13,14 +13,14 @@ export default function BlogLayoutHero() {
 
   return (
     <MaxWidthWrapper className="bg-gradient-to-r from-mint to-blue">
-      <div className=" py-16">
+      <div className="mt-12">
         <div className="flex items-center justify-center">
-          <h2 className="ml-2 font-sans text-3xl font-extrabold text-purple-900 sm:text-4xl">
-            {data?.title || "Code Genius Blog"}
+          <h2 className="mt-7 font-sans text-3xl font-semibold text-purple-900 sm:text-4xl">
+            {data?.title || "Our latest news"}
           </h2>
         </div>
-        <div className="flex items-center justify-center  text-purple-900">
-          <h3 className="mt-4 text-3xl ">
+        <div className="flex items-center justify-center text-purple-900">
+          <h3 className="my-2 w-4/5 text-center text-2xl sm:text-3xl">
             {data?.description ||
               "Find out the latest news of AI, our new features and more."}
           </h3>
@@ -46,7 +46,7 @@ export const CategoryLink = ({
         "border-morado text-mint": active,
       })}
     >
-      <div className="text-sm active:bg-green rounded-md px-3 py-2 text-white transition-all hover:bg-gray-400/70 hover:text-white">
+      <div className="text-sm active:bg-green rounded-md px-3 py-2 text-white transition-all hover:bg-morado/90 hover:text-white">
         {title}
       </div>
     </Link>
