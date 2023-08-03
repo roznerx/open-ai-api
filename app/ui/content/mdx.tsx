@@ -32,10 +32,10 @@ const CustomLink = (props: any) => {
 }
 
 const components = {
-  h2: (props: any) => <h2 className="text-2xl" {...props} />,
+  h2: (props: any) => <h2 className="my-8 text-3xl" {...props} />,
   a: (props: any) => (
     <CustomLink
-      className="font-medium text-gray-500 underline-offset-4 hover:text-black"
+      className="font-medium text-white underline-offset-4 hover:text-mint hover:underline"
       {...props}
     />
   ),
@@ -114,7 +114,7 @@ export function MDX({ code, images, tweets, repos, className }: MDXProps) {
               }
             />
           </Zoom>
-          <figcaption className="text-sm text-center italic text-gray-500">
+          <figcaption className="text-sm text-center italic text-white">
             {props.alt}
           </figcaption>
         </figure>

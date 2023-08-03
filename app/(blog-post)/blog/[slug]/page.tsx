@@ -3,7 +3,6 @@ import { allBlogPosts } from "contentlayer/generated"
 import { notFound } from "next/navigation"
 import Link from "next/link"
 import Author from "#/ui/content/author"
-import { fontPro } from "@/styles/fonts"
 import { MDX } from "#/ui/content/mdx"
 import { getBlurDataURL } from "@/lib/images"
 import { Metadata } from "next"
@@ -11,6 +10,8 @@ import { cn, constructMetadata, formatDate } from "@/lib/utils"
 import { getTweet } from "react-tweet/api"
 import BlurImage from "#/ui/blur-image"
 import { BLOG_CATEGORIES } from "@/lib/constants/content"
+import BlogBreadcrumbs from "app/ui/navigation/Breadcrumbs"
+import { ArrowLeft } from "lucide-react"
 
 export async function generateStaticParams() {
   return allBlogPosts.map((post) => ({
@@ -76,13 +77,9 @@ export default async function BlogArticle({
 
   return (
     <>
-      <MaxWidthWrapper
-        className={cn(
-          fontPro.variable,
-          "bg-gradient-to-r from-mint to-blue font-pro",
-        )}
-      >
-        <div className="flex flex-col space-y-4 pt-16">
+      <MaxWidthWrapper className={cn("bg-gradient-to-r from-mint to-blue")}>
+        <BlogBreadcrumbs />
+        <div className="flex flex-col space-y-4 pt-8">
           <div className="flex items-center space-x-4">
             <Link
               href={`/blog/category/${category.slug}`}
@@ -92,7 +89,7 @@ export default async function BlogArticle({
             </Link>
             <time
               dateTime={data.publishedAt}
-              className="text-sm text-purple-900 transition-colors hover:text-gray-800"
+              className="text-sm text-purple-900 transition-colors"
             >
               {formatDate(data.publishedAt)}
             </time>
@@ -104,22 +101,17 @@ export default async function BlogArticle({
         </div>
       </MaxWidthWrapper>
 
-      <div
-        className={cn(
-          fontPro.variable,
-          "relative h-full bg-purple-500 font-pro",
-        )}
-      >
+      <div className={cn("relative h-full bg-purple-900 text-white")}>
         {/* <div className="absolute top-52 h-full w-full" /> */}
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 sm:py-10">
-          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-white md:col-span-3">
+          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-purple-900  md:col-span-3">
             <BlurImage
               className="aspect-[1200/630] object-cover sm:rounded-t-xl"
               src={data.image}
               blurDataURL={thumbnailBlurhash}
               width={1200}
               height={630}
-              alt={data.title}
+              alt={data.title || "Blog image"}
               priority // cause it's above the fold
             />
             <MDX
@@ -128,8 +120,14 @@ export default async function BlogArticle({
               tweets={tweets}
               className="px-5 pb-20 pt-4 text-2xl sm:px-10"
             />
+            <div className="text-sm absolute bottom-0 left-0 ml-9 h-12 w-auto rounded-full border border-none bg-purple-500 px-4 py-3.5 text-white">
+              <Link href={`/blog`} className="inline-flex">
+                <ArrowLeft color="white" size={22} className="pr-1" />
+                <span className=" ">Back to blog</span>
+              </Link>
+            </div>
           </div>
-          <div className="text-xs sticky top-8 col-span-1 hidden flex-col divide-y divide-gray-200 self-start bg-purple-500 sm:flex">
+          <div className="text-xs sticky top-8 col-span-1 hidden flex-col divide-y divide-mint/50 self-start bg-purple-900 sm:flex">
             <div className="text-xs flex flex-col space-y-4 py-5">
               <p className="text-sm text-gray-200">Written by</p>
               <Author username={data.author} />
