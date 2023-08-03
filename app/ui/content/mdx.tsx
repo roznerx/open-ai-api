@@ -102,7 +102,7 @@ export function MDX({ code, images, tweets, repos, className }: MDXProps) {
     return (
       // we need to wrap the image in a HTML element or showModal will throw errors
       <>
-        <figure className="not-prose flex flex-col items-center justify-center space-y-3">
+        <figure className="not-prose mt-4 flex flex-col items-center justify-center space-y-3">
           <Zoom zoomMargin={isDesktop ? 45 : undefined}>
             <BlurImage
               {...props}

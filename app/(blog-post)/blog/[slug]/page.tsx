@@ -120,14 +120,14 @@ export default async function BlogArticle({
               tweets={tweets}
               className="px-5 pb-20 pt-4 text-2xl sm:px-10"
             />
-            <div className="text-sm absolute bottom-0 left-0 ml-9 h-12 w-auto rounded-full border border-none bg-purple-500 px-4 py-3.5 text-white">
-              <Link href={`/blog`} className="inline-flex">
-                <ArrowLeft color="white" size={22} className="pr-1" />
-                <span className=" ">Back to blog</span>
+            <div className="text-sm absolute bottom-0 left-0 ml-9 h-12 w-auto rounded-full border border-none bg-purple-500 px-4 py-3.5 text-gray-200">
+              <Link href={`/blog`} className="relative inline-flex ">
+                <ArrowLeft color="#E9E9EB" size={22} className="pr-1 " />
+                <span className="-mt-[1px]">Back to blog</span>
               </Link>
             </div>
           </div>
-          <div className="text-xs sticky top-8 col-span-1 hidden flex-col divide-y divide-mint/50 self-start bg-purple-900 sm:flex">
+          <div className="text-xs sticky top-8 col-span-1 hidden flex-col divide-y divide-gray-400 self-start bg-purple-900 sm:flex">
             <div className="text-xs flex flex-col space-y-4 py-5">
               <p className="text-sm text-gray-200">Written by</p>
               <Author username={data.author} />
