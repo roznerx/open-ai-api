@@ -33,7 +33,7 @@ export default function Footer({
           <div
             className={cn(
               "mx-auto flex w-screen flex-col border-t border-gray-200 bg-purple-900 font-sans text-white",
-              { "border-black": pathName?.startsWith("/blog") },
+              { "border-purple-500": pathName?.startsWith("/blog") },
             )}
           >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">

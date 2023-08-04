@@ -1,9 +1,9 @@
-"use client";
+"use client"
 
-import Link from "next/link";
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import Link from "next/link"
+import { motion, useMotionTemplate, useMotionValue } from "framer-motion"
 
-import { useId } from "react";
+import { useId } from "react"
 
 function GridPattern({
   width,
@@ -13,14 +13,14 @@ function GridPattern({
   squares,
   ...props
 }: {
-  width: number;
-  height: number;
-  x: number | string;
-  y?: number | string;
-  squares?: [number, number][];
-  className?: string;
+  width: number
+  height: number
+  x: number | string
+  y?: number | string
+  squares?: [number, number][]
+  className?: string
 }) {
-  let patternId = useId();
+  let patternId = useId()
 
   return (
     <svg aria-hidden="true" {...props}>
@@ -57,26 +57,26 @@ function GridPattern({
         </svg>
       )}
     </svg>
-  );
+  )
 }
 
 function CardPattern({ mouseX, mouseY, ...gridProps }) {
-  let maskImage = useMotionTemplate`radial-gradient(180px at ${mouseX}px ${mouseY}px, white, transparent)`;
-  let style = { maskImage, WebkitMaskImage: maskImage };
+  let maskImage = useMotionTemplate`radial-gradient(180px at ${mouseX}px ${mouseY}px, white, transparent)`
+  let style = { maskImage, WebkitMaskImage: maskImage }
 
   return (
     <div className="pointer-events-none">
       <div className="absolute inset-0 rounded-2xl transition duration-300 [mask-image:linear-gradient(white,transparent)] group-hover:opacity-50">
         <GridPattern
           width={72}
-          height={56}
+          height={46}
           x="50%"
           className="absolute inset-x-0 inset-y-[-30%] h-[160%] w-full skew-y-[-18deg] fill-black/[0.02] stroke-black/5"
           {...gridProps}
         />
       </div>
       <motion.div
-        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#e4dffb] to-[#d7ede4] opacity-0 transition duration-300 group-hover:opacity-100"
+        className="absolute inset-0 rounded-2xl bg-gradient-to-r from-mint to-morado opacity-0 transition duration-300 group-hover:opacity-100"
         style={style}
       />
       <motion.div
@@ -92,7 +92,7 @@ function CardPattern({ mouseX, mouseY, ...gridProps }) {
         />
       </motion.div>
     </div>
-  );
+  )
 }
 
 export default function CategoryCard({
@@ -102,22 +102,22 @@ export default function CategoryCard({
   icon,
   pattern,
 }: {
-  href: string;
-  name: string;
-  description: string;
-  icon: React.ReactNode;
+  href: string
+  name: string
+  description: string
+  icon: React.ReactNode
   pattern: {
-    y: number;
-    squares: [number, number][];
-  };
+    y: number
+    squares: [number, number][]
+  }
 }) {
-  let mouseX = useMotionValue(0);
-  let mouseY = useMotionValue(0);
+  let mouseX = useMotionValue(0)
+  let mouseY = useMotionValue(0)
 
   function onMouseMove({ currentTarget, clientX, clientY }) {
-    let { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    let { left, top } = currentTarget.getBoundingClientRect()
+    mouseX.set(clientX - left)
+    mouseY.set(clientY - top)
   }
 
   return (
@@ -128,16 +128,16 @@ export default function CategoryCard({
     >
       <CardPattern {...pattern} mouseX={mouseX} mouseY={mouseY} />
       <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-gray-200 group-hover:ring-gray-900/10" />
-      <div className="relative rounded-2xl p-6 pt-16">
-        {icon}
+      <div className="relative rounded-2xl p-6 pt-2">
+        <div className="absolute right-2 top-6">{icon}</div>
         <h3 className="mt-4 font-semibold leading-7 text-gray-900">
           <Link href={href}>
             <span className="absolute inset-0 rounded-2xl" />
             {name}
           </Link>
         </h3>
-        <p className="mt-1 text-sm text-gray-600">{description}</p>
+        <p className="text-sm mt-1 text-gray-600">{description}</p>
       </div>
     </div>
-  );
+  )
 }

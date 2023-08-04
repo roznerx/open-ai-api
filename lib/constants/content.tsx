@@ -1,7 +1,9 @@
-import Logo from "app/components/shared/Logo"
-import { Globe, Link2, Settings, Webhook } from "lucide-react"
+import { Bot, CheckCheck, FileText, Gauge, MessageCircle } from "lucide-react"
+import tailwindConfig from "tailwind.config"
 
 export type CategoriesType = "company" | "education" | "customer-stories" | "ai"
+
+const themeColors: any = tailwindConfig.theme?.extend?.colors
 
 export const BLOG_CATEGORIES: {
   title: string
@@ -29,53 +31,64 @@ export const POPULAR_ARTICLES = [
   "pro-plan",
 ]
 
-export const HELP_CATEGORIES: {
+export const CODEGENIUS_FEATURES: {
   title: string
   slug:
-    | "overview"
-    | "getting-started"
-    | "ai-news"
-    | "link-management"
-    | "custom-domains"
-    | "api"
+    | "/code-idea?mode=smart"
+    | "/code-idea?mode=test"
+    | "/code-idea?mode=improve"
+    | "/code-idea?mode=docs"
+    | "/code-chat"
   description: string
   icon: JSX.Element
 }[] = [
   {
-    title: "Dub Overview",
-    slug: "overview",
-    description: "Learn about Dub and how it can help you.",
-    icon: <Logo />,
+    title: "Smart Suggestiions",
+    slug: "/code-idea?mode=smart",
+    description: "Start using Smart Suggestions and unblock your creativity.",
+    icon: <Bot color={themeColors.morado} className="h-6 w-6 text-gray-500" />,
   },
   {
-    title: "Getting Started",
-    slug: "getting-started",
-    description: "Learn how to get started with Dub.",
-    icon: <Settings className="h-6 w-6 text-gray-500" />,
+    title: "Generate Tests",
+    slug: "/code-idea?mode=test",
+    description:
+      "Explore how you can generate unit tests in seconds with Code Genius",
+    icon: (
+      <CheckCheck
+        color={themeColors.morado}
+        className="h-6 w-6 text-gray-500"
+      />
+    ),
   },
   {
-    title: "AI News",
-    slug: "ai-news",
-    description: "Latest updates from AI.",
-    icon: <Settings className="h-6 w-6 text-gray-500" />,
+    title: "Code Performance",
+    slug: "/code-idea?mode=improve",
+    description:
+      "Improve and boost your code performance with a just few clicks",
+    icon: (
+      <Gauge color={themeColors.morado} className="h-6 w-6 text-gray-500" />
+    ),
   },
   {
-    title: "Link Management",
-    slug: "link-management",
-    description: "Learn how to manage your links on Dub.",
-    icon: <Link2 className="h-6 w-6 text-gray-500" />,
+    title: "Docs Generation",
+    slug: "/code-idea?mode=docs",
+    description:
+      "Don't waste your time and let Code Genius create great documentation for you.",
+    icon: (
+      <FileText color={themeColors.morado} className="h-6 w-6 text-gray-500" />
+    ),
   },
   {
-    title: "Custom Domains",
-    slug: "custom-domains",
-    description: "Learn how to use custom domains with Dub.",
-    icon: <Globe className="h-6 w-6 text-gray-500" />,
-  },
-  {
-    title: "API",
-    slug: "api",
-    description: "Learn how to use the Dub API.",
-    icon: <Webhook className="h-6 w-6 text-gray-500" />,
+    title: "Chat with a coding expert",
+    slug: "/code-chat",
+    description:
+      "Code Genius Chat is like Chat GPT for developers. Try it now!.",
+    icon: (
+      <MessageCircle
+        color={themeColors.morado}
+        className="h-6 w-6 text-gray-500"
+      />
+    ),
   },
 ]
 

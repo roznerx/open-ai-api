@@ -16,13 +16,13 @@ export default function BlogLayoutHero() {
       <div className="mt-12">
         <div className="flex items-center justify-center">
           <h2 className="mt-7 font-sans text-3xl font-semibold text-purple-900 sm:text-4xl">
-            {data?.title || "Our latest news"}
+            {data?.title || "Our latest news and updates"}
           </h2>
         </div>
         <div className="flex items-center justify-center text-purple-900">
           <h3 className="my-2 w-4/5 text-center text-2xl sm:text-3xl">
             {data?.description ||
-              "Find out the latest news of AI, our new features and more."}
+              "Find out the latest news of AI and Code Genius."}
           </h3>
         </div>
       </div>

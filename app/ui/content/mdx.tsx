@@ -10,7 +10,7 @@ import useMediaQuery from "hooks/use-media-query"
 import { cn } from "@/lib/utils"
 import Zoom from "react-medium-image-zoom"
 import "react-medium-image-zoom/dist/styles.css"
-import { HELP_CATEGORIES } from "@/lib/constants/content"
+import { CODEGENIUS_FEATURES } from "@/lib/constants/content"
 import CategoryCard from "./category-card"
 
 const CustomLink = (props: any) => {
@@ -32,7 +32,10 @@ const CustomLink = (props: any) => {
 }
 
 const components = {
-  h2: (props: any) => <h2 className="my-8 text-3xl" {...props} />,
+  h2: (props: any) => <h2 className="mb-4 mt-8 text-3xl" {...props} />,
+  li: (props: any) => (
+    <li className="my-2 ml-8 list-disc [&>strong]:text-mint" {...props} />
+  ),
   a: (props: any) => (
     <CustomLink
       className="font-medium text-white underline-offset-4 hover:text-mint hover:underline"
@@ -59,19 +62,19 @@ const components = {
       {...props}
     />
   ),
-  HelpCategories: () => (
+  CodeGeniusFeatures: () => (
     <div className="not-prose grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-      {HELP_CATEGORIES.map((category) => (
+      {CODEGENIUS_FEATURES.map((category) => (
         <CategoryCard
           key={category.slug}
-          href={`/help/category/${category.slug}`}
+          href={`${category.slug}`}
           name={category.title}
           description={category.description}
           icon={category.icon}
           pattern={{
-            y: 16,
+            y: 11,
             squares: [
-              [0, 1],
+              [0, 3],
               [1, 3],
             ],
           }}
