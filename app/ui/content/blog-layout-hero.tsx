@@ -19,7 +19,7 @@ export default function BlogLayoutHero() {
             {data?.title || "Our latest news and updates"}
           </h2>
         </div>
-        <div className="flex items-center justify-center text-purple-900">
+        <div className="flex items-center justify-center text-purple-500">
           <h3 className="my-2 w-4/5 text-center text-2xl sm:text-3xl">
             {data?.description ||
               "Find out the latest news of AI and Code Genius."}

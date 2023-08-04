@@ -6,12 +6,8 @@ import Link from "next/link"
 
 export default function BlogBreadcrumbs() {
   const pathname = usePathname()
-
   const pathNameParts = pathname?.split("/")
-  console.log(
-    "blog pathname:",
-    pathname && pathNameParts?.[1] ? pathNameParts?.[1] : "/",
-  )
+
   return (
     <div className="mt-20 flex items-center gap-x-1 p-3.5 lg:px-2 lg:py-3">
       <div className="text-sm flex gap-0">

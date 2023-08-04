@@ -7,7 +7,6 @@ import { MDX } from "#/ui/content/mdx"
 import { getBlurDataURL } from "@/lib/images"
 import { Metadata } from "next"
 import { cn, constructMetadata, formatDate } from "@/lib/utils"
-import { getTweet } from "react-tweet/api"
 import BlurImage from "#/ui/blur-image"
 import { BLOG_CATEGORIES } from "@/lib/constants/content"
 import BlogBreadcrumbs from "app/ui/navigation/Breadcrumbs"
@@ -53,7 +52,7 @@ export default async function BlogArticle({
     notFound()
   }
 
-  const [thumbnailBlurhash, images, tweets] = await Promise.all([
+  const [thumbnailBlurhash, images] = await Promise.all([
     getBlurDataURL(data.image),
     await Promise.all(
       data.images.map(async (src: string) => ({
@@ -61,7 +60,6 @@ export default async function BlogArticle({
         blurDataURL: await getBlurDataURL(src),
       })),
     ),
-    await Promise.all(data.tweetIds.map(async (id: string) => getTweet(id))),
   ])
 
   const category = BLOG_CATEGORIES.find(
@@ -117,7 +115,6 @@ export default async function BlogArticle({
             <MDX
               code={data.body.code}
               images={images}
-              tweets={tweets}
               className="px-5 pb-20 pt-4 text-2xl sm:px-10"
             />
 

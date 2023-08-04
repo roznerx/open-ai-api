@@ -2,16 +2,15 @@
 
 import Link from "next/link"
 import { useMDXComponent } from "next-contentlayer/hooks"
-import GithubRepo, { GithubRepoProps } from "@/components/shared/github-repo"
+import { GithubRepoProps } from "@/components/shared/github-repo"
 import BlurImage from "#/ui/blur-image"
-import MDXTweet from "#/ui/tweet"
-import { Tweet as TweetProps } from "react-tweet/api"
 import useMediaQuery from "hooks/use-media-query"
 import { cn } from "@/lib/utils"
 import Zoom from "react-medium-image-zoom"
 import "react-medium-image-zoom/dist/styles.css"
 import { CODEGENIUS_FEATURES } from "@/lib/constants/content"
 import CategoryCard from "./category-card"
+import Video from "../video"
 
 const CustomLink = (props: any) => {
   const href = props.href
@@ -62,6 +61,13 @@ const components = {
       {...props}
     />
   ),
+  Video: ({
+    videoSrc,
+    noTilt = true,
+  }: {
+    videoSrc: string
+    noTilt: boolean
+  }) => <Video videoSrc={videoSrc} noTilt={noTilt} />,
   CodeGeniusFeatures: () => (
     <div className="not-prose grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {CODEGENIUS_FEATURES.map((category) => (
@@ -125,18 +131,6 @@ export function MDX({ code, images, tweets, repos, className }: MDXProps) {
     )
   }
 
-  const Tweet = ({ id }: { id: string }) => {
-    if (!tweets) return null
-    const tweet = tweets.find((tweet: TweetProps) => tweet.id_str === id)
-    return <MDXTweet data={tweet} className="mx-auto max-w-lg" noTilt />
-  }
-
-  const MDXRepo = ({ url }: { url: string }) => {
-    if (!repos) return null
-    const repo = repos.find((repo) => repo.url === url)
-    return <GithubRepo {...repo!} />
-  }
-
   return (
     <article
       data-mdx-container
@@ -149,8 +143,6 @@ export function MDX({ code, images, tweets, repos, className }: MDXProps) {
         components={{
           ...components,
           Image: MDXImage,
-          Tweet,
-          MDXRepo,
         }}
       />
     </article>
