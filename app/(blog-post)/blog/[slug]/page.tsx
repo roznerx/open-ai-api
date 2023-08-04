@@ -104,7 +104,7 @@ export default async function BlogArticle({
       <div className={cn("relative h-full bg-purple-900 text-white")}>
         {/* <div className="absolute top-52 h-full w-full" /> */}
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 sm:py-10">
-          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-purple-900  md:col-span-3">
+          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-purple-500 pb-8 md:col-span-3">
             <BlurImage
               className="aspect-[1200/630] object-cover sm:rounded-t-xl"
               src={data.image}
@@ -120,7 +120,8 @@ export default async function BlogArticle({
               tweets={tweets}
               className="px-5 pb-20 pt-4 text-2xl sm:px-10"
             />
-            <div className="text-sm absolute bottom-0 left-0 ml-4 h-12 w-auto rounded-full border border-none bg-purple-500 px-4 py-3.5 text-gray-200 md:ml-9">
+
+            <div className="text-sm absolute bottom-2 left-0 ml-4 h-12 w-auto rounded-full border border-none bg-purple-900 px-4 py-3.5 text-gray-200 md:ml-9">
               <Link href={`/blog`} className="relative inline-flex ">
                 <ArrowLeft color="#E9E9EB" size={22} className="pr-1 " />
                 <span className="-mt-[1px]">Back to blog</span>
