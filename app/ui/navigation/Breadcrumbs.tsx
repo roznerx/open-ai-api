@@ -14,7 +14,6 @@ export default function BlogBreadcrumbs() {
   )
   return (
     <div className="mt-20 flex items-center gap-x-1 p-3.5 lg:px-2 lg:py-3">
-      <div className="text-black-600">/</div>
       <div className="text-sm flex gap-0">
         {pathname && pathNameParts?.[0] === "" && (
           <Link href={"/"} className="px-2 text-gray-700">
