@@ -32,7 +32,7 @@ const CustomLink = (props: any) => {
 
 const components = {
   h2: (props: any) => <h2 className="mb-4 mt-8 text-3xl" {...props} />,
-  li: (props: any) => <li className="my-2 ml-8 list-disc" {...props} />,
+  li: (props: any) => <li className="my-4 ml-8 list-disc" {...props} />,
   a: (props: any) => (
     <CustomLink
       className="font-medium text-white underline-offset-4 hover:text-mint hover:underline"
