@@ -102,7 +102,7 @@ export default async function BlogArticle({
       <div className={cn("relative h-full bg-purple-900 text-white")}>
         {/* <div className="absolute top-52 h-full w-full" /> */}
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 sm:py-10">
-          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-purple-500 pb-8 md:col-span-3">
+          <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-purple-700 pb-8 md:col-span-3">
             <BlurImage
               className="aspect-[1200/630] object-cover sm:rounded-t-xl"
               src={data.image}
