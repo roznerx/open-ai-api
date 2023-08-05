@@ -86,29 +86,18 @@ export default function Header({
             <div
               onClick={() => router.push(`${pathName}/?action=signUp`)}
               className={cn(
-                "my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-transparent p-[1.5px] font-sans sm:mr-6 ",
-                {
-                  "border border-mint":
-                    !session && !pathName?.startsWith("/blog"),
-                  "bg-mint": pathName?.startsWith("/blog"),
-                },
+                "my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
               )}
             >
               {!session && (
                 <div
                   className={cn(
-                    "relative h-[37px] w-auto rounded-lg bg-purple-700 px-2",
-                    {
-                      "bg-mint": pathName?.startsWith("/blog"),
-                    },
+                    "relative h-[37px] w-auto rounded-lg bg-mint px-2",
                   )}
                 >
                   <p
                     className={cn(
-                      "text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50",
-                      {
-                        "text-purple-900": pathName?.startsWith("/blog"),
-                      },
+                      "text-sm my-auto px-2 pt-1 text-center leading-7 text-purple-900",
                     )}
                   >
                     {userHasAccount
