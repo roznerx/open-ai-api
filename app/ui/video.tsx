@@ -3,11 +3,13 @@
 import Tilt from "react-parallax-tilt"
 
 export default function Video({
+  poster,
   videoSrc,
   className,
   noTilt,
 }: {
   videoSrc: string
+  poster: string
   className?: string
   noTilt?: boolean
 }) {
@@ -31,6 +33,7 @@ export default function Video({
         {videoSrc && (
           <video
             className="rounded-lg border border-gray-200 drop-shadow-sm"
+            poster={poster}
             loop
             autoPlay
             muted

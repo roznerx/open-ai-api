@@ -32,9 +32,7 @@ const CustomLink = (props: any) => {
 
 const components = {
   h2: (props: any) => <h2 className="mb-4 mt-8 text-3xl" {...props} />,
-  li: (props: any) => (
-    <li className="my-2 ml-8 list-disc [&>strong]:text-mint" {...props} />
-  ),
+  li: (props: any) => <li className="my-2 ml-8 list-disc" {...props} />,
   a: (props: any) => (
     <CustomLink
       className="font-medium text-white underline-offset-4 hover:text-mint hover:underline"
@@ -62,12 +60,14 @@ const components = {
     />
   ),
   Video: ({
+    poster,
     videoSrc,
     noTilt = true,
   }: {
     videoSrc: string
+    poster: string
     noTilt: boolean
-  }) => <Video videoSrc={videoSrc} noTilt={noTilt} />,
+  }) => <Video videoSrc={videoSrc} noTilt={noTilt} poster={poster} />,
   CodeGeniusFeatures: () => (
     <div className="not-prose grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {CODEGENIUS_FEATURES.map((category) => (

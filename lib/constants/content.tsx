@@ -43,7 +43,7 @@ export const CODEGENIUS_FEATURES: {
   icon: JSX.Element
 }[] = [
   {
-    title: "Smart Suggestiions",
+    title: "Smart Suggestions",
     slug: "/code-idea?mode=smart",
     description: "Start using Smart Suggestions and unblock your creativity.",
     icon: <Bot color={themeColors.morado} className="h-6 w-6 text-gray-500" />,
@@ -61,10 +61,10 @@ export const CODEGENIUS_FEATURES: {
     ),
   },
   {
-    title: "Code Performance",
+    title: "Code Optimization",
     slug: "/code-idea?mode=improve",
     description:
-      "Improve and boost your code performance with a just few clicks",
+      "Improve and boost your code performance with just a few clicks",
     icon: (
       <Gauge color={themeColors.morado} className="h-6 w-6 text-gray-500" />
     ),
