@@ -28,7 +28,7 @@ export async function generateMetadata({
   const { title, description } = category
 
   return constructMetadata({
-    title: `${title} Posts `,
+    title: `${title}`,
     description,
     image: `/api/og/help?title=${encodeURIComponent(
       title,

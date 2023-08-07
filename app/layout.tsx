@@ -20,7 +20,7 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: {
     default: "Code Genius",
-    template: "%s | Code Genius",
+    template: "Code Genius - %s ",
   },
   openGraph: {
     title: "Code Genius",

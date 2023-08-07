@@ -5,8 +5,8 @@ import { allBlogPosts } from "contentlayer/generated"
 import CategoryNav from "./category-nav"
 
 export const metadata = constructMetadata({
-  title: "Blog – Code Genius",
-  description: "Latest news and updates from Dub.",
+  title: "Blog",
+  description: "Latest news and updates from Code Genius.",
 })
 
 export default async function Blog() {

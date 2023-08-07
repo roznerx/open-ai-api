@@ -11,12 +11,12 @@ export const BLOG_CATEGORIES: {
   description: string
 }[] = [
   {
-    title: "Company updates",
+    title: "Latest news and company updates",
     slug: "company",
-    description: "The latest news from Code Genius",
+    description: "The latest news from Code Genius.",
   },
   {
-    title: "AI updates",
+    title: "Latest AI updates",
     slug: "ai",
     description: "The latest news from AI",
   },

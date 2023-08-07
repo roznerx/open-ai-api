@@ -109,7 +109,7 @@ export default async function BlogArticle({
               blurDataURL={thumbnailBlurhash}
               width={1200}
               height={630}
-              alt={data.title || "Blog image"}
+              alt={data.title}
               priority // cause it's above the fold
             />
             <MDX
