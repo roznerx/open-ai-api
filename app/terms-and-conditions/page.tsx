@@ -1,5 +1,4 @@
 import { getDictionary } from "app/(lang)/dictionaries"
-import Footer from "app/components/Footer"
 import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
 import { authOptions } from "pages/api/auth/[...nextauth]"
@@ -19,7 +18,6 @@ export default async function Page() {
     <div className="flex min-h-screen flex-nowrap">
       <div className="mx-auto max-w-max pb-10">
         <Client translations={dictionary.terms} />
-        <Footer translations={dictionary.footer} session={session} />
       </div>
     </div>
   )

@@ -7,6 +7,7 @@ import { usePathname, useRouter } from "next/navigation"
 
 import { useState } from "react"
 import Feedback from "./Feedback"
+import { cn } from "@/lib/utils"
 
 export default function Header({
   translations,
@@ -17,12 +18,13 @@ export default function Header({
   userHasAccount?: any
   translations?: any
 }) {
-  const pathname = usePathname()
+  const pathName = usePathname()
   const shouldJustifyBetween =
-    pathname == "/" ||
-    pathname == "/pricing" ||
-    pathname == "/terms-and-conditions" ||
-    pathname == "/privacy"
+    pathName == "/" ||
+    pathName?.startsWith("/blog") ||
+    pathName == "/pricing" ||
+    pathName == "/terms-and-conditions" ||
+    pathName == "/privacy"
   const [showWidget, setShowWidget] = useState(false)
   const router = useRouter()
   return (
@@ -40,19 +42,25 @@ export default function Header({
         >
           <div
             className={`${
-              pathname !== "/" && session ? "sm:ml-20" : "sm:ml-6"
+              pathName !== "/" && session ? "sm:ml-20" : "sm:ml-6"
             } ml-4 pt-2`}
           >
             <Link href="/">
               <div className={`flex`}>
+                {/* <div className="mx-auto ml-1 h-8 w-8 rounded-full border border-black"> */}
                 <Image
                   src={"/logo/code-genius.svg"}
                   width={32}
                   height={32}
                   alt="Code Genius"
                 />
+                {/* </div> */}
                 <h1
-                  className={`sm:text-xl sm:text-xl ml-2 bg-gradient-to-tl from-mint to-blue
+                  className={`sm:text-xl sm:text-xl ml-2  ${
+                    pathName?.startsWith("/blog")
+                      ? "bg-purple-900"
+                      : "bg-gradient-to-r from-mint to-blue"
+                  }
                     bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
                 >
                   Code Genius
@@ -60,25 +68,38 @@ export default function Header({
               </div>
             </Link>
           </div>
-          <div className="mb-3 mr-1 flex h-8 pb-2 sm:mt-0">
+          <div className="mb-3 mr-1 flex h-8 pb-2 font-semibold sm:mt-0">
             {!session && (
-              <Link href={"/pricing"}>
-                <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
-                  {translations?.menu?.pricing}
-                </p>
-              </Link>
+              <>
+                <Link href={"/pricing"}>
+                  <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
+                    {translations?.menu?.pricing}
+                  </p>
+                </Link>
+                <Link href={"/blog"}>
+                  <p className="mr-3 mt-4 hidden cursor-pointer font-sans text-white sm:mr-6 sm:block ">
+                    Blog
+                  </p>
+                </Link>
+              </>
             )}
             <div
-              onClick={() => router.push(`${pathname}/?action=signUp`)}
-              className={`my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg sm:mr-6 ${
-                !session ? "border border-mint" : "bg-transparent"
-              }  p-[1.5px] font-sans`}
+              onClick={() => router.push(`${pathName}/?action=signUp`)}
+              className={cn(
+                "my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
+              )}
             >
               {!session && (
                 <div
-                  className={`relative h-[37px] w-auto rounded-lg bg-purple-700 px-2`}
+                  className={cn(
+                    "relative h-[37px] w-auto rounded-lg bg-mint px-2",
+                  )}
                 >
-                  <p className="text-sm my-auto px-2 pt-1 text-center leading-7 text-gray-50 ">
+                  <p
+                    className={cn(
+                      "text-sm my-auto px-2 pt-1 text-center leading-7 text-purple-900",
+                    )}
+                  >
                     {userHasAccount
                       ? translations?.login
                       : translations?.register}
@@ -86,7 +107,6 @@ export default function Header({
                 </div>
               )}
             </div>
-
             {session && (
               <div className="mr-14 mt-1 hidden flex-col items-end transition-all sm:flex ">
                 <button

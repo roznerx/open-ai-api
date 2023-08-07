@@ -5,6 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import ContactFormModal from "./modals/ContactFormModal"
 import { usePathname } from "next/navigation"
+import { cn } from "@/lib/utils"
 
 export default function Footer({
   session,
@@ -17,7 +18,7 @@ export default function Footer({
   const pathName = usePathname()
   const shouldShowFooter =
     pathName == "/" ||
-    pathName == "/blog" ||
+    pathName?.startsWith("/blog") ||
     pathName == "/terms-and-conditions" ||
     pathName == "/privacy"
   return (
@@ -29,28 +30,33 @@ export default function Footer({
             isOpen={openContactForm}
             setIsOpen={setOpenContactForm}
           />
-          <div className="mx-auto flex w-screen flex-col bg-purple-900  font-sans text-white">
+          <div
+            className={cn(
+              "mx-auto flex w-screen flex-col border-t border-gray-200 bg-purple-900 font-sans text-white",
+              { "border-purple-500": pathName?.startsWith("/blog") },
+            )}
+          >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">
               <div className="justify-center">
                 <Link href="/" className={`mt-7 flex sm:mx-0 sm:ml-2`}>
                   <Image
                     src={"/logo/code-genius.svg"}
-                    width={38}
-                    height={38}
-                    className={"-mr-1"}
+                    width={32}
+                    height={32}
                     alt="Code Genius"
                   />
 
                   <h1
                     className={`text-lg sm:text-xl sm:text-xl ml-3 mt-2 
-                 bg-gradient-to-r from-[#A1FFE0] to-[#2C9DC0] bg-clip-text
+                    bg-gradient-to-r from-mint to-blue
+                  bg-clip-text
                  font-sans text-2xl font-bold tracking-tight text-transparent max-md:pt-4 max-sm:pt-0 sm:leading-6`}
                   >
                     Code Genius
                   </h1>
                 </Link>
               </div>
-              <div className="mt-8 flex sm:pt-2">
+              <div className={cn("mt-8 flex text-white sm:pt-2")}>
                 <div
                   onClick={() => setOpenContactForm(true)}
                   className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
@@ -86,8 +92,20 @@ export default function Footer({
                 </Link>
               </div>
             </div>
-            <div className=" w-screen content-center border-t border-gray-400 px-5 py-4">
-              <p className="text-center">{translations?.copy}</p>
+            <div
+              className={`w-screen content-center border-t ${
+                pathName?.startsWith("/blog")
+                  ? "border-none"
+                  : "border-gray-400"
+              }  px-5 py-4`}
+            >
+              <p
+                className={cn("text-center font-normal text-gray-300", {
+                  "text-white": pathName?.startsWith("/blog"),
+                })}
+              >
+                {translations?.copy}
+              </p>
             </div>
           </div>
         </footer>

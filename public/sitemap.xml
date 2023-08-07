@@ -31,4 +31,16 @@
     <loc>https://www.code-genius.dev/terms-and-conditions</loc>
     <lastmod>2023-06-04</lastmod>
     </url>
+    <url>
+        <loc>https://www.code-genius.dev/blog</loc>
+        <lastmod>2023-07-29</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:3000/blog/introducing-code-genius</loc>
+        <lastmod>2023-07-29</lastmod>
+    </url>
+    <url>
+        <loc>http://localhost:3000/blog/from-doce-idea</loc>
+        <lastmod>2023-07-29</lastmod>
+    </url>
 </urlset>

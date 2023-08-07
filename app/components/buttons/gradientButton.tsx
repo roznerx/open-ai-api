@@ -20,7 +20,7 @@ export default function GradientButton({
   return (
     <div
       onClick={onClick}
-      className={`my-4 mx-auto mt-2 flex w-[${width}] cursor-pointer flex-row items-center justify-center 
+      className={`mx-auto my-4 mt-2 flex w-[${width}] cursor-pointer flex-row items-center justify-center 
 rounded-lg bg-gradient-to-r from-[${from}] to-[${to}] p-[2px] font-sans 
 sm:items-start sm:justify-center`}
     >

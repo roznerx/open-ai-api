@@ -8,7 +8,11 @@
     "checkJs": true,
     "paths": {
       "app/*": ["app/*"],
-      "@/lib/*": ["lib/*"]
+      "@/styles/*": ["styles/*"],
+      "@/components/*": ["app/components/*"],
+      "@/lib/*": ["lib/*"],
+      "#/ui/*": ["app/ui/*"],
+      "contentlayer/generated": ["./.contentlayer/generated"]
     },
     "plugins": [
       {
@@ -34,7 +38,8 @@
     "adapters/harperdb.ts",
     ".next/types/**/*.ts",
     "pages/api/auth/[...nextauth].ts",
-    "utils/confetti.js"
+    "utils/confetti.js",
+    ".contentlayer/generated"
   ],
   "exclude": ["node_modules"]
 }

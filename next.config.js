@@ -1,3 +1,5 @@
+const { withContentlayer } = require("next-contentlayer")
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
@@ -5,8 +7,11 @@ const nextConfig = {
   images: {
     domains: [
       "avatars.githubusercontent.com",
+      "d2vwwcvoksz7ty.cloudfront.net",
+      "code-genius.dev",
       "avatar.vercel.sh",
       "lh3.googleusercontent.com",
+      "pbs.twimg.com",
       "api.producthunt.com",
       "tailwindui.com",
       "avatars.dicebear.com",
@@ -79,4 +84,4 @@ const securityHeaders = [
   },
 ]
 
-module.exports = nextConfig
+module.exports = withContentlayer(nextConfig)

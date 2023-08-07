@@ -1,8 +1,5 @@
 import { getDictionary } from "app/(lang)/dictionaries"
-import Footer from "app/components/Footer"
-import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
-import { authOptions } from "pages/api/auth/[...nextauth]"
 import Client from "./client"
 
 export const metadata = {
@@ -10,7 +7,6 @@ export const metadata = {
 }
 
 export default async function Page() {
-  const session = await getServerSession(authOptions)
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(lang)
@@ -23,7 +19,6 @@ export default async function Page() {
             modalTranslations={dictionary.modals.signIn}
             translations={dictionary.privacy}
           />
-          <Footer translations={dictionary.footer} session={session} />
         </div>
       </div>
     </>

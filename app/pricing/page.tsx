@@ -18,7 +18,7 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex w-full flex-col items-center justify-center text-center">
+      <main className="flex w-full flex-col items-center justify-center bg-purple-900 text-center">
         {session && (
           <SideBar
             translations={dictionary.sidebar}
