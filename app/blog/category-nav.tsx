@@ -8,7 +8,7 @@ export default function CategoryNav() {
   const { slug } = useParams() as { slug?: string }
   return (
     <>
-      <div className="mt-6 flex items-center justify-center space-x-4">
+      <div className="mt-6 flex items-center justify-center sm:space-x-4">
         <CategoryLink title="All" href="/blog" active={!slug} />
 
         {BLOG_CATEGORIES.map((category) => (

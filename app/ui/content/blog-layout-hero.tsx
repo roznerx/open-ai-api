@@ -12,7 +12,7 @@ export default function BlogLayoutHero() {
   const data = BLOG_CATEGORIES.find((category) => category.slug === slug)
 
   return (
-    <MaxWidthWrapper className="bg-gradient-to-r from-mint to-blue">
+    <MaxWidthWrapper className="h-auto bg-gradient-to-r from-mint to-blue sm:h-48 sm:pb-12">
       <div className="mt-12">
         <div className="flex items-center justify-center">
           <h2 className="mt-7 font-sans text-3xl font-semibold text-purple-900 sm:text-4xl">
@@ -22,7 +22,7 @@ export default function BlogLayoutHero() {
         <div className="flex items-center justify-center text-purple-500">
           <h3 className="my-2 w-4/5 text-center text-2xl sm:text-3xl">
             {data?.description ||
-              "Find out the latest news on AI and Code Genius."}
+              "Discover the most recent updates regarding artificial intelligence."}
           </h3>
         </div>
       </div>
