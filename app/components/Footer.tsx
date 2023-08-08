@@ -32,7 +32,7 @@ export default function Footer({
           />
           <div
             className={cn(
-              "mx-auto flex w-screen flex-col border-t border-purple-500 bg-purple-900 font-sans text-white",
+              "mx-auto flex w-screen flex-col border-t border-purple-500  bg-purple-900 font-sans text-white shadow-xl shadow-white",
             )}
           >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">

@@ -12,8 +12,8 @@ export default function BlogLayoutHero() {
   const data = BLOG_CATEGORIES.find((category) => category.slug === slug)
 
   return (
-    <MaxWidthWrapper className="h-auto bg-gradient-to-r from-mint to-blue sm:h-48 sm:pb-12">
-      <div className="mt-12">
+    <MaxWidthWrapper className="h-52 bg-gradient-to-r from-mint to-blue pb-20 sm:h-48">
+      <div className="mt-12 flex flex-col justify-center">
         <div className="flex items-center justify-center">
           <h2 className="mt-7 font-sans text-3xl font-semibold text-purple-900 sm:text-4xl">
             {data?.title || "Our latest news and updates"}
