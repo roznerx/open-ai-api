@@ -32,8 +32,7 @@ export default function Footer({
           />
           <div
             className={cn(
-              "mx-auto flex w-screen flex-col border-t border-gray-200 bg-purple-900 font-sans text-white",
-              { "border-purple-500": pathName?.startsWith("/blog") },
+              "mx-auto flex w-screen flex-col border-t border-purple-500 bg-purple-900 font-sans text-white",
             )}
           >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">
@@ -71,10 +70,10 @@ export default function Footer({
                   {translations?.pricing}
                 </Link>
                 <Link
-                  href="https://discord.gg/3tbJD8vZQw"
+                  href="/blog"
                   className="cursor-pointer px-4 sm:px-2 sm:text-[16px]"
                 >
-                  Discord
+                  {translations?.blog}
                 </Link>
                 <Link
                   href="/terms-and-conditions"
@@ -92,13 +91,7 @@ export default function Footer({
                 </Link>
               </div>
             </div>
-            <div
-              className={`w-screen content-center border-t ${
-                pathName?.startsWith("/blog")
-                  ? "border-none"
-                  : "border-gray-400"
-              }  px-5 py-4`}
-            >
+            <div className={`w-screen content-center px-5 py-4`}>
               <p
                 className={cn("text-center font-normal text-gray-300", {
                   "text-white": pathName?.startsWith("/blog"),
