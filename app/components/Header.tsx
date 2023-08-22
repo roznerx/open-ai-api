@@ -7,7 +7,7 @@ import { usePathname, useRouter } from "next/navigation"
 
 import { useState } from "react"
 import Feedback from "./Feedback"
-import { cn } from "@/lib/utils"
+import { cn } from "#/lib/utils"
 
 export default function Header({
   translations,

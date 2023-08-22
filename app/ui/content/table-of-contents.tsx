@@ -1,6 +1,6 @@
 "use client"
 
-import { cn } from "@/lib/utils"
+import { cn } from "#/lib/utils"
 import useCurrentAnchor from "hooks/use-current-anchor"
 import Link from "next/link"
 

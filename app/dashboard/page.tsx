@@ -1,4 +1,4 @@
-import { harperClient } from "@/lib/harperdb"
+import { harperClient } from "#/lib/harperdb"
 import { getDictionary } from "app/(lang)/dictionaries"
 import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"

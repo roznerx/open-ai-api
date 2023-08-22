@@ -1,4 +1,4 @@
-import { harperClient } from "@/lib/harperdb"
+import { harperClient } from "#/lib/harperdb"
 import { Card, Title, Text } from "@tremor/react"
 
 import Search from "../components/search"

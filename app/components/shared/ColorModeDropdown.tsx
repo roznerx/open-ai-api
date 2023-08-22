@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { SunMedium, Moon } from "lucide-react"
 import Popover from "app/components/shared/Popover"
 import { motion } from "framer-motion"
-import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants"
+import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "#/lib/constants"
 import useLocalStorage from "hooks/use-localstorage"
 
 export default function ColorModeDropdown() {
@@ -31,7 +31,7 @@ export default function ColorModeDropdown() {
           <div className="top-0 w-full rounded-md bg-white p-2 dark:bg-gray-700 sm:w-56">
             <button
               onClick={() => setColorMode("dark")}
-              className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100 hover:dark:bg-white/20"
+              className="text-sm relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left transition-all duration-75 hover:bg-gray-100 hover:dark:bg-white/20"
             >
               <Moon
                 className="h-4 w-4"
@@ -41,7 +41,7 @@ export default function ColorModeDropdown() {
             </button>
             <button
               onClick={() => setColorMode("ligth")}
-              className="relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left text-sm transition-all duration-75 hover:bg-gray-100 hover:dark:bg-white/20"
+              className="text-sm relative flex w-full items-center justify-start space-x-2 rounded-md p-2 text-left transition-all duration-75 hover:bg-gray-100 hover:dark:bg-white/20"
             >
               <SunMedium
                 className="h-4 w-4"

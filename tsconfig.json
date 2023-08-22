@@ -10,7 +10,7 @@
       "app/*": ["app/*"],
       "@/styles/*": ["styles/*"],
       "@/components/*": ["app/components/*"],
-      "@/lib/*": ["lib/*"],
+      "#/lib/*": ["lib/*"],
       "#/ui/*": ["app/ui/*"],
       "contentlayer/generated": ["./.contentlayer/generated"]
     },

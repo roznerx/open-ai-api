@@ -1,4 +1,4 @@
-import { harperClient } from "@/lib/harperdb"
+import { harperClient } from "#/lib/harperdb"
 
 import Editor from "./editor"
 

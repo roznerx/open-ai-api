@@ -1,4 +1,4 @@
-import { timeAgo } from "@/lib/utils"
+import { timeAgo } from "#/lib/utils"
 import BlurImage from "#/ui/blur-image"
 import React, { ReactElement } from "react"
 

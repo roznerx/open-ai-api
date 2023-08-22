@@ -1,12 +1,16 @@
 import NextAuth, { AuthOptions } from "next-auth"
-
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
-import { HarperDBAdapter } from "adapters/harperdb"
+import { PrismaAdapter } from "@next-auth/prisma-adapter"
+import prisma from "#/lib/prisma"
+import WelcomeEmail from "emails/welcome-email"
+import { sendEmail } from "emails"
+
+const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-  adapter: HarperDBAdapter(),
+  adapter: PrismaAdapter(prisma),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -19,57 +23,97 @@ export const authOptions: AuthOptions = {
       allowDangerousEmailAccountLinking: true,
     }),
   ],
+  session: { strategy: "jwt" },
+  cookies: {
+    sessionToken: {
+      name: `${VERCEL_DEPLOYMENT ? "__Secure-" : ""}next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: "lax",
+        path: "/",
+        // When working on localhost, the cookie domain must be omitted entirely (https://stackoverflow.com/a/1188145)
+        domain: VERCEL_DEPLOYMENT ? "code-genius.dev" : undefined,
+        secure: VERCEL_DEPLOYMENT,
+      },
+    },
+  },
   events: {
-    async signIn({ user }) {
-      //@ts-ignore
-      if (user && user?.registered) {
-        try {
-          const payload = {
-            isNewUser: true,
-            name: user?.name,
-            email: user?.email,
-          }
-          await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
-            method: "POST",
-            body: JSON.stringify(payload),
+    async signIn(message) {
+      if (message.isNewUser) {
+        const email = message.user.email as string
+        const user = await prisma.user.findUnique({
+          where: { email },
+          select: {
+            name: true,
+            createdAt: true,
+          },
+        })
+        // only send the welcome email if the user was created in the last 10s
+        // (this is a workaround because the `isNewUser` flag is triggered when a user does `dangerousEmailAccountLinking`)
+        if (
+          user?.createdAt &&
+          new Date(user.createdAt).getTime() > Date.now() - 10000
+        ) {
+          sendEmail({
+            subject: "Welcome to Dub.sh!",
+            email,
+            react: WelcomeEmail({
+              name: user.name || null,
+            }),
+            marketing: true,
           })
-        } catch (error) {
-          console.error("error sending welcome email: ", error)
         }
       }
     },
   },
-
   callbacks: {
-    async signIn({ user, account }) {
-      return user || account ? true : false
-    },
-    async session({ session, user }) {
-      if (user && user.id) {
-        const newSession = {
-          ...session,
-          user: {
-            ...user,
-            name:
-              (user && user?.name) ||
-              session?.user?.name ||
-              user.email.split("@")[0],
-            id: user.id,
-          },
-        }
-
-        return newSession
-      } else {
-        return session
+    async signIn({ user, account, profile }) {
+      if (!user.email) {
+        return false
       }
+      if (account?.provider === "google") {
+        const userExists = await prisma.user.findUnique({
+          where: { email: user.email },
+          select: { name: true },
+        })
+        // if the user already exists via email,
+        // update the user with their name and image from Google
+        if (userExists && !userExists.name) {
+          await prisma.user.update({
+            where: { email: user.email },
+            data: {
+              name: profile?.name,
+              // @ts-ignore - this is a bug in the types, `picture` is a valid on the `Profile` type
+              image: profile?.picture,
+            },
+          })
+        }
+      }
+      return true
     },
-    async redirect({ url, baseUrl }) {
-      // if (!url.includes("/code-idea")) return `${url}/code-idea`
-      // Allows relative callback URLs
-      if (url && url.startsWith("/")) return `${baseUrl}${url}`
-      // Allows callback URLs on the same origin
-      else if (new URL(url).origin === baseUrl) return url
-      return baseUrl
+    jwt: async ({ token, user, trigger }) => {
+      console.log("token:", token)
+      if (!token.email) {
+        return {}
+      }
+      if (user) {
+        token.user = user
+      }
+      if (trigger === "update") {
+        const refreshedUser = await prisma.user.findUnique({
+          where: { id: token.sub },
+        })
+        token.user = refreshedUser
+      }
+      return token
+    },
+    session: async ({ session, token }) => {
+      session.user = {
+        id: token.sub,
+        // @ts-ignore
+        ...(token || session).user,
+      }
+      return session
     },
   },
   pages: {

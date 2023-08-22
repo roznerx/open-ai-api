@@ -5,7 +5,7 @@ import Image from "next/image"
 import Link from "next/link"
 import ContactFormModal from "./modals/ContactFormModal"
 import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
+import { cn } from "#/lib/utils"
 
 export default function Footer({
   session,

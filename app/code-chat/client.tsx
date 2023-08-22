@@ -9,7 +9,7 @@ import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "hooks/use-chat"
 import { updateApiCallsAndCredits } from "utils/helpers"
-import { AI_MOOD } from "@/lib/constants"
+import { AI_MOOD } from "#/lib/constants"
 
 export default function Client({ session, translations, modalTranslations }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)

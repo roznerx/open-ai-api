@@ -2,7 +2,7 @@
 
 import { BlogPost } from "contentlayer/generated"
 import BlurImage from "../blur-image"
-import { formatDate } from "@/lib/utils"
+import { formatDate } from "#/lib/utils"
 import Link from "next/link"
 import { Chip } from "@material-tailwind/react"
 import Author from "./author"

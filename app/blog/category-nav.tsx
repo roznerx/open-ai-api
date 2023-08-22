@@ -1,6 +1,6 @@
 "use client"
 
-import { BLOG_CATEGORIES } from "@/lib/constants/content"
+import { BLOG_CATEGORIES } from "#/lib/constants/content"
 import { CategoryLink } from "app/ui/content/blog-layout-hero"
 import { useParams } from "next/navigation"
 

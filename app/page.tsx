@@ -4,7 +4,7 @@ import { headers, cookies } from "next/headers"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 
 import Client from "./client"
-import { harperClient } from "@/lib/harperdb"
+import { harperClient } from "#/lib/harperdb"
 import { getDictionary } from "./(lang)/dictionaries"
 
 export const metadata = {

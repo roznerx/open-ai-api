@@ -43,7 +43,6 @@ const nextConfig = {
 // https://nextjs.org/docs/advanced-features/security-headers
 const ContentSecurityPolicy = `
     img-src * blob: data:;
-    connect-src *;
 `
 
 const securityHeaders = [

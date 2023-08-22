@@ -1,9 +1,10 @@
-import WelcomeEmail from "app/email/welcome"
+import WelcomeEmail from "emails/welcome-email"
 import type { NextApiRequest, NextApiResponse } from "next"
 
 import { Resend } from "resend"
 
 const resend = new Resend(process.env.RESEND_API_KEY)
+console.log("resend:", resend)
 
 export default async function handler(
   req: NextApiRequest,
@@ -19,10 +20,10 @@ export default async function handler(
     : `Code Genius </> ${bodyRequest.name}`
   try {
     const data = await resend.sendEmail({
-      from: "welcome@code-genius.dev",
+      from: "delivered@resend.dev",
       to: bodyRequest.email,
       subject: subject,
-      react: WelcomeEmail({ username: bodyRequest.name }),
+      react: WelcomeEmail({ name: bodyRequest.name }),
     })
 
     res.status(200).json(data)

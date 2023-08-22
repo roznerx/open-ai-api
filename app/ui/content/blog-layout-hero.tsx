@@ -1,7 +1,7 @@
 "use client"
 
-import { BLOG_CATEGORIES } from "@/lib/constants/content"
-import { cn } from "@/lib/utils"
+import { BLOG_CATEGORIES } from "#/lib/constants/content"
+import { cn } from "#/lib/utils"
 import MaxWidthWrapper from "app/components/shared/max-width-wrapper"
 import Link from "next/link"
 import { useParams } from "next/navigation"

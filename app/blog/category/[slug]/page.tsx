@@ -1,9 +1,9 @@
 import { notFound } from "next/navigation"
 import { allBlogPosts } from "contentlayer/generated"
-import { BLOG_CATEGORIES } from "@/lib/constants/content"
+import { BLOG_CATEGORIES } from "#/lib/constants/content"
 import { Metadata } from "next"
-import { constructMetadata } from "@/lib/utils"
-import { getBlurDataURL } from "@/lib/images"
+import { constructMetadata } from "#/lib/utils"
+import { getBlurDataURL } from "#/lib/images"
 import BlogCard from "#/ui/content/blog-card"
 import CategoryNav from "app/blog/category-nav"
 

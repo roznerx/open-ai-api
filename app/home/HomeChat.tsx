@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react"
 import dynamic from "next/dynamic"
 
-import { AI_MOOD } from "@/lib/constants"
+import { AI_MOOD } from "#/lib/constants"
 
 import { useChat } from "hooks/use-chat"
 
