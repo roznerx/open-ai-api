@@ -20,16 +20,9 @@ export default function Author({
     },
     croch: {
       name: "Carolina Rodriguez",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/fmerian.jpg",
+      image: "/authors/croch.png",
     },
-    steventey: {
-      name: "Steven Tey",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/steventey.jpg",
-    },
-    fmerian: {
-      name: "Flo Merian",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/fmerian.jpg",
-    },
+   
   }
 
   return imageOnly ? (
