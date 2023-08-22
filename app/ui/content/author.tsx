@@ -22,13 +22,12 @@ export default function Author({
       name: "Carolina Rodriguez",
       image: "/authors/croch.png",
     },
-   
   }
 
   return imageOnly ? (
     <BlurImage
       src={authors[username].image}
-      alt={authors[username].namee}
+      alt={authors[username].name}
       width={36}
       height={36}
       className="rounded-full transition-all group-hover:brightness-90"
