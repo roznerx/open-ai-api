@@ -82,7 +82,7 @@
     "seeVideo": "Watch video"
   },
   "sidebar": {
-    "credits": "Créditos",
+    "credits": "Credits",
     "dashboard": "Dashboard",
     "suggestions": "Suggestions",
     "testing": "Testing",
@@ -92,7 +92,7 @@
   },
   "codeIdea": {
     "footer": {
-      "lang": "Lenguage",
+      "lang": "Language",
       "lib": "UI Library",
       "clear": "Clear Panel",
       "stop": "Stop generation",
