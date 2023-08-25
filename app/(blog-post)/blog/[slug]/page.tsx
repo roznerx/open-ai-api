@@ -104,10 +104,10 @@ export default async function BlogArticle({
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 sm:py-10">
           <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-purple-700 pb-8 md:col-span-3">
             <BlurImage
-              className="aspect-[1200/630] object-cover sm:rounded-t-xl"
+              className="aspect-[1600/630] object-cover sm:rounded-t-xl"
               src={data.image}
               blurDataURL={thumbnailBlurhash}
-              width={1200}
+              width={1600}
               height={630}
               alt={data.title}
               priority // cause it's above the fold
