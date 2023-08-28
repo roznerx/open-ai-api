@@ -92,7 +92,6 @@ export const authOptions: AuthOptions = {
       return true
     },
     jwt: async ({ token, user, trigger }) => {
-      console.log("token:", token)
       if (!token.email) {
         return {}
       }

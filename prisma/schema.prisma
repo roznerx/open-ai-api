@@ -15,12 +15,34 @@ generator client {
 model User {
   id            String    @id @default(cuid())
   name          String?
+  apiCalls      Int? 
+  credits       Int       @default(0)
+  tokensCount   Int? 
   email         String?   @unique
   emailVerified DateTime?
   image         String?
   accounts       Account[]
   sessions       Session[]
   createdAt      DateTime       @default(now())
+}
+model CheckoutSessions {
+  id            String    @id @default(cuid())
+  amount        Int 
+  checkoutURL   String    @db.VarChar(500)
+  confirmed     Boolean
+  email         String
+  name          String
+  userId        String
+  credits       Int             @default(0)
+  createdAt     DateTime?       @default(now())
+  updatedAt     DateTime?       @default(now())
+}
+model Trials {
+  id            String    @id @default(cuid())
+  apiCalls      Int 
+  ip            Int 
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now())
 }
 
 model Account {

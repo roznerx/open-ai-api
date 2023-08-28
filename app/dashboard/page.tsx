@@ -1,4 +1,4 @@
-import { harperClient } from "#/lib/harperdb"
+import prisma from "#/lib/prisma"
 import { getDictionary } from "app/(lang)/dictionaries"
 import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"
@@ -16,7 +16,7 @@ export default async function Dashboard() {
   if (!session) {
     redirect("/?referer=/dashboard")
   }
-  let harperUser
+
   let opConfirmation = false
   let totalCredits: number = 0
   let purchasedCredits: number = 0
@@ -26,34 +26,36 @@ export default async function Dashboard() {
   const dictionary = await getDictionary(lang)
   //@ts-ignore
   const userId = session && session.user?.id
-
+  console.log("session:", session)
+  let user
   //@ts-ignore
-  if (session && session.user?.id) {
-    harperUser = await harperClient(
-      {
-        operation: "sql",
-        sql: `SELECT * FROM Auth.Users WHERE id = "${userId}"`,
+  if (session?.user?.id) {
+    user = await prisma.user.findUnique({
+      where: {
+        id: userId,
       },
-      false,
-    )
+    })
   }
 
-  const checkoutSession = await harperClient(
-    {
-      operation: "sql",
-      //@ts-ignore
-      sql: `SELECT * FROM Auth.CheckoutSessions WHERE userId = "${userId}" AND credits > 0 ORDER BY __createdtime__ ASC LIMIT 1`,
+  console.log("Prisma user:", user)
+
+  const checkoutSession = await prisma.checkoutSessions.findMany({
+    where: {
+      userId: userId,
+      credits: {
+        gt: 0,
+      },
     },
-    false,
-  )
+  })
+  console.log(" Prisma CheckoutSession:", checkoutSession)
 
-  if (harperUser[0] && !checkoutSession[0]) {
-    totalCredits = harperUser[0]?.credits
-  } else if (userId && harperUser[0] && checkoutSession[0]) {
+  if (user && !checkoutSession[0]) {
+    totalCredits = user?.credits
+  } else if (userId && user && checkoutSession[0]) {
     //Store existing credits
-    existingCredits = harperUser[0]?.credits
+    existingCredits = user?.credits
 
-    // console.log("checkoutSession[0]?.credits", checkoutSession[0]?.credits)
+    //   // console.log("checkoutSession[0]?.credits", checkoutSession[0]?.credits)
 
     purchasedCredits =
       checkoutSession.length > 0 ? checkoutSession[0]?.credits : 0
@@ -65,72 +67,58 @@ export default async function Dashboard() {
 
     if (totalCredits > 0) {
       const updatedUser = {
-        ...harperUser[0],
+        user,
         credits: totalCredits,
       }
-      //UPDATE USER WITH TOTAL CREDITS
-      await harperClient({
-        operation: "update",
-        schema: "Auth",
-        table: "Users",
-        hash_values: [
-          {
-            id: userId,
-          },
-        ],
-        records: [updatedUser],
-      })
-    }
-    //UPDATE CHECKOUT SESSION TO CONFIRMED AND SET CREDITS TO 0
-    const updatedCheckout = {
-      ...checkoutSession[0],
-      confirmed: true,
-      credits: 0,
+      //** UPDATE USER WITH TOTAL CREDITS |  MIGRATE THIS TO PRISMA **
+      // await harperClient({
+      //   operation: "update",
+      //   schema: "Auth",
+      //   table: "Users",
+      //   hash_values: [
+      //     {
+      //       id: userId,
+      //     },
+      //   ],
+      //   records: [updatedUser],
+      // })
     }
 
-    const updatedOp = await harperClient(
-      {
-        operation: "update",
-        schema: "Auth",
-        table: "CheckoutSessions",
-        hash_values: [
-          {
-            id: checkoutSession[0]?.id,
-          },
-        ],
-        records: [updatedCheckout],
-      },
-      false,
-    )
+    //UPDATE CHECKOUT SESSION TO CONFIRMED AND SET CREDITS TO 0 |  MIGRATE THIS TO PRISMA **
+    // const updatedCheckout = {
+    //   ...checkoutSession[0],
+    //   confirmed: true,
+    //   credits: 0,
+    // }
 
-    if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
-      opConfirmation = true
-      const fetchUrl = `${
-        process.env.NEXTAUTH_URL
-      }/api/email/generate-credits-html?name=${
-        session?.user?.name
-      }&credits=${purchasedCredits}&ts${new Date().getTime()}`
+    //   if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
+    //     opConfirmation = true
+    //     const fetchUrl = `${
+    //       process.env.NEXTAUTH_URL
+    //     }/api/email/generate-credits-html?name=${
+    //       session?.user?.name
+    //     }&credits=${purchasedCredits}&ts${new Date().getTime()}`
 
-      const headers = new Headers()
-      headers.append("Content-Type", "application/json")
+    //     const headers = new Headers()
+    //     headers.append("Content-Type", "application/json")
 
-      const response = await fetch(fetchUrl, {
-        method: "GET",
-        headers: headers,
-      })
-      const { html } = await response.json()
+    //     const response = await fetch(fetchUrl, {
+    //       method: "GET",
+    //       headers: headers,
+    //     })
+    //     const { html } = await response.json()
 
-      const payload = {
-        name: session?.user?.name,
-        email: session?.user?.email,
-        html,
-      }
-      await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
-        method: "POST",
-        next: { revalidate: 0 },
-        body: JSON.stringify(payload),
-      })
-    }
+    //     const payload = {
+    //       name: session?.user?.name,
+    //       email: session?.user?.email,
+    //       html,
+    //     }
+    //     await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
+    //       method: "POST",
+    //       next: { revalidate: 0 },
+    //       body: JSON.stringify(payload),
+    //     })
+    //   }
   }
 
   return (

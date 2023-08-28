@@ -90,7 +90,7 @@ export default function Client({ session, translations }: ClientPropTye) {
           userId: session?.user?.id,
           name: session?.user?.name,
           checkoutURL: stripeSession?.session?.url,
-          created: stripeSession?.session?.created,
+          createdAt: stripeSession?.session?.created,
           amount: stripeSession?.session?.amount_total,
           confirmed: false,
         }),
