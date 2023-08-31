@@ -4,9 +4,7 @@ import React, { useEffect, useRef, useState } from "react"
 import dynamic from "next/dynamic"
 
 import { AI_MOOD } from "@/lib/constants"
-
-import { useChat } from "hooks/use-chat"
-
+import { useChat } from "ai/react"
 import useWindowSize from "hooks/use-window-size"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
@@ -67,6 +65,7 @@ export default function HomeChat({
       }
     },
   })
+  console.log("messages", messages)
 
   useEffect(() => {
     if (!session && userApiCalls >= 10 && isLoading) {
@@ -104,6 +103,7 @@ export default function HomeChat({
                 <CombinedMessages
                   bg="transparent"
                   userName={userName}
+                  //@ts-ignore
                   generatedMessages={messages.slice(1)}
                 />
               }

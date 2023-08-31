@@ -7,7 +7,7 @@ import Chat from "app/components/shared/Chat"
 import InputChat from "app/components/shared/InputChat"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
-import { useChat } from "hooks/use-chat"
+import { useChat } from "ai/react"
 import { updateApiCallsAndCredits } from "utils/helpers"
 import { AI_MOOD } from "@/lib/constants"
 
