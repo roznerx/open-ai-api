@@ -1,86 +1,92 @@
-import { User } from "lucide-react"
-import Image from "next/image"
-import React from "react"
-import { parseText, legacyParseText } from "utils/parseText"
-import { CodeMessagesProps } from "utils/types"
 import GenerateCode from "../GenerateCode"
+import { CodeMessagesProps } from "utils/types"
+import React from "react"
+import Image from "next/image"
+import { parseText, parseTextHome } from "utils/parseText"
 
 const LogoCodeGenius = React.memo(() => (
   <Image
     src={"/logo/code-genius.svg"}
-    width={33}
-    height={33}
+    width={32}
+    height={32}
     alt="Code Genius"
   />
 ))
 
-export const CombinedMessages: React.FC<CodeMessagesProps> = ({
-  pathName,
-  generatedMessages,
-  fontColor,
-  userName,
-  bg = "bg-purple-400",
-}) => {
+const UserAvatar = ({ username }) => {
   return (
-    <>
-      {generatedMessages.map((message) => {
-        const result =
-          pathName !== "/code-idea"
-            ? parseText({ message })
-            : legacyParseText({ text: message })
+    <div className="-ml-1 flex items-center justify-center">
+      <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado p-1 text-center font-medium ">
+        {username}
+      </span>
+    </div>
+  )
+}
 
-        return result.length
-          ? result.map((item: any, idx) => {
-              if (item.hasOwnProperty("text")) {
-                return (
-                  <div key={idx} className="mx-2 mt-2 flex">
-                    <div className="flex items-center justify-center">
-                      <div className="mr-2">
-                        {item.role === "user" ? (
-                          <div className="flex items-center justify-center">
-                            <span className="mx-auto flex h-8 w-8 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium">
-                              {userName ? (
-                                userName.substring(0, 1)
-                              ) : (
-                                <User size={20} color="white" />
-                              )}
-                            </span>
-                          </div>
-                        ) : item.text !== "" ? (
+export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
+  ({
+    userName,
+    isLegacy,
+    generatedMessages,
+    fontColor,
+  }: {
+    isLegacy?: boolean
+    userName?: string
+    generatedMessages: []
+    fontColor?: string
+  }) => {
+    console.log("generatedMessages", generatedMessages)
+
+    return (
+      <>
+        {generatedMessages.map((generatedMessage) => {
+          const result = isLegacy
+            ? parseTextHome(generatedMessage)
+            : parseText({
+                message: generatedMessage,
+              })
+          const { role } = generatedMessage
+
+          return result.length
+            ? result.map((item: any, idx) => {
+                if (item.hasOwnProperty("text")) {
+                  return (
+                    <div key={idx} className="mt-1 flex">
+                      <div className="ml-6 flex items-center justify-center">
+                        {role === "user" ? (
+                          <UserAvatar username={userName?.substring(0, 1)} />
+                        ) : (
                           <LogoCodeGenius />
-                        ) : null}
+                        )}
                       </div>
-                    </div>
-                    {item.text !== "" && (
-                      <div className={`w-full rounded-lg ${bg} p-2`}>
+                      <div
+                        className={`mx-auto ml-3 w-[92%] rounded-lg bg-purple-400 p-2`}
+                      >
                         <p
                           style={{ borderRadius: "0px" }}
-                          className={`ml-1 text-left leading-7 ${
+                          className={`ml-2 text-left leading-7 ${
                             fontColor ? fontColor : "text-white"
                           }`}
                         >
                           {item.text}
                         </p>
                       </div>
-                    )}
-                  </div>
-                )
-              } else {
-                return (
-                  <div className="mx-2" key={idx}>
+                    </div>
+                  )
+                } else {
+                  return (
                     <GenerateCode
+                      key={idx}
                       borderRadius="none"
                       align="start"
                       generatedCode={item.code}
                     />
-                  </div>
-                )
-              }
-            })
-          : null
-      })}
-    </>
-  )
-}
-
-export default CombinedMessages
+                  )
+                }
+              })
+            : null
+        })}
+      </>
+    )
+  },
+)

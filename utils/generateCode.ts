@@ -46,7 +46,7 @@ export async function generateCodeWithTurbo(
 
       setGeneratedCode((prev) => prev + chunkValue)
       if (done) {
-        setGeneratedCode((prev) => prev)
+        setGeneratedCode((prev) => prev + "<>")
       }
     }
   } catch (error) {
