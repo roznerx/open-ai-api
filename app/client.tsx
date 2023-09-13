@@ -1,7 +1,5 @@
 "use client"
 
-import { useSignInModal } from "./components/modals/SignInModal"
-
 import SuperHero from "./home/SuperHero"
 
 import Hero from "./home/Hero"
@@ -17,17 +15,13 @@ export default function Client({
   apiCalls,
   loggedUserData,
 }) {
-  const { setShowSignInModal } = useSignInModal({})
-
   return (
     <>
       <div className="absolute inset-0 animate-pulseCustom before:absolute before:inset-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-mint/30 before:to-blue/20 before:blur-[120px] before:content-[''] md:mx-auto md:h-[750px] md:w-[1250px] lg:flex"></div>
       <SuperHero translations={translations?.home?.superHero} />
       <HomeChat
-        setShowSignInModal={setShowSignInModal}
-        translations={translations?.home?.chat}
-        creditsModalTranslations={translations?.modals?.moreCredits}
         ip={ip}
+        translations={translations}
         apiCalls={apiCalls}
         session={session}
         loggedUserData={loggedUserData}
