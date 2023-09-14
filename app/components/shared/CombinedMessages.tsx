@@ -39,13 +39,13 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
 
     return (
       <>
-        {generatedMessages.map((generatedMessage) => {
+        {generatedMessages.map((generatedMessage: any) => {
           const result = isLegacy
             ? parseTextHome(generatedMessage)
             : parseText({
                 message: generatedMessage,
               })
-          const { role } = generatedMessage
+          const role = !isLegacy ? generatedMessage?.role : "system"
 
           return result.length
             ? result.map((item: any, idx) => {

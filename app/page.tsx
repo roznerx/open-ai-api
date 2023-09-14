@@ -27,6 +27,7 @@ export default async function Page() {
     operation: "sql",
     sql: `SELECT * FROM Auth.Trials WHERE ip = "${userIp}"`,
   })
+
   //@ts-ignore
   if (session && session.user?.id) {
     loggedUserData = await harperClient({
@@ -35,20 +36,20 @@ export default async function Page() {
       sql: `SELECT * FROM Auth.Users WHERE id = "${session.user?.id}"`,
     })
   }
+  // console.log("loggedUserData:", loggedUserData)
 
   const userUsage = (anonymousUserData && anonymousUserData[0]) || {}
+  console.log("userUsage:", userUsage)
 
   return (
-    <>
-      <main>
-        <Client
-          translations={dictionary}
-          loggedUserData={loggedUserData}
-          session={session}
-          ip={userIp}
-          apiCalls={userUsage?.apiCalls}
-        />
-      </main>
-    </>
+    <main>
+      <Client
+        translations={dictionary}
+        loggedUserData={loggedUserData}
+        session={session}
+        ip={userIp}
+        apiCalls={userUsage?.apiCalls}
+      />
+    </main>
   )
 }

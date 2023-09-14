@@ -58,7 +58,7 @@ export default function HomeChat({
   const [codeSentence, setCodeSentence] = useState("")
 
   const { SignInModal, setShowSignInModal } = useSignInModal({
-    tip: "Redeem your initial 25 credits 🎁",
+    tip: "Redeem your initial 25 credits.",
     translations,
   })
 
@@ -158,6 +158,7 @@ export default function HomeChat({
     () => generatedCode.split("<>").filter((i) => i !== ""),
     [generatedCode],
   )
+  console.log("generatedMessages:", generatedMessages)
 
   // const hasContent = generatedMessages.length > 0
 
