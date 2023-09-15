@@ -39,17 +39,19 @@ export default async function Page() {
   // console.log("loggedUserData:", loggedUserData)
 
   const userUsage = (anonymousUserData && anonymousUserData[0]) || {}
-  console.log("userUsage:", userUsage)
+  console.log("dictionary:", dictionary)
 
   return (
-    <main>
-      <Client
-        translations={dictionary}
-        loggedUserData={loggedUserData}
-        session={session}
-        ip={userIp}
-        apiCalls={userUsage?.apiCalls}
-      />
-    </main>
+    <>
+      <main>
+        <Client
+          translations={dictionary}
+          loggedUserData={loggedUserData}
+          session={session}
+          ip={userIp}
+          apiCalls={userUsage?.apiCalls}
+        />
+      </main>
+    </>
   )
 }
