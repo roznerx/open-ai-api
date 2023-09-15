@@ -75,39 +75,33 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     if (codeSentence.length === 0 || codeSentence === "") {
       return false
     }
+    //Update free trial usage
+    if (!session) {
+      const response = await updateAnonymousUserUsage(ip)
+      setUserApiCalls(response?.apiCalls)
+    }
 
     if (e.key === "Enter") {
-      if (!session && userApiCalls >= 10) {
-        setShowSignInModal(true)
+      if (existingCredits === 0 && session) {
+        setCreditsModaIsOpen(true)
         return false
-      } else {
-        if (existingCredits === 0) {
-          setCreditsModaIsOpen(true)
-          return false
-        }
-        codeMessages.current = [
-          ...codeMessages.current,
-          {
-            role: "user",
-            content: codeSentence,
-          },
-        ]
-        setCodeSentence("")
-        generateCodeWithTurbo(
-          reader,
-          codeMessages,
-          setReader,
-          setGeneratedCode,
-          userId,
-          setCreditsModaIsOpen,
-        )
-
-        //Update free trial usage
-        if (!session) {
-          const response = await updateAnonymousUserUsage(ip)
-          setUserApiCalls(response?.apiCalls)
-        }
       }
+      codeMessages.current = [
+        ...codeMessages.current,
+        {
+          role: "user",
+          content: codeSentence,
+        },
+      ]
+      setCodeSentence("")
+      generateCodeWithTurbo(
+        reader,
+        codeMessages,
+        setReader,
+        setGeneratedCode,
+        userId,
+        setCreditsModaIsOpen,
+      )
     }
   }
 
