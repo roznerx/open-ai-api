@@ -21,7 +21,6 @@ export default function Client({
       <SuperHero translations={translations?.home?.superHero} />
       <HomeChat
         ip={ip}
-        translations={translations}
         apiCalls={apiCalls}
         session={session}
         loggedUserData={loggedUserData}
