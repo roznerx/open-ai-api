@@ -62,4 +62,5 @@ export default async function handler(req, res) {
   } catch (error) {
     console.log("entra en el error:", error)
   }
+  return res.status(200).json({ ok: true })
 }

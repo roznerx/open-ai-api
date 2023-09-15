@@ -38,7 +38,13 @@ const ChatContainer = dynamic(() => import("./ChatContainer"), {
   ),
 })
 
-export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
+export default function HomeChat({
+  ip,
+  apiCalls,
+  session,
+  loggedUserData,
+  translations,
+}) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
   const textareaRef = useRef<any>(null)
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(
@@ -51,8 +57,9 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
 
-  const { setShowSignInModal } = useSignInModal({
+  const { SignInModal, setShowSignInModal } = useSignInModal({
     tip: "Redeem your initial 25 credits.",
+    translations: translations,
   })
 
   const [generatedCode, setGeneratedCode] = useState<string>("")
@@ -148,6 +155,7 @@ export default function HomeChat({ ip, apiCalls, session, loggedUserData }) {
 
   return (
     <>
+      <SignInModal />
       <Modal
         title={CREDITS_MODAL_COPY.title}
         isCreditsModal
