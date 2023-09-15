@@ -39,7 +39,6 @@ export default async function Page() {
   // console.log("loggedUserData:", loggedUserData)
 
   const userUsage = (anonymousUserData && anonymousUserData[0]) || {}
-  console.log("dictionary:", dictionary)
 
   return (
     <>

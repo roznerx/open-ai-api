@@ -35,8 +35,6 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
     generatedMessages: []
     fontColor?: string
   }) => {
-    console.log("generatedMessages", generatedMessages)
-
     return (
       <>
         {generatedMessages.map((generatedMessage: any) => {
