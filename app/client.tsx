@@ -26,6 +26,7 @@ export default function Client({
         session={session}
         loggedUserData={loggedUserData}
       />
+
       <Hero />
       <ShowCaseCard
         videoSrc="static/side-by-side-epic.mp4"
