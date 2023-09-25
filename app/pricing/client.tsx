@@ -2,15 +2,15 @@
 
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
-import Image from "next/image"
 import React, { useEffect } from "react"
 import tailwindConfig from "tailwind.config"
-import { Check, Loader2 } from "lucide-react"
 import { SUBSCRIPTION_PRICES } from "@/lib/constants"
 import Header from "app/components/Header"
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { useRouter } from "next/navigation"
+import { Button } from "@/components/ui/button"
+import Image from "next/image"
 
 //Theme colors
 const colors: any = tailwindConfig.theme?.extend?.colors
@@ -93,141 +93,347 @@ export default function Client({
             {translations.pricing.subtitle2}
           </span>
         </p>
+        <section className="flex w-full items-center justify-center py-12">
+          <div className="container px-4 md:px-6">
+            <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
+              <div className=" my-4 flex  flex-col justify-between rounded-lg bg-purple-500 p-6 shadow-lg">
+                <div>
+                  <Image
+                    src="/icons/premium.svg"
+                    alt="Premium membership"
+                    width={40}
+                    height={40}
+                    className="mx-auto"
+                  />
+                  <h3 className="text-center text-2xl font-bold text-white">
+                    Basic
+                  </h3>
+                  <div className="mt-4 text-center text-white">
+                    <span className="text-4xl font-bold">Free</span>
+                  </div>
+                  <ul className="mx-20 mt-4 space-y-2 text-white sm:mx-8 md:mx-8">
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      720p Video Rendering
+                    </li>
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      2GB Cloud Storage
+                    </li>
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      Basic Video Templates
+                    </li>
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      Basic Support
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-6">
+                  <Button className="w-full bg-gradient-to-r from-mint to-blue">
+                    Current Plan
+                  </Button>
+                </div>
+              </div>
+              <div className="relative flex flex-col justify-between rounded-lg border border-mint bg-purple-500 p-6  shadow-lg">
+                <Image
+                  src="/icons/enterprice.svg"
+                  alt="Enterprise"
+                  width={40}
+                  height={40}
+                  className="mx-auto"
+                />
+                <div className="text-sm absolute left-1/2 top-0 inline-block -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-mint px-3 py-1 font-bold text-purple-700 ">
+                  Popular
+                </div>
+                <div>
+                  <h3 className="absolute left-1/2 top-20 inline-block -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-white">
+                    Pro
+                  </h3>
+                  <div className="mt-4 text-center text-white ">
+                    <span className="text-4xl font-bold text-white">$5</span>/
+                    month
+                  </div>
+                  <ul className=" mx-20 mt-4 space-y-2 text-white sm:mx-8 md:mx-8">
+                    <li className="flex w-full space-x-3 self-center">
+                      {/* <!-- Icon --> */}
+                      <svg
+                        className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>{translations.pricing.premium.features.smart}</span>
+                    </li>
+                    <li className="flex w-full space-x-3">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span> {translations.pricing.premium.features.test}</span>
+                    </li>
+                    <li className="flex w-full space-x-3">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>
+                        {" "}
+                        {translations.pricing.premium.features.improve}
+                      </span>
+                    </li>
+                    <li className="flex w-full space-x-3">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span> {translations.pricing.premium.features.docs}</span>
+                    </li>
+                    <li className="flex w-full space-x-3">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span> {translations.pricing.premium.features.chat}</span>
+                    </li>
+                    <li className="flex w-full space-x-3">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      <span>Pro Support</span>
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-6">
+                  <Button
+                    onClick={submitPaymentInstruction}
+                    className="w-full border-none bg-gradient-to-r from-mint to-blue outline-none active:outline-none"
+                  >
+                    Go Pro
+                  </Button>
+                </div>
+              </div>
+              <div className="my-4 flex flex-col justify-between rounded-lg bg-purple-500 p-6 shadow-lg">
+                <div className="text-white">
+                  <Image
+                    src="/icons/enterprice.svg"
+                    alt="Enterprise"
+                    width={40}
+                    height={40}
+                    className="mx-auto"
+                  />
+                  <h3 className="text-center text-2xl font-bold">Enterprise</h3>
+                  <div className="mt-4 text-center">
+                    <span className="text-4xl font-bold">Custom</span>
+                  </div>
+                  <ul className="mx-20 mt-4 space-y-2 sm:mx-8 md:mx-8">
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
 
-        <section className="mt-12 flex w-full flex-col items-center justify-center gap-6 sm:flex-row">
-          {/* <!-- Premium  Card --> */}
-          <div className="w-full rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:w-[476px] ">
-            <Image
-              src="/icons/premium.svg"
-              alt="Premium membership"
-              width={40}
-              height={40}
-              className="mx-auto"
-            />
-            <h3 className="my-2 mb-2 text-2xl font-semibold text-mint">
-              {translations.pricing.premium.title}
-            </h3>
-            <div className="my-4 flex items-center justify-center">
-              <span className="text-center text-5xl font-semibold">
-                $ 5.00 USD
-              </span>
-            </div>
-            <div
-              className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[2px] font-mono hover:font-semibold
-    sm:items-start sm:justify-center`}
-            >
-              <div
-                onClick={submitPaymentInstruction}
-                className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-black"
-              >
-                <button
-                  type="submit"
-                  className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
-                >
-                  {loadingStripe ? (
-                    <div className="flex h-8">
-                      <Loader2 className="mt-[2px] animate-spin" size={20} />
-                      <span className="ml-2">Redirecting..</span>
-                    </div>
-                  ) : (
-                    translations.pricing.premium.cta
-                  )}
-                </button>
+                      {translations.pricing.enterprice.features["1"]}
+                    </li>
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      {translations.pricing.enterprice.features["2"]}
+                    </li>
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      {translations.pricing.enterprice.features["3"]}
+                    </li>
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      {translations.pricing.enterprice.features["4"]}
+                    </li>
+                    <li className="flex items-center">
+                      <svg
+                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        fill="none"
+                        height="24"
+                        stroke="currentColor"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        viewBox="0 0 24 24"
+                        width="24"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                      Enterprise Support
+                    </li>
+                  </ul>
+                </div>
+                <div className="mt-6">
+                  <Button className="w-full bg-gradient-to-r from-mint to-blue">
+                    Contact Us
+                  </Button>
+                </div>
               </div>
             </div>
-
-            {/* <!-- List --> */}
-            <ul
-              role="list"
-              className="my-6 ml-12 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
-            >
-              <li className="flex w-full space-x-3 self-center">
-                {/* <!-- Icon --> */}
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>{translations.pricing.premium.features.smart}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span> {translations.pricing.premium.features.test}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span> {translations.pricing.premium.features.improve}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span> {translations.pricing.premium.features.docs}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span> {translations.pricing.premium.features.chat}</span>
-              </li>
-            </ul>
-          </div>
-          {/* <!-- Enterprice Card --> */}
-          <div className="w-full rounded-lg bg-purple-700 p-6 text-white shadow-sm sm:w-[476px] ">
-            <Image
-              src="/icons/enterprice.svg"
-              alt="Premium membership"
-              width={40}
-              height={40}
-              className="mx-auto"
-            />
-            <h3
-              className={`mb-4 mt-2 bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-2xl font-semibold text-transparent`}
-            >
-              {translations.pricing.enterprice.title}
-            </h3>
-            <div className="my-4 flex flex-col items-center justify-center">
-              <span className="mr-2 text-center text-5xl font-semibold">
-                $ 15 USD
-              </span>
-              <span className="text-sm my-2 inline-block pt-2 text-center">
-                {translations.pricing.enterprice.perUser}
-              </span>
-            </div>
-            <div
-              onClick={() => setOpenContactForm(true)}
-              className={`mx-auto my-4 mb-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
-    sm:items-start sm:justify-center`}
-            >
-              <div className="relative h-[48px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 hover:bg-black">
-                <button
-                  type="submit"
-                  className="text-sm px-1 py-3 text-center font-sans text-white sm:mx-auto sm:px-2"
-                >
-                  {translations.pricing.enterprice.cta}
-                </button>
-              </div>
-            </div>
-            <ul
-              role="list"
-              className="my-6 ml-12 flex w-full flex-col items-center justify-center space-y-4 pl-2 text-center sm:ml-20 sm:pl-2"
-            >
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>{translations.pricing.enterprice.features["1"]}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                {/* <!-- Icon --> */}
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>{translations.pricing.enterprice.features["2"]}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>{translations.pricing.enterprice.features["3"]}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>{translations.pricing.enterprice.features["4"]}</span>
-              </li>
-              <li className="flex w-full space-x-3">
-                <Check color={colors.mint} className="mt-[2px]" size={20} />
-                <span>{translations.pricing.enterprice.features["5"]}</span>
-              </li>
-            </ul>
           </div>
         </section>
       </div>

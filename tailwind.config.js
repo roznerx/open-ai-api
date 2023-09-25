@@ -160,9 +160,6 @@ module.exports = {
           border: {
             DEFAULT: "#e5e7eb", // gray-200
           },
-          ring: {
-            DEFAULT: "#e5e7eb", // gray-200
-          },
           content: {
             subtle: "#9ca3af", // gray-400
             DEFAULT: "#6b7280", // gray-500
