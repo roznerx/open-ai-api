@@ -128,7 +128,7 @@
     }
   },
   "pricing": {
-    "title": "Only pay for what you use",
+    "title": "Pay once. Go Premium",
     "subtitle1": "Our pricing model is simple and flexible. No hidden fees. No surprise bills. No subscription bills.",
     "subtitle2": "Only pay for what you use.",
     "faqs": {
@@ -157,6 +157,17 @@
       "3": {
         "title": "Do you offer technical support?",
         "desc": "Yes. All users who have created an account in Code Genius have technical support 24/7."
+      }
+    },
+    "basic": {
+      "title": "Basic",
+      "subtitle": "Free",
+      "cta": "Current Plan",
+      "features": {
+        "smart": "Smart Suggestions",
+        "chat": "Code Genius Chat",
+        "support": "Basic Support",
+        "copy": "Copy Code Snippets"
       }
     },
     "premium": {

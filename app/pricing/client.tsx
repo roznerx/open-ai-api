@@ -3,7 +3,6 @@
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
 import React, { useEffect } from "react"
-import tailwindConfig from "tailwind.config"
 import { SUBSCRIPTION_PRICES } from "@/lib/constants"
 import Header from "app/components/Header"
 import Faqs from "./faqs"
@@ -13,7 +12,7 @@ import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
 //Theme colors
-const colors: any = tailwindConfig.theme?.extend?.colors
+// const colors: any = tailwindConfig.theme?.extend?.colors
 
 type ClientPropTye = {
   session: any
@@ -83,15 +82,11 @@ export default function Client({
         setIsOpen={setOpenContactForm}
       />
       <div className=" mx-auto my-6 px-4 pt-20">
-        <h2 className="mx-auto mb-3 w-[80%] text-4xl font-semibold text-white dark:text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
+        <h2 className="mx-auto  mb-3 w-[80%] bg-gradient-to-tl from-mint to-blue bg-clip-text text-4xl font-semibold text-transparent sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
           {translations.pricing.title}
         </h2>
-        <p className="mx-auto mt-8 w-[80%] text-gray-300 sm:w-full">
-          {translations.pricing.subtitle1}{" "}
-          <span className="font-medium text-gray-200">
-            {" "}
-            {translations.pricing.subtitle2}
-          </span>
+        <p className="mx-auto mt-8 w-[80%] text-2xl text-gray-100 sm:w-full">
+          {translations.pricing.subtitle1}
         </p>
         <section className="flex w-full items-center justify-center py-12">
           <div className="container px-4 md:px-6">
@@ -106,10 +101,12 @@ export default function Client({
                     className="mx-auto"
                   />
                   <h3 className="text-center text-2xl font-bold text-white">
-                    Basic
+                    {translations.pricing.basic.title}
                   </h3>
                   <div className="mt-4 text-center text-white">
-                    <span className="text-3xl font-bold">Free</span>
+                    <span className="text-3xl font-bold">
+                      {translations.pricing.basic.subtitle}
+                    </span>
                   </div>
                   <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
@@ -127,7 +124,7 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      720p Video Rendering
+                      {translations.pricing.basic.features["smart"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -144,7 +141,7 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      2GB Cloud Storage
+                      {translations.pricing.basic.features["chat"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -161,7 +158,7 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      Basic Video Templates
+                      {translations.pricing.basic.features["support"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -178,14 +175,14 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      Basic Support
+                      {translations.pricing.basic.features["copy"]}
                     </li>
                   </ul>
                 </div>
                 <div className="mt-6">
                   <div
                     className={`mx-auto my-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
+      rounded-lg bg-gradient-to-r from-mint to-mint p-[1px] 
     sm:items-start sm:justify-center`}
                   >
                     <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-500">
@@ -199,7 +196,7 @@ export default function Client({
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col justify-between rounded-lg border border-mint  bg-purple-500 p-12 shadow-lg">
+              <div className="relative flex flex-col justify-between rounded-lg border border-mint  bg-purple-500 p-12 shadow-lg">
                 <Image
                   src="/icons/enterprice.svg"
                   alt="Enterprise"
@@ -215,7 +212,7 @@ export default function Client({
                     Pro
                   </h3>
                   <div className="mt-4 text-center text-white ">
-                    <span className="text-4xl font-bold text-white">$5</span>/
+                    <span className="text-4xl font-bold text-white">$5</span> /
                     month
                   </div>
                   <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
@@ -343,10 +340,7 @@ export default function Client({
                     className="mx-auto"
                   />
                   <h3 className="text-center text-2xl font-bold">Enterprise</h3>
-                  <div className="mt-4 text-center">
-                    <span className="text-3xl font-bold">Custom</span>
-                  </div>
-                  <ul className="mt-4 space-y-4 text-left md:mx-8">
+                  <ul className="mt-12 space-y-4 text-left md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
@@ -439,7 +433,7 @@ export default function Client({
                   <div
                     onClick={() => setOpenContactForm(true)}
                     className={`mx-auto my-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
+      rounded-lg bg-gradient-to-r from-mint to-mint p-[1px] 
     sm:items-start sm:justify-center`}
                   >
                     <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-500">

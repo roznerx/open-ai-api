@@ -27,6 +27,9 @@ export default async function Settings({
 }) {
   const { subId, userId } = searchParams
 
+  // const subscription = await stripe.subscriptions.retrieve(subId)
+  // console.log("subscription:", subscription)
+
   async function deleteSubscription() {
     "use server"
     try {

@@ -124,7 +124,7 @@
     }
   },
   "pricing": {
-    "title": "Solo paga lo que usas",
+    "title": "Paga una vez. Hazte Premium",
     "subtitle1": "Nuestro modelo de precios es simple y flexible. Sin cargos ocultos. Sin facturas sorpresa. Sin facturas de suscripción.",
     "subtitle2": "Solo paga lo que uses.",
     "faqs": {
@@ -153,6 +153,17 @@
       "3": {
         "title": "¿Ofrecen soporte técnico?",
         "desc": "Sí, Todos los usuarios que hayan creado una cuenta en Code Genius tienen soporte técnico las 24 horas, los 7 días de la semana."
+      }
+    },
+    "basic": {
+      "title": "Básico",
+      "subtitle": "Gratis",
+      "cta": "Plan Actual",
+      "features": {
+        "smart": "Sugerencias Inteligentes",
+        "chat": "Chat de Genio del Código",
+        "support": "Soporte Básico",
+        "copy": "Copiar Fragmentos de Código"
       }
     },
     "premium": {
