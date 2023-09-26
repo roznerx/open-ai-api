@@ -96,7 +96,7 @@ export default function Client({
         <section className="flex w-full items-center justify-center py-12">
           <div className="container px-4 md:px-6">
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              <div className=" my-4 flex  flex-col justify-between rounded-lg bg-purple-500 p-6 shadow-lg">
+              <div className="my-4  flex flex-col justify-between rounded-lg bg-purple-500 p-12 shadow-lg">
                 <div>
                   <Image
                     src="/icons/premium.svg"
@@ -109,10 +109,10 @@ export default function Client({
                     Basic
                   </h3>
                   <div className="mt-4 text-center text-white">
-                    <span className="text-4xl font-bold">Free</span>
+                    <span className="text-3xl font-bold">Free</span>
                   </div>
-                  <ul className="mx-20 mt-4 space-y-2 text-white sm:mx-8 md:mx-8">
-                    <li className="flex items-center">
+                  <ul className="mx-20 mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -129,7 +129,7 @@ export default function Client({
                       </svg>
                       720p Video Rendering
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -146,7 +146,7 @@ export default function Client({
                       </svg>
                       2GB Cloud Storage
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -163,7 +163,7 @@ export default function Client({
                       </svg>
                       Basic Video Templates
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -183,12 +183,23 @@ export default function Client({
                   </ul>
                 </div>
                 <div className="mt-6">
-                  <Button className="w-full bg-gradient-to-r from-mint to-blue">
-                    Current Plan
-                  </Button>
+                  <div
+                    className={`mx-auto my-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
+    sm:items-start sm:justify-center`}
+                  >
+                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-500">
+                      <button
+                        type="submit"
+                        className="text-sm px-1 py-2 text-center font-sans text-white sm:mx-auto "
+                      >
+                        Current
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="relative flex flex-col justify-between rounded-lg border border-mint bg-purple-500 p-6  shadow-lg">
+              <div className="flex flex-col justify-between rounded-lg border border-mint  bg-purple-500 p-12 shadow-lg">
                 <Image
                   src="/icons/enterprice.svg"
                   alt="Enterprise"
@@ -199,16 +210,16 @@ export default function Client({
                 <div className="text-sm absolute left-1/2 top-0 inline-block -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-mint px-3 py-1 font-bold text-purple-700 ">
                   Popular
                 </div>
-                <div>
-                  <h3 className="absolute left-1/2 top-20 inline-block -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-white">
+                <div className="relative">
+                  <h3 className="inline-block  text-2xl font-bold text-white">
                     Pro
                   </h3>
                   <div className="mt-4 text-center text-white ">
                     <span className="text-4xl font-bold text-white">$5</span>/
                     month
                   </div>
-                  <ul className=" mx-20 mt-4 space-y-2 text-white sm:mx-8 md:mx-8">
-                    <li className="flex w-full space-x-3 self-center">
+                  <ul className="mx-20 mt-4 space-y-4 text-white sm:mx-8 md:mx-8">
+                    <li className="flex w-full min-w-[210px] space-x-3 self-center">
                       {/* <!-- Icon --> */}
                       <svg
                         className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
@@ -224,9 +235,9 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span>{translations.pricing.premium.features.smart}</span>
+                      {translations.pricing.premium.features.smart}
                     </li>
-                    <li className="flex w-full space-x-3">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -241,9 +252,9 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span> {translations.pricing.premium.features.test}</span>
+                      {translations.pricing.premium.features.test}
                     </li>
-                    <li className="flex w-full space-x-3">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -258,12 +269,9 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span>
-                        {" "}
-                        {translations.pricing.premium.features.improve}
-                      </span>
+                      {translations.pricing.premium.features.improve}
                     </li>
-                    <li className="flex w-full space-x-3">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -278,9 +286,9 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span> {translations.pricing.premium.features.docs}</span>
+                      {translations.pricing.premium.features.docs}
                     </li>
-                    <li className="flex w-full space-x-3">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -295,9 +303,9 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span> {translations.pricing.premium.features.chat}</span>
+                      {translations.pricing.premium.features.chat}
                     </li>
-                    <li className="flex w-full space-x-3">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -312,20 +320,20 @@ export default function Client({
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span>Pro Support</span>
+                      Pro Support
                     </li>
                   </ul>
                 </div>
                 <div className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full border-none bg-gradient-to-r from-mint to-blue outline-none active:outline-none"
+                    className="w-full border-none bg-blue text-white  outline-none active:outline-none"
                   >
                     Go Pro
                   </Button>
                 </div>
               </div>
-              <div className="my-4 flex flex-col justify-between rounded-lg bg-purple-500 p-6 shadow-lg">
+              <div className="my-4 flex flex-col justify-between rounded-lg bg-purple-500 p-12 shadow-lg">
                 <div className="text-white">
                   <Image
                     src="/icons/enterprice.svg"
@@ -336,10 +344,10 @@ export default function Client({
                   />
                   <h3 className="text-center text-2xl font-bold">Enterprise</h3>
                   <div className="mt-4 text-center">
-                    <span className="text-4xl font-bold">Custom</span>
+                    <span className="text-3xl font-bold">Custom</span>
                   </div>
-                  <ul className="mx-20 mt-4 space-y-2 sm:mx-8 md:mx-8">
-                    <li className="flex items-center">
+                  <ul className="mx-10 mt-4 space-y-4 text-left md:mx-8">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -357,7 +365,7 @@ export default function Client({
 
                       {translations.pricing.enterprice.features["1"]}
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -374,7 +382,7 @@ export default function Client({
                       </svg>
                       {translations.pricing.enterprice.features["2"]}
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -391,7 +399,7 @@ export default function Client({
                       </svg>
                       {translations.pricing.enterprice.features["3"]}
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -408,7 +416,7 @@ export default function Client({
                       </svg>
                       {translations.pricing.enterprice.features["4"]}
                     </li>
-                    <li className="flex items-center">
+                    <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
@@ -428,9 +436,21 @@ export default function Client({
                   </ul>
                 </div>
                 <div className="mt-6">
-                  <Button className="w-full bg-gradient-to-r from-mint to-blue">
-                    Contact Us
-                  </Button>
+                  <div
+                    onClick={() => setOpenContactForm(true)}
+                    className={`mx-auto my-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
+      rounded-lg bg-gradient-to-r from-mint to-blue p-[1px] 
+    sm:items-start sm:justify-center`}
+                  >
+                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-500">
+                      <button
+                        type="submit"
+                        className="text-sm px-1 py-2 text-center font-sans text-white sm:mx-auto "
+                      >
+                        Contact Us
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
