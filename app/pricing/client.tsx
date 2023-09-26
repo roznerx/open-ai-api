@@ -111,10 +111,10 @@ export default function Client({
                   <div className="mt-4 text-center text-white">
                     <span className="text-3xl font-bold">Free</span>
                   </div>
-                  <ul className="mx-20 mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
+                  <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
-                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
                         height="24"
                         stroke="currentColor"
@@ -193,7 +193,7 @@ export default function Client({
                         type="submit"
                         className="text-sm px-1 py-2 text-center font-sans text-white sm:mx-auto "
                       >
-                        Current
+                        Current Plan
                       </button>
                     </div>
                   </div>
@@ -218,8 +218,8 @@ export default function Client({
                     <span className="text-4xl font-bold text-white">$5</span>/
                     month
                   </div>
-                  <ul className="mx-20 mt-4 space-y-4 text-white sm:mx-8 md:mx-8">
-                    <li className="flex w-full min-w-[210px] space-x-3 self-center">
+                  <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
+                    <li className="flex w-full min-w-[210px] space-x-3 ">
                       {/* <!-- Icon --> */}
                       <svg
                         className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
@@ -327,7 +327,7 @@ export default function Client({
                 <div className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full border-none bg-blue text-white  outline-none active:outline-none"
+                    className="w-full border-none bg-mint font-sans font-medium text-black outline-none hover:bg-mint/80 active:outline-none"
                   >
                     Go Pro
                   </Button>
@@ -346,10 +346,10 @@ export default function Client({
                   <div className="mt-4 text-center">
                     <span className="text-3xl font-bold">Custom</span>
                   </div>
-                  <ul className="mx-10 mt-4 space-y-4 text-left md:mx-8">
+                  <ul className="mt-4 space-y-4 text-left md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
-                        className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                        className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
                         fill="none"
                         height="24"
                         stroke="currentColor"
