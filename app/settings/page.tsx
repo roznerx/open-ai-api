@@ -1,13 +1,25 @@
 import { stripe } from "@/lib/stripe"
 import { getDictionary } from "app/(lang)/dictionaries"
-import { Card, Title, Flex } from "@tremor/react"
+
 import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { updateUserSubscription } from "utils/helpers"
+import { Card, Metric, Text, Title, Flex, Grid, BarList } from "@tremor/react"
+import Chart from "./chart"
+import Header from "app/components/Header"
 
+const website = [{ name: "/home", value: 1230 }]
+
+const items = [
+  {
+    category: "Website",
+    stat: "10,234",
+    data: website,
+  },
+]
 export const metadata = {
   title: "AI Dashboard",
 }
@@ -26,9 +38,6 @@ export default async function Settings({
   searchParams: SearchParamsWithSubId
 }) {
   const { subId, userId } = searchParams
-
-  // const subscription = await stripe.subscriptions.retrieve(subId)
-  // console.log("subscription:", subscription)
 
   async function deleteSubscription() {
     "use server"
@@ -49,9 +58,27 @@ export default async function Settings({
     redirect("/dashboard?action=subscription-deleted")
   }
   const session = await getServerSession(authOptions)
-  console.log("session:", session)
+  const subscription = await stripe.subscriptions.retrieve(subId)
+  console.log("subscription:", subscription.items.data)
+
   if (!session) {
     redirect("/?action=signUp&next=/settings")
+  }
+
+  const getSubscriptionDate = async (timestamp) => {
+    // Create a new Date object and pass the timestamp as milliseconds
+    const date = new Date(timestamp * 1000)
+
+    // Define the options for formatting the date
+    const options: any = {
+      year: "numeric",
+      month: "long",
+      day: "numeric",
+    }
+
+    // Format the date to a human-readable string
+    const formatted = date.toLocaleString(undefined, options)
+    return formatted
   }
 
   const headersList = headers()
@@ -61,33 +88,81 @@ export default async function Settings({
   const dictionary = await getDictionary(lang)
 
   return (
-    <div className="mx-auto flex w-full items-center justify-center text-white dark:bg-purple-900">
+    <>
       <SideBar
         translations={dictionary.sidebar}
         menuTranslations={dictionary?.home?.header?.menu}
       />
-      <form action={deleteSubscription}>
-        <Card>
-          <Title>Manage Subscription</Title>
-          <Flex
-            justifyContent="start"
-            alignItems="baseline"
-            className="space-x-2"
-          >
-            <button type="submit" className="text-black">
-              Delete Subscription
-            </button>
-          </Flex>
-
-          {/* <BarList
-              data={item.data}
+      <Header
+        translations={dictionary.home.header}
+        session={session}
+        setShowSignInModal={null}
+      />
+      <main className="mx-auto flex w-full flex-col justify-center p-4 sm:max-w-7xl md:p-10">
+        <Grid numItemsSm={2} numItemsLg={3} className="mt-20 gap-6 sm:mt-0">
+          <Card>
+            <Title>Premium Subscription</Title>
+            <Flex
+              justifyContent="start"
+              alignItems="baseline"
+              className="space-x-2"
+            >
+              <Metric>7</Metric>
+              <Text>Total views</Text>
+            </Flex>
+            <Flex className="mt-6">
+              <Text>Delete</Text>
+              <form action={deleteSubscription}>
+                <Card>
+                  <Flex
+                    justifyContent="start"
+                    alignItems="baseline"
+                    className="space-x-2"
+                  >
+                    <button type="submit" className="text-black">
+                      Delete Subscription
+                    </button>
+                  </Flex>
+                </Card>
+              </form>
+            </Flex>
+            <BarList
+              data={items[0].data}
               valueFormatter={(number: number) =>
                 Intl.NumberFormat("us").format(number).toString()
               }
               className="mt-2"
-            /> */}
-        </Card>
-      </form>
-    </div>
+            />
+          </Card>
+          <Card>
+            <Flex className="space-x-2">
+              <Title>Member since: </Title>
+              <Text>{getSubscriptionDate(subscription.created)}</Text>
+            </Flex>
+            <Flex className="mt-6 space-x-2">
+              <Title>Trial ends in: </Title>
+              <Text>{getSubscriptionDate(subscription.trial_end)}</Text>
+            </Flex>
+          </Card>
+          <Card>
+            <Flex className="space-x-2">
+              <Title>Billing Cycle start:</Title>
+              <Text>
+                {getSubscriptionDate(subscription.billing_cycle_anchor)}
+              </Text>
+            </Flex>
+            <Flex className="mt-6 space-x-2">
+              <Title>Billing Frequency: </Title>
+              <Text>Monthly</Text>
+            </Flex>
+            <Flex className="mt-6 space-x-2">
+              <Title>Currency: </Title>
+              <Text className="uppercase">{subscription.currency}</Text>
+            </Flex>
+          </Card>
+        </Grid>
+        <Chart />
+      </main>
+    </>
   )
 }

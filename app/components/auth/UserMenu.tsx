@@ -1,15 +1,22 @@
 import { Menu, Transition } from "@headlessui/react"
 import { Crisp } from "crisp-sdk-web"
 import useWindowSize from "hooks/use-window-size"
-import { Coins, LayoutDashboard, LogOut, MessageCircle } from "lucide-react"
+import {
+  Coins,
+  LayoutDashboard,
+  LogOut,
+  MessageCircle,
+  Settings,
+} from "lucide-react"
 import { signOut } from "next-auth/react"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
 import { Fragment, useEffect, useState } from "react"
 
 export default function UserMenu({ session, email, image, translations }) {
+  console.log("menu:", session)
   const router = useRouter()
-  const [openingSupport, setOpeningSupport] = useState(false)
+  const [_, setOpeningSupport] = useState(false)
   const { isMobile } = useWindowSize()
   useEffect(() => {
     Crisp.configure("12685b82-e8b5-43a2-a596-d2d559d02e5a", {
@@ -115,6 +122,7 @@ export default function UserMenu({ session, email, image, translations }) {
                 )}
               </Menu.Item>
             </div>
+
             <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (
@@ -130,6 +138,29 @@ export default function UserMenu({ session, email, image, translations }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.pricing}</span>
+                  </div>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="h-auto">
+              <Menu.Item>
+                {({ active }) => (
+                  <div
+                    onClick={() =>
+                      router.push(
+                        `/settings?subId=${session.user.subscriptionId}`,
+                      )
+                    }
+                    className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
+                      active ? "bg-purple-800 text-white" : "text-gray-200"
+                    } `}
+                  >
+                    <Settings
+                      width={35}
+                      height={35}
+                      className={`text-sm items-start rounded-md px-2 py-2`}
+                    />
+                    <span>Settings</span>
                   </div>
                 )}
               </Menu.Item>
