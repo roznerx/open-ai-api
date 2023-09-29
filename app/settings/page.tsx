@@ -59,26 +59,28 @@ export default async function Settings({
   }
   const session = await getServerSession(authOptions)
   const subscription = await stripe.subscriptions.retrieve(subId)
-  console.log("subscription:", subscription.items.data)
+  console.log("subscription:", subscription)
 
   if (!session) {
     redirect("/?action=signUp&next=/settings")
   }
 
-  const getSubscriptionDate = async (timestamp) => {
-    // Create a new Date object and pass the timestamp as milliseconds
-    const date = new Date(timestamp * 1000)
+  const getSubscriptionDate = (timestamp: number | null) => {
+    if (timestamp) {
+      // Create a new Date object and pass the timestamp as milliseconds
+      const date = new Date(timestamp * 1000)
 
-    // Define the options for formatting the date
-    const options: any = {
-      year: "numeric",
-      month: "long",
-      day: "numeric",
+      // Define the options for formatting the date
+      const options: any = {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      }
+
+      // Format the date to a human-readable string
+      const formatted = date.toLocaleString(undefined, options)
+      return formatted
     }
-
-    // Format the date to a human-readable string
-    const formatted = date.toLocaleString(undefined, options)
-    return formatted
   }
 
   const headersList = headers()
