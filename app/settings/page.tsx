@@ -7,7 +7,7 @@ import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { updateUserSubscription } from "utils/helpers"
-import { Card, Metric, Text, Title, Flex, Grid, BarList } from "@tremor/react"
+import { Card, Metric, Text, Title, Flex, Grid } from "@tremor/react"
 import Chart from "./chart"
 import Header from "app/components/Header"
 
@@ -128,13 +128,13 @@ export default async function Settings({
                 </Card>
               </form>
             </Flex>
-            <BarList
+            {/* <BarList
               data={items[0].data}
               valueFormatter={(number: number) =>
                 Intl.NumberFormat("us").format(number).toString()
               }
               className="mt-2"
-            />
+            /> */}
           </Card>
           <Card>
             <Flex className="space-x-2">
