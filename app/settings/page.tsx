@@ -103,7 +103,7 @@ export default async function Settings({
       <main className="mx-auto flex w-full flex-col justify-center p-4 sm:max-w-7xl md:p-10">
         <Grid numItemsSm={2} numItemsLg={3} className="mt-20 gap-6 sm:mt-0">
           <Card>
-            <Title>Premium Subscription</Title>
+            <Title>Premium Subscription Settings</Title>
             <Flex
               justifyContent="start"
               alignItems="baseline"
