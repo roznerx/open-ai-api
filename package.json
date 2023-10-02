@@ -31,7 +31,7 @@
     "mjml": "^4.14.1",
     "nanoid": "^4.0.2",
     "negotiator": "^0.6.3",
-    "next": "13.4.12",
+    "next": "^13.5.3",
     "next-auth": "^4.22.3",
     "nodemailer": "^6.9.1",
     "openai-edge": "^1.0.0",

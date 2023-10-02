@@ -33,9 +33,7 @@ export default function Client({ translations, headerTranslations }) {
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const { dashboard } = translations
-  const { data: session, status } = useSession()
-  console.log("session:", session)
-  console.log("status:", status)
+  const { data: session } = useSession()
 
   const userName = session?.user?.name
 
@@ -46,10 +44,12 @@ export default function Client({ translations, headerTranslations }) {
   const isPremium =
     !subscriptionHasBeenDeleted && !!session?.user?.subscriptionId === true
 
+  console.log("session?.user", session?.user)
+
   useEffect(() => {
     if (
       searchParams &&
-      searchParams.has("success") &&
+      searchParams.has("session_id") &&
       session?.user?.subscriptionId
     ) {
       //THANKS MESSAGE WITH DIALOG

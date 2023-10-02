@@ -4,9 +4,8 @@ export const getId = () => {
 
 export async function updateUserSubscription(
   userId: string,
-  subscriptionId: string | null,
+  subscriptionId: any,
 ) {
-  console.log("Pasa x aqui con userId :", userId + " y subId", subscriptionId)
   try {
     const response = await fetch(
       `${process.env.NEXTAUTH_URL}/api/user/update`,
@@ -23,7 +22,7 @@ export async function updateUserSubscription(
       },
     )
     const data = await response.json()
-    console.log("data:", data)
+
     return data ? data : {}
   } catch (error) {
     console.log("There was an ERROR: ", error)

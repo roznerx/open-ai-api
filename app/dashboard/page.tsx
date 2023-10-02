@@ -5,6 +5,9 @@ import Client from "./client"
 import { getServerSession } from "next-auth"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { redirect } from "next/navigation"
+import { stripe } from "@/lib/stripe"
+import { Params } from "app/settings/page"
+import { updateUserSubscription } from "utils/helpers"
 
 export const metadata = {
   title: "AI Dashboard",
@@ -15,11 +18,27 @@ export const metadata = {
 // }
 export const dynamic = "force-dynamic"
 
-export default async function Dashboard() {
-  const session = await getServerSession(authOptions)
+interface SearchParamsWithSesId extends Params {
+  session_id: string
+}
 
+export default async function Dashboard({
+  searchParams,
+}: {
+  searchParams: SearchParamsWithSesId
+}) {
+  const { session_id } = searchParams
+  const session = await getServerSession(authOptions)
+  let stripeSession
   if (!session) {
     redirect("/?referer=/dashboard")
+  }
+  if (session_id) {
+    stripeSession = await stripe.checkout.sessions.retrieve(session_id)
+  }
+  // We set the subscription ID in the webhook, this code ensures we store the subscription id in the DB.
+  if (stripeSession) {
+    await updateUserSubscription(session.user.id, stripeSession.subscription)
   }
 
   const headersList = headers()
