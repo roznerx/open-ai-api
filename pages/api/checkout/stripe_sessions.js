@@ -43,7 +43,7 @@ export default async function handler(req, res) {
         mode: "subscription",
         client_reference_id: req.body.userId,
         allow_promotion_codes: true,
-        success_url: `${req.headers.origin}/dashboard?success=true`,
+        success_url: `${req.headers.origin}/dashboard?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${req.headers.origin}/pricing?canceled=true`,
         metadata: {
           user_id: req.body.userId,

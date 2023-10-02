@@ -14,7 +14,6 @@ import { useRouter } from "next/navigation"
 import { Fragment, useEffect, useState } from "react"
 
 export default function UserMenu({ session, email, image, translations }) {
-  console.log("menu:", session)
   const router = useRouter()
   const [_, setOpeningSupport] = useState(false)
   const { isMobile } = useWindowSize()
