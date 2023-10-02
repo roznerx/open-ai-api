@@ -91,7 +91,7 @@ export default function Client({
         <section className="flex w-full items-center justify-center py-12">
           <div className="container px-4 md:px-6">
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              <div className="my-4  flex flex-col justify-between rounded-lg bg-purple-500 p-12 shadow-lg">
+              <div className="my-4 flex flex-col justify-between rounded-lg border border-blue/50 bg-purple-500 p-12 shadow-lg  ">
                 <div>
                   <Image
                     src="/icons/premium.svg"
@@ -196,7 +196,7 @@ export default function Client({
                   </div>
                 </div>
               </div>
-              <div className="relative flex flex-col justify-between rounded-lg border border-mint  bg-purple-500 p-12 shadow-lg">
+              <div className="relative flex flex-col justify-between rounded-lg border border-mint bg-purple-500  p-12 shadow-lg shadow-blue/50">
                 <Image
                   src="/icons/enterprice.svg"
                   alt="Enterprise"
@@ -330,7 +330,7 @@ export default function Client({
                   </Button>
                 </div>
               </div>
-              <div className="my-4 flex flex-col justify-between rounded-lg bg-purple-500 p-12 shadow-lg">
+              <div className="my-4 flex flex-col justify-between rounded-lg border border-blue/50 bg-purple-500 p-12 shadow-lg ">
                 <div className="text-white">
                   <Image
                     src="/icons/enterprice.svg"

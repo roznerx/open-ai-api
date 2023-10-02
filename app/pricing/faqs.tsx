@@ -7,8 +7,8 @@ export default function Faqs({ translations: faqs }) {
   return (
     <div className="mx-auto mb-12 w-full px-4 md:w-[990px]">
       <h3 className="mb-6 text-3xl text-white">{faqs.title}</h3>
-      <p className="text-lg mb-2 text-gray-300">{faqs.desc}</p>
-      <p className="text-lg mb-6 text-morado">support@code-genius.dev</p>
+      <p className="text-lg mb-2 text-gray-300">{faqs.desc}:</p>
+      <p className="text-lg mb-6 text-mint">support@code-genius.dev</p>
 
       <div className="w-full rounded-2xl bg-purple-500 p-2">
         <Disclosure as="div" className="">
@@ -24,7 +24,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left">
                 {faqs["1"]?.desc}
               </Disclosure.Panel>
             </>
@@ -43,7 +43,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2"].desc}
               </Disclosure.Panel>
             </>
@@ -62,7 +62,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2.a"]?.desc}
               </Disclosure.Panel>
             </>
@@ -81,7 +81,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2.1"]?.desc}
               </Disclosure.Panel>
             </>
@@ -100,7 +100,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2.2"]?.desc}
               </Disclosure.Panel>
             </>
@@ -119,7 +119,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left">
                 {faqs["3"]?.desc}
               </Disclosure.Panel>
             </>
