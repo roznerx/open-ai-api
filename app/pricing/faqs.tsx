@@ -5,7 +5,7 @@ import { ChevronUp } from "lucide-react"
 
 export default function Faqs({ translations: faqs }) {
   return (
-    <div className="mx-auto mb-12 w-full px-4 md:w-[990px]">
+    <div className="mx-auto mb-12 px-4 ">
       <h3 className="mb-6 text-3xl text-white">{faqs.title}</h3>
       <p className="text-lg mb-2 text-gray-300">{faqs.desc}:</p>
       <p className="text-lg mb-6 text-mint">support@code-genius.dev</p>
