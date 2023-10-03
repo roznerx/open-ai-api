@@ -1,15 +1,29 @@
 import React from "react"
-import dynamic from "next/dynamic"
+import Lottie from "lottie-react"
+import Suggestions from "../../animations/smartImprovements.json"
+import TestGeneration from "../../animations/generating-tests.json"
+import codeDocumentation from "../../animations/codeDocumentation.json"
 
-const AIGeneration = dynamic(() =>
-  import("./utils").then((mod) => mod.AIGeneration),
-)
-const AISuggestions = dynamic(() =>
-  import("./utils").then((mod) => mod.AISuggestions),
-)
-const CodeDocumentation = dynamic(() =>
-  import("./utils").then((mod) => mod.CodeDocumentation),
-)
+const interactivity: any = {
+  mode: "scroll",
+  actions: [
+    {
+      visibility: [0, 0.2],
+      type: "stop",
+      frames: [0],
+    },
+    {
+      visibility: [0.2, 0.5],
+      type: "seek",
+      frames: [0, 135],
+    },
+    {
+      visibility: [0.5, 0.9],
+      type: "stop",
+      frames: [150],
+    },
+  ],
+}
 
 export default function Feature({ translations }) {
   return (
@@ -25,7 +39,7 @@ export default function Feature({ translations }) {
         </div>
         <div className="mb-24 grid grid-cols-1 gap-1 sm:grid-cols-2">
           <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
-            <AISuggestions />
+            <Lottie loop={false} animationData={Suggestions} />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h4
@@ -39,7 +53,7 @@ export default function Feature({ translations }) {
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-start justify-start sm:ml-40 sm:w-full">
-            <AIGeneration />
+            <Lottie loop={false} animationData={TestGeneration} />
           </div>
           <div className="my-auto mt-0 flex flex-col sm:mt-16 sm:h-[280px]">
             <h4 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-4 sm:text-left md:w-[85%]">
@@ -50,7 +64,7 @@ export default function Feature({ translations }) {
             </p>
           </div>
           <div className="mx-auto mb-10 mt-12 flex w-96 items-center justify-start sm:ml-40 sm:w-full">
-            <CodeDocumentation />
+            <Lottie loop={false} animationData={codeDocumentation} />
           </div>
           <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
             <h5 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-0 sm:text-left">

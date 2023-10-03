@@ -43,7 +43,7 @@
         "subtitle": "Code Genius analiza tu código en tiempo real y ofrece sugerencias inteligentes y mejoras de rendimiento. Enfocate a añadir valor al producto, nosotros garantizamos que el código sea limpio, eficiente y libre de errores."
       },
       "test": {
-        "title": "Genera tests unitarios en segundos te ahorra valiso tiempo",
+        "title": "Genera tests unitarios en segundos",
         "subtitle": "Escribir test puede ser una tarea tediosa que consume mucho tiempo. Con Code Genius puedes generar tests que cubran una amplia gama de escenarios, asegurando que tu código sea exhaustivamente probado y confiable."
       },
       "docs": {
@@ -303,14 +303,15 @@
   "footer": {
     "pricing": "Precios",
     "contact": "Contacto",
-    "discord": "Discord",
+    "blog": "Blog",
     "terms": "Términos",
     "privacy": "Privacidad",
     "copy": "© Copyright 2023. Todos los derechos reservados."
   },
   "modals": {
     "signIn": {
-      "title": "Regístrate",
+      "title": "Accede a Code Genius",
+      "titleCreate": "Crea tu cuenta",
       "loading": "Cargando...",
       "subtitle": "Descubre todo tu potencial con Code Genius",
       "byContinuing": "Continuando, tu aceptas nuestra",

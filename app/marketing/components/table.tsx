@@ -1,3 +1,6 @@
+"use client"
+
+import { sendMarketingEmail } from "@/lib/emails"
 import {
   Table,
   TableHead,
@@ -23,6 +26,7 @@ export default function UsersTable({ users }: { users: User[] }) {
           <TableHeaderCell>Name</TableHeaderCell>
           <TableHeaderCell>Credits</TableHeaderCell>
           <TableHeaderCell>Email</TableHeaderCell>
+          <TableHeaderCell>Action</TableHeaderCell>
         </TableRow>
       </TableHead>
       <TableBody>
@@ -34,6 +38,14 @@ export default function UsersTable({ users }: { users: User[] }) {
             </TableCell>
             <TableCell>
               <Text>{user.email}</Text>
+            </TableCell>
+            <TableCell>
+              <button
+                onClick={() => sendMarketingEmail(user.email)}
+                className="h-12 w-32 rounded-lg bg-black p-4 text-white"
+              >
+                Send Email
+              </button>
             </TableCell>
           </TableRow>
         ))}

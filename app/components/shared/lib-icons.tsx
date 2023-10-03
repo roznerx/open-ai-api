@@ -3,6 +3,7 @@ import React from "react"
 
 export const ReactIcon = React.memo(() => (
   <Image
+    priority
     loading="eager"
     alt="React JS"
     src={"/icons/react.png"}
@@ -13,6 +14,7 @@ export const ReactIcon = React.memo(() => (
 
 export const VueJSIcon = React.memo(() => (
   <Image
+    priority
     loading="eager"
     alt="Vue JS"
     src={"/icons/vue.png"}
@@ -23,6 +25,7 @@ export const VueJSIcon = React.memo(() => (
 
 export const Cypress = React.memo(() => (
   <Image
+    priority
     loading="eager"
     alt="Vue JS"
     src={"/icons/cypress.png"}
@@ -33,6 +36,7 @@ export const Cypress = React.memo(() => (
 
 export const AngularIcon = React.memo(() => (
   <Image
+    priority
     loading="eager"
     alt="Angular JS"
     src={"/icons/angular.webp"}
@@ -43,6 +47,7 @@ export const AngularIcon = React.memo(() => (
 
 export const TypescriptIcon = React.memo(() => (
   <Image
+    priority
     loading="eager"
     alt="Typescript"
     src={"/icons/typescript.png"}
@@ -53,6 +58,7 @@ export const TypescriptIcon = React.memo(() => (
 
 export const JavascriptIcon = () => (
   <Image
+    priority
     loading="eager"
     alt="Javascript"
     src={"/icons/JS.svg"}
@@ -62,6 +68,7 @@ export const JavascriptIcon = () => (
 )
 export const RTL = () => (
   <Image
+    priority
     loading="eager"
     alt="React Testing Library"
     src={"/icons/rtl.png"}
@@ -71,6 +78,7 @@ export const RTL = () => (
 )
 export const Chai = () => (
   <Image
+    priority
     loading="eager"
     alt="Chai testing Library"
     src={"/icons/chai.png"}
@@ -80,6 +88,7 @@ export const Chai = () => (
 )
 export const Jest = () => (
   <Image
+    priority
     loading="eager"
     alt="Jest Testing Framework"
     src={"/icons/jest.webp"}
@@ -89,6 +98,7 @@ export const Jest = () => (
 )
 export const AVA = () => (
   <Image
+    priority
     loading="eager"
     alt="AVA Test Runner"
     src={"/icons/ava.png"}
@@ -99,6 +109,7 @@ export const AVA = () => (
 
 export const Vitest = () => (
   <Image
+    priority
     loading="eager"
     alt="Vitest Testing Runner"
     src={"/icons/vitest.png"}
@@ -109,6 +120,7 @@ export const Vitest = () => (
 
 export const Mocha = () => (
   <Image
+    priority
     loading="eager"
     alt="Jest Testing Framework"
     src={"/icons/mocha.png"}
@@ -118,6 +130,7 @@ export const Mocha = () => (
 )
 export const Jasmine = () => (
   <Image
+    priority
     loading="eager"
     alt="Jest Testing Framework"
     src={"/icons/jasmine.png"}
@@ -127,6 +140,7 @@ export const Jasmine = () => (
 )
 export const Enzyme = () => (
   <Image
+    priority
     loading="eager"
     alt="Enzyme"
     src={"/icons/enzyme.png"}
@@ -136,6 +150,7 @@ export const Enzyme = () => (
 )
 export const Python = () => (
   <Image
+    priority
     loading="eager"
     alt="Python"
     src={"/icons/python.png"}

@@ -2,22 +2,17 @@
 
 import { useEffect, useState } from "react"
 import Chat from "app/components/shared/Chat"
-import Header from "app/components/Header"
-import { useSignInModal } from "app/components/modals/SignInModal"
+
+// import { useSignInModal } from "app/components/modals/SignInModal"
 import InputChat from "app/components/shared/InputChat"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
-import { useChat } from "hooks/use-chat"
+import { useChat } from "ai/react"
 import { AI_MOOD } from "@/lib/constants"
 
-export default function Client({
-  session,
-  translations,
-  headerTranslations,
-  modalTranslations,
-}) {
+export default function Client({ session, translations, modalTranslations }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
-  const { setShowSignInModal } = useSignInModal({ translations })
+  // const { setShowSignInModal } = useSignInModal({ translations })
   const userCredits = session && session.user?.credits
   const userName = session && session.user?.name
   const {
@@ -44,11 +39,6 @@ export default function Client({
 
   return (
     <>
-      <Header
-        translations={headerTranslations}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
-      />
       <Chat
         translations={translations}
         setInput={setInput}

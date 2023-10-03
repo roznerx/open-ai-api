@@ -15,7 +15,7 @@ export default async function IndexPage({
   const harperUsers = await harperClient(
     {
       operation: "sql",
-      sql: `SELECT * FROM Auth.Users as U WHERE U.name LIKE '%${search}%'`,
+      sql: `SELECT * FROM Auth.Users as U WHERE U.name LIKE '%${search}%' ORDER BY U.credits ASC`,
     },
     false,
   )

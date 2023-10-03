@@ -53,7 +53,7 @@ export default async function Dashboard({
   // console.log("stripe subscription data: ", stripeData.items.data)
 
   return (
-    <div className="flex">
+    <div className="flex bg-purple-900">
       <SideBar
         translations={dictionary.sidebar}
         menuTranslations={dictionary?.home?.header?.menu}

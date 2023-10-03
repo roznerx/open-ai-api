@@ -55,7 +55,6 @@ export type UseChatHelpers = {
   isLoading: boolean
 }
 
-
 export type UseChatOptions = {
   /**
    * The API endpoint that accepts a `{ messages: Message[] }` object and returns
@@ -190,6 +189,7 @@ export interface CodeMessagesProps {
   pathName?: any
   bg?: string
   loading?: boolean
+  isLegacy?: boolean
   userName?: any
   userPrompt?: any
 }

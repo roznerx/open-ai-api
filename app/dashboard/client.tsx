@@ -5,8 +5,7 @@ import Link from "next/link"
 
 import React, { useEffect } from "react"
 import ContactFormModal from "app/components/modals/ContactFormModal"
-import Header from "app/components/Header"
-import { useSignInModal } from "app/components/modals/SignInModal"
+
 import GradientButton from "app/components/buttons/gradientButton"
 import { Confetti } from "utils/confetti"
 import { PromptCard as DashboardCard } from "app/components/shared/PromptCard"
@@ -27,7 +26,6 @@ const ChatButton = ({ text }) => (
 )
 
 export default function Client({ translations, headerTranslations }) {
-  const { setShowSignInModal } = useSignInModal({ translations })
   const searchParams = useSearchParams()
   const router = useRouter()
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
@@ -88,11 +86,6 @@ export default function Client({ translations, headerTranslations }) {
         clientName={userName}
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
-      />
-      <Header
-        translations={headerTranslations}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
       />
       <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
         <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">

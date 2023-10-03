@@ -4,12 +4,13 @@ import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
 import React, { useEffect } from "react"
 import { SUBSCRIPTION_PRICES } from "@/lib/constants"
-import Header from "app/components/Header"
+
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
+
 import Image from "next/image"
+import { Button } from "app/components/buttons/button"
 
 //Theme colors
 // const colors: any = tailwindConfig.theme?.extend?.colors
@@ -17,14 +18,9 @@ import Image from "next/image"
 type ClientPropTye = {
   session: any
   translations: any
-  userHasAccount: any
 }
 
-export default function Client({
-  session,
-  translations,
-  userHasAccount,
-}: ClientPropTye) {
+export default function Client({ session, translations }: ClientPropTye) {
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
@@ -68,13 +64,6 @@ export default function Client({
 
   return (
     <>
-      <SignInModal />
-      <Header
-        userHasAccount={userHasAccount}
-        translations={translations.home.header}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
-      />
       <PaymentModal isOpen={openPayment} setIsOpen={setOpenPayment} />
       <ContactFormModal
         clientName={session && session?.user && session?.user?.name}

@@ -74,7 +74,7 @@ export default function Feedback({
               </div>
             </div>
           </div>
-          <div className="absolute right-4 bottom-3">
+          <div className="absolute bottom-3 right-4">
             <button
               onClick={() => onMessageSubmit()}
               className="flex h-6 w-28 items-center justify-center rounded-lg border border-gray-500 bg-purple-900 p-5 text-gray-300 hover:cursor-pointer hover:text-gray-100"

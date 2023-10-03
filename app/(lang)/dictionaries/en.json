@@ -47,7 +47,7 @@
         "subtitle": "Writing unit tests can be a tedious and time-consuming task. With Code Genius you can automatically generate test cases that cover a wide range of scenarios, ensuring that your code is thoroughly tested and reliable."
       },
       "docs": {
-        "title": "Create code documentation faster",
+        "title": "Create code documentation",
         "subtitle": "Good documentation is key to writing maintainable code. With Code Genius, you can automatically generate clear and concise documentation for your code."
       }
     }
@@ -85,7 +85,7 @@
     "seeVideo": "Watch video"
   },
   "sidebar": {
-    "credits": "Créditos",
+    "credits": "Credits",
     "dashboard": "Dashboard",
     "suggestions": "Suggestions",
     "testing": "Testing",
@@ -95,7 +95,7 @@
   },
   "codeIdea": {
     "footer": {
-      "lang": "Lenguage",
+      "lang": "Language",
       "lib": "UI Library",
       "clear": "Clear Panel",
       "stop": "Stop generation",
@@ -152,7 +152,7 @@
       },
       "2.2": {
         "title": "Can I use Code Genius for free?",
-        "desc": "Yes. We offer 10 credits for free, for you to try it and see the benefits for you own."
+        "desc": "Yes. We offers 10 credits for free, for you to try it and see the benefits for you own."
       },
       "3": {
         "title": "Do you offer technical support?",
@@ -307,7 +307,7 @@
   "footer": {
     "pricing": "Pricing",
     "contact": "Contact",
-    "discord": "Discord",
+    "blog": "Blog",
     "terms": "Terms",
     "privacy": "Privacy",
     "copy": "© Copyright 2023. All rights reserved."
@@ -315,7 +315,7 @@
   "modals": {
     "signIn": {
       "loading": "Loading...",
-      "title": "Login to your account",
+      "title": "Access your account",
       "titleCreate": "Create your account",
       "subtitle": "Unleash your coding potential with Code Genius",
       "byContinuing": "By continuing, you agree to our",
