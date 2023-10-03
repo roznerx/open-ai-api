@@ -9,7 +9,6 @@ import { authOptions } from "pages/api/auth/[...nextauth]"
 import { updateUserSubscription } from "utils/helpers"
 import { Card, Metric, Text, Title, Flex, Grid } from "@tremor/react"
 import Chart from "./chart"
-import Header from "app/components/Header"
 
 const website = [{ name: "/home", value: 1230 }]
 
@@ -94,11 +93,6 @@ export default async function Settings({
       <SideBar
         translations={dictionary.sidebar}
         menuTranslations={dictionary?.home?.header?.menu}
-      />
-      <Header
-        translations={dictionary.home.header}
-        session={session}
-        setShowSignInModal={null}
       />
       <main className="mx-auto flex w-full flex-col justify-center p-4 sm:max-w-7xl md:p-10">
         <Grid numItemsSm={2} numItemsLg={3} className="mt-20 gap-6 sm:mt-0">

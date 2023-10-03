@@ -9,11 +9,13 @@ import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "ai/react"
 import { AI_MOOD } from "@/lib/constants"
+import { useSignInModal } from "app/components/modals/SignInModal"
+import { useRouter } from "next/navigation"
 
 export default function Client({ session, translations, modalTranslations }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
-  // const { setShowSignInModal } = useSignInModal({ translations })
-  const userCredits = session && session.user?.credits
+  const { setShowSignInModal } = useSignInModal({ translations })
+  const router = useRouter()
   const userName = session && session.user?.name
   const {
     messages,
@@ -31,7 +33,13 @@ export default function Client({ session, translations, modalTranslations }) {
   })
 
   useEffect(() => {
-    if (session.user && !session.user.credits && isLoading) {
+    if (!session) {
+      router.push("code-chat?action=signUp")
+    }
+  }, [])
+
+  useEffect(() => {
+    if (session?.user && !session?.user?.credits && isLoading) {
       stop()
       setCreditsModaIsOpen(true)
     }
