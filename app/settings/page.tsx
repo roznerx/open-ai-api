@@ -7,8 +7,7 @@ import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { updateUserSubscription } from "utils/helpers"
-import { Card, Metric, Text, Title, Flex, Grid } from "@tremor/react"
-import Chart from "./chart"
+import Link from "next/link"
 
 const website = [{ name: "/home", value: 1230 }]
 
@@ -57,7 +56,7 @@ export default async function Settings({
     redirect("/dashboard?action=subscription-deleted")
   }
   const session = await getServerSession(authOptions)
-  const subscription = await stripe.subscriptions.retrieve(subId)
+  const subscription: any = await stripe.subscriptions.retrieve(subId)
   console.log("subscription:", subscription)
 
   if (!session) {
@@ -83,10 +82,16 @@ export default async function Settings({
   }
 
   const headersList = headers()
-  const lang =
+  const locale =
     headersList &&
     headersList?.get("accept-language")?.split(",")[0].substring(0, 2)
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(locale)
+
+  const numLength = subscription.plan.amount.toString().length
+  const formattedNumber =
+    numLength === 3
+      ? subscription.plan.amount.toString().substring(0, 1)
+      : subscription.plan.amount.toString().substring(0, 2)
 
   return (
     <>
@@ -94,70 +99,70 @@ export default async function Settings({
         translations={dictionary.sidebar}
         menuTranslations={dictionary?.home?.header?.menu}
       />
-      <main className="mx-auto flex w-full flex-col justify-center p-4 sm:max-w-7xl md:p-10">
-        <Grid numItemsSm={2} numItemsLg={3} className="mt-20 gap-6 sm:mt-0">
-          <Card>
-            <Title>Premium Subscription</Title>
-            <Flex
-              justifyContent="start"
-              alignItems="baseline"
-              className="space-x-2"
+      <main className="mx-auto flex w-full flex-col  items-center justify-center space-y-4 p-4 sm:max-w-7xl md:p-10">
+        <div className="w-1/2 rounded-lg bg-[#292B45] p-4">
+          <h2 className="text-left text-2xl font-bold tracking-tighter text-white">
+            Premium
+          </h2>
+          <div className="text-sm grid grid-cols-2 gap-4 text-white">
+            <div>Member since</div>
+            <div className="flex justify-end">
+              {getSubscriptionDate(subscription.created)}
+            </div>
+            <div>Trial ends in</div>
+            <div className="flex justify-end">
+              {getSubscriptionDate(subscription.trial_end)}
+            </div>
+            <div>Billing cycle start</div>
+            <div className="flex justify-end">
+              {" "}
+              {getSubscriptionDate(subscription.billing_cycle_anchor)}
+            </div>
+            <div>Payment amount</div>
+            <div className="flex justify-end">
+              {formattedNumber} USD / Month
+            </div>
+          </div>
+          <div className="mt-4 flex justify-end space-x-4">
+            <Link
+              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
+              href="#"
             >
-              <Metric>7</Metric>
-              <Text>Total views</Text>
-            </Flex>
-            <Flex className="mt-6">
-              <Text>Delete</Text>
-              <form action={deleteSubscription}>
-                <Card>
-                  <Flex
-                    justifyContent="start"
-                    alignItems="baseline"
-                    className="space-x-2"
-                  >
-                    <button type="submit" className="text-black">
-                      Delete Subscription
-                    </button>
-                  </Flex>
-                </Card>
-              </form>
-            </Flex>
-            {/* <BarList
-              data={items[0].data}
-              valueFormatter={(number: number) =>
-                Intl.NumberFormat("us").format(number).toString()
-              }
-              className="mt-2"
-            /> */}
-          </Card>
-          <Card>
-            <Flex className="space-x-2">
-              <Title>Member since: </Title>
-              <Text>{getSubscriptionDate(subscription.created)}</Text>
-            </Flex>
-            <Flex className="mt-6 space-x-2">
-              <Title>Trial ends in: </Title>
-              <Text>{getSubscriptionDate(subscription.trial_end)}</Text>
-            </Flex>
-          </Card>
-          <Card>
-            <Flex className="space-x-2">
-              <Title>Billing Cycle start:</Title>
-              <Text>
-                {getSubscriptionDate(subscription.billing_cycle_anchor)}
-              </Text>
-            </Flex>
-            <Flex className="mt-6 space-x-2">
-              <Title>Billing Frequency: </Title>
-              <Text>Monthly</Text>
-            </Flex>
-            <Flex className="mt-6 space-x-2">
-              <Title>Currency: </Title>
-              <Text className="uppercase">{subscription.currency}</Text>
-            </Flex>
-          </Card>
-        </Grid>
-        <Chart />
+              Button 1
+            </Link>
+            <Link
+              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
+              href="#"
+            >
+              Button 2
+            </Link>
+          </div>
+        </div>
+        <div className="mt-12 w-1/2 rounded-lg bg-[#292B45] p-4">
+          <h2 className="text-left text-2xl font-bold tracking-tighter text-white">
+            Payment
+          </h2>
+          <div className="text-sm grid grid-cols-2 gap-4 text-white">
+            <div>Payment method</div>
+            <div className="flex justify-end">Visa</div>
+            <div>Last 4 digits</div>
+            <div className="flex justify-end">3245</div>
+          </div>
+          <div className="mt-4 flex justify-start space-x-4">
+            <Link
+              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
+              href="#"
+            >
+              Update payment method
+            </Link>
+            <Link
+              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
+              href="#"
+            >
+              See billing history
+            </Link>
+          </div>
+        </div>
       </main>
     </>
   )
