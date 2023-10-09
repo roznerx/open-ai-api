@@ -305,14 +305,15 @@
   "footer": {
     "pricing": "Preços",
     "contact": "Contato",
-    "discord": "Discord",
+    "blog": "Blogue",
     "terms": "Termos",
     "privacy": "Privacidade",
     "copy": "© Direitos Autorais 2023. Todos os direitos reservados."
   },
   "modals": {
     "signIn": {
-      "title": "Faça login em sua conta",
+      "title": "Acesse ou faça login em sua conta",
+      "titleCreate": "Crie sua conta",
       "loading": "Carregando...",
       "subtitle": "Descubra todo o seu potencial com o Code Genius",
       "byContinuing": "Ao continuar, você aceita nossos",

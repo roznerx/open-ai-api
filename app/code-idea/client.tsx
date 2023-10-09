@@ -79,8 +79,6 @@ export default function Client({
   const placeHolderText = getCodeGeniusPlaceHolder(mode, translations)
   const codeGeniusMood = useCodeGeniusMood(translations)
 
-  console.log("testFrameworkElement", testFrameworkElement)
-
   const codeMessages = useRef([
     {
       role: "system",
@@ -122,7 +120,7 @@ export default function Client({
           },
         ]
         codeMessages.current[0].content =
-          "You are a helpful and specialized AI software assistant which is specialized in code performance and customization.  Make sure to comment on the improvements at the end, in short code comments."
+          "You are a helpful and specialized AI software assistant expert in code performance and customization. User will provide code and your task is to give improvement suggestions with code examples."
         break
       case "docs":
         codeMessages.current = [
@@ -208,7 +206,7 @@ export default function Client({
     if (mode === "improve") {
       setPrompt(
         `${
-          "Improve and propose performance boost based on the provided context: " +
+          "Give performance improvements for the following code: " +
           codeSentence +
           "."
         }`,
@@ -372,6 +370,7 @@ export default function Client({
           ) : null}
           {generatedMessages && (
             <CombinedMessages
+              isLegacy={true}
               pathName={pathName}
               loading={loading}
               userName={userName}

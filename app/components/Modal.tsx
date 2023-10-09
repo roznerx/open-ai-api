@@ -89,7 +89,7 @@ export default function MyModal({
                       <p className="text-sm text-gray-500">
                         {savePropmptName && (
                           <input
-                            className="focus:shadow-outline leading-tightb w-full appearance-none rounded border-none bg-purple-800 py-2 px-3 text-gray-300 shadow focus:outline-none "
+                            className="focus:shadow-outline leading-tightb w-full appearance-none rounded border-none bg-purple-800 px-3 py-2 text-gray-300 shadow focus:outline-none "
                             value={propmptName}
                             onChange={handleInputChange}
                             id="question-name"

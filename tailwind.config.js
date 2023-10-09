@@ -71,13 +71,13 @@ module.exports = {
         tilt: "tilt 3s infinite linear",
         bounceArrow: "bounce 2s infinite",
         pulseCustom: "custom 5s linear infinite",
-        bounceRight: "bounceRight 2s ease-in-out infinite ",
+        bounceRight: "bounceRight 1s linear infinite ",
       },
       keyframes: {
         bounceRight: {
-          "0%": { transform: "translateX(-15%) rotate(45deg)" },
-          "50%": { transform: "translateX(10%) rotate(45deg)" },
-          "100%": { transform: "translateX(-15%) rotate(45deg)" },
+          "0%": { transform: "translateX(-50%)" },
+          "50%": { transform: "translateX(30%)" },
+          "100%": { transform: "translateX(-50%)" },
         },
         custom: {
           "0%, 100%": {
@@ -109,6 +109,7 @@ module.exports = {
       },
       fontFamily: {
         sans: ["var(--font-sans)"],
+        pro: ["var(--font-pro)"],
       },
       colors: {
         specialBlue: "#6ea9d7",

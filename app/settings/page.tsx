@@ -7,19 +7,9 @@ import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { updateUserSubscription } from "utils/helpers"
-import { Card, Metric, Text, Title, Flex, Grid, BarList } from "@tremor/react"
-import Chart from "./chart"
-import Header from "app/components/Header"
+import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 
-const website = [{ name: "/home", value: 1230 }]
-
-const items = [
-  {
-    category: "Website",
-    stat: "10,234",
-    data: website,
-  },
-]
 export const metadata = {
   title: "AI Dashboard",
 }
@@ -58,8 +48,7 @@ export default async function Settings({
     redirect("/dashboard?action=subscription-deleted")
   }
   const session = await getServerSession(authOptions)
-  const subscription = await stripe.subscriptions.retrieve(subId)
-  console.log("subscription:", subscription)
+  const subscription: any = await stripe.subscriptions.retrieve(subId)
 
   if (!session) {
     redirect("/?action=signUp&next=/settings")
@@ -84,10 +73,16 @@ export default async function Settings({
   }
 
   const headersList = headers()
-  const lang =
+  const locale =
     headersList &&
     headersList?.get("accept-language")?.split(",")[0].substring(0, 2)
-  const dictionary = await getDictionary(lang)
+  const dictionary = await getDictionary(locale)
+
+  const numLength = subscription.plan.amount.toString().length
+  const formattedNumber =
+    numLength === 3
+      ? subscription.plan.amount.toString().substring(0, 1)
+      : subscription.plan.amount.toString().substring(0, 2)
 
   return (
     <>
@@ -95,75 +90,89 @@ export default async function Settings({
         translations={dictionary.sidebar}
         menuTranslations={dictionary?.home?.header?.menu}
       />
-      <Header
-        translations={dictionary.home.header}
-        session={session}
-        setShowSignInModal={null}
-      />
-      <main className="mx-auto flex w-full flex-col justify-center p-4 sm:max-w-7xl md:p-10">
-        <Grid numItemsSm={2} numItemsLg={3} className="mt-20 gap-6 sm:mt-0">
-          <Card>
-            <Title>Premium Subscription Settings</Title>
-            <Flex
-              justifyContent="start"
-              alignItems="baseline"
-              className="space-x-2"
+      <main className="mx-auto flex w-full flex-col items-center justify-center space-y-4 p-4 sm:max-w-7xl md:p-12">
+        <div className="w-2/3 rounded-lg bg-purple-700 p-8">
+          <p className="my-1 text-[13px] text-white">Your plan</p>
+          <h2 className="mb-12 text-left text-3xl font-bold tracking-normal text-white">
+            Premium
+          </h2>
+          <div className="text-sm grid grid-cols-2 gap-4 text-white">
+            <div>Member since</div>
+            <div className="flex justify-end">
+              {getSubscriptionDate(subscription.created)}
+            </div>
+            <div>Trial ends in</div>
+            <div className="flex justify-end">
+              {getSubscriptionDate(subscription.trial_end)}
+            </div>
+            <div>Billing cycle start</div>
+            <div className="flex justify-end">
+              {" "}
+              {getSubscriptionDate(subscription.billing_cycle_anchor)}
+            </div>
+            <div>Payment amount</div>
+            <div className="flex justify-end">
+              {formattedNumber} USD / Month
+            </div>
+          </div>
+          <div className="relative my-8 flex w-full flex-grow justify-start rounded-lg bg-gradient-to-r from-purple-400 to-purple-500/90 p-2 text-white">
+            <div className="mr-2 h-8 w-8 rounded-lg bg-gradient-to-t from-[#6530FC] to-[#A486FF]">
+              <span className="absolute top-4">
+                <span className="absolute top-1 ml-2 inline-flex sm:top-0">
+                  <span className="absolute top-0 sm:relative sm:top-0">
+                    <span className="absolute -top-2 right-[2px] text-[10px] text-white">
+                      ✦
+                    </span>
+                    <span className="text-[12px] text-white">✦</span>
+                    <span className="absolute bottom-2 left-2 text-[16px] text-white">
+                      ✦
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </div>
+            <span className="pt-1 text-right">
+              Save $10/year by becoming an annual member!
+            </span>
+          </div>
+          <div className="mt-6 flex justify-end space-x-4">
+            <form action={deleteSubscription}>
+              <button className="text-sm inline-flex h-10 items-center justify-center rounded-md text-white/90 shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50">
+                Cancel Subscription
+              </button>
+            </form>
+            <button className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500">
+              Switch to yearly
+            </button>
+          </div>
+        </div>
+        <div className="mt-12 w-2/3 rounded-lg bg-purple-700 p-8">
+          <h2 className="mb-12 text-left text-3xl font-bold leading-tight tracking-normal text-white">
+            Payment
+          </h2>
+          <div className="text-sm grid grid-cols-2 gap-4 text-white">
+            <div className="pt-2">Manage payment method</div>
+            <Link
+              target="_blank"
+              href="https://billing.stripe.com/p/login/test_9AQ17X8Jm3207m09AA"
+              className="flex justify-end"
             >
-              <Metric>7</Metric>
-              <Text>Total views</Text>
-            </Flex>
-            <Flex className="mt-6">
-              <Text>Delete</Text>
-              <form action={deleteSubscription}>
-                <Card>
-                  <Flex
-                    justifyContent="start"
-                    alignItems="baseline"
-                    className="space-x-2"
-                  >
-                    <button type="submit" className="text-black">
-                      Delete Subscription
-                    </button>
-                  </Flex>
-                </Card>
-              </form>
-            </Flex>
-            <BarList
-              data={items[0].data}
-              valueFormatter={(number: number) =>
-                Intl.NumberFormat("us").format(number).toString()
-              }
-              className="mt-2"
-            />
-          </Card>
-          <Card>
-            <Flex className="space-x-2">
-              <Title>Member since: </Title>
-              <Text>{getSubscriptionDate(subscription.created)}</Text>
-            </Flex>
-            <Flex className="mt-6 space-x-2">
-              <Title>Trial ends in: </Title>
-              <Text>{getSubscriptionDate(subscription.trial_end)}</Text>
-            </Flex>
-          </Card>
-          <Card>
-            <Flex className="space-x-2">
-              <Title>Billing Cycle start:</Title>
-              <Text>
-                {getSubscriptionDate(subscription.billing_cycle_anchor)}
-              </Text>
-            </Flex>
-            <Flex className="mt-6 space-x-2">
-              <Title>Billing Frequency: </Title>
-              <Text>Monthly</Text>
-            </Flex>
-            <Flex className="mt-6 space-x-2">
-              <Title>Currency: </Title>
-              <Text className="uppercase">{subscription.currency}</Text>
-            </Flex>
-          </Card>
-        </Grid>
-        <Chart />
+              <span className="flex h-auto w-auto justify-center rounded-lg bg-purple-500 p-2 text-center">
+                <ArrowUpRight />
+              </span>
+            </Link>
+            <div className="pt-2">Check billing history</div>
+            <Link
+              target="_blank"
+              href="https://billing.stripe.com/p/login/test_9AQ17X8Jm3207m09AA"
+              className="flex justify-end"
+            >
+              <span className="flex h-auto w-auto justify-center rounded-lg bg-purple-500 p-2 text-center">
+                <ArrowUpRight />
+              </span>
+            </Link>
+          </div>
+        </div>
       </main>
     </>
   )

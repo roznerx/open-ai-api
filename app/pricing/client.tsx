@@ -4,12 +4,14 @@ import ContactFormModal from "app/components/modals/ContactFormModal"
 import PaymentModal from "app/components/modals/PaymentModal"
 import React, { useEffect } from "react"
 import { SUBSCRIPTION_PRICES } from "@/lib/constants"
-import Header from "app/components/Header"
+
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { useRouter } from "next/navigation"
-import { Button } from "@/components/ui/button"
+
 import Image from "next/image"
+import { Button } from "app/components/buttons/button"
+import { Loader2 } from "lucide-react"
 
 //Theme colors
 // const colors: any = tailwindConfig.theme?.extend?.colors
@@ -17,14 +19,9 @@ import Image from "next/image"
 type ClientPropTye = {
   session: any
   translations: any
-  userHasAccount: any
 }
 
-export default function Client({
-  session,
-  translations,
-  userHasAccount,
-}: ClientPropTye) {
+export default function Client({ session, translations }: ClientPropTye) {
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
@@ -68,13 +65,6 @@ export default function Client({
 
   return (
     <>
-      <SignInModal />
-      <Header
-        userHasAccount={userHasAccount}
-        translations={translations.home.header}
-        session={session}
-        setShowSignInModal={setShowSignInModal}
-      />
       <PaymentModal isOpen={openPayment} setIsOpen={setOpenPayment} />
       <ContactFormModal
         clientName={session && session?.user && session?.user?.name}
@@ -82,7 +72,7 @@ export default function Client({
         setIsOpen={setOpenContactForm}
       />
       <div className=" mx-auto my-6 px-4 pt-20">
-        <h2 className="mx-auto  mb-3 w-[80%] bg-gradient-to-tl from-mint to-blue bg-clip-text text-4xl font-semibold text-transparent sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
+        <h2 className="mx-auto  mb-3 w-[80%] text-4xl font-semibold text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
           {translations.pricing.title}
         </h2>
         <p className="mx-auto mt-8 w-[80%] text-2xl text-gray-100 sm:w-full">
@@ -91,7 +81,7 @@ export default function Client({
         <section className="flex w-full items-center justify-center py-12">
           <div className="container px-4 md:px-6">
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              <div className="my-4 flex flex-col justify-between rounded-lg border border-blue/50 bg-purple-500 p-12 shadow-lg  ">
+              <div className="my-4 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-600 p-8 shadow-lg ">
                 <div>
                   <Image
                     src="/icons/premium.svg"
@@ -181,14 +171,14 @@ export default function Client({
                 </div>
                 <div className="mt-6">
                   <div
-                    className={`mx-auto my-4 mt-2 flex w-[250px] cursor-pointer flex-row items-center justify-center 
-      rounded-lg bg-gradient-to-r from-mint to-mint p-[1px] 
+                    className={`mx-auto my-4 mt-2 flex w-[250px] flex-row items-center justify-center 
+      rounded-lg p-[1px] 
     sm:items-start sm:justify-center`}
                   >
-                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-500">
+                    <div className="relative h-[38px] w-[100%]  items-center justify-center rounded-lg bg-purple-500">
                       <button
                         type="submit"
-                        className="text-sm px-1 py-2 text-center font-sans text-white sm:mx-auto "
+                        className="text-sm  px-1 py-2 text-center font-sans text-gray-300 sm:mx-auto "
                       >
                         Current Plan
                       </button>
@@ -196,7 +186,7 @@ export default function Client({
                   </div>
                 </div>
               </div>
-              <div className="relative flex flex-col justify-between rounded-lg border border-mint bg-purple-500  p-12 shadow-lg shadow-blue/50">
+              <div className="relative flex cursor-pointer flex-col justify-between rounded-lg border border-mint bg-purple-600 p-8 shadow-md shadow-mint/30 hover:shadow-2xl hover:shadow-mint/30">
                 <Image
                   src="/icons/enterprice.svg"
                   alt="Enterprise"
@@ -209,7 +199,7 @@ export default function Client({
                 </div>
                 <div className="relative">
                   <h3 className="inline-block  text-2xl font-bold text-white">
-                    Pro
+                    Premium
                   </h3>
                   <div className="mt-4 text-center text-white ">
                     <span className="text-4xl font-bold text-white">$5</span> /
@@ -326,11 +316,18 @@ export default function Client({
                     onClick={submitPaymentInstruction}
                     className="w-full border-none bg-mint font-sans font-medium text-black outline-none hover:bg-mint/80 active:outline-none"
                   >
-                    Go Pro
+                    {loadingStripe ? (
+                      <div className="flex h-8">
+                        <Loader2 className="mt-[2px] animate-spin" size={20} />
+                        <span>Redirecting..</span>
+                      </div>
+                    ) : (
+                      translations.pricing.premium.cta
+                    )}
                   </Button>
                 </div>
               </div>
-              <div className="my-4 flex flex-col justify-between rounded-lg border border-blue/50 bg-purple-500 p-12 shadow-lg ">
+              <div className="my-4 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-600 p-8 shadow-lg">
                 <div className="text-white">
                   <Image
                     src="/icons/enterprice.svg"
@@ -436,7 +433,7 @@ export default function Client({
       rounded-lg bg-gradient-to-r from-mint to-mint p-[1px] 
     sm:items-start sm:justify-center`}
                   >
-                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-500">
+                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-600">
                       <button
                         type="submit"
                         className="text-sm px-1 py-2 text-center font-sans text-white sm:mx-auto "

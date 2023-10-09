@@ -26,7 +26,7 @@ function GenerateCode({
   langElement,
 }: GenerateCode) {
   const { isMobile } = useWindowSize()
-  const minWidth = isMobile ? "90vw" : "850px"
+  const minWidth = isMobile ? "90vw" : "100%"
 
   return (
     <>
@@ -38,12 +38,10 @@ function GenerateCode({
           .replace(regex, "")
           .replace("javascript", "")
           .replace("python", "")
-          .replace("json", "")
           .replace("go", "")
           .replace("python", "")
           .replace("html", "")
           .replace("sql", "")
-          .replace("typescript", "")
           .replace("jsx", "")
           .replace("tsx", "")
           .split("**::")
@@ -51,7 +49,7 @@ function GenerateCode({
             return (
               <div
                 key={idx}
-                className="mx-auto flex w-[100%] max-w-[100%] items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:max-w-[100%]"
+                className="mx-auto flex w-full items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:items-start sm:justify-start"
               >
                 <CopyBlock
                   onCopy={() => null}
@@ -59,9 +57,8 @@ function GenerateCode({
                   showLineNumbers
                   wrapLongLines
                   customStyle={{
-                    maxWidth: minWidth,
                     minWidth: minWidth,
-                    with: "95vw",
+                    with: "100vw",
                     borderRadius: "0.6rem",
                     border: `0.5px solid ${themeColors.purple[500]}`,
                   }}

@@ -16,7 +16,6 @@ import Link from "next/link"
 import { useState } from "react"
 
 export default function MobileSideBar({
-  router,
   pathname,
   colors,
   mode,
@@ -38,7 +37,7 @@ export default function MobileSideBar({
       >
         <div className="p-3">
           {!showMobileMenu ? (
-            <Menu color="white" className="ml-3 mt-6" />
+            <Menu color="white" className="ml-2 mt-2" />
           ) : (
             <div className="flex justify-between">
               <ArrowLeft className="ml-4 mt-5" color="white" />
@@ -92,9 +91,9 @@ export default function MobileSideBar({
               : "bg-none"
           }`}
         >
-          <div
+          <Link
+            href="/code-idea?mode=smart"
             onClick={() => {
-              router.push("/code-idea?mode=smart")
               setShowMobileMenu((prevState) => !prevState)
             }}
             className=" ml-4 mt-5 inline-flex h-[50px] w-full items-start justify-start rounded-md pr-2"
@@ -108,7 +107,7 @@ export default function MobileSideBar({
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.mode.smart}
             </p>
-          </div>
+          </Link>
         </div>
         <div
           className={`w-[100%] cursor-pointer ${
@@ -117,9 +116,9 @@ export default function MobileSideBar({
               : "bg-none"
           }`}
         >
-          <div
+          <Link
+            href="/code-idea?mode=improve"
             onClick={() => {
-              router.push("/code-idea?mode=improve")
               setShowMobileMenu((prevState) => !prevState)
             }}
             className="ml-4 mt-5 inline-flex h-[50px] w-full items-start justify-start rounded-md pr-2"
@@ -133,7 +132,7 @@ export default function MobileSideBar({
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.mode.improve}
             </p>
-          </div>
+          </Link>
         </div>
         <div
           className={`w-[100%] cursor-pointer ${
@@ -142,9 +141,9 @@ export default function MobileSideBar({
               : "bg-none"
           }`}
         >
-          <div
+          <Link
+            href="/code-idea?mode=test"
             onClick={() => {
-              router.push("/code-idea?mode=test")
               setShowMobileMenu((prevState) => !prevState)
             }}
             className="ml-4 mt-5 inline-flex h-[50px] w-full items-start justify-start rounded-md pr-2"
@@ -157,7 +156,7 @@ export default function MobileSideBar({
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.mode.test}
             </p>
-          </div>
+          </Link>
         </div>
         <div
           className={`w-[100%] cursor-pointer ${
@@ -166,9 +165,9 @@ export default function MobileSideBar({
               : "bg-none"
           }`}
         >
-          <div
+          <Link
+            href="/code-idea?mode=docs"
             onClick={() => {
-              router.push("/code-idea?mode=docs")
               setShowMobileMenu((prevState) => !prevState)
             }}
             className={`ml-4 mt-5 inline-flex h-[50px] w-full items-start justify-start rounded-md pr-2`}
@@ -181,16 +180,16 @@ export default function MobileSideBar({
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.mode.docs}
             </p>
-          </div>
+          </Link>
         </div>
         <div
-          className={`w-[100%] cursor-pointer ${
+          className={`w-full cursor-pointer ${
             pathname === "/pricing" ? "bg-purple-500" : "bg-none"
           }`}
         >
-          <div
+          <Link
+            href="/pricing"
             onClick={() => {
-              router.push("/pricing")
               setShowMobileMenu((prevState) => !prevState)
             }}
             className={`ml-4 mt-5 inline-flex h-[50px] w-full items-start justify-start rounded-md pr-2`}
@@ -203,7 +202,7 @@ export default function MobileSideBar({
             <p className="text-sm ml-4 pb-1 text-white">
               {translations.pricing}
             </p>
-          </div>
+          </Link>
         </div>
         <div
           className={`absolute bottom-2 left-4 w-[100%] cursor-pointer text-white ${

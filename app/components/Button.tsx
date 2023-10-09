@@ -3,6 +3,7 @@ import LoadingDots from "./LoadingDots"
 type ButtonProps = {
   loading: boolean
   hidden?: boolean
+  showArrow?: boolean
   text?: string
   buttonTextColor?: string
   variant?: string
@@ -16,6 +17,7 @@ type StopButtonProps = {
 
 export default function Button({
   loading,
+  showArrow,
   variant,
   buttonTextColor,
   onClick,
@@ -35,7 +37,10 @@ export default function Button({
       } font-semibold`}
       onClick={() => onClick && onClick()}
     >
-      {text}
+      {text}{" "}
+      {showArrow && (
+        <span className="ml-2 inline-flex w-2 animate-bounceRight"> ➝</span>
+      )}
     </button>
   ) : (
     <button

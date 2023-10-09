@@ -1,6 +1,5 @@
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth"
-import { redirect } from "next/navigation"
 import Client from "./client"
 import { headers } from "next/headers"
 import { getDictionary } from "app/(lang)/dictionaries"
@@ -14,9 +13,9 @@ export const metadata = {
 export default async function Page() {
   const session = await getServerSession(authOptions)
 
-  if (!session) {
-    redirect("/?action=authenticate&referer=/code-chat")
-  }
+  // if (!session) {
+  //   redirect("/code-chat?action=signUp")
+  // }
 
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
@@ -31,7 +30,6 @@ export default async function Page() {
       <main className="flex min-h-screen w-screen px-4 text-center">
         <Client
           session={session}
-          headerTranslations={dictionary.home.header}
           translations={dictionary?.chat}
           modalTranslations={dictionary?.modals?.moreCredits}
         />

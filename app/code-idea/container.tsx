@@ -5,13 +5,9 @@ import Client from "./client"
 import Navigation from "./navigation"
 import { LandElementType } from "app/components/DropDown"
 
-import { useSignInModal } from "app/components/modals/SignInModal"
-import Header from "app/components/Header"
-
 export type ModeTypes = "smart" | "test" | "improve" | "docs"
 
 export default function Container({ session, translations }) {
-  const { setShowSignInModal } = useSignInModal({ translations })
   const [chatHasStarted, setChatHasStarted] = useState(false)
   const [mode, setMode] = useState<ModeTypes>("smart")
 
@@ -29,11 +25,6 @@ export default function Container({ session, translations }) {
 
   return (
     <>
-      <Header
-        session={session}
-        translations={translations.home.header}
-        setShowSignInModal={setShowSignInModal}
-      />
       <Navigation
         menuTranslations={translations.home.header.menu}
         translations={translations.sidebar}
