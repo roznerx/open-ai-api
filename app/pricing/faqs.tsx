@@ -2,15 +2,23 @@
 
 import { Disclosure } from "@headlessui/react"
 import { ChevronUp } from "lucide-react"
+import Link from "next/link"
 
 export default function Faqs({ translations: faqs }) {
   return (
     <div className="mx-auto mb-12 px-4 ">
-      <h3 className="mb-6 text-3xl text-white">{faqs.title}</h3>
-      <p className="text-lg mb-2 text-gray-300">{faqs.desc}:</p>
-      <p className="text-lg mb-6 text-mint">support@code-genius.dev</p>
+      <h3 className="mb-3 text-4xl text-white">{faqs.title}</h3>
+      <p className="text-lg mb-4 text-gray-300">{faqs.desc}:</p>
+      <div className="text-lg mb-6 text-mint">
+        <Link
+          className="text-lg mb-12 mt-6 text-mint"
+          href={"mailto:support@code-genius.dev"}
+        >
+          Contact Support
+        </Link>
+      </div>
 
-      <div className="w-full rounded-2xl bg-purple-500 p-2">
+      <div className="mx-auto flex w-9/12 flex-col rounded-2xl bg-purple-500 p-2 ">
         <Disclosure as="div" className="">
           {({ open }) => (
             <>

@@ -8,7 +8,7 @@ import {
   CurlyBraces,
   Code,
   FileCode,
-  Coins,
+  Users,
 } from "lucide-react"
 
 import Link from "next/link"
@@ -139,7 +139,7 @@ const SideBar = ({
       >
         <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
           <Link href="/pricing">
-            <Coins
+            <Users
               width={26}
               height={26}
               color={pathname === "/pricing" ? colors.mint : "white"}

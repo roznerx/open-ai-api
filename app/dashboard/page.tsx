@@ -59,10 +59,14 @@ export default async function Dashboard({
         menuTranslations={dictionary?.home?.header?.menu}
       />
       <div className="mx-auto w-full dark:bg-purple-900">
-        <Client
-          translations={dictionary}
-          headerTranslations={dictionary.home.header}
-        />
+        <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
+          <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
+            <h2 className="mx-auto flex w-full items-center justify-center px-12 text-center text-3xl text-gray-200 sm:items-start sm:text-5xl">
+              {dictionary.dashboard.welcome}, {session.user.name}!
+            </h2>
+          </div>
+          <Client session={session} translations={dictionary} />
+        </div>
       </div>
     </div>
   )

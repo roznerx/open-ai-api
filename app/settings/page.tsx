@@ -8,16 +8,8 @@ import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { updateUserSubscription } from "utils/helpers"
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
 
-const website = [{ name: "/home", value: 1230 }]
-
-const items = [
-  {
-    category: "Website",
-    stat: "10,234",
-    data: website,
-  },
-]
 export const metadata = {
   title: "AI Dashboard",
 }
@@ -57,7 +49,6 @@ export default async function Settings({
   }
   const session = await getServerSession(authOptions)
   const subscription: any = await stripe.subscriptions.retrieve(subId)
-  console.log("subscription:", subscription)
 
   if (!session) {
     redirect("/?action=signUp&next=/settings")
@@ -99,9 +90,10 @@ export default async function Settings({
         translations={dictionary.sidebar}
         menuTranslations={dictionary?.home?.header?.menu}
       />
-      <main className="mx-auto flex w-full flex-col  items-center justify-center space-y-4 p-4 sm:max-w-7xl md:p-10">
-        <div className="w-1/2 rounded-lg bg-[#292B45] p-4">
-          <h2 className="text-left text-2xl font-bold tracking-tighter text-white">
+      <main className="mx-auto flex w-full flex-col items-center justify-center space-y-4 p-4 sm:max-w-7xl md:p-12">
+        <div className="w-2/3 rounded-lg bg-purple-700 p-8">
+          <p className="my-1 text-[13px] text-white">Your plan</p>
+          <h2 className="mb-12 text-left text-3xl font-bold tracking-normal text-white">
             Premium
           </h2>
           <div className="text-sm grid grid-cols-2 gap-4 text-white">
@@ -123,43 +115,61 @@ export default async function Settings({
               {formattedNumber} USD / Month
             </div>
           </div>
-          <div className="mt-4 flex justify-end space-x-4">
-            <Link
-              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
-              href="#"
-            >
-              Button 1
-            </Link>
-            <Link
-              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
-              href="#"
-            >
-              Button 2
-            </Link>
+          <div className="relative my-8 flex w-full flex-grow justify-start rounded-lg bg-gradient-to-r from-purple-400 to-purple-500/90 p-2 text-white">
+            <div className="mr-2 h-8 w-8 rounded-lg bg-gradient-to-t from-[#6530FC] to-[#A486FF]">
+              <span className="absolute top-4">
+                <span className="absolute top-1 ml-2 inline-flex sm:top-0">
+                  <span className="absolute top-0 sm:relative sm:top-0">
+                    <span className="absolute -top-2 right-[2px] text-[10px] text-white">
+                      ✦
+                    </span>
+                    <span className="text-[12px] text-white">✦</span>
+                    <span className="absolute bottom-2 left-2 text-[16px] text-white">
+                      ✦
+                    </span>
+                  </span>
+                </span>
+              </span>
+            </div>
+            <span className="pt-1 text-right">
+              Save $10/year by becoming an annual member!
+            </span>
+          </div>
+          <div className="mt-6 flex justify-end space-x-4">
+            <form action={deleteSubscription}>
+              <button className="text-sm inline-flex h-10 items-center justify-center rounded-md text-white/90 shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50">
+                Cancel Subscription
+              </button>
+            </form>
+            <button className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500">
+              Switch to yearly
+            </button>
           </div>
         </div>
-        <div className="mt-12 w-1/2 rounded-lg bg-[#292B45] p-4">
-          <h2 className="text-left text-2xl font-bold tracking-tighter text-white">
+        <div className="mt-12 w-2/3 rounded-lg bg-purple-700 p-8">
+          <h2 className="mb-12 text-left text-3xl font-bold leading-tight tracking-normal text-white">
             Payment
           </h2>
           <div className="text-sm grid grid-cols-2 gap-4 text-white">
-            <div>Payment method</div>
-            <div className="flex justify-end">Visa</div>
-            <div>Last 4 digits</div>
-            <div className="flex justify-end">3245</div>
-          </div>
-          <div className="mt-4 flex justify-start space-x-4">
+            <div className="pt-2">Manage payment method</div>
             <Link
-              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
-              href="#"
+              target="_blank"
+              href="https://billing.stripe.com/p/login/test_9AQ17X8Jm3207m09AA"
+              className="flex justify-end"
             >
-              Update payment method
+              <span className="flex h-auto w-auto justify-center rounded-lg bg-purple-500 p-2 text-center">
+                <ArrowUpRight />
+              </span>
             </Link>
+            <div className="pt-2">Check billing history</div>
             <Link
-              className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-white px-8 font-medium text-white shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
-              href="#"
+              target="_blank"
+              href="https://billing.stripe.com/p/login/test_9AQ17X8Jm3207m09AA"
+              className="flex justify-end"
             >
-              See billing history
+              <span className="flex h-auto w-auto justify-center rounded-lg bg-purple-500 p-2 text-center">
+                <ArrowUpRight />
+              </span>
             </Link>
           </div>
         </div>

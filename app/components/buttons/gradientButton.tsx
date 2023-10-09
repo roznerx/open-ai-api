@@ -11,8 +11,6 @@ type GradientButtonPros = {
 
 export default function GradientButton({
   width = "80%",
-  from = "#A1FFE0",
-  to = "#2C9DC0",
   text = "Buy Credits",
   bg = "bg-purple-700",
   onClick,
@@ -21,7 +19,7 @@ export default function GradientButton({
     <div
       onClick={onClick}
       className={`mx-auto my-4 mt-2 flex w-[${width}] cursor-pointer flex-row items-center justify-center 
-rounded-lg bg-gradient-to-r from-[${from}] to-[${to}] p-[2px] font-sans 
+rounded-lg border border-mint p-[2px] font-sans 
 sm:items-start sm:justify-center`}
     >
       <div

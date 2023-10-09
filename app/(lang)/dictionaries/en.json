@@ -67,7 +67,7 @@
       "subtitle": "Catch errors and optimize your code as you go."
     },
     "performance": {
-      "title": "Code Improvements",
+      "title": "Improvements",
       "subtitle": "Improve the perfomance of your code."
     },
     "test": {
@@ -128,7 +128,7 @@
     }
   },
   "pricing": {
-    "title": "Pay once. Go Premium",
+    "title": "Pay once. Go Premium.",
     "subtitle1": "Our pricing model is simple and flexible. No hidden fees. No surprise bills. No subscription bills.",
     "subtitle2": "Only pay for what you use.",
     "faqs": {
