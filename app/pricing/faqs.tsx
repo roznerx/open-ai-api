@@ -19,7 +19,7 @@ export default function Faqs({ translations: faqs }) {
       </div>
 
       <div className="mx-auto flex w-9/12 flex-col rounded-2xl bg-purple-500 p-2 ">
-        <Disclosure as="div" className="">
+        <Disclosure as="div" className="" defaultOpen>
           {({ open }) => (
             <>
               <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">

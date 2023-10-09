@@ -46,7 +46,7 @@ const SideBar = ({
       id="sidebar"
       className={`absolute left-0 top-0 z-50 hidden h-full w-16 translate-x-full flex-col items-center border-r-[1px] border-purple-500 bg-purple-800
       transition-transform duration-700 sm:fixed ${
-        pathname === "/" ? "sm:hidden" : "sm:flex"
+        pathname === "/" || pathname === "/pricing" ? "sm:hidden" : "sm:flex"
       } sm:translate-x-0`}
     >
       <MaterialTooltip
