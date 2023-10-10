@@ -13,6 +13,7 @@ type CardProps = {
   mb?: string
   order?: string
   button?: ReactNode
+  pill?: ReactNode
   imageSrc?: any
   onClick?: (text: string) => void
 }
@@ -22,6 +23,7 @@ export function PromptCard({
   isSub = false,
   title,
   button,
+  pill,
   order = "",
   imageSrc,
   text,
@@ -34,14 +36,14 @@ export function PromptCard({
     <div
       className={`${order} relative flex ${
         size === "large"
-          ? "h-64 w-[80%] flex-col items-start justify-start sm:col-span-2 sm:h-56 sm:w-full"
-          : "sm:h-38 h-auto w-[80%] sm:h-52 sm:w-[280px] sm:items-start"
-      }  cursor-pointer rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
+          ? "my-1 h-auto w-[90%] flex-col items-start justify-start sm:col-span-2 sm:h-56 sm:w-full"
+          : "sm:h-38 my-1  h-auto w-[90%] sm:h-52 sm:w-[280px] sm:items-start"
+      }  cursor-pointer rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow `}
       onClick={() => {
         if (onClick) onClick(text)
       }}
     >
-      <div className="mx-auto max-w-lg">
+      <div className="relative mx-auto max-w-lg">
         <motion.div
           className={`absolute ${
             size !== "large"
@@ -73,11 +75,7 @@ export function PromptCard({
               className="mb-2 ml-4"
             />
           )}
-          {isChat && (
-            <button className="ml-4 h-auto w-auto rounded-full bg-moradoCode p-1 px-2 text-[13px] font-semibold text-purple-900">
-              New Feature
-            </button>
-          )}
+          {pill && pill}
           {isSub && (
             <div className="ml-4">
               <Image
@@ -93,7 +91,11 @@ export function PromptCard({
         </div>
         <p className={`text-sm pt-2 font-normal text-gray-200`}>{text}</p>
       </div>
-      {button && <div className="absolute bottom-1 right-4">{button}</div>}
+      {button && (
+        <div className="relative mx-auto items-center justify-center sm:absolute sm:bottom-1 sm:right-4">
+          {button}
+        </div>
+      )}
     </div>
   )
 }

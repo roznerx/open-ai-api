@@ -105,15 +105,18 @@ export default function Client({ translations, session }) {
           isChat
           hasScale
           order="order-7 sm:order-7"
-          title={`Chat with Code Genius!`}
+          title={`Genius Chat`}
           text={`Ask to Code Genius and explore the vast collection of useful code examples to make your development process faster and more efficient`}
           onClick={undefined}
+          pill={
+            <button className="ml-4 mt-0.5 h-auto w-auto rounded-full bg-moradoCode p-1 px-2 pt-1 text-[13px] font-semibold text-purple-400">
+              New Feature
+            </button>
+          }
           button={
-            <>
-              <Link href="/code-chat">
-                <Button width="200px" text={"Go to Chat"} />
-              </Link>
-            </>
+            <Link href="/code-chat" className="">
+              <Button width="200px" text={"Go to Chat"} />
+            </Link>
           }
         />
         <DashboardCard
@@ -130,7 +133,7 @@ export default function Client({ translations, session }) {
           text={
             isPremium
               ? `You currently have the ${dashboard.premiumSubscription}. You have acces to these features: Chat, smart Suggestions, code improvements, automated tests generation and docs generation.`
-              : "Upgrade to get all the Premium features of Code Genius!"
+              : "Unlock Code Genius Premium to access a world of advanced features, including Unit Test Generation, Code Improvements, and Docs Generation – all at your fingertips!"
           }
           button={
             <UpgradeAccount

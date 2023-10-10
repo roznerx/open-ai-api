@@ -64,15 +64,15 @@
     "freeSubscription": "Free Plan",
     "smart": {
       "title": "Smart Suggestions",
-      "subtitle": "Catch errors and optimize your code as you go."
+      "subtitle": "Identify and rectify errors while fine-tuning your code in real-time."
     },
     "performance": {
       "title": "Improvements",
-      "subtitle": "Improve the perfomance of your code."
+      "subtitle": "Enhance the efficiency and optimize the performance of your code."
     },
     "test": {
       "title": "Generate Tests",
-      "subtitle": "Generate reliable unit test cases in seconds."
+      "subtitle": "Effortlessly create dependable unit test cases within seconds."
     },
     "docs": {
       "title": "Documentation",
