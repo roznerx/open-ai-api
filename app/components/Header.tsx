@@ -18,6 +18,7 @@ export default function Header({
   userHasAccount?: any
   translations?: any
 }) {
+  console.log("session in header:", session)
   const pathName = usePathname()
   const shouldJustifyBetween =
     pathName == "/" ||
