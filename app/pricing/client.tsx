@@ -186,7 +186,7 @@ export default function Client({ session, translations }: ClientPropTye) {
                   </div>
                 </div>
               </div>
-              <div className="relative flex cursor-pointer flex-col justify-between rounded-lg border border-mint bg-purple-600 p-8 shadow-md shadow-mint/30 hover:shadow-2xl hover:shadow-mint/30">
+              <div className="relative flex cursor-pointer flex-col justify-between rounded-lg border border-mint bg-purple-600 p-8 shadow-md shadow-mint/30 hover:shadow-lg hover:shadow-mint/30">
                 <Image
                   src="/icons/enterprice.svg"
                   alt="Enterprise"
@@ -314,7 +314,7 @@ export default function Client({ session, translations }: ClientPropTye) {
                 <div className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full border-none bg-mint font-sans font-medium text-black outline-none hover:bg-mint/80 active:outline-none"
+                    className="w-full cursor-pointer border border-mint  bg-mint font-sans font-medium text-black  outline-none hover:bg-purple-500 hover:text-mint active:outline-none"
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
