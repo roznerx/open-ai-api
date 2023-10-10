@@ -56,7 +56,7 @@ export function PromptCard({
             },
           }}
         ></motion.div>
-        <div className="mb-2 inline-flex items-start justify-start">
+        <div className="mb-2 flex w-full items-start justify-between sm:inline-flex sm:justify-start">
           <h5
             className={`text-2xl font-bold tracking-tight text-white sm:mt-0`}
           >
@@ -74,7 +74,7 @@ export function PromptCard({
             />
           )}
           {isChat && (
-            <button className="-pb-1 ml-4 h-8 w-auto rounded-full bg-moradoCode p-2 text-[13px] font-semibold text-purple-900">
+            <button className="ml-4 h-auto w-auto rounded-full bg-moradoCode p-1 px-2 text-[13px] font-semibold text-purple-900">
               New Feature
             </button>
           )}

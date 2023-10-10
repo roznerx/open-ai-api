@@ -19,7 +19,6 @@ const UpgradeAccount = ({ text, isPremium, subId, userId }) => (
 )
 
 export default function Client({ translations, session }) {
-  console.log("session:", session)
   const searchParams = useSearchParams()
   const router = useRouter()
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
@@ -62,11 +61,6 @@ export default function Client({ translations, session }) {
     }
   }, [searchParams, router])
 
-  console.log(
-    "expression",
-    !!session?.user?.subscriptionId && !subscriptionHasBeenDeleted,
-  )
-
   return (
     <>
       <div className="mb-12 mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
@@ -79,7 +73,6 @@ export default function Client({ translations, session }) {
           text={dashboard.smart.subtitle}
           imageSrc="/dashboard/smart.svg"
         />
-
         <DashboardCard
           onClick={() => {
             router.push("/code-idea?mode=improve")
@@ -89,7 +82,6 @@ export default function Client({ translations, session }) {
           text={dashboard.performance.subtitle}
           imageSrc="/dashboard/bug.svg"
         />
-
         <DashboardCard
           onClick={() => {
             router.push("/code-idea?mode=test")
@@ -99,7 +91,6 @@ export default function Client({ translations, session }) {
           text={dashboard.test.subtitle}
           imageSrc="/dashboard/test.svg"
         />
-
         <DashboardCard
           onClick={() => {
             router.push("/code-idea?mode=docs")
