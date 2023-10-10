@@ -1,6 +1,9 @@
 import Header from "../Header"
+import { getServerSession } from "next-auth"
+import { authOptions } from "pages/api/auth/[...nextauth]"
 
-export default function HeaderWrapper({ translations, session }) {
+export default async function HeaderWrapper({ translations }) {
+  const session = await getServerSession(authOptions)
   return (
     <>
       <Header translations={translations} session={session} />
