@@ -108,6 +108,7 @@ export default function UserMenu({ session, email, image, translations }) {
                 {({ active }) => (
                   <Link
                     href="/dashboard"
+                    shallow
                     className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
                       active ? "bg-purple-800 text-white" : "text-gray-200"
                     } `}

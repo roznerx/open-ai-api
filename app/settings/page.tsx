@@ -84,6 +84,8 @@ export default async function Settings({
       ? subscription.plan.amount.toString().substring(0, 1)
       : subscription.plan.amount.toString().substring(0, 2)
 
+  console.log("subscription", subscription)
+
   return (
     <>
       <SideBar
@@ -103,7 +105,11 @@ export default async function Settings({
             </div>
             <div>Trial ends in</div>
             <div className="flex justify-end">
-              {getSubscriptionDate(subscription.trial_end)}
+              {getSubscriptionDate(subscription.current_period_end)}
+            </div>
+            <div>Current period ends</div>
+            <div className="flex justify-end">
+              {getSubscriptionDate(subscription.current_period_end)}
             </div>
             <div>Billing cycle start</div>
             <div className="flex justify-end">
@@ -112,7 +118,10 @@ export default async function Settings({
             </div>
             <div>Payment amount</div>
             <div className="flex justify-end">
-              {formattedNumber} USD / Month
+              {formattedNumber} USD /{" "}
+              <span className="ml-1 capitalize">
+                {subscription.plan.interval}
+              </span>
             </div>
           </div>
           <div className="relative my-8 flex w-full flex-grow justify-start rounded-lg bg-gradient-to-r from-purple-400 to-purple-500/90 p-2 text-white">
