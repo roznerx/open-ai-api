@@ -8,17 +8,18 @@ import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 import Feedback from "./Feedback"
 import { cn } from "@/lib/utils"
+import { useSession } from "next-auth/react"
 
 export default function Header({
   translations,
-  session,
   userHasAccount = true,
 }: {
   session?: any
   userHasAccount?: any
   translations?: any
 }) {
-  console.log("session in header:", session)
+  const { data: session } = useSession()
+
   const pathName = usePathname()
   const shouldJustifyBetween =
     pathName == "/" ||
