@@ -1,6 +1,7 @@
 "use client"
 
 import ContactFormModal from "app/components/modals/ContactFormModal"
+import { motion } from "framer-motion"
 import PaymentModal from "app/components/modals/PaymentModal"
 import React, { useEffect } from "react"
 import { SUBSCRIPTION_PRICES } from "@/lib/constants"
@@ -311,21 +312,25 @@ export default function Client({ session, translations }: ClientPropTye) {
                     </li>
                   </ul>
                 </div>
-                <div className="mt-6">
+                <motion.div whileHover={{ scale: 1.1 }} className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full cursor-pointer border border-mint  bg-mint font-sans font-medium text-black  outline-none hover:bg-purple-500 hover:text-mint active:outline-none"
+                    className="w-full cursor-pointer border border-mint bg-mint font-sans font-medium text-black outline-none hover:font-semibold active:outline-none"
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
                         <Loader2 className="mt-[2px] animate-spin" size={20} />
-                        <span>Redirecting..</span>
+                        <span className="pt-1 text-gray-200">
+                          Redirecting..
+                        </span>
                       </div>
                     ) : (
-                      translations.pricing.premium.cta
+                      <motion.span>
+                        {translations.pricing.premium.cta}
+                      </motion.span>
                     )}
                   </Button>
-                </div>
+                </motion.div>
               </div>
               <div className="my-4 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-600 p-8 shadow-lg">
                 <div className="text-white">
