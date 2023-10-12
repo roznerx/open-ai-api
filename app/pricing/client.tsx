@@ -68,6 +68,7 @@ export default function Client({ session, translations }: ClientPropTye) {
 
   return (
     <>
+      <SignInModal />
       <PaymentModal isOpen={openPayment} setIsOpen={setOpenPayment} />
       <ContactFormModal
         clientName={session && session?.user && session?.user?.name}
@@ -216,7 +217,7 @@ export default function Client({ session, translations }: ClientPropTye) {
                       checked={enabled}
                       onChange={setEnabled}
                       className={`${enabled ? "bg-mint/90" : "bg-mint/50"}
-          relative inline-flex h-5 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+          relative inline-flex h-5 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-1  focus-visible:ring-black focus-visible:ring-opacity-75`}
                     >
                       <span
                         aria-hidden="true"
@@ -336,12 +337,12 @@ export default function Client({ session, translations }: ClientPropTye) {
                 <motion.div whileHover={{ scale: 1.1 }} className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full cursor-pointer border border-mint bg-mint font-sans font-medium text-black outline-none hover:bg-mint/70 hover:font-semibold active:outline-none"
+                    className="w-full cursor-pointer border border-mint bg-mint font-sans font-medium text-purple-900 outline-none hover:bg-mint/90 hover:font-semibold hover:text-black active:outline-none"
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
-                        <Loader2 className="mt-[2px] animate-spin" size={20} />
-                        <span className="pt-1 text-gray-200">
+                        <Loader2 className="mt-[6px] animate-spin" size={20} />
+                        <span className="pl-2 pt-1 font-[12px] text-purple-800">
                           Redirecting..
                         </span>
                       </div>
