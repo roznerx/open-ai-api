@@ -2,8 +2,9 @@
 
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import { motion } from "framer-motion"
+import { Switch } from "@headlessui/react"
 import PaymentModal from "app/components/modals/PaymentModal"
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { SUBSCRIPTION_PRICES } from "@/lib/constants"
 
 import Faqs from "./faqs"
@@ -23,6 +24,7 @@ type ClientPropTye = {
 }
 
 export default function Client({ session, translations }: ClientPropTye) {
+  const [enabled, setEnabled] = useState(false)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
@@ -202,9 +204,28 @@ export default function Client({ session, translations }: ClientPropTye) {
                   <h3 className="inline-block  text-2xl font-bold text-white">
                     Premium
                   </h3>
+
                   <div className="mt-4 text-center text-white ">
-                    <span className="text-4xl font-bold text-white">$5</span> /
-                    month
+                    <span className="text-4xl font-bold text-white">
+                      ${enabled ? "50" : `5`}
+                    </span>{" "}
+                    /{enabled ? " anual" : " month"}
+                  </div>
+                  <div>
+                    <Switch
+                      checked={enabled}
+                      onChange={setEnabled}
+                      className={`${enabled ? "bg-mint/90" : "bg-mint/50"}
+          relative inline-flex h-5 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-2  focus-visible:ring-white focus-visible:ring-opacity-75`}
+                    >
+                      <span
+                        aria-hidden="true"
+                        className={`${
+                          enabled ? "translate-x-6" : "translate-x-0"
+                        }
+            pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+                      />
+                    </Switch>
                   </div>
                   <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3 ">
@@ -315,7 +336,7 @@ export default function Client({ session, translations }: ClientPropTye) {
                 <motion.div whileHover={{ scale: 1.1 }} className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full cursor-pointer border border-mint bg-mint font-sans font-medium text-black outline-none hover:font-semibold active:outline-none"
+                    className="w-full cursor-pointer border border-mint bg-mint font-sans font-medium text-black outline-none hover:bg-mint/70 hover:font-semibold active:outline-none"
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
