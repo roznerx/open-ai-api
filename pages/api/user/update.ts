@@ -13,6 +13,7 @@ export default async function handler(req, res) {
 
   const payloadToUpdate = {
     ...existingUser[0],
+    isPremium: bodyRequest.isPremium,
     subscriptionId: bodyRequest.subscriptionId,
   }
 

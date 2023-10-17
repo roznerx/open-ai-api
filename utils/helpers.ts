@@ -3,8 +3,9 @@ export const getId = () => {
 }
 
 export async function updateUserSubscription(
-  userId: string,
-  subscriptionId: any,
+  userId?: string,
+  subscriptionId?: any,
+  removeSubscription?: boolean,
 ) {
   try {
     const response = await fetch(
@@ -15,10 +16,15 @@ export async function updateUserSubscription(
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          userId,
-          subscriptionId,
-        }),
+        body: JSON.stringify(
+          subscriptionId !== ""
+            ? {
+                userId,
+                subscriptionId,
+                isPremium: true,
+              }
+            : { userId, subscriptionId, isPremium: removeSubscription },
+        ),
       },
     )
     const data = await response.json()

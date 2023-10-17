@@ -31,17 +31,12 @@ export default function Client({ translations, session }) {
     searchParams?.has("action") &&
     searchParams.get("action") === "subscription-deleted"
 
-  const isPremium =
-    !subscriptionHasBeenDeleted && !!session?.user?.subscriptionId === true
-  // console.log("isPremium", isPremium)
+  const isPremium = session?.user?.isPremium && !subscriptionHasBeenDeleted
+
   // console.log("session info", session?.user)
 
   useEffect(() => {
-    if (
-      searchParams &&
-      searchParams.has("session_id") &&
-      session?.user?.subscriptionId
-    ) {
+    if (searchParams && searchParams.has("session_id") && isPremium) {
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
@@ -49,19 +44,15 @@ export default function Client({ translations, session }) {
       //SEND CONFETI
       Confetti()
     }
-  }, [searchParams, session])
+  }, [searchParams, session, isPremium])
 
   useEffect(() => {
-    if (
-      searchParams &&
-      searchParams.has("action") &&
-      searchParams.get("action") === "subscription-deleted"
-    ) {
+    if (subscriptionHasBeenDeleted) {
       //SORRY TO SEE YOU GO MESSAGE
       setThanksMessage(true)
       setOpenContactForm(true)
     }
-  }, [searchParams, router])
+  }, [searchParams, router, subscriptionHasBeenDeleted])
 
   return (
     <>
