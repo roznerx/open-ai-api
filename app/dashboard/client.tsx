@@ -36,7 +36,7 @@ export default function Client({ translations, session }) {
   // console.log("session info", session?.user)
 
   useEffect(() => {
-    if (searchParams && searchParams.has("session_id") && isPremium) {
+    if (searchParams && searchParams.has("session_id")) {
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
