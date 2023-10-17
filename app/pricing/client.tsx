@@ -23,7 +23,7 @@ type ClientPropTye = {
 }
 
 export default function Client({ session, translations }: ClientPropTye) {
-  const [enabled, setEnabled] = useState(false)
+  const [anual, setAnual] = useState(false)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
@@ -32,10 +32,29 @@ export default function Client({ session, translations }: ClientPropTye) {
   const [priceId, setPrecieId] = React.useState<string>("")
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
+  const isStripeTestingEnv =
+    location.hostname.includes("localhost") ||
+    location.hostname.includes("code-genius-mvp")
+  const monthlyPrice = isStripeTestingEnv
+    ? SUBSCRIPTION_PRICES.testing.premiumMonthly
+    : SUBSCRIPTION_PRICES.production.premiumMonthly
+  const anualPrice = isStripeTestingEnv
+    ? SUBSCRIPTION_PRICES.testing.premiumAnual
+    : SUBSCRIPTION_PRICES.production.premiumAnual
+
+  console.log("locatoin hostname: ", location.hostname)
+  console.log("monthlyPrice: ", monthlyPrice)
+  console.log("anualPrice: ", anualPrice)
 
   useEffect(() => {
-    setPrecieId(SUBSCRIPTION_PRICES.premium)
-  }, [])
+    if (!anual) {
+      setPrecieId(monthlyPrice)
+    } else {
+      setPrecieId(anualPrice)
+    }
+  }, [anual, anualPrice, monthlyPrice])
+
+  console.log("priceId: ", priceId)
 
   const submitPaymentInstruction = async (e) => {
     e.preventDefault()
@@ -45,25 +64,32 @@ export default function Client({ session, translations }: ClientPropTye) {
       setShowSignInModal(true)
       return false
     }
-    const response = await fetch("/api/checkout/stripe_sessions", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        priceUID: priceId,
-        userId: session?.user?.id,
-      }),
-    })
 
-    const stripeSession = await response.json()
+    try {
+      const response = await fetch("/api/checkout/stripe_sessions", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          priceUID: priceId,
+          userId: session?.user?.id,
+        }),
+      })
 
-    // setLoadingStripe(false)
+      const stripeSession = await response.json()
 
-    if (stripeSession) {
-      router.push(stripeSession?.session?.url)
+      // setLoadingStripe(false)
+
+      if (stripeSession) {
+        router.push(stripeSession?.session?.url)
+      }
+    } catch (error) {
+      console.error("Error:", error)
     }
   }
+
+  console.log("session", session)
 
   return (
     <>
@@ -183,7 +209,9 @@ export default function Client({ session, translations }: ClientPropTye) {
                         type="submit"
                         className="text-sm  px-1 py-1.5 text-center font-sans text-gray-300 sm:mx-auto "
                       >
-                        Current Plan
+                        {session?.user?.isPremium
+                          ? "Free Plan"
+                          : "Current Plan"}
                       </button>
                     </div>
                   </div>
@@ -207,22 +235,20 @@ export default function Client({ session, translations }: ClientPropTye) {
 
                   <div className="mt-4 text-center text-white ">
                     <span className="text-4xl font-bold text-white">
-                      ${enabled ? "50" : `5`}
+                      ${anual ? "50" : `5`}
                     </span>{" "}
-                    /{enabled ? " anual" : " month"}
+                    /{anual ? " anual" : " month"}
                   </div>
                   <div>
                     <Switch
-                      checked={enabled}
-                      onChange={setEnabled}
-                      className={`${enabled ? "bg-mint/90" : "bg-mint/50"}
+                      checked={anual}
+                      onChange={setAnual}
+                      className={`${anual ? "bg-mint/90" : "bg-mint/50"}
           relative inline-flex h-5 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-1  focus-visible:ring-black focus-visible:ring-opacity-75`}
                     >
                       <span
                         aria-hidden="true"
-                        className={`${
-                          enabled ? "translate-x-6" : "translate-x-0"
-                        }
+                        className={`${anual ? "translate-x-6" : "translate-x-0"}
             pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
                       />
                     </Switch>
@@ -346,7 +372,11 @@ export default function Client({ session, translations }: ClientPropTye) {
                         </span>
                       </div>
                     ) : (
-                      <span>{translations.pricing.premium.cta}</span>
+                      <span>
+                        {session?.user?.isPremium
+                          ? "Current Plan"
+                          : translations.pricing.premium.cta}
+                      </span>
                     )}
                   </Button>
                 </div>

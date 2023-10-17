@@ -42,7 +42,14 @@ export const PRICE_IDS = {
   150: "price_1N9L93KrxiA7kR6cJvbFzuBX",
 }
 export const SUBSCRIPTION_PRICES = {
-  premium: "price_1NV12EKrxiA7kR6cSNKwhn1f",
+  testing: {
+    premiumMonthly: "price_1NV12EKrxiA7kR6cSNKwhn1f",
+    premiumAnual: "price_1NzAMYKrxiA7kR6cn0uB5Twc",
+  },
+  production: {
+    premiumMonthly: "price_1NV12OKrxiA7kR6cq7azciIz",
+    premiumAnual: "price_1Nz9WHKrxiA7kR6c1KnFBVrv",
+  },
 }
 export const TESTING_PRICE_IDS = {
   50: "price_1N33VNKrxiA7kR6cPePbRpyr",

@@ -49,21 +49,16 @@ const SideBar = ({
         pathname === "/" || pathname === "/pricing" ? "sm:hidden" : "sm:flex"
       } sm:translate-x-0`}
     >
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.dashboard}
-      >
-        <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
-          <Link href="/dashboard">
-            <LayoutDashboard
-              width={26}
-              height={26}
-              color={pathname === "/dashboard" ? colors.mint : "white"}
-            />
-          </Link>
-        </div>
-      </MaterialTooltip>
+      <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
+        <Link href="/dashboard">
+          <LayoutDashboard
+            width={26}
+            height={26}
+            color={pathname === "/dashboard" ? colors.mint : "white"}
+          />
+        </Link>
+      </div>
+
       <MaterialTooltip
         placement="right-start"
         className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
