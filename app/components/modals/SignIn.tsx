@@ -43,7 +43,7 @@ export const SignInModal = ({
             router.replace(pathname || "/")
             setShowSignInModal(false)
           }}
-          className="absolute right-3 top-2 cursor-pointer rounded-full border border-white"
+          className="absolute right-3 top-3 cursor-pointer rounded-full border border-white"
           size={20}
           color="white"
         />

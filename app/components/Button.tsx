@@ -3,6 +3,7 @@ import LoadingDots from "./LoadingDots"
 type ButtonProps = {
   loading: boolean
   hidden?: boolean
+  disabled?: boolean
   showArrow?: boolean
   text?: string
   buttonTextColor?: string
@@ -16,6 +17,7 @@ type StopButtonProps = {
 }
 
 export default function Button({
+  disabled,
   loading,
   showArrow,
   variant,
@@ -26,11 +28,12 @@ export default function Button({
 }: ButtonProps) {
   return !loading ? (
     <button
+      disabled={disabled}
       className={`${
         hidden ? "hidden" : null
       }  "bg-mint" h-10 w-40 rounded-lg bg-black px-4 py-2 font-sans font-medium hover:bg-mint/80 ${
         variant === "mint" ? "bg-mint" : "bg-transparent"
-      }  hover:font-semibold ${
+      } cursor-pointer  hover:font-semibold ${
         buttonTextColor === "dark" || typeof buttonTextColor === "undefined"
           ? "text-gray-600"
           : "text-white"

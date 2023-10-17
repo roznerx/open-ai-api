@@ -33,8 +33,10 @@ export default function Client({ host, session, translations }: ClientPropTye) {
   const [priceId, setPrecieId] = React.useState<string>("")
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
+
   const isStripeTestingEnv =
     host.includes("localhost") || host.includes("code-genius-mvp")
+
   const monthlyPrice = isStripeTestingEnv
     ? SUBSCRIPTION_PRICES.testing.premiumMonthly
     : SUBSCRIPTION_PRICES.production.premiumMonthly

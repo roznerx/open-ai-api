@@ -12,7 +12,7 @@ export default function BaseModal({
 }: {
   children: React.ReactNode
   showModal: boolean
-  setShowModal: Dispatch<SetStateAction<boolean>>
+  setShowModal?: Dispatch<SetStateAction<boolean>> | undefined
 }) {
   const desktopModalRef = useRef(null)
   const router = useRouter()
@@ -22,7 +22,7 @@ export default function BaseModal({
     (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         router.replace(pathname || "/")
-        setShowModal(false)
+        setShowModal && setShowModal(false)
       }
     },
     [pathname, router, setShowModal],
@@ -39,7 +39,9 @@ export default function BaseModal({
     <AnimatePresence>
       {showModal && (
         <>
-          {isMobile && <Leaflet setShow={setShowModal}>{children}</Leaflet>}
+          {isMobile && setShowModal && (
+            <Leaflet setShow={setShowModal}>{children}</Leaflet>
+          )}
           {isDesktop && (
             <>
               <div
@@ -52,7 +54,7 @@ export default function BaseModal({
               <div
                 key="desktop-backdrop"
                 className="fixed inset-0 z-30 bg-gray-100 bg-opacity-10 backdrop-blur"
-                onClick={() => setShowModal(false)}
+                onClick={() => setShowModal && setShowModal(false)}
               />
             </>
           )}

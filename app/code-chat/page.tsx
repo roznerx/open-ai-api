@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth"
 import Client from "./client"
 import { headers } from "next/headers"
 import { getDictionary } from "app/(lang)/dictionaries"
-import SideBar from "app/components/shared/SideBar"
 
 export const metadata = {
   title: "Code Chat",
@@ -23,10 +22,6 @@ export default async function Page() {
 
   return (
     <>
-      <SideBar
-        translations={dictionary.sidebar}
-        menuTranslations={dictionary?.home?.header?.menu}
-      />
       <main className="flex min-h-screen w-screen px-4 text-center">
         <Client
           session={session}

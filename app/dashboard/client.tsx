@@ -102,7 +102,7 @@ export default function Client({ translations, session }) {
           text={`Ask to Code Genius and explore the vast collection of useful code examples to make your development process faster and more efficient`}
           onClick={undefined}
           pill={
-            <button className=" ml-4 mt-0.5 h-auto w-auto rounded-full bg-moradoCode p-1 px-2 pt-1 text-[13px] font-semibold text-purple-400 ">
+            <button className="ml-4 mt-0.5 h-auto w-auto rounded-full bg-moradoCode p-1 pt-1 text-[13px] font-semibold text-purple-400 ">
               New Feature
             </button>
           }

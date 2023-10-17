@@ -2,7 +2,6 @@
 
 import { useState } from "react"
 import Client from "./client"
-import Navigation from "./navigation"
 import { LandElementType } from "app/components/DropDown"
 
 export type ModeTypes = "smart" | "test" | "improve" | "docs"
@@ -25,14 +24,10 @@ export default function Container({ session, translations }) {
 
   return (
     <>
-      <Navigation
-        menuTranslations={translations.home.header.menu}
-        translations={translations.sidebar}
-        setGeneratedCode={setGeneratedCode}
-        mode={mode}
-      />
       <Client
+        isPremium={session?.user?.isPremium}
         userName={session?.user?.name?.substring(0, 1)}
+        rootTranslations={translations}
         translations={translations?.codeIdea}
         langTranslation={translations.codeIdea.footer.lang}
         libTranslation={translations.codeIdea.footer.lib}
