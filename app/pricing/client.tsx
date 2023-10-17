@@ -368,7 +368,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     {loadingStripe ? (
                       <div className="flex h-8">
                         <Loader2 className="mt-[6px] animate-spin" size={20} />
-                        <span className="pl-2 pt-1 font-[12px] text-purple-800">
+                        <span className="pl-2 pt-1 font-[12px] text-gray-100">
                           Redirecting..
                         </span>
                       </div>
