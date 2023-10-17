@@ -1,7 +1,6 @@
 "use client"
 
 import ContactFormModal from "app/components/modals/ContactFormModal"
-import { motion } from "framer-motion"
 import { Switch } from "@headlessui/react"
 import PaymentModal from "app/components/modals/PaymentModal"
 import React, { useEffect, useState } from "react"
@@ -179,10 +178,10 @@ export default function Client({ session, translations }: ClientPropTye) {
       rounded-lg p-[1px] 
     sm:items-start sm:justify-center`}
                   >
-                    <div className="relative h-[38px] w-[100%]  items-center justify-center rounded-lg bg-purple-500">
+                    <div className="relative h-[38px] w-[100%] items-center justify-center rounded-lg border border-mint bg-transparent">
                       <button
                         type="submit"
-                        className="text-sm  px-1 py-2 text-center font-sans text-gray-300 sm:mx-auto "
+                        className="text-sm  px-1 py-1.5 text-center font-sans text-gray-300 sm:mx-auto "
                       >
                         Current Plan
                       </button>
@@ -334,10 +333,10 @@ export default function Client({ session, translations }: ClientPropTye) {
                     </li>
                   </ul>
                 </div>
-                <motion.div whileHover={{ scale: 1.1 }} className="mt-6">
+                <div className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full cursor-pointer border border-mint bg-mint font-sans font-medium text-purple-900 outline-none hover:bg-mint/90 hover:font-semibold hover:text-black active:outline-none"
+                    className="w-full cursor-pointer border border-mint bg-transparent font-sans font-medium text-white outline-none hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
@@ -347,12 +346,10 @@ export default function Client({ session, translations }: ClientPropTye) {
                         </span>
                       </div>
                     ) : (
-                      <motion.span>
-                        {translations.pricing.premium.cta}
-                      </motion.span>
+                      <span>{translations.pricing.premium.cta}</span>
                     )}
                   </Button>
-                </motion.div>
+                </div>
               </div>
               <div className="my-4 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-600 p-8 shadow-lg">
                 <div className="text-white">
@@ -460,10 +457,10 @@ export default function Client({ session, translations }: ClientPropTye) {
       rounded-lg bg-gradient-to-r from-mint to-mint p-[1px] 
     sm:items-start sm:justify-center`}
                   >
-                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-600">
+                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-600 text-white hover:bg-mint/90 hover:font-semibold hover:text-purple-900">
                       <button
                         type="submit"
-                        className="text-sm px-1 py-2 text-center font-sans text-white sm:mx-auto "
+                        className="text-sm font-sanssm:mx-auto px-1 py-2 text-center "
                       >
                         Contact Us
                       </button>
