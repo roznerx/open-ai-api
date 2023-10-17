@@ -20,9 +20,10 @@ import { Loader2 } from "lucide-react"
 type ClientPropTye = {
   session: any
   translations: any
+  host: string
 }
 
-export default function Client({ session, translations }: ClientPropTye) {
+export default function Client({ host, session, translations }: ClientPropTye) {
   const [anual, setAnual] = useState(false)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
@@ -33,8 +34,7 @@ export default function Client({ session, translations }: ClientPropTye) {
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const isStripeTestingEnv =
-    location.hostname.includes("localhost") ||
-    location.hostname.includes("code-genius-mvp")
+    host.includes("localhost") || host.includes("code-genius-mvp")
   const monthlyPrice = isStripeTestingEnv
     ? SUBSCRIPTION_PRICES.testing.premiumMonthly
     : SUBSCRIPTION_PRICES.production.premiumMonthly
@@ -42,7 +42,8 @@ export default function Client({ session, translations }: ClientPropTye) {
     ? SUBSCRIPTION_PRICES.testing.premiumAnual
     : SUBSCRIPTION_PRICES.production.premiumAnual
 
-  console.log("locatoin hostname: ", location.hostname)
+  console.log("locatoin hostname: ", host)
+  console.log("isStripeTestingEnv:", isStripeTestingEnv)
   console.log("monthlyPrice: ", monthlyPrice)
   console.log("anualPrice: ", anualPrice)
 
@@ -243,13 +244,13 @@ export default function Client({ session, translations }: ClientPropTye) {
                     <Switch
                       checked={anual}
                       onChange={setAnual}
-                      className={`${anual ? "bg-mint/90" : "bg-mint/50"}
+                      className={`${anual ? "bg-mint/90" : "bg-gray-200"}
           relative inline-flex h-5 w-11 shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out focus:outline-none focus-visible:ring-1  focus-visible:ring-black focus-visible:ring-opacity-75`}
                     >
                       <span
                         aria-hidden="true"
                         className={`${anual ? "translate-x-6" : "translate-x-0"}
-            pointer-events-none inline-block h-4 w-4 transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out`}
+            pointer-events-none inline-block h-4 w-4 transform rounded-full bg-purple-900 shadow-lg ring-0 transition duration-200 ease-in-out`}
                       />
                     </Switch>
                   </div>
