@@ -43,7 +43,13 @@ export default function Header({
               : "justify-center"
           } sm:items-start sm:justify-between`}
         >
-          <div className={`ml-4 pt-2 sm:ml-6`}>
+          <div
+            className={`ml-4 pt-2 ${
+              pathName == "/dashboard" || pathName == "/code-idea"
+                ? "sm:ml-20"
+                : "sm:ml-6"
+            }`}
+          >
             <Link href="/">
               <div className={`flex`}>
                 {/* <div className="mx-auto ml-1 h-8 w-8 rounded-full border border-black"> */}

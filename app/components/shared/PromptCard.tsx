@@ -77,7 +77,7 @@ export function PromptCard({
           )}
           {pill && pill}
           {isSub && (
-            <div className="ml-4">
+            <div className="ml-4 sm:absolute sm:-right-3">
               <Image
                 title={altImg}
                 alt={altImg}

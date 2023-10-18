@@ -116,7 +116,7 @@ export default function Client({
           text={`Ask to Code Genius and explore the vast collection of useful code examples to make your development process faster and more efficient`}
           onClick={undefined}
           pill={
-            <button className="ml-4 mt-0.5 h-auto w-auto rounded-full bg-moradoCode p-1 pt-1 text-[13px] font-semibold text-purple-400 ">
+            <button className=" h-auto w-auto rounded-full bg-moradoCode px-2 py-1 text-[13px] font-semibold text-purple-400 sm:absolute sm:-right-4">
               New Feature
             </button>
           }
