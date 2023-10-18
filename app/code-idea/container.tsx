@@ -21,6 +21,7 @@ export default function Container({ session, translations }) {
 
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
+  console.log("Session,", session)
 
   return (
     <>

@@ -10,6 +10,8 @@ export const metadata = {
   title: "Code Idea",
 }
 
+export const dynamic = "force-dynamic"
+
 const roboto_mono = Roboto_Mono({
   subsets: ["latin"],
   display: "swap",
