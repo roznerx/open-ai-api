@@ -240,12 +240,14 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   <h3 className="inline-block  text-2xl font-bold text-white">
                     Premium
                   </h3>
-
                   <div className="mt-4 text-center text-white ">
                     <span className="text-4xl font-bold text-white">
                       ${anual ? "50" : `5`}
                     </span>{" "}
                     /{anual ? " anual" : " month"}
+                    <p className="text-xs mb-2 text-moradoCode">
+                      {anual ? "Save $10" : null}
+                    </p>{" "}
                   </div>
                   <div>
                     <Switch
