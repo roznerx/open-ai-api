@@ -19,14 +19,12 @@ import { MaterialTooltip } from "../material-components"
 import MobileSideBar from "./MobileSideBar"
 
 const SideBar = ({
-  session,
   translations,
   menuTranslations,
   mode,
   setGeneratedCode,
 }: {
   translations: any
-  session: any
   menuTranslations: any
   mode?: string
   setMode?: any
