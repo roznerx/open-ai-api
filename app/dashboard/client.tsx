@@ -18,10 +18,14 @@ const UpgradeAccount = ({ text, isPremium, subId, userId }) => (
   </Link>
 )
 
-export default function Client({ translations, session }) {
+export default function Client({
+  translations,
+  session,
+  isPremium: isProUser,
+}) {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const [isPremium, setIsPremium] = React.useState<boolean>(false)
+  const [isPremium, setIsPremium] = React.useState<boolean>(isProUser)
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const { dashboard } = translations

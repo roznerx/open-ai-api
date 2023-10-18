@@ -10,6 +10,7 @@ declare module "next-auth" {
       subscriptionId?: string
       name: string
       id: string
+      isPremium?: boolean
     }
   }
 }
