@@ -39,6 +39,7 @@ export const ProModal = ({
               {translations?.title || "Upgrade to Pro"}
             </h1>
             <Image
+              priority
               src="/icons/enterprice.svg"
               alt="Premium membership"
               width={40}
