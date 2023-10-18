@@ -7,6 +7,7 @@ import { authOptions } from "pages/api/auth/[...nextauth]"
 import { redirect } from "next/navigation"
 import { Params } from "app/settings/page"
 import { updateUserSubscription } from "utils/helpers"
+import { stripe } from "@/lib/stripe"
 
 export const metadata = {
   title: "AI Dashboard",
@@ -23,8 +24,8 @@ export default async function Dashboard({
 }: {
   searchParams: SearchParamsWithSesId
 }) {
-  console.log("searchParams:", searchParams)
-  // const { session_id } = searchParams
+  let stripeSession
+  const { session_id } = searchParams
   const session = await getServerSession(authOptions)
 
   if (!session) {
@@ -32,13 +33,11 @@ export default async function Dashboard({
   }
   if (searchParams.action === "subscription-deleted") {
     console.log("use is deleting their subscription")
-    // stripeSession = await stripe.checkout.sessions.retrieve(session_id)
     await updateUserSubscription(session.user.id, "", false)
   }
-  // We set the subscription ID in the webhook, this code ensures we store the subscription id in the DB.
-  // if (stripeSession) {
-  //   await updateUserSubscription(session.user.id, stripeSession.subscription)
-  // }
+  if (session_id) {
+    stripeSession = await stripe?.checkout?.sessions?.retrieve(session_id)
+  }
 
   const headersList = headers()
   const lang =
@@ -67,7 +66,12 @@ export default async function Dashboard({
               Explore our features we have for you!
             </p>
           </div>
-          <Client session={session} translations={dictionary} />
+          <Client
+            subscriptionId={stripeSession.subscription}
+            isPremium={session?.user?.isPremium}
+            session={session}
+            translations={dictionary}
+          />
         </div>
       </div>
     </div>

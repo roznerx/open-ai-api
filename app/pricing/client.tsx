@@ -68,6 +68,11 @@ export default function Client({ host, session, translations }: ClientPropTye) {
       return false
     }
 
+    if (session?.user?.isPremium) {
+      router.push("/dashboard")
+      return false
+    }
+
     try {
       const response = await fetch("/api/checkout/stripe_sessions", {
         method: "POST",
@@ -369,13 +374,16 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
-                        <Loader2 className="mt-[6px] animate-spin" size={20} />
+                        <Loader2
+                          className="mt-[6px] animate-spin text-white group-hover:text-purple-900"
+                          size={20}
+                        />
                         <span className="pl-2 pt-1 font-[12px] text-white group-hover:text-purple-900">
                           Redirecting..
                         </span>
                       </div>
                     ) : (
-                      <span className="text-white hover:bg-purple-900">
+                      <span className="bg-transparent text-white group-hover:text-purple-900">
                         {session?.user?.isPremium
                           ? "Current Plan"
                           : translations.pricing.premium.cta}

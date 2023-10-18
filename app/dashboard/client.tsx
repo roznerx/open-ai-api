@@ -19,6 +19,7 @@ const UpgradeAccount = ({ text, isPremium, subId, userId }) => (
 )
 
 export default function Client({
+  subscriptionId,
   translations,
   session,
   isPremium: isProUser,
@@ -144,7 +145,7 @@ export default function Client({
           button={
             <UpgradeAccount
               isPremium={isPremium}
-              subId={session?.user?.subscriptionId}
+              subId={session?.user?.subscriptionId || subscriptionId}
               userId={session?.user?.id}
               text={isPremium ? "Manage Subscription" : "Upgrade plan"}
             />
