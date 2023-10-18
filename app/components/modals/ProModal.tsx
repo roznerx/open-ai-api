@@ -33,19 +33,19 @@ export const ProModal = ({
         />
         <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:px-12">
           <div className="mt-8 flex flex-col items-center justify-center sm:mt-0">
-            <h1
-              className={`mt-6 text-center font-sans text-[28px] font-[700] text-white`}
-            >
-              {translations?.title || "Upgrade to Pro"}
-            </h1>
             <Image
               priority
               src="/icons/enterprice.svg"
               alt="Premium membership"
               width={40}
               height={40}
-              className="mx-auto"
+              className="mx-auto pt-8"
             />
+            <h1
+              className={`mt-3 text-center font-sans text-[28px] font-[700] text-white`}
+            >
+              {translations?.title || "Upgrade to Premium"}
+            </h1>
           </div>
           <h6 className="sm:text-xl  mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200 ">
             {translations?.subtitle ||
@@ -159,10 +159,10 @@ export const ProModal = ({
             </ul>
           </div>
         </div>
-        <div className="mt-6 flex">
+        <div className="my-6 flex">
           <Button
             onClick={() => router.push("/pricing")}
-            className="mx-auto cursor-pointer border border-mint bg-transparent px-12 font-sans font-medium text-white outline-none hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
+            className="mx-auto cursor-pointer border border-mint bg-mint px-12 font-sans font-medium text-purple-900 outline-none  hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
           >
             <span>Upgrade</span>
           </Button>

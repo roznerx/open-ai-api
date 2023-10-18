@@ -8,17 +8,17 @@ import { usePathname, useRouter } from "next/navigation"
 import { useState } from "react"
 import Feedback from "./Feedback"
 import { cn } from "@/lib/utils"
-import { useSession } from "next-auth/react"
 
 export default function Header({
   translations,
+  session,
   userHasAccount = true,
 }: {
   session?: any
   userHasAccount?: any
   translations?: any
 }) {
-  const { data: session } = useSession()
+  console.log("session", session)
 
   const pathName = usePathname()
   const shouldJustifyBetween =
@@ -29,6 +29,7 @@ export default function Header({
     pathName == "/privacy"
   const [showWidget, setShowWidget] = useState(false)
   const router = useRouter()
+
   return (
     <>
       <div
@@ -42,11 +43,7 @@ export default function Header({
               : "justify-center"
           } sm:items-start sm:justify-between`}
         >
-          <div
-            className={`${
-              pathName !== "/" && session ? "sm:ml-20" : "sm:ml-6"
-            } ml-4 pt-2`}
-          >
+          <div className={`ml-4 pt-2 sm:ml-6`}>
             <Link href="/">
               <div className={`flex`}>
                 {/* <div className="mx-auto ml-1 h-8 w-8 rounded-full border border-black"> */}
@@ -127,7 +124,6 @@ export default function Header({
               </div>
             )}
           </div>
-
           <UserDropdown translations={translations} session={session} />
         </div>
       </div>

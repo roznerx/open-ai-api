@@ -67,7 +67,10 @@ export default async function RootLayout({
                   menuTranslations={translations?.home?.header?.menu}
                 />
               )}
-              <HeaderWrapper translations={translations?.home?.header} />
+              <HeaderWrapper
+                session={session}
+                translations={translations?.home?.header}
+              />
               {children}
             </div>
             <Footer session={session} translations={translations?.footer} />

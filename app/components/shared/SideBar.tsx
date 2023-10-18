@@ -41,12 +41,19 @@ const SideBar = ({
     }
   }, [setGeneratedCode, pathname])
 
+  const shouldHideSideBar =
+    pathname === "/" ||
+    pathname === "/pricing" ||
+    pathname === "/blog" ||
+    pathname === "/terms-and-conditions" ||
+    pathname === "/privacy"
+
   return !isMobile ? (
     <div
       id="sidebar"
       className={`absolute left-0 top-0 z-50 hidden h-full w-16 translate-x-full flex-col items-center border-r-[1px] border-purple-500 bg-purple-800
       transition-transform duration-700 sm:fixed ${
-        pathname === "/" || pathname === "/pricing" ? "sm:hidden" : "sm:flex"
+        shouldHideSideBar ? "sm:hidden" : "sm:flex"
       } sm:translate-x-0`}
     >
       <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
