@@ -365,17 +365,17 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                 <div className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="w-full cursor-pointer border border-mint bg-transparent font-sans font-medium text-white outline-none hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
+                    className="group w-full cursor-pointer border border-mint bg-transparent font-sans font-medium outline-none hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
                         <Loader2 className="mt-[6px] animate-spin" size={20} />
-                        <span className="pl-2 pt-1 font-[12px] text-purple-900">
+                        <span className="pl-2 pt-1 font-[12px] text-white group-hover:text-purple-900">
                           Redirecting..
                         </span>
                       </div>
                     ) : (
-                      <span>
+                      <span className="text-white hover:bg-purple-900">
                         {session?.user?.isPremium
                           ? "Current Plan"
                           : translations.pricing.premium.cta}
