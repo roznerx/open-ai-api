@@ -21,6 +21,7 @@ const UpgradeAccount = ({ text, isPremium, subId, userId }) => (
 export default function Client({ translations, session }) {
   const searchParams = useSearchParams()
   const router = useRouter()
+  const [isPremium, setIsPremium] = React.useState<boolean>(false)
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const { dashboard } = translations
@@ -31,7 +32,14 @@ export default function Client({ translations, session }) {
     searchParams?.has("action") &&
     searchParams.get("action") === "subscription-deleted"
 
-  const isPremium = session?.user?.isPremium && !subscriptionHasBeenDeleted
+  useEffect(() => {
+    if (
+      (searchParams && searchParams.has("session_id")) ||
+      session?.user?.isPremium
+    ) {
+      setIsPremium(true)
+    }
+  }, [searchParams, session?.user?.isPremium])
 
   // console.log("session info", session?.user)
 
@@ -44,10 +52,11 @@ export default function Client({ translations, session }) {
       //SEND CONFETI
       Confetti()
     }
-  }, [searchParams, session, isPremium])
+  }, [searchParams])
 
   useEffect(() => {
     if (subscriptionHasBeenDeleted) {
+      setIsPremium(false)
       //SORRY TO SEE YOU GO MESSAGE
       setThanksMessage(true)
       setOpenContactForm(true)
