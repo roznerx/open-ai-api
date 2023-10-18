@@ -379,7 +379,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                           size={20}
                         />
                         <span className="pl-2 pt-1 font-[12px] text-white group-hover:text-purple-900">
-                          Redirecting..
+                          Processing..
                         </span>
                       </div>
                     ) : (

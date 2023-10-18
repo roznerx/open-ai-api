@@ -3,7 +3,7 @@
  */
 
 export async function harperClient(body, cache = true) {
-  const revalidateOption = cache ? { revalidate: 30 } : { revalidate: 0 }
+  const revalidateOption = cache ? { revalidate: 0 } : { revalidate: 0 }
   const requestOptions = {
     method: "POST",
     next: revalidateOption,
