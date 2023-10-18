@@ -67,7 +67,7 @@ export default async function Dashboard({
             </p>
           </div>
           <Client
-            subscriptionId={stripeSession.subscription}
+            subscriptionId={stripeSession?.subscription}
             isPremium={session?.user?.isPremium}
             session={session}
             translations={dictionary}
