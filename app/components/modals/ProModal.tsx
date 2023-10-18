@@ -27,7 +27,7 @@ export const ProModal = ({
             router.replace(pathname || "/")
             setShowModal && setShowModal(false)
           }}
-          className="absolute right-3 top-3 cursor-pointer rounded-full border border-gray-200"
+          className="absolute right-3 top-3 cursor-pointer rounded-full"
           size={20}
           color="white"
         />
@@ -162,9 +162,9 @@ export const ProModal = ({
         <div className="my-6 flex">
           <Button
             onClick={() => router.push("/pricing")}
-            className="mx-auto cursor-pointer border border-mint bg-mint px-12 font-sans font-medium text-purple-900 outline-none  hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
+            className="mx-auto w-[80%] cursor-pointer border border-mint bg-mint px-12 font-sans font-medium text-purple-900 outline-none  hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
           >
-            <span>Upgrade</span>
+            <span>Upgrade to premium</span>
           </Button>
         </div>
       </div>
