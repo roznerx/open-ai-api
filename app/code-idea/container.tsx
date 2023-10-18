@@ -3,13 +3,14 @@
 import { useState } from "react"
 import Client from "./client"
 import { LandElementType } from "app/components/DropDown"
+import { ProModal } from "app/components/modals/ProModal"
 
 export type ModeTypes = "smart" | "test" | "improve" | "docs"
 
 export default function Container({ session, translations }) {
   const [chatHasStarted, setChatHasStarted] = useState(false)
   const [mode, setMode] = useState<ModeTypes>("smart")
-
+  const [premiumModalIsOpen, setPremiumModalIsOpen] = useState(false)
   const [generatedCode, setGeneratedCode] = useState<String>("")
   const [codeSentence, setCodeSentence] = useState("")
   const [langElement, setLangElement] = useState<LandElementType>(
@@ -25,10 +26,17 @@ export default function Container({ session, translations }) {
 
   return (
     <>
+      <ProModal
+        mode={mode}
+        translations={translations}
+        showModal={premiumModalIsOpen}
+        setShowModal={setPremiumModalIsOpen}
+      />
       <Client
+        premiumModalIsOpen={premiumModalIsOpen}
+        setPremiumModalIsOpen={setPremiumModalIsOpen}
         isPremium={session?.user?.isPremium}
         userName={session?.user?.name?.substring(0, 1)}
-        rootTranslations={translations}
         translations={translations?.codeIdea}
         langTranslation={translations.codeIdea.footer.lang}
         libTranslation={translations.codeIdea.footer.lib}

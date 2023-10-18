@@ -63,6 +63,7 @@ export default async function RootLayout({
             <div className="flex min-h-screen flex-nowrap bg-purple-900">
               {session && (
                 <SideBar
+                  session={session}
                   translations={translations.sidebar}
                   menuTranslations={translations?.home?.header?.menu}
                 />

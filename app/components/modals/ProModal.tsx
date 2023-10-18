@@ -8,19 +8,22 @@ import { Dispatch, SetStateAction } from "react"
 import Image from "next/image"
 
 export const ProModal = ({
+  mode,
   translations,
   showModal,
   setShowModal,
 }: {
+  mode: string
   translations: any
   setShowModal?: Dispatch<SetStateAction<boolean>>
   showModal: boolean
 }) => {
+  console.log("mode:", mode)
   const router = useRouter()
   const pathname = usePathname()
 
   return (
-    <BaseModal showModal={showModal}>
+    <BaseModal showModal={showModal && mode !== "smart"}>
       <div className="relative bg-purple-800 p-4 sm:h-auto sm:w-[504.01px] sm:rounded-2xl">
         <X
           onClick={() => {

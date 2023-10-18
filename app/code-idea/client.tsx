@@ -20,7 +20,6 @@ import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useCodeGeniusMood from "hooks/useCodeGeniusMood"
 import { usePathname, useSearchParams } from "next/navigation"
 import useWindowSize from "hooks/use-window-size"
-import { ProModal } from "app/components/modals/ProModal"
 
 let langElements: LandElementType[] = ["Typescript", "Javascript", "Python"]
 let libElements: LandElementType[] = ["React", "Vue", "Angular"]
@@ -37,8 +36,9 @@ let testFrameworkElements: TestingElementType[] = [
 let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
+  premiumModalIsOpen,
+  setPremiumModalIsOpen,
   userName,
-  rootTranslations,
   isPremium,
   chatHasStarted,
   langTranslation,
@@ -68,7 +68,7 @@ export default function Client({
     useState<TestingElementType>("Testing Tool")
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
-  const [premiumModalIsOpen, setPremiumModalIsOpen] = useState(false)
+
   const [prompt, setPrompt] = useState("")
   const [docOptions, setDocOptions] = useState("Options")
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
@@ -171,6 +171,7 @@ export default function Client({
     langTranslation,
     libTranslation,
     isPremium,
+    setPremiumModalIsOpen,
   ])
 
   useEffect(() => {
@@ -339,13 +340,10 @@ export default function Client({
   const showUserMessage =
     mode === "smart" && chatHasStarted && codeSentence.length > 0
 
+  console.log("mode in client", mode)
+
   return (
     <>
-      <ProModal
-        translations={rootTranslations}
-        showModal={premiumModalIsOpen}
-        setShowModal={setPremiumModalIsOpen}
-      />
       <div className="w-full sm:ml-10">
         <div
           ref={chatContainerRef}
@@ -399,31 +397,33 @@ export default function Client({
             )}
           </div>
         </div>
-        <FooterSection
-          isPremium={isPremium}
-          translations={translations.footer}
-          stopGeneration={stopGeneration}
-          clearPanel={clearPanel}
-          testFrameworkElements={testFrameworkElements}
-          setDocOptions={setDocOptions}
-          docOptions={docOptions}
-          testLibElements={testLibElements}
-          testLibElement={testLibElement}
-          setTestLib={setTestLib}
-          setTestFrameworkElement={setTestFrameworkElement}
-          testFrameworkElement={testFrameworkElement}
-          mode={mode}
-          setUserHasAResponse={setUserHasAResponse}
-          generatedCode={generatedCode}
-          langElement={langElement}
-          libElements={libElements}
-          langElements={langElements}
-          loading={loading}
-          setLangElement={setLangElement}
-          lib={lib}
-          setLib={setLib}
-          onCodeGeneration={onCodeGeneration}
-        />
+        {(isPremium || mode === "smart") && (
+          <FooterSection
+            isPremium={isPremium}
+            translations={translations.footer}
+            stopGeneration={stopGeneration}
+            clearPanel={clearPanel}
+            testFrameworkElements={testFrameworkElements}
+            setDocOptions={setDocOptions}
+            docOptions={docOptions}
+            testLibElements={testLibElements}
+            testLibElement={testLibElement}
+            setTestLib={setTestLib}
+            setTestFrameworkElement={setTestFrameworkElement}
+            testFrameworkElement={testFrameworkElement}
+            mode={mode}
+            setUserHasAResponse={setUserHasAResponse}
+            generatedCode={generatedCode}
+            langElement={langElement}
+            libElements={libElements}
+            langElements={langElements}
+            loading={loading}
+            setLangElement={setLangElement}
+            lib={lib}
+            setLib={setLib}
+            onCodeGeneration={onCodeGeneration}
+          />
+        )}
         <Modal
           title={modalTranslations?.title}
           isCreditsModal
