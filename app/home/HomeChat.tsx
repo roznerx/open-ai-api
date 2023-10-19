@@ -14,7 +14,6 @@ import { generateCodeWithTurbo } from "utils/generateCode"
 import { useSignInModal } from "app/components/modals/SignInModal"
 import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
-import { CREDITS_MODAL_COPY } from "@/lib/constants"
 import { Loader2 } from "lucide-react"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
 import useWindowSize from "hooks/use-window-size"
@@ -27,11 +26,11 @@ export interface CodeMessagesProps {
   userPrompt?: any
 }
 
-const Modal = dynamic(() => import("app/components/Modal"), {
-  loading: () => (
-    <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
-  ),
-})
+// const Modal = dynamic(() => import("app/components/Modal"), {
+//   loading: () => (
+//     <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
+//   ),
+// })
 const ChatContainer = dynamic(() => import("./ChatContainer"), {
   loading: () => (
     <Loader2 size={20} color="white" className="hidden h-8 w-8 animate-spin" />
@@ -47,9 +46,7 @@ export default function HomeChat({
 }) {
   const existingCredits = loggedUserData && loggedUserData[0]?.credits
   const textareaRef = useRef<any>(null)
-  const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(
-    existingCredits === 0 ? true : false,
-  )
+
   const userId = session && session.user?.id
   const { isMobile } = useWindowSize()
   const [userApiCalls, setUserApiCalls] = useState<number>(apiCalls)
@@ -89,10 +86,6 @@ export default function HomeChat({
     }
 
     if (e.key === "Enter") {
-      if (existingCredits === 0 && session) {
-        setCreditsModaIsOpen(true)
-        return false
-      }
       codeMessages.current = [
         ...codeMessages.current,
         {
@@ -101,23 +94,11 @@ export default function HomeChat({
         },
       ]
       setCodeSentence("")
-      generateCodeWithTurbo(
-        reader,
-        codeMessages,
-        setReader,
-        setGeneratedCode,
-        userId,
-        setCreditsModaIsOpen,
-      )
+      generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode)
     }
   }
 
   const onArrowPress = async () => {
-    if (existingCredits === 0) {
-      setCreditsModaIsOpen(true)
-      return false
-    }
-
     if (!session && userApiCalls >= 5) {
       setShowSignInModal(true)
       return false
@@ -132,14 +113,7 @@ export default function HomeChat({
       },
     ]
     setCodeSentence("")
-    generateCodeWithTurbo(
-      reader,
-      codeMessages,
-      setReader,
-      setGeneratedCode,
-      userId,
-      setCreditsModaIsOpen,
-    )
+    generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode)
 
     //Update free trial usage
     if (!session) {
@@ -156,7 +130,7 @@ export default function HomeChat({
   return (
     <>
       <SignInModal />
-      <Modal
+      {/* <Modal
         title={CREDITS_MODAL_COPY.title}
         isCreditsModal
         body={CREDITS_MODAL_COPY.description}
@@ -164,7 +138,7 @@ export default function HomeChat({
         buttonText={CREDITS_MODAL_COPY.callToAction}
         buttonLink="/pricing"
         setIsOpen={setCreditsModaIsOpen}
-      />
+      /> */}
       <div className="relative ml-1 flex w-full flex-col items-center justify-center font-sans sm:mx-auto sm:w-full">
         <div className="relative mt-2 h-12 w-full text-center sm:w-[900px]">
           <input

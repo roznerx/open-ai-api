@@ -5,8 +5,6 @@ export async function generateCodeWithTurbo(
   codeMessages,
   setReader,
   setGeneratedCode,
-  userId = null,
-  setCreditsModaIsOpen,
 ) {
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
@@ -87,19 +85,13 @@ export async function generateCode({
   setReader,
   setGeneratedCode,
   codeMessages,
-  userId,
   setUserHasAResponse,
-  setCreditsLeft,
-  setCreditsModaIsOpen,
   setLoading,
 }: {
   setReader?: (reader: any) => void
   setGeneratedCode: any
   codeMessages?: any
-  userId?: string
   setUserHasAResponse?: (hasResponse: boolean) => void
-  setCreditsLeft?: (creditsLeft: number) => void
-  setCreditsModaIsOpen?: (isOpen: boolean) => void
   setLoading?: (loading: boolean) => void
 }) {
   const response = await fetch("/api/generateWithTurbo", {

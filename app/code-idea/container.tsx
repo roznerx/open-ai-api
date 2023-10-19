@@ -22,8 +22,8 @@ export default function Container({ session, translations }) {
 
   const userId = session && session.user?.id
   const userCredits = session && session.user?.credits
-  console.log("Session,", session)
-
+  // console.log("Session,", session)
+  const userIsPremium = session?.user?.isPremium || session?.user?.credits > 0
   return (
     <>
       <ProModal
@@ -33,14 +33,12 @@ export default function Container({ session, translations }) {
         setShowModal={setPremiumModalIsOpen}
       />
       <Client
-        premiumModalIsOpen={premiumModalIsOpen}
         setPremiumModalIsOpen={setPremiumModalIsOpen}
-        isPremium={session?.user?.isPremium}
+        isPremium={userIsPremium}
         userName={session?.user?.name?.substring(0, 1)}
         translations={translations?.codeIdea}
         langTranslation={translations.codeIdea.footer.lang}
         libTranslation={translations.codeIdea.footer.lib}
-        modalTranslations={translations?.modals?.moreCredits}
         setGeneratedCode={setGeneratedCode}
         generatedCode={generatedCode}
         chatHasStarted={chatHasStarted}

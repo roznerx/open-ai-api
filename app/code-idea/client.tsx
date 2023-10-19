@@ -36,7 +36,6 @@ let testFrameworkElements: TestingElementType[] = [
 let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
-  premiumModalIsOpen,
   setPremiumModalIsOpen,
   userName,
   isPremium,
@@ -47,7 +46,6 @@ export default function Client({
   setGeneratedCode,
   generatedCode,
   translations,
-  modalTranslations,
   userId,
   userCredits,
   lib,
@@ -72,7 +70,6 @@ export default function Client({
   const [prompt, setPrompt] = useState("")
   const [docOptions, setDocOptions] = useState("Options")
   const [creditsLeft, setCreditsLeft] = useState(userCredits)
-  const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const [showSavePromptModal, setShowSavePromptModal] = useState(false)
   const [userHasAResponse, setUserHasAResponse] = useState(false)
   const [reader, setReader] =
@@ -246,12 +243,6 @@ export default function Client({
     }
   }, [])
 
-  useEffect(() => {
-    if (!userCredits || userCredits === 0) {
-      setCreditsModaIsOpen(true)
-    }
-  }, [userCredits])
-
   const generateCompletion = async () => {
     setLoading(true)
     setChatHasStarted(true)
@@ -268,10 +259,7 @@ export default function Client({
       setReader,
       setGeneratedCode,
       codeMessages,
-      userId,
       setUserHasAResponse,
-      setCreditsLeft,
-      setCreditsModaIsOpen,
       setLoading,
     })
   }
@@ -292,10 +280,6 @@ export default function Client({
       return false
     }
 
-    if (!creditsLeft || creditsLeft === 0) {
-      setCreditsModaIsOpen(true)
-      return false
-    }
     generateCompletion()
   }
 
@@ -424,15 +408,6 @@ export default function Client({
             onCodeGeneration={onCodeGeneration}
           />
         )}
-        <Modal
-          title={modalTranslations?.title}
-          isCreditsModal
-          body={modalTranslations?.description}
-          isOpen={creditsModaIsOpen}
-          buttonText={modalTranslations?.cta}
-          buttonLink="/pricing"
-          setIsOpen={setCreditsModaIsOpen}
-        />
         <Modal
           isCreditsModal
           title={`Configure your ${

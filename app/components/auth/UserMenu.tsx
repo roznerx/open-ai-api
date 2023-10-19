@@ -2,6 +2,7 @@ import { Menu, Transition } from "@headlessui/react"
 import { Crisp } from "crisp-sdk-web"
 import useWindowSize from "hooks/use-window-size"
 import {
+  Code2,
   LayoutDashboard,
   LogOut,
   MessageCircle,
@@ -95,6 +96,25 @@ export default function UserMenu({ session, email, image, translations }) {
                       className={`text-sm items-start rounded-md px-2 py-2`}
                     />
                     <span>{translations.menu.dashboard}</span>
+                  </Link>
+                )}
+              </Menu.Item>
+            </div>
+            <div className="h-auto">
+              <Menu.Item>
+                {({ active }) => (
+                  <Link
+                    href="/code-idea"
+                    className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
+                      active ? "bg-purple-800 text-white" : "text-gray-200"
+                    } `}
+                  >
+                    <Code2
+                      width={35}
+                      height={35}
+                      className={`text-sm items-start rounded-md px-2 py-2`}
+                    />
+                    <span>{translations.menu.codeIdeas}</span>
                   </Link>
                 )}
               </Menu.Item>

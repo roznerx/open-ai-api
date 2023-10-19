@@ -138,7 +138,7 @@ export default function FooterSection({
           </div>
           <div className="flex sm:mr-4">
             <Button
-              disabled={!isPremium}
+              disabled={!isPremium && mode !== "smart"}
               onClick={() => {
                 onCodeGeneration()
                 setUserHasAResponse(false)
