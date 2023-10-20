@@ -1,12 +1,13 @@
 import { Send } from "lucide-react"
 
 export default function HomeChatInput({
+  messagesLength,
   textareaRef,
   inputValue,
   handleInputChange,
-  messages,
-  translations,
 }) {
+  console.log("messagesLength", messagesLength)
+
   return (
     <>
       <input
@@ -15,7 +16,7 @@ export default function HomeChatInput({
          pl-3 pr-12 text-white caret-mint/70 outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60 placeholder:text-white focus:border-[1px] focus:border-mint/50 focus:outline-none  focus:outline-0 focus:ring-0 active:outline-0 sm:w-[900px]"
         value={inputValue}
         onChange={handleInputChange}
-        placeholder={messages.length === 1 ? translations?.placeholder : ""}
+        placeholder={messagesLength === 1 ? "What's your next code idea?" : ""}
       />
       <button
         type="submit"
