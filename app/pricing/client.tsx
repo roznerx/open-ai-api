@@ -122,7 +122,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   />
                   <h3
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
-                    font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
+                    font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
                     Starter
                   </h3>
@@ -240,7 +240,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                 <div className="relative mx-auto">
                   <h3
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#72D7D3] to-[#2C9DC0] bg-clip-text
-                    text-center font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:leading-6`}
+                    text-center font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
                     Premium
                   </h3>
@@ -428,7 +428,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   />
                   <h3
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
-                    font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
+                    font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
                     Enterprise
                   </h3>
