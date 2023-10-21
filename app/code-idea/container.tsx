@@ -21,8 +21,7 @@ export default function Container({ session, translations }) {
   )
 
   const userId = session && session.user?.id
-  const userCredits = session && session.user?.credits
-  // console.log("Session,", session)
+
   const userIsPremium = session?.user?.isPremium || session?.user?.credits > 0
   return (
     <>
@@ -43,7 +42,6 @@ export default function Container({ session, translations }) {
         generatedCode={generatedCode}
         chatHasStarted={chatHasStarted}
         setChatHasStarted={setChatHasStarted}
-        userCredits={userCredits}
         userId={userId}
         mode={mode}
         setMode={setMode}

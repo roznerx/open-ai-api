@@ -1,7 +1,6 @@
 import { stripe } from "@/lib/stripe"
 import { getDictionary } from "app/(lang)/dictionaries"
 
-import SideBar from "app/components/shared/SideBar"
 import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
@@ -9,6 +8,8 @@ import { authOptions } from "pages/api/auth/[...nextauth]"
 import { updateUserSubscription } from "utils/helpers"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import ManageSubscription from "./manage-subscription"
+import { paymentPortalLink } from "utils/helprs"
 
 export const metadata = {
   title: "AI Dashboard",
@@ -48,7 +49,7 @@ export default async function Settings({
     redirect("/dashboard?action=subscription-deleted")
   }
   const session = await getServerSession(authOptions)
-  const subscription: any = await stripe.subscriptions.retrieve(subId)
+  const subscription: any = await stripe?.subscriptions?.retrieve(subId)
 
   if (!session) {
     redirect("/?action=signUp&next=/settings")
@@ -88,11 +89,8 @@ export default async function Settings({
 
   return (
     <>
-      <SideBar
-        translations={dictionary.sidebar}
-        menuTranslations={dictionary?.home?.header?.menu}
-      />
       <main className="mx-auto flex w-full flex-col items-center justify-center space-y-4 p-4 sm:max-w-7xl md:p-12">
+        {/* <CancelModal translations={dictionary} isWarningOpen={true} /> */}
         <div className="w-2/3 rounded-lg bg-purple-700 p-8">
           <p className="my-1 text-[13px] text-white">Your plan</p>
           <h2 className="mb-12 text-left text-3xl font-bold tracking-normal text-white">
@@ -140,20 +138,11 @@ export default async function Settings({
                 </span>
               </span>
             </div>
-            <span className="pt-1 text-right">
+            <span className="pt-1 text-right text-white">
               Save $10/year by becoming an annual member!
             </span>
           </div>
-          <div className="mt-6 flex justify-end space-x-4">
-            <form action={deleteSubscription}>
-              <button className="text-sm inline-flex h-10 items-center justify-center rounded-md text-white/90 shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50">
-                Cancel Subscription
-              </button>
-            </form>
-            <button className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500">
-              Switch to yearly
-            </button>
-          </div>
+          <ManageSubscription subId={subId} userId={userId} />
         </div>
         <div className="mt-12 w-2/3 rounded-lg bg-purple-700 p-8">
           <h2 className="mb-12 text-left text-3xl font-bold leading-tight tracking-normal text-white">
@@ -163,7 +152,7 @@ export default async function Settings({
             <div className="pt-2">Manage payment method</div>
             <Link
               target="_blank"
-              href="https://billing.stripe.com/p/login/test_9AQ17X8Jm3207m09AA"
+              href={paymentPortalLink}
               className="flex justify-end"
             >
               <span className="flex h-auto w-auto justify-center rounded-lg bg-purple-500 p-2 text-center">
@@ -173,7 +162,7 @@ export default async function Settings({
             <div className="pt-2">Check billing history</div>
             <Link
               target="_blank"
-              href="https://billing.stripe.com/p/login/test_9AQ17X8Jm3207m09AA"
+              href={paymentPortalLink}
               className="flex justify-end"
             >
               <span className="flex h-auto w-auto justify-center rounded-lg bg-purple-500 p-2 text-center">

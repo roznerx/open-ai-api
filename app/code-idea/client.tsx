@@ -47,7 +47,6 @@ export default function Client({
   generatedCode,
   translations,
   userId,
-  userCredits,
   lib,
   mode,
   setMode,
@@ -69,7 +68,6 @@ export default function Client({
 
   const [prompt, setPrompt] = useState("")
   const [docOptions, setDocOptions] = useState("Options")
-  const [creditsLeft, setCreditsLeft] = useState(userCredits)
   const [showSavePromptModal, setShowSavePromptModal] = useState(false)
   const [userHasAResponse, setUserHasAResponse] = useState(false)
   const [reader, setReader] =
