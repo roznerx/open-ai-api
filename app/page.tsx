@@ -1,4 +1,7 @@
+import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
+
+import { authOptions } from "pages/api/auth/[...nextauth]"
 
 import Client from "./client"
 import { getDictionary } from "./(lang)/dictionaries"
@@ -10,6 +13,8 @@ export const metadata = {
 }
 
 export default async function Page() {
+  const session = await getServerSession(authOptions)
+
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(lang)
@@ -17,7 +22,7 @@ export default async function Page() {
   return (
     <>
       <main>
-        <Client translations={dictionary} />
+        <Client translations={dictionary} session={session} />
       </main>
     </>
   )
