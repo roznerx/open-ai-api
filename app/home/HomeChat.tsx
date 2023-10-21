@@ -12,7 +12,6 @@ import Image from "next/image"
 import { generateCodeWithTurbo } from "utils/generateCode"
 
 import { useSignInModal } from "app/components/modals/SignInModal"
-import { updateAnonymousUserUsage } from "utils/harperDBhelpers"
 
 import { Loader2 } from "lucide-react"
 import { CombinedMessages } from "app/components/shared/CombinedMessages"
@@ -37,24 +36,14 @@ const ChatContainer = dynamic(() => import("./ChatContainer"), {
   ),
 })
 
-export default function HomeChat({
-  ip,
-  apiCalls,
-  session,
-  loggedUserData,
-  translations,
-}) {
-  const existingCredits = loggedUserData && loggedUserData[0]?.credits
+export default function HomeChat({ translations }) {
   const textareaRef = useRef<any>(null)
-
-  const userId = session && session.user?.id
   const { isMobile } = useWindowSize()
-  const [userApiCalls, setUserApiCalls] = useState<number>(apiCalls)
   const [reader, setReader] =
     useState<ReadableStreamDefaultReader<Uint8Array> | null>(null)
   const [codeSentence, setCodeSentence] = useState("")
 
-  const { SignInModal, setShowSignInModal } = useSignInModal({
+  const { SignInModal } = useSignInModal({
     tip: "Redeem your initial 25 credits.",
     translations: translations,
   })
@@ -79,11 +68,6 @@ export default function HomeChat({
     if (codeSentence.length === 0 || codeSentence === "") {
       return false
     }
-    //Update free trial usage
-    if (!session) {
-      const response = await updateAnonymousUserUsage(ip)
-      setUserApiCalls(response?.apiCalls)
-    }
 
     if (e.key === "Enter") {
       codeMessages.current = [
@@ -99,11 +83,6 @@ export default function HomeChat({
   }
 
   const onArrowPress = async () => {
-    if (!session && userApiCalls >= 5) {
-      setShowSignInModal(true)
-      return false
-    }
-
     //Store the code sentence in the current code-messages ref.
     codeMessages.current = [
       ...codeMessages.current,
@@ -114,12 +93,6 @@ export default function HomeChat({
     ]
     setCodeSentence("")
     generateCodeWithTurbo(reader, codeMessages, setReader, setGeneratedCode)
-
-    //Update free trial usage
-    if (!session) {
-      const response = await updateAnonymousUserUsage(ip)
-      setUserApiCalls(response.apiCalls)
-    }
   }
 
   const generatedMessages = useMemo(
@@ -130,15 +103,7 @@ export default function HomeChat({
   return (
     <>
       <SignInModal />
-      {/* <Modal
-        title={CREDITS_MODAL_COPY.title}
-        isCreditsModal
-        body={CREDITS_MODAL_COPY.description}
-        isOpen={creditsModaIsOpen}
-        buttonText={CREDITS_MODAL_COPY.callToAction}
-        buttonLink="/pricing"
-        setIsOpen={setCreditsModaIsOpen}
-      /> */}
+
       <div className="relative ml-1 flex w-full flex-col items-center justify-center font-sans sm:mx-auto sm:w-full">
         <div className="relative mt-2 h-12 w-full text-center sm:w-[900px]">
           <input
