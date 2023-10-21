@@ -24,7 +24,7 @@ type ClientPropTye = {
 }
 
 export default function Client({ host, session, translations }: ClientPropTye) {
-  const [anual, setAnual] = useState(false)
+  const [anual, setAnual] = useState(true)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
@@ -111,24 +111,32 @@ export default function Client({ host, session, translations }: ClientPropTye) {
         <section className="flex w-full items-center justify-center py-12">
           <div className="container px-4 md:px-6">
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
-              <div className="my-4 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-600 p-8 shadow-lg ">
+              <div className="my-16 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-700 p-8 shadow-lg ">
                 <div>
                   <Image
-                    src="/icons/premium.svg"
-                    alt="Premium membership"
+                    src="/icons/starter.svg"
+                    alt="starter membership"
                     width={40}
                     height={40}
                     className="mx-auto"
                   />
-                  <h3 className="text-center text-2xl font-bold text-white">
-                    {translations.pricing.basic.title}
+                  <h3
+                    className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
+                    font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
+                  >
+                    Starter
                   </h3>
+
                   <div className="mt-4 text-center text-white">
-                    <span className="text-3xl font-bold">
+                    <span className="text-4xl font-bold">
                       {translations.pricing.basic.subtitle}
                     </span>
+                    <p>Perfect to try it for the first time.</p>
                   </div>
-                  <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
+                  <p className="mt-6 flex justify-center font-semibold text-white">
+                    What’s included?
+                  </p>
+                  <ul className="mt-8 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
@@ -201,7 +209,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                 </div>
                 <div className="mt-6">
                   <div
-                    className={`mx-auto my-4 mt-2 flex w-[250px] flex-row items-center justify-center 
+                    className={`mx-auto my-4 mt-2 flex flex-row items-center justify-center 
       rounded-lg p-[1px] 
     sm:items-start sm:justify-center`}
                   >
@@ -218,31 +226,43 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   </div>
                 </div>
               </div>
-              <div className="relative flex cursor-pointer flex-col justify-between rounded-lg border border-mint bg-purple-600 p-8 shadow-md shadow-mint/30 hover:shadow-lg hover:shadow-mint/30">
+              <div className="relative my-8 flex cursor-pointer flex-col  rounded-lg border border-mint bg-purple-700 p-8 shadow-md shadow-mint/30 hover:shadow-lg hover:shadow-mint/30">
                 <Image
-                  src="/icons/enterprice.svg"
-                  alt="Enterprise"
+                  src="/icons/premium.svg"
+                  alt="Premium plan"
                   width={40}
                   height={40}
-                  className="mx-auto"
+                  className="mx-auto "
                 />
                 <div className="text-sm absolute left-1/2 top-0 inline-block -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-mint px-3 py-1 font-bold text-purple-700 ">
                   Popular
                 </div>
-                <div className="relative">
-                  <h3 className="inline-block  text-2xl font-bold text-white">
+                <div className="relative mx-auto">
+                  <h3
+                    className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#72D7D3] to-[#2C9DC0] bg-clip-text
+                    text-center font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:leading-6`}
+                  >
                     Premium
                   </h3>
-                  <div className="mt-4 text-center text-white ">
+
+                  <div className="mt-4 flex w-full justify-center text-center text-white">
                     <span className="text-4xl font-bold text-white">
-                      ${anual ? "50" : `5`}
-                    </span>{" "}
-                    /{anual ? " anual" : " month"}
-                    {/* <p className="text-xs mb-2 text-moradoCode">
-                      {anual ? "Save $10" : null}
-                    </p>{" "} */}
+                      $ {anual ? "5" : `8`}
+                    </span>
                   </div>
-                  <div>
+                  <div className="mb-4 flex w-full justify-center text-center text-white">
+                    <p className="text-base text-white">
+                      {anual ? "Per month pay yearly" : `Per month`}
+                    </p>
+                  </div>
+                  <div className="mx-auto flex h-12 w-52 items-center justify-center rounded-lg bg-purple-500 py-2">
+                    <span
+                      className={`${
+                        !anual ? "text-white" : "text-gray-300"
+                      } pr-2`}
+                    >
+                      Monthly
+                    </span>
                     <Switch
                       checked={anual}
                       onChange={setAnual}
@@ -255,7 +275,17 @@ export default function Client({ host, session, translations }: ClientPropTye) {
             pointer-events-none inline-block h-4 w-4 transform rounded-full bg-purple-900 shadow-lg ring-0 transition duration-200 ease-in-out`}
                       />
                     </Switch>
+                    <span
+                      className={`${
+                        anual ? "text-white" : "text-gray-300"
+                      } pl-2`}
+                    >
+                      Yearly
+                    </span>
                   </div>
+                  <p className="mt-6 flex justify-center font-semibold text-white">
+                    What’s included?
+                  </p>
                   <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3 ">
                       {/* <!-- Icon --> */}
@@ -365,20 +395,20 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                 <div className="mt-6">
                   <Button
                     onClick={submitPaymentInstruction}
-                    className="group w-full cursor-pointer border border-mint bg-transparent font-sans font-medium outline-none hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
+                    className="group w-full cursor-pointer bg-mint font-sans font-medium outline-none hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
                   >
                     {loadingStripe ? (
                       <div className="flex h-8">
                         <Loader2
-                          className="mt-[6px] animate-spin text-white group-hover:text-purple-900"
+                          className="mt-[6px] animate-spin text-purple-900"
                           size={20}
                         />
-                        <span className="pl-2 pt-1 font-[12px] text-white group-hover:text-purple-900">
+                        <span className="pl-2 pt-1 font-[12px] text-purple-900">
                           Processing..
                         </span>
                       </div>
                     ) : (
-                      <span className="bg-transparent text-white group-hover:text-purple-900">
+                      <span className="bg-transparent text-purple-900 group-hover:text-purple-900">
                         {session?.user?.isPremium
                           ? "Current Plan"
                           : translations.pricing.premium.cta}
@@ -387,7 +417,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   </Button>
                 </div>
               </div>
-              <div className="my-4 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-600 p-8 shadow-lg">
+              <div className="my-16 flex cursor-pointer flex-col justify-between rounded-lg bg-purple-700 p-8 shadow-lg">
                 <div className="text-white">
                   <Image
                     src="/icons/enterprice.svg"
@@ -396,8 +426,20 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     height={40}
                     className="mx-auto"
                   />
-                  <h3 className="text-center text-2xl font-bold">Enterprise</h3>
-                  <ul className="mt-12 space-y-4 text-left md:mx-8">
+                  <h3
+                    className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
+                    font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
+                  >
+                    Enterprise
+                  </h3>
+                  <h2 className="mx-auto my-3 w-full font-semibold text-white sm:w-[100%] sm:text-4xl sm:leading-none sm:tracking-tight">
+                    Contact us
+                  </h2>
+                  <p className="text-white">Perfect for teams of any size.</p>
+                  <p className="mt-6 flex justify-center font-semibold text-white">
+                    What’s included?
+                  </p>
+                  <ul className="mt-10 space-y-4 text-left md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
@@ -493,7 +535,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
       rounded-lg bg-gradient-to-r from-mint to-mint p-[1px] 
     sm:items-start sm:justify-center`}
                   >
-                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-600 text-white hover:bg-mint/90 hover:font-semibold hover:text-purple-900">
+                    <div className="relative h-[38px] w-[100%] cursor-pointer items-center justify-center rounded-lg bg-purple-700 text-white hover:font-semibold">
                       <button
                         type="submit"
                         className="text-sm font-sanssm:mx-auto px-1 py-2 text-center "
