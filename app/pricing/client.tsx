@@ -44,11 +44,6 @@ export default function Client({ host, session, translations }: ClientPropTye) {
     ? SUBSCRIPTION_PRICES.testing.premiumAnual
     : SUBSCRIPTION_PRICES.production.premiumAnual
 
-  console.log("locatoin hostname: ", host)
-  console.log("isStripeTestingEnv:", isStripeTestingEnv)
-  console.log("monthlyPrice: ", monthlyPrice)
-  console.log("anualPrice: ", anualPrice)
-
   useEffect(() => {
     if (!anual) {
       setPrecieId(monthlyPrice)
@@ -56,8 +51,6 @@ export default function Client({ host, session, translations }: ClientPropTye) {
       setPrecieId(anualPrice)
     }
   }, [anual, anualPrice, monthlyPrice])
-
-  console.log("priceId: ", priceId)
 
   const submitPaymentInstruction = async (e) => {
     e.preventDefault()
@@ -245,9 +238,9 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       ${anual ? "50" : `5`}
                     </span>{" "}
                     /{anual ? " anual" : " month"}
-                    <p className="text-xs mb-2 text-moradoCode">
+                    {/* <p className="text-xs mb-2 text-moradoCode">
                       {anual ? "Save $10" : null}
-                    </p>{" "}
+                    </p>{" "} */}
                   </div>
                   <div>
                     <Switch
