@@ -27,7 +27,7 @@ export default function Container({ session, translations }) {
     <>
       <ProModal
         mode={mode}
-        translations={translations}
+        translations={translations.pricing}
         showModal={premiumModalIsOpen}
         setShowModal={setPremiumModalIsOpen}
       />

@@ -125,6 +125,10 @@
   },
   "pricing": {
     "title": "Paga una vez. Hazte Premium",
+    "processing": "Procesando...",
+    "popular": "Popular",
+    "free": "Plan Gratuito",
+    "included": "¿Qué está incluido?",
     "subtitle1": "Cancelar en cualquier momento. Basado en suscripción, para usar Code Genius tanto como desees.",
     "subtitle2": "Solo paga lo que uses.",
     "faqs": {
@@ -132,31 +136,32 @@
       "desc": "Si no encuentras la respuesta a tu pregunta, por favor, ponte en contacto con nuestro soporte aquí",
       "1": {
         "title": "¿Qué es Code Genius?",
-        "desc": "Code Genius es la herramienta con IA más práctica y potente para ayudar a los desarrolladores a completar sus tareas más rápidamente."
+        "desc": "Code Genius es una herramienta poderosa diseñada para mejorar tu experiencia de codificación. Ofrece análisis de código en tiempo real, sugerencias inteligentes y mejoras en el código para que tu código sea limpio, eficiente y sin errores. Además, puede generar automáticamente pruebas unitarias que abarcan una amplia gama de escenarios y crear documentación de código clara y concisa. Esta herramienta es un valioso compañero para los desarrolladores que desean optimizar su código y simplificar su flujo de trabajo."
       },
       "2": {
         "title": "¿Qué puedo hacer con Code Genius?",
         "desc": "Code Genius tiene las siguientes características: sugerencias de código inteligentes, generación de pruebas, mejoras de código y generación de documentación. Chat con Code Genius y mucho más"
       },
       "2.a": {
-        "title": "¿Cómo maneja Code Genius la privacidad?",
+        "title": "¿Cómo protege Code Genius la privacidad del usuario?  ",
         "desc": "Entendemos que la privacidad del código es muy importante, en serio. No almacenamos ningún código que envíes a Code Genius. Solo lo utilizamos para generar sugerencias, pruebas, mejoras y documentación."
       },
       "2.1": {
         "title": "¿Por qué debería usar Code Genius?",
-        "desc": "Code Genius es mejor que otros competidores de IA, incluyendo los populares complementos de VS Code. Con Code Genius, puedes generar una prueba para tu componente en segundos, utilizando tus herramientas favoritas."
+        "desc": "Code Genius supera a otros competidores de inteligencia artificial, como populares complementos de VS Code, en términos de rendimiento. Puede utilizar nuestra función de generación de pruebas para generar pruebas unitarias para sus componentes en segundos."
       },
       "2.2": {
         "title": "¿Puedo usar Code Genius de forma gratuita?",
-        "desc": "Sí. Ofrecemos 10 créditos de forma gratuita para que lo pruebes y veas los beneficios por ti mismo."
+        "desc": "Puede probar nuestras características gratuitas, Chat de IA y Sugerencias de Código, con nuestro plan de inicio. Como alternativa, puede probar todas nuestras características de forma gratuita durante 7 días con nuestra suscripción premium."
       },
       "3": {
         "title": "¿Ofrecen soporte técnico?",
-        "desc": "Sí, Todos los usuarios que hayan creado una cuenta en Code Genius tienen soporte técnico las 24 horas, los 7 días de la semana."
+        "desc": "Por supuesto. Todos los miembros de Code Genius tienen acceso a soporte técnico las 24 horas, los 7 días de la semana. Brindamos soporte básico al plan de inicio y soporte premium a nuestros suscriptores premium."
       }
     },
     "basic": {
       "title": "Básico",
+      "perfect": "Perfecto para probarlo por primera vez.",
       "subtitle": "Gratis",
       "cta": "Plan Actual",
       "features": {
@@ -168,7 +173,13 @@
     },
     "premium": {
       "title": "Premium",
+      "modal": {
+        "upgrade": "Actualizar a Premium",
+        "description": "Al actualizar a una suscripción premium, tendrás acceso a las siguientes funciones:"
+      },
+
       "cta": "Suscripción Premium",
+      "support": "Soporte Premium 24/7",
       "features": {
         "smart": "Sugerencias inteligentes",
         "test": "Generación de pruebas",
@@ -179,6 +190,9 @@
     },
     "enterprice": {
       "title": "Empresas",
+      "contactUs": "Contáctenos",
+      "support": "Enterprise Support",
+      "perfect": "Ideal para equipos de cualquier tamaño.",
       "cta": "Contáctanos",
       "perUser": "Por usuario, por mes.",
       "features": {

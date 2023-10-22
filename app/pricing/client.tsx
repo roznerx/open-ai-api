@@ -80,8 +80,6 @@ export default function Client({ host, session, translations }: ClientPropTye) {
 
       const stripeSession = await response.json()
 
-      // setLoadingStripe(false)
-
       if (stripeSession) {
         router.push(stripeSession?.session?.url)
       }
@@ -89,8 +87,6 @@ export default function Client({ host, session, translations }: ClientPropTye) {
       console.error("Error:", error)
     }
   }
-
-  console.log("session", session)
 
   return (
     <>
@@ -124,17 +120,17 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
                     font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
-                    Starter
+                    {translations.pricing.basic.title}
                   </h3>
 
                   <div className="mt-4 text-center text-white">
                     <span className="text-4xl font-bold">
                       {translations.pricing.basic.subtitle}
                     </span>
-                    <p>Perfect to try it for the first time.</p>
+                    <p>{translations.pricing.basic.perfect}</p>
                   </div>
                   <p className="mt-6 flex justify-center font-semibold text-white">
-                    What’s included?
+                    {translations.pricing.included}
                   </p>
                   <ul className="mt-8 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
@@ -219,8 +215,8 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                         className="text-sm  px-1 py-1.5 text-center font-sans text-gray-300 sm:mx-auto "
                       >
                         {session?.user?.isPremium
-                          ? "Free Plan"
-                          : "Current Plan"}
+                          ? translations.pricing.free
+                          : translations.pricing.basic.cta}
                       </button>
                     </div>
                   </div>
@@ -235,7 +231,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   className="mx-auto "
                 />
                 <div className="text-sm absolute left-1/2 top-0 inline-block -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-mint px-3 py-1 font-bold text-purple-700 ">
-                  Popular
+                  {translations.pricing.popular}
                 </div>
                 <div className="relative mx-auto">
                   <h3
@@ -284,7 +280,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     </span>
                   </div>
                   <p className="mt-6 flex justify-center font-semibold text-white">
-                    What’s included?
+                    {translations.pricing.included}
                   </p>
                   <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3 ">
@@ -388,7 +384,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      Pro Support
+                      {translations.pricing.premium.support}
                     </li>
                   </ul>
                 </div>
@@ -404,13 +400,13 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                           size={20}
                         />
                         <span className="pl-2 pt-1 font-[12px] text-purple-900">
-                          Processing..
+                          {translations.pricing.processing}
                         </span>
                       </div>
                     ) : (
                       <span className="bg-transparent text-purple-900 group-hover:text-purple-900">
                         {session?.user?.isPremium
-                          ? "Current Plan"
+                          ? translations.pricing.basic.cta
                           : translations.pricing.premium.cta}
                       </span>
                     )}
@@ -430,14 +426,17 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
                     font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
-                    Enterprise
+                    {translations.pricing.enterprice.title}
                   </h3>
                   <h2 className="mx-auto my-3 w-full font-semibold text-white sm:w-[100%] sm:text-4xl sm:leading-none sm:tracking-tight">
-                    Contact us
+                    {translations.pricing.enterprice.cta}
                   </h2>
-                  <p className="text-white">Perfect for teams of any size.</p>
+                  <p className="text-white">
+                    {" "}
+                    {translations.pricing.enterprice.perfect}
+                  </p>
                   <p className="mt-6 flex justify-center font-semibold text-white">
-                    What’s included?
+                    {translations.pricing.included}
                   </p>
                   <ul className="mt-10 space-y-4 text-left md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
@@ -524,7 +523,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      Enterprise Support
+                      {translations.pricing.enterprice.support}
                     </li>
                   </ul>
                 </div>
@@ -540,7 +539,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                         type="submit"
                         className="text-sm font-sanssm:mx-auto px-1 py-2 text-center "
                       >
-                        Contact Us
+                        {translations.pricing.enterprice.contactUs}
                       </button>
                     </div>
                   </div>

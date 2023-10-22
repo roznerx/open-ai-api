@@ -18,7 +18,6 @@ export const ProModal = ({
   setShowModal?: Dispatch<SetStateAction<boolean>>
   showModal: boolean
 }) => {
-  console.log("mode:", mode)
   const router = useRouter()
   const pathname = usePathname()
 
@@ -47,12 +46,11 @@ export const ProModal = ({
             <h1
               className={`mt-3 text-center font-sans text-[28px] font-[700] text-white`}
             >
-              {translations?.title || "Upgrade to Premium"}
+              {translations?.premium?.modal?.upgrade}
             </h1>
           </div>
           <h6 className="sm:text-xl  mx-auto w-full text-center font-sans text-[16px] font-medium text-gray-200 ">
-            {translations?.subtitle ||
-              "By upgrading to a premium subscription you have access to the following features:"}
+            {translations?.premium?.modal?.description}
           </h6>
           <div className="my-4 columns-2 flex-col gap-8">
             <ul className="mx-auto space-y-4 text-center text-white">
@@ -72,7 +70,7 @@ export const ProModal = ({
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                {translations.pricing.premium.features.smart}
+                {translations.premium.features.smart}
               </li>
               <li className="flex w-full min-w-[210px] space-x-3">
                 <svg
@@ -89,7 +87,7 @@ export const ProModal = ({
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                {translations.pricing.premium.features.test}
+                {translations.premium.features.test}
               </li>
               <li className="flex w-full min-w-[210px] space-x-3">
                 <svg
@@ -106,7 +104,7 @@ export const ProModal = ({
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                {translations.pricing.premium.features.improve}
+                {translations.premium.features.improve}
               </li>
               <li className="flex w-full min-w-[210px] space-x-3">
                 <svg
@@ -123,7 +121,7 @@ export const ProModal = ({
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                {translations.pricing.premium.features.docs}
+                {translations.premium.features.docs}
               </li>
               <li className="flex w-full min-w-[210px] space-x-3">
                 <svg
@@ -140,7 +138,7 @@ export const ProModal = ({
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                {translations.pricing.premium.features.chat}
+                {translations.premium.features.chat}
               </li>
               <li className="flex w-full min-w-[210px] space-x-3">
                 <svg
@@ -157,7 +155,7 @@ export const ProModal = ({
                 >
                   <polyline points="20 6 9 17 4 12" />
                 </svg>
-                Pro Support
+                {translations.premium.features.chat}
               </li>
             </ul>
           </div>
@@ -167,7 +165,7 @@ export const ProModal = ({
             onClick={() => router.push("/pricing")}
             className="mx-auto w-[80%] cursor-pointer border border-mint bg-mint px-12 font-sans font-medium text-purple-900 outline-none  hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
           >
-            <span>Upgrade to premium</span>
+            <span>{translations?.premium?.modal?.upgrade}</span>
           </Button>
         </div>
       </div>

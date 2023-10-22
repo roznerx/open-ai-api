@@ -22,8 +22,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="" defaultOpen>
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-l px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["1"]?.title}
                 </span>
                 <ChevronUp
@@ -41,8 +51,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2"].title}
                 </span>
                 <ChevronUp
@@ -60,8 +80,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2.a"]?.title}
                 </span>
                 <ChevronUp
@@ -79,8 +109,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={` ${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2.1"]?.title}
                 </span>
                 <ChevronUp
@@ -98,8 +138,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2.2"]?.title}
                 </span>
                 <ChevronUp
@@ -117,8 +167,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["3"]?.title}
                 </span>
                 <ChevronUp
