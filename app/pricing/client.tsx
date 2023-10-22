@@ -99,10 +99,10 @@ export default function Client({ host, session, translations }: ClientPropTye) {
       />
       <div className=" mx-auto my-6 px-4 pt-20">
         <h2 className="mx-auto  mb-3 w-[80%] text-4xl font-semibold text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
-          {translations.pricing.title}
+          {translations.title}
         </h2>
         <p className="mx-auto mt-8 w-[80%] text-2xl text-gray-100 sm:w-full">
-          {translations.pricing.subtitle1}
+          {translations.subtitle1}
         </p>
         <section className="flex w-full items-center justify-center py-12">
           <div className="container px-4 md:px-6">
@@ -120,17 +120,17 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
                     font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
-                    {translations.pricing.basic.title}
+                    {translations.basic.title}
                   </h3>
 
                   <div className="mt-4 text-center text-white">
                     <span className="text-4xl font-bold">
-                      {translations.pricing.basic.subtitle}
+                      {translations.basic.subtitle}
                     </span>
-                    <p>{translations.pricing.basic.perfect}</p>
+                    <p>{translations.basic.perfect}</p>
                   </div>
                   <p className="mt-6 flex justify-center font-semibold text-white">
-                    {translations.pricing.included}
+                    {translations.included}
                   </p>
                   <ul className="mt-8 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
@@ -148,7 +148,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.basic.features["smart"]}
+                      {translations.basic.features["smart"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -165,7 +165,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.basic.features["chat"]}
+                      {translations.basic.features["chat"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -182,7 +182,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.basic.features["support"]}
+                      {translations.basic.features["support"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -199,7 +199,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.basic.features["copy"]}
+                      {translations.basic.features["copy"]}
                     </li>
                   </ul>
                 </div>
@@ -215,8 +215,8 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                         className="text-sm  px-1 py-1.5 text-center font-sans text-gray-300 sm:mx-auto "
                       >
                         {session?.user?.isPremium
-                          ? translations.pricing.free
-                          : translations.pricing.basic.cta}
+                          ? translations.free
+                          : translations.basic.cta}
                       </button>
                     </div>
                   </div>
@@ -231,7 +231,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   className="mx-auto "
                 />
                 <div className="text-sm absolute left-1/2 top-0 inline-block -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-mint px-3 py-1 font-bold text-purple-700 ">
-                  {translations.pricing.popular}
+                  {translations.popular}
                 </div>
                 <div className="relative mx-auto">
                   <h3
@@ -248,7 +248,9 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   </div>
                   <div className="mb-4 flex w-full justify-center text-center text-white">
                     <p className="text-base text-white">
-                      {anual ? "Per month pay yearly" : `Per month`}
+                      {anual
+                        ? translations.premium.year
+                        : translations.premium.month}
                     </p>
                   </div>
                   <div className="mx-auto flex h-12 w-52 items-center justify-center rounded-lg bg-purple-500 py-2">
@@ -280,7 +282,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     </span>
                   </div>
                   <p className="mt-6 flex justify-center font-semibold text-white">
-                    {translations.pricing.included}
+                    {translations.included}
                   </p>
                   <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3 ">
@@ -299,7 +301,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.premium.features.smart}
+                      {translations.premium.features.smart}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -316,7 +318,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.premium.features.test}
+                      {translations.premium.features.test}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -333,7 +335,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.premium.features.improve}
+                      {translations.premium.features.improve}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -350,7 +352,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.premium.features.docs}
+                      {translations.premium.features.docs}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -367,7 +369,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.premium.features.chat}
+                      {translations.premium.features.chat}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -384,7 +386,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.premium.support}
+                      {translations.premium.support}
                     </li>
                   </ul>
                 </div>
@@ -400,14 +402,14 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                           size={20}
                         />
                         <span className="pl-2 pt-1 font-[12px] text-purple-900">
-                          {translations.pricing.processing}
+                          {translations.processing}
                         </span>
                       </div>
                     ) : (
                       <span className="bg-transparent text-purple-900 group-hover:text-purple-900">
                         {session?.user?.isPremium
-                          ? translations.pricing.basic.cta
-                          : translations.pricing.premium.cta}
+                          ? translations.basic.cta
+                          : translations.premium.cta}
                       </span>
                     )}
                   </Button>
@@ -426,17 +428,17 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
                     font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
-                    {translations.pricing.enterprice.title}
+                    {translations.enterprice.title}
                   </h3>
                   <h2 className="mx-auto my-3 w-full font-semibold text-white sm:w-[100%] sm:text-4xl sm:leading-none sm:tracking-tight">
-                    {translations.pricing.enterprice.cta}
+                    {translations.enterprice.cta}
                   </h2>
                   <p className="text-white">
                     {" "}
-                    {translations.pricing.enterprice.perfect}
+                    {translations.enterprice.perfect}
                   </p>
                   <p className="mt-6 flex justify-center font-semibold text-white">
-                    {translations.pricing.included}
+                    {translations.included}
                   </p>
                   <ul className="mt-10 space-y-4 text-left md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
@@ -455,7 +457,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
 
-                      {translations.pricing.enterprice.features["1"]}
+                      {translations.enterprice.features["1"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -472,7 +474,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.enterprice.features["2"]}
+                      {translations.enterprice.features["2"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -489,7 +491,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.enterprice.features["3"]}
+                      {translations.enterprice.features["3"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -506,7 +508,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.enterprice.features["4"]}
+                      {translations.enterprice.features["4"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -523,7 +525,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.pricing.enterprice.support}
+                      {translations.enterprice.support}
                     </li>
                   </ul>
                 </div>
@@ -539,7 +541,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                         type="submit"
                         className="text-sm font-sanssm:mx-auto px-1 py-2 text-center "
                       >
-                        {translations.pricing.enterprice.contactUs}
+                        {translations.enterprice.contactUs}
                       </button>
                     </div>
                   </div>
@@ -550,7 +552,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
         </section>
       </div>
       <div className="mt-10 w-full">
-        <Faqs translations={translations.pricing.faqs} />
+        <Faqs translations={translations.faqs} />
       </div>
     </>
   )

@@ -178,6 +178,8 @@
         "upgrade": "Atualizar para Premium",
         "description": "Ao fazer o upgrade para uma assinatura premium, você terá acesso às seguintes funcionalidades:"
       },
+      "year": "Pagar mensalmente anualmente",
+      "month": "Por mês",
       "cta": "Premium",
       "support": "Suporte Premium 24/7",
       "features": {

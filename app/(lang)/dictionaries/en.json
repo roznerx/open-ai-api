@@ -180,6 +180,8 @@
         "upgrade": "Upgrade to premium",
         "description": "By upgrading to a premium subscription you have access to the following features:"
       },
+      "year": "Per month pay yearly",
+      "month": "Pago mensual anual",
       "title": "Premium",
       "cta": "Go Premium",
       "support": "Premium Support 24/7",

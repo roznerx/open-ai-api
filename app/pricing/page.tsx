@@ -20,7 +20,7 @@ export default async function Page() {
       <main className="flex w-full flex-col items-center justify-center bg-purple-900 text-center">
         <Client
           host={process.env.NEXTAUTH_URL || ""}
-          translations={dictionary}
+          translations={dictionary.pricing}
           session={session}
         />
       </main>
