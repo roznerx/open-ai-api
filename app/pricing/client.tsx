@@ -302,7 +302,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   <p className="mt-6 flex justify-center font-semibold text-white">
                     {translations.included}
                   </p>
-                  <ul className="mt-4 space-y-4 text-left text-white sm:mx-8 md:mx-8">
+                  <ul className="mt-4 w-full space-y-4 text-left text-white sm:mx-8 md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3 ">
                       {/* <!-- Icon --> */}
                       <svg
@@ -458,7 +458,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   <p className="mt-6 flex justify-center font-semibold text-white">
                     {translations?.included}?{" "}
                   </p>
-                  <ul className="mt-10 space-y-4 text-left md:mx-8">
+                  <ul className="mt-10 w-full space-y-4 text-left md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
                         className="text-xs mr-2 rounded-full bg-mint p-1 text-black"
