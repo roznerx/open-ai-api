@@ -45,7 +45,8 @@ export default function Header({
             className={`ml-4 pt-2 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
-              pathName == "/code-chat"
+              pathName == "/code-chat" ||
+              pathName == "/settings"
                 ? "sm:ml-20"
                 : "sm:ml-6"
             }`}
