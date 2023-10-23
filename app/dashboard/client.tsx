@@ -149,7 +149,7 @@ export default function Client({
           }
           text={
             isPremium
-              ? `You currently have the ${dashboard.premiumSubscription}. ${dashboard.access}`
+              ? `${dashboard.access}`
               : session?.user?.credits === 0
               ? dashboard.unlock
               : dashboard.access
