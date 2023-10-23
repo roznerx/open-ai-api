@@ -60,10 +60,10 @@ export default async function Dashboard({
         <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
           <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
             <h2 className="text-lg flex w-full items-center justify-center text-left text-3xl text-gray-200 sm:ml-28 sm:items-start sm:justify-start sm:pl-6 sm:text-3xl">
-              {dictionary.dashboard.welcome}, {session.user.name}!
+              {dictionary?.dashboard.welcome}, {session.user.name}!
             </h2>
             <p className="flex justify-center pl-6 text-gray-200 sm:ml-28 sm:justify-start">
-              Explore our features we have for you!
+              {dictionary?.dashboard.explore}
             </p>
           </div>
           <Client

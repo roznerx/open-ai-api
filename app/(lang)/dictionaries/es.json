@@ -59,6 +59,7 @@
   },
   "dashboard": {
     "welcome": "Bienvenido",
+    "explore": "Explora las funcionalidades que tenemos para ti",
     "credits": "Créditos",
     "available": "Disponibles",
     "ctaChat": "Ir al Chat",
