@@ -90,6 +90,18 @@
       "subtitle": "Use o modo de documentação para gerar documentação em segundos."
     }
   },
+  "settings": {
+    "plan": "Seu plano",
+    "member": "Membro desde",
+    "trial": "Avaliação termina em",
+    "period": "O período atual termina",
+    "billing": "Início do ciclo de faturação",
+    "paymentAmoun": "Valor do pagamento",
+    "payment": "Pagamento",
+    "manage": "Gerir método de pagamento",
+    "unlock": "Desbloqueie um desconto de 25% com uma assinatura anual!",
+    "history": "Ver histórico de faturação"
+  },
   "sidebar": {
     "dashboard": "Início",
     "credits": "Assinatura",
