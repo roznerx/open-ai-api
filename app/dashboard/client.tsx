@@ -135,7 +135,7 @@ export default function Client({
           title={
             isPremium
               ? `Premium ${dashboard.subscription}`
-              : "You have a Free Plan"
+              : `You have a Free Plan (${session?.user?.credits} available credits)`
           }
           text={
             isPremium

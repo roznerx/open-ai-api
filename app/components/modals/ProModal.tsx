@@ -162,7 +162,7 @@ export const ProModal = ({
         </div>
         <div className="my-6 flex">
           <Button
-            onClick={() => router.push("/pricing")}
+            onClick={() => router.push("/pricing?action=subscribe")}
             className="mx-auto w-[80%] cursor-pointer border border-mint bg-mint px-12 font-sans font-medium text-purple-900 outline-none  hover:bg-mint/90 hover:font-semibold hover:text-purple-900 active:outline-none"
           >
             <span>{translations?.premium?.modal?.upgrade}</span>

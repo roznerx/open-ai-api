@@ -131,10 +131,10 @@
     "title": "Pay once. Go Premium.",
     "processing": "Processing..",
     "free": "Free Plan",
-    "popular": "Popular",
+    "popular": "Try it for Free",
     "included": "What’s included?",
-    "subtitle1": "Cancel anytime. Subscription based, to use Code Genius as much as you wish.",
-    "subtitle2": "Only pay for what you use.",
+    "subtitle1": "Unlock Limitless Learning with Code Genius! Get access to automated unit tests generation, docs and code improvements!",
+    "subtitle2": "Try it FREE for a week, no strings attached. Cancel anytime.",
     "faqs": {
       "title": "Frequently Asked Questions",
       "desc": "If you can’t find the answer to your question, please reach out to our support team here:",
@@ -181,7 +181,7 @@
         "description": "By upgrading to a premium subscription you have access to the following features:"
       },
       "year": "Per month pay yearly",
-      "month": "Pago mensual anual",
+      "month": "Per month",
       "title": "Premium",
       "cta": "Go Premium",
       "support": "Premium Support 24/7",

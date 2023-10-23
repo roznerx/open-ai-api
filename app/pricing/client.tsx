@@ -8,7 +8,7 @@ import { SUBSCRIPTION_PRICES } from "@/lib/constants"
 
 import Faqs from "./faqs"
 import { useSignInModal } from "app/components/modals/SignInModal"
-import { useRouter } from "next/navigation"
+import { useRouter, useSearchParams } from "next/navigation"
 
 import Image from "next/image"
 import { Button } from "app/components/buttons/button"
@@ -30,6 +30,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
   })
   const [loadingStripe, setLoadingStripe] = React.useState<boolean>(false)
   const router = useRouter()
+  const searchParams = useSearchParams()
   const [priceId, setPrecieId] = React.useState<string>("")
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
@@ -45,6 +46,15 @@ export default function Client({ host, session, translations }: ClientPropTye) {
     : SUBSCRIPTION_PRICES.production.premiumAnual
 
   useEffect(() => {
+    if (
+      searchParams?.has("action") &&
+      searchParams.get("action") === "subscribe"
+    ) {
+      submitPaymentInstruction()
+    }
+  }, [searchParams, priceId])
+
+  useEffect(() => {
     if (!anual) {
       setPrecieId(monthlyPrice)
     } else {
@@ -52,8 +62,8 @@ export default function Client({ host, session, translations }: ClientPropTye) {
     }
   }, [anual, anualPrice, monthlyPrice])
 
-  const submitPaymentInstruction = async (e) => {
-    e.preventDefault()
+  const submitPaymentInstruction = async () => {
+    // e.preventDefault()
     setLoadingStripe(true)
 
     if (!session) {
@@ -97,13 +107,18 @@ export default function Client({ host, session, translations }: ClientPropTye) {
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-      <div className=" mx-auto my-6 px-4 pt-20">
-        <h2 className="mx-auto  mb-3 w-[80%] text-4xl font-semibold text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
+      <div className="mx-auto my-6 px-4 pt-20">
+        <h2 className="mx-auto mb-3 w-[80%] text-4xl font-semibold text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
           {translations.title}
         </h2>
-        <p className="mx-auto mt-8 w-[80%] text-2xl text-gray-100 sm:w-full">
+        <p className="mx-auto mt-4 w-[80%] text-2xl text-white sm:w-full">
           {translations.subtitle1}
         </p>
+        {/* <div className="mt-10 h-auto w-auto rounded-xl bg-gradient-to-br from-purple-500 via-purple-400 to-purple-500 p-4 text-white"> */}
+        {/* <p className="mx-auto mt-1 w-[80%] text-2xl sm:w-full">
+            {translations.subtitle2}
+          </p> */}
+        {/* </div> */}
         <section className="flex w-full items-center justify-center py-12">
           <div className="container px-4 md:px-6">
             <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 md:gap-8">
@@ -230,7 +245,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                   height={40}
                   className="mx-auto "
                 />
-                <div className="text-sm absolute left-1/2 top-0 inline-block -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-mint px-3 py-1 font-bold text-purple-700 ">
+                <div className="text-sm absolute left-1/2 top-0 inline-block -translate-x-1/2 -translate-y-1/2 transform rounded-full bg-mint px-3 py-1 font-semibold text-purple-700 ">
                   {translations.popular}
                 </div>
                 <div className="relative mx-auto">
@@ -243,7 +258,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
 
                   <div className="mt-4 flex w-full justify-center text-center text-white">
                     <span className="text-4xl font-bold text-white">
-                      $ {anual ? "5" : `8`}
+                      $ {anual ? "6" : `8`}
                     </span>
                   </div>
                   <div className="mb-4 flex w-full justify-center text-center text-white">
