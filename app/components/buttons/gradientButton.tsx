@@ -15,14 +15,13 @@ export default function GradientButton({
   return (
     <div
       onClick={onClick}
-      className={`mx-auto my-4 mt-10 flex w-[120%] cursor-pointer rounded-lg border border-mint 
-                 font-sans sm:w-[100%] sm:flex-row
-                sm:items-start sm:justify-center`}
+      className={`mx-auto my-4 mt-10 flex w-auto min-w-[160px] cursor-pointer rounded-lg  
+      font-sans sm:flex-row sm:items-start sm:justify-center`}
     >
       <div
-        className={`relative w-full items-center justify-center rounded-lg bg-purple-700 hover:bg-mint`}
+        className={`relative w-full items-center justify-center rounded-lg bg-mint hover:bg-mint/60`}
       >
-        <div className="text-sm px-1 py-2 text-center text-white hover:font-semibold hover:text-purple-900 sm:mx-auto sm:px-2">
+        <div className="text-base px-4 py-2 text-center font-semibold text-purple-900 hover:font-semibold sm:mx-auto sm:px-4">
           {text}
         </div>
       </div>

@@ -118,7 +118,7 @@ export default function Client({
           text={dashboard?.ask}
           onClick={undefined}
           pill={
-            <button className=" h-auto w-auto rounded-full bg-moradoCode px-2 py-1 text-[13px] font-semibold text-purple-400 sm:absolute sm:-right-4">
+            <button className="absolute -right-3 h-auto w-auto rounded-full bg-moradoCode px-2 py-2 text-[13px] font-semibold text-black sm:absolute sm:-right-4 sm:-top-2">
               New Feature
             </button>
           }
