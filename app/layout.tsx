@@ -5,11 +5,11 @@ import { Inter } from "next/font/google"
 import { Metadata } from "next"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
 import { getDictionary } from "./(lang)/dictionaries"
-import { getServerSession } from "next-auth"
-import { authOptions } from "pages/api/auth/[...nextauth]"
 import Script from "next/script"
 import SideBar from "./components/shared/SideBar"
 import Footer from "./components/Footer"
+import { getServerSession } from "next-auth"
+import { authOptions } from "pages/api/auth/[...nextauth]"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -68,8 +68,8 @@ export default async function RootLayout({
                 />
               )}
               <HeaderWrapper
-                translations={translations?.home?.header}
                 session={session}
+                translations={translations?.home?.header}
               />
               {children}
             </div>

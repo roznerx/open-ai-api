@@ -27,6 +27,7 @@ export default function Header({
     pathName == "/privacy"
   const [showWidget, setShowWidget] = useState(false)
   const router = useRouter()
+
   return (
     <>
       <div
@@ -41,9 +42,14 @@ export default function Header({
           } sm:items-start sm:justify-between`}
         >
           <div
-            className={`${
-              pathName !== "/" && session ? "sm:ml-20" : "sm:ml-6"
-            } ml-4 pt-2`}
+            className={`ml-4 pt-2 ${
+              pathName == "/dashboard" ||
+              pathName == "/code-idea" ||
+              pathName == "/code-chat" ||
+              pathName == "/settings"
+                ? "sm:ml-20"
+                : "sm:ml-6"
+            }`}
           >
             <Link href="/">
               <div className={`flex`}>
@@ -125,7 +131,6 @@ export default function Header({
               </div>
             )}
           </div>
-
           <UserDropdown translations={translations} session={session} />
         </div>
       </div>

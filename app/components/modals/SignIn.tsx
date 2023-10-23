@@ -8,7 +8,6 @@ import GmailLogo from "public/icons/gmail.svg"
 import useWindowSize from "hooks/use-window-size"
 import Git from "../icons/git"
 import Link from "next/link"
-import { useSignInModal } from "./SignInModal"
 import { X } from "lucide-react"
 import { usePathname, useRouter } from "next/navigation"
 
@@ -17,11 +16,13 @@ export const SignInModal = ({
   translations,
   userHasAccount,
   showSignInModal,
+  setShowSignInModal,
 }: {
   showSignInModal: boolean
   translations: any
   userHasAccount?: boolean
   tip?: string
+  setShowSignInModal: (x: boolean) => void
 }) => {
   const [signInClickedGitHub, setSignInClickedGitHub] = useState<boolean>(false)
 
@@ -30,20 +31,15 @@ export const SignInModal = ({
   const router = useRouter()
   const pathname = usePathname()
 
-  const { setShowSignInModal } = useSignInModal({
-    userHasAccount,
-    translations: translations?.modals?.signIn,
-  })
-
   return (
     <BaseModal showModal={showSignInModal} setShowModal={setShowSignInModal}>
       <div className="relative bg-purple-800 p-4 sm:h-auto sm:w-[504.01px] sm:rounded-2xl">
         <X
           onClick={() => {
-            router.replace(pathname || "/")
             setShowSignInModal(false)
+            router.replace(pathname || "/")
           }}
-          className="absolute right-3 top-2 cursor-pointer rounded-full border border-white"
+          className="absolute right-3 top-3 cursor-pointer "
           size={20}
           color="white"
         />
@@ -79,7 +75,7 @@ export const SignInModal = ({
               }
               onClick={() => {
                 setSignInClickedGoogle(true)
-                signIn("google", { callbackUrl: "/dashboard" })
+                signIn("google", { callbackUrl: pathname ?? "" })
               }}
             >
               {signInClickedGoogle ? (

@@ -10,7 +10,8 @@ interface Props {
   isOpen: boolean
   thanksMessage?: boolean
   isClientFeedback?: boolean
-  clientName?: string
+  isUnSubscribed?: boolean | null
+  clientName?: string | null
   errorMessage?: Error
   title?: string
   name?: string
@@ -40,10 +41,10 @@ export default function ContactFormModal({
   title,
   name,
   isClientFeedback,
+  isUnSubscribed,
   errorMessage,
   isOpen,
   setIsOpen,
-  purchasedCredits,
   clientName,
   thanksMessage,
 }: Props) {
@@ -285,17 +286,20 @@ export default function ContactFormModal({
                       >
                         <div className="flex flex-col items-center justify-center">
                           <span className="-mt-6 text-3xl">
-                            Thank you,{" "}
-                            <span className="font-semibold">{clientName}</span>!
+                            {isUnSubscribed
+                              ? `We're sorry to see you go`
+                              : `Thank you,`}
                           </span>
+                          <span className="font-semibold">{clientName}</span>
                           {/* {clientName && (
                             <span className="mt-2">{clientName}!</span>
                           )} */}
                         </div>
                       </Dialog.Title>
                       <p className="text-sm w-[65%] pt-8 text-center text-white">
-                        You have now {purchasedCredits} credits extra to create
-                        with Code Genius.
+                        {isUnSubscribed
+                          ? "You have been un-subscribed to the Code Genius Premium plan."
+                          : "You have been subscribed to the Code Genius Premium plan."}
                       </p>
                     </div>
                   )}

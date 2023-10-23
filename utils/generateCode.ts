@@ -1,13 +1,10 @@
 /* eslint-disable unused-imports/no-unused-vars */
-import { updateApiCallsAndCredits } from "./helpers"
 
 export async function generateCodeWithTurbo(
   reader,
   codeMessages,
   setReader,
   setGeneratedCode,
-  userId = null,
-  setCreditsModaIsOpen,
 ) {
   const response = await fetch("/api/generateWithTurbo", {
     method: "POST",
@@ -53,17 +50,9 @@ export async function generateCodeWithTurbo(
     return `There was an error with your request ${error}`
   } finally {
     setReader(null)
+    //RESET TOKENS COUNT.
+    tokensCount = 0
     //✨ Make some credits update Magic ✨
-    if (userId) {
-      const data = await updateApiCallsAndCredits(userId)
-
-      if (data?.creditsLeft === 0) {
-        setCreditsModaIsOpen(true)
-      }
-
-      //RESET TOKENS COUNT.
-      tokensCount = 0
-    }
   }
 }
 
@@ -96,19 +85,13 @@ export async function generateCode({
   setReader,
   setGeneratedCode,
   codeMessages,
-  userId,
   setUserHasAResponse,
-  setCreditsLeft,
-  setCreditsModaIsOpen,
   setLoading,
 }: {
   setReader?: (reader: any) => void
   setGeneratedCode: any
   codeMessages?: any
-  userId?: string
   setUserHasAResponse?: (hasResponse: boolean) => void
-  setCreditsLeft?: (creditsLeft: number) => void
-  setCreditsModaIsOpen?: (isOpen: boolean) => void
   setLoading?: (loading: boolean) => void
 }) {
   const response = await fetch("/api/generateWithTurbo", {
@@ -167,14 +150,8 @@ export async function generateCode({
     if (typeof setUserHasAResponse === "function") {
       setUserHasAResponse(true)
     }
-    //✨ Make some credits update Magic ✨
-    if (userId) {
-      const data = await updateApiCallsAndCredits(userId)
-      if (data?.creditsLeft === 0 && setCreditsLeft && setCreditsModaIsOpen) {
-        setCreditsLeft(0)
-        setCreditsModaIsOpen(true)
-      }
-    }
+
+    // setCreditsModaIsOpen(true)
 
     //RESET TOKENS COUNT.
     tokensCount = 0

@@ -7,6 +7,7 @@ import { MaterialTooltip } from "app/components/material-components"
 
 export default function FooterSection({
   translations,
+  isPremium,
   mode,
   setUserHasAResponse,
   setTestFrameworkElement,
@@ -137,6 +138,7 @@ export default function FooterSection({
           </div>
           <div className="flex sm:mr-4">
             <Button
+              disabled={!isPremium && mode !== "smart"}
               onClick={() => {
                 onCodeGeneration()
                 setUserHasAResponse(false)

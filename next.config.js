@@ -28,7 +28,8 @@ const nextConfig = {
     contentDispositionType: "attachment",
   },
   experimental: {
-    appDir: true,
+    serverActions: true,
+    useDeploymentIdServerActions: true,
   },
   headers() {
     return [

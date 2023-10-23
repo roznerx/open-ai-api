@@ -20,7 +20,8 @@ export default function Footer({
     pathName == "/" ||
     pathName?.startsWith("/blog") ||
     pathName == "/terms-and-conditions" ||
-    pathName == "/privacy"
+    pathName == "/privacy" ||
+    pathName == "/pricing"
   return (
     <>
       {shouldShowFooter ? (

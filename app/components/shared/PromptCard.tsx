@@ -8,37 +8,42 @@ type CardProps = {
   width?: string
   size?: "large" | "small"
   hasScale?: boolean
+  isChat?: boolean
+  isSub?: boolean
   mb?: string
   order?: string
   button?: ReactNode
+  pill?: ReactNode
   imageSrc?: any
   onClick?: (text: string) => void
 }
-export default function PromptCard({
+export function PromptCard({
   hasScale,
+  isChat = false,
+  isSub = false,
   title,
   button,
+  pill,
   order = "",
   imageSrc,
   text,
   onClick,
   size,
 }: CardProps) {
-  const altImg = imageSrc.split("/")[2].split(".")[0]
+  const altImg = imageSrc?.split("/")[2].split(".")[0]
 
   return (
     <div
       className={`${order} relative flex ${
         size === "large"
-          ? "h-56 w-[80%] flex-col sm:col-span-2 sm:w-full"
-          : "h-38 w-[80%] sm:h-52 sm:w-[280px]"
-      } 
-      cursor-pointer items-center justify-center rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow hover:bg-purple-500`}
+          ? "my-1 h-auto w-[90%] flex-col items-start justify-start sm:col-span-2 sm:h-56 sm:w-full"
+          : "sm:h-38 my-1  h-auto w-[90%] sm:h-52 sm:w-[280px] sm:items-start"
+      }  cursor-pointer rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow `}
       onClick={() => {
         if (onClick) onClick(text)
       }}
     >
-      <div className="mx-auto w-full">
+      <div className="relative mx-auto max-w-lg">
         <motion.div
           className={`absolute ${
             size !== "large"
@@ -52,35 +57,45 @@ export default function PromptCard({
               scale: 1,
             },
           }}
-        >
-          {imageSrc && (
+        ></motion.div>
+        <div className="mb-2 flex w-full items-start justify-between sm:inline-flex sm:justify-start">
+          <h5
+            className={`text-2xl font-bold tracking-tight text-white sm:mt-0`}
+          >
+            {title}
+          </h5>
+          {!isChat && !isSub && imageSrc && (
             <Image
               title={altImg}
               alt={altImg}
               src={imageSrc}
               priority
-              width={40}
-              height={40}
-              className="mb-2"
+              width={30}
+              height={30}
+              className="mb-2 ml-4"
             />
           )}
-        </motion.div>
-        <h5
-          className={`mt-8 ${
-            size === "large" ? "text-center" : "text-left"
-          } text-2xl font-bold tracking-tight text-white sm:mt-4`}
-        >
-          {title}
-        </h5>
-        <p
-          className={`${
-            size === "large" ? "text-center" : "text-left"
-          } text-sm pt-2 font-normal text-gray-200`}
-        >
-          {text}
-        </p>
+          {pill && pill}
+          {isSub && (
+            <div className="ml-4 sm:absolute sm:-right-3">
+              <Image
+                title={altImg}
+                alt={altImg}
+                src={imageSrc}
+                priority
+                width={30}
+                height={30}
+              />
+            </div>
+          )}
+        </div>
+        <p className={`text-sm pt-2 font-normal text-gray-200`}>{text}</p>
       </div>
-      {button && <div className="my-auto">{button}</div>}
+      {button && (
+        <div className="relative mx-auto items-center justify-center sm:absolute sm:bottom-1 sm:right-4">
+          {button}
+        </div>
+      )}
     </div>
   )
 }

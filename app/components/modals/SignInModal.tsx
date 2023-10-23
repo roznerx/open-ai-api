@@ -27,6 +27,7 @@ export function useSignInModal({
         translations={translations}
         userHasAccount={userHasAccount}
         showSignInModal={showSignInModal}
+        setShowSignInModal={setShowSignInModal}
       />
     ) : null
   }, [showSignInModal, tip, translations, userHasAccount])

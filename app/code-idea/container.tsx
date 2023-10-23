@@ -2,15 +2,15 @@
 
 import { useState } from "react"
 import Client from "./client"
-import Navigation from "./navigation"
 import { LandElementType } from "app/components/DropDown"
+import { ProModal } from "app/components/modals/ProModal"
 
 export type ModeTypes = "smart" | "test" | "improve" | "docs"
 
 export default function Container({ session, translations }) {
   const [chatHasStarted, setChatHasStarted] = useState(false)
   const [mode, setMode] = useState<ModeTypes>("smart")
-
+  const [premiumModalIsOpen, setPremiumModalIsOpen] = useState(false)
   const [generatedCode, setGeneratedCode] = useState<String>("")
   const [codeSentence, setCodeSentence] = useState("")
   const [langElement, setLangElement] = useState<LandElementType>(
@@ -21,27 +21,27 @@ export default function Container({ session, translations }) {
   )
 
   const userId = session && session.user?.id
-  const userCredits = session && session.user?.credits
 
+  const userIsPremium = session?.user?.isPremium || session?.user?.credits > 0
   return (
     <>
-      <Navigation
-        menuTranslations={translations.home.header.menu}
-        translations={translations.sidebar}
-        setGeneratedCode={setGeneratedCode}
+      <ProModal
         mode={mode}
+        translations={translations.pricing}
+        showModal={premiumModalIsOpen}
+        setShowModal={setPremiumModalIsOpen}
       />
       <Client
+        setPremiumModalIsOpen={setPremiumModalIsOpen}
+        isPremium={userIsPremium}
         userName={session?.user?.name?.substring(0, 1)}
         translations={translations?.codeIdea}
         langTranslation={translations.codeIdea.footer.lang}
         libTranslation={translations.codeIdea.footer.lib}
-        modalTranslations={translations?.modals?.moreCredits}
         setGeneratedCode={setGeneratedCode}
         generatedCode={generatedCode}
         chatHasStarted={chatHasStarted}
         setChatHasStarted={setChatHasStarted}
-        userCredits={userCredits}
         userId={userId}
         mode={mode}
         setMode={setMode}

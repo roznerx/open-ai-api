@@ -8,13 +8,14 @@ import InputChat from "app/components/shared/InputChat"
 import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "ai/react"
-import { updateApiCallsAndCredits } from "utils/helpers"
 import { AI_MOOD } from "@/lib/constants"
+import { useSignInModal } from "app/components/modals/SignInModal"
+import { useRouter } from "next/navigation"
 
 export default function Client({ session, translations, modalTranslations }) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
-  // const { setShowSignInModal } = useSignInModal({ translations })
-  const userCredits = session && session.user?.credits
+  const { setShowSignInModal } = useSignInModal({ translations })
+  const router = useRouter()
   const userName = session && session.user?.name
   const {
     messages,
@@ -27,24 +28,18 @@ export default function Client({ session, translations, modalTranslations }) {
   } = useChat({
     initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
     onFinish: async () => {
-      if (session) {
-        const data = await updateApiCallsAndCredits(session.user?.id)
-
-        if (data?.creditsLeft === 0) {
-          setCreditsModaIsOpen(true)
-        }
-      }
+      //count tokens??
     },
   })
 
   useEffect(() => {
-    if (!userCredits || userCredits === 0) {
-      setCreditsModaIsOpen(true)
+    if (!session) {
+      router.push("code-chat?action=signUp")
     }
-  }, [userCredits])
+  }, [])
 
   useEffect(() => {
-    if (session.user && !session.user.credits && isLoading) {
+    if (session?.user && !session?.user?.credits && isLoading) {
       stop()
       setCreditsModaIsOpen(true)
     }
