@@ -11,10 +11,10 @@ export default function Faqs({ translations: faqs }) {
       <p className="text-lg mb-4 text-gray-300">{faqs.desc}:</p>
       <div className="text-lg mb-6 text-mint">
         <Link
-          className="text-lg mb-12 mt-6 text-mint"
+          className="text-lg mb-12 mt-6 capitalize text-mint"
           href={"mailto:support@code-genius.dev"}
         >
-          Contact Support
+          {faqs.support}
         </Link>
       </div>
 

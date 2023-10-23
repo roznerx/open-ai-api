@@ -109,10 +109,13 @@ export default function Client({ host, session, translations }: ClientPropTye) {
       />
       <div className="mx-auto my-6 px-4 pt-20">
         <h2 className="mx-auto mb-3 w-[80%] text-4xl font-semibold text-white sm:w-[100%] sm:text-6xl sm:leading-none sm:tracking-tight">
-          {translations.title}
+          {translations?.title}
         </h2>
         <p className="mx-auto mt-4 w-[80%] text-2xl text-white sm:w-full">
-          {translations.subtitle1}
+          {translations?.subtitle}
+        </p>
+        <p className="mx-auto mt-2 w-[80%] text-2xl text-white sm:w-full">
+          {translations?.subtitle1}
         </p>
         {/* <div className="mt-10 h-auto w-auto rounded-xl bg-gradient-to-br from-purple-500 via-purple-400 to-purple-500 p-4 text-white"> */}
         {/* <p className="mx-auto mt-1 w-[80%] text-2xl sm:w-full">
@@ -135,14 +138,14 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
                     font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
-                    {translations.basic.title}
+                    {translations?.basic?.title}
                   </h3>
 
                   <div className="mt-4 text-center text-white">
                     <span className="text-4xl font-bold">
-                      {translations.basic.subtitle}
+                      {translations?.basic?.subtitle}
                     </span>
-                    <p>{translations.basic.perfect}</p>
+                    <p>{translations?.basic?.perfect}</p>
                   </div>
                   <p className="mt-6 flex justify-center font-semibold text-white">
                     {translations.included}
@@ -443,17 +446,17 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                     className={`sm:text-xl sm:text-xl bg-gradient-to-r from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] bg-clip-text text-center
                     font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-2 sm:leading-6`}
                   >
-                    {translations.enterprice.title}
+                    {translations?.enterprice?.title}
                   </h3>
                   <h2 className="mx-auto my-3 w-full font-semibold text-white sm:w-[100%] sm:text-4xl sm:leading-none sm:tracking-tight">
-                    {translations.enterprice.cta}
+                    {translations?.enterprice?.cta}
                   </h2>
                   <p className="text-white">
                     {" "}
-                    {translations.enterprice.perfect}
+                    {translations?.enterprice?.perfect}
                   </p>
                   <p className="mt-6 flex justify-center font-semibold text-white">
-                    {translations.included}
+                    {translations?.included}?{" "}
                   </p>
                   <ul className="mt-10 space-y-4 text-left md:mx-8">
                     <li className="flex w-full min-w-[210px] space-x-3">
@@ -472,7 +475,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
 
-                      {translations.enterprice.features["1"]}
+                      {translations?.enterprice?.features["1"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -489,7 +492,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.enterprice.features["2"]}
+                      {translations?.enterprice?.features["2"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -506,7 +509,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.enterprice.features["3"]}
+                      {translations?.enterprice?.features["3"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -523,7 +526,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.enterprice.features["4"]}
+                      {translations?.enterprice?.features["4"]}
                     </li>
                     <li className="flex w-full min-w-[210px] space-x-3">
                       <svg
@@ -540,7 +543,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      {translations.enterprice.support}
+                      {translations?.enterprice?.support}
                     </li>
                   </ul>
                 </div>
@@ -556,7 +559,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
                         type="submit"
                         className="text-sm font-sanssm:mx-auto px-1 py-2 text-center "
                       >
-                        {translations.enterprice.contactUs}
+                        {translations?.enterprice?.contactUs}
                       </button>
                     </div>
                   </div>

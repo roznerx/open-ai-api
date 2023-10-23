@@ -139,36 +139,9 @@
     "free": "Free Plan",
     "popular": "Try it for Free",
     "included": "What’s included?",
-    "subtitle1": "Unlock Limitless Learning with Code Genius! Get access to automated unit tests generation, docs and code improvements!",
+    "subtitle": "Unlock Limitless Learning with Code Genius!",
+    "subtitle1": "Get access to automated unit tests generation, docs and code improvements!",
     "subtitle2": "Try it FREE for a week, no strings attached. Cancel anytime.",
-    "faqs": {
-      "title": "Frequently Asked Questions",
-      "desc": "If you can’t find the answer to your question, please reach out to our support team here:",
-      "1": {
-        "title": "What is Code Genius?",
-        "desc": "Code Genius is a powerful tool designed to enhance your coding experience. It offers real-time code analysis, intelligent suggestions, and code improvements to make your code clean, efficient, and error-free. Additionally, it can automatically generate unit tests, covering a wide range of scenarios, and create clear and concise code documentation. This tool is a valuable companion for developers looking to optimize their code and streamline their workflow."
-      },
-      "2": {
-        "title": "What can I do with Code Genius?",
-        "desc": "Code Genius helps you code better by providing smart code suggestions, generating tests, improving your code, generating documentation, and chatting with your personal AI chat assistant."
-      },
-      "2.a": {
-        "title": "How does Code Genius protect user privacy?",
-        "desc": "We understand that code privacy is very important, and we take it seriously. We do not store any code that you send to Code Genius. We only use it to generate suggestions, tests, improvements, and documentation."
-      },
-      "2.1": {
-        "title": "Why should I use Code Genius?",
-        "desc": "Code Genius surpasses other AI competitors, such as popular VS Code plugins, in terms of performance. You can use our test generation feature to generate unit tests for your components in seconds."
-      },
-      "2.2": {
-        "title": "Can I use Code Genius for free?",
-        "desc": "You can try our free features, AI Chat and Code Suggestions, with our starter plan. Alternatively, you can try all of our features for free for 7 days with our premium subscription."
-      },
-      "3": {
-        "title": "Do you offer technical support?",
-        "desc": "Absolutely. All Code Genius members have access to 24/7 technical support. We provide basic support to the starter plan and premium support to our premium subscribers."
-      }
-    },
     "basic": {
       "title": "Starter",
       "perfect": "Perfect to try it for the first time",
@@ -212,6 +185,35 @@
         "3": "Chat assistant 24/7",
         "4": "Save and edit code ideas",
         "5": "Priority support"
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "desc": "If you can’t find the answer to your question, please reach out to our support team here:",
+      "support": "contact support",
+      "1": {
+        "title": "What is Code Genius?",
+        "desc": "Code Genius is a powerful tool designed to enhance your coding experience. It offers real-time code analysis, intelligent suggestions, and code improvements to make your code clean, efficient, and error-free. Additionally, it can automatically generate unit tests, covering a wide range of scenarios, and create clear and concise code documentation. This tool is a valuable companion for developers looking to optimize their code and streamline their workflow."
+      },
+      "2": {
+        "title": "What can I do with Code Genius?",
+        "desc": "Code Genius helps you code better by providing smart code suggestions, generating tests, improving your code, generating documentation, and chatting with your personal AI chat assistant."
+      },
+      "2.a": {
+        "title": "How does Code Genius protect user privacy?",
+        "desc": "We understand that code privacy is very important, and we take it seriously. We do not store any code that you send to Code Genius. We only use it to generate suggestions, tests, improvements, and documentation."
+      },
+      "2.1": {
+        "title": "Why should I use Code Genius?",
+        "desc": "Code Genius surpasses other AI competitors, such as popular VS Code plugins, in terms of performance. You can use our test generation feature to generate unit tests for your components in seconds."
+      },
+      "2.2": {
+        "title": "Can I use Code Genius for free?",
+        "desc": "You can try our free features, AI Chat and Code Suggestions, with our starter plan. Alternatively, you can try all of our features for free for 7 days with our premium subscription."
+      },
+      "3": {
+        "title": "Do you offer technical support?",
+        "desc": "Absolutely. All Code Genius members have access to 24/7 technical support. We provide basic support to the starter plan and premium support to our premium subscribers."
       }
     }
   },

@@ -136,13 +136,15 @@
     "title": "Pague uma vez. Torne-se Premium",
     "processing": "Processando...",
     "free": "Plano Grátis",
-    "popular": "Popular",
+    "popular": "Experimente Grátis",
     "included": "O que está incluído?",
-    "subtitle1": "Cancele a qualquer momento. Baseado em assinatura, para usar o Code Genius tanto quanto desejar.",
+    "subtitle": "Desbloqueie o Aprendizado Ilimitado com o Code Genius!",
+    "subtitle1": "Tenha acesso à geração automatizada de testes unitários, documentos e melhorias no código!",
     "subtitle2": "Pague apenas pelo que você usa.",
     "faqs": {
       "title": "Perguntas Frequentes",
       "desc": "Se você não encontrar a resposta para sua pergunta, entre em contato com nosso suporte aqui",
+      "support": "contactar al soporte",
       "1": {
         "title": "O que é o Code Genius?",
         "desc": "O Code Genius é uma ferramenta poderosa projetada para aprimorar a sua experiência de codificação. Ele oferece análise de código em tempo real, sugestões inteligentes e melhorias no código para tornar o seu código limpo, eficiente e livre de erros. Além disso, ele pode gerar automaticamente testes unitários que abrangem uma ampla gama de cenários e criar documentação clara e concisa para o código. Esta ferramenta é um valioso companheiro para desenvolvedores que desejam otimizar o seu código e simplificar o seu fluxo de trabalho."
@@ -198,7 +200,7 @@
         "chat": "Converse com o Code Genius"
       }
     },
-    "enterprise": {
+    "enterprice": {
       "title": "Empresas",
       "contactUs": "Contate-nos",
       "support": "Suporte Empresarial",
