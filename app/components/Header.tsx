@@ -27,7 +27,6 @@ export default function Header({
     pathName == "/privacy"
   const [showWidget, setShowWidget] = useState(false)
   const router = useRouter()
-  console.log("translations", translations)
 
   return (
     <>
