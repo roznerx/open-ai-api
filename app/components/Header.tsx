@@ -43,7 +43,9 @@ export default function Header({
         >
           <div
             className={`ml-4 pt-2 ${
-              pathName == "/dashboard" || pathName == "/code-idea"
+              pathName == "/dashboard" ||
+              pathName == "/code-idea" ||
+              pathName == "/code-chat"
                 ? "sm:ml-20"
                 : "sm:ml-6"
             }`}

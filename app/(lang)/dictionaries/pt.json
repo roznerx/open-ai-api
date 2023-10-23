@@ -64,6 +64,14 @@
     "ctaChat": "Chat de código",
     "ctaUpgrade": "Atualize seu plano",
     "subscription": "Plano de assinatura",
+    "premiumSubscription": "Plano Premium",
+    "freeSubscription": "Plano Gratuito",
+    "ask": "Pergunte ao Code Genius e explore a vasta coleção de exemplos de código úteis para tornar seu processo de desenvolvimento mais rápido e eficiente.",
+    "access": "Você tem acesso a esses recursos: Chat, Sugestões inteligentes, melhorias de código, geração de testes automatizados e geração de documentos.",
+    "unlock": "Desbloqueie o Code Genius Premium para acessar um mundo de recursos avançados, incluindo Geração de Testes Unitários, Melhorias no Código e Geração de Documentos - tudo ao alcance de suas mãos!",
+    "free": "Você tem um Plano Gratuito.",
+    "manage": "Gerenciar Assinatura",
+    "upgrade": "Atualizar Plano",
     "smart": {
       "title": "Obtenha sugestões",
       "subtitle": "Obtenha sugestões de código usando suas linguagens de programação."

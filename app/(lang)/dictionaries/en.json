@@ -62,6 +62,12 @@
     "subscription": "Subscription",
     "premiumSubscription": "Premium Plan",
     "freeSubscription": "Free Plan",
+    "ask": "Ask to Code Genius and explore the vast collection of useful code examples to make your development process faster and more efficient",
+    "access": "You have acces to these features: Chat, smart Suggestions, code improvements, automated tests generation and docs generation.",
+    "unlock": "Unlock Code Genius Premium to access a world of advanced features, including Unit Test Generation, Code Improvements, and Docs Generation – all at your fingertips!",
+    "free": "You have a Free Plan",
+    "manage": "Manage Subscription",
+    "upgrade": "Upgrade plan",
     "smart": {
       "title": "Smart Suggestions",
       "subtitle": "Identify and rectify errors while fine-tuning your code in real-time."

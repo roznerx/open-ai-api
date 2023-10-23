@@ -68,6 +68,8 @@ export default function Client({
     }
   }, [searchParams, router, subscriptionHasBeenDeleted])
 
+  console.log("session?.user?.credits", session?.user?.credits)
+
   return (
     <>
       <div className="mb-12 mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
@@ -113,7 +115,7 @@ export default function Client({
           hasScale
           order="order-7 sm:order-7"
           title={`Genius Chat`}
-          text={`Ask to Code Genius and explore the vast collection of useful code examples to make your development process faster and more efficient`}
+          text={dashboard?.ask}
           onClick={undefined}
           pill={
             <button className=" h-auto w-auto rounded-full bg-moradoCode px-2 py-1 text-[13px] font-semibold text-purple-400 sm:absolute sm:-right-4">
@@ -135,19 +137,29 @@ export default function Client({
           title={
             isPremium
               ? `Premium ${dashboard.subscription}`
-              : `You have a Free Plan (${session?.user?.credits} available credits)`
+              : `${
+                  session?.user?.credits === 0
+                    ? dashboard?.free
+                    : session?.user?.credits +
+                      " " +
+                      dashboard.available +
+                      " " +
+                      dashboard.credits
+                }`
           }
           text={
             isPremium
-              ? `You currently have the ${dashboard.premiumSubscription}. You have acces to these features: Chat, smart Suggestions, code improvements, automated tests generation and docs generation.`
-              : "Unlock Code Genius Premium to access a world of advanced features, including Unit Test Generation, Code Improvements, and Docs Generation – all at your fingertips!"
+              ? `You currently have the ${dashboard.premiumSubscription}. ${dashboard.access}`
+              : session?.user?.credits === 0
+              ? dashboard.unlock
+              : dashboard.access
           }
           button={
             <UpgradeAccount
               isPremium={isPremium}
               subId={session?.user?.subscriptionId || subscriptionId}
               userId={session?.user?.id}
-              text={isPremium ? "Manage Subscription" : "Upgrade plan"}
+              text={isPremium ? dashboard?.manage : dashboard?.upgrade}
             />
           }
           onClick={undefined}
