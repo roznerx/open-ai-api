@@ -11,7 +11,11 @@ export async function updateUserSubscription(
 
   try {
     const response = await fetch(
-      `${process.env.NEXTAUTH_URL}/api/user/update`,
+      `${
+        process.env.NEXTAUTH_URL
+          ? process.env.NEXTAUTH_URL
+          : "https://www.code-genius.dev"
+      }/api/user/update`,
       {
         next: { revalidate: 0 },
         method: "POST",
