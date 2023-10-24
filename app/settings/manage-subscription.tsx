@@ -6,7 +6,13 @@ import { cancelAction } from "./action"
 import Link from "next/link"
 import { paymentPortalLink } from "utils/helprs"
 
-export default function ManageSubscription({ subId, userId, cancel, anual }) {
+export default function ManageSubscription({
+  subId,
+  userId,
+  cancel,
+  anual,
+  translations,
+}) {
   const [cancelModaIsOpen, setCancelModaIsOpen] = useState(false)
 
   const handleSubmit = () => {
@@ -18,10 +24,8 @@ export default function ManageSubscription({ subId, userId, cancel, anual }) {
       <div className="mt-6 flex justify-end space-x-4">
         <Modal
           isCreditsModal
-          title={"Are you sure you want to cancel?"}
-          body={
-            "If you cancel you will loose the avility to generate tests, code improvements and documentation."
-          }
+          title={translations?.sure}
+          body={translations?.loose}
           isOpen={cancelModaIsOpen}
           onClickPrimary={handleSubmit}
           buttonText={"Cancel"}

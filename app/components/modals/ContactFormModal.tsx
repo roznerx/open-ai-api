@@ -291,7 +291,7 @@ export default function ContactFormModal({
                         <div className="flex flex-col items-center justify-center">
                           <span className="-mt-6 text-3xl">
                             {isUnSubscribed
-                              ? `${translations?.sorry}`
+                              ? `${translations?.sorry} `
                               : `${translations?.thankyou}, `}
                             <span className="font-semibold">{clientName}!</span>
                           </span>

@@ -96,6 +96,10 @@
       "thankyou": "Gracias",
       "unsubscribed": "Has sido dado de baja de la suscripción al plan Code Genius Premium.",
       "sorry": "Lamentamos verte ir",
+      "cancelModal": {
+        "sure": "¿Estás seguro de que deseas cancelar?",
+        "loose": "Si cancelas, perderás la capacidad de generar pruebas, mejoras de código y documentación."
+      },
       "enterprise": {
         "thanks": "Gracias por tu interés en Code Genius",
         "expert": "Pronto un experto se pondrá en contacto contigo.",

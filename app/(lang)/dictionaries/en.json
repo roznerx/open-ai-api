@@ -92,6 +92,10 @@
       "thankyou": "Thank you",
       "unsubscribed": "You have been un-subscribed to the Code Genius Premium plan.",
       "sorry": "We're sorry to see you go",
+      "cancelModal": {
+        "sure": "Are you sure you want to cancel?",
+        "loose": "If you cancel you will loose the avility to generate tests, code improvements and documentation."
+      },
       "enterprise": {
         "thanks": "Talks for being interested in Code Genius.",
         "expert": "An expert will reach you soon.",
