@@ -37,6 +37,7 @@ export default async function Dashboard({
   }
   if (session_id) {
     stripeSession = await stripe?.checkout?.sessions?.retrieve(session_id)
+    await updateUserSubscription(session?.user?.id, stripeSession?.subscription)
   }
 
   const headersList = headers()

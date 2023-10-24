@@ -68,6 +68,8 @@ export default function Client({
     }
   }, [searchParams, router, subscriptionHasBeenDeleted])
 
+  console.log("user", session?.user)
+
   return (
     <>
       <div className="mb-12 mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
