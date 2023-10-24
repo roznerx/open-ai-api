@@ -15,8 +15,8 @@ export default function ManageSubscription({
 }) {
   const [cancelModaIsOpen, setCancelModaIsOpen] = useState(false)
 
-  const handleSubmit = () => {
-    cancelAction(subId, userId)
+  const handleSubmit = async () => {
+    await cancelAction(subId, userId)
   }
 
   return (

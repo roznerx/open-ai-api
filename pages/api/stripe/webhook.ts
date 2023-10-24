@@ -63,7 +63,7 @@ export default async function webhookHandler(
             const userId = subscription?.metadata?.user_id
             const subscriptionId = subscription?.subscription
 
-            updateUserSubscription(userId, subscriptionId)
+            await updateUserSubscription(userId, subscriptionId)
 
             return res.status(200).json({ ok: true })
           }

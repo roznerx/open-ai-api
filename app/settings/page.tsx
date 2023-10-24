@@ -5,7 +5,6 @@ import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
-import { updateUserSubscription } from "utils/helpers"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import ManageSubscription from "./manage-subscription"
@@ -30,24 +29,24 @@ export default async function Settings({
 }) {
   const { subId, userId } = searchParams
 
-  async function deleteSubscription() {
-    "use server"
-    try {
-      const deletedSubscription = await stripe.subscriptions.update(subId, {
-        cancel_at_period_end: true,
-        cancellation_details: {
-          comment: "Customer deleted their Code Genius subscription.",
-        },
-      })
-      if (deletedSubscription.cancel_at_period_end) {
-        await updateUserSubscription(userId, "")
-      }
-    } catch (error) {
-      console.error(`The was an error deleting your subscription: ${error}`)
-    }
+  // async function deleteSubscription() {
+  //   "use server"
+  //   try {
+  //     const deletedSubscription = await stripe.subscriptions.update(subId, {
+  //       cancel_at_period_end: true,
+  //       cancellation_details: {
+  //         comment: "Customer deleted their Code Genius subscription.",
+  //       },
+  //     })
+  //     if (deletedSubscription.cancel_at_period_end) {
+  //       await updateUserSubscription(userId, "")
+  //     }
+  //   } catch (error) {
+  //     console.error(`The was an error deleting your subscription: ${error}`)
+  //   }
 
-    redirect("/dashboard?action=subscription-deleted")
-  }
+  //   redirect("/dashboard?action=subscription-deleted")
+  // }
   const session = await getServerSession(authOptions)
   const subscription: any = await stripe?.subscriptions?.retrieve(subId)
 

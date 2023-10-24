@@ -33,7 +33,7 @@ export default async function Dashboard({
   }
   if (searchParams.action === "subscription-deleted") {
     console.log("use is deleting their subscription")
-    await updateUserSubscription(session.user.id, "", false)
+    await updateUserSubscription(session?.user?.id, "")
   }
   if (session_id) {
     stripeSession = await stripe?.checkout?.sessions?.retrieve(session_id)

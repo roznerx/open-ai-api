@@ -5,8 +5,10 @@ export const getId = () => {
 export async function updateUserSubscription(
   userId?: string,
   subscriptionId?: any,
-  removeSubscription?: boolean,
 ) {
+  console.log("Updte user subs userId:", userId)
+  console.log("Updte user subs subscriptionId:", subscriptionId)
+
   try {
     const response = await fetch(
       `${process.env.NEXTAUTH_URL}/api/user/update`,
@@ -23,7 +25,7 @@ export async function updateUserSubscription(
                 subscriptionId,
                 isPremium: true,
               }
-            : { userId, subscriptionId, isPremium: removeSubscription },
+            : { userId, subscriptionId, isPremium: false },
         ),
       },
     )
