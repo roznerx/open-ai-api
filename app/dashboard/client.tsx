@@ -29,7 +29,7 @@ export default function Client({
   const [isPremium, setIsPremium] = React.useState<boolean>(isProUser)
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
-  const { dashboard } = translations
+  const { dashboard, pricing } = translations
 
   const userName = session?.user?.name
 
@@ -118,8 +118,8 @@ export default function Client({
           text={dashboard?.ask}
           onClick={undefined}
           pill={
-            <button className="absolute -right-3 h-auto w-auto rounded-full bg-moradoCode px-2 py-2 text-[13px] font-semibold text-black sm:absolute sm:-right-4 sm:-top-2">
-              New Feature
+            <button className="absolute -right-3 h-auto w-auto rounded-full bg-secondaryPurple px-2.5 py-1 text-[13px] font-semibold text-white sm:absolute sm:-right-4 sm:-top-2">
+              {dashboard?.newFeature}
             </button>
           }
           button={
@@ -166,6 +166,8 @@ export default function Client({
         />
       </div>
       <ContactFormModal
+        featuresTranslations={pricing.premium.features}
+        translations={dashboard.modal}
         thanksMessage={thanksMessage}
         isUnSubscribed={
           searchParams && searchParams.get("action") === "subscription-deleted"

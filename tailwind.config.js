@@ -115,6 +115,7 @@ module.exports = {
         specialBlue: "#6ea9d7",
         morado: "#7477FB",
         moradoCode: "#A688FF",
+        secondaryPurple: "#6A51B6",
         mint: "#A1FFE0",
         blue: "#2C9DC0",
         lineNumbers: "#8283AD",

@@ -20,10 +20,16 @@ import { Loader2 } from "lucide-react"
 type ClientPropTye = {
   session: any
   translations: any
+  modalTranslations?: any
   host: string
 }
 
-export default function Client({ host, session, translations }: ClientPropTye) {
+export default function Client({
+  host,
+  session,
+  translations,
+  modalTranslations,
+}: ClientPropTye) {
   const [anual, setAnual] = useState(true)
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
@@ -103,6 +109,7 @@ export default function Client({ host, session, translations }: ClientPropTye) {
       <SignInModal />
       <PaymentModal isOpen={openPayment} setIsOpen={setOpenPayment} />
       <ContactFormModal
+        translations={modalTranslations}
         clientName={session && session?.user && session?.user?.name}
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}

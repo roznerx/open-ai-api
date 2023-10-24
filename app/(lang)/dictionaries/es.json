@@ -58,6 +58,7 @@
     "seeVideo": "Mira el video"
   },
   "dashboard": {
+    "newFeature": "Nuevo",
     "welcome": "Bienvenido",
     "explore": "Explora las funcionalidades que tenemos para ti",
     "credits": "Créditos",
@@ -70,7 +71,7 @@
     "ask": "Pregunta a Code Genius y explora la amplia colección de ejemplos de código útiles para hacer tu proceso de desarrollo más rápido y eficiente.",
     "access": "Tienes acceso a estas funciones: Chat, Sugerencias inteligentes, mejoras de código, generación de pruebas automatizadas y generación de documentos.",
     "unlock": "Desbloquea Code Genius Premium para acceder a un mundo de funciones avanzadas, incluyendo la generación de pruebas unitarias, mejoras en el código y la generación de documentos, ¡todo al alcance de tus dedos!",
-    "free": "Tienes un Plan Gratuito.",
+    "free": "Plan Gratuito",
     "manage": "Gestionar Suscripción",
     "upgrade": "Actualizar Plan",
     "smart": {
@@ -88,6 +89,25 @@
     "docs": {
       "title": "Documentación",
       "subtitle": "Generar documentación clara y precisa en segundos te ahorrará tiempo valioso."
+    },
+    "modal": {
+      "subscribedMessage": "Has sido suscrito al plan Code Genius Premium.",
+      "enjoy": "Disfruta de las siguientes funcionalidades extra",
+      "thankyou": "Gracias",
+      "unsubscribed": "Has sido dado de baja de la suscripción al plan Code Genius Premium.",
+      "sorry": "Lamentamos verte ir",
+      "enterprise": {
+        "thanks": "Gracias por tu interés en Code Genius",
+        "expert": "Pronto un experto se pondrá en contacto contigo.",
+        "send": "Enviar",
+        "talk": "Hable con nosotros",
+        "happy": "Estaremos encantados de responder a todas sus preguntas.",
+        "error": "Esta es la descripción del mensaje de error:",
+        "sending": "Enviando mensaje...",
+        "name": "Nombre:",
+        "email": "Correo electrónico:",
+        "message": "Mensaje:"
+      }
     }
   },
   "settings": {
