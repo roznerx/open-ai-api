@@ -300,67 +300,71 @@ export default function ContactFormModal({
                           )} */}
                         </div>
                       </Dialog.Title>
-                      <div className="text-sm w-full py-8 text-center text-white">
+                      <div className="text-sm w-full pb-4 pt-8 text-center text-white">
                         <p>
                           {isUnSubscribed
                             ? translations?.unsubscribed
                             : `${translations?.subscribedMessage} 🎉`}
                         </p>
-                        <p className="pt-1">{translations?.enjoy}</p>
+                        {!isUnSubscribed && (
+                          <p className="pt-1">{translations?.enjoy}</p>
+                        )}
                       </div>
-                      <ul className="flex flex-col gap-y-2 text-white">
-                        <li className="flex w-full min-w-[210px] space-x-3">
-                          <svg
-                            className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
-                            fill="none"
-                            height="24"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          {featuresTranslations.improve}
-                        </li>
-                        <li className="flex w-full min-w-[210px] space-x-3">
-                          <svg
-                            className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
-                            fill="none"
-                            height="24"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          {featuresTranslations.test}
-                        </li>
-                        <li className="flex w-full min-w-[210px] space-x-3">
-                          <svg
-                            className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
-                            fill="none"
-                            height="24"
-                            stroke="currentColor"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            viewBox="0 0 24 24"
-                            width="24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <polyline points="20 6 9 17 4 12" />
-                          </svg>
-                          {featuresTranslations.docs}
-                        </li>
-                      </ul>
+                      {!isUnSubscribed && (
+                        <ul className="flex flex-col gap-y-2 text-white">
+                          <li className="flex w-full min-w-[210px] space-x-3">
+                            <svg
+                              className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                              fill="none"
+                              height="24"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            {featuresTranslations.improve}
+                          </li>
+                          <li className="flex w-full min-w-[210px] space-x-3">
+                            <svg
+                              className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                              fill="none"
+                              height="24"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            {featuresTranslations.test}
+                          </li>
+                          <li className="flex w-full min-w-[210px] space-x-3">
+                            <svg
+                              className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                              fill="none"
+                              height="24"
+                              stroke="currentColor"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth="2"
+                              viewBox="0 0 24 24"
+                              width="24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <polyline points="20 6 9 17 4 12" />
+                            </svg>
+                            {featuresTranslations.docs}
+                          </li>
+                        </ul>
+                      )}
                     </div>
                   )}
                 </div>
