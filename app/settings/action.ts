@@ -6,15 +6,14 @@ import { updateUserSubscription } from "utils/helpers"
 
 export async function cancelAction(subId, userId) {
   try {
-    const deletedSubscription = await stripe.subscriptions.update(subId, {
+    await stripe.subscriptions.update(subId, {
       cancel_at_period_end: true,
       cancellation_details: {
         comment: "Customer deleted their Code Genius subscription.",
       },
     })
-    if (deletedSubscription.cancel_at_period_end) {
-      await updateUserSubscription(userId, "")
-    }
+
+    await updateUserSubscription(userId, "")
   } catch (error) {
     console.error(`The was an error deleting your subscription: ${error}`)
   }
