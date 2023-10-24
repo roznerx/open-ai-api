@@ -41,7 +41,6 @@ export default async function webhookHandler(
     const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET
 
     let subscription
-    let status
     let event: Stripe.Event
     try {
       if (!sig || !webhookSecret) return
