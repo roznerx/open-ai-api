@@ -144,7 +144,12 @@ export default async function Settings({
               {dictionary.settings.unlock}
             </span>
           </div>
-          <ManageSubscription subId={subId} userId={userId} />
+          <ManageSubscription
+            cancel={dictionary.settings.cancel}
+            anual={dictionary.settings.switch}
+            subId={subId}
+            userId={userId}
+          />
         </div>
         <div className="mt-12 w-2/3 rounded-lg bg-purple-700 p-8">
           <h2 className="mb-12 text-left text-3xl font-bold leading-tight tracking-normal text-white">

@@ -100,7 +100,9 @@
     "payment": "Pago",
     "manage": "Gestionar método de pago",
     "unlock": "¡Desbloquea un descuento del 25% con una suscripción anual!",
-    "history": "Consultar historial de facturación"
+    "history": "Consultar historial de facturación",
+    "cancel": "Cancelar Suscripción",
+    "switch": "Cambiar a anual"
   },
   "sidebar": {
     "dashboard": "Home",

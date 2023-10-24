@@ -96,7 +96,9 @@
     "payment": "Payment",
     "manage": "Manage payment method",
     "unlock": "Unlock a 25% Discount with an Annual Subscription!",
-    "history": "Check billing history"
+    "history": "Check billing history",
+    "cancel": "Cancel Subscription",
+    "switch": "Switch to yearly"
   },
   "showCase": {
     "title": "Why should I use Code Genius?",
