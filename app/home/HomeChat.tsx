@@ -36,8 +36,6 @@ export default function HomeChat({ session }) {
     initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
   })
 
-  console.log("messages:", messages)
-
   return (
     <>
       <div className="relative ml-1 flex w-full flex-col items-center justify-center font-sans sm:mx-auto sm:w-full">
