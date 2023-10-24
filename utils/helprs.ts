@@ -6,5 +6,8 @@ export const nanoid = customAlphabet(
   7,
 )
 
-export const paymentPortalLink =
+export const paymentPortalLinkTest =
   "https://billing.stripe.com/p/login/test_9AQ17X8Jm3207m09AA"
+
+export const paymentPortalLink =
+  "https://billing.stripe.com/p/login/bIY9BFb2WfeE9eEfYY"

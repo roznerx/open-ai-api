@@ -21,6 +21,7 @@ export default async function Page() {
         <Client
           host={process.env.NEXTAUTH_URL || ""}
           translations={dictionary.pricing}
+          modalTranslations={dictionary.dashboard.modal}
           session={session}
         />
       </main>

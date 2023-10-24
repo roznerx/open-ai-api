@@ -37,7 +37,7 @@ export default function ManageSubscription({ subId, userId, cancel, anual }) {
         </button>
         <Link
           href={paymentPortalLink}
-          className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500 hover:bg-mint/80"
+          className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500 hover:bg-mint/90"
         >
           {anual}
         </Link>

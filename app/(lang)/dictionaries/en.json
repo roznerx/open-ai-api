@@ -53,6 +53,7 @@
     }
   },
   "dashboard": {
+    "newFeature": "New Feature",
     "welcome": "Welcome",
     "explore": "Explore the features we have for you",
     "credits": "Credits",
@@ -84,6 +85,25 @@
     "docs": {
       "title": "Documentation",
       "subtitle": "Generate clear and concise documentation in seconds."
+    },
+    "modal": {
+      "subscribedMessage": "You have been subscribed to the Code Genius Premium plan",
+      "enjoy": "Disfruta de las siguientes funcionalidades extra:",
+      "thankyou": "Thank you",
+      "unsubscribed": "You have been un-subscribed to the Code Genius Premium plan.",
+      "sorry": "We're sorry to see you go",
+      "enterprise": {
+        "thanks": "Talks for being interested in Code Genius.",
+        "expert": "An expert will reach you soon.",
+        "send": "Send",
+        "talk": "Talk to us",
+        "happy": "We will be happy to answer all your questions.",
+        "error": "This is the error message description:",
+        "sending": "Sending message..",
+        "name": "Name:",
+        "email": "Email:",
+        "message": "Message:"
+      }
     }
   },
   "settings": {

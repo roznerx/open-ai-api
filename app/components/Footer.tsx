@@ -10,9 +10,11 @@ import { cn } from "@/lib/utils"
 export default function Footer({
   session,
   translations,
+  modalTranslations,
 }: {
   session: any
   translations: any
+  modalTranslations: any
 }) {
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const pathName = usePathname()
@@ -27,6 +29,7 @@ export default function Footer({
       {shouldShowFooter ? (
         <footer>
           <ContactFormModal
+            translations={modalTranslations}
             clientName={(session && session?.user && session?.user?.name) || ""}
             isOpen={openContactForm}
             setIsOpen={setOpenContactForm}

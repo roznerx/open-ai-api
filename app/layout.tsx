@@ -73,7 +73,11 @@ export default async function RootLayout({
               />
               {children}
             </div>
-            <Footer session={session} translations={translations?.footer} />
+            <Footer
+              session={session}
+              translations={translations?.footer}
+              modalTranslations={translations?.dashboard.modal}
+            />
           </SessionProvider>
           <Script
             strategy="afterInteractive"

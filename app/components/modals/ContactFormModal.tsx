@@ -14,6 +14,8 @@ interface Props {
   clientName?: string | null
   errorMessage?: Error
   title?: string
+  translations?: any
+  featuresTranslations?: any
   name?: string
   purchasedCredits?: string
   setIsOpen: (arg: boolean) => void
@@ -38,6 +40,8 @@ const inter = Inter({
 })
 
 export default function ContactFormModal({
+  featuresTranslations,
+  translations,
   title,
   name,
   isClientFeedback,
@@ -114,7 +118,7 @@ export default function ContactFormModal({
             >
               <Dialog.Panel
                 className={
-                  "w-[100%] transform overflow-hidden rounded-2xl bg-purple-500 p-4 text-left shadow-xl transition-all md:h-full md:w-[90%] lg:h-fit lg:w-[40%]"
+                  "w-full transform overflow-hidden rounded-2xl bg-purple-500 p-4 text-left shadow-xl transition-all md:h-full md:w-[90%] lg:h-fit lg:w-[40%]"
                 }
               >
                 <div
@@ -123,14 +127,14 @@ export default function ContactFormModal({
                 >
                   <X size={25} className="absolute right-3" color="white" />
                 </div>
-                <div className="flex flex-col content-center justify-start justify-items-start gap-4 sm:p-12">
+                <div className="flex flex-col content-center justify-start justify-items-start gap-4 p-6 sm:p-8">
                   {loading && !thanksMessage && (
                     <>
                       <Dialog.Title
                         as="h1"
                         className="font-poppins mx-auto text-center text-2xl  text-white "
                       >
-                        Sending message..
+                        {translations?.enterprise?.sending}
                       </Dialog.Title>
                     </>
                   )}
@@ -140,15 +144,15 @@ export default function ContactFormModal({
                         as="h1"
                         className="font-poppins text-center text-2xl leading-6 text-white sm:text-left sm:text-3xl"
                       >
-                        {title ? title : `Talk to us`}
+                        {title ? title : translations?.enterprise?.talk}
                       </Dialog.Title>
                       <Dialog.Title
                         as="h1"
                         className={`text-sm sm:text-md text-center font-sans leading-10 text-gray-200 sm:text-left`}
                       >
                         {isClientFeedback
-                          ? `This is the error message descriptoin:`
-                          : `We will be happy to answer all your questions.`}
+                          ? translations?.enterprise?.error
+                          : translations?.enterprise?.happy}
                       </Dialog.Title>
 
                       <hr className="border-1 border-purple-500" />
@@ -161,7 +165,7 @@ export default function ContactFormModal({
                                 htmlFor="name"
                                 className="font-sans text-[13px] text-purple-300"
                               >
-                                Name
+                                {translations?.enterprise?.name}
                               </label>
                               <input
                                 name="name"
@@ -180,7 +184,7 @@ export default function ContactFormModal({
                                 htmlFor="workEmail"
                                 className="font-sans text-[13px] text-purple-300"
                               >
-                                Email
+                                {translations?.enterprise?.email}
                               </label>
                               <input
                                 name="workEmail"
@@ -199,13 +203,13 @@ export default function ContactFormModal({
                                 htmlFor="howCanWeHelp"
                                 className="font-sans text-[13px] text-purple-300"
                               >
-                                Message
+                                {translations?.enterprise?.message}
                               </label>
                               <textarea
                                 name="howCanWeHelp"
                                 id="howCanWeHelp"
                                 className="block w-full rounded-md border border-purple-500 bg-purple-700 p-3 text-white placeholder:text-[13px] placeholder:text-gray-400 focus:border-purple-500 focus:ring-purple-400"
-                                placeholder="Tell us about your business needs"
+                                placeholder=""
                                 value={message}
                                 onChange={(e) => {
                                   setMessage(e.target.value)
@@ -237,7 +241,7 @@ export default function ContactFormModal({
                               onClick={(e) => handleSubmit(e)}
                               className="w-full rounded-md border-2 border-transparent bg-mint px-10 py-3 font-sans text-black"
                             >
-                              Send
+                              {translations?.enterprise?.send}
                             </button>
                           </div>
                         </div>
@@ -260,10 +264,10 @@ export default function ContactFormModal({
                       {!isClientFeedback ? (
                         <>
                           <p className="text-sm mt-4 text-white">
-                            Talks for being interested in Code Genius.
+                            {translations?.enterprise?.thanks}
                           </p>
                           <p className="text-sm -mt-1 text-white">
-                            An expert will reach you soon.
+                            {translations?.enterprise?.expert}
                           </p>
                         </>
                       ) : (
@@ -287,20 +291,76 @@ export default function ContactFormModal({
                         <div className="flex flex-col items-center justify-center">
                           <span className="-mt-6 text-3xl">
                             {isUnSubscribed
-                              ? `We're sorry to see you go`
-                              : `Thank you,`}
+                              ? `${translations?.sorry}`
+                              : `${translations?.thankyou}, `}
+                            <span className="font-semibold">{clientName}!</span>
                           </span>
-                          <span className="font-semibold">{clientName}</span>
                           {/* {clientName && (
                             <span className="mt-2">{clientName}!</span>
                           )} */}
                         </div>
                       </Dialog.Title>
-                      <p className="text-sm w-[65%] pt-8 text-center text-white">
-                        {isUnSubscribed
-                          ? "You have been un-subscribed to the Code Genius Premium plan."
-                          : "You have been subscribed to the Code Genius Premium plan."}
-                      </p>
+                      <div className="text-sm w-full py-8 text-center text-white">
+                        <p>
+                          {isUnSubscribed
+                            ? translations?.unsubscribed
+                            : `${translations?.subscribedMessage} 🎉`}
+                        </p>
+                        <p className="pt-1">{translations?.enjoy}</p>
+                      </div>
+                      <ul className="flex flex-col gap-y-2 text-white">
+                        <li className="flex w-full min-w-[210px] space-x-3">
+                          <svg
+                            className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                            fill="none"
+                            height="24"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          {featuresTranslations.improve}
+                        </li>
+                        <li className="flex w-full min-w-[210px] space-x-3">
+                          <svg
+                            className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                            fill="none"
+                            height="24"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          {featuresTranslations.test}
+                        </li>
+                        <li className="flex w-full min-w-[210px] space-x-3">
+                          <svg
+                            className=" text-xs mr-2 rounded-full bg-mint p-1 text-black"
+                            fill="none"
+                            height="24"
+                            stroke="currentColor"
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            viewBox="0 0 24 24"
+                            width="24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <polyline points="20 6 9 17 4 12" />
+                          </svg>
+                          {featuresTranslations.docs}
+                        </li>
+                      </ul>
                     </div>
                   )}
                 </div>

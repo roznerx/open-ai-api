@@ -58,6 +58,7 @@
     "seeVideo": "Veja o vídeo"
   },
   "dashboard": {
+    "newFeature": "Nova Funcionalidade",
     "welcome": "Bem-vindo",
     "explore": "Explore as funcionalidades que temos para você",
     "credits": "Créditos",
@@ -88,6 +89,25 @@
     "docs": {
       "title": "Documentação",
       "subtitle": "Use o modo de documentação para gerar documentação em segundos."
+    },
+    "modal": {
+      "subscribedMessage": "Você foi inscrito no plano Code Genius Premium",
+      "enjoy": "Desfrute das seguintes funcionalidades adicionais:",
+      "thankyou": "Obrigado",
+      "unsubscribed": "Você foi cancelado da assinatura do plano Code Genius Premium.",
+      "sorry": "Sentimos muito vê-lo partir.",
+      "enterprise": {
+        "thanks": "Obrigado por se interessar pelo Code Genius",
+        "expert": "Um especialista entrará em contato em breve.",
+        "send": "Enviar",
+        "talk": "Converse conosco.",
+        "happy": "Ficaremos felizes em responder a todas as suas perguntas.",
+        "error": "Esta é a descrição da mensagem de erro:",
+        "sending": "Enviando mensagem...",
+        "name": "Nome:",
+        "email": "Email:",
+        "message": "Mensagem:"
+      }
     }
   },
   "settings": {
