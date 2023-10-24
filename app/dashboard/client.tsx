@@ -52,9 +52,6 @@ export default function Client({
       (searchParams && searchParams.has("session_id")) ||
       subscriptionId !== ""
     ) {
-      console.log("actualizando usuario!")
-      console.log("subscriptionId", subscriptionId)
-
       updateUserSubscription(session?.user?.id, subscriptionId)
     }
   }, [searchParams, session?.user?.id, subscriptionId])
@@ -74,12 +71,13 @@ export default function Client({
 
   useEffect(() => {
     if (subscriptionHasBeenDeleted) {
+      updateUserSubscription(session?.user?.id, "")
       setIsPremium(false)
       //SORRY TO SEE YOU GO MESSAGE
       setThanksMessage(true)
       setOpenContactForm(true)
     }
-  }, [searchParams, router, subscriptionHasBeenDeleted])
+  }, [searchParams, router, subscriptionHasBeenDeleted, session?.user?.id])
 
   console.log("user", session?.user)
 

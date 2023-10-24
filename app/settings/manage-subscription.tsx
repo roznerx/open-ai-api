@@ -2,21 +2,16 @@
 
 import Modal from "app/components/Modal"
 import { useState } from "react"
-import { cancelAction } from "./action"
 import Link from "next/link"
 import { paymentPortalLink } from "utils/helprs"
+import { useRouter } from "next/navigation"
 
-export default function ManageSubscription({
-  subId,
-  userId,
-  cancel,
-  anual,
-  translations,
-}) {
+export default function ManageSubscription({ cancel, anual, translations }) {
   const [cancelModaIsOpen, setCancelModaIsOpen] = useState(false)
-
+  const router = useRouter()
   const handleSubmit = async () => {
-    await cancelAction(subId, userId)
+    // await cancelAction(subId, userId)
+    router.push("/dashboard?action=subscription-deleted")
   }
 
   return (

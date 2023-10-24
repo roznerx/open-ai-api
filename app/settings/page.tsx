@@ -147,8 +147,6 @@ export default async function Settings({
             translations={dictionary?.dashboard?.modal?.cancelModal}
             cancel={dictionary.settings.cancel}
             anual={dictionary.settings.switch}
-            subId={subId}
-            userId={userId}
           />
         </div>
         <div className="mt-12 w-2/3 rounded-lg bg-purple-700 p-8">
