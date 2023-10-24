@@ -9,6 +9,7 @@ import ContactFormModal from "app/components/modals/ContactFormModal"
 import Button from "app/components/buttons/gradientButton"
 import { Confetti } from "utils/confetti"
 import { PromptCard as DashboardCard } from "app/components/shared/PromptCard"
+import { updateUserSubscription } from "utils/helpers"
 
 const UpgradeAccount = ({ text, isPremium, subId, userId }) => (
   <Link
@@ -45,6 +46,18 @@ export default function Client({
       setIsPremium(true)
     }
   }, [searchParams, session?.user?.isPremium])
+
+  useEffect(() => {
+    if (
+      (searchParams && searchParams.has("session_id")) ||
+      subscriptionId !== ""
+    ) {
+      console.log("actualizando usuario!")
+      console.log("subscriptionId", subscriptionId)
+
+      updateUserSubscription(session?.user?.id, subscriptionId)
+    }
+  }, [searchParams, session?.user?.id, subscriptionId])
 
   // console.log("session info", session?.user)
 
