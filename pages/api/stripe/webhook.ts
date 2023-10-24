@@ -44,7 +44,10 @@ export default async function webhookHandler(
     let event: Stripe.Event
     try {
       if (!sig || !webhookSecret) return
+      console.log("sig:", sig)
+      console.log("webhookSecret:", webhookSecret)
       event = stripe.webhooks.constructEvent(rawBody, sig, webhookSecret)
+      console.log("event:", event)
     } catch (err: any) {
       console.log(`❌ Error message: ${err.message}`)
       return res.status(400).send(`Webhook Error: ${err.message}`)
