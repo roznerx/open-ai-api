@@ -90,6 +90,20 @@
       "subtitle": "Generar documentación clara y precisa en segundos te ahorrará tiempo valioso."
     }
   },
+  "settings": {
+    "plan": "Tu plan",
+    "member": "Miembro desde",
+    "trial": "La prueba finaliza en",
+    "period": "El período actual termina",
+    "billing": "Comienzo del ciclo de facturación",
+    "paymentAmoun": "Monto del pago",
+    "payment": "Pago",
+    "manage": "Gestionar método de pago",
+    "unlock": "¡Desbloquea un descuento del 25% con una suscripción anual!",
+    "history": "Consultar historial de facturación",
+    "cancel": "Cancelar Suscripción",
+    "switch": "Cambiar a anual"
+  },
   "sidebar": {
     "dashboard": "Home",
     "suggestions": "Sugerencias",
@@ -135,7 +149,7 @@
   "pricing": {
     "title": "Paga una vez. Hazte Premium",
     "processing": "Procesando...",
-    "popular": "Pruebalo Gratis",
+    "popular": "Pruébalo Gratis",
     "free": "Plan Gratuito",
     "included": "¿Qué está incluido?",
     "subtitle": "¡Desbloquea el Aprendizaje Ilimitado con Code Genius!",
@@ -190,7 +204,7 @@
       },
       "year": "Pago mensual anual",
       "month": "Por mes",
-      "cta": "Suscripción Premium",
+      "cta": "Obtén Premium",
       "support": "Soporte Premium 24/7",
       "features": {
         "smart": "Sugerencias inteligentes",

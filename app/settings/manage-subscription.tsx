@@ -6,11 +6,10 @@ import { cancelAction } from "./action"
 import Link from "next/link"
 import { paymentPortalLink } from "utils/helprs"
 
-export default function ManageSubscription({ subId, userId }) {
+export default function ManageSubscription({ subId, userId, cancel, anual }) {
   const [cancelModaIsOpen, setCancelModaIsOpen] = useState(false)
 
   const handleSubmit = () => {
-    console.log("pasa por aqui")
     cancelAction(subId, userId)
   }
 
@@ -34,14 +33,13 @@ export default function ManageSubscription({ subId, userId }) {
           onClick={() => setCancelModaIsOpen(true)}
           className="text-sm inline-flex h-10 items-center justify-center rounded-md border border-gray-200 p-4 text-gray-200/90 shadow transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-white disabled:pointer-events-none disabled:opacity-50"
         >
-          Cancel Subscription
+          {cancel}
         </button>
-
         <Link
           href={paymentPortalLink}
-          className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500"
+          className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500 hover:bg-mint/80"
         >
-          Switch to yearly
+          {anual}
         </Link>
       </div>
     </>

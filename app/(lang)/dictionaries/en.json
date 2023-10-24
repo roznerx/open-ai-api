@@ -86,6 +86,20 @@
       "subtitle": "Generate clear and concise documentation in seconds."
     }
   },
+  "settings": {
+    "plan": "Your plan",
+    "member": "Member since",
+    "trial": "Trial ends in",
+    "period": "The current period ends",
+    "billing": "The billing cycle start",
+    "paymentAmoun": "Payment amount",
+    "payment": "Payment",
+    "manage": "Manage payment method",
+    "unlock": "Unlock a 25% Discount with an Annual Subscription!",
+    "history": "Check billing history",
+    "cancel": "Cancel Subscription",
+    "switch": "Switch to yearly"
+  },
   "showCase": {
     "title": "Why should I use Code Genius?",
     "subtitle": "We conducted a research and discovered that compared to other VS Code plugins, we offers a 60% increase in test generation efficiency.",

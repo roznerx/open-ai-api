@@ -92,29 +92,31 @@ export default async function Settings({
       <main className="mx-auto flex w-full flex-col items-center justify-center space-y-4 p-4 sm:max-w-7xl md:p-12">
         {/* <CancelModal translations={dictionary} isWarningOpen={true} /> */}
         <div className="w-2/3 rounded-lg bg-purple-700 p-8">
-          <p className="my-1 text-[13px] text-white">Your plan</p>
+          <p className="my-1 text-[13px] text-white">
+            {dictionary.settings.plan}
+          </p>
           <h2 className="mb-12 text-left text-3xl font-bold tracking-normal text-white">
             Premium
           </h2>
           <div className="text-sm grid grid-cols-2 gap-4 text-white">
-            <div>Member since</div>
+            <div>{dictionary.settings.member}</div>
             <div className="flex justify-end">
               {getSubscriptionDate(subscription.created)}
             </div>
-            <div>Trial ends in</div>
+            <div>{dictionary.settings.trial}</div>
             <div className="flex justify-end">
               {getSubscriptionDate(subscription.current_period_end)}
             </div>
-            <div>Current period ends</div>
+            <div>{dictionary.settings.period}</div>
             <div className="flex justify-end">
               {getSubscriptionDate(subscription.current_period_end)}
             </div>
-            <div>Billing cycle start</div>
+            <div>{dictionary.settings.billing}</div>
             <div className="flex justify-end">
               {" "}
               {getSubscriptionDate(subscription.billing_cycle_anchor)}
             </div>
-            <div>Payment amount</div>
+            <div>{dictionary.settings.paymentAmoun}</div>
             <div className="flex justify-end">
               {formattedNumber} USD /{" "}
               <span className="ml-1 capitalize">
@@ -139,17 +141,22 @@ export default async function Settings({
               </span>
             </div>
             <span className="pt-1 text-right text-white">
-              Save $10/year by becoming an annual member!
+              {dictionary.settings.unlock}
             </span>
           </div>
-          <ManageSubscription subId={subId} userId={userId} />
+          <ManageSubscription
+            cancel={dictionary.settings.cancel}
+            anual={dictionary.settings.switch}
+            subId={subId}
+            userId={userId}
+          />
         </div>
         <div className="mt-12 w-2/3 rounded-lg bg-purple-700 p-8">
           <h2 className="mb-12 text-left text-3xl font-bold leading-tight tracking-normal text-white">
-            Payment
+            {dictionary.settings.payment}
           </h2>
           <div className="text-sm grid grid-cols-2 gap-4 text-white">
-            <div className="pt-2">Manage payment method</div>
+            <div className="pt-2">{dictionary.settings.manage}</div>
             <Link
               target="_blank"
               href={paymentPortalLink}
@@ -159,7 +166,7 @@ export default async function Settings({
                 <ArrowUpRight />
               </span>
             </Link>
-            <div className="pt-2">Check billing history</div>
+            <div className="pt-2">{dictionary.settings.history}</div>
             <Link
               target="_blank"
               href={paymentPortalLink}
