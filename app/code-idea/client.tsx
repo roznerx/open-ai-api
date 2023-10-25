@@ -251,7 +251,6 @@ export default function Client({
         content: prompt,
       },
     ]
-    console.log("codeMessages.current", codeMessages.current)
 
     generateCode({
       setReader,
