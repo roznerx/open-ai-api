@@ -69,7 +69,7 @@ export default async function webhookHandler(
 
             await updateUserSubscription(userId, subscriptionId)
 
-            // return res.status(200).json({ ok: true })
+            return res.status(200)
           }
 
           //Send EMAIL to CLIENT
