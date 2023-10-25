@@ -6,9 +6,6 @@ export async function updateUserSubscription(
   userId?: string,
   subscriptionId?: any,
 ) {
-  console.log("Updte user subs userId:", userId)
-  console.log("Updte user subs subscriptionId:", subscriptionId)
-
   try {
     const response = await fetch(
       `${

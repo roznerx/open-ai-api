@@ -34,6 +34,8 @@ export default function Client({
   const { setShowSignInModal, SignInModal } = useSignInModal({
     translations: translations?.modals?.signIn,
   })
+  console.log("session", session)
+
   const [loadingStripe, setLoadingStripe] = React.useState<boolean>(false)
   const router = useRouter()
   const searchParams = useSearchParams()
@@ -41,8 +43,7 @@ export default function Client({
   const [openPayment, setOpenPayment] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
 
-  const isStripeTestingEnv =
-    host.includes("localhost") || host.includes("code-genius-mvp")
+  const isStripeTestingEnv = host.includes("localhost") || host.includes("mvp")
 
   const monthlyPrice = isStripeTestingEnv
     ? SUBSCRIPTION_PRICES.testing.premiumMonthly

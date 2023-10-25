@@ -293,7 +293,9 @@ export default function ContactFormModal({
                             {isUnSubscribed
                               ? `${translations?.sorry} `
                               : `${translations?.thankyou}, `}
-                            <span className="font-semibold">{clientName}!</span>
+                            <span className="font-semibold">
+                              {clientName} {!isUnSubscribed ? "🎉" : ""}
+                            </span>
                           </span>
                           {/* {clientName && (
                             <span className="mt-2">{clientName}!</span>
@@ -304,7 +306,7 @@ export default function ContactFormModal({
                         <p>
                           {isUnSubscribed
                             ? translations?.unsubscribed
-                            : `${translations?.subscribedMessage} 🎉`}
+                            : `${translations?.subscribedMessage}`}
                         </p>
                         {!isUnSubscribed && (
                           <p className="pt-1">{translations?.enjoy}</p>

@@ -48,18 +48,8 @@ export default function Client({
   }, [searchParams, session?.user?.isPremium])
 
   useEffect(() => {
-    if (
-      (searchParams && searchParams.has("session_id")) ||
-      subscriptionId !== ""
-    ) {
-      updateUserSubscription(session?.user?.id, subscriptionId)
-    }
-  }, [searchParams, session?.user?.id, subscriptionId])
-
-  // console.log("session info", session?.user)
-
-  useEffect(() => {
     if (searchParams && searchParams.has("session_id")) {
+      updateUserSubscription(session?.user?.id, subscriptionId)
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
@@ -67,7 +57,7 @@ export default function Client({
       //SEND CONFETI
       Confetti()
     }
-  }, [searchParams])
+  }, [searchParams, session?.user?.id, subscriptionId])
 
   useEffect(() => {
     if (subscriptionHasBeenDeleted) {
