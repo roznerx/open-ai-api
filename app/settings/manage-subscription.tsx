@@ -6,7 +6,12 @@ import Link from "next/link"
 import { paymentPortalLink } from "utils/helprs"
 import { useRouter } from "next/navigation"
 
-export default function ManageSubscription({ cancel, anual, translations }) {
+export default function ManageSubscription({
+  interval,
+  cancel,
+  anual,
+  translations,
+}) {
   const [cancelModaIsOpen, setCancelModaIsOpen] = useState(false)
   const router = useRouter()
   const handleSubmit = async () => {
@@ -34,12 +39,14 @@ export default function ManageSubscription({ cancel, anual, translations }) {
         >
           {cancel}
         </button>
-        <Link
-          href={paymentPortalLink}
-          className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500 hover:bg-mint/90"
-        >
-          {anual}
-        </Link>
+        {interval !== "year" && (
+          <Link
+            href={paymentPortalLink}
+            className="text-sm inline-flex h-10 items-center justify-center rounded-md bg-mint px-4 font-bold text-purple-500 hover:bg-mint/90"
+          >
+            {anual}
+          </Link>
+        )}
       </div>
     </>
   )

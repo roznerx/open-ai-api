@@ -84,7 +84,7 @@ export default async function Settings({
       ? subscription.plan.amount.toString().substring(0, 1)
       : subscription.plan.amount.toString().substring(0, 2)
 
-  console.log("subscription", subscription)
+  const interval = subscription.plan.interval
 
   return (
     <>
@@ -123,27 +123,30 @@ export default async function Settings({
               </span>
             </div>
           </div>
-          <div className="relative my-8 flex w-full flex-grow justify-start rounded-lg bg-gradient-to-r from-purple-400 to-purple-500/90 p-2 text-white">
-            <div className="mr-2 h-8 w-8 rounded-lg bg-gradient-to-t from-[#6530FC] to-[#A486FF]">
-              <span className="absolute top-4">
-                <span className="absolute top-1 ml-2 inline-flex sm:top-0">
-                  <span className="absolute top-0 sm:relative sm:top-0">
-                    <span className="absolute -top-2 right-[2px] text-[10px] text-white">
-                      ✦
-                    </span>
-                    <span className="text-[12px] text-white">✦</span>
-                    <span className="absolute bottom-2 left-2 text-[16px] text-white">
-                      ✦
+          {interval !== "year" && (
+            <div className="relative my-8 flex w-full flex-grow justify-start rounded-lg bg-gradient-to-r from-purple-400 to-purple-500/90 p-2 text-white">
+              <div className="mr-2 h-8 w-8 rounded-lg bg-gradient-to-t from-[#6530FC] to-[#A486FF]">
+                <span className="absolute top-4">
+                  <span className="absolute top-1 ml-2 inline-flex sm:top-0">
+                    <span className="absolute top-0 sm:relative sm:top-0">
+                      <span className="absolute -top-2 right-[2px] text-[10px] text-white">
+                        ✦
+                      </span>
+                      <span className="text-[12px] text-white">✦</span>
+                      <span className="absolute bottom-2 left-2 text-[16px] text-white">
+                        ✦
+                      </span>
                     </span>
                   </span>
                 </span>
+              </div>
+              <span className="pt-1 text-right text-white">
+                {dictionary.settings.unlock}
               </span>
             </div>
-            <span className="pt-1 text-right text-white">
-              {dictionary.settings.unlock}
-            </span>
-          </div>
+          )}
           <ManageSubscription
+            interval={interval}
             translations={dictionary?.dashboard?.modal?.cancelModal}
             cancel={dictionary.settings.cancel}
             anual={dictionary.settings.switch}
