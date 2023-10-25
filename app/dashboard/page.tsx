@@ -6,7 +6,6 @@ import { getServerSession } from "next-auth"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { redirect } from "next/navigation"
 import { Params } from "app/settings/page"
-import { updateUserSubscription } from "utils/helpers"
 import { stripe } from "@/lib/stripe"
 
 export const metadata = {
@@ -25,15 +24,24 @@ export default async function Dashboard({
   searchParams: SearchParamsWithSesId
 }) {
   let stripeSession
-  const { session_id } = searchParams
+  const { session_id, subId = "" } = searchParams
   const session = await getServerSession(authOptions)
 
   if (!session) {
     redirect("/?referer=/dashboard")
   }
   if (searchParams.action === "subscription-deleted") {
-    console.log("use is deleting their subscription")
-    await updateUserSubscription(session?.user?.id, "")
+    try {
+      //@ts-ignore
+      await stripe.subscriptions.update(subId, {
+        cancel_at_period_end: true,
+        cancellation_details: {
+          comment: "Customer deleted their Code Genius subscription.",
+        },
+      })
+    } catch (error) {
+      console.error(`The was an error deleting your subscription: ${error}`)
+    }
   }
   if (session_id) {
     stripeSession = await stripe?.checkout?.sessions?.retrieve(session_id)

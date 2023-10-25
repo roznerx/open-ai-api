@@ -146,6 +146,7 @@ export default async function Settings({
             </div>
           )}
           <ManageSubscription
+            subId={subId}
             interval={interval}
             translations={dictionary?.dashboard?.modal?.cancelModal}
             cancel={dictionary.settings.cancel}

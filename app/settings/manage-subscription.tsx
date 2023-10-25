@@ -7,6 +7,7 @@ import { paymentPortalLink } from "utils/helprs"
 import { useRouter } from "next/navigation"
 
 export default function ManageSubscription({
+  subId,
   interval,
   cancel,
   anual,
@@ -15,8 +16,7 @@ export default function ManageSubscription({
   const [cancelModaIsOpen, setCancelModaIsOpen] = useState(false)
   const router = useRouter()
   const handleSubmit = async () => {
-    // await cancelAction(subId, userId)
-    router.push("/dashboard?action=subscription-deleted")
+    return router.push(`/dashboard?action=subscription-deleted&subId=${subId}`)
   }
 
   return (
