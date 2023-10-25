@@ -67,9 +67,9 @@ export default async function webhookHandler(
             const subscriptionId = subscription?.subscription
             console.log("subscriptionId:", subscriptionId)
 
-            updateUserSubscription(userId, subscriptionId)
+            await updateUserSubscription(userId, subscriptionId)
 
-            return res.status(200).json({ ok: true })
+            // return res.status(200).json({ ok: true })
           }
 
           //Send EMAIL to CLIENT
