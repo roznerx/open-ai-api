@@ -6,7 +6,6 @@ import {
   LogOut,
   MessageCircle,
   MessageSquare,
-  Settings,
   Users,
 } from "lucide-react"
 import { signOut } from "next-auth/react"
@@ -139,31 +138,6 @@ export default function UserMenu({ session, email, image, translations }) {
                 )}
               </Menu.Item>
             </div>
-            {!!session.user.subscriptionId && (
-              <div className="h-auto">
-                <Menu.Item>
-                  {({ active }) => (
-                    <div
-                      onClick={() =>
-                        router.push(
-                          `/settings?subId=${session.user.subscriptionId}`,
-                        )
-                      }
-                      className={`flex h-10 w-full cursor-pointer items-center justify-start pl-2 ${
-                        active ? "bg-purple-800 text-white" : "text-gray-200"
-                      } `}
-                    >
-                      <Settings
-                        width={35}
-                        height={35}
-                        className={`text-sm items-start rounded-md px-2 py-2`}
-                      />
-                      <span>Settings</span>
-                    </div>
-                  )}
-                </Menu.Item>
-              </div>
-            )}
             <div className="h-auto">
               <Menu.Item>
                 {({ active }) => (

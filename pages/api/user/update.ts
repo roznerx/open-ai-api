@@ -36,7 +36,7 @@ export default async function handler(req, res) {
       )
 
       if (updatedOp.update_hashes[0] !== "") {
-        return res.status(200).json({ user: payloadToUpdate })
+        return res.status(200).json({ ok: true })
       }
       return res.status(200).json({ ok: true })
     } catch (error) {
