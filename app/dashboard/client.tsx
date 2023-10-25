@@ -49,7 +49,7 @@ export default function Client({
 
   useEffect(() => {
     if (searchParams && searchParams.has("session_id")) {
-      // updateUserSubscription(session?.user?.id, subscriptionId)
+      updateUserSubscription(session?.user?.id, subscriptionId)
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
