@@ -11,13 +11,16 @@ const inter = Inter({
 export default function SuperHero({ translations }) {
   return (
     <>
-      <section className={`${inter.variable}  mb-5 mt-36 font-sans`}>
-        <h2
+      <section className={`${inter.variable} mb-5 mt-36 pt-14 font-sans`}>
+        <h2 className="justify-centerbg-clip-text z-40 mx-auto w-[95%] items-center p-3 text-center text-4xl font-semibold text-transparent text-white sm:flex sm:w-full sm:text-6xl">
+          Achieve greater code with the power of your
+        </h2>
+        <h3
           className="z-40 mx-auto w-[95%] cursor-default items-center justify-center bg-gradient-to-r from-mint
            to-blue bg-clip-text p-3 text-center text-4xl font-semibold text-transparent sm:flex sm:w-full sm:text-6xl"
         >
           {translations.title}
-        </h2>
+        </h3>
         <p
           className="text-lg z-40 mt-2 w-[100%] items-center justify-center px-3 text-center font-sans
          text-white sm:text-3xl"

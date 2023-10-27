@@ -1,5 +1,3 @@
-import { Send } from "lucide-react"
-
 export default function HomeChatInput({
   messagesLength,
   textareaRef,
@@ -8,26 +6,26 @@ export default function HomeChatInput({
 }) {
   return (
     <>
-      <input
-        ref={textareaRef}
-        className="font-lg z-40 h-12 w-[95%] rounded-lg border-mint/40 bg-purple-400 py-2.5 
-         pl-3 pr-12 text-white caret-mint/70 outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60 placeholder:text-white focus:border-[1px] focus:border-mint/50 focus:outline-none  focus:outline-0 focus:ring-0 active:outline-0 sm:w-[900px]"
-        value={inputValue}
-        onChange={handleInputChange}
-        placeholder={messagesLength === 1 ? "What's your next code idea" : ""}
-      />
-      <button
-        type="submit"
-        title="Submit your prompt"
-        aria-label="Submit your prompt"
-        className="absolute right-4 top-[2px] h-11  rounded-lg border-mint bg-gray-900 p-1 disabled:hover:bg-transparent sm:right-1"
-      >
-        <Send
-          className="mx-auto -mt-1 mr-2 flex rotate-45 pl-2 text-mint"
-          width={30}
-          height={30}
+      <div className="relative mx-auto inline-flex h-20 w-[95%] items-center rounded-lg border border-mint/40 bg-purple-900 sm:w-[700px] ">
+        <input
+          ref={textareaRef}
+          className="font-lg z-40 w-[590px] rounded-xl 
+         border-none bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60
+        placeholder:text-white focus:border-[0px] focus:outline-none focus:outline-0 
+         focus:ring-0 active:outline-0"
+          value={inputValue}
+          onChange={handleInputChange}
+          placeholder={messagesLength === 1 ? "What's your next code idea" : ""}
         />
-      </button>
+        <button
+          type="submit"
+          title="Submit your prompt"
+          aria-label="Submit your prompt"
+          className="z-50 mr-6 h-12 w-48 rounded-xl border-mint bg-mint p-1 font-semibold text-purple-900 disabled:hover:bg-transparent "
+        >
+          Start with AI
+        </button>
+      </div>
     </>
   )
 }
