@@ -12,11 +12,3 @@ Then, run the application in the command line and it will be available at `http:
 yarn dev
 ```
 
-### Environment Variables
-
-NEXTAUTH_URL=http://localhost:3000
-NEXTAUTH_SECRET=uJ8hpI13bgK8z7XviBWh3fNUluWxJEtbkpqR2RUgbuI=
-
-Create a new project in Google Console: https://console.cloud.google.com/ and then configure the API & Services to generate a GOOGLE_CLIENT_ID and GOOGLE_CLIENT_SECRET, so you are able to work with authenticated users.
-
-Ask credentials for the Harper DB.
