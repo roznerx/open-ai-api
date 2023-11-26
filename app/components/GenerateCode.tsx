@@ -1,8 +1,9 @@
 "use client"
 
 import useWindowSize from "hooks/use-window-size"
+import SyntaxHighlighter from "react-syntax-highlighter"
+import { dark } from "react-syntax-highlighter/dist/esm/styles/prism"
 import React from "react"
-import { CopyBlock, dracula } from "react-code-blocks"
 import tailwindConfig from "tailwind.config.js"
 
 type GenerateCode = {
@@ -51,7 +52,7 @@ function GenerateCode({
                 key={idx}
                 className="mx-auto flex w-full items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:items-start sm:justify-start"
               >
-                <CopyBlock
+                {/* <CopyBlock
                   onCopy={() => null}
                   copied={false}
                   showLineNumbers
@@ -78,8 +79,12 @@ function GenerateCode({
                     metaKeywordColor: "#8283ad",
                     lineNumberColor: themeColors.lineNumbers,
                     metaColor: themeColors.mint,
-                  }}
-                />
+                  }} 
+                  />
+                  */}
+                <SyntaxHighlighter wrapLines language="javascript" style={dark}>
+                  {generated.trim()}
+                </SyntaxHighlighter>
               </div>
             )
           })}

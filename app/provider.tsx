@@ -21,11 +21,9 @@ export default function Provider({ children, translations }) {
   }, [setShowSignInModal, searchParams])
 
   return (
-    <>
-      <SessionProvider>
-        <SignInModal />
-        {children}
-      </SessionProvider>
-    </>
+    <SessionProvider>
+      <SignInModal />
+      {children}
+    </SessionProvider>
   )
 }
