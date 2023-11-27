@@ -6,7 +6,7 @@ export default function HomeChatInput({
 }) {
   return (
     <>
-      <div className="relative mx-auto inline-flex h-20 w-[95%] items-center rounded-lg border border-mint/40 bg-purple-900 sm:w-[700px] ">
+      <div className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] ">
         <input
           ref={textareaRef}
           className="font-lg z-40 w-[590px] rounded-xl 
@@ -21,7 +21,7 @@ export default function HomeChatInput({
           type="submit"
           title="Submit your prompt"
           aria-label="Submit your prompt"
-          className="z-50 mr-6 h-12 w-48 rounded-xl border-mint bg-mint p-1 font-semibold text-purple-900 disabled:hover:bg-transparent "
+          className="z-50 mr-2 h-12 w-48 rounded-xl border-mint bg-mint p-1 font-semibold text-purple-900 disabled:hover:bg-transparent "
         >
           Start with AI
         </button>

@@ -27,10 +27,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
   },
-  experimental: {
-    serverActions: true,
-    useDeploymentIdServerActions: true,
-  },
   headers() {
     return [
       {

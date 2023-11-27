@@ -29,7 +29,7 @@ export default function ShowCaseCard({
   }, [])
   return (
     <div className="group relative my-14 sm:my-20">
-      <div className="absolute inset-1 mx-auto w-[82%] animate-tilt rounded-lg bg-gradient-to-r from-mint/60 to-blue/60 opacity-75 blur-2xl transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
+      <div className="absolute inset-1 mx-auto w-[80%] animate-tilt rounded-lg bg-gradient-to-r from-mint/60 to-blue/60 opacity-75 blur-2xl transition duration-1000 group-hover:opacity-100 group-hover:duration-200" />
       <div className="relative mx-auto flex h-auto w-[90%] cursor-pointer items-center rounded-3xl bg-purple-700 p-6 text-center font-sans shadow-xl outline-none focus-visible:ring-2 sm:min-h-[404px] sm:w-[80%] md:h-[5.625rem]">
         <div className="flex w-full flex-col pr-2 sm:flex-row">
           <div className="w-full">

@@ -74,7 +74,7 @@ export default function Header({
               </div>
             </Link>
           </div>
-          <div className="mb-3 mr-1 flex h-8 pb-2 font-semibold sm:mt-0">
+          <div className="mb-3 mr-1 flex h-6 pb-2 font-semibold sm:mt-0">
             {!session && (
               <>
                 <Link href={"/pricing"}>
