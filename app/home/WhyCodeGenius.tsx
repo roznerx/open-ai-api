@@ -4,7 +4,7 @@ export default function ProgrammingBuddy() {
       <p className="text-2xl font-semibold text-mint">
         SEE WHY YOU SHOULD TRY CODE GENIUS
       </p>
-      <p className="text-4xl font-semibold text-white">
+      <p className="text-center text-4xl font-semibold text-white">
         Get better and more efficient unit tests
       </p>
       <div className="w-screen">
