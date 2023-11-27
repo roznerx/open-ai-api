@@ -60,6 +60,8 @@
     "resend": "^0.15.1",
     "shiki": "^0.14.3",
     "stripe": "^11.13.0",
+    "swiper": "^11.0.5",
+    "swiper-react": "^1.0.0",
     "swr": "^2.2.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
