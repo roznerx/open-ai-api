@@ -66,7 +66,7 @@ export const authOptions: AuthOptions = {
     async redirect({ url, baseUrl }) {
       // if (!url.includes("/code-idea")) return `${url}/code-idea`
       // Allows relative callback URLs
-      if (url && url.startsWith("/")) return `${baseUrl}${url}`
+      if (url && url.startsWith("/")) return `${baseUrl}${url}/dashboard`
       // Allows callback URLs on the same origin
       else if (new URL(url).origin === baseUrl) return url
       return baseUrl

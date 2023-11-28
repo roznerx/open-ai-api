@@ -58,9 +58,9 @@ export default async function RootLayout({
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
-        <body>
+        <body className="">
           <SessionProvider translations={translations?.modals?.signIn}>
-            <div className="flex min-h-screen flex-nowrap bg-purple-900">
+            <div className="flex min-h-screen bg-purple-900">
               {session && (
                 <SideBar
                   translations={translations.sidebar}

@@ -321,19 +321,17 @@ export default function Client({
   const showUserMessage =
     mode === "smart" && chatHasStarted && codeSentence.length > 0
 
-  console.log("mode in client", mode)
-
   return (
     <>
-      <div className="w-full sm:ml-10">
+      <div className="flex-1">
         <div
           ref={chatContainerRef}
           id="container"
-          className="ml-0 mt-16 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll pb-24 sm:ml-8 sm:justify-between"
+          className="ml-0 flex h-[93vh] flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
         >
-          <div className="w-full">
-            <div className="mx-auto  w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
-              <div className="mt-5 inline-flex font-sans">
+          <div className="h-screen w-full">
+            <div className="mx-auto w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
+              <div className="inline-flex pt-20 font-sans">
                 <span className="ml-5 text-2xl font-semibold text-white">
                   {codeGeniusMood}
                 </span>

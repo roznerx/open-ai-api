@@ -14,7 +14,6 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import React, { useEffect } from "react"
 import tailwindConfig from "tailwind.config"
-import { MaterialTooltip } from "../material-components"
 import MobileSideBar from "./MobileSideBar"
 
 const SideBar = ({
@@ -50,89 +49,98 @@ const SideBar = ({
   return !isMobile ? (
     <div
       id="sidebar"
-      className={`absolute left-0 top-0 z-50 hidden h-full w-16 translate-x-full flex-col items-center border-r-[1px] border-purple-500 bg-purple-800
-      transition-transform duration-700 sm:fixed ${
-        shouldHideSideBar ? "sm:hidden" : "sm:flex"
-      } sm:translate-x-0`}
+      className={`group relative z-50 min-h-screen border-r-[1px] border-purple-400 bg-purple-800 
+      sm:flex  ${shouldHideSideBar ? "sm:hidden" : "sm:relative"} `}
     >
-      <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
-        <Link href="/dashboard">
-          <LayoutDashboard
-            width={26}
-            height={26}
-            color={pathname === "/dashboard" ? colors.mint : "white"}
-          />
-        </Link>
-      </div>
+      <div className="mx-auto flex w-16 flex-col duration-100 hover:sm:w-60 ">
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500 group-hover:items-center group-hover:justify-start">
+          <Link
+            href="/dashboard"
+            className="group-hover:inline-flex group-hover:pl-3"
+          >
+            <LayoutDashboard
+              width={26}
+              height={26}
+              color={pathname === "/dashboard" ? colors.mint : "white"}
+            />
+            <span className="ml-3 hidden text-white group-hover:block">
+              {translations?.dashboard}{" "}
+            </span>
+          </Link>
+        </div>
 
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.suggestions}
-      >
-        <Link
-          href="/code-idea?mode=smart"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <Code size={26} color={mode === "smart" ? colors.mint : "white"} />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.testing}
-      >
-        <Link
-          href="/code-idea?mode=test"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <CurlyBraces
-            size={25}
-            color={mode === "test" ? colors.mint : "white"}
-          />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.optimization}
-      >
-        <Link
-          href="/code-idea?mode=improve"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <Rocket
-            size={26}
-            color={mode === "improve" ? colors.mint : "white"}
-          />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.docs}
-      >
-        <Link
-          href="/code-idea?mode=docs"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <FileCode size={26} color={mode === "docs" ? colors.mint : "white"} />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.chat}
-      >
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
-          <Link href="/code-chat">
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+          <Link
+            href="/code-idea?mode=smart"
+            className="group-hover:inline-flex group-hover:pl-3"
+          >
+            <Code size={26} color={mode === "smart" ? colors.mint : "white"} />
+            <span className="ml-3 hidden text-white group-hover:block">
+              {translations?.suggestions}
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+          <Link
+            href="/code-idea?mode=test"
+            className="group-hover:inline-flex group-hover:pl-3"
+          >
+            <CurlyBraces
+              size={25}
+              color={mode === "test" ? colors.mint : "white"}
+            />
+            <span className="ml-3 hidden text-white group-hover:block">
+              {translations?.testing}
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+          <Link
+            href="/code-idea?mode=improve"
+            className="group-hover:inline-flex group-hover:pl-3"
+          >
+            <Rocket
+              size={26}
+              color={mode === "improve" ? colors.mint : "white"}
+            />
+            <span className="ml-3 hidden text-white group-hover:block">
+              {translations?.optimization}
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+          <Link
+            href="/code-idea?mode=docs"
+            className="group-hover:inline-flex group-hover:pl-3"
+          >
+            <FileCode
+              size={26}
+              color={mode === "docs" ? colors.mint : "white"}
+            />
+            <span className="ml-3 hidden text-white group-hover:block">
+              {translations?.docs}
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+          <Link
+            href="/code-chat"
+            className="group-hover:inline-flex group-hover:pl-3"
+          >
             <MessageSquare
               size={26}
               color={pathname === "/code-chat" ? colors.mint : "white"}
             />
+            <span className="ml-3 hidden text-white group-hover:block">
+              {translations?.chat}
+            </span>
           </Link>
         </div>
-      </MaterialTooltip>
+      </div>
     </div>
   ) : (
     <MobileSideBar
