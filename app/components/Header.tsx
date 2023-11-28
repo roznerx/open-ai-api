@@ -6,7 +6,6 @@ import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 
 import { useState } from "react"
-import Feedback from "./Feedback"
 import { cn } from "@/lib/utils"
 
 export default function Header({
@@ -47,7 +46,7 @@ export default function Header({
               pathName == "/code-idea" ||
               pathName == "/code-chat" ||
               pathName == "/settings"
-                ? "sm:ml-20"
+                ? "hidden"
                 : "sm:ml-6"
             }`}
           >
@@ -113,25 +112,13 @@ export default function Header({
                 </div>
               )}
             </div>
-            {session && (
-              <div className="mr-14 mt-1 hidden flex-col items-end transition-all sm:flex ">
-                <button
-                  onClick={() => setShowWidget((prev) => !prev)}
-                  className="mr-3 mt-1 flex h-4 w-28 items-center justify-center rounded-lg border
-                   border-gray-300 bg-purple-900 p-4 text-gray-200 hover:cursor-pointer hover:text-gray-50"
-                >
-                  <span>{translations?.feedback?.title}</span>
-                </button>
-                <Feedback
-                  translations={translations?.feedback}
-                  session={session}
-                  setShowWidget={setShowWidget}
-                  showWidget={showWidget}
-                />
-              </div>
-            )}
           </div>
-          <UserDropdown translations={translations} session={session} />
+          <UserDropdown
+            setShowWidget={setShowWidget}
+            showWidget={showWidget}
+            translations={translations}
+            session={session}
+          />
         </div>
       </div>
     </>

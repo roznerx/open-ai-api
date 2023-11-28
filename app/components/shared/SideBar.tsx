@@ -11,33 +11,28 @@ import {
 } from "lucide-react"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import React, { useEffect } from "react"
+import { usePathname, useSearchParams } from "next/navigation"
+import React from "react"
 import tailwindConfig from "tailwind.config"
 import MobileSideBar from "./MobileSideBar"
+import Image from "next/image"
 
 const SideBar = ({
   translations,
   menuTranslations,
-  mode,
-  setGeneratedCode,
 }: {
   translations: any
   menuTranslations: any
-  mode?: string
-  setMode?: any
-  setGeneratedCode?: any
 }) => {
+  const searchParams = useSearchParams()
+
+  const mode = searchParams && searchParams.get("mode")
+  console.log("mode:", mode)
+
   const pathname = usePathname()
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
-
-  useEffect(() => {
-    if (pathname === "/code-idea" && typeof setGeneratedCode === "function") {
-      setGeneratedCode("")
-    }
-  }, [setGeneratedCode, pathname])
 
   const shouldHideSideBar =
     pathname === "/" ||
@@ -49,15 +44,28 @@ const SideBar = ({
   return !isMobile ? (
     <div
       id="sidebar"
-      className={`group relative z-50 min-h-screen border-r-[1px] border-purple-400 bg-purple-800 
+      className={`group z-50 min-h-screen border-r-[1px] border-purple-400 bg-purple-800 
       sm:flex  ${shouldHideSideBar ? "sm:hidden" : "sm:relative"} `}
     >
       <div className="mx-auto flex w-16 flex-col duration-100 hover:sm:w-60 ">
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500 group-hover:items-center group-hover:justify-start">
-          <Link
-            href="/dashboard"
-            className="group-hover:inline-flex group-hover:pl-3"
-          >
+        <div
+          className={`mt-4 flex h-12 w-full items-center justify-center p-2 hover:w-[90%] group-hover:ml-4 group-hover:justify-start`}
+        >
+          <Link href="/" className="font-semibold group-hover:inline-flex">
+            <Image
+              src={"/logo/code-genius.svg"}
+              width={32}
+              height={32}
+              alt="Code Genius"
+            />
+            {/* <span className="ml-3 hidden pt-2 text-white group-hover:inline-flex">
+              Code Genius
+            </span> */}
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md p-2 hover:w-[90%] hover:bg-purple-500 group-hover:ml-4 group-hover:justify-start">
+          <Link href="/dashboard" className="group-hover:inline-flex">
             <LayoutDashboard
               width={26}
               height={26}
@@ -69,10 +77,10 @@ const SideBar = ({
           </Link>
         </div>
 
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md p-2 hover:w-[90%] hover:bg-purple-500 group-hover:ml-4 group-hover:items-center group-hover:justify-start ">
           <Link
             href="/code-idea?mode=smart"
-            className="group-hover:inline-flex group-hover:pl-3"
+            className="group-hover:inline-flex "
           >
             <Code size={26} color={mode === "smart" ? colors.mint : "white"} />
             <span className="ml-3 hidden text-white group-hover:block">
@@ -81,10 +89,10 @@ const SideBar = ({
           </Link>
         </div>
 
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md p-2 hover:w-[90%] hover:bg-purple-500 group-hover:ml-4  group-hover:items-center group-hover:justify-start ">
           <Link
             href="/code-idea?mode=test"
-            className="group-hover:inline-flex group-hover:pl-3"
+            className="group-hover:inline-flex "
           >
             <CurlyBraces
               size={25}
@@ -96,10 +104,10 @@ const SideBar = ({
           </Link>
         </div>
 
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md p-2 hover:w-[90%] hover:bg-purple-500 group-hover:ml-4 group-hover:items-center group-hover:justify-start ">
           <Link
             href="/code-idea?mode=improve"
-            className="group-hover:inline-flex group-hover:pl-3"
+            className="group-hover:inline-flex"
           >
             <Rocket
               size={26}
@@ -111,10 +119,10 @@ const SideBar = ({
           </Link>
         </div>
 
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md p-2 hover:w-[90%] hover:bg-purple-500 group-hover:ml-4  group-hover:items-center group-hover:justify-start ">
           <Link
             href="/code-idea?mode=docs"
-            className="group-hover:inline-flex group-hover:pl-3"
+            className="group-hover:inline-flex "
           >
             <FileCode
               size={26}
@@ -125,12 +133,8 @@ const SideBar = ({
             </span>
           </Link>
         </div>
-
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500  group-hover:items-center group-hover:justify-start ">
-          <Link
-            href="/code-chat"
-            className="group-hover:inline-flex group-hover:pl-3"
-          >
+        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md p-2 hover:w-[90%] hover:bg-purple-500 group-hover:ml-4 group-hover:items-center group-hover:justify-start ">
+          <Link href="/code-chat" className="group-hover:inline-flex">
             <MessageSquare
               size={26}
               color={pathname === "/code-chat" ? colors.mint : "white"}
