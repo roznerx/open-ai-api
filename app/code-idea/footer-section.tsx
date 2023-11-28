@@ -36,7 +36,7 @@ export default function FooterSection({
         className="relative z-40 h-16 w-full border-t-[1px] border-purple-500
           bg-purple-800 sm:flex sm:items-center sm:justify-between"
       >
-        <div className="mb-10 ml-6 hidden sm:ml-16 sm:block">
+        <div className="mb-10 ml-6 hidden sm:ml-2 sm:block">
           {mode === "smart" && (
             <>
               <div className="sm:ml-4">

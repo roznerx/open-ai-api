@@ -70,8 +70,8 @@ export default function Client({
   }, [searchParams, router, subscriptionHasBeenDeleted, session?.user?.id])
 
   return (
-    <>
-      <div className="mb-12 mt-60 grid grid-cols-1 place-items-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+    <div className="mr-16 flex">
+      <div className="mb-12 mt-60 grid grid-cols-1 gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
         <DashboardCard
           onClick={() => {
             router.push("/code-idea?mode=smart")
@@ -175,6 +175,6 @@ export default function Client({
         isOpen={openContactForm}
         setIsOpen={setOpenContactForm}
       />
-    </>
+    </div>
   )
 }
