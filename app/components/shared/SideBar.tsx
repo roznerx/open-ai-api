@@ -47,7 +47,7 @@ const SideBar = ({
       className={`group z-50 min-h-screen border-r-[1px] border-purple-400 bg-purple-800 
       sm:flex  ${shouldHideSideBar ? "sm:hidden" : "sm:relative"} `}
     >
-      <div className="mx-auto flex w-16 flex-col justify-start pl-2  hover:w-56">
+      <div className="mx-auto flex w-16 flex-col justify-start pl-2 duration-150 hover:w-56">
         <div className=" mt-4 flex h-12 cursor-pointer  rounded-md p-2 hover:bg-purple-500 ">
           <Link href="/" className="inline-flex ">
             <Image
