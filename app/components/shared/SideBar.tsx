@@ -56,10 +56,11 @@ const SideBar = ({
               height={32}
               alt="Code Genius"
             />
-            <p className="ml-8 flex-grow text-2xl font-semibold text-white opacity-0 group-hover:opacity-100">
+
+            <p className="ml-4 flex-grow bg-gradient-to-r from-mint to-blue bg-clip-text pt-1.5 text-2xl font-semibold tracking-tight text-transparent opacity-0  group-hover:opacity-100 sm:leading-6">
               Code
             </p>
-            <p className="ml-2 flex-grow text-2xl font-semibold text-white opacity-0 group-hover:opacity-100">
+            <p className="ml-1.5 flex-grow bg-gradient-to-r from-mint to-blue bg-clip-text pt-1.5 text-2xl font-semibold tracking-tight text-transparent opacity-0 group-hover:opacity-100 sm:leading-6">
               Genius
             </p>
           </Link>
@@ -72,7 +73,7 @@ const SideBar = ({
               height={26}
               color={pathname === "/dashboard" ? colors.mint : "white"}
             />
-            <p className="ml-10 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+            <p className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
               {translations?.dashboard}{" "}
             </p>
           </Link>
@@ -81,7 +82,7 @@ const SideBar = ({
         <div className="mt-4 flex h-12 w-full cursor-pointer rounded-md p-2 hover:bg-purple-500   ">
           <Link href="/code-idea?mode=smart" className="inline-flex ">
             <Code size={26} color={mode === "smart" ? colors.mint : "white"} />
-            <span className="ml-10 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
               {translations?.suggestions}
             </span>
           </Link>
@@ -93,7 +94,7 @@ const SideBar = ({
               size={25}
               color={mode === "test" ? colors.mint : "white"}
             />
-            <span className="ml-10 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
               {translations?.testing}
             </span>
           </Link>
@@ -105,7 +106,7 @@ const SideBar = ({
               size={26}
               color={mode === "improve" ? colors.mint : "white"}
             />
-            <span className="ml-10 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
               {translations?.optimization}
             </span>
           </Link>
@@ -117,7 +118,7 @@ const SideBar = ({
               size={26}
               color={mode === "docs" ? colors.mint : "white"}
             />
-            <span className="ml-10 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
               {translations?.docs}
             </span>
           </Link>
@@ -128,7 +129,7 @@ const SideBar = ({
               size={26}
               color={pathname === "/code-chat" ? colors.mint : "white"}
             />
-            <span className="ml-10 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
               {translations?.chat}
             </span>
           </Link>
