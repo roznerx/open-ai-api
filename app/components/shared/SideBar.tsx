@@ -56,10 +56,10 @@ const SideBar = ({
               height={32}
               alt="Code Genius"
             />
-            <p className="ml-8 flex-grow text-2xl font-normal text-white opacity-0 group-hover:opacity-100">
+            <p className="ml-8 flex-grow text-2xl font-semibold text-white opacity-0 group-hover:opacity-100">
               Code
             </p>
-            <p className="ml-2 flex-grow text-2xl font-normal text-white opacity-0 group-hover:opacity-100">
+            <p className="ml-2 flex-grow text-2xl font-semibold text-white opacity-0 group-hover:opacity-100">
               Genius
             </p>
           </Link>

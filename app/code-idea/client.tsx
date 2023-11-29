@@ -323,112 +323,110 @@ export default function Client({
 
   return (
     <>
-      <div className="flex-1">
-        <div
-          ref={chatContainerRef}
-          id="container"
-          className="ml-0 flex h-[93vh] flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
-        >
-          <div className="h-screen w-full">
-            <div className="mx-auto w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
-              <div className="inline-flex pt-20 font-sans">
-                <span className="ml-5 text-2xl font-semibold text-white">
-                  {codeGeniusMood}
-                </span>
-              </div>
+      <div
+        ref={chatContainerRef}
+        id="container"
+        className="ml-0 flex flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
+      >
+        <div className="h-screen w-full">
+          <div className="mx-auto w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
+            <div className="inline-flex pt-20 font-sans">
+              <span className="ml-5 text-2xl font-semibold text-white">
+                {codeGeniusMood}
+              </span>
             </div>
-            <Editor
-              padding={20}
-              textareaId="code-editor"
-              placeholder={placeHolderText}
-              className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
-              value={codeSentence}
-              highlight={(code) => highlight(code, languages.js)}
-              onValueChange={(code) => setCodeSentence(code)}
-            />
-            {showUserMessage ? (
-              <div className="mb-1 flex ">
-                <div className="ml-1 flex w-full items-center justify-center">
-                  <div className="flex items-start justify-start">
-                    <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium">
-                      {userName}
-                    </span>
-                  </div>
-                  <div className="mx-auto ml-[6px] mr-2 w-[96%] rounded-lg bg-purple-400 p-2">
-                    <p
-                      style={{ borderRadius: "0px" }}
-                      className="ml-2 text-left leading-7 text-white"
-                    >
-                      {codeSentence}
-                    </p>
-                  </div>
+          </div>
+          <Editor
+            padding={20}
+            textareaId="code-editor"
+            placeholder={placeHolderText}
+            className="w-full rounded-lg border-none bg-purple-900 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
+            value={codeSentence}
+            highlight={(code) => highlight(code, languages.js)}
+            onValueChange={(code) => setCodeSentence(code)}
+          />
+          {showUserMessage ? (
+            <div className="mb-1 flex">
+              <div className="ml-1 flex w-full items-center justify-center">
+                <div className="flex items-start justify-start">
+                  <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium">
+                    {userName}
+                  </span>
+                </div>
+                <div className="mx-auto ml-[6px] mr-2 w-[96%] rounded-lg bg-purple-400 p-2">
+                  <p
+                    style={{ borderRadius: "0px" }}
+                    className="ml-2 text-left leading-7 text-white"
+                  >
+                    {codeSentence}
+                  </p>
                 </div>
               </div>
-            ) : null}
-            {generatedMessages && (
-              <CombinedMessages
-                isLegacy={true}
-                pathName={pathName}
-                loading={loading}
-                userName={userName}
-                generatedMessages={generatedMessages}
-              />
-            )}
-          </div>
+            </div>
+          ) : null}
+          {generatedMessages && (
+            <CombinedMessages
+              isLegacy={true}
+              pathName={pathName}
+              loading={loading}
+              userName={userName}
+              generatedMessages={generatedMessages}
+            />
+          )}
         </div>
-        {(isPremium || mode === "smart") && (
-          <FooterSection
-            isPremium={isPremium}
-            translations={translations.footer}
-            stopGeneration={stopGeneration}
-            clearPanel={clearPanel}
-            testFrameworkElements={testFrameworkElements}
-            setDocOptions={setDocOptions}
-            docOptions={docOptions}
-            testLibElements={testLibElements}
-            testLibElement={testLibElement}
-            setTestLib={setTestLib}
-            setTestFrameworkElement={setTestFrameworkElement}
-            testFrameworkElement={testFrameworkElement}
-            mode={mode}
-            setUserHasAResponse={setUserHasAResponse}
-            generatedCode={generatedCode}
-            langElement={langElement}
-            libElements={libElements}
-            langElements={langElements}
-            loading={loading}
-            setLangElement={setLangElement}
-            lib={lib}
-            setLib={setLib}
-            onCodeGeneration={onCodeGeneration}
-          />
-        )}
-        <Modal
-          isCreditsModal
-          title={`Configure your ${
-            mode === "smart" ? "programming languages" : "testing tools"
-          }`}
-          body={`${
-            mode === "smart"
-              ? " You have the option to select programming languages, and if desired, a UI library, to help give you a better suggestion. Use the dropdown menus located in the bottom left corner."
-              : "You have the option to select a testing framework and, if desired, a testing library. Use the dropdown menus located in the bottom left corner."
-          }`}
-          isOpen={modaIsOpen}
-          buttonText="Got it"
-          setIsOpen={setModaIsOpen}
-        />
-        <Modal
-          savePropmptName
-          isPromptModal
-          body="What should we call this question?"
-          onSave={onSaveQuestionModal}
-          isOpen={showSavePromptModal}
-          propmptName={questionName}
-          handleInputChange={handleInputChange}
-          buttonText="Save"
-          setIsOpen={setShowSavePromptModal}
-        />
       </div>
+      {(isPremium || mode === "smart") && (
+        <FooterSection
+          isPremium={isPremium}
+          translations={translations.footer}
+          stopGeneration={stopGeneration}
+          clearPanel={clearPanel}
+          testFrameworkElements={testFrameworkElements}
+          setDocOptions={setDocOptions}
+          docOptions={docOptions}
+          testLibElements={testLibElements}
+          testLibElement={testLibElement}
+          setTestLib={setTestLib}
+          setTestFrameworkElement={setTestFrameworkElement}
+          testFrameworkElement={testFrameworkElement}
+          mode={mode}
+          setUserHasAResponse={setUserHasAResponse}
+          generatedCode={generatedCode}
+          langElement={langElement}
+          libElements={libElements}
+          langElements={langElements}
+          loading={loading}
+          setLangElement={setLangElement}
+          lib={lib}
+          setLib={setLib}
+          onCodeGeneration={onCodeGeneration}
+        />
+      )}
+      <Modal
+        isCreditsModal
+        title={`Configure your ${
+          mode === "smart" ? "programming languages" : "testing tools"
+        }`}
+        body={`${
+          mode === "smart"
+            ? " You have the option to select programming languages, and if desired, a UI library, to help give you a better suggestion. Use the dropdown menus located in the bottom left corner."
+            : "You have the option to select a testing framework and, if desired, a testing library. Use the dropdown menus located in the bottom left corner."
+        }`}
+        isOpen={modaIsOpen}
+        buttonText="Got it"
+        setIsOpen={setModaIsOpen}
+      />
+      <Modal
+        savePropmptName
+        isPromptModal
+        body="What should we call this question?"
+        onSave={onSaveQuestionModal}
+        isOpen={showSavePromptModal}
+        propmptName={questionName}
+        handleInputChange={handleInputChange}
+        buttonText="Save"
+        setIsOpen={setShowSavePromptModal}
+      />
     </>
   )
 }
