@@ -62,7 +62,7 @@ export default async function Dashboard({
   return (
     <div className="flex bg-purple-900">
       <div className="mx-auto w-full dark:bg-purple-900">
-        <div className="flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
+        <div className="ml-4 flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
           <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
             <h2 className="text-lg flex w-full items-center justify-center text-left text-3xl text-gray-200 sm:ml-20 sm:items-start sm:justify-start sm:pl-6 sm:text-3xl">
               {dictionary?.dashboard.welcome}, {session.user.name}

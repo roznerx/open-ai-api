@@ -52,6 +52,9 @@ export default function MobileSideBar({
       >
         <Link
           href="/dashboard"
+          onClick={() => {
+            setShowMobileMenu((prevState) => !prevState)
+          }}
           className={`w-[100%] ${
             pathname === "/dashboard" ? "bg-purple-500" : "bg-none"
           } cursor-pointer`}
@@ -70,6 +73,9 @@ export default function MobileSideBar({
         </Link>
         <Link
           href="/code-chat"
+          onClick={() => {
+            setShowMobileMenu((prevState) => !prevState)
+          }}
           className={`w-full cursor-pointer  ${
             pathname === "/code-chat" ? "bg-purple-500" : "bg-none"
           }`}

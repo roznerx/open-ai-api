@@ -70,8 +70,8 @@ export default function Client({
   }, [searchParams, router, subscriptionHasBeenDeleted, session?.user?.id])
 
   return (
-    <div className="mr-16 flex">
-      <div className="mb-12 mt-60 grid grid-cols-1 gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
+    <div className="ml-4 sm:ml-0 sm:mr-16">
+      <div className="mb-12 mt-60 grid grid-cols-1 items-center justify-center gap-4 sm:mt-28 sm:grid-cols-4 sm:gap-x-4 sm:gap-y-4">
         <DashboardCard
           onClick={() => {
             router.push("/code-idea?mode=smart")
