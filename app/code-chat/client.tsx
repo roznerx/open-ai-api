@@ -46,14 +46,12 @@ export default function Client({ session, translations, modalTranslations }) {
 
   return (
     <>
-      <div className="relative mb-20 mr-8 sm:w-[900px]">
-        <Chat
-          translations={translations}
-          setInput={setInput}
-          userName={userName}
-          messages={messages.slice(1)}
-        />
-      </div>
+      <Chat
+        translations={translations}
+        setInput={setInput}
+        userName={userName}
+        messages={messages.slice(1)}
+      />
       <InputChat
         translations={translations}
         inputValue={inputValue}
