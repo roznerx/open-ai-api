@@ -328,7 +328,7 @@ export default function Client({
         id="container"
         className="ml-0 flex flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
       >
-        <div className="h-screen w-full">
+        <div className="screen h-[90vh] w-full pb-10">
           <div className="mx-auto w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
             <div className="inline-flex pt-20 font-sans">
               <span className="ml-5 text-2xl font-semibold text-white">
