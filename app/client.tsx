@@ -6,6 +6,7 @@ import HomeChat from "./home/HomeChat"
 import WhyCodeGenius from "./home/WhyCodeGenius"
 import TestimonialsSection from "./home/TestimonialsSection"
 import Faqs from "./pricing/faqs"
+import SyncYourFlow from "./home/SyncYourFlow"
 
 export default function Client({ translations, session }) {
   return (
@@ -18,6 +19,7 @@ export default function Client({ translations, session }) {
       </div>
       <ProgrammingBuddy />
       <WhyCodeGenius />
+      <SyncYourFlow />
       <TestimonialsSection />
       <div className="my-24 flex w-full items-center justify-center">
         <Faqs translations={translations.pricing.faqs} />
