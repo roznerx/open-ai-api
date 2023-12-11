@@ -21,7 +21,7 @@ export default function HomeChatInput({
           type="submit"
           title="Submit your prompt"
           aria-label="Submit your prompt"
-          className="z-50 mr-2 h-12 w-48 rounded-xl border-mint bg-mint p-1 font-semibold text-purple-900 disabled:hover:bg-transparent "
+          className="z-10 mr-2 h-12 w-48 rounded-xl border-mint bg-mint p-1 font-semibold text-purple-900 disabled:hover:bg-transparent "
         >
           Start with AI
         </button>

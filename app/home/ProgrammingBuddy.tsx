@@ -17,8 +17,8 @@ export default function ProgrammingBuddy() {
               Code Genius will help you at any stage of your development
               process.
             </p>
-            <div className="w-[250px] rounded-lg bg-black">
-              <p className="mt-8 py-4 text-center font-semibold text-white">
+            <div className="w-[250px] cursor-pointer rounded-lg bg-black">
+              <p className="mt-8 py-4 text-center font-semibold  text-white">
                 Start your free trial
               </p>
             </div>

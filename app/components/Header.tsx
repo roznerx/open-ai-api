@@ -38,9 +38,7 @@ export default function Header({
         id="site-header"
         className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
-        <div
-          className={`mt-2 flex w-full items-center justify-center sm:justify-between`}
-        >
+        <div className={`mt-2 flex w-full justify-between`}>
           <div
             className={`ml-4 pt-2 ${
               pathName == "/dashboard" ||

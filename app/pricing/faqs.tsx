@@ -6,10 +6,10 @@ import Link from "next/link"
 
 export default function Faqs({ translations: faqs }) {
   return (
-    <div className="mx-auto mb-12 px-4 ">
-      <h3 className="mb-3 text-4xl text-white">{faqs.title}</h3>
-      <p className="text-lg mb-4 text-gray-300">{faqs.desc}:</p>
-      <div className="text-lg mb-6 text-mint">
+    <div className="mx-auto mb-12 w-full px-4">
+      <h3 className="mb-3 text-center text-4xl text-white">{faqs.title}</h3>
+      <p className="text-lg mb-4 text-center text-gray-300">{faqs.desc}:</p>
+      <div className="text-lg mb-6 text-center text-mint">
         <Link
           className="text-lg mb-12 mt-6 capitalize text-mint"
           href={"mailto:support@code-genius.dev"}
@@ -18,7 +18,7 @@ export default function Faqs({ translations: faqs }) {
         </Link>
       </div>
 
-      <div className="mx-auto flex w-9/12 flex-col rounded-2xl bg-purple-500 p-2 ">
+      <div className="mx-auto flex w-full flex-col rounded-2xl bg-purple-500 p-2 sm:w-9/12">
         <Disclosure as="div" className="" defaultOpen>
           {({ open }) => (
             <>
