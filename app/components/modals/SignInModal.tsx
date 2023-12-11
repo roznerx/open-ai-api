@@ -72,7 +72,10 @@ export const SignInModal = ({
               }
               onClick={() => {
                 setSignInClickedGoogle(true)
-                signIn("google", { callbackUrl: pathname || "/dashboard" })
+                signIn("google", {
+                  callbackUrl:
+                    pathname === "/" ? "/dashboard" : pathname || "/dashboard",
+                })
               }}
             >
               {signInClickedGoogle ? (
