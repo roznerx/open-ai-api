@@ -13,7 +13,7 @@ export default function SyncYourFlow() {
       <div
         className="mx-auto grid h-auto w-[90%] grid-cols-1
       rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] p-4 sm:h-[451px]
-      sm:w-[80%] sm:grid-cols-2 sm:p-0"
+      sm:w-[75%] sm:grid-cols-2 sm:p-0"
       ></div>
     </div>
   )

@@ -7,7 +7,7 @@ export default function ProgrammingBuddy() {
         <div
           className="grid h-auto w-[90%] grid-cols-1
       rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] p-4 sm:h-[451px]
-      sm:w-[80%] sm:grid-cols-2 sm:p-0"
+      sm:w-[75%] sm:grid-cols-2 sm:p-0"
         >
           <div id="col-1" className="sm:ml-12 sm:mt-24 sm:w-[500px]">
             <h3 className="text-5xl font-semibold leading-tight">
@@ -37,10 +37,10 @@ export default function ProgrammingBuddy() {
       </div>
       {/* Tile section begins */}
       <div
-        className={`m-4 mx-auto mt-10 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[80%] sm:grid-cols-2 sm:place-items-center`}
+        className={`mx-auto mt-24 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[80%] sm:grid-cols-2 sm:place-items-center`}
       >
         <div
-          className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5]
+          className=" flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5]
       to-[#B1EAF1] sm:w-[505px] sm:bg-gradient-to-t"
         >
           <Image
@@ -55,7 +55,7 @@ export default function ProgrammingBuddy() {
           </p>
         </div>
         <div
-          className="mt-12 flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1]
+          className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1]
       sm:mt-0 sm:w-[505px] sm:bg-gradient-to-t"
         >
           <Image
