@@ -3,10 +3,11 @@
 import Link from "next/link"
 import UserDropdown from "app/components/auth/UserDropdown"
 import Image from "next/image"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { cn } from "@/lib/utils"
+import { AuthContext } from "app/provider"
 
 export default function Header({
   translations,
@@ -18,14 +19,18 @@ export default function Header({
   translations?: any
 }) {
   const pathName = usePathname()
-  const shouldJustifyBetween =
-    pathName == "/" ||
-    pathName?.startsWith("/blog") ||
-    pathName == "/pricing" ||
-    pathName == "/terms-and-conditions" ||
-    pathName == "/privacy"
+  let { setModalIsOpen } = useContext(AuthContext) || {
+    setModalIsOpen: () => {},
+  }
+
+  // const shouldJustifyBetween =
+  //   pathName == "/" ||
+  //   pathName?.startsWith("/blog") ||
+  //   pathName == "/pricing" ||
+  //   pathName == "/terms-and-conditions" ||
+  //   pathName == "/privacy"
   const [showWidget, setShowWidget] = useState(false)
-  const router = useRouter()
+  // const router = useRouter()
 
   return (
     <>
@@ -34,11 +39,7 @@ export default function Header({
         className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
         <div
-          className={`mt-2 flex w-full items-center ${
-            shouldJustifyBetween && !session
-              ? "justify-between"
-              : "justify-center"
-          } sm:items-start sm:justify-between`}
+          className={`mt-2 flex w-full items-center justify-center sm:justify-between`}
         >
           <div
             className={`ml-4 pt-2 ${
@@ -59,7 +60,6 @@ export default function Header({
                   height={32}
                   alt="Code Genius"
                 />
-                {/* </div> */}
                 <h1
                   className={`sm:text-xl sm:text-xl ml-2  ${
                     pathName?.startsWith("/blog")
@@ -89,7 +89,7 @@ export default function Header({
               </>
             )}
             <div
-              onClick={() => router.push(`${pathName}/?action=signUp`)}
+              onClick={() => setModalIsOpen(true)}
               className={cn(
                 "my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
               )}

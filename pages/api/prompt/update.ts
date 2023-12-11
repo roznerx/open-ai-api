@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   const bodyRequest = JSON.parse(req.body)
   console.log("bodyReques::", bodyRequest)
 
-  const updateOp = await harperClient({
+  await harperClient({
     operation: "update",
     schema: "Auth",
     table: "UserPrompts",
