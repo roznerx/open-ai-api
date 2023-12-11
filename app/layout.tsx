@@ -10,6 +10,7 @@ import SideBar from "./components/shared/SideBar"
 import Footer from "./components/Footer"
 import { getServerSession } from "next-auth"
 import { authOptions } from "pages/api/auth/[...nextauth]"
+import { SignInModal } from "./components/modals/SignInModal"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -59,8 +60,8 @@ export default async function RootLayout({
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
         <body>
-          <SessionProvider translations={translations?.modals?.signIn}>
-            <div className="flex min-h-screen flex-nowrap bg-purple-900">
+          <SessionProvider>
+            <div className="flex min-h-screen bg-purple-900">
               {session && (
                 <SideBar
                   translations={translations.sidebar}
@@ -78,6 +79,7 @@ export default async function RootLayout({
               translations={translations?.footer}
               modalTranslations={translations?.dashboard.modal}
             />
+            <SignInModal signInTranslations={translations.modals.signIn} />
           </SessionProvider>
           <Script
             strategy="afterInteractive"

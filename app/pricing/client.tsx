@@ -3,19 +3,17 @@
 import ContactFormModal from "app/components/modals/ContactFormModal"
 import { Switch } from "@headlessui/react"
 import PaymentModal from "app/components/modals/PaymentModal"
-import React, { useEffect, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { SUBSCRIPTION_PRICES } from "@/lib/constants"
 
 import Faqs from "./faqs"
-import { useSignInModal } from "app/components/modals/SignInModal"
+
 import { useRouter, useSearchParams } from "next/navigation"
 
 import Image from "next/image"
 import { Button } from "app/components/buttons/button"
 import { Loader2 } from "lucide-react"
-
-//Theme colors
-// const colors: any = tailwindConfig.theme?.extend?.colors
+import { AuthContext } from "app/provider"
 
 type ClientPropTye = {
   session: any
@@ -31,10 +29,10 @@ export default function Client({
   modalTranslations,
 }: ClientPropTye) {
   const [anual, setAnual] = useState(true)
-  const { setShowSignInModal, SignInModal } = useSignInModal({
-    translations: translations?.modals?.signIn,
-  })
-  console.log("session", session)
+
+  let { setModalIsOpen } = useContext(AuthContext) || {
+    setModalIsOpen: () => {},
+  }
 
   const [loadingStripe, setLoadingStripe] = React.useState<boolean>(false)
   const router = useRouter()
@@ -74,7 +72,7 @@ export default function Client({
     setLoadingStripe(true)
 
     if (!session) {
-      setShowSignInModal(true)
+      setModalIsOpen(true)
       return false
     }
 
@@ -107,7 +105,6 @@ export default function Client({
 
   return (
     <>
-      <SignInModal />
       <PaymentModal isOpen={openPayment} setIsOpen={setOpenPayment} />
       <ContactFormModal
         translations={modalTranslations}

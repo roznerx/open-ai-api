@@ -38,7 +38,11 @@
     "nanoid": "^4.0.2",
     "negotiator": "^0.6.3",
     "next": "14.0.3",
+<<<<<<< HEAD
     "next-auth": "4.23.2",
+=======
+    "next-auth": "4.24.5",
+>>>>>>> main
     "next-contentlayer": "^0.3.4",
     "nodemailer": "^6.9.1",
     "openai-edge": "^1.0.0",

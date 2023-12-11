@@ -31,7 +31,7 @@ export default async function Page() {
 
   return (
     <main
-      className={`flex min-h-screen w-full flex-row flex-nowrap items-start justify-start bg-purple-900 font-sans ${roboto_mono.variable}`}
+      className={`min-h-screen w-full flex-1 flex-row flex-nowrap items-start justify-start overflow-hidden overflow-y-auto bg-purple-900 font-sans ${roboto_mono.variable}`}
     >
       <Container translations={dictionary} session={session} />
     </main>

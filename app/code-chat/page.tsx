@@ -22,7 +22,7 @@ export default async function Page() {
 
   return (
     <>
-      <main className="flex min-h-screen w-screen px-4 text-center">
+      <main className="flex min-h-screen w-full items-center justify-center">
         <Client
           session={session}
           translations={dictionary?.chat}

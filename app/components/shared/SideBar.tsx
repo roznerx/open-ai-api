@@ -11,34 +11,28 @@ import {
 } from "lucide-react"
 
 import Link from "next/link"
-import { usePathname } from "next/navigation"
-import React, { useEffect } from "react"
+import { usePathname, useSearchParams } from "next/navigation"
+import React from "react"
 import tailwindConfig from "tailwind.config"
-import { MaterialTooltip } from "../material-components"
 import MobileSideBar from "./MobileSideBar"
+import Image from "next/image"
 
 const SideBar = ({
   translations,
   menuTranslations,
-  mode,
-  setGeneratedCode,
 }: {
   translations: any
   menuTranslations: any
-  mode?: string
-  setMode?: any
-  setGeneratedCode?: any
 }) => {
+  const searchParams = useSearchParams()
+
+  const mode = searchParams && searchParams.get("mode")
+  console.log("mode:", mode)
+
   const pathname = usePathname()
 
   const { isMobile } = useWindowSize()
   const colors: any = tailwindConfig.theme?.extend?.colors
-
-  useEffect(() => {
-    if (pathname === "/code-idea" && typeof setGeneratedCode === "function") {
-      setGeneratedCode("")
-    }
-  }, [setGeneratedCode, pathname])
 
   const shouldHideSideBar =
     pathname === "/" ||
@@ -50,89 +44,97 @@ const SideBar = ({
   return !isMobile ? (
     <div
       id="sidebar"
-      className={`absolute left-0 top-0 z-50 hidden h-full w-16 translate-x-full flex-col items-center border-r-[1px] border-purple-500 bg-purple-800
-      transition-transform duration-700 sm:fixed ${
-        shouldHideSideBar ? "sm:hidden" : "sm:flex"
-      } sm:translate-x-0`}
+      className={`group z-50 min-h-screen border-r-[1px] border-purple-400 bg-purple-800 
+      sm:flex  ${shouldHideSideBar ? "sm:hidden" : "sm:relative"} `}
     >
-      <div className="mt-3 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
-        <Link href="/dashboard">
-          <LayoutDashboard
-            width={26}
-            height={26}
-            color={pathname === "/dashboard" ? colors.mint : "white"}
-          />
-        </Link>
-      </div>
+      <div className="mx-auto flex w-16 flex-col justify-start pl-2 duration-150 hover:w-56">
+        <div className=" mt-4 flex h-12 cursor-pointer  rounded-md p-2 hover:bg-purple-500 ">
+          <Link href="/" className="inline-flex ">
+            <Image
+              src={"/logo/code-genius.svg"}
+              width={32}
+              height={32}
+              alt="Code Genius"
+            />
 
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.suggestions}
-      >
-        <Link
-          href="/code-idea?mode=smart"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <Code size={26} color={mode === "smart" ? colors.mint : "white"} />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.testing}
-      >
-        <Link
-          href="/code-idea?mode=test"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <CurlyBraces
-            size={25}
-            color={mode === "test" ? colors.mint : "white"}
-          />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.optimization}
-      >
-        <Link
-          href="/code-idea?mode=improve"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <Rocket
-            size={26}
-            color={mode === "improve" ? colors.mint : "white"}
-          />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2  border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.docs}
-      >
-        <Link
-          href="/code-idea?mode=docs"
-          className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500"
-        >
-          <FileCode size={26} color={mode === "docs" ? colors.mint : "white"} />
-        </Link>
-      </MaterialTooltip>
-      <MaterialTooltip
-        placement="right-start"
-        className="ml-2 mt-2 border-[1px] border-gray-500 bg-purple-900  text-gray-200"
-        content={translations?.chat}
-      >
-        <div className="mt-4 flex h-12 w-full cursor-pointer items-center justify-center rounded-md hover:bg-purple-500">
-          <Link href="/code-chat">
+            <p className="ml-4 flex-grow bg-gradient-to-r from-mint to-blue bg-clip-text pt-1.5 text-2xl font-semibold tracking-tight text-transparent opacity-0  group-hover:opacity-100 sm:leading-6">
+              Code
+            </p>
+            <p className="ml-1.5 flex-grow bg-gradient-to-r from-mint to-blue bg-clip-text pt-1.5 text-2xl font-semibold tracking-tight text-transparent opacity-0 group-hover:opacity-100 sm:leading-6">
+              Genius
+            </p>
+          </Link>
+        </div>
+
+        <div className=" mt-4 flex h-12 w-full cursor-pointer rounded-md p-2 hover:bg-purple-500 ">
+          <Link href="/dashboard" className="inline-flex">
+            <LayoutDashboard
+              width={26}
+              height={26}
+              color={pathname === "/dashboard" ? colors.mint : "white"}
+            />
+            <p className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+              {translations?.dashboard}{" "}
+            </p>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer rounded-md p-2 hover:bg-purple-500   ">
+          <Link href="/code-idea?mode=smart" className="inline-flex ">
+            <Code size={26} color={mode === "smart" ? colors.mint : "white"} />
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+              {translations?.suggestions}
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer rounded-md p-2 hover:bg-purple-500    ">
+          <Link href="/code-idea?mode=test" className="inline-flex ">
+            <CurlyBraces
+              size={25}
+              color={mode === "test" ? colors.mint : "white"}
+            />
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+              {translations?.testing}
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer rounded-md p-2 hover:bg-purple-500   ">
+          <Link href="/code-idea?mode=improve" className="inline-flex">
+            <Rocket
+              size={26}
+              color={mode === "improve" ? colors.mint : "white"}
+            />
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+              {translations?.optimization}
+            </span>
+          </Link>
+        </div>
+
+        <div className="mt-4 flex h-12 w-full cursor-pointer rounded-md p-2  hover:bg-purple-500    ">
+          <Link href="/code-idea?mode=docs" className="inline-flex ">
+            <FileCode
+              size={26}
+              color={mode === "docs" ? colors.mint : "white"}
+            />
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+              {translations?.docs}
+            </span>
+          </Link>
+        </div>
+        <div className="mt-4 flex h-12 w-full cursor-pointer rounded-md p-2 hover:bg-purple-500   ">
+          <Link href="/code-chat" className="inline-flex">
             <MessageSquare
               size={26}
               color={pathname === "/code-chat" ? colors.mint : "white"}
             />
+            <span className="ml-6 pt-0.5 font-normal text-white opacity-0 group-hover:opacity-100">
+              {translations?.chat}
+            </span>
           </Link>
         </div>
-      </MaterialTooltip>
+      </div>
     </div>
   ) : (
     <MobileSideBar

@@ -37,6 +37,7 @@ function GenerateCode({
           .substring(generatedCode.indexOf("**") + 0)
           .replace(regex, "")
           .replace("javascript", "")
+          .replace("typescript", "")
           .replace("python", "")
           .replace("go", "")
           .replace("python", "")
