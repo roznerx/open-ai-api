@@ -3,7 +3,10 @@ import Image from "next/image"
 export default function ProgrammingBuddy() {
   return (
     <div className="w-screen">
-      <div className={`my-10 mt-16 flex items-center justify-center`}>
+      <div className={`my-10 mt-16 flex flex-col items-center justify-center`}>
+        <p className="mb-12 text-center text-4xl font-semibold text-white">
+          Your pair programming that never sleeps
+        </p>
         <div
           className="grid h-auto w-[90%] grid-cols-1
       rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] p-4 sm:h-[451px]
@@ -37,16 +40,16 @@ export default function ProgrammingBuddy() {
       </div>
       {/* Tile section begins */}
       <div
-        className={`mx-auto mt-24 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[80%] sm:grid-cols-2 sm:place-items-center`}
+        className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[75%] sm:grid-cols-2 sm:place-items-center`}
       >
         <div
-          className=" flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5]
-      to-[#B1EAF1] sm:w-[505px] sm:bg-gradient-to-t"
+          className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#6530FC] to-[#A486FF]
+       sm:w-[505px] sm:bg-gradient-to-t"
         >
           <Image
-            src="/home/camera.svg"
+            src="/icons/rayo-gradient.svg"
             className="mt-12 h-64 w-64"
-            alt="camera"
+            alt="rayo"
             width={196}
             height={163}
           />
@@ -55,18 +58,18 @@ export default function ProgrammingBuddy() {
           </p>
         </div>
         <div
-          className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1]
+          className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
       sm:mt-0 sm:w-[505px] sm:bg-gradient-to-t"
         >
           <Image
-            src="/home/camera.svg"
+            src="/icons/code-fast.svg"
             className="mt-12 h-64 w-64"
             alt="camera"
             width={196}
             height={163}
           />
           <p className="text-center text-4xl font-semibold text-white">
-            Create unit tests in seconds
+            Create efficient code in seconds
           </p>
         </div>
       </div>
