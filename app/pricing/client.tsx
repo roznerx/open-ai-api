@@ -575,7 +575,7 @@ export default function Client({
         </section>
       </div>
       <div className="mt-10 w-full">
-        <Faqs translations={translations.faqs} />
+        <Faqs isHome={false} translations={translations.faqs} />
       </div>
     </>
   )
