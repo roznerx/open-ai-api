@@ -22,7 +22,7 @@ export default function Client({ translations, session }) {
       <SyncYourFlow />
       <TestimonialsSection />
       <div className="my-24 flex w-full items-center justify-center">
-        <Faqs translations={translations.pricing.faqs} />
+        <Faqs isHome translations={translations.pricing.faqs} />
       </div>
       {/* <Feature translations={translations?.home} /> */}
     </>

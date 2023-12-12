@@ -4,7 +4,7 @@ import { Disclosure } from "@headlessui/react"
 import { ChevronUp } from "lucide-react"
 import Link from "next/link"
 
-export default function Faqs({ translations: faqs }) {
+export default function Faqs({ translations: faqs, isHome }) {
   return (
     <div className="mx-auto mb-12 w-full px-4">
       <h3 className="mb-3 text-center text-4xl text-white">{faqs.title}</h3>
@@ -19,7 +19,7 @@ export default function Faqs({ translations: faqs }) {
       </div>
 
       <div className="mx-auto flex w-full flex-col rounded-2xl bg-purple-500 p-2 sm:w-9/12">
-        <Disclosure as="div" className="" defaultOpen>
+        <Disclosure as="div" className="" defaultOpen={isHome ? false : true}>
           {({ open }) => (
             <>
               <Disclosure.Button

@@ -58,7 +58,7 @@ export default function ProgrammingBuddy() {
           </p>
         </div>
         <div
-          className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
+          className="mt-12 flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
       sm:mt-0 sm:w-[505px] sm:bg-gradient-to-t"
         >
           <Image
