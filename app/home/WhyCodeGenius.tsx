@@ -18,22 +18,19 @@ export default function ProgrammingBuddy() {
             </p>
             <p className="mt-8 text-3xl font-semibold text-white">To this</p>
           </div>
+
           <div
-            className={`m-4 mx-auto mt-10 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[80%] sm:grid-cols-2 sm:place-items-center`}
+            className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[75%] sm:grid-cols-2 sm:place-items-center`}
           >
             <div
-              className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl 
-              bg-gradient-to-b from-mint 
-      to-black sm:w-[505px] sm:bg-gradient-to-b"
+              className="flex h-[444px] flex-col items-center justify-center rounded-xl bg-gradient-to-b 
+            from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] sm:w-[500px]"
             ></div>
             <div
-              className="mt-12 flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-mint  to-black
-      sm:mt-0 sm:w-[505px] sm:bg-gradient-to-b"
-            >
-              <p className="text-center text-4xl font-semibold text-white">
-                To this
-              </p>
-            </div>
+              className="sm:mt0 mt-12 flex h-[444px] flex-col items-center justify-center rounded-xl
+               bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] sm:mt-0
+       sm:w-[505px] "
+            ></div>
           </div>
         </div>
       </div>
