@@ -9,26 +9,24 @@ export const metadata = {
   description: "Code Chat is a fun way to learn how to code.",
 }
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams?: { [key: string]: string | undefined }
+}) {
   const session = await getServerSession(authOptions)
-
-  // if (!session) {
-  //   redirect("/code-chat?action=signUp")
-  // }
-
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(lang)
 
   return (
-    <>
-      <main className="flex min-h-screen w-full items-center justify-center">
-        <Client
-          session={session}
-          translations={dictionary?.chat}
-          modalTranslations={dictionary?.modals?.moreCredits}
-        />
-      </main>
-    </>
+    <main className="flex min-h-screen w-full items-center justify-center">
+      <Client
+        initialQuery={(searchParams && searchParams.q) || ""}
+        session={session}
+        translations={dictionary?.chat}
+        modalTranslations={dictionary?.modals?.moreCredits}
+      />
+    </main>
   )
 }

@@ -1,21 +1,25 @@
-export default function HomeChatInput({
-  messagesLength,
-  textareaRef,
-  inputValue,
-  handleInputChange,
-}) {
+import { useRef } from "react"
+import { TypeAnimation } from "react-type-animation"
+
+export default function HomeChatInput({ inputValue, handleInputChange }) {
+  const rotatingTextRef = useRef<HTMLDivElement | null>(null)
+
+  const handleFocus = () => {
+    if (rotatingTextRef.current) {
+      rotatingTextRef.current.classList.add("hidden")
+    }
+  }
   return (
-    <>
+    <div className="relative">
       <div className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] ">
         <input
-          ref={textareaRef}
           className="font-lg z-40 w-[590px] rounded-xl 
          border-none bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60
         placeholder:text-white focus:border-[0px] focus:outline-none focus:outline-0 
          focus:ring-0 active:outline-0"
           value={inputValue}
           onChange={handleInputChange}
-          placeholder={messagesLength === 1 ? "What's your next code idea" : ""}
+          onFocus={handleFocus}
         />
         <button
           type="submit"
@@ -26,6 +30,27 @@ export default function HomeChatInput({
           Start with AI
         </button>
       </div>
-    </>
+      <div className="absolute bottom-5 left-28 z-50">
+        <TypeAnimation
+          ref={rotatingTextRef}
+          className="rotating-text text-white"
+          sequence={[
+            "Write a chat application",
+            1500,
+            `Help me understanding Typescript`,
+            1500,
+            "Teach me React Native",
+            1500,
+            "Teach me AWS",
+            1500,
+            "Teach me Python",
+            1500,
+          ]}
+          wrapper="span"
+          speed={50}
+          repeat={Infinity}
+        />
+      </div>
+    </div>
   )
 }

@@ -43,7 +43,6 @@ export default function Header({
             className={`ml-4 pt-2 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
-              pathName == "/code-chat" ||
               pathName == "/settings"
                 ? "hidden"
                 : "sm:ml-6"

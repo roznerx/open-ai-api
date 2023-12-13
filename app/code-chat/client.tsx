@@ -9,12 +9,15 @@ import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "ai/react"
 import { AI_MOOD } from "@/lib/constants"
-import { useRouter } from "next/navigation"
 
-export default function Client({ session, translations, modalTranslations }) {
+export default function Client({
+  session,
+  translations,
+  modalTranslations,
+  initialQuery = "",
+}) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
 
-  const router = useRouter()
   const userName = session && session.user?.name
   const {
     messages,
@@ -26,16 +29,7 @@ export default function Client({ session, translations, modalTranslations }) {
     handleSubmit,
   } = useChat({
     initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
-    onFinish: async () => {
-      //count tokens??
-    },
   })
-
-  useEffect(() => {
-    if (!session) {
-      router.push("code-chat?action=signUp")
-    }
-  }, [router, session])
 
   useEffect(() => {
     if (session?.user && !session?.user?.credits && isLoading) {
@@ -43,6 +37,12 @@ export default function Client({ session, translations, modalTranslations }) {
       setCreditsModaIsOpen(true)
     }
   }, [session, stop, isLoading])
+
+  useEffect(() => {
+    if (initialQuery !== "") {
+      setInput(initialQuery)
+    }
+  }, [])
 
   return (
     <>
@@ -53,6 +53,7 @@ export default function Client({ session, translations, modalTranslations }) {
         messages={messages.slice(1)}
       />
       <InputChat
+        initialQuery={initialQuery}
         translations={translations}
         inputValue={inputValue}
         handleInputChange={handleInputChange}
