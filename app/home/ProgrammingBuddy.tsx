@@ -43,32 +43,32 @@ export default function ProgrammingBuddy() {
         className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[75%] sm:grid-cols-2 sm:place-items-center`}
       >
         <div
-          className="flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#6530FC] to-[#A486FF]
+          className="relative flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#6530FC] to-[#A486FF]
        sm:w-[505px] sm:bg-gradient-to-t"
         >
           <Image
             src="/icons/rayo-gradient.svg"
-            className="mt-12 h-64 w-64"
+            className="h-64 w-64"
             alt="rayo"
             width={196}
             height={163}
           />
-          <p className="text-center text-4xl font-semibold text-white">
+          <p className="w-[80%] text-center text-4xl font-semibold text-white">
             Create unit tests in seconds
           </p>
         </div>
         <div
-          className="mt-12 flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
+          className="relative mt-12 flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
       sm:mt-0 sm:w-[505px] sm:bg-gradient-to-t"
         >
           <Image
             src="/icons/code-fast.svg"
-            className="mt-12 h-64 w-64"
+            className="h-64 w-64"
             alt="camera"
             width={196}
             height={163}
           />
-          <p className="text-center text-4xl font-semibold text-white">
+          <p className=" mx-auto w-[80%] text-center text-4xl font-semibold leading-tight text-white">
             Create efficient code in seconds
           </p>
         </div>
