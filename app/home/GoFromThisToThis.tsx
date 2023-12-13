@@ -1,6 +1,6 @@
 import CurveArrow from "./CurveArrow"
 
-export default function ProgrammingBuddy() {
+export default function GoFromThisToThis() {
   return (
     <>
       <div className="mx-auto mt-20 flex w-screen flex-col items-center justify-center">

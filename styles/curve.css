@@ -18,8 +18,8 @@
 }
 
 .arrow .curve {
-  border: 4px solid #a1ffe0;
-  border-color: transparent transparent transparent #a1ffe0;
+  border: 4px solid #a688ff;
+  border-color: transparent transparent transparent #a688ff;
   height: 360px;
   width: 1200px;
   border-radius: 232px 0 0 150px;
@@ -33,7 +33,7 @@
 
 .arrow .point:before,
 .arrow .point:after {
-  border: 2px solid #a1ffe0;
+  border: 2px solid #a688ff;
   height: 22px;
   content: "";
   position: absolute;

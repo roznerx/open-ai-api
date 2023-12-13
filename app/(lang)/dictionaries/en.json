@@ -228,7 +228,7 @@
     },
     "faqs": {
       "title": "Frequently Asked Questions",
-      "desc": "If you can’t find the answer to your question, please reach out to our support team here:",
+      "desc": "If you can’t find the answer to your question, please reach out to our support team here",
       "support": "contact support",
       "1": {
         "title": "What is Code Genius?",

@@ -1,6 +1,6 @@
 export default function SyncYourFlow() {
   return (
-    <div className="mx-auto my-10 w-screen">
+    <div className="mx-auto my-20 w-screen">
       <p className="mt-5 flex justify-center text-center text-2xl uppercase text-[#B095FF]">
         BONUS GITHUB APP TO SYNC WITH YOUR WORKFLOW
       </p>
