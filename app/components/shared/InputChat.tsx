@@ -1,23 +1,35 @@
 import { Send } from "lucide-react"
-import { useEffect, useRef } from "react"
+import React from "react"
 
 export default function InputChat({
+  reload,
   initialQuery,
   translations,
   inputValue,
   handleInputChange,
   handleSubmit,
 }) {
-  const formRef = useRef<HTMLFormElement | null>(null)
-  useEffect(() => {
-    if (initialQuery != "" && formRef.current) {
-      formRef.current.dispatchEvent(new Event("submit", { cancelable: true }))
+  // const buttonRef = useRef<HTMLButtonElement | null>(null)
+
+  React.useEffect(() => {
+    // Check if the button element exists
+    if (initialQuery !== "") {
+      console.log("llamadas")
+      reload()
     }
-  }, [initialQuery])
+  }, []) // This effect runs once when the component mounts
+
   return (
     <div className="fixed bottom-4 left-0 right-0 z-20 mx-auto h-14 w-full bg-transparent">
       <div className="relative mx-auto mt-2 h-12 w-full sm:w-[900px]">
-        <form ref={formRef} id="chat-form" onSubmit={handleSubmit}>
+        <form
+          id="chat-form"
+          onSubmit={(e) => {
+            e.preventDefault()
+            // console.log("pasa x handle submit")
+            // handleSubmit(e)
+          }}
+        >
           <input
             id="chat-input"
             onKeyDown={(e) => {

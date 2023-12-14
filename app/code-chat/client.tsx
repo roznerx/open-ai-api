@@ -23,12 +23,16 @@ export default function Client({
     messages,
     setInput,
     stop,
+    reload,
     isLoading,
     input: inputValue,
     handleInputChange,
     handleSubmit,
   } = useChat({
-    initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
+    initialMessages: [
+      { id: "1", role: "system", content: AI_MOOD.engineer },
+      { id: "2", role: "user", content: initialQuery },
+    ],
   })
 
   useEffect(() => {
@@ -38,11 +42,11 @@ export default function Client({
     }
   }, [session, stop, isLoading])
 
-  useEffect(() => {
-    if (initialQuery !== "") {
-      setInput(initialQuery)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (initialQuery !== "") {
+  //     setInput(initialQuery)
+  //   }
+  // }, [])
 
   return (
     <>
@@ -53,6 +57,7 @@ export default function Client({
         messages={messages.slice(1)}
       />
       <InputChat
+        reload={reload}
         initialQuery={initialQuery}
         translations={translations}
         inputValue={inputValue}
