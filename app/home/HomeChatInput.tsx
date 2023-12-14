@@ -11,7 +11,10 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
   }
   return (
     <div className="relative">
-      <div className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] ">
+      <div
+        onFocus={handleFocus}
+        className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] "
+      >
         <input
           className="font-lg z-40 w-[590px] rounded-xl 
          border-none bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60
@@ -19,7 +22,6 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
          focus:ring-0 active:outline-0"
           value={inputValue}
           onChange={handleInputChange}
-          onFocus={handleFocus}
         />
         <button
           type="submit"
@@ -36,15 +38,15 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
           className="rotating-text text-white"
           sequence={[
             "Write a chat application",
-            1500,
+            1000,
             `Help me understanding Typescript`,
-            1500,
+            1000,
             "Teach me React Native",
-            1500,
+            1000,
             "Teach me AWS",
-            1500,
+            1000,
             "Teach me Python",
-            1500,
+            1000,
           ]}
           wrapper="span"
           speed={50}

@@ -14,7 +14,6 @@ export default function InputChat({
   React.useEffect(() => {
     // Check if the button element exists
     if (initialQuery !== "") {
-      console.log("llamadas")
       reload()
     }
   }, []) // This effect runs once when the component mounts

@@ -3,7 +3,7 @@
 export default function SuperHero({ translations }) {
   return (
     <>
-      <section className={`mb-5 mt-36 pt-14`}>
+      <section className={`mb-5`}>
         <h2 className="z-40 items-center justify-center bg-clip-text p-3 text-center text-4xl font-semibold text-transparent text-white sm:flex sm:w-full sm:text-6xl">
           Generate quality code in seconds
         </h2>
