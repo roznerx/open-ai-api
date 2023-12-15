@@ -32,7 +32,7 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
           Start with AI
         </button>
       </div>
-      <div className="absolute bottom-5 left-28 z-50">
+      <div className="absolute bottom-5 left-7 z-50 sm:left-28">
         <TypeAnimation
           ref={rotatingTextRef}
           className="rotating-text text-white"

@@ -11,8 +11,8 @@ export default function SyncYourFlow() {
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
       </p> */}
       <div
-        className="mx-auto grid h-auto w-[90%] grid-cols-1
-      rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] p-4 sm:h-[451px]
+        className="mx-auto grid h-auto w-[90%] grid-cols-1 rounded-xl
+      bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] p-4 font-semibold sm:h-[451px]
       sm:w-[72%] sm:grid-cols-2 sm:p-0"
       ></div>
     </div>

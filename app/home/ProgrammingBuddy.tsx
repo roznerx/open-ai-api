@@ -4,7 +4,7 @@ export default function ProgrammingBuddy() {
   return (
     <div className="w-screen">
       <div className={`my-10 mt-16 flex flex-col items-center justify-center`}>
-        <p className="mb-12 text-center text-4xl font-semibold text-white">
+        <p className="mb-12 text-center text-5xl font-semibold text-white">
           Your pair programming that never sleeps
         </p>
         <div
@@ -13,10 +13,10 @@ export default function ProgrammingBuddy() {
       sm:w-[75%] sm:grid-cols-2 sm:p-0"
         >
           <div id="col-1" className="sm:ml-12 sm:mt-24 sm:w-[500px]">
-            <h3 className="text-5xl font-semibold leading-tight">
+            <h3 className="text-center text-5xl font-semibold leading-tight text-white sm:text-left">
               Chat with your AI programming buddy
             </h3>
-            <p className="mt-6 text-2xl font-normal">
+            <p className="mt-6 text-2xl font-bold leading-tight">
               Code Genius will help you at any stage of your development
               process.
             </p>
