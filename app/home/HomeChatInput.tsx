@@ -3,10 +3,13 @@ import { TypeAnimation } from "react-type-animation"
 
 export default function HomeChatInput({ inputValue, handleInputChange }) {
   const rotatingTextRef = useRef<HTMLDivElement | null>(null)
+  const inputRef = useRef<HTMLInputElement | null>(null)
 
   const handleFocus = () => {
-    if (rotatingTextRef.current) {
+    if (rotatingTextRef.current && inputRef.current) {
       rotatingTextRef.current.classList.add("hidden")
+      inputRef.current.focus()
+      console.log("inputRef.current", inputRef.current)
     }
   }
   return (
@@ -16,6 +19,7 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
         className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] "
       >
         <input
+          ref={inputRef}
           className="font-lg z-40 w-[590px] rounded-xl 
          border-none bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60
         placeholder:text-white focus:border-[0px] focus:outline-none focus:outline-0 
@@ -27,9 +31,11 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
           type="submit"
           title="Submit your prompt"
           aria-label="Submit your prompt"
-          className="group z-10 mr-2 h-12 w-48 rounded-xl border-violet-500 bg-violet-500 p-1 font-semibold text-white disabled:hover:bg-transparent"
+          className="group z-10 mr-2 h-12 w-48 rounded-xl border-violet-500 bg-violet-500 p-1  text-white disabled:hover:bg-transparent"
         >
-          <p className="duration-150  group-hover:scale-125">Start with AI</p>
+          <p className="font-normal duration-150 group-hover:scale-125 group-hover:font-semibold">
+            Start with AI
+          </p>
         </button>
       </div>
       <div className="absolute bottom-5 left-7 z-50 sm:left-28">
