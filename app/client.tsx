@@ -3,10 +3,11 @@
 import SuperHero from "./home/SuperHero"
 import ProgrammingBuddy from "./home/ProgrammingBuddy"
 import HomeChat from "./home/HomeChat"
-import GoFromThisToThis from "./home/WhyCodeGenius"
+import GoFromThis from "./home/GoFromThis"
 import TestimonialsSection from "./home/TestimonialsSection"
 import Faqs from "./pricing/faqs"
 import SyncYourFlow from "./home/SyncYourFlow"
+import CodeFaster from "./home/CodeFaster"
 
 export default function Client({ translations }) {
   return (
@@ -18,7 +19,8 @@ export default function Client({ translations }) {
         </div>
       </div>
       <ProgrammingBuddy />
-      <GoFromThisToThis />
+      <CodeFaster />
+      <GoFromThis />
       <SyncYourFlow />
       <TestimonialsSection />
       <div className="my-24 flex w-full items-center justify-center">
