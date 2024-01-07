@@ -15,10 +15,8 @@ export default async function Page() {
   const dictionary = await getDictionary(lang)
 
   return (
-    <>
-      <main>
-        <Client translations={dictionary} />
-      </main>
-    </>
+    <main>
+      <Client translations={dictionary} />
+    </main>
   )
 }
