@@ -1,6 +1,8 @@
 import Image from "next/image"
+import { useRouter } from "next/navigation"
 
 export default function ProgrammingBuddy() {
+  const router = useRouter()
   return (
     <div className="w-screen">
       <div className={`my-10 mt-16 flex flex-col items-center justify-center`}>
@@ -20,7 +22,10 @@ export default function ProgrammingBuddy() {
               Code Genius will help you at any stage of your development
               process.
             </p>
-            <div className="w-[250px] cursor-pointer rounded-lg bg-black">
+            <div
+              onClick={() => router.push("/pricing")}
+              className="w-[250px] cursor-pointer rounded-lg bg-black"
+            >
               <p className="mt-8 py-4 text-center font-semibold  text-white">
                 Start your free trial
               </p>
@@ -36,41 +41,6 @@ export default function ProgrammingBuddy() {
               />
             </div>
           </div>
-        </div>
-      </div>
-      {/* Tile section begins */}
-      <div
-        className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[75%] sm:grid-cols-2 sm:place-items-center`}
-      >
-        <div
-          className="relative flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#6530FC] to-[#A486FF]
-       sm:w-[505px] sm:bg-gradient-to-t"
-        >
-          <Image
-            src="/icons/rayo-gradient.svg"
-            className="h-64 w-64"
-            alt="rayo"
-            width={196}
-            height={163}
-          />
-          <p className="w-[80%] text-center text-4xl font-semibold text-white">
-            Create unit tests in seconds
-          </p>
-        </div>
-        <div
-          className="relative mt-12 flex h-[444px] w-[100%] flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
-      sm:mt-0 sm:w-[505px] sm:bg-gradient-to-t"
-        >
-          <Image
-            src="/icons/code-fast.svg"
-            className="h-64 w-64"
-            alt="camera"
-            width={196}
-            height={163}
-          />
-          <p className=" mx-auto w-[80%] text-center text-4xl font-semibold leading-tight text-white">
-            Create efficient code in seconds
-          </p>
         </div>
       </div>
     </div>
