@@ -113,6 +113,7 @@ module.exports = {
       },
       colors: {
         specialBlue: "#6ea9d7",
+        celeste: "#B1EAF1",
         morado: "#7477FB",
         moradoCode: "#A688FF",
         secondaryPurple: "#6A51B6",
