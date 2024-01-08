@@ -19,29 +19,31 @@ export default function SyncYourFlow() {
       bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] p-4 font-semibold sm:h-[451px]
       sm:w-[72%] sm:grid-cols-2 sm:p-0"
       >
-        <div id="col-1" className="sm:ml-12 sm:mt-16 sm:w-[500px]">
-          <h3 className="text-center text-5xl font-semibold leading-tight text-white sm:text-left">
-            Github App for <br /> Pro members
+        <div id="col-1" className="relative sm:ml-12 sm:mt-16 sm:w-[950px]">
+          <h3 className="text-center text-5xl font-semibold leading-tight text-black sm:text-left">
+            Get our Github App only for pro members
           </h3>
-          <p className="mt-6 w-[400px] text-2xl font-bold leading-tight">
+          <p className="absolute bottom-32 w-[400px] rounded-lg bg-black  p-3 text-2xl font-normal leading-tight text-white shadow-sm shadow-white/60">
             Empower your workflow with Code Genius Code Coverage. Get unit tests
             on the fly and save time with our AI-powered GitHub App, generating
             tests at PR time.
           </p>
-          <div
-            onClick={() => router.push("/pricing")}
-            className="w-[250px] cursor-pointer rounded-lg bg-black"
-          >
-            <p className="mt-8 py-4 text-center font-semibold  text-white">
-              Start your free trial
-            </p>
+          <div className="absolute bottom-10">
+            <div
+              onClick={() => router.push("/pricing")}
+              className="w-[250px] cursor-pointer rounded-lg bg-black hover:shadow-lg hover:shadow-white/40 "
+            >
+              <p className="mt-8 py-4 text-center font-semibold  text-white hover:text-gray-200">
+                Start your free trial
+              </p>
+            </div>
           </div>
         </div>
         <div id="col-2" className="hidden items-end overflow-hidden sm:flex">
-          <div className="h-[370px]">
+          <div className="ml-12 h-[370px] pt-10">
             <Image
-              src="/home/github.jpeg"
-              width={480}
+              src="/home/github1.webp"
+              width={380}
               height={270}
               alt="Generated unit test on the flight"
             />

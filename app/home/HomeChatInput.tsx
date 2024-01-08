@@ -43,7 +43,7 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
           sequence={[
             "Write a chat application",
             1000,
-            `Help me understanding Typescript`,
+            `Teach me Typescript`,
             1000,
             "Teach me React Native",
             1000,
@@ -53,7 +53,7 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
             1000,
           ]}
           wrapper="span"
-          speed={75}
+          speed={55}
           repeat={Infinity}
         />
       </div>
