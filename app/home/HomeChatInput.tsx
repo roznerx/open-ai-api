@@ -9,9 +9,9 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
     if (rotatingTextRef.current && inputRef.current) {
       rotatingTextRef.current.classList.add("hidden")
       inputRef.current.focus()
-      console.log("inputRef.current", inputRef.current)
     }
   }
+
   return (
     <div className="relative">
       <div
@@ -20,7 +20,7 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
       >
         <input
           ref={inputRef}
-          className="font-lg z-40 w-[590px] rounded-xl 
+          className="font-lg z-10 w-[590px] rounded-xl 
          border-none bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60
         placeholder:text-white focus:border-[0px] focus:outline-none focus:outline-0 
          focus:ring-0 active:outline-0"
@@ -31,17 +31,15 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
           type="submit"
           title="Submit your prompt"
           aria-label="Submit your prompt"
-          className="group z-10 mr-2 h-12 w-48 rounded-xl border-violet-500 bg-violet-500 p-1  text-white disabled:hover:bg-transparent"
+          className="group mr-2 h-12 w-48 rounded-xl border-violet-500 bg-violet-500 p-1 text-white disabled:hover:bg-transparent"
         >
-          <p className="font-normal duration-150 group-hover:scale-125 group-hover:font-semibold">
-            Start with AI
-          </p>
+          <p className="text-[18px] font-normal duration-150 ">Start with AI</p>
         </button>
       </div>
-      <div className="absolute bottom-5 left-7 z-50 sm:left-28">
+      <div className="absolute bottom-5 left-7 z-20 sm:left-28">
         <TypeAnimation
           ref={rotatingTextRef}
-          className="rotating-text text-white"
+          className="rotating-text text-gray-200"
           sequence={[
             "Write a chat application",
             1000,
@@ -55,7 +53,7 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
             1000,
           ]}
           wrapper="span"
-          speed={50}
+          speed={75}
           repeat={Infinity}
         />
       </div>
