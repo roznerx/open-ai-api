@@ -24,9 +24,7 @@ export default function InputChat({
         <form
           id="chat-form"
           onSubmit={(e) => {
-            e.preventDefault()
-            // console.log("pasa x handle submit")
-            // handleSubmit(e)
+            handleSubmit(e)
           }}
         >
           <input
@@ -44,12 +42,17 @@ export default function InputChat({
             onChange={handleInputChange}
             placeholder={translations?.ask}
           />
-          <button className="absolute right-8 top-2 rounded-lg bg-purple-700 hover:bg-purple-900 disabled:hover:bg-transparent sm:right-0">
+          <button
+            type="submit"
+            className="absolute right-8 top-2 rounded-lg bg-purple-700 hover:bg-purple-900 disabled:hover:bg-transparent sm:right-0"
+          >
             <Send
               className="mb-2 mr-2 rotate-45 pl-2 pt-1 text-mint"
               width={25}
               height={25}
-              onClick={(e) => handleSubmit(e)}
+              onClick={(e) => {
+                handleSubmit(e)
+              }}
             />
           </button>
         </form>
