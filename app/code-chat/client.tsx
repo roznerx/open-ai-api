@@ -29,10 +29,7 @@ export default function Client({
     handleInputChange,
     handleSubmit,
   } = useChat({
-    initialMessages: [
-      { id: "1", role: "system", content: AI_MOOD.engineer },
-      { id: "2", role: "user", content: initialQuery },
-    ],
+    initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
   })
 
   useEffect(() => {
@@ -83,24 +80,4 @@ export default function Client({
       />
     </>
   )
-}
-
-{
-  /* <Modal
-        body="Our servers are taking longer than expected. We suggest
-        rewording your instruction or input to get a faster result."
-        isOpen={modaIsOpen}
-        buttonText="Ok"
-        setIsOpen={setModaIsOpen}
-      />
-      <Modal
-        body="What should we call this question?"
-        onSave={onSaveQuestionModal}
-        isOpen={showSavePromptModal}
-        propmptName={questionName}
-        handleInputChange={handleInputChange}
-        savePropmptName
-        buttonText="Save"
-        setIsOpen={setShowSavePromptModal}
-      /> */
 }
