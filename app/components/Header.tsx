@@ -5,7 +5,7 @@ import UserDropdown from "app/components/auth/UserDropdown"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { cn } from "@/lib/utils"
 import { AuthContext } from "app/provider"
 
@@ -23,15 +23,6 @@ export default function Header({
     setModalIsOpen: () => {},
   }
 
-  // const shouldJustifyBetween =
-  //   pathName == "/" ||
-  //   pathName?.startsWith("/blog") ||
-  //   pathName == "/pricing" ||
-  //   pathName == "/terms-and-conditions" ||
-  //   pathName == "/privacy"
-  const [showWidget, setShowWidget] = useState(false)
-  // const router = useRouter()
-
   return (
     <>
       <div
@@ -43,6 +34,7 @@ export default function Header({
             className={`ml-4 pt-2 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
+              pathName == "/code-chat" ||
               pathName == "/settings"
                 ? "hidden"
                 : "sm:ml-6"
@@ -110,12 +102,7 @@ export default function Header({
               )}
             </div>
           </div>
-          <UserDropdown
-            setShowWidget={setShowWidget}
-            showWidget={showWidget}
-            translations={translations}
-            session={session}
-          />
+          <UserDropdown translations={translations} session={session} />
         </div>
       </div>
     </>
