@@ -32,7 +32,7 @@ module.exports = {
         },
       ],
       "3xl": [
-        "25px",
+        "28px",
         {
           lineHeight: "35px",
           fontWeight: "500",
@@ -108,8 +108,8 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        pro: ["var(--font-pro)"],
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
       },
       colors: {
         specialBlue: "#6ea9d7",

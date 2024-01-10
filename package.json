@@ -30,6 +30,7 @@
     "eventsource-parser": "^0.0.5",
     "framer-motion": "^8.4.3",
     "fuse.js": "^6.6.2",
+    "geist": "^1.2.0",
     "github-slugger": "^2.0.0",
     "lottie-react": "^2.4.0",
     "lucide-react": "^0.279.0",
