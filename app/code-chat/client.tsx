@@ -29,7 +29,10 @@ export default function Client({
     handleInputChange,
     handleSubmit,
   } = useChat({
-    initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
+    initialMessages: [
+      { id: "1", role: "system", content: AI_MOOD.engineer },
+      { id: "2", role: "user", content: initialQuery },
+    ],
   })
 
   useEffect(() => {
