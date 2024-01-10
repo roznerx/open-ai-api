@@ -24,13 +24,14 @@ export default function GoFromThis() {
           </div>
 
           <div
-            className={`group mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[75%] sm:grid-cols-2 sm:place-items-center`}
+            className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[75%] sm:grid-cols-2 sm:place-items-center`}
           >
             <div
-              className="group flex h-[444px] w-full flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] 
+              className="flex h-[444px] w-full flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] 
             to-[#B1EAF1] sm:w-[500px]"
             >
               <Image
+                className=""
                 src="/home/from-this.svg"
                 alt="Go from this component"
                 width={406}

@@ -80,7 +80,7 @@ export default function Header({
             <div
               onClick={() => setModalIsOpen(true)}
               className={cn(
-                "my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
+                "my-auto mr-3 mt-3 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
               )}
             >
               {!session && (

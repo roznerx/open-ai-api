@@ -21,19 +21,19 @@ export default function SyncYourFlow() {
       >
         <div
           id="col-1"
-          className="w-full sm:relative sm:ml-12 sm:mt-5 sm:w-[650px]"
+          className="flex w-full justify-center sm:ml-2 sm:mt-5 sm:w-[650px] sm:justify-start"
         >
           <Image
-            className="mx-auto mt-6 object-center"
+            className="my-12 h-96 w-96 sm:my-0 sm:ml-12"
             src="/home/github1.webp"
-            width={380}
-            height={270}
+            width={420}
+            height={300}
             alt="Generated unit test on the flight"
           />
         </div>
-        <div id="col-2" className="sm:ml-12 sm:mt-24 sm:w-[500px]">
+        <div id="col-2" className="sm:ml-12 sm:mt-20 sm:w-[500px]">
           <h3 className="text-left text-5xl font-semibold leading-tight text-white sm:text-left">
-            Get our Github App <br /> for pro members
+            Github App for premium members
           </h3>
           <p className="mt-6 text-2xl  leading-tight text-white">
             Empower your workflow with Code Genius Code Coverage and get unit
