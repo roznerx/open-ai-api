@@ -31,7 +31,7 @@ export default function GoFromThis() {
             to-[#B1EAF1] sm:w-[500px]"
             >
               <Image
-                className=""
+                className="scale-100 cursor-pointer duration-300 ease-in hover:scale-150"
                 src="/home/from-this.svg"
                 alt="Go from this component"
                 width={406}
@@ -44,6 +44,7 @@ export default function GoFromThis() {
        sm:w-[505px] "
             >
               <Image
+                className="scale-100 cursor-pointer duration-300 ease-in hover:scale-150"
                 src="/home/to-this.svg"
                 alt="To this unit test"
                 width={406}
