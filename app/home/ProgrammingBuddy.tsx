@@ -34,7 +34,7 @@ export default function ProgrammingBuddy() {
             id="col-2"
             className="relative pr-12 sm:ml-12 sm:mt-20 sm:w-[500px]"
           >
-            <h3 className=" text-left text-5xl font-semibold leading-tight text-white">
+            <h3 className="pr-12 text-left text-5xl font-semibold leading-tight text-white">
               Chat with your AI programming buddy
             </h3>
             <p className="mt-6 text-2xl  leading-tight text-white">
@@ -43,10 +43,10 @@ export default function ProgrammingBuddy() {
             </p>
             <div
               onClick={() => router.push("/pricing")}
-              className="w-[250px] cursor-pointer rounded-lg bg-black"
+              className="w-[200px] cursor-pointer rounded-lg bg-black"
             >
-              <p className="mt-8 py-4 text-center font-semibold  text-white">
-                Start your free trial
+              <p className="mt-8 py-4 text-center font-semibold text-white hover:text-gray-200">
+                Start with AI now
               </p>
             </div>
           </div>

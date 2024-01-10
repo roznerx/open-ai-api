@@ -43,8 +43,8 @@ export default function SyncYourFlow() {
             onClick={() => router.push("/pricing")}
             className="w-[250px] cursor-pointer rounded-lg bg-black"
           >
-            <p className="mt-8 py-4 text-center font-semibold  text-white">
-              Start your free trial
+            <p className="mt-8 py-4 text-center font-semibold text-white hover:text-gray-200">
+              Start with AI now
             </p>
           </div>
         </div>
