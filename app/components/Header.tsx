@@ -31,7 +31,7 @@ export default function Header({
       >
         <div className={`mt-2 flex w-full justify-between`}>
           <div
-            className={`ml-4 mt-4 ${
+            className={`ml-4 mt-3 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
               canHideLogoInChat ||
@@ -53,16 +53,16 @@ export default function Header({
                   className={`sm:text-xl sm:text-xl ml-2  ${
                     pathName?.startsWith("/blog")
                       ? "bg-purple-900"
-                      : "text-celeste"
+                      : "bg-gradient-to-r from-mint to-blue"
                   }
-                    font-sans text-3xl font-bold tracking-tight sm:ml-2 sm:mt-1 sm:leading-6`}
+                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
                 >
                   Code Genius
                 </h1>
               </div>
             </Link>
           </div>
-          <div className="mb-3 mr-1 flex h-6 pb-2 font-semibold sm:mt-0">
+          <div className="mb-3 mr-1 flex h-6 pb-2 font-semibold sm:mt-1">
             {!session && (
               <>
                 <Link href={"/pricing"}>

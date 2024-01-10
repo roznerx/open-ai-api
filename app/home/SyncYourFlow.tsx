@@ -4,8 +4,8 @@ import { useRouter } from "next/navigation"
 export default function SyncYourFlow() {
   const router = useRouter()
   return (
-    <div className="mx-auto my-20 w-screen">
-      <h5 className="flex justify-center text-5xl text-white">
+    <div className="mx-auto my-32 w-screen">
+      <h5 className=" flex justify-center text-5xl text-white">
         Stay in sync with your workflow
       </h5>
       <p className="my-4 mb-10 mt-5 flex justify-center text-center text-2xl uppercase text-celeste">

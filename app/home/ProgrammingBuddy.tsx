@@ -6,19 +6,19 @@ export default function ProgrammingBuddy() {
   return (
     <div className="w-screen">
       <div className={`my-10 mt-16 flex flex-col items-center justify-center`}>
-        <p className="mb-12 text-center text-5xl font-semibold text-white">
+        <p className="mb-20 text-center text-5xl font-semibold text-white">
           Your pair programming that never sleeps
         </p>
         <div
           className="grid h-auto w-[90%] grid-cols-1
-      rounded-xl bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] p-4 sm:h-[451px]
-      sm:w-[75%] sm:grid-cols-2 sm:p-0"
+      rounded-xl bg-gradient-to-b from-[#A486FF] to-[#6530FC] p-4 sm:h-[451px]
+      sm:w-[1050px] sm:grid-cols-2 sm:p-0"
         >
           <div id="col-1" className="sm:ml-12 sm:mt-24 sm:w-[500px]">
             <h3 className="text-center text-5xl font-semibold leading-tight text-white sm:text-left">
               Chat with your AI programming buddy
             </h3>
-            <p className="mt-6 text-2xl font-bold leading-tight">
+            <p className="mt-6 text-2xl  leading-tight text-white">
               Code Genius will help you at any stage of your development
               process.
             </p>

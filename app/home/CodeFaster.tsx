@@ -3,13 +3,13 @@ import Image from "next/image"
 export default function CodeFaster() {
   return (
     <div
-      className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 gap-y-8 sm:w-[75%] sm:grid-cols-2 sm:place-items-center`}
+      className={`mx-auto mt-32 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 gap-y-8 sm:w-[1100px] sm:grid-cols-2 sm:place-items-center`}
     >
       {/* <h2 className="mx-auto text-center text-4xl text-white">
         Save your time for creating more features
       </h2> */}
       <div
-        className="group relative flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-xl bg-gradient-to-b from-[#A486FF] to-[#6530FC]
+        className="group relative flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
        sm:w-[505px] sm:bg-gradient-to-t"
       >
         <Image

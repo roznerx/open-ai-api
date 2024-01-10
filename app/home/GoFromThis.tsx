@@ -4,17 +4,17 @@ import CurveArrow from "./CurveArrow"
 export default function GoFromThis() {
   return (
     <>
-      <div className="relative mx-auto mt-20 flex w-screen flex-col items-center justify-center">
+      <div className="relative mx-auto mt-32 flex w-screen flex-col items-center justify-center">
         <p className=" text-center text-5xl font-semibold text-white">
           Get better and more efficient unit tests
         </p>
-        <p className="mt-6 text-2xl  text-celeste">
-          SEE WHY YOU SHOULD TRY CODE GENIUS PREMIUM FEATURES
+        <p className="mb-8 mt-6 text-2xl text-celeste">
+          SEE WHY YOU SHOULD TRY OUR PREMIUM FEATURES
         </p>
         <CurveArrow />
-        <p className="absolute top-[250px] text-[18px] italic text-white">
+        {/* <p className="absolute top-[250px] text-[18px] italic text-white">
           in seconds
-        </p>
+        </p> */}
         <div className="w-screen">
           <div className="mx-auto flex justify-evenly">
             <p className="mt-8 text-3xl font-semibold text-white">
@@ -34,7 +34,6 @@ export default function GoFromThis() {
             to-[#B1EAF1] sm:w-[500px]"
             >
               <Image
-                className="duration-30-0 cursor-pointer transition hover:border-2 group-hover:scale-150 group-hover:rounded-xl group-hover:border-white"
                 src="/home/from-this.svg"
                 alt="Go from this component"
                 width={406}
@@ -47,7 +46,6 @@ export default function GoFromThis() {
        sm:w-[505px] "
             >
               <Image
-                className="cursor-pointer transition duration-300 hover:scale-150 hover:rounded-xl hover:border-2 hover:border-white"
                 src="/home/to-this.svg"
                 alt="To this unit test"
                 width={406}
