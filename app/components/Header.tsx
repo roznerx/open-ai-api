@@ -22,7 +22,7 @@ export default function Header({
   let { setModalIsOpen } = useContext(AuthContext) || {
     setModalIsOpen: () => {},
   }
-
+  const canHideLogoInChat = pathName == "/code-chat" && session !== null
   return (
     <>
       <div
@@ -31,10 +31,10 @@ export default function Header({
       >
         <div className={`mt-2 flex w-full justify-between`}>
           <div
-            className={`ml-4 pt-2 ${
+            className={`ml-4 mt-4 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
-              pathName == "/code-chat" ||
+              canHideLogoInChat ||
               pathName == "/settings"
                 ? "hidden"
                 : "sm:ml-6"
@@ -53,9 +53,9 @@ export default function Header({
                   className={`sm:text-xl sm:text-xl ml-2  ${
                     pathName?.startsWith("/blog")
                       ? "bg-purple-900"
-                      : "bg-gradient-to-r from-mint to-blue"
+                      : "text-celeste"
                   }
-                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
+                    font-sans text-3xl font-bold tracking-tight sm:ml-2 sm:mt-1 sm:leading-6`}
                 >
                   Code Genius
                 </h1>

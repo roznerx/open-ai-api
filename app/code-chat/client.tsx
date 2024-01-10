@@ -15,8 +15,14 @@ export default function Client({
   translations,
   modalTranslations,
   initialQuery = "",
-}) {
+}: any) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
+  let messageFromHome: any
+
+  messageFromHome =
+    initialQuery !== ""
+      ? { id: "2", role: "user", content: initialQuery }
+      : null
 
   const userName = session && session.user?.name
   const {
@@ -30,8 +36,12 @@ export default function Client({
     handleSubmit,
   } = useChat({
     initialMessages: [
-      { id: "1", role: "system", content: AI_MOOD.engineer },
-      { id: "2", role: "user", content: initialQuery },
+      {
+        id: "1",
+        role: "system",
+        content: AI_MOOD.engineer,
+        ...messageFromHome,
+      },
     ],
   })
 

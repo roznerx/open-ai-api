@@ -20,7 +20,7 @@ export default async function Page({
   const dictionary = await getDictionary(lang)
 
   return (
-    <main className="flex min-h-screen w-full items-center justify-center">
+    <main className="flex w-full items-center justify-center">
       <Client
         initialQuery={(searchParams && searchParams.q) || ""}
         session={session}
