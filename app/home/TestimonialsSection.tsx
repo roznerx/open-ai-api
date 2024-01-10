@@ -30,7 +30,7 @@ export default function TestimonialsSection() {
       <h5 className="mt-10 flex justify-center text-4xl text-white ">
         Loved by developers
       </h5>
-      <p className="mt-5 flex justify-center text-center text-2xl text-gray-100">
+      <p className="mt-5 flex justify-center px-4 text-center text-2xl text-gray-100">
         Our users save 35% of development time every day they use Code Genius
       </p>
       <div className="mx-auto flex w-full overflow-hidden sm:w-[90%]">

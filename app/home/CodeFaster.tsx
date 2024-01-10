@@ -3,7 +3,7 @@ import Image from "next/image"
 export default function CodeFaster() {
   return (
     <div
-      className={`mx-auto mt-32 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 gap-y-8 sm:w-[1100px] sm:grid-cols-2 sm:place-items-center`}
+      className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 gap-y-8 sm:w-[1100px] sm:grid-cols-2 sm:place-items-center`}
     >
       {/* <h2 className="mx-auto text-center text-4xl text-white">
         Save your time for creating more features
