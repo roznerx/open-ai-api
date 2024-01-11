@@ -1,7 +1,12 @@
+import Avvvatars from "avvvatars-react"
+
 export default function Testimonial({ testimonial }) {
   return (
     <div className="mx-0 mt-16 flex w-[90%] max-w-full items-start gap-4 self-center rounded-lg border border-[#404040] bg-purple-800 p-4 shadow-sm max-md:mt-10 sm:w-80">
-      <div className="flex h-10 w-10 shrink-0 flex-col rounded-[50%] bg-violet-400" />
+      <Avvvatars
+        borderColor="6530FC"
+        value={`${testimonial.author}@gmail.com`}
+      />
       <div className="flex w-full grow basis-[0%] flex-col items-stretch self-stretch sm:w-[80%]">
         <div className="text-sm whitespace-nowrap font-semibold leading-5 text-white">
           {testimonial.author}

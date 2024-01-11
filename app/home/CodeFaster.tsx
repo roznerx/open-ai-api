@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Tilt from "react-parallax-tilt"
 
 export default function CodeFaster() {
   return (
@@ -9,32 +10,52 @@ export default function CodeFaster() {
         Save your time for creating more features
       </h2> */}
       <div
-        className="group relative flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
+        className="group relative flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-[35px] bg-gradient-to-t from-[#6530FC] to-[#A486FF]
        sm:w-[505px] sm:bg-gradient-to-t"
       >
-        <Image
-          src="/icons/rayo-gradient.svg"
-          className="h-64 w-64 transition duration-200 group-hover:scale-110"
-          alt="rayo"
-          width={196}
-          height={163}
-        />
+        <Tilt
+          glareEnable={false}
+          glareMaxOpacity={0}
+          glareColor="#cecece"
+          glarePosition="all"
+          glareBorderRadius="0px"
+          tiltMaxAngleX={60}
+          tiltMaxAngleY={60}
+        >
+          <Image
+            src="/icons/cloud.svg"
+            className="h-60 w-60"
+            alt="rayo"
+            width={196}
+            height={163}
+          />
+        </Tilt>
         <p className="w-[80%] text-center text-4xl font-semibold leading-tight text-white">
           Create unit tests in matter of seconds
         </p>
       </div>
 
       <div
-        className="group relative mt-12 flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF]
+        className="group relative mt-12 flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-[35px] bg-gradient-to-t from-[#6530FC] to-[#A486FF]
       sm:mt-0 sm:w-[505px] sm:bg-gradient-to-t"
       >
-        <Image
-          src="/icons/code-fast.svg"
-          className="mt-5 h-64 w-64 transition duration-200 group-hover:scale-110"
-          alt="camera"
-          width={196}
-          height={163}
-        />
+        <Tilt
+          glareEnable={false}
+          glareMaxOpacity={0}
+          glareColor="#cecece"
+          glarePosition="all"
+          glareBorderRadius="0px"
+          tiltMaxAngleX={60}
+          tiltMaxAngleY={60}
+        >
+          <Image
+            src="/icons/layers1.svg"
+            className="mt-5 h-56 w-56"
+            alt="camera"
+            width={196}
+            height={163}
+          />
+        </Tilt>
         <p className=" mx-auto w-[80%] text-center text-4xl font-semibold leading-tight text-white">
           Code faster and efficient than ever
         </p>

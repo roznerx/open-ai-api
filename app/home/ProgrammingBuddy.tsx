@@ -1,4 +1,5 @@
 import Image from "next/image"
+import Tilt from "react-parallax-tilt"
 import { useRouter } from "next/navigation"
 
 export default function ProgrammingBuddy() {
@@ -14,21 +15,31 @@ export default function ProgrammingBuddy() {
         </p>
         <div
           className="grid h-auto w-[90%] grid-cols-1
-      rounded-xl bg-gradient-to-b from-[#A486FF] to-[#6530FC] p-4 sm:h-[451px]
+      rounded-[35px] bg-gradient-to-b from-[#A486FF] to-[#6530FC] p-4 sm:h-[451px]
       sm:w-[1050px] sm:grid-cols-2 sm:p-0"
         >
           <div
             id="col-1"
             className="flex justify-center sm:ml-20 sm:w-[500px] sm:justify-start"
           >
-            <Image
-              className="my-12"
-              src="/home/chat-combo.svg"
-              width={352}
-              height={300}
-              title="Chat Combo"
-              alt="Chat combo"
-            />
+            <Tilt
+              glareEnable={false}
+              glareMaxOpacity={0}
+              glareColor="#cecece"
+              glarePosition="all"
+              glareBorderRadius="0px"
+              tiltMaxAngleX={60}
+              tiltMaxAngleY={60}
+            >
+              <Image
+                className="mt-20 -rotate-[7.5deg]"
+                src="/home/chat-combo.svg"
+                width={352}
+                height={300}
+                title="Chat Combo"
+                alt="Chat combo"
+              />
+            </Tilt>
           </div>
           <div
             id="col-2"

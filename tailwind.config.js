@@ -67,6 +67,9 @@ module.exports = {
     transparent: "transparent",
     current: "currentColor",
     extend: {
+      scale: {
+        "-100": "-1",
+      },
       animation: {
         tilt: "tilt 3s infinite linear",
         bounceArrow: "bounce 2s infinite",
