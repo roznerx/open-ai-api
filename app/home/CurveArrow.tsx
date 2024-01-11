@@ -1,9 +1,9 @@
 import "../../styles/curve.css"
 
-export default function CurveArrow() {
+export default function CurveArrow({ isMobile }) {
   return (
     <>
-      <div className="things">
+      <div className={`things ${isMobile ? "rotate-180" : "rotate-0"}`}>
         <div className="content">
           <div className="arrow">
             <div className="curve"></div>

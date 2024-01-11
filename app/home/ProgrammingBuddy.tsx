@@ -6,11 +6,11 @@ export default function ProgrammingBuddy({ translations }) {
   const router = useRouter()
   return (
     <div className="w-screen">
-      <div className={`my-10 mt-16 flex flex-col items-center justify-center`}>
-        <p className="mb-4 max-w-5xl text-center text-5xl leading-normal text-white">
+      <div className={`my-16 mt-16 flex flex-col items-center justify-center`}>
+        <h2 className="mb-4 max-w-5xl text-center text-4xl leading-tight text-white sm:text-5xl">
           {translations.title}
-        </p>
-        <p className="mb-12 mt-3 max-w-5xl px-4 text-center text-2xl font-semibold uppercase leading-normal tracking-normal text-celeste">
+        </h2>
+        <p className="mb-12 mt-3 max-w-5xl px-4 text-center text-2xl font-normal leading-tight  text-white">
           {translations.subtitle}
         </p>
         <div
@@ -20,7 +20,7 @@ export default function ProgrammingBuddy({ translations }) {
         >
           <div
             id="col-1"
-            className="flex justify-center sm:ml-20 sm:w-[500px] sm:justify-start"
+            className="mt-6 flex justify-center sm:ml-20 sm:w-[500px] sm:justify-start"
           >
             <Tilt
               glareEnable={false}
@@ -32,7 +32,7 @@ export default function ProgrammingBuddy({ translations }) {
               tiltMaxAngleY={60}
             >
               <Image
-                className="mt-20 -rotate-[7.5deg]"
+                className="mb-16 -rotate-[7.5deg]"
                 src="/home/chat-combo.svg"
                 width={352}
                 height={300}
@@ -43,21 +43,23 @@ export default function ProgrammingBuddy({ translations }) {
           </div>
           <div
             id="col-2"
-            className="relative pr-12 sm:ml-12 sm:mt-16 sm:w-[500px]"
+            className="relative w-full sm:ml-12 sm:mt-16 sm:w-[500px] sm:pr-12"
           >
-            <h3 className="pr-12 text-left text-4xl font-bold leading-tight text-white">
+            <h3 className="text-center text-4xl font-bold leading-tight text-white sm:pr-12">
               {translations.bannerTitle}
             </h3>
-            <p className="mt-6 text-2xl  text-white">
+            <p className="mt-6 px-4 text-center text-2xl leading-tight text-white">
               {translations.bannerSubTitle}
             </p>
-            <div
-              onClick={() => router.push("/pricing")}
-              className="w-[200px] cursor-pointer rounded-lg bg-black"
-            >
-              <p className="mt-8 py-4 text-center font-semibold text-white hover:text-gray-200">
-                {translations.cta}
-              </p>
+            <div className="flex justify-center">
+              <div
+                onClick={() => router.push("/pricing")}
+                className="my-6 w-[200px] cursor-pointer rounded-lg bg-black"
+              >
+                <p className="py-2 text-center text-2xl font-semibold text-white hover:text-gray-200">
+                  {translations.cta}
+                </p>
+              </div>
             </div>
           </div>
         </div>

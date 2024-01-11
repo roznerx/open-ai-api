@@ -4,11 +4,11 @@ import { useRouter } from "next/navigation"
 export default function SyncYourFlow({ translations }) {
   const router = useRouter()
   return (
-    <div className="mx-auto my-32 w-screen">
+    <div className="mx-auto my-20 w-screen">
       <h5 className="flex justify-center px-4 text-center text-5xl text-white">
         {translations.title}
       </h5>
-      <p className="my-4 mb-10 mt-5 flex justify-center px-4 text-center text-2xl uppercase text-celeste">
+      <p className="my-4 mb-10 mt-5 flex justify-center px-4 text-center text-2xl text-white">
         {translations.subtitle}
       </p>
 
@@ -30,19 +30,21 @@ export default function SyncYourFlow({ translations }) {
           />
         </div>
         <div id="col-2" className="mr-6 sm:mt-12">
-          <h3 className="max-w-[496px] text-left text-5xl font-semibold leading-tight text-white sm:text-left">
+          <h3 className="max-w-[496px] text-center text-5xl font-semibold leading-tight text-white sm:text-left sm:text-left">
             {translations.bannerTitle}
           </h3>
-          <p className="mt-6 text-2xl leading-tight text-white">
+          <p className="mt-6 text-center text-2xl leading-tight text-white sm:text-left">
             {translations.bannerSubTitle}
           </p>
-          <div
-            onClick={() => router.push("/pricing")}
-            className="w-[250px] cursor-pointer rounded-lg bg-black"
-          >
-            <p className="mt-8 py-4 text-center font-semibold text-white hover:text-gray-200">
-              {translations.cta}
-            </p>
+          <div className="flex justify-center">
+            <div
+              onClick={() => router.push("/pricing")}
+              className="my-6 w-[250px] cursor-pointer rounded-lg bg-black"
+            >
+              <p className="py-2 text-center text-2xl font-semibold text-white hover:text-gray-200">
+                {translations.cta}
+              </p>
+            </div>
           </div>
         </div>
       </div>
