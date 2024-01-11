@@ -2,16 +2,16 @@ import Image from "next/image"
 import Tilt from "react-parallax-tilt"
 import { useRouter } from "next/navigation"
 
-export default function ProgrammingBuddy() {
+export default function ProgrammingBuddy({ translations }) {
   const router = useRouter()
   return (
     <div className="w-screen">
       <div className={`my-10 mt-16 flex flex-col items-center justify-center`}>
-        <p className="mb-4 text-center text-5xl font-semibold tracking-tight text-white">
-          Your pair programming that never sleeps
+        <p className="mb-4 max-w-5xl text-center text-5xl leading-normal text-white">
+          {translations.title}
         </p>
-        <p className="mb-12 mt-3 px-4 text-center text-2xl uppercase text-celeste">
-          {`Work closely with your best friend when it comes to code`}
+        <p className="mb-12 mt-3 max-w-5xl px-4 text-center text-2xl font-semibold uppercase leading-normal tracking-normal text-celeste">
+          {translations.subtitle}
         </p>
         <div
           className="grid h-auto w-[90%] grid-cols-1
@@ -43,21 +43,20 @@ export default function ProgrammingBuddy() {
           </div>
           <div
             id="col-2"
-            className="relative pr-12 sm:ml-12 sm:mt-20 sm:w-[500px]"
+            className="relative pr-12 sm:ml-12 sm:mt-16 sm:w-[500px]"
           >
-            <h3 className="pr-12 text-left text-5xl font-semibold leading-tight text-white">
-              Chat with your AI programming buddy
+            <h3 className="pr-12 text-left text-4xl font-bold leading-tight text-white">
+              {translations.bannerTitle}
             </h3>
-            <p className="mt-6 text-2xl  leading-tight text-white">
-              Code Genius will help you at any stage of your development
-              process.
+            <p className="mt-6 text-2xl  text-white">
+              {translations.bannerSubTitle}
             </p>
             <div
               onClick={() => router.push("/pricing")}
               className="w-[200px] cursor-pointer rounded-lg bg-black"
             >
               <p className="mt-8 py-4 text-center font-semibold text-white hover:text-gray-200">
-                Start with AI now
+                {translations.cta}
               </p>
             </div>
           </div>

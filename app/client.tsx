@@ -18,10 +18,10 @@ export default function Client({ translations }) {
           <HomeChat />
         </div>
       </div>
-      <ProgrammingBuddy />
-      <CodeFaster />
-      <GoFromThis />
-      <SyncYourFlow />
+      <ProgrammingBuddy translations={translations?.home?.programmingBuddy} />
+      <CodeFaster translations={translations?.home?.faster} />
+      <GoFromThis translations={translations?.home?.goFrom} />
+      <SyncYourFlow translations={translations?.home?.stayInSync} />
       <TestimonialsSection />
       <div className="my-24 flex w-full items-center justify-center">
         <Faqs isHome translations={translations.pricing.faqs} />

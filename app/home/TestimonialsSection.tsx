@@ -16,39 +16,49 @@ const testimonials = [
   {
     author: "Paul Smith",
     review: "Really enjoyed using the product, very user friendly.",
+    date: "January 2023",
   },
   {
     author: "Pablo Ochoa",
-    review: "Creating a unit test for my components feels like pure magic.",
+    review:
+      "This not only enhances the overall performance of the application but also promotes best coding practices.",
+    date: "March 2023",
   },
+
   {
     author: "Jasper Chen",
-    review: "Code Genius allows you to make your creativity a reality.",
+    review:
+      "Code Genius excels in automating the often labor-intensive process of unit test generation.",
+    date: "April 2023",
   },
   {
-    author: "Fede Sanchez",
+    author: "Federico Sanchez",
     review:
-      "I've been utilizing Code Genius and it has proven to be incredibly valuable.",
-  },
-  {
-    author: "Cesar Vin",
-    review:
-      "Amazing a app, this week my productivity is fire! Now I'm a Code Genius!",
-  },
-  {
-    author: "Esteban Puentes",
-    review:
-      "Amazing and very useful app. It's a true user friendly experience.",
+      "The optimization feature has been instrumental in ensuring my code is not just functional but also runs smoothly and efficiently.",
+    date: "May 2023",
   },
   {
     author: "Cesar Vin",
     review:
-      "Amazing a app, this week my productivity is fire! Now I'm a Code Genius!",
+      "Code Genius stands out in its ability to optimize code effortlessly. The tool analyzes and refines code structures, identifying potential bottlenecks and suggesting improvements",
+    date: "June 2023",
   },
   {
-    author: "Esteban Puentes",
+    author: "Paty Cabrera",
     review:
-      "Amazing and very useful app. It's a true user friendly experience.",
+      "The chatting feature has undoubtedly enhanced my development workflow, making Code Genius a valuable asset in my toolkit.",
+    date: "November 2023",
+  },
+  {
+    author: "Sam Weits",
+    review:
+      "I'm particularly impressed with Code Genius for its remarkable speed and precision in generating unit tests",
+    date: "December 2023",
+  },
+  {
+    author: "Esteban Fuentes",
+    review:
+      "It significantly streamlines the dev process, allowing me to focus more on coding and less on manual testing.",
   },
 ]
 

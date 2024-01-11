@@ -1,24 +1,24 @@
 import Image from "next/image"
 import CurveArrow from "./CurveArrow"
 
-export default function GoFromThis() {
+export default function GoFromThis({ translations }) {
   return (
     <>
       <div className="relative mx-auto mt-32 flex w-screen flex-col items-center justify-center">
         <p className=" text-center text-5xl font-semibold text-white">
-          Get better and more efficient unit tests
+          {translations.title}
         </p>
         <p className="mb-8 mt-6 px-4 text-center text-2xl text-celeste">
-          SEE WHY YOU SHOULD TRY OUR PREMIUM FEATURES
+          {translations.subtitle}
         </p>
         <CurveArrow />
         <div className="w-screen">
           <div className="mx-auto flex justify-evenly">
             <p className="mt-8 text-3xl font-semibold text-white">
-              Go from this component
+              {translations.fromThis}
             </p>
             <p className="mr-8 mt-8 pr-8 text-3xl font-semibold text-white">
-              To this unit test
+              {translations.toThis}
             </p>
           </div>
 
