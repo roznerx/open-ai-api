@@ -138,7 +138,7 @@ export const WelcomeEmail = ({ username = "Lautaro" }: WelcomeEmailProps) => {
             </Row>
             <Hr style={hr} />
             <Text style={footerText}>
-              © Copyright 2023. All rights reserved.
+              © Copyright 2024. All rights reserved.
             </Text>
           </Section>
         </Container>

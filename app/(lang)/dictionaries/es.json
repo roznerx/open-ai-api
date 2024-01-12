@@ -44,8 +44,8 @@
       "subtitle": "Nuestros usuarios ahorran un 35% del tiempo de desarrollo por día"
     },
     "programmingBuddy": {
-      "title": "Code Genius es como tener un compañero de programación que nunca duerme",
-      "subtitle": "Imagina una herramienta que colabora contigo las 24 horas del día, proporcionando sugerencias inteligentes, optimizando tu código y generando pruebas unitarias con una precisión inigualable.",
+      "title": "Tu compañero de programación que nunca duerme",
+      "subtitle": "Ofreciendo sugerencias inteligentes, optimizando tu código y generando pruebas unitarias",
       "bannerTitle": "Chatea con tu compañero de programación de IA",
       "bannerSubTitle": "Participa en conversaciones en lenguaje natural con este compañero inteligente, fusionando perfectamente la facilidad conversacional de charlar con la eficiencia de un asistente de codificación experimentado.",
       "cta": "Comienza ahora"
@@ -68,8 +68,8 @@
       "layers": "Codifica más rápido y eficientemente que nunca"
     },
     "superHero": {
-      "title": "Genera código de calidad en segundos",
-      "subtitle": "Lleva tus ideas a otro nivel con el poder y la ayuda de la Inteligencia Artificial",
+      "title": "Generación de Código con IA para Desarrolladores",
+      "subtitle": "Transforma tu Flujo de Trabajo. Genera Código de Calidad al Instante.",
       "smart": {
         "title": "Aumenta el rendimiento de tu código",
         "subtitle": "Code Genius analiza tu código en tiempo real y ofrece sugerencias inteligentes y mejoras de rendimiento. Enfocate a añadir valor al producto, nosotros garantizamos que el código sea limpio, eficiente y libre de errores."
@@ -402,7 +402,7 @@
     "blog": "Blog",
     "terms": "Términos",
     "privacy": "Privacidad",
-    "copy": "© Copyright 2023. Todos los derechos reservados."
+    "copy": "© Copyright 2024. Todos los derechos reservados."
   },
   "modals": {
     "signIn": {

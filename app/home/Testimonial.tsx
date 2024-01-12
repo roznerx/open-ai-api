@@ -7,7 +7,7 @@ export default function Testimonial({ testimonial }) {
   const lastName = nameParts[1].substring(0, 1)
 
   return (
-    <div className="mx-0 mt-16 flex w-[90%] max-w-full items-start gap-4 self-center rounded-lg border border-[#404040] bg-purple-800 p-4 shadow-sm max-md:mt-10 sm:w-80">
+    <div className="mx-0 mt-16 flex w-[90%] max-w-full items-start gap-4 self-center rounded-lg border border-gray-300 bg-violet-800 p-4 shadow-sm max-md:mt-10 sm:w-80">
       <Avvvatars borderColor="6530FC" value={`${name}${lastName}`} />
       <div className="flex w-full grow basis-[0%] flex-col items-stretch self-stretch sm:w-[80%]">
         <div className="text-sm mt-1 whitespace-nowrap font-semibold leading-5 text-white">
