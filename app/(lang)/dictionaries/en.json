@@ -52,9 +52,9 @@
     },
     "stayInSync": {
       "title": "Stay in sync with your workflow",
-      "subtitle": "Seamless Workflow Synchronization for Effortless Collaboration",
+      "subtitle": "Seamless workflow synchronization for effortless collaboration",
       "bannerTitle": "Get the Github App for premium members",
-      "bannerSubTitle": "Revolutionize Your Development Experience: Elevate Workflow Efficiency with Code Genius Code Coverage and Instant On-the-Fly Unit Testing.",
+      "bannerSubTitle": "Revolutionize your development experience: elevate workflow efficiency with code genius code coverage and instant on-the-fly unit testing",
       "cta": "Start now"
     },
     "goFrom": {
@@ -260,7 +260,7 @@
     },
     "faqs": {
       "title": "Frequently Asked Questions",
-      "desc": "If you can’t find the answer to your question, please reach out to our support team here",
+      "desc": "If you can’t find the answer to your question, please reach out to our support team here:",
       "support": "contact support",
       "1": {
         "title": "What is Code Genius?",

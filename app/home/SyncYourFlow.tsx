@@ -13,7 +13,7 @@ export default function SyncYourFlow({ translations }) {
       </p>
 
       <div
-        className="mx-auto flex h-auto w-[90%] grid-cols-1 flex-col justify-center rounded-xl bg-gradient-to-b from-[#B095FF] to-[#8ABFE5] p-4 font-semibold sm:grid sm:h-auto
+        className="mx-auto flex h-auto w-[90%] grid-cols-1 flex-col justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF] p-4 font-semibold sm:grid sm:h-auto
       sm:w-[1050px] sm:grid-cols-2 sm:p-0"
       >
         <div
