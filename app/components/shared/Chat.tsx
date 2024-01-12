@@ -15,7 +15,7 @@ export default function Chat({ userName, messages, setInput, translations }) {
     <>
       <div className="mx-auto flex overflow-scroll rounded-md sm:mx-auto">
         {messages.length > 0 && (
-          <div className="mt-24 w-full">
+          <div className="mt-16 w-full">
             <ChatContainer
               isMobile={isMobile}
               useFullHeight
