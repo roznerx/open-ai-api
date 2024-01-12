@@ -54,9 +54,11 @@ export default function GoFromThis({ translations }) {
             </div>
           </div>
         </div>
-        <div className="mt-16">
-          <CurveArrow isMobile={isMobile} />
-        </div>
+        {isMobile && (
+          <div className="mt-16">
+            <CurveArrow isMobile={isMobile} />
+          </div>
+        )}
       </div>
     </>
   )
