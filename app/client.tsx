@@ -30,6 +30,7 @@ export default function Client({ translations }) {
           <Faqs isHome translations={translations.pricing.faqs} />
         </div>
       </div>
+      {/* </div> */}
     </>
   )
 }
