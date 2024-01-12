@@ -7,10 +7,10 @@ export default function ProgrammingBuddy({ translations }) {
   return (
     <div className="w-screen">
       <div className={`flex flex-col items-center justify-center pt-16`}>
-        <h2 className="mb-4 max-w-5xl text-center text-4xl leading-tight text-white sm:text-5xl">
+        <h2 className="mb-4 w-full text-center text-4xl leading-tight text-white sm:text-5xl">
           {translations.title}
         </h2>
-        <p className="mb-12 mt-3 max-w-5xl px-4 text-center text-2xl font-normal leading-tight  text-white">
+        <p className="mb-12 mt-3 w-full px-4 text-center text-2xl font-normal leading-tight  text-white">
           {translations.subtitle}
         </p>
         <div

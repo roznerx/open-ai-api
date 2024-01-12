@@ -27,7 +27,7 @@ export default function CodeFaster({ translations }) {
             height={163}
           />
         </Tilt>
-        <p className="mt-4 w-full max-w-sm px-2 text-center text-3xl font-semibold leading-tight text-white sm:max-w-xs">
+        <p className="mt-4 w-full px-2 text-center text-3xl font-semibold leading-tight text-white">
           {translations.cloud}
         </p>
       </div>
@@ -53,7 +53,7 @@ export default function CodeFaster({ translations }) {
             height={163}
           />
         </Tilt>
-        <p className="mx-auto mt-4 w-full max-w-sm px-2 text-center text-3xl font-semibold leading-tight text-white sm:max-w-xs">
+        <p className="mx-auto mt-4 w-full  px-2 text-center text-3xl font-semibold leading-tight text-white">
           {translations.layers}
         </p>
       </div>
