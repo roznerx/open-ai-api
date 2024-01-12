@@ -22,7 +22,7 @@ export default function Client({ translations }) {
       <CodeFaster translations={translations?.home?.faster} />
       <GoFromThis translations={translations?.home?.goFrom} />
       <SyncYourFlow translations={translations?.home?.stayInSync} />
-      <TestimonialsSection />
+      <TestimonialsSection translations={translations?.home?.testimonials} />
       <div className="my-24 flex w-full items-center justify-center">
         <Faqs isHome translations={translations.pricing.faqs} />
       </div>

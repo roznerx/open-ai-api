@@ -23,8 +23,16 @@ module.exports = {
       "2xl": "1536px",
     },
     fontSize: {
+      "1xl": [
+        "22px",
+        {
+          lineHeight: "34px",
+          fontWeight: "400",
+          letterSpacing: "-0.02em",
+        },
+      ],
       "2xl": [
-        "20px",
+        "25px",
         {
           lineHeight: "34px",
           fontWeight: "400",
@@ -32,7 +40,7 @@ module.exports = {
         },
       ],
       "3xl": [
-        "28px",
+        "32px",
         {
           lineHeight: "35px",
           fontWeight: "500",

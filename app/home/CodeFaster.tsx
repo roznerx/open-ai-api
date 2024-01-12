@@ -27,13 +27,13 @@ export default function CodeFaster({ translations }) {
             height={163}
           />
         </Tilt>
-        <p className="mt-4 w-[80%] text-center text-4xl font-semibold leading-tight text-white">
+        <p className="mt-4 w-full text-center text-3xl font-semibold leading-tight text-white">
           {translations.cloud}
         </p>
       </div>
 
       <div
-        className="relative mt-5 flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-[35px] bg-gradient-to-t from-[#6530FC] to-[#A486FF]
+        className="relative mt-5 flex h-auto min-h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-[35px] bg-gradient-to-t from-[#6530FC] to-[#A486FF]
       sm:mt-0 sm:w-[505px] sm:bg-gradient-to-t"
       >
         <Tilt
@@ -53,7 +53,7 @@ export default function CodeFaster({ translations }) {
             height={163}
           />
         </Tilt>
-        <p className="mx-auto mt-4 w-[80%] text-center text-4xl font-semibold leading-tight text-white">
+        <p className="mx-auto mt-4 w-full text-center text-3xl font-semibold leading-tight text-white">
           {translations.layers}
         </p>
       </div>

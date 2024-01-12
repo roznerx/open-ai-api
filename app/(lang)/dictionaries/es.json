@@ -35,6 +35,10 @@
       "title": "El genio de la programación que te ayuda a realizar tus tareas más rápido, más fácil y de manera más eficiente.",
       "subtitle": "Escribir código con altos estándares de calidad puede ser una tarea desafiante y llevar mucho tiempo Code Genius llevará tus habilidades al siguiente nivel. Las posibilidades son infinitas."
     },
+    "testimonials": {
+      "title": "Amado por desarrolladores de todo el mundo",
+      "subtitle": "Nuestros usuarios ahorran un 35% del tiempo de desarrollo por día"
+    },
     "programmingBuddy": {
       "title": "Code Genius es como tener un compañero de programación que nunca duerme",
       "subtitle": "Imagina una herramienta que colabora contigo las 24 horas del día, proporcionando sugerencias inteligentes, optimizando tu código y generando pruebas unitarias con una precisión inigualable.",
@@ -44,14 +48,14 @@
     },
     "stayInSync": {
       "title": "Mantente sincronizado con tu flujo de trabajo",
-      "subtitle": "Armoniza la Productividad: Sincronización Continua del Flujo de Trabajo para una Colaboración sin Esfuerzo",
+      "subtitle": "Sincronización Continua del Flujo de Trabajo para una Colaboración sin Esfuerzo",
       "bannerTitle": "Obtén la aplicación de Github, para miembros premium",
       "bannerSubTitle": "Revolutiona tu Experiencia de Desarrollo: Eleva la Eficiencia del Flujo de Trabajo con la Cobertura de Código de Code Genius y Pruebas de Unidad Instantáneas.",
       "cta": "Comienza ahora"
     },
     "goFrom": {
       "title": "Obtén pruebas unitarias mejores y más eficientes",
-      "subtitle": "VE POR QUÉ DEBERIAS PROBAR NUESTRAS FUNCIONES PREMIUM",
+      "subtitle": "Ve por qué deberias probar nuestras funciones premium",
       "fromThis": "Ir desde este componente",
       "toThis": "A esta prueba unitaria"
     },

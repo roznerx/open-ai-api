@@ -8,8 +8,8 @@ export default function SuperHero({ translations }) {
           {translations.title}
         </h2>
         <p
-          className="text-lg z-40 mt-2 w-[90%] items-center justify-center px-10 text-center text-2xl text-white 
-         sm:px-3 sm:text-3xl"
+          className="text-lg z-40 mt-2 w-full items-center justify-center px-10 text-center text-2xl text-white 
+         sm:px-3 sm:text-2xl"
         >
           {translations.subtitle}
         </p>

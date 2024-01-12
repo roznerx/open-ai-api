@@ -62,7 +62,7 @@ const testimonials = [
   },
 ]
 
-export default function TestimonialsSection() {
+export default function TestimonialsSection({ translations }) {
   const slides: React.ReactNode[] = [] // Define the type of slides as ReactNode[]
   const { isMobile } = useWindowSize()
   testimonials.map((testimonial, i) => {
@@ -77,11 +77,11 @@ export default function TestimonialsSection() {
 
   return (
     <div className="my-10 w-screen">
-      <h5 className="text-whitš mt-10 flex justify-center text-center text-4xl">
-        Loved by developers around the world
+      <h5 className="mt-10 flex justify-center text-center text-4xl text-white">
+        {translations?.title}
       </h5>
-      <p className="mt-5 flex justify-center px-4 text-center text-2xl text-gray-100">
-        Our users save 35% of development time every day they use Code Genius
+      <p className="mt-5 flex justify-center px-4 text-center text-2xl text-celeste">
+        {translations?.subtitle}
       </p>
       <div className="mx-auto flex w-full overflow-hidden sm:w-[90%]">
         <Swiper

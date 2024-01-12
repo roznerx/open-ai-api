@@ -8,7 +8,7 @@ export default function Faqs({ translations: faqs, isHome }) {
   return (
     <div className="mx-auto mb-12 w-full px-4">
       <h3 className="mb-3 text-center text-4xl text-white">{faqs.title}</h3>
-      <p className="mb-4 text-center text-2xl text-gray-100">{faqs.desc}:</p>
+      <p className="my-6 mb-4 text-center text-1xl text-celeste">{faqs.desc}</p>
       {!isHome && (
         <div className="text-lg mb-6 text-center text-mint">
           <Link
