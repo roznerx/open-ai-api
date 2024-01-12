@@ -36,7 +36,7 @@ export default function Footer({
           />
           <div
             className={cn(
-              "bg-red mx-auto flex w-screen flex-col bg-[radial-gradient(at_top_center,_var(--tw-gradient-stops))] from-black to-violet-800  font-sans ",
+              "mx-auto flex w-screen flex-col border-t border-purple-500  bg-purple-900 font-sans text-white shadow-xl shadow-white",
             )}
           >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">
@@ -97,7 +97,7 @@ export default function Footer({
             </div>
             <div className={`w-screen content-center px-5 py-4`}>
               <p
-                className={cn("text-center font-normal text-white", {
+                className={cn("text-center font-normal text-gray-300", {
                   "text-white": pathName?.startsWith("/blog"),
                 })}
               >

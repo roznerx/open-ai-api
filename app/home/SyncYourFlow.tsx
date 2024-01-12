@@ -29,10 +29,10 @@ export default function SyncYourFlow({ translations }) {
           />
         </div>
         <div id="col-2" className="mr-6 sm:mt-12">
-          <h3 className="w-full text-center text-3xl font-semibold leading-tight text-fuchsia-900 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.2)] sm:max-w-[550px]  sm:text-left sm:text-5xl">
+          <h3 className="w-full text-center text-3xl font-semibold leading-tight text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.2)] sm:max-w-[550px]  sm:text-left sm:text-5xl">
             {translations.bannerTitle}
           </h3>
-          <p className="mt-6 text-center text-1xl leading-tight text-black sm:text-left">
+          <p className="mt-6 text-center text-1xl leading-tight text-white sm:text-left">
             {translations.bannerSubTitle}
           </p>
           <div className="flex justify-center sm:justify-start">
