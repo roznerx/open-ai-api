@@ -37,7 +37,12 @@
     },
     "input": {
       "cta": "Start now",
-      "ctaMobile": "Start"
+      "ctaMobile": "Start",
+      "message1": "Write a chat application using web sockets",
+      "message2": "Tell me more about Typescript",
+      "message3": "What are the best practices in React?",
+      "message4": "Teach me AWS infrastructure and services",
+      "message5": "Is it difficult to learn Python?"
     },
     "testimonials": {
       "title": "Loved by developers around the world",
