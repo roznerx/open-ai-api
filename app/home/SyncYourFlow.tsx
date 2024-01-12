@@ -8,7 +8,7 @@ export default function SyncYourFlow({ translations }) {
       <h5 className="flex justify-center px-4 text-center text-4xl text-white sm:text-5xl">
         {translations.title}
       </h5>
-      <p className="my-4 mb-10 mt-5 flex justify-center px-4 text-center text-2xl text-celeste">
+      <p className="my-4 mb-10 mt-5 flex justify-center px-4 text-center text-2xl text-white">
         {translations.subtitle}
       </p>
 
