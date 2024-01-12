@@ -52,12 +52,6 @@ export default function Client({
     }
   }, [session, stop, isLoading])
 
-  // useEffect(() => {
-  //   if (initialQuery !== "") {
-  //     setInput(initialQuery)
-  //   }
-  // }, [])
-
   return (
     <>
       <Chat

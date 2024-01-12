@@ -39,7 +39,7 @@ export default function HomeChatInput({
           aria-label="Submit your prompt"
           className="group mr-2 h-12 w-48 rounded-xl border-violet-500 bg-violet-500 p-1 text-white disabled:hover:bg-transparent"
         >
-          <p className="text-[18px] font-normal duration-150 ">
+          <p className="text-[18px] font-semibold group-hover:scale-95 group-hover:text-gray-100">
             {isMobile ? translations.ctaMobile : translations.cta}
           </p>
         </button>

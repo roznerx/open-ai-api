@@ -44,10 +44,10 @@
       "subtitle": "Our users save 35% of development time per day"
     },
     "programmingBuddy": {
-      "title": " Code Genius is like your pair programming that never sleeps",
-      "subtitle": "Imagine a tool that collaborates with you around the clock, providing intelligent suggestions, optimizing your code, and generating unit tests with unmatched precision",
+      "title": "Your pair programming that never sleeps",
+      "subtitle": "Offering smart suggestions, optimizing your code, and generating unit tests",
       "bannerTitle": "Chat with your AI programming buddy",
-      "bannerSubTitle": "Engage in natural language conversations with this intelligent companion, seamlessly blending the conversational ease of chatting with the efficiency of a seasoned coding assistant.",
+      "bannerSubTitle": "Engage in effortless conversations with your AI programming buddy, combining conversational ease with the efficiency of a seasoned coding assistant.",
       "cta": "Start now"
     },
     "stayInSync": {
@@ -68,8 +68,8 @@
       "layers": "Code faster and efficient than ever"
     },
     "superHero": {
-      "title": "Generate quality code in seconds",
-      "subtitle": "Take your development flow to the next level with the power of AI ",
+      "title": "AI Code Generation for Developers",
+      "subtitle": "Transform your workflow and generate quality code instantly",
       "smart": {
         "title": "Boost your code performance",
         "subtitle": "Code Genius analyzes your code in real-time, offering smart suggestions and code improvements. From enhancing syntax to optimizing algorithms, Code Genius ensures your code is clean, efficient, and error-free."
@@ -404,7 +404,7 @@
     "blog": "Blog",
     "terms": "Terms",
     "privacy": "Privacy",
-    "copy": "© Copyright 2023. All rights reserved."
+    "copy": "© Copyright 2024. All rights reserved."
   },
   "modals": {
     "signIn": {

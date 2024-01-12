@@ -55,7 +55,7 @@ export default function Header({
                       ? "bg-purple-900"
                       : "bg-gradient-to-r from-mint to-blue"
                   }
-                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
+                    bg-clip-text font-sans text-2xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
                 >
                   Code Genius
                 </h1>

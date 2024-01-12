@@ -8,13 +8,12 @@ export default function SyncYourFlow({ translations }) {
       <h5 className="flex justify-center px-4 text-center text-4xl text-white sm:text-5xl">
         {translations.title}
       </h5>
-      <p className="my-4 mb-10 mt-5 flex justify-center px-4 text-center text-2xl text-celeste">
+      <p className="my-4 mb-10 mt-5 flex justify-center px-4 text-center text-2xl text-white">
         {translations.subtitle}
       </p>
 
       <div
-        className="mx-auto flex h-auto w-[90%] grid-cols-1 flex-col justify-center rounded-xl bg-gradient-to-b
-        from-[#A486FF] to-[#6530FC] p-4 font-semibold sm:grid sm:h-[451px]
+        className="mx-auto flex h-auto w-[90%] grid-cols-1 flex-col justify-center rounded-xl bg-gradient-to-b from-[#B095FF] to-[#8ABFE5] p-4 font-semibold sm:grid sm:h-auto
       sm:w-[1050px] sm:grid-cols-2 sm:p-0"
       >
         <div
@@ -30,10 +29,10 @@ export default function SyncYourFlow({ translations }) {
           />
         </div>
         <div id="col-2" className="mr-6 sm:mt-12">
-          <h3 className="w-full text-center text-3xl font-semibold leading-tight text-white sm:max-w-[496px] sm:text-left sm:text-left sm:text-5xl">
+          <h3 className="w-full text-center text-3xl font-semibold leading-tight text-white drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.2)] sm:max-w-[550px]  sm:text-left sm:text-5xl">
             {translations.bannerTitle}
           </h3>
-          <p className="mt-6 text-center text-2xl leading-tight text-white sm:text-left">
+          <p className="mt-6 text-center text-1xl leading-tight text-white sm:text-left">
             {translations.bannerSubTitle}
           </p>
           <div className="flex justify-center sm:justify-start">
