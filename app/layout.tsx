@@ -54,7 +54,7 @@ export default async function RootLayout({
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
-        <body className="font-sans">
+        <body className="w-full overflow-x-hidden">
           <SessionProvider>
             <div className="flex min-h-screen bg-purple-900">
               {session && (

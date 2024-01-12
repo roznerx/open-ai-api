@@ -36,7 +36,8 @@
       "subtitle": "Writing great code can be a challenging and time-consuming task, but with Code Genius you can take your skills to the next level! Explore the possibilities!"
     },
     "input": {
-      "cta": "Start now"
+      "cta": "Start now",
+      "ctaMobile": "Start"
     },
     "testimonials": {
       "title": "Loved by developers around the world",

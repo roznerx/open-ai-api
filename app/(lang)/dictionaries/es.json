@@ -36,7 +36,8 @@
       "subtitle": "Escribir código con altos estándares de calidad puede ser una tarea desafiante y llevar mucho tiempo Code Genius llevará tus habilidades al siguiente nivel. Las posibilidades son infinitas."
     },
     "input": {
-      "cta": "Empieza ahora"
+      "cta": "Empieza ahora",
+      "ctaMobile": "Empieza"
     },
     "testimonials": {
       "title": "Amado por desarrolladores de todo el mundo",

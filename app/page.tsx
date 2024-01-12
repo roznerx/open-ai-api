@@ -15,7 +15,7 @@ export default async function Page() {
   const dictionary = await getDictionary(lang)
 
   return (
-    <main>
+    <main className="overflow-x-hidden">
       <Client translations={dictionary} />
     </main>
   )

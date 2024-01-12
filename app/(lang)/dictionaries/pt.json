@@ -36,7 +36,8 @@
       "subtitle": "Escrever código com altos padrões de qualidade pode ser uma tarefa desafiadora e demorada. Code Genius levará suas habilidades para o próximo nível. As possibilidades são infinitas."
     },
     "input": {
-      "cta": "Comece agora"
+      "cta": "Comece agora",
+      "ctaMobile": "Comece"
     },
     "testimonials": {
       "title": "Amado por desenvolvedores ao redor do mundo",
