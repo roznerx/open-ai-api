@@ -24,7 +24,7 @@ export default function Client({ translations }) {
       <GoFromThis translations={translations?.home?.goFrom} />
       <SyncYourFlow translations={translations?.home?.stayInSync} />
       {/* </div> */}
-      <div className="bg-[radial-gradient(at_top_center,_var(--tw-gradient-stops))] from-purple-900 via-purple-900 to-fuchsia-800">
+      <div className=" bg-[radial-gradient(at_top_center,_var(--tw-gradient-stops))] from-purple-900 via-purple-900 to-fuchsia-800">
         <TestimonialsSection translations={translations?.home?.testimonials} />
         <div className="flex w-full items-center justify-center pb-24">
           <Faqs isHome translations={translations.pricing.faqs} />
