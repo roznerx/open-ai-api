@@ -97,7 +97,7 @@ export default function Footer({
             </div>
             <div className={`w-screen content-center px-5 py-4`}>
               <p
-                className={cn("text-center font-normal text-gray-300", {
+                className={cn("text-center font-normal text-gray-200", {
                   "text-white": pathName?.startsWith("/blog"),
                 })}
               >
