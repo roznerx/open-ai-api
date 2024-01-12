@@ -35,6 +35,9 @@
       "title": "El genio de la programación que te ayuda a realizar tus tareas más rápido, más fácil y de manera más eficiente.",
       "subtitle": "Escribir código con altos estándares de calidad puede ser una tarea desafiante y llevar mucho tiempo Code Genius llevará tus habilidades al siguiente nivel. Las posibilidades son infinitas."
     },
+    "input": {
+      "cta": "Empieza ahora"
+    },
     "testimonials": {
       "title": "Amado por desarrolladores de todo el mundo",
       "subtitle": "Nuestros usuarios ahorran un 35% del tiempo de desarrollo por día"
@@ -49,7 +52,7 @@
     "stayInSync": {
       "title": "Mantente sincronizado con tu flujo de trabajo",
       "subtitle": "Sincronización Continua del Flujo de Trabajo para una Colaboración sin Esfuerzo",
-      "bannerTitle": "Obtén la aplicación de Github, para miembros premium",
+      "bannerTitle": "Obtén la aplicación de Github para miembros premium",
       "bannerSubTitle": "Revolutiona tu Experiencia de Desarrollo: Eleva la Eficiencia del Flujo de Trabajo con la Cobertura de Código de Code Genius y Pruebas de Unidad Instantáneas.",
       "cta": "Comienza ahora"
     },

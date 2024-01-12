@@ -35,6 +35,9 @@
       "title": "The AI programming genius that helps you coding faster, easier, and more efficient.",
       "subtitle": "Writing great code can be a challenging and time-consuming task, but with Code Genius you can take your skills to the next level! Explore the possibilities!"
     },
+    "input": {
+      "cta": "Start now"
+    },
     "testimonials": {
       "title": "Loved by developers around the world",
       "subtitle": "Our users save 35% of development time per day"

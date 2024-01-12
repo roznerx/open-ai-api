@@ -7,7 +7,7 @@ export default function ProgrammingBuddy({ translations }) {
   return (
     <div className="w-screen">
       <div className={`my-16 mt-16 flex flex-col items-center justify-center `}>
-        <h2 className="mb-4 max-w-5xl text-center text-3xl leading-tight text-white sm:text-5xl">
+        <h2 className="mb-4 max-w-5xl text-center text-4xl leading-tight text-white sm:text-5xl">
           {translations.title}
         </h2>
         <p className="mb-12 mt-3 max-w-5xl px-4 text-center text-2xl font-normal leading-tight  text-white">
@@ -56,7 +56,7 @@ export default function ProgrammingBuddy({ translations }) {
                 onClick={() => router.push("/pricing")}
                 className="my-6 w-[250px] cursor-pointer rounded-lg bg-black"
               >
-                <p className="py-2 text-center text-2xl font-semibold text-white hover:text-gray-200">
+                <p className="py-2 text-center text-1xl text-white hover:text-gray-200">
                   {translations.cta}
                 </p>
               </div>

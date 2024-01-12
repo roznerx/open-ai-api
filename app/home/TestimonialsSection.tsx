@@ -77,7 +77,7 @@ export default function TestimonialsSection({ translations }) {
 
   return (
     <div className="my-10 w-screen">
-      <h5 className="mt-10 flex justify-center text-center text-4xl text-white">
+      <h5 className="mt-10 flex justify-center px-2 text-center text-4xl text-white">
         {translations?.title}
       </h5>
       <p className="mt-5 flex justify-center px-4 text-center text-2xl text-celeste">

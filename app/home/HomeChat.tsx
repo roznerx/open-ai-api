@@ -9,7 +9,7 @@ import HomeChatInput from "./HomeChatInput"
 
 import { useRouter } from "next/navigation"
 
-export default function HomeChat() {
+export default function HomeChat({ translations }) {
   const router = useRouter()
 
   const { input: inputValue, handleInputChange } = useChat({
@@ -32,6 +32,7 @@ export default function HomeChat() {
           className="relative mt-2 h-12 w-full text-center sm:w-[900px]"
         >
           <HomeChatInput
+            translations={translations}
             inputValue={inputValue}
             handleInputChange={handleInputChange}
           />

@@ -2,7 +2,11 @@ import useWindowSize from "hooks/use-window-size"
 import { useRef } from "react"
 import { TypeAnimation } from "react-type-animation"
 
-export default function HomeChatInput({ inputValue, handleInputChange }) {
+export default function HomeChatInput({
+  inputValue,
+  handleInputChange,
+  translations,
+}) {
   const { isMobile } = useWindowSize()
   const rotatingTextRef = useRef<HTMLDivElement | null>(null)
   const inputRef = useRef<HTMLInputElement | null>(null)
@@ -36,7 +40,7 @@ export default function HomeChatInput({ inputValue, handleInputChange }) {
           className="group mr-2 h-12 w-48 rounded-xl border-violet-500 bg-violet-500 p-1 text-white disabled:hover:bg-transparent"
         >
           <p className="text-[18px] font-normal duration-150 ">
-            {isMobile ? "Start now" : "Start with AI"}{" "}
+            {translations.cta}
           </p>
         </button>
       </div>

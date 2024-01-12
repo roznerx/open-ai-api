@@ -41,7 +41,7 @@ export default function SyncYourFlow({ translations }) {
               onClick={() => router.push("/pricing")}
               className="my-6 w-[250px] cursor-pointer rounded-lg bg-black"
             >
-              <p className="py-2 text-center text-2xl font-semibold text-white hover:text-gray-200">
+              <p className="py-2 text-center text-1xl text-white hover:text-gray-200">
                 {translations.cta}
               </p>
             </div>
