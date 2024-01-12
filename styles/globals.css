@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+input[type="file"]::-webkit-file-upload-button {
+  visibility: hidden;
+}
+
 .react-syntax-highlighter-line-number {
   color: #8283ad;
 }

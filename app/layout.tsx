@@ -1,6 +1,7 @@
 import "../styles/globals.css"
 import SessionProvider from "./provider"
-import { Inter } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 
 import { Metadata } from "next"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
@@ -11,12 +12,6 @@ import Footer from "./components/Footer"
 import { getServerSession } from "next-auth"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { SignInModal } from "./components/modals/SignInModal"
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-})
 
 export const metadata: Metadata = {
   title: {
@@ -54,12 +49,12 @@ export default async function RootLayout({
   const translations = await getDictionary("en")
   return (
     <>
-      <html lang="en" className={`${inter.variable}`}>
+      <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <head>
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
-        <body>
+        <body className="w-full overflow-x-hidden">
           <SessionProvider>
             <div className="flex min-h-screen bg-purple-900">
               {session && (

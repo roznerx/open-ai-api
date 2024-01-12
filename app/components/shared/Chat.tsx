@@ -15,7 +15,7 @@ export default function Chat({ userName, messages, setInput, translations }) {
     <>
       <div className="mx-auto flex overflow-scroll rounded-md sm:mx-auto">
         {messages.length > 0 && (
-          <div className="mt-24 w-full">
+          <div className="mt-16 w-full">
             <ChatContainer
               isMobile={isMobile}
               useFullHeight
@@ -31,7 +31,7 @@ export default function Chat({ userName, messages, setInput, translations }) {
         )}
         {messages.length === 0 && (
           <div className="flex items-center justify-center">
-            <div className="grid max-h-[65vh] grid-cols-1 place-items-center gap-4 overflow-y-auto sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
+            <div className="grid  grid-cols-1 place-items-center gap-4 overflow-y-auto sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
               <PromptCard
                 imageSrc="/icons/react.png"
                 onClick={() => setInput(translations.cards.react)}

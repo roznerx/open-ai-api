@@ -48,7 +48,7 @@ const SideBar = ({
       sm:flex  ${shouldHideSideBar ? "sm:hidden" : "sm:relative"} `}
     >
       <div className="mx-auto flex w-16 flex-col justify-start pl-2 duration-150 hover:w-56">
-        <div className=" mt-4 flex h-12 cursor-pointer  rounded-md p-2 hover:bg-purple-500 ">
+        <div className=" mt-4 flex h-12 cursor-pointer rounded-md p-2 hover:bg-purple-500 ">
           <Link href="/" className="inline-flex ">
             <Image
               src={"/logo/code-genius.svg"}

@@ -1,27 +1,31 @@
 "use client"
 
 import SuperHero from "./home/SuperHero"
-
-import Hero from "./home/Hero"
-import ShowCaseCard from "./home/ShowCaseCard"
-import Feature from "./home/Feature"
+import ProgrammingBuddy from "./home/ProgrammingBuddy"
 import HomeChat from "./home/HomeChat"
+import GoFromThis from "./home/GoFromThis"
+import TestimonialsSection from "./home/TestimonialsSection"
+import Faqs from "./pricing/faqs"
+import SyncYourFlow from "./home/SyncYourFlow"
+import CodeFaster from "./home/CodeFaster"
 
-export default function Client({ translations, session }) {
+export default function Client({ translations }) {
   return (
     <>
-      <div className="absolute inset-0 animate-pulseCustom before:absolute before:inset-0 before:block before:h-full before:w-full before:rounded-full before:bg-gradient-to-br before:from-mint/30 before:to-blue/20 before:blur-[120px] before:content-[''] md:mx-auto md:h-[750px] md:w-[1250px] lg:flex"></div>
-      <SuperHero translations={translations?.home?.superHero} />
-      <HomeChat session={session} />
-      <Hero />
-      <ShowCaseCard
-        videoSrc="static/side-by-side-epic.mp4"
-        title={translations?.showCase?.title}
-        showArrowInButton={true}
-        description={translations?.showCase?.subtitle}
-        buttonText={`${translations?.showCase?.seeVideo}`}
-      />
-      <Feature translations={translations?.home} />
+      <div className="h-screen w-screen rounded-b-tremor-default bg-[radial-gradient(at_top_left,_var(--tw-gradient-stops))] from-black via-violet-800 to-fuchsia-600/70 ">
+        <div className="relative mx-auto flex h-[700px] w-full flex-col items-center justify-center overflow-hidden rounded-xl">
+          <SuperHero translations={translations?.home?.superHero} />
+          <HomeChat translations={translations?.home?.input} />
+        </div>
+      </div>
+      <ProgrammingBuddy translations={translations?.home?.programmingBuddy} />
+      <CodeFaster translations={translations?.home?.faster} />
+      <GoFromThis translations={translations?.home?.goFrom} />
+      <SyncYourFlow translations={translations?.home?.stayInSync} />
+      <TestimonialsSection translations={translations?.home?.testimonials} />
+      <div className="my-24 flex w-full items-center justify-center">
+        <Faqs isHome translations={translations.pricing.faqs} />
+      </div>
     </>
   )
 }

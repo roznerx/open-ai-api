@@ -46,8 +46,8 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
           const role = !isLegacy ? generatedMessage?.role : "system"
 
           return result.length
-            ? result.map((item: any, idx) => {
-                if (item.hasOwnProperty("text")) {
+            ? result.map((message: any, idx) => {
+                if (message.hasOwnProperty("text") && message?.text !== "") {
                   return (
                     <div key={idx} className="mt-1 flex">
                       <div className="ml-6 flex items-center justify-center">
@@ -66,7 +66,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                             fontColor ? fontColor : "text-white"
                           }`}
                         >
-                          {item.text}
+                          {message.text}
                         </p>
                       </div>
                     </div>
@@ -77,7 +77,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                       key={idx}
                       borderRadius="none"
                       align="start"
-                      generatedCode={item.code}
+                      generatedCode={message.code}
                     />
                   )
                 }
