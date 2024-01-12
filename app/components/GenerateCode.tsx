@@ -33,57 +33,58 @@ function GenerateCode({
       <div
         className={`my-5 flex flex-col items-${align} md:items-${align} lg:items-${align}`}
       >
-        {generatedCode
-          .substring(generatedCode.indexOf("**") + 0)
-          .replace(regex, "")
-          .replace("javascript", "")
-          .replace("typescript", "")
-          .replace("python", "")
-          .replace("go", "")
-          .replace("python", "")
-          .replace("html", "")
-          .replace("sql", "")
-          .replace("jsx", "")
-          .replace("tsx", "")
-          .split("**::")
-          .map((generated, idx) => {
-            return (
-              <div
-                key={idx}
-                className="mx-auto flex w-full items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:items-start sm:justify-start"
-              >
-                <CopyBlock
-                  onCopy={() => null}
-                  copied={false}
-                  showLineNumbers
-                  wrapLongLines
-                  customStyle={{
-                    minWidth: minWidth,
-                    with: "100vw",
-                    borderRadius: "0.6rem",
-                    border: `0.5px solid ${themeColors.purple[500]}`,
-                  }}
-                  text={generated.trim()}
-                  language={langElement === "Typescript" ? "tsx" : "jsx"}
-                  codeBlock
-                  theme={{
-                    ...dracula,
-                    mode: "dark",
-                    textColor: "#ffffff",
-                    stringColor: themeColors.purple[300],
-                    attributeColor: themeColors.purple[300],
-                    functionColor: themeColors.mint,
-                    templateTagColor: themeColors.moradoCode, //H1 or HTML Tags
-                    backgroundColor: themeColors.purple[900],
-                    keywordColor: themeColors.moradoCode,
-                    metaKeywordColor: "#8283ad",
-                    lineNumberColor: themeColors.lineNumbers,
-                    metaColor: themeColors.mint,
-                  }}
-                />
-              </div>
-            )
-          })}
+        {generatedCode &&
+          generatedCode
+            .substring(generatedCode.indexOf("**") + 0)
+            .replace(regex, "")
+            .replace("javascript", "")
+            .replace("typescript", "")
+            .replace("python", "")
+            .replace("go", "")
+            .replace("python", "")
+            .replace("html", "")
+            .replace("sql", "")
+            .replace("jsx", "")
+            .replace("tsx", "")
+            .split("**::")
+            .map((generated, idx) => {
+              return (
+                <div
+                  key={idx}
+                  className="mx-auto flex w-full items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:items-start sm:justify-start"
+                >
+                  <CopyBlock
+                    onCopy={() => null}
+                    copied={false}
+                    showLineNumbers
+                    wrapLongLines
+                    customStyle={{
+                      minWidth: minWidth,
+                      with: "100vw",
+                      borderRadius: "0.6rem",
+                      border: `0.5px solid ${themeColors.purple[500]}`,
+                    }}
+                    text={generated.trim()}
+                    language={langElement === "Typescript" ? "tsx" : "jsx"}
+                    codeBlock
+                    theme={{
+                      ...dracula,
+                      mode: "dark",
+                      textColor: "#ffffff",
+                      stringColor: themeColors.purple[300],
+                      attributeColor: themeColors.purple[300],
+                      functionColor: themeColors.mint,
+                      templateTagColor: themeColors.moradoCode, //H1 or HTML Tags
+                      backgroundColor: themeColors.purple[900],
+                      keywordColor: themeColors.moradoCode,
+                      metaKeywordColor: "#8283ad",
+                      lineNumberColor: themeColors.lineNumbers,
+                      metaColor: themeColors.mint,
+                    }}
+                  />
+                </div>
+              )
+            })}
       </div>
     </>
   )

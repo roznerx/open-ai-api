@@ -9,33 +9,41 @@ import MyModal from "app/components/Modal"
 import { Hand } from "lucide-react"
 import { useChat } from "ai/react"
 import { AI_MOOD } from "@/lib/constants"
-import { useRouter } from "next/navigation"
 
-export default function Client({ session, translations, modalTranslations }) {
+export default function Client({
+  session,
+  translations,
+  modalTranslations,
+  initialQuery = "",
+}: any) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
+  let messageFromHome: any
 
-  const router = useRouter()
+  messageFromHome =
+    initialQuery !== ""
+      ? { id: "2", role: "user", content: initialQuery }
+      : null
+
   const userName = session && session.user?.name
   const {
     messages,
     setInput,
     stop,
+    reload,
     isLoading,
     input: inputValue,
     handleInputChange,
     handleSubmit,
   } = useChat({
-    initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
-    onFinish: async () => {
-      //count tokens??
-    },
+    initialMessages: [
+      {
+        id: "1",
+        role: "system",
+        content: AI_MOOD.engineer,
+        ...messageFromHome,
+      },
+    ],
   })
-
-  useEffect(() => {
-    if (!session) {
-      router.push("code-chat?action=signUp")
-    }
-  }, [router, session])
 
   useEffect(() => {
     if (session?.user && !session?.user?.credits && isLoading) {
@@ -43,6 +51,12 @@ export default function Client({ session, translations, modalTranslations }) {
       setCreditsModaIsOpen(true)
     }
   }, [session, stop, isLoading])
+
+  // useEffect(() => {
+  //   if (initialQuery !== "") {
+  //     setInput(initialQuery)
+  //   }
+  // }, [])
 
   return (
     <>
@@ -53,6 +67,8 @@ export default function Client({ session, translations, modalTranslations }) {
         messages={messages.slice(1)}
       />
       <InputChat
+        reload={reload}
+        initialQuery={initialQuery}
         translations={translations}
         inputValue={inputValue}
         handleInputChange={handleInputChange}
@@ -77,24 +93,4 @@ export default function Client({ session, translations, modalTranslations }) {
       />
     </>
   )
-}
-
-{
-  /* <Modal
-        body="Our servers are taking longer than expected. We suggest
-        rewording your instruction or input to get a faster result."
-        isOpen={modaIsOpen}
-        buttonText="Ok"
-        setIsOpen={setModaIsOpen}
-      />
-      <Modal
-        body="What should we call this question?"
-        onSave={onSaveQuestionModal}
-        isOpen={showSavePromptModal}
-        propmptName={questionName}
-        handleInputChange={handleInputChange}
-        savePropmptName
-        buttonText="Save"
-        setIsOpen={setShowSavePromptModal}
-      /> */
 }

@@ -5,7 +5,7 @@ import UserDropdown from "app/components/auth/UserDropdown"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 
-import { useContext, useState } from "react"
+import { useContext } from "react"
 import { cn } from "@/lib/utils"
 import { AuthContext } from "app/provider"
 
@@ -22,16 +22,7 @@ export default function Header({
   let { setModalIsOpen } = useContext(AuthContext) || {
     setModalIsOpen: () => {},
   }
-
-  // const shouldJustifyBetween =
-  //   pathName == "/" ||
-  //   pathName?.startsWith("/blog") ||
-  //   pathName == "/pricing" ||
-  //   pathName == "/terms-and-conditions" ||
-  //   pathName == "/privacy"
-  const [showWidget, setShowWidget] = useState(false)
-  // const router = useRouter()
-
+  const canHideLogoInChat = pathName == "/code-chat" && session !== null
   return (
     <>
       <div
@@ -40,10 +31,10 @@ export default function Header({
       >
         <div className={`mt-2 flex w-full justify-between`}>
           <div
-            className={`ml-4 pt-2 ${
+            className={`ml-4 mt-3 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
-              pathName == "/code-chat" ||
+              canHideLogoInChat ||
               pathName == "/settings"
                 ? "hidden"
                 : "sm:ml-6"
@@ -71,7 +62,7 @@ export default function Header({
               </div>
             </Link>
           </div>
-          <div className="mb-3 mr-1 flex h-8 pb-2 font-semibold sm:mt-0">
+          <div className="mb-3 mr-1 flex h-6 pb-2 font-semibold sm:mt-1">
             {!session && (
               <>
                 <Link href={"/pricing"}>
@@ -89,7 +80,7 @@ export default function Header({
             <div
               onClick={() => setModalIsOpen(true)}
               className={cn(
-                "my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
+                "my-auto mr-3 mt-3 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
               )}
             >
               {!session && (
@@ -111,12 +102,7 @@ export default function Header({
               )}
             </div>
           </div>
-          <UserDropdown
-            setShowWidget={setShowWidget}
-            showWidget={showWidget}
-            translations={translations}
-            session={session}
-          />
+          <UserDropdown translations={translations} session={session} />
         </div>
       </div>
     </>

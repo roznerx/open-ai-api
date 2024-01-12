@@ -26,7 +26,6 @@ export const SignInModal = ({
   const { isMobile } = useWindowSize()
   const router = useRouter()
   const pathname = usePathname()
-  console.log("pathname:", pathname)
 
   return (
     <BaseModal showModal={isOpen} setShowModal={setModalIsOpen}>

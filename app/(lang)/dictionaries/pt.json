@@ -35,8 +35,39 @@
       "title": "A IA genial que ajuda você a programar mais rápido, mais fácil e de maneira mais eficiente.",
       "subtitle": "Escrever código com altos padrões de qualidade pode ser uma tarefa desafiadora e demorada. Code Genius levará suas habilidades para o próximo nível. As possibilidades são infinitas."
     },
+    "input": {
+      "cta": "Comece agora"
+    },
+    "testimonials": {
+      "title": "Amado por desenvolvedores ao redor do mundo",
+      "subtitle": "Nossos usuários economizam 35% do tempo de desenvolvimento cada dia"
+    },
+    "programmingBuddy": {
+      "title": "Code Genius é como ter um parceiro de programação que nunca dorme",
+      "subtitle": "Imagine uma ferramenta que colabora com você o tempo todo, fornecendo sugestões inteligentes, otimizando seu código e gerando testes unitários com precisão incomparável.",
+      "bannerTitle": "Converse com seu amigo de programação de IA",
+      "bannerSubTitle": "Envolver-se em conversas em linguagem natural com este companheiro inteligente, mesclando perfeitamente a facilidade de conversação com a eficiência de um experiente assistente de codificação.",
+      "cta": "Comece agora"
+    },
+    "stayInSync": {
+      "title": "Mantenha-se em sincronia com o seu fluxo de trabalho",
+      "subtitle": "Sincronização Contínua do Fluxo de Trabalho para Colaboração Sem Esforço",
+      "bannerTitle": "Obtenha o Aplicativo Github para membros premium",
+      "bannerSubTitle": "Revolucione sua Experiência de Desenvolvimento: Eleve a Eficiência do Fluxo de Trabalho com a Cobertura de Código do Code Genius e Testes de Unidade Instantâneos.",
+      "cta": "Comece agora"
+    },
+    "goFrom": {
+      "title": "Obtenha testes unitários melhores e mais eficientes",
+      "subtitle": "VEJA POR QUE VOCÊ DEVE EXPERIMENTAR NOSSOS RECURSOS PREMIUM",
+      "fromThis": "Vá deste componente",
+      "toThis": "Para este teste unitário"
+    },
+    "faster": {
+      "cloud": "Crie testes unitários em questão de segundos",
+      "layers": "Codifique mais rápido e de maneira mais eficiente do que nunca"
+    },
     "superHero": {
-      "title": "Crie código de gênios",
+      "title": "Gerar código de qualidade em segundos",
       "subtitle": "Leve suas ideias para outro nível com o poder e a ajuda da Inteligência Artificial.",
       "smart": {
         "title": "Aumente o desempenho do seu código",

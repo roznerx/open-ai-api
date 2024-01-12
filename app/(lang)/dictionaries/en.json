@@ -35,8 +35,39 @@
       "title": "The AI programming genius that helps you coding faster, easier, and more efficient.",
       "subtitle": "Writing great code can be a challenging and time-consuming task, but with Code Genius you can take your skills to the next level! Explore the possibilities!"
     },
+    "input": {
+      "cta": "Start now"
+    },
+    "testimonials": {
+      "title": "Loved by developers around the world",
+      "subtitle": "Our users save 35% of development time per day"
+    },
+    "programmingBuddy": {
+      "title": " Code Genius is like your pair programming that never sleeps",
+      "subtitle": "Imagine a tool that collaborates with you around the clock, providing intelligent suggestions, optimizing your code, and generating unit tests with unmatched precision",
+      "bannerTitle": "Chat with your AI programming buddy",
+      "bannerSubTitle": "Engage in natural language conversations with this intelligent companion, seamlessly blending the conversational ease of chatting with the efficiency of a seasoned coding assistant.",
+      "cta": "Start now"
+    },
+    "stayInSync": {
+      "title": "Stay in sync with your workflow",
+      "subtitle": "Seamless Workflow Synchronization for Effortless Collaboration",
+      "bannerTitle": "Get the Github App for premium members",
+      "bannerSubTitle": "Revolutionize Your Development Experience: Elevate Workflow Efficiency with Code Genius Code Coverage and Instant On-the-Fly Unit Testing.",
+      "cta": "Start now"
+    },
+    "goFrom": {
+      "title": "Get better and more efficient unit tests",
+      "subtitle": "SEE WHY YOU SHOULD TRY OUR PREMIUM FEATURES",
+      "fromThis": " Go from this component",
+      "toThis": "To this unit test"
+    },
+    "faster": {
+      "cloud": "Create unit tests in matter of seconds",
+      "layers": "Code faster and efficient than ever"
+    },
     "superHero": {
-      "title": "Create Genius Code",
+      "title": "Generate quality code in seconds",
       "subtitle": "Take your development flow to the next level with the power of AI ",
       "smart": {
         "title": "Boost your code performance",
@@ -228,7 +259,7 @@
     },
     "faqs": {
       "title": "Frequently Asked Questions",
-      "desc": "If you can’t find the answer to your question, please reach out to our support team here:",
+      "desc": "If you can’t find the answer to your question, please reach out to our support team here",
       "support": "contact support",
       "1": {
         "title": "What is Code Genius?",
