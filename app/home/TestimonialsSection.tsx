@@ -58,7 +58,7 @@ const testimonials = [
   {
     author: "Esteban Fuentes",
     review:
-      "Es significante el tiempo de desarrollo que puede ahorrar esta herramienta. Recomendado! 🔥",
+      "Es significante el tiempo de desarrollo que puede ahorrar esta herramienta.",
     date: "January 2024",
   },
 ]
@@ -77,7 +77,7 @@ export default function TestimonialsSection({ translations }) {
   })
 
   return (
-    <div className="w-screen pb-28">
+    <div className="w-screen py-28">
       <h5 className="mt-10 flex justify-center px-2 text-center text-4xl text-white">
         {translations?.title}
       </h5>
@@ -89,7 +89,7 @@ export default function TestimonialsSection({ translations }) {
           id="swiper"
           virtual
           slidesPerView={isMobile ? 1 : 4}
-          spaceBetween={30}
+          spaceBetween={10}
           autoplay
           loop
           onReachEnd={() => {

@@ -49,15 +49,15 @@ export default function HomeChatInput({
           ref={rotatingTextRef}
           className="rotating-text text-gray-200"
           sequence={[
-            "Write a chat application",
+            translations.message1,
             1000,
-            `Teach me Typescript`,
+            translations.message2,
             1000,
-            "Teach me React Native",
+            translations.message3,
             1000,
-            "Teach me AWS",
+            translations.message4,
             1000,
-            "Teach me Python",
+            translations.message5,
             1000,
           ]}
           wrapper="span"
