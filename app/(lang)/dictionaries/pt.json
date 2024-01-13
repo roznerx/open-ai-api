@@ -68,7 +68,8 @@
       "title": "Obtenha testes unitários melhores e mais eficientes",
       "subtitle": "VEJA POR QUE VOCÊ DEVE EXPERIMENTAR NOSSOS RECURSOS PREMIUM",
       "fromThis": "Vá deste componente",
-      "toThis": "Para este teste unitário"
+      "toThis": "Para este teste unitário",
+      "inSeconds": "em segundos"
     },
     "faster": {
       "cloud": "Crie testes unitários em questão de segundos",

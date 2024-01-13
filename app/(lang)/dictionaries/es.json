@@ -67,8 +67,9 @@
       "end": "Obtén el test unitario con un click",
       "title": "Obtén pruebas unitarias en tiempo real",
       "subtitle": "Ve por qué deberias probar nuestras funciones premium",
-      "fromThis": "Ir desde este componente",
-      "toThis": "A esta prueba unitaria"
+      "fromThis": "ir desde este componente",
+      "toThis": "a esta prueba unitaria",
+      "inSeconds": "en segundos"
     },
     "faster": {
       "cloud": "Crea pruebas unitarias en cuestión de segundos",

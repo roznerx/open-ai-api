@@ -67,8 +67,9 @@
       "end": "Get the unit test with one click",
       "title": "Get better and more efficient unit tests",
       "subtitle": "SEE WHY YOU SHOULD TRY OUR PREMIUM FEATURES",
-      "fromThis": " Go from this component",
-      "toThis": "To this unit test"
+      "fromThis": " go from this component",
+      "toThis": "to this unit test",
+      "inSeconds": "in seconds"
     },
     "faster": {
       "cloud": "Create unit tests in matter of seconds",

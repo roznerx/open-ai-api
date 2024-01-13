@@ -58,7 +58,10 @@ export default function GoFromThis({ translations }) {
         <p className="mx-auto w-40 pt-12 text-center text-white sm:hidden">
           {translations.end}
         </p>
-        <div className="mt-2 sm:mt-20">
+        <div className="mt-2 sm:mt-4">
+          <p className="top-2 mb-8 hidden text-3xl font-semibold text-white sm:block">
+            {translations.inSeconds}
+          </p>
           <CurveArrow isEnd />
         </div>
       </div>

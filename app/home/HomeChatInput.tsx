@@ -46,7 +46,7 @@ export default function HomeChatInput({
           </p>
         </button>
       </div>
-      <div className="absolute bottom-3 left-5 z-20 w-[258px] text-left leading-6 sm:bottom-5 sm:left-28">
+      <div className="absolute bottom-3 left-5 z-20 w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto">
         <TypeAnimation
           ref={rotatingTextRef}
           className="rotating-text  text-gray-200"
