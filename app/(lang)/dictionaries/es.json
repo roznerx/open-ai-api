@@ -51,7 +51,7 @@
     "programmingBuddy": {
       "title": "Tu compañero de programación que nunca duerme",
       "subtitle": "Ofreciendo sugerencias inteligentes, optimizando tu código y generando pruebas unitarias",
-      "bannerTitle": "Chatea con tu compañero de programación de IA",
+      "bannerTitle": "El asistente de programación de tus sueños",
       "bannerSubTitle": "Participa en conversaciones en lenguaje natural, fusionando perfectamente la facilidad conversacional de charlar con la eficiencia de un asistente de codificación experimentado.",
       "cta": "Comienza ahora"
     },
@@ -63,7 +63,9 @@
       "cta": "Comienza ahora"
     },
     "goFrom": {
-      "title": "Obtén pruebas unitarias mejores y más eficientes",
+      "start": "Comienza con un componente",
+      "end": "Obtén el test unitario con un click",
+      "title": "Obtén pruebas unitarias en tiempo real",
       "subtitle": "Ve por qué deberias probar nuestras funciones premium",
       "fromThis": "Ir desde este componente",
       "toThis": "A esta prueba unitaria"

@@ -26,10 +26,12 @@ export default function HomeChatInput({
       >
         <input
           ref={inputRef}
-          className="font-lg z-10 w-[590px] rounded-xl 
-         border-none bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px] placeholder:text-mint/60
-        placeholder:text-white focus:border-[0px] focus:outline-none focus:outline-0 
-         focus:ring-0 active:outline-0"
+          className="font-lg z-10 w-[388px]  rounded-xl border-none 
+         bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 
+         ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px]
+          placeholder:text-mint/60 placeholder:text-white
+        focus:border-[0px] focus:outline-none focus:outline-0 focus:ring-0 
+         active:outline-0 sm:w-[590px]"
           value={inputValue}
           onChange={handleInputChange}
         />
@@ -37,17 +39,17 @@ export default function HomeChatInput({
           type="submit"
           title="Submit your prompt"
           aria-label="Submit your prompt"
-          className="group mr-2 h-12 w-48 rounded-xl border-violet-500 bg-violet-500 p-1 text-white disabled:hover:bg-transparent"
+          className="group mr-2 h-12 rounded-xl border-violet-500 bg-violet-500 px-2 text-white disabled:hover:bg-transparent sm:w-48 sm:p-1"
         >
-          <p className="text-[18px] font-semibold group-hover:scale-95 group-hover:text-gray-100">
+          <p className="text-[15px] group-hover:scale-95 group-hover:text-gray-100 sm:text-[18px] sm:font-semibold">
             {isMobile ? translations.ctaMobile : translations.cta}
           </p>
         </button>
       </div>
-      <div className="absolute bottom-5 left-7 z-20 sm:left-28">
+      <div className="absolute bottom-3 left-5 z-20 w-[258px] text-left leading-6 sm:bottom-5 sm:left-28">
         <TypeAnimation
           ref={rotatingTextRef}
-          className="rotating-text text-gray-200"
+          className="rotating-text  text-gray-200"
           sequence={[
             translations.message1,
             1000,

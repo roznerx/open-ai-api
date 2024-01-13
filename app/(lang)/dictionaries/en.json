@@ -63,6 +63,8 @@
       "cta": "Start now"
     },
     "goFrom": {
+      "start": "Start with a component",
+      "end": "Get the unit test with one click",
       "title": "Get better and more efficient unit tests",
       "subtitle": "SEE WHY YOU SHOULD TRY OUR PREMIUM FEATURES",
       "fromThis": " Go from this component",

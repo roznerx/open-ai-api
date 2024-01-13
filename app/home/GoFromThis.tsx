@@ -1,9 +1,7 @@
 import Image from "next/image"
 import CurveArrow from "./CurveArrow"
-import useWindowSize from "hooks/use-window-size"
 
 export default function GoFromThis({ translations }) {
-  const { isMobile } = useWindowSize()
   return (
     <>
       <div className="relative mx-auto mt-28 flex w-screen flex-col items-center justify-center">
@@ -13,7 +11,10 @@ export default function GoFromThis({ translations }) {
         <p className="mb-8 mt-6 px-4 text-center text-2xl text-celeste">
           {translations.subtitle}
         </p>
-        <CurveArrow isMobile={false} />
+        <CurveArrow isEnd={false} />
+        <p className="mx-auto w-32 text-center text-white sm:hidden">
+          {translations.start}
+        </p>
         <div className="w-screen">
           <div className="mx-auto hidden sm:flex sm:justify-evenly">
             <p className="mt-8 text-3xl font-semibold text-white">
@@ -23,7 +24,6 @@ export default function GoFromThis({ translations }) {
               {translations.toThis}
             </p>
           </div>
-
           <div
             className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[1100px] sm:grid-cols-2 sm:place-items-center`}
           >
@@ -53,12 +53,14 @@ export default function GoFromThis({ translations }) {
               />
             </div>
           </div>
+          ``
         </div>
-        {isMobile && (
-          <div className="mt-16">
-            <CurveArrow isMobile={isMobile} />
-          </div>
-        )}
+        <p className="mx-auto w-40 pt-12 text-center text-white sm:hidden">
+          {translations.end}
+        </p>
+        <div className="mt-2 sm:mt-20">
+          <CurveArrow isEnd />
+        </div>
       </div>
     </>
   )

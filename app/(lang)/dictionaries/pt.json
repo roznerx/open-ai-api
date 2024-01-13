@@ -63,6 +63,8 @@
       "cta": "Comece agora"
     },
     "goFrom": {
+      "start": "Comece com um componente",
+      "end": "Obtenha o teste de unidade com um clique",
       "title": "Obtenha testes unitários melhores e mais eficientes",
       "subtitle": "VEJA POR QUE VOCÊ DEVE EXPERIMENTAR NOSSOS RECURSOS PREMIUM",
       "fromThis": "Vá deste componente",
