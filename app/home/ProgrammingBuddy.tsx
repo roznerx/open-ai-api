@@ -7,10 +7,10 @@ export default function ProgrammingBuddy({ translations }) {
   return (
     <div className="w-screen">
       <div className={`flex flex-col items-center justify-center pt-16`}>
-        <h2 className="mb-4 w-full text-center text-4xl leading-tight text-white sm:text-5xl">
+        <h2 className="mb-4 w-full text-center text-4xl leading-tight text-slate-200 sm:text-5xl">
           {translations.title}
         </h2>
-        <p className="mb-12 mt-3 w-full px-4 text-center text-2xl font-normal leading-tight  text-white">
+        <p className="mb-12 mt-3 w-full px-4 text-center text-2xl font-normal leading-tight  text-slate-300">
           {translations.subtitle}
         </p>
         <div
@@ -45,10 +45,10 @@ export default function ProgrammingBuddy({ translations }) {
             id="col-2"
             className="relative w-full sm:ml-0 sm:mr-20 sm:mt-12 sm:w-[560px]"
           >
-            <h3 className="text-center text-4xl font-bold leading-tight text-white sm:pr-12 sm:text-left">
+            <h3 className="text-center text-4xl font-bold leading-tight text-slate-100 sm:pr-12 sm:text-left">
               {translations.bannerTitle}
             </h3>
-            <p className="mt-6 max-w-lg px-4 text-center text-1xl leading-tight text-white sm:px-0 sm:text-left">
+            <p className="mt-6 max-w-lg px-4 text-center text-1xl leading-tight text-slate-100 sm:px-0 sm:text-left">
               {translations.bannerSubTitle}
             </p>
             <div className="flex justify-center sm:justify-start">

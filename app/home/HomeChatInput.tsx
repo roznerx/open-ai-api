@@ -39,9 +39,9 @@ export default function HomeChatInput({
           type="submit"
           title="Submit your prompt"
           aria-label="Submit your prompt"
-          className="group mr-2 h-12 rounded-xl border-violet-500 bg-violet-500 px-2 text-white disabled:hover:bg-transparent sm:w-48 sm:p-1"
+          className="group mr-2 h-12 rounded-xl border-violet-500 bg-violet-500 px-2 text-white/80 hover:text-white/100 sm:w-48 sm:p-1"
         >
-          <p className="text-[15px] group-hover:scale-95 group-hover:text-gray-100 sm:text-[18px] sm:font-semibold">
+          <p className="text-[15px] tracking-wide group-hover:scale-95 group-hover:text-gray-100 sm:text-[18px] sm:font-semibold">
             {isMobile ? translations.ctaMobile : translations.cta}
           </p>
         </button>
@@ -49,7 +49,7 @@ export default function HomeChatInput({
       <div className="absolute bottom-3 left-5 z-20 w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto">
         <TypeAnimation
           ref={rotatingTextRef}
-          className="rotating-text  text-gray-200"
+          className="rotating-text text-slate-200"
           sequence={[
             translations.message1,
             1000,
