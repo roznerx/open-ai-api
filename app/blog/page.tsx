@@ -1,5 +1,5 @@
 import { getBlurDataURL } from "#/lib/images"
-import { constructMetadata } from "#/lib/utils"
+import { constructMetadata } from "@/lib/utils"
 import BlogCard from "#/ui/content/blog-card"
 import { allBlogPosts } from "contentlayer/generated"
 import CategoryNav from "./category-nav"

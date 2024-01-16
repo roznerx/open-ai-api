@@ -1,5 +1,5 @@
 /* eslint-env node */
-import { truncate } from "#/lib/utils"
+import { truncate } from "@/lib/utils"
 import { ImageResponse } from "@vercel/og"
 import { NextRequest } from "next/server"
 
