@@ -3,7 +3,6 @@ import { harperClient } from "lib/harperdb"
 export default async function handler(req, res) {
   const bodyRequest = req.body
   let existingRecord: any = {}
-  console.log("{bodyRequest.userIP", bodyRequest.userIP)
 
   try {
     existingRecord = await harperClient({
@@ -63,4 +62,5 @@ export default async function handler(req, res) {
   } catch (error) {
     console.log("entra en el error:", error)
   }
+  return res.status(200).json({ ok: true })
 }

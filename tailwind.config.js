@@ -23,8 +23,16 @@ module.exports = {
       "2xl": "1536px",
     },
     fontSize: {
+      "1xl": [
+        "22px",
+        {
+          lineHeight: "34px",
+          fontWeight: "400",
+          letterSpacing: "-0.02em",
+        },
+      ],
       "2xl": [
-        "20px",
+        "25px",
         {
           lineHeight: "34px",
           fontWeight: "400",
@@ -32,7 +40,7 @@ module.exports = {
         },
       ],
       "3xl": [
-        "25px",
+        "32px",
         {
           lineHeight: "35px",
           fontWeight: "500",
@@ -67,6 +75,9 @@ module.exports = {
     transparent: "transparent",
     current: "currentColor",
     extend: {
+      scale: {
+        "-100": "-1",
+      },
       animation: {
         tilt: "tilt 3s infinite linear",
         bounceArrow: "bounce 2s infinite",
@@ -108,13 +119,15 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans: ["var(--font-sans)"],
-        pro: ["var(--font-pro)"],
+        sans: ["var(--font-geist-sans)"],
+        mono: ["var(--font-geist-mono)"],
       },
       colors: {
         specialBlue: "#6ea9d7",
+        celeste: "#B1EAF1",
         morado: "#7477FB",
         moradoCode: "#A688FF",
+        secondaryPurple: "#6A51B6",
         mint: "#A1FFE0",
         blue: "#2C9DC0",
         lineNumbers: "#8283AD",
@@ -159,9 +172,6 @@ module.exports = {
             emphasis: "#374151", // gray-700
           },
           border: {
-            DEFAULT: "#e5e7eb", // gray-200
-          },
-          ring: {
             DEFAULT: "#e5e7eb", // gray-200
           },
           content: {

@@ -7,6 +7,7 @@ import { MaterialTooltip } from "app/components/material-components"
 
 export default function FooterSection({
   translations,
+  isPremium,
   mode,
   setUserHasAResponse,
   setTestFrameworkElement,
@@ -32,10 +33,10 @@ export default function FooterSection({
     <>
       {/* <Toaster /> */}
       <section
-        className="fixed bottom-0 left-0 z-40 h-16 w-full border-t-[1px] border-purple-500
-          bg-purple-800 sm:flex sm:items-center sm:justify-between"
+        className="absolute bottom-0 left-0 z-50 h-16 w-full border-t-[1px] border-purple-500
+          bg-purple-800 sm:flex sm:items-center sm:justify-end"
       >
-        <div className="mb-10 ml-6 hidden sm:ml-16 sm:block">
+        <div className="mb-10 ml-20 hidden sm:ml-2 sm:block">
           {mode === "smart" && (
             <>
               <div className="sm:ml-4">
@@ -137,6 +138,7 @@ export default function FooterSection({
           </div>
           <div className="flex sm:mr-4">
             <Button
+              disabled={!isPremium && mode !== "smart"}
               onClick={() => {
                 onCodeGeneration()
                 setUserHasAResponse(false)

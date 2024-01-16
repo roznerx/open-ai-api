@@ -98,7 +98,7 @@ interface MDXProps {
   className?: string
 }
 
-export function MDX({ code, images, tweets, repos, className }: MDXProps) {
+export function MDX({ code, images, className }: MDXProps) {
   const Component = useMDXComponent(code)
   const { isDesktop } = useMediaQuery()
 

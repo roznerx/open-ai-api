@@ -11,7 +11,6 @@ export default async function Page() {
 
   return (
     <div className="flex min-h-screen w-full flex-row items-start justify-center sm:justify-start">
-      {/* <SideBar /> */}
       <div className="relative mt-12 w-[95%] sm:mx-4 sm:w-full">
         <Editor prompt={prompt} questionName={questionName} id={id} />
       </div>

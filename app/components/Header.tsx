@@ -3,11 +3,11 @@
 import Link from "next/link"
 import UserDropdown from "app/components/auth/UserDropdown"
 import Image from "next/image"
-import { usePathname, useRouter } from "next/navigation"
+import { usePathname } from "next/navigation"
 
-import { useState } from "react"
-import Feedback from "./Feedback"
-import { cn } from "#/lib/utils"
+import { useContext } from "react"
+import { cn } from "@/lib/utils"
+import { AuthContext } from "app/provider"
 
 export default function Header({
   translations,
@@ -19,31 +19,26 @@ export default function Header({
   translations?: any
 }) {
   const pathName = usePathname()
-  const shouldJustifyBetween =
-    pathName == "/" ||
-    pathName?.startsWith("/blog") ||
-    pathName == "/pricing" ||
-    pathName == "/terms-and-conditions" ||
-    pathName == "/privacy"
-  const [showWidget, setShowWidget] = useState(false)
-  const router = useRouter()
+  let { setModalIsOpen } = useContext(AuthContext) || {
+    setModalIsOpen: () => {},
+  }
+  const canHideLogoInChat = pathName == "/code-chat" && session !== null
   return (
     <>
       <div
         id="site-header"
         className={`absolute left-0 top-0 z-20 w-full bg-transparent`}
       >
-        <div
-          className={`mt-2 flex w-full items-center ${
-            shouldJustifyBetween && !session
-              ? "justify-between"
-              : "justify-center"
-          } sm:items-start sm:justify-between`}
-        >
+        <div className={`mt-2 flex w-full justify-between`}>
           <div
-            className={`${
-              pathName !== "/" && session ? "sm:ml-20" : "sm:ml-6"
-            } ml-4 pt-2`}
+            className={`ml-4 mt-3 ${
+              pathName == "/dashboard" ||
+              pathName == "/code-idea" ||
+              canHideLogoInChat ||
+              pathName == "/settings"
+                ? "hidden"
+                : "sm:ml-6"
+            }`}
           >
             <Link href="/">
               <div className={`flex`}>
@@ -54,21 +49,20 @@ export default function Header({
                   height={32}
                   alt="Code Genius"
                 />
-                {/* </div> */}
                 <h1
                   className={`sm:text-xl sm:text-xl ml-2  ${
                     pathName?.startsWith("/blog")
                       ? "bg-purple-900"
                       : "bg-gradient-to-r from-mint to-blue"
                   }
-                    bg-clip-text font-sans text-3xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
+                    bg-clip-text font-sans text-2xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
                 >
                   Code Genius
                 </h1>
               </div>
             </Link>
           </div>
-          <div className="mb-3 mr-1 flex h-8 pb-2 font-semibold sm:mt-0">
+          <div className="mb-3 mr-1 flex h-6 pb-2 font-semibold sm:mt-1">
             {!session && (
               <>
                 <Link href={"/pricing"}>
@@ -84,7 +78,7 @@ export default function Header({
               </>
             )}
             <div
-              onClick={() => router.push(`${pathName}/?action=signUp`)}
+              onClick={() => setModalIsOpen(true)}
               className={cn(
                 "my-auto mr-3 mt-2 flex w-auto cursor-pointer flex-row items-start justify-center rounded-lg bg-mint bg-transparent p-[1.5px] font-sans sm:mr-6",
               )}
@@ -107,25 +101,7 @@ export default function Header({
                 </div>
               )}
             </div>
-            {session && (
-              <div className="mr-14 mt-1 hidden flex-col items-end transition-all sm:flex ">
-                <button
-                  onClick={() => setShowWidget((prev) => !prev)}
-                  className="mr-3 mt-1 flex h-4 w-28 items-center justify-center rounded-lg border
-                   border-gray-300 bg-purple-900 p-4 text-gray-200 hover:cursor-pointer hover:text-gray-50"
-                >
-                  <span>{translations?.feedback?.title}</span>
-                </button>
-                <Feedback
-                  translations={translations?.feedback}
-                  session={session}
-                  setShowWidget={setShowWidget}
-                  showWidget={showWidget}
-                />
-              </div>
-            )}
           </div>
-
           <UserDropdown translations={translations} session={session} />
         </div>
       </div>

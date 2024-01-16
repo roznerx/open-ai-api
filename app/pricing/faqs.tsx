@@ -2,20 +2,43 @@
 
 import { Disclosure } from "@headlessui/react"
 import { ChevronUp } from "lucide-react"
+import Link from "next/link"
 
-export default function Faqs({ translations: faqs }) {
+export default function Faqs({ translations: faqs, isHome }) {
   return (
-    <div className="mx-auto mb-12 w-full px-4 md:w-[990px]">
-      <h3 className="mb-6 text-3xl text-white">{faqs.title}</h3>
-      <p className="text-lg mb-2 text-gray-300">{faqs.desc}</p>
-      <p className="text-lg mb-6 text-morado">support@code-genius.dev</p>
+    <div className="mx-auto mb-12 w-full px-4">
+      <h3 className="mb-3 text-center text-4xl text-white">{faqs.title}</h3>
+      <p className="my-6 mb-4 text-center text-1xl text-white">{faqs.desc}</p>
 
-      <div className="w-full rounded-2xl bg-purple-500 p-2">
-        <Disclosure as="div" className="">
+      <div
+        className={`text-lg mb-6 text-center ${
+          isHome ? "font-semibold text-white" : "text-mint"
+        } `}
+      >
+        <Link
+          className="text-lg mb-12 mt-6 capitalize "
+          href={"mailto:support@code-genius.dev"}
+        >
+          {faqs.support} 📨
+        </Link>
+      </div>
+
+      <div className="mx-auto flex w-full flex-col rounded-2xl bg-purple-500 p-2 sm:w-9/12">
+        <Disclosure as="div" className="" defaultOpen={isHome ? false : true}>
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-l px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["1"]?.title}
                 </span>
                 <ChevronUp
@@ -24,7 +47,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left">
                 {faqs["1"]?.desc}
               </Disclosure.Panel>
             </>
@@ -33,8 +56,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2"].title}
                 </span>
                 <ChevronUp
@@ -43,7 +76,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2"].desc}
               </Disclosure.Panel>
             </>
@@ -52,8 +85,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2.a"]?.title}
                 </span>
                 <ChevronUp
@@ -62,7 +105,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2.a"]?.desc}
               </Disclosure.Panel>
             </>
@@ -71,8 +114,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={` ${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2.1"]?.title}
                 </span>
                 <ChevronUp
@@ -81,7 +134,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2.1"]?.desc}
               </Disclosure.Panel>
             </>
@@ -90,8 +143,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg border border-purple-900 bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["2.2"]?.title}
                 </span>
                 <ChevronUp
@@ -100,7 +163,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left ">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left ">
                 {faqs["2.2"]?.desc}
               </Disclosure.Panel>
             </>
@@ -109,8 +172,18 @@ export default function Faqs({ translations: faqs }) {
         <Disclosure as="div" className="mt-2">
           {({ open }) => (
             <>
-              <Disclosure.Button className="text-sm group flex w-full justify-between rounded-lg bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75">
-                <span className="text-gray-300 group-hover:text-white">
+              <Disclosure.Button
+                className={`${
+                  open ? "bg-purple-900" : "bg-purple-800"
+                } text-sm group flex w-full justify-between rounded-lg bg-purple-800 px-4 py-2 text-left font-medium text-purple-900 hover:bg-purple-900 focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75`}
+              >
+                <span
+                  className={`group-hover:text-white ${
+                    open
+                      ? "font-semibold text-gray-100"
+                      : "font-normal text-gray-300"
+                  } `}
+                >
                   {faqs["3"]?.title}
                 </span>
                 <ChevronUp
@@ -119,7 +192,7 @@ export default function Faqs({ translations: faqs }) {
                   } h-5 w-5 text-white`}
                 />
               </Disclosure.Button>
-              <Disclosure.Panel className="text-sm px-4 pt-4 pb-2 text-center text-gray-200 sm:text-left">
+              <Disclosure.Panel className="text-sm px-4 pb-2 pt-4 text-center text-gray-200 sm:text-left">
                 {faqs["3"]?.desc}
               </Disclosure.Panel>
             </>

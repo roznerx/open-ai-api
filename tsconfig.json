@@ -39,7 +39,8 @@
     ".next/types/**/*.ts",
     "pages/api/auth/[...nextauth].ts",
     "utils/confetti.js",
-    ".contentlayer/generated"
+    ".contentlayer/generated",
+    "app/api/chatImage/route.ts"
   ],
   "exclude": ["node_modules"]
 }

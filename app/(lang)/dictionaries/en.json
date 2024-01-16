@@ -35,9 +35,49 @@
       "title": "The AI programming genius that helps you coding faster, easier, and more efficient.",
       "subtitle": "Writing great code can be a challenging and time-consuming task, but with Code Genius you can take your skills to the next level! Explore the possibilities!"
     },
+    "input": {
+      "cta": "Start now",
+      "ctaMobile": "Start",
+      "message1": "Write a chat application using web sockets",
+      "message2": "Tell me more about Typescript",
+      "message3": "What are the best practices in React?",
+      "message4": "Teach me AWS infrastructure and services",
+      "message5": "Is it difficult to learn Python?"
+    },
+    "testimonials": {
+      "title": "Loved by developers around the world",
+      "subtitle": "Our users save 35% of development time per day"
+    },
+    "programmingBuddy": {
+      "title": "Your pair programming that never sleeps",
+      "subtitle": "Offering smart suggestions, optimizing your code, and generating unit tests",
+      "bannerTitle": "Chat with your AI programming buddy",
+      "bannerSubTitle": "Engage in effortless conversations with your AI programming buddy, combining conversational ease with the efficiency of a seasoned coding assistant.",
+      "cta": "Start now"
+    },
+    "stayInSync": {
+      "title": "Stay in sync with your workflow",
+      "subtitle": "Seamless workflow synchronization for effortless collaboration",
+      "bannerTitle": "Get the Github App for premium members",
+      "bannerSubTitle": "Revolutionize your development experience: elevate workflow efficiency with code genius code coverage and instant on-the-fly unit testing",
+      "cta": "Start now"
+    },
+    "goFrom": {
+      "start": "Start with a component",
+      "end": "Get the unit test with one click",
+      "title": "Get better and more efficient unit tests",
+      "subtitle": "SEE WHY YOU SHOULD TRY OUR PREMIUM FEATURES",
+      "fromThis": " go from this component",
+      "toThis": "to this unit test",
+      "inSeconds": "in seconds"
+    },
+    "faster": {
+      "cloud": "Create unit tests in matter of seconds",
+      "layers": "Code faster and efficient than ever"
+    },
     "superHero": {
-      "title": "Create Genius Code",
-      "subtitle": "Take your development flow to the next level with the power of AI ",
+      "title": "AI Code Generation for Developers",
+      "subtitle": "Transform your workflow and generate quality code instantly",
       "smart": {
         "title": "Boost your code performance",
         "subtitle": "Code Genius analyzes your code in real-time, offering smart suggestions and code improvements. From enhancing syntax to optimizing algorithms, Code Genius ensures your code is clean, efficient, and error-free."
@@ -53,28 +93,76 @@
     }
   },
   "dashboard": {
+    "newFeature": "New Feature",
     "welcome": "Welcome",
+    "explore": "Explore the features we have for you",
     "credits": "Credits",
     "available": "Available",
     "ctaChat": "Go to Chat",
     "ctaUpgrade": "Upgrade",
-    "subscription": "Subscription Plan",
+    "ctaSettings": "Settings",
+    "subscription": "Subscription",
+    "premiumSubscription": "Premium Plan",
+    "freeSubscription": "Free Plan",
+    "ask": "Ask to Code Genius and explore the vast collection of useful code examples to make your development process faster and more efficient",
+    "access": "You have acces to these features: Chat, smart Suggestions, code improvements, automated tests generation and docs generation.",
+    "unlock": "Unlock Code Genius Premium to access a world of advanced features, including Unit Test Generation, Code Improvements, and Docs Generation – all at your fingertips!",
+    "free": "You have a Free Plan",
+    "manage": "Manage Subscription",
+    "upgrade": "Upgrade plan",
     "smart": {
       "title": "Smart Suggestions",
-      "subtitle": "Catch errors and optimize your code as you go."
+      "subtitle": "Identify and rectify errors while fine-tuning your code in real-time."
     },
     "performance": {
-      "title": "Code Improvements",
-      "subtitle": "Improve the perfomance of your code."
+      "title": "Improvements",
+      "subtitle": "Enhance the efficiency and optimize the performance of your code."
     },
     "test": {
       "title": "Generate Tests",
-      "subtitle": "Generate reliable unit test cases in seconds."
+      "subtitle": "Effortlessly create dependable unit test cases within seconds."
     },
     "docs": {
       "title": "Documentation",
       "subtitle": "Generate clear and concise documentation in seconds."
+    },
+    "modal": {
+      "subscribedMessage": "You have been subscribed to the Code Genius Premium plan",
+      "enjoy": "Enjoy the following extra functionalities:",
+      "thankyou": "Thank you",
+      "unsubscribed": "You have been un-subscribed to the Code Genius Premium plan.",
+      "sorry": "We're sorry to see you go",
+      "cancelModal": {
+        "sure": "Are you sure you want to cancel?",
+        "loose": "If you cancel you will loose the avility to generate tests, code improvements and documentation."
+      },
+      "enterprise": {
+        "thanks": "Talks for being interested in Code Genius.",
+        "expert": "An expert will reach you soon.",
+        "send": "Send",
+        "talk": "Talk to us",
+        "happy": "We will be happy to answer all your questions.",
+        "error": "This is the error message description:",
+        "sending": "Sending message..",
+        "name": "Name:",
+        "email": "Email:",
+        "message": "Message:"
+      }
     }
+  },
+  "settings": {
+    "plan": "Your plan",
+    "member": "Member since",
+    "trial": "Trial ends in",
+    "period": "The current period ends",
+    "billing": "The billing cycle start",
+    "paymentAmoun": "Payment amount",
+    "payment": "Payment",
+    "manage": "Manage payment method",
+    "unlock": "Unlock a 25% Discount with an Annual Subscription!",
+    "history": "Check billing history",
+    "cancel": "Cancel Subscription",
+    "switch": "Switch to yearly"
   },
   "showCase": {
     "title": "Why should I use Code Genius?",
@@ -82,7 +170,7 @@
     "seeVideo": "Watch video"
   },
   "sidebar": {
-    "credits": "Créditos",
+    "credits": "Subscription",
     "dashboard": "Dashboard",
     "suggestions": "Suggestions",
     "testing": "Testing",
@@ -92,7 +180,7 @@
   },
   "codeIdea": {
     "footer": {
-      "lang": "Lenguage",
+      "lang": "Language",
       "lib": "UI Library",
       "clear": "Clear Panel",
       "stop": "Stop generation",
@@ -125,40 +213,36 @@
     }
   },
   "pricing": {
-    "title": "Only pay for what you use",
-    "subtitle1": "Our pricing model is simple and flexible. No hidden fees. No surprise bills. No subscription bills.",
-    "subtitle2": "Only pay for what you use.",
-    "faqs": {
-      "title": "Frequently Asked Questions",
-      "desc": "If you can't find the answer to your question, please contact our support here",
-      "1": {
-        "title": "What is Code Genius?",
-        "desc": "Code Genius is the most practical AI powered tool, to help developers achieve their tasks faster."
-      },
-      "2": {
-        "title": "What can I do with Code Genius?",
-        "desc": "Code Genius has the following features: Smart Code suggestions. Test Generation. Code Improvements. Documentation Generation. Code Genius Chat and more!"
-      },
-      "2.a": {
-        "title": "How Code Genius handles Privacy?",
-        "desc": "We understand that code privacy is very important, seriously. We don't store any code you send to Code Genius. We only use it to generate suggestions, tests, improvements, and documentation."
-      },
-      "2.1": {
-        "title": "Why should I use Code Genius?",
-        "desc": "Code Genius is better than other AI competitors, including popular VS Code plugins. With Code Genius you can generate a test for you component in seconds, using your favorite tools."
-      },
-      "2.2": {
-        "title": "Can I use Code Genius for free?",
-        "desc": "Yes. We offers 10 credits for free, for you to try it and see the benefits for you own."
-      },
-      "3": {
-        "title": "Do you offer technical support?",
-        "desc": "Yes. All users who have created an account in Code Genius have technical support 24/7."
+    "title": "Pay once. Go Premium.",
+    "processing": "Processing..",
+    "free": "Free Plan",
+    "popular": "Try it for Free",
+    "included": "What’s included?",
+    "subtitle": "Unlock Limitless Learning with Code Genius!",
+    "subtitle1": "Get access to automated unit tests generation, docs and code improvements!",
+    "subtitle2": "Try it FREE for a week, no strings attached. Cancel anytime.",
+    "basic": {
+      "title": "Starter",
+      "perfect": "Perfect to try it for the first time",
+      "subtitle": "Free",
+      "cta": "Current Plan",
+      "features": {
+        "smart": "Smart Suggestions",
+        "chat": "Code Genius Chat",
+        "support": "Basic Support",
+        "copy": "Copy Code Snippets"
       }
     },
     "premium": {
+      "modal": {
+        "upgrade": "Upgrade to premium",
+        "description": "By upgrading to a premium subscription you have access to the following features:"
+      },
+      "year": "Per month paying yearly",
+      "month": "Per month",
       "title": "Premium",
-      "cta": "Get Credits",
+      "cta": "Go Premium",
+      "support": "Premium Support 24/7",
       "features": {
         "smart": "Smart suggestions",
         "test": "Test Generation",
@@ -169,14 +253,46 @@
     },
     "enterprice": {
       "title": "Enterprise",
+      "contactUs": "Contact Us",
+      "support": "Soporte Empresarial",
+      "perfect": "Perfect for teams of any size.",
       "cta": "Contact Us",
       "perUser": "Per user, per month.",
       "features": {
-        "1": "Everything in Premium plus",
+        "1": "Everything in Premium",
         "2": "Unlimited token usage",
-        "3": "Customized chat assistant",
+        "3": "Chat assistant 24/7",
         "4": "Save and edit code ideas",
         "5": "Priority support"
+      }
+    },
+    "faqs": {
+      "title": "Frequently Asked Questions",
+      "desc": "If you can’t find the answer to your question, please reach out to our support team here:",
+      "support": "contact support",
+      "1": {
+        "title": "What is Code Genius?",
+        "desc": "Code Genius is a powerful tool designed to enhance your coding experience. It offers real-time code analysis, intelligent suggestions, and code improvements to make your code clean, efficient, and error-free. Additionally, it can automatically generate unit tests, covering a wide range of scenarios, and create clear and concise code documentation. This tool is a valuable companion for developers looking to optimize their code and streamline their workflow."
+      },
+      "2": {
+        "title": "What can I do with Code Genius?",
+        "desc": "Code Genius helps you code better by providing smart code suggestions, generating tests, improving your code, generating documentation, and chatting with your personal AI chat assistant."
+      },
+      "2.a": {
+        "title": "How does Code Genius protect user privacy?",
+        "desc": "We understand that code privacy is very important, and we take it seriously. We do not store any code that you send to Code Genius. We only use it to generate suggestions, tests, improvements, and documentation."
+      },
+      "2.1": {
+        "title": "Why should I use Code Genius?",
+        "desc": "Code Genius surpasses other AI competitors, such as popular VS Code plugins, in terms of performance. You can use our test generation feature to generate unit tests for your components in seconds."
+      },
+      "2.2": {
+        "title": "Can I use Code Genius for free?",
+        "desc": "You can try our free features, AI Chat and Code Suggestions, with our starter plan. Alternatively, you can try all of our features for free for 7 days with our premium subscription."
+      },
+      "3": {
+        "title": "Do you offer technical support?",
+        "desc": "Absolutely. All Code Genius members have access to 24/7 technical support. We provide basic support to the starter plan and premium support to our premium subscribers."
       }
     }
   },
@@ -296,7 +412,7 @@
     "blog": "Blog",
     "terms": "Terms",
     "privacy": "Privacy",
-    "copy": "© Copyright 2023. All rights reserved."
+    "copy": "© Copyright 2024. All rights reserved."
   },
   "modals": {
     "signIn": {

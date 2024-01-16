@@ -10,9 +10,11 @@ import { cn } from "#/lib/utils"
 export default function Footer({
   session,
   translations,
+  modalTranslations,
 }: {
   session: any
   translations: any
+  modalTranslations: any
 }) {
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const pathName = usePathname()
@@ -20,19 +22,21 @@ export default function Footer({
     pathName == "/" ||
     pathName?.startsWith("/blog") ||
     pathName == "/terms-and-conditions" ||
-    pathName == "/privacy"
+    pathName == "/privacy" ||
+    pathName == "/pricing"
   return (
     <>
       {shouldShowFooter ? (
         <footer>
           <ContactFormModal
+            translations={modalTranslations}
             clientName={(session && session?.user && session?.user?.name) || ""}
             isOpen={openContactForm}
             setIsOpen={setOpenContactForm}
           />
           <div
             className={cn(
-              "mx-auto flex w-screen flex-col border-t border-purple-500  bg-purple-900 font-sans text-white shadow-xl shadow-white",
+              "mx-auto flex w-screen flex-col border-t border-purple-700  bg-black font-sans text-white shadow-xl shadow-white",
             )}
           >
             <div className="flex flex-col items-center justify-center px-5 py-4 sm:flex-row sm:items-start sm:justify-between">
@@ -93,7 +97,7 @@ export default function Footer({
             </div>
             <div className={`w-screen content-center px-5 py-4`}>
               <p
-                className={cn("text-center font-normal text-gray-300", {
+                className={cn("text-center font-normal text-gray-200", {
                   "text-white": pathName?.startsWith("/blog"),
                 })}
               >

@@ -2,16 +2,8 @@ import prisma from "#/lib/prisma"
 
 export default async function handler(req, res) {
   //   const bodyRequest = JSON.parse(req.body)
-  const {
-    email,
-    userId,
-    name,
-    confirmed,
-    checkoutURL,
-    amount,
-    created,
-    credits,
-  } = req.body
+  const { email, userId, name, confirmed, checkoutURL, amount, created } =
+    req.body
 
   const payload = {
     userId,
@@ -20,7 +12,7 @@ export default async function handler(req, res) {
     confirmed,
     checkoutURL,
     created,
-    credits,
+
     amount,
   }
   if (req.method === "POST") {

@@ -1,21 +1,17 @@
 import "../styles/globals.css"
 import SessionProvider from "./provider"
-import { Inter } from "next/font/google"
+import { GeistSans } from "geist/font/sans"
+import { GeistMono } from "geist/font/mono"
 
 import { Metadata } from "next"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
 import { getDictionary } from "./(lang)/dictionaries"
-import { getServerSession } from "next-auth"
-import { authOptions } from "pages/api/auth/[...nextauth]"
 import Script from "next/script"
 import SideBar from "./components/shared/SideBar"
 import Footer from "./components/Footer"
-
-const inter = Inter({
-  subsets: ["latin"],
-  display: "swap",
-  variable: "--font-sans",
-})
+import { getServerSession } from "next-auth"
+import { authOptions } from "pages/api/auth/[...nextauth]"
+import { SignInModal } from "./components/modals/SignInModal"
 
 export const metadata: Metadata = {
   title: {
@@ -53,14 +49,14 @@ export default async function RootLayout({
   const translations = await getDictionary("en")
   return (
     <>
-      <html lang="en" className={`${inter.variable}`}>
+      <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
         <head>
           <link rel="icon" href="/favicon.ico" />
           <link rel="canonical" href="https://code-genius.dev" />
         </head>
-        <body>
-          <SessionProvider translations={translations?.modals?.signIn}>
-            <div className="flex min-h-screen flex-nowrap bg-purple-900">
+        <body className="w-full overflow-x-hidden">
+          <SessionProvider>
+            <div className="flex min-h-screen bg-purple-900">
               {session && (
                 <SideBar
                   translations={translations.sidebar}
@@ -68,12 +64,17 @@ export default async function RootLayout({
                 />
               )}
               <HeaderWrapper
-                translations={translations?.home?.header}
                 session={session}
+                translations={translations?.home?.header}
               />
               {children}
             </div>
-            <Footer session={session} translations={translations?.footer} />
+            <Footer
+              session={session}
+              translations={translations?.footer}
+              modalTranslations={translations?.dashboard.modal}
+            />
+            <SignInModal signInTranslations={translations.modals.signIn} />
           </SessionProvider>
           <Script
             strategy="afterInteractive"

@@ -1,9 +1,9 @@
 import Header from "../Header"
 
-export default function HeaderWrapper({ translations, session }) {
+export default async function HeaderWrapper({ translations, session }) {
   return (
     <>
-      <Header translations={translations} session={session} />
+      <Header session={session} translations={translations} />
     </>
   )
 }

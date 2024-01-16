@@ -1,30 +1,24 @@
 "use client"
 
 import { SessionProvider } from "next-auth/react"
-import { useSearchParams } from "next/navigation"
-import { useSignInModal } from "./components/modals/SignInModal"
-import { useEffect } from "react"
 
-export default function Provider({ children, translations }) {
-  const searchParams = useSearchParams()
-  const { SignInModal, setShowSignInModal } = useSignInModal({
-    tip: "Redeem your free initial 10 credits.",
-    translations,
-  })
+import React, { useState } from "react"
+type AuthType = {
+  isOpen: boolean
+  setModalIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
 
-  useEffect(() => {
-    if (searchParams && searchParams.get("action") === "signUp") {
-      setShowSignInModal(true)
-    } else {
-      setShowSignInModal(false)
-    }
-  }, [setShowSignInModal, searchParams])
+export const AuthContext = React.createContext<AuthType | null>(null)
+
+export default function Provider({ children }) {
+  const [isOpen, setModalIsOpen] = useState(false)
 
   return (
     <>
       <SessionProvider>
-        <SignInModal />
-        {children}
+        <AuthContext.Provider value={{ isOpen, setModalIsOpen }}>
+          {children}
+        </AuthContext.Provider>
       </SessionProvider>
     </>
   )

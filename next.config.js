@@ -27,9 +27,6 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
   },
-  experimental: {
-    appDir: true,
-  },
   headers() {
     return [
       {

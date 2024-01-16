@@ -36,7 +36,9 @@ let testFrameworkElements: TestingElementType[] = [
 let testLibElements: libTestingElementType[] = ["React Testing", "Chai"]
 
 export default function Client({
+  setPremiumModalIsOpen,
   userName,
+  isPremium,
   chatHasStarted,
   langTranslation,
   libTranslation,
@@ -44,9 +46,7 @@ export default function Client({
   setGeneratedCode,
   generatedCode,
   translations,
-  modalTranslations,
   userId,
-  userCredits,
   lib,
   mode,
   setMode,
@@ -65,10 +65,9 @@ export default function Client({
     useState<TestingElementType>("Testing Tool")
   const [loading, setLoading] = useState(false)
   const [modaIsOpen, setModaIsOpen] = useState(false)
+
   const [prompt, setPrompt] = useState("")
   const [docOptions, setDocOptions] = useState("Options")
-  const [creditsLeft, setCreditsLeft] = useState(userCredits)
-  const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
   const [showSavePromptModal, setShowSavePromptModal] = useState(false)
   const [userHasAResponse, setUserHasAResponse] = useState(false)
   const [reader, setReader] =
@@ -103,6 +102,9 @@ export default function Client({
         } If a code comment consists of more than 10 words, proceed to the subsequent line.`
         break
       case "test":
+        if (!isPremium) {
+          setPremiumModalIsOpen(true)
+        }
         codeMessages.current = [
           {
             role: "system",
@@ -113,6 +115,9 @@ export default function Client({
         strong background in unit, integration, and e2e testing.`
         break
       case "improve":
+        if (!isPremium) {
+          setPremiumModalIsOpen(true)
+        }
         codeMessages.current = [
           {
             role: "system",
@@ -123,6 +128,9 @@ export default function Client({
           "You are a helpful and specialized AI software assistant expert in code performance and customization. User will provide code and your task is to give improvement suggestions with code examples."
         break
       case "docs":
+        if (!isPremium) {
+          setPremiumModalIsOpen(true)
+        }
         codeMessages.current = [
           {
             role: "system",
@@ -157,6 +165,8 @@ export default function Client({
     docOptions,
     langTranslation,
     libTranslation,
+    isPremium,
+    setPremiumModalIsOpen,
   ])
 
   useEffect(() => {
@@ -231,12 +241,6 @@ export default function Client({
     }
   }, [])
 
-  useEffect(() => {
-    if (!userCredits || userCredits === 0) {
-      setCreditsModaIsOpen(true)
-    }
-  }, [userCredits])
-
   const generateCompletion = async () => {
     setLoading(true)
     setChatHasStarted(true)
@@ -247,16 +251,12 @@ export default function Client({
         content: prompt,
       },
     ]
-    console.log("codeMessages.current", codeMessages.current)
 
     generateCode({
       setReader,
       setGeneratedCode,
       codeMessages,
-      userId,
       setUserHasAResponse,
-      setCreditsLeft,
-      setCreditsModaIsOpen,
       setLoading,
     })
   }
@@ -277,10 +277,6 @@ export default function Client({
       return false
     }
 
-    if (!creditsLeft || creditsLeft === 0) {
-      setCreditsModaIsOpen(true)
-      return false
-    }
     generateCompletion()
   }
 
@@ -326,15 +322,15 @@ export default function Client({
     mode === "smart" && chatHasStarted && codeSentence.length > 0
 
   return (
-    <div className="w-full sm:ml-10">
+    <>
       <div
         ref={chatContainerRef}
         id="container"
-        className="ml-0 mt-16 flex max-h-[90vh] flex-col items-start justify-start overflow-y-scroll pb-24 sm:ml-8 sm:justify-between"
+        className="ml-0 flex flex-col items-start justify-start overflow-y-scroll sm:ml-8 sm:justify-between"
       >
-        <div className="w-full">
-          <div className="mx-auto  w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
-            <div className="mt-5 inline-flex font-sans">
+        <div className="screen h-[90vh] w-full pb-10">
+          <div className="mx-auto w-full border-b-[0.5px] border-gray-600 pb-1 text-left text-[13px]">
+            <div className="inline-flex pt-20 font-sans">
               <span className="ml-5 text-2xl font-semibold text-white">
                 {codeGeniusMood}
               </span>
@@ -344,13 +340,13 @@ export default function Client({
             padding={20}
             textareaId="code-editor"
             placeholder={placeHolderText}
-            className="max-h[500px] mb-8 w-full rounded-lg border-none bg-purple-900 pb-6 pt-4 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
+            className="w-full rounded-lg border-none bg-purple-900 font-mono text-gray-200 focus:border-none focus:shadow-none focus:ring-0 focus:ring-purple-700 active:border-purple-700 "
             value={codeSentence}
             highlight={(code) => highlight(code, languages.js)}
             onValueChange={(code) => setCodeSentence(code)}
           />
           {showUserMessage ? (
-            <div className="mb-1 flex ">
+            <div className="mb-1 flex">
               <div className="ml-1 flex w-full items-center justify-center">
                 <div className="flex items-start justify-start">
                   <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado text-center font-medium">
@@ -370,6 +366,7 @@ export default function Client({
           ) : null}
           {generatedMessages && (
             <CombinedMessages
+              isLegacy={true}
               pathName={pathName}
               loading={loading}
               userName={userName}
@@ -378,39 +375,33 @@ export default function Client({
           )}
         </div>
       </div>
-      <FooterSection
-        translations={translations.footer}
-        stopGeneration={stopGeneration}
-        clearPanel={clearPanel}
-        testFrameworkElements={testFrameworkElements}
-        setDocOptions={setDocOptions}
-        docOptions={docOptions}
-        testLibElements={testLibElements}
-        testLibElement={testLibElement}
-        setTestLib={setTestLib}
-        setTestFrameworkElement={setTestFrameworkElement}
-        testFrameworkElement={testFrameworkElement}
-        mode={mode}
-        setUserHasAResponse={setUserHasAResponse}
-        generatedCode={generatedCode}
-        langElement={langElement}
-        libElements={libElements}
-        langElements={langElements}
-        loading={loading}
-        setLangElement={setLangElement}
-        lib={lib}
-        setLib={setLib}
-        onCodeGeneration={onCodeGeneration}
-      />
-      <Modal
-        title={modalTranslations?.title}
-        isCreditsModal
-        body={modalTranslations?.description}
-        isOpen={creditsModaIsOpen}
-        buttonText={modalTranslations?.cta}
-        buttonLink="/pricing"
-        setIsOpen={setCreditsModaIsOpen}
-      />
+      {(isPremium || mode === "smart") && (
+        <FooterSection
+          isPremium={isPremium}
+          translations={translations.footer}
+          stopGeneration={stopGeneration}
+          clearPanel={clearPanel}
+          testFrameworkElements={testFrameworkElements}
+          setDocOptions={setDocOptions}
+          docOptions={docOptions}
+          testLibElements={testLibElements}
+          testLibElement={testLibElement}
+          setTestLib={setTestLib}
+          setTestFrameworkElement={setTestFrameworkElement}
+          testFrameworkElement={testFrameworkElement}
+          mode={mode}
+          setUserHasAResponse={setUserHasAResponse}
+          generatedCode={generatedCode}
+          langElement={langElement}
+          libElements={libElements}
+          langElements={langElements}
+          loading={loading}
+          setLangElement={setLangElement}
+          lib={lib}
+          setLib={setLib}
+          onCodeGeneration={onCodeGeneration}
+        />
+      )}
       <Modal
         isCreditsModal
         title={`Configure your ${
@@ -436,6 +427,6 @@ export default function Client({
         buttonText="Save"
         setIsOpen={setShowSavePromptModal}
       />
-    </div>
+    </>
   )
 }

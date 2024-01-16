@@ -10,9 +10,7 @@ export default async function handler(req, res) {
 
   const updatedUser = {
     ...existingUser[0],
-    apiCalls: existingUser[0]?.apiCalls
-      ? Number(existingUser[0]?.apiCalls) + 1
-      : 1,
+    isPremium: bodyRequest.isPremium,
   }
 
   if (existingUser && existingUser[0]) {

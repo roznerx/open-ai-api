@@ -8,11 +8,13 @@ export default function UserDropdown({ session, translations }) {
   if (!email) return null
 
   return (
-    <UserMenu
-      translations={translations}
-      session={session}
-      email={email}
-      image={image}
-    />
+    <>
+      <UserMenu
+        translations={translations}
+        session={session}
+        email={email}
+        image={image}
+      />
+    </>
   )
 }

@@ -20,22 +20,14 @@ export default function Author({
     },
     croch: {
       name: "Carolina Rodriguez",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/fmerian.jpg",
-    },
-    steventey: {
-      name: "Steven Tey",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/steventey.jpg",
-    },
-    fmerian: {
-      name: "Flo Merian",
-      image: "https://d2vwwcvoksz7ty.cloudfront.net/author/fmerian.jpg",
+      image: "/authors/croch.png",
     },
   }
 
   return imageOnly ? (
     <BlurImage
       src={authors[username].image}
-      alt={authors[username].namee}
+      alt={authors[username].name}
       width={36}
       height={36}
       className="rounded-full transition-all group-hover:brightness-90"

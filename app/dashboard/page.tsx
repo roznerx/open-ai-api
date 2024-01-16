@@ -1,140 +1,83 @@
-import prisma from "#/lib/prisma"
 import { getDictionary } from "app/(lang)/dictionaries"
-import SideBar from "app/components/shared/SideBar"
-import { getServerSession } from "next-auth"
 import { headers } from "next/headers"
-import { redirect } from "next/navigation"
-import { authOptions } from "pages/api/auth/[...nextauth]"
 import Client from "./client"
+import { getServerSession } from "next-auth"
+import { authOptions } from "pages/api/auth/[...nextauth]"
+import { redirect } from "next/navigation"
+import { Params } from "app/settings/page"
+import { stripe } from "@/lib/stripe"
 
 export const metadata = {
   title: "AI Dashboard",
 }
 
-export default async function Dashboard() {
+export const dynamic = "force-dynamic"
+
+interface SearchParamsWithSesId extends Params {
+  session_id: string
+}
+
+export default async function Dashboard({
+  searchParams,
+}: {
+  searchParams: SearchParamsWithSesId
+}) {
+  let stripeSession
+  const { session_id, subId = "" } = searchParams
   const session = await getServerSession(authOptions)
+
   if (!session) {
     redirect("/?referer=/dashboard")
   }
-
-  let opConfirmation = false
-  let totalCredits: number = 0
-  let purchasedCredits: number = 0
-  let existingCredits: string = ""
-  const headersList = headers()
-  const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
-  const dictionary = await getDictionary(lang)
-  //@ts-ignore
-  const userId = session && session.user?.id
-  console.log("session:", session)
-  let user
-  //@ts-ignore
-  if (session?.user?.id) {
-    user = await prisma.user.findUnique({
-      where: {
-        id: userId,
-      },
-    })
-  }
-
-  console.log("Prisma user:", user)
-
-  const checkoutSession = await prisma.checkoutSessions.findMany({
-    where: {
-      userId: userId,
-      credits: {
-        gt: 0,
-      },
-    },
-  })
-  console.log(" Prisma CheckoutSession:", checkoutSession)
-
-  if (user && !checkoutSession[0]) {
-    totalCredits = user?.credits
-  } else if (userId && user && checkoutSession[0]) {
-    //Store existing credits
-    existingCredits = user?.credits
-
-    //   // console.log("checkoutSession[0]?.credits", checkoutSession[0]?.credits)
-
-    purchasedCredits =
-      checkoutSession.length > 0 ? checkoutSession[0]?.credits : 0
-
-    totalCredits =
-      purchasedCredits > 0
-        ? parseInt(purchasedCredits + existingCredits, 10)
-        : parseInt(existingCredits, 10)
-
-    if (totalCredits > 0) {
-      const updatedUser = {
-        user,
-        credits: totalCredits,
-      }
-      //** UPDATE USER WITH TOTAL CREDITS |  MIGRATE THIS TO PRISMA **
-      // await harperClient({
-      //   operation: "update",
-      //   schema: "Auth",
-      //   table: "Users",
-      //   hash_values: [
-      //     {
-      //       id: userId,
-      //     },
-      //   ],
-      //   records: [updatedUser],
-      // })
+  if (searchParams.action === "subscription-deleted") {
+    try {
+      //@ts-ignore
+      await stripe.subscriptions.update(subId, {
+        cancel_at_period_end: true,
+        cancellation_details: {
+          comment: "Customer deleted their Code Genius subscription.",
+        },
+      })
+    } catch (error) {
+      console.error(`The was an error deleting your subscription: ${error}`)
     }
-
-    //UPDATE CHECKOUT SESSION TO CONFIRMED AND SET CREDITS TO 0 |  MIGRATE THIS TO PRISMA **
-    // const updatedCheckout = {
-    //   ...checkoutSession[0],
-    //   confirmed: true,
-    //   credits: 0,
-    // }
-
-    //   if (updatedOp && updatedOp.update_hashes?.[0] !== "") {
-    //     opConfirmation = true
-    //     const fetchUrl = `${
-    //       process.env.NEXTAUTH_URL
-    //     }/api/email/generate-credits-html?name=${
-    //       session?.user?.name
-    //     }&credits=${purchasedCredits}&ts${new Date().getTime()}`
-
-    //     const headers = new Headers()
-    //     headers.append("Content-Type", "application/json")
-
-    //     const response = await fetch(fetchUrl, {
-    //       method: "GET",
-    //       headers: headers,
-    //     })
-    //     const { html } = await response.json()
-
-    //     const payload = {
-    //       name: session?.user?.name,
-    //       email: session?.user?.email,
-    //       html,
-    //     }
-    //     await fetch(`${process.env.NEXTAUTH_URL}/api/email/send`, {
-    //       method: "POST",
-    //       next: { revalidate: 0 },
-    //       body: JSON.stringify(payload),
-    //     })
-    //   }
   }
+  if (session_id) {
+    stripeSession = await stripe?.checkout?.sessions?.retrieve(session_id)
+    // //just in case
+    // await updateUserSubscription(session?.user?.id, stripeSession?.subscription)
+  }
+
+  const headersList = headers()
+  const lang =
+    headersList &&
+    headersList?.get("accept-language")?.split(",")[0].substring(0, 2)
+  const dictionary = await getDictionary(lang)
+
+  // const stripeData = await stripe.subscriptions.retrieve(
+  //   "sub_1NXYSVKrxiA7kR6cFwedIMNp",
+  // )
+  // console.log("stripe subscription data: ", stripeData.items.data)
 
   return (
     <div className="flex bg-purple-900">
-      <SideBar
-        translations={dictionary.sidebar}
-        menuTranslations={dictionary?.home?.header?.menu}
-      />
       <div className="mx-auto w-full dark:bg-purple-900">
-        <Client
-          translations={dictionary}
-          session={session}
-          credits={totalCredits}
-          purchasedCredits={purchasedCredits}
-          opConfirmation={opConfirmation}
-        />
+        <div className="ml-4 flex w-screen items-center justify-center dark:bg-purple-900 sm:h-screen">
+          <div className="absolute top-32 z-30 w-full bg-transparent sm:top-28">
+            <h2 className="text-lg flex w-full items-center justify-center text-left text-3xl text-gray-200 sm:ml-20 sm:items-start sm:justify-start sm:pl-6 sm:text-3xl">
+              {dictionary?.dashboard.welcome}, {session.user.name}
+            </h2>
+            <p className="flex justify-center pl-6 text-gray-200 sm:ml-20 sm:justify-start">
+              {dictionary?.dashboard.explore}
+            </p>
+          </div>
+          <Client
+            subscriptionId={stripeSession?.subscription}
+            isPremium={session?.user?.isPremium}
+            session={session}
+            translations={dictionary}
+          />
+        </div>
       </div>
     </div>
   )

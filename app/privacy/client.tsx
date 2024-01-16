@@ -1,13 +1,8 @@
 "use client"
 
-import { useSignInModal } from "app/components/modals/SignInModal"
 import Link from "next/link"
 
-export default function Client({ translations, modalTranslations }) {
-  const { SignInModal } = useSignInModal({
-    translations: modalTranslations,
-  })
-
+export default function Client({ translations }) {
   return (
     <>
       <div className="flex min-h-screen flex-nowrap font-sans">
