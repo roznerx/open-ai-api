@@ -28,7 +28,11 @@ export default function HomeChatInput({
         onFocus={handleFocus}
         className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] "
       >
+        <label className="" htmlFor="chat-message">
+          Type something
+        </label>
         <input
+          id="chat-message"
           ref={inputRef}
           className="font-lg z-10 w-[388px]  rounded-xl border-none 
          bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 
@@ -42,10 +46,13 @@ export default function HomeChatInput({
         <button
           type="submit"
           title="Submit your prompt"
-          aria-label="Submit your prompt"
-          className="group mr-2 h-12 rounded-xl border-violet-500 bg-violet-500 px-2 text-white/80 hover:text-white/100 sm:w-48 sm:p-1"
+          aria-label={translations.cta}
+          className="group mr-2 h-12 rounded-xl border-slate-200 bg-violet-500/90 px-2 text-white  sm:w-48 sm:p-1"
         >
-          <p className="text-[15px] tracking-wide group-hover:scale-95 group-hover:text-gray-100 sm:text-[18px] sm:font-semibold">
+          <p
+            aria-label={translations.cta}
+            className="text-[15px] tracking-wide group-hover:scale-95  sm:text-[18px] sm:font-semibold"
+          >
             {isMobile ? translations.ctaMobile : translations.cta}
           </p>
         </button>
