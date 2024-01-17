@@ -1,4 +1,4 @@
-import { getBlurDataURL } from "#/lib/images"
+import { getBlurDataURL } from "@/lib/images"
 import { constructMetadata } from "@/lib/utils"
 import BlogCard from "#/ui/content/blog-card"
 import { allBlogPosts } from "contentlayer/generated"

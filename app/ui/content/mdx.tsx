@@ -8,7 +8,7 @@ import useMediaQuery from "hooks/use-media-query"
 import { cn } from "@/lib/utils"
 import Zoom from "react-medium-image-zoom"
 import "react-medium-image-zoom/dist/styles.css"
-import { CODEGENIUS_FEATURES } from "#/lib/constants/content"
+import { CODEGENIUS_FEATURES } from "@/lib/constants/content"
 import CategoryCard from "./category-card"
 import Video from "../video"
 

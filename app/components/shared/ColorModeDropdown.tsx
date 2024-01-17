@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 import { SunMedium, Moon } from "lucide-react"
 import Popover from "app/components/shared/Popover"
 import { motion } from "framer-motion"
-import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "#/lib/constants"
+import { FADE_IN_ANIMATION_SETTINGS, LSConfig } from "@/lib/constants"
 import useLocalStorage from "hooks/use-localstorage"
 
 export default function ColorModeDropdown() {

@@ -1,6 +1,6 @@
 "use client"
 
-import { sendMarketingEmail } from "#/lib/emails"
+import { sendMarketingEmail } from "@/lib/emails"
 import {
   Table,
   TableHead,
