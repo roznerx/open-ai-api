@@ -1,6 +1,10 @@
 import useWindowSize from "hooks/use-window-size"
+import dynamic from "next/dynamic"
 import { useRef } from "react"
-import { TypeAnimation } from "react-type-animation"
+
+const TypeAnimation = dynamic(() =>
+  import("react-type-animation").then((mod) => mod.TypeAnimation),
+)
 
 export default function HomeChatInput({
   inputValue,
@@ -33,7 +37,7 @@ export default function HomeChatInput({
         focus:border-[0px] focus:outline-none focus:outline-0 focus:ring-0 
          active:outline-0 sm:w-[590px]"
           value={inputValue}
-          onChange={handleInputChange}
+          onChange={(e) => handleInputChange(e.target.value)}
         />
         <button
           type="submit"
@@ -48,6 +52,7 @@ export default function HomeChatInput({
       </div>
       <div className="absolute bottom-3 left-5 z-20 w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto">
         <TypeAnimation
+          preRenderFirstString={true}
           ref={rotatingTextRef}
           className="rotating-text text-slate-200"
           sequence={[

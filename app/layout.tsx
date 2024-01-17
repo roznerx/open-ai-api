@@ -77,10 +77,12 @@ export default async function RootLayout({
             <SignInModal signInTranslations={translations.modals.signIn} />
           </SessionProvider>
           <Script
+            defer
             strategy="afterInteractive"
             src="https://www.googletagmanager.com/gtag/js?id=G-WHLZCV41W9"
           />
           <Script
+            defer
             id="google-analytics"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{

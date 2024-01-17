@@ -1,9 +1,6 @@
 "use client"
 
-import React from "react"
-
-import { AI_MOOD } from "@/lib/constants"
-import { useChat } from "ai/react"
+import React, { useState } from "react"
 
 import HomeChatInput from "./HomeChatInput"
 
@@ -11,10 +8,7 @@ import { useRouter } from "next/navigation"
 
 export default function HomeChat({ translations }) {
   const router = useRouter()
-
-  const { input: inputValue, handleInputChange } = useChat({
-    initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
-  })
+  const [inputValue, setInputValue] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -34,7 +28,7 @@ export default function HomeChat({ translations }) {
           <HomeChatInput
             translations={translations}
             inputValue={inputValue}
-            handleInputChange={handleInputChange}
+            handleInputChange={setInputValue}
           />
         </form>
       </div>
