@@ -67,9 +67,9 @@ export default function Feature({ translations }) {
             <Lottie loop={false} animationData={codeDocumentation} />
           </div>
           <div className="my-auto flex flex-col pt-4 sm:mt-16 sm:h-[280px]">
-            <h5 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-0 sm:text-left">
+            <h2 className="mx-auto w-[90%] bg-gradient-to-br from-[#A1FFE0] to-[#2C9DC0] bg-clip-text pl-3 text-center text-4xl font-bold text-transparent sm:mx-0 sm:mt-0 sm:text-left">
               {translations?.superHero?.docs?.title}
-            </h5>
+            </h2>
             <p className="mt-2 w-full p-4 text-center text-gray-200 sm:w-[80%] sm:text-left">
               {translations?.superHero?.docs?.subtitle}
             </p>

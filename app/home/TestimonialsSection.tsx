@@ -78,9 +78,9 @@ export default function TestimonialsSection({ translations }) {
 
   return (
     <div className="w-screen py-28">
-      <h5 className="mt-10 flex justify-center px-2 text-center text-4xl text-white">
+      <p className="mt-10 flex justify-center px-2 text-center text-4xl text-white">
         {translations?.title}
-      </h5>
+      </p>
       <p className="mt-5 flex justify-center px-4 text-center text-2xl text-white">
         {translations?.subtitle}
       </p>

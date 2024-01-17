@@ -47,7 +47,7 @@ export default function Header({
                   src={"/logo/code-genius.svg"}
                   width={32}
                   height={32}
-                  alt="Code Genius"
+                  alt="App Logo"
                 />
                 <h1
                   className={`sm:text-xl sm:text-xl ml-2  ${

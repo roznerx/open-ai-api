@@ -1,26 +1,26 @@
 "use client"
 
-import React from "react"
+import React, { useRef, useState } from "react"
 
-import { AI_MOOD } from "@/lib/constants"
-import { useChat } from "ai/react"
-
-import HomeChatInput from "./HomeChatInput"
+const HomeChatInput = dynamic(() => import("./HomeChatInput"), {
+  loading: () => null,
+})
 
 import { useRouter } from "next/navigation"
+import dynamic from "next/dynamic"
 
 export default function HomeChat({ translations }) {
   const router = useRouter()
-
-  const { input: inputValue, handleInputChange } = useChat({
-    initialMessages: [{ id: "1", role: "system", content: AI_MOOD.engineer }],
-  })
+  const inputRef = useRef<HTMLInputElement | null>(null)
+  const [inputValue, setInputValue] = useState("")
 
   const handleSubmit = (e) => {
     e.preventDefault()
 
     if (inputValue !== "") {
       router.push(`/code-chat?q=${inputValue}`)
+    } else if (inputRef.current) {
+      inputRef.current.focus()
     }
   }
 
@@ -32,9 +32,10 @@ export default function HomeChat({ translations }) {
           className="relative mt-2 h-12 w-full text-center sm:w-[900px]"
         >
           <HomeChatInput
+            inputRef={inputRef}
             translations={translations}
             inputValue={inputValue}
-            handleInputChange={handleInputChange}
+            handleInputChange={setInputValue}
           />
         </form>
       </div>

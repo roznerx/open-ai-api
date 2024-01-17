@@ -1,5 +1,5 @@
 import Image from "next/image"
-import Tilt from "react-parallax-tilt"
+
 import { useRouter } from "next/navigation"
 
 export default function ProgrammingBuddy({ translations }) {
@@ -22,24 +22,14 @@ export default function ProgrammingBuddy({ translations }) {
             id="col-1"
             className="my-8 flex h-auto items-center justify-center sm:my-0"
           >
-            <Tilt
-              glareEnable={false}
-              glareMaxOpacity={0}
-              glareColor="#cecece"
-              glarePosition="all"
-              glareBorderRadius="0px"
-              tiltMaxAngleX={25}
-              tiltMaxAngleY={25}
-            >
-              <Image
-                className="-rotate-[7.5deg] cursor-pointer hover:-scale-x-100 hover:transform"
-                src="/home/chat-combo.svg"
-                width={352}
-                height={300}
-                title="Chat Combo"
-                alt="Chat combo"
-              />
-            </Tilt>
+            <Image
+              className="-rotate-[7.5deg] cursor-pointer hover:-scale-x-100 hover:transform"
+              src="/home/chat-combo.svg"
+              width={352}
+              height={300}
+              title="Chat Combo"
+              alt="Chat combo"
+            />
           </div>
           <div
             id="col-2"

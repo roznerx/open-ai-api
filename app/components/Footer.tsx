@@ -46,17 +46,17 @@ export default function Footer({
                     src={"/logo/code-genius.svg"}
                     width={32}
                     height={32}
-                    alt="Code Genius"
+                    alt="App Logo"
                   />
 
-                  <h1
+                  <p
                     className={`text-lg sm:text-xl sm:text-xl ml-3 mt-2 
                     bg-gradient-to-r from-mint to-blue
                   bg-clip-text
                  font-sans text-2xl font-bold tracking-tight text-transparent max-md:pt-4 max-sm:pt-0 sm:leading-6`}
                   >
                     Code Genius
-                  </h1>
+                  </p>
                 </Link>
               </div>
               <div className={cn("mt-8 flex text-white sm:pt-2")}>
