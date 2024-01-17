@@ -9,7 +9,7 @@ const HomeChatInput = dynamic(() => import("./HomeChatInput"), {
 import { useRouter } from "next/navigation"
 import dynamic from "next/dynamic"
 
-export default function HomeChat({ translations }) {
+export default function HomeChat({ translations, labelText }) {
   const router = useRouter()
   const inputRef = useRef<HTMLInputElement | null>(null)
   const [inputValue, setInputValue] = useState("")
@@ -32,7 +32,8 @@ export default function HomeChat({ translations }) {
           className="relative mt-2 h-12 w-full text-center sm:w-[900px]"
         >
           <HomeChatInput
-            inputRef={inputRef}
+            labelText={labelText}
+            innerRef={inputRef}
             translations={translations}
             inputValue={inputValue}
             handleInputChange={setInputValue}

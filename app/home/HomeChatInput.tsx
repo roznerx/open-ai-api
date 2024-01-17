@@ -7,7 +7,8 @@ const TypeAnimation = dynamic(() =>
 )
 
 export default function HomeChatInput({
-  inputRef,
+  labelText,
+  innerRef,
   inputValue,
   handleInputChange,
   translations,
@@ -17,67 +18,76 @@ export default function HomeChatInput({
   const rotatingTextRef = useRef<HTMLDivElement | null>(null)
 
   const handleFocus = () => {
-    if (rotatingTextRef.current && inputRef.current) {
+    if (rotatingTextRef.current && innerRef.current) {
       rotatingTextRef.current.classList.add("hidden")
-      inputRef.current.focus()
+      innerRef.current.focus()
     }
   }
 
   return (
     <div className="relative">
-      <div
-        onFocus={handleFocus}
-        onClick={() => setIsFocus(true)}
-        className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] "
-      >
-        <input
-          id="chat-message"
-          ref={inputRef}
-          className="font-lg z-10 w-[388px]  rounded-xl border-none 
+      <div className="flex flex-col">
+        <label
+          className="text-lg z-40 mt-2 w-full items-center justify-center px-10 pb-10 text-center text-2xl text-slate-100 
+          sm:px-3 sm:text-2xl"
+          htmlFor="home-input"
+        >
+          {labelText}
+        </label>
+        <div
+          onFocus={handleFocus}
+          onClick={() => setIsFocus(true)}
+          className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] "
+        >
+          <input
+            id="home-input"
+            ref={innerRef}
+            className="font-lg z-10 w-[388px]  rounded-xl border-none 
          bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 
          ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px]
           placeholder:text-mint/60 placeholder:text-white
         focus:border-[0px] focus:outline-none focus:outline-0 focus:ring-0 
          active:outline-0 sm:w-[590px]"
-          value={inputValue}
-          onChange={(e) => handleInputChange(e.target.value)}
-        />
-        <button
-          type="submit"
-          title="Submit your prompt"
-          aria-label={translations.cta}
-          className="group mr-2 h-12 rounded-xl border-slate-200 bg-violet-500/90 px-2 text-white  sm:w-48 sm:p-1"
+            value={inputValue}
+            onChange={(e) => handleInputChange(e.target.value)}
+          />
+          <button
+            type="submit"
+            title="Submit your prompt"
+            aria-label={translations.cta}
+            className="group mr-2 h-12 rounded-xl border-slate-200 bg-violet-500/90 px-2 text-white  sm:w-48 sm:p-1"
+          >
+            <p className="text-[15px] tracking-wide group-hover:scale-95  sm:text-[18px] sm:font-semibold">
+              {isMobile ? translations.ctaMobile : translations.cta}
+            </p>
+          </button>
+        </div>
+        <div
+          className={`${
+            isFocus ? "hidden" : "block"
+          } absolute bottom-3 left-5 z-20  w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto`}
         >
-          <p className="text-[15px] tracking-wide group-hover:scale-95  sm:text-[18px] sm:font-semibold">
-            {isMobile ? translations.ctaMobile : translations.cta}
-          </p>
-        </button>
-      </div>
-      <div
-        className={`${
-          isFocus ? "hidden" : "block"
-        } absolute bottom-3 left-5 z-20  w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto`}
-      >
-        <TypeAnimation
-          preRenderFirstString={true}
-          ref={rotatingTextRef}
-          className="rotating-text text-slate-200"
-          sequence={[
-            translations.message1,
-            1000,
-            translations.message2,
-            1000,
-            translations.message3,
-            1000,
-            translations.message4,
-            1000,
-            translations.message5,
-            1000,
-          ]}
-          wrapper="span"
-          speed={55}
-          repeat={Infinity}
-        />
+          <TypeAnimation
+            preRenderFirstString={true}
+            ref={rotatingTextRef}
+            className="rotating-text text-slate-200"
+            sequence={[
+              translations.message1,
+              1000,
+              translations.message2,
+              1000,
+              translations.message3,
+              1000,
+              translations.message4,
+              1000,
+              translations.message5,
+              1000,
+            ]}
+            wrapper="span"
+            speed={55}
+            repeat={Infinity}
+          />
+        </div>
       </div>
     </div>
   )
