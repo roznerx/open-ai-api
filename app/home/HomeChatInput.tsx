@@ -1,19 +1,20 @@
 import useWindowSize from "hooks/use-window-size"
 import dynamic from "next/dynamic"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 
 const TypeAnimation = dynamic(() =>
   import("react-type-animation").then((mod) => mod.TypeAnimation),
 )
 
 export default function HomeChatInput({
+  inputRef,
   inputValue,
   handleInputChange,
   translations,
 }) {
   const { isMobile } = useWindowSize()
+  const [isFocus, setIsFocus] = useState(false)
   const rotatingTextRef = useRef<HTMLDivElement | null>(null)
-  const inputRef = useRef<HTMLInputElement | null>(null)
 
   const handleFocus = () => {
     if (rotatingTextRef.current && inputRef.current) {
@@ -21,16 +22,15 @@ export default function HomeChatInput({
       inputRef.current.focus()
     }
   }
+  console.log("isFocus", isFocus)
 
   return (
     <div className="relative">
       <div
         onFocus={handleFocus}
+        onClick={() => setIsFocus(true)}
         className="relative mx-auto inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px] "
       >
-        <label className="" htmlFor="chat-message">
-          Type something
-        </label>
         <input
           id="chat-message"
           ref={inputRef}
@@ -49,15 +49,16 @@ export default function HomeChatInput({
           aria-label={translations.cta}
           className="group mr-2 h-12 rounded-xl border-slate-200 bg-violet-500/90 px-2 text-white  sm:w-48 sm:p-1"
         >
-          <p
-            aria-label={translations.cta}
-            className="text-[15px] tracking-wide group-hover:scale-95  sm:text-[18px] sm:font-semibold"
-          >
+          <p className="text-[15px] tracking-wide group-hover:scale-95  sm:text-[18px] sm:font-semibold">
             {isMobile ? translations.ctaMobile : translations.cta}
           </p>
         </button>
       </div>
-      <div className="absolute bottom-3 left-5 z-20 w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto">
+      <div
+        className={`${
+          isFocus ? "hidden" : "block"
+        } absolute bottom-3 left-5 z-20  w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto`}
+      >
         <TypeAnimation
           preRenderFirstString={true}
           ref={rotatingTextRef}

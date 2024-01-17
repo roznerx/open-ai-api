@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 
 import HomeChatInput from "./HomeChatInput"
 
@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 
 export default function HomeChat({ translations }) {
   const router = useRouter()
+  const inputRef = useRef<HTMLInputElement | null>(null)
   const [inputValue, setInputValue] = useState("")
 
   const handleSubmit = (e) => {
@@ -15,6 +16,8 @@ export default function HomeChat({ translations }) {
 
     if (inputValue !== "") {
       router.push(`/code-chat?q=${inputValue}`)
+    } else if (inputRef.current) {
+      inputRef.current.focus()
     }
   }
 
@@ -26,6 +29,7 @@ export default function HomeChat({ translations }) {
           className="relative mt-2 h-12 w-full text-center sm:w-[900px]"
         >
           <HomeChatInput
+            inputRef={inputRef}
             translations={translations}
             inputValue={inputValue}
             handleInputChange={setInputValue}
