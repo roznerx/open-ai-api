@@ -22,7 +22,6 @@ export default function HomeChatInput({
       inputRef.current.focus()
     }
   }
-  console.log("isFocus", isFocus)
 
   return (
     <div className="relative">

@@ -2,9 +2,12 @@
 
 import React, { useRef, useState } from "react"
 
-import HomeChatInput from "./HomeChatInput"
+const HomeChatInput = dynamic(() => import("./HomeChatInput"), {
+  loading: () => null,
+})
 
 import { useRouter } from "next/navigation"
+import dynamic from "next/dynamic"
 
 export default function HomeChat({ translations }) {
   const router = useRouter()
