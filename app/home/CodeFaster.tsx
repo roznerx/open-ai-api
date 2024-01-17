@@ -9,13 +9,7 @@ export default function CodeFaster({ translations }) {
         className="group relative flex h-[444px] w-[100%] cursor-pointer flex-col items-center justify-center rounded-[35px] bg-gradient-to-t from-[#6530FC] to-[#A486FF]
        sm:w-[505px] sm:bg-gradient-to-t"
       >
-        <Image
-          src="/icons/cloud.svg"
-          className="h-60 w-60"
-          alt="rayo"
-          width={196}
-          height={163}
-        />
+        <Image src="/icons/cloud.svg" alt="rayo" width={196} height={163} />
 
         <p className="mt-4 w-full px-2 text-center text-3xl font-semibold leading-tight text-white">
           {translations.cloud}
@@ -28,7 +22,7 @@ export default function CodeFaster({ translations }) {
       >
         <Image
           src="/icons/layers1.svg"
-          className="mt-5 h-56 w-56 -scale-x-100"
+          className="mt-5 "
           alt="camera"
           width={196}
           height={163}

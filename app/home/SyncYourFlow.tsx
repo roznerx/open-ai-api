@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation"
 export default function SyncYourFlow({ translations }) {
   const router = useRouter()
   return (
-    <div className="mx-auto my-20 w-screen">
+    <div className="mx-auto my-20 w-screen ">
       <h3 className="flex justify-center px-4 text-center text-4xl text-white sm:text-5xl">
         {translations.title}
       </h3>
@@ -13,18 +13,18 @@ export default function SyncYourFlow({ translations }) {
       </p>
 
       <div
-        className="mx-auto flex h-auto w-[90%] grid-cols-1 flex-col justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF] p-4 font-semibold sm:grid sm:h-auto
+        className="mx-auto  flex h-auto w-[90%] grid-cols-1 flex-col justify-center rounded-xl bg-gradient-to-t from-[#6530FC] to-[#A486FF] p-4 font-semibold sm:grid sm:h-auto
       sm:w-[1050px] sm:grid-cols-2 sm:p-0"
       >
         <div
           id="col-1"
-          className="flex w-full justify-center sm:ml-2 sm:mt-5 sm:w-[650px] sm:justify-start"
+          className="my-3 flex w-full justify-center sm:my-10 sm:ml-2 sm:mt-5 sm:w-[650px] sm:justify-start"
         >
           <Image
-            className="my-8 h-96 w-96 sm:my-0 sm:ml-12"
+            className="my-8 sm:my-0 sm:ml-12"
             src="/home/github1.svg"
-            width={420}
-            height={300}
+            width={380}
+            height={280}
             alt="Generated unit test on the flight"
           />
         </div>

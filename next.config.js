@@ -38,16 +38,23 @@ const nextConfig = {
 }
 
 // https://nextjs.org/docs/advanced-features/security-headers
-const ContentSecurityPolicy = `
-    img-src * blob: data:;
-    connect-src *;
-`
+const cspHeader = `
+    script-src 'self' 'unsafe-eval' 'unsafe-inline';
+    img-src 'self' blob: data:;
+    font-src 'self';
+    object-src 'none';
+    base-uri 'self';
+    form-action 'self';
+    frame-ancestors 'none';
+    block-all-mixed-content;
+    upgrade-insecure-requests;`
 
 const securityHeaders = [
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP
   {
+    source: "/(.*)",
     key: "Content-Security-Policy",
-    value: ContentSecurityPolicy.replace(/\n/g, ""),
+    value: cspHeader.replace(/\n/g, ""),
   },
   // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
   {

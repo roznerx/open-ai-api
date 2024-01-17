@@ -24,7 +24,7 @@ export default function Faqs({ translations: faqs, isHome }) {
       </div>
 
       <div className="mx-auto flex w-full flex-col rounded-2xl bg-purple-500 p-2 sm:w-9/12">
-        <Disclosure as="div" className="" defaultOpen={isHome ? false : true}>
+        <Disclosure as="div" className="" defaultOpen={true}>
           {({ open }) => (
             <>
               <Disclosure.Button

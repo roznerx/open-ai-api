@@ -77,7 +77,7 @@ export default function TestimonialsSection({ translations }) {
   })
 
   return (
-    <div className="w-screen py-28">
+    <div className="w-screen pb-28">
       <p className="mt-10 flex justify-center px-2 text-center text-4xl text-white">
         {translations?.title}
       </p>
