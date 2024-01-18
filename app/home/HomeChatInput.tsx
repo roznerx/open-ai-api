@@ -43,9 +43,9 @@ export default function HomeChatInput({
           onSubmit={(e) => handleSubmit(e)}
           className="relative w-full text-center sm:w-[900px]"
         >
-          <div className="mt-5">
+          <div className="mt-5 flex items-center justify-center">
             <label
-              className="text-lg z-40 w-full items-center justify-center px-10 pb-10  text-center text-2xl text-slate-100 
+              className="text-lg z-40 mx-auto w-full px-10 pb-6 text-2xl text-slate-100 
           sm:px-3 sm:text-2xl"
               htmlFor="home-input"
             >
@@ -55,12 +55,12 @@ export default function HomeChatInput({
           <div
             onFocus={handleFocus}
             onClick={() => setIsFocus(true)}
-            className="relative mx-auto mt-8 inline-flex h-16 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900 sm:w-[700px]"
+            className="relative mt-8 inline-flex h-14 w-[95%] items-center rounded-xl border border-gray-300 bg-purple-900  sm:mx-auto sm:h-16 sm:w-[700px]"
           >
             <input
               id="home-input"
               ref={inputRef}
-              className="font-lg z-10 w-[388px]  rounded-xl border-none 
+              className="font-lg z-10 w-full rounded-xl border-none 
          bg-purple-900 py-2.5 pl-3 pr-12 text-white caret-white outline-0 
          ring-mint placeholder:pl-2 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px]
           placeholder:text-mint/60 placeholder:text-white
@@ -73,9 +73,9 @@ export default function HomeChatInput({
               type="submit"
               title="Submit your prompt"
               aria-label={translations.cta}
-              className="group mr-2 h-12 rounded-xl border-slate-200 bg-violet-500/90 px-2 text-white  sm:w-48 sm:p-1"
+              className="group mr-1 h-11 w-auto rounded-xl border-slate-200 bg-violet-500/90 px-3  text-white sm:mr-2 sm:h-12 sm:w-48 sm:p-1"
             >
-              <p className="text-[15px] tracking-wide group-hover:scale-95  sm:text-[18px] sm:font-semibold">
+              <p className="text-[15px] tracking-wider group-hover:scale-95 sm:text-[18px] sm:font-semibold sm:tracking-wide">
                 {isMobile ? translations.ctaMobile : translations.cta}
               </p>
             </button>
@@ -83,7 +83,7 @@ export default function HomeChatInput({
           <div
             className={`${
               isFocus ? "hidden" : "block"
-            } absolute bottom-3 left-5 z-20  w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto`}
+            } absolute bottom-2 left-5 z-20  w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto`}
           >
             <TypeAnimation
               preRenderFirstString={true}
