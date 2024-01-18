@@ -15,7 +15,10 @@ export default function Client({ translations }) {
       <div className="h-screen w-screen bg-[radial-gradient(at_top_left,_var(--tw-gradient-stops))] from-black via-violet-800 to-fuchsia-600/70 ">
         <div className="relative mx-auto flex h-[700px] w-full flex-col items-center justify-center overflow-hidden rounded-xl">
           <SuperHero translations={translations?.home?.superHero} />
-          <HomeChat translations={translations?.home?.input} />
+          <HomeChat
+            translations={translations?.home?.input}
+            labelText={translations?.home?.superHero.subtitle}
+          />
         </div>
       </div>
       <div className="bg-gradient-to-b from-black via-violet-800/30 to-purple-900">

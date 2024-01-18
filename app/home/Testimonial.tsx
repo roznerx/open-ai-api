@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Avvvatars from "avvvatars-react"
+import { Calendar } from "lucide-react"
 
 export default function Testimonial({ testimonial }) {
   const nameParts = testimonial?.author?.split(" ")
@@ -18,12 +19,7 @@ export default function Testimonial({ testimonial }) {
         </div>
         <div className="mt-1 flex items-stretch justify-between gap-1">
           <div className="text-xs inline-flex leading-4 text-white">
-            <img
-              alt="calendar"
-              loading="lazy"
-              src="https://cdn.builder.io/api/v1/image/assets/TEMP/8c27d6f5-b3bb-45e7-aeb3-5341ada6c3c8?apiKey=b2904e2cffe74a0589d92ce94af4899c&"
-              className="aspect-square w-4 max-w-full shrink-0 overflow-hidden object-contain object-center pt-1"
-            />
+            <Calendar color="white" size={20} className="mt-1" />
             <span className="ml-3 mt-2">{testimonial.date}</span>
           </div>
         </div>
