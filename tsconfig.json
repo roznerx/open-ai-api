@@ -29,6 +29,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "sourceMap": true,
     "strictNullChecks": true
   },
   "include": [
