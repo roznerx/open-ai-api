@@ -5,9 +5,8 @@ const server = process?.env?.EMAIL_SERVER
 
 export async function sendWelcomeEmail(params) {
   const {
-    identifier,
-    isNewPuchase = false,
-    credits = 0,
+    emailTo,
+    subject,
     url = "http://localhost:3000",
     provider,
     name,
@@ -17,11 +16,9 @@ export async function sendWelcomeEmail(params) {
   // NOTE: You are not required to use `nodemailer`, use whatever you want.
   const transport = createTransport(provider.server)
   const result = await transport.sendMail({
-    to: identifier,
+    to: emailTo,
     from: provider.from,
-    subject: !isNewPuchase
-      ? `🧞‍♂️ Welcome to Code Genius!`
-      : `Thanks ${name}, ${credits} credits has been added to your account!`,
+    subject: subject,
     html,
     text: text({ url, host }),
   })

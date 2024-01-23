@@ -6,6 +6,7 @@ import { authOptions } from "pages/api/auth/[...nextauth]"
 import { redirect } from "next/navigation"
 import { Params } from "app/settings/page"
 import { stripe } from "@/lib/stripe"
+import prisma from "@/lib/prisma"
 
 export const metadata = {
   title: "AI Dashboard",
@@ -25,6 +26,7 @@ export default async function Dashboard({
   let stripeSession
   const { session_id, subId = "" } = searchParams
   const session = await getServerSession(authOptions)
+  console.log("session:", session)
 
   if (!session) {
     redirect("/?referer=/dashboard")
@@ -38,26 +40,53 @@ export default async function Dashboard({
           comment: "Customer deleted their Code Genius subscription.",
         },
       })
+
+      const userWithoutSubscription = await prisma.users.update({
+        where: {
+          id: session.user.id,
+        },
+        data: {
+          isPremium: false,
+          subscriptionId: "",
+        },
+      })
+
+      console.log("userWithoutSubscription:", userWithoutSubscription)
     } catch (error) {
       console.error(`The was an error deleting your subscription: ${error}`)
     }
   }
   if (session_id) {
-    stripeSession = await stripe?.checkout?.sessions?.retrieve(session_id)
-    // //just in case
-    // await updateUserSubscription(session?.user?.id, stripeSession?.subscription)
+    console.log("session.user.id", session.user.id)
+
+    try {
+      stripeSession = await stripe?.checkout?.sessions?.retrieve(session_id)
+      const response = await prisma.users.update({
+        where: {
+          id: session.user.id,
+        },
+        data: {
+          isPremium: true,
+          subscriptionId: stripeSession?.subscription,
+        },
+      })
+      console.log("response:", response)
+    } catch (error) {
+      console.log("error updating prisma user:", error)
+    }
   }
 
+  const prismaUser = await prisma.users.findUnique({
+    where: {
+      id: session.user.id,
+    },
+  })
+  console.log("prismaUser:", prismaUser)
   const headersList = headers()
   const lang =
     headersList &&
     headersList?.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(lang)
-
-  // const stripeData = await stripe.subscriptions.retrieve(
-  //   "sub_1NXYSVKrxiA7kR6cFwedIMNp",
-  // )
-  // console.log("stripe subscription data: ", stripeData.items.data)
 
   return (
     <div className="flex bg-purple-900">
@@ -72,8 +101,8 @@ export default async function Dashboard({
             </p>
           </div>
           <Client
-            subscriptionId={stripeSession?.subscription}
-            isPremium={session?.user?.isPremium}
+            subscriptionId={prismaUser?.subscriptionId}
+            isPremium={prismaUser?.isPremium}
             session={session}
             translations={dictionary}
           />

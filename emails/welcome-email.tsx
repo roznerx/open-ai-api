@@ -12,16 +12,14 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components"
+
 export const DUB_LOGO =
   "https://public.blob.vercel-storage.com/kmKY9FhOzDRAX28c/logo-1Y8NV0x4Wsy7LzPAYjBmkytJYTMJi0.png"
+
 export const DUB_THUMBNAIL =
   "https://public.blob.vercel-storage.com/kmKY9FhOzDRAX28c/thumbnail-wU82A4LTeJMXrygW1ZR6O36k3edeJf.png"
 
-export default function WelcomeEmail({
-  name = "[Name]",
-}: {
-  name: string | null
-}) {
+export default function WelcomeEmail({ name = "" }: { name: string | null }) {
   return (
     <Html>
       <Head />

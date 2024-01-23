@@ -10,7 +10,6 @@ export const sendEmail = async ({
   email,
   subject,
   react,
-  marketing,
   test,
 }: {
   email: string
@@ -25,10 +24,8 @@ export const sendEmail = async ({
     )
     return Promise.resolve()
   }
-  return resend.emails.send({
-    from: marketing
-      ? "Steven from Dub <steven@ship.dub.sh>"
-      : "Dub <system@dub.sh>",
+  await resend.emails.send({
+    from: "hello@code-genius.dev",
     to: test ? "delivered@resend.dev" : email,
     subject,
     react,

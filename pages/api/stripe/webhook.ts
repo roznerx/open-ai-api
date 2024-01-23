@@ -2,9 +2,9 @@ import { NextApiRequest, NextApiResponse } from "next"
 import { Readable } from "node:stream"
 
 import Stripe from "stripe"
+import prisma from "@/lib/prisma"
 
 import { stripe } from "lib/stripe"
-import { updateUserSubscription } from "utils/helpers"
 
 // Stripe requires the raw body to construct the event.
 export const config = {
@@ -67,7 +67,16 @@ export default async function webhookHandler(
             const subscriptionId = subscription?.subscription
             console.log("subscriptionId:", subscriptionId)
 
-            await updateUserSubscription(userId, subscriptionId)
+            const response = await prisma.users.update({
+              where: {
+                id: userId,
+              },
+              data: {
+                isPremium: true,
+                subscriptionId: subscriptionId,
+              },
+            })
+            console.log("webhook prisma call:", response)
 
             return res.status(200)
           }

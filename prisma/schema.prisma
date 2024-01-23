@@ -1,87 +1,91 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-datasource db {
-  provider     = "mysql"
-  url          = env("DATABASE_URL")
-  relationMode = "prisma"
-}
-
 generator client {
   provider        = "prisma-client-js"
-  previewFeatures = ["fullTextSearch", "fullTextIndex"]
+  previewFeatures = ["fullTextIndex", "fullTextSearch", "multiSchema"]
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+  schemas   = ["next_auth", "public"]
 }
 
 model User {
-  id            String    @id @default(cuid())
-  name          String?
-  apiCalls      Int? 
-  credits       Int       @default(0)
-  tokensCount   Int? 
-  email         String?   @unique
-  emailVerified DateTime?
-  image         String?
-  accounts       Account[]
-  sessions       Session[]
-  createdAt      DateTime       @default(now())
+  id             String   @unique
+  name           String?
+  email          String?  @unique
+  isPremium      Boolean  @default(false)
+  subscriptionId String   @default("")
+  createdAt      DateTime @default(now())
+
+  @@schema("public")
 }
+
 model CheckoutSessions {
-  id            String    @id @default(cuid())
-  amount        Int 
-  checkoutURL   String    @db.VarChar(500)
-  confirmed     Boolean
-  email         String
-  name          String
-  userId        String
-  credits       Int             @default(0)
-  createdAt     DateTime?       @default(now())
-  updatedAt     DateTime?       @default(now())
-}
-model Trials {
-  id            String    @id @default(cuid())
-  apiCalls      Int 
-  ip            Int 
-  createdAt     DateTime       @default(now())
-  updatedAt     DateTime       @default(now())
+  id          String    @id @default(cuid())
+  amount      Int
+  checkoutURL String    @db.VarChar(500)
+  confirmed   Boolean
+  email       String
+  name        String
+  userId      String
+  credits     Int       @default(0)
+  createdAt   DateTime? @default(now())
+  updatedAt   DateTime? @default(now())
+
+  @@schema("public")
 }
 
-model Account {
-  id                String  @id @default(cuid())
-  userId            String
-  type              String
-  provider          String
-  providerAccountId String
-  refresh_token     String? @db.Text
-  access_token      String? @db.Text
-  expires_at        Int?
-  token_type        String?
-  scope             String?
-  id_token          String? @db.Text
-  session_state     String?
+model accounts {
+  id                 String  @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  type               String
+  provider           String
+  providerAccountId  String
+  refresh_token      String?
+  access_token       String?
+  expires_at         BigInt?
+  token_type         String?
+  scope              String?
+  id_token           String?
+  session_state      String?
+  oauth_token_secret String?
+  oauth_token        String?
+  userId             String? @db.Uuid
+  users              users?  @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
-  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
-
-  @@unique([provider, providerAccountId])
-  @@index([userId])
+  @@unique([provider, providerAccountId], map: "provider_unique")
+  @@schema("next_auth")
 }
 
-model Session {
-  id           String   @id @default(cuid())
-  sessionToken String   @unique
-  userId       String
-  expires      DateTime
-  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+model sessions {
+  id           String   @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  expires      DateTime @db.Timestamptz(6)
+  sessionToken String   @unique(map: "sessiontoken_unique")
+  userId       String?  @db.Uuid
+  users        users?   @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
-  @@index([userId])
+  @@schema("next_auth")
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
+model users {
+  id             String     @id @default(dbgenerated("gen_random_uuid()")) @db.Uuid
+  name           String?
+  email          String?    @unique(map: "email_unique")
+  isPremium      Boolean    @default(false)
+  subscriptionId String     @default("")
+  emailVerified  DateTime?  @db.Timestamptz(6)
+  image          String?
+  accounts       accounts[]
+  sessions       sessions[]
 
-  @@unique([identifier, token])
+  @@schema("next_auth")
 }
 
+model verification_tokens {
+  identifier String?
+  token      String   @id
+  expires    DateTime @db.Timestamptz(6)
 
-
+  @@unique([token, identifier], map: "token_identifier_unique")
+  @@schema("next_auth")
+}

@@ -33,7 +33,7 @@ export default function FooterSection({
     <>
       {/* <Toaster /> */}
       <section
-        className="absolute bottom-0 left-0 z-50 h-16 w-full border-t-[1px] border-purple-500
+        className="absolute  bottom-0 left-0 z-50 h-16 w-full border-t-[1px] border-purple-500
           bg-purple-800 sm:flex sm:items-center sm:justify-end"
       >
         <div className="mb-10 ml-20 hidden sm:ml-2 sm:block">

@@ -9,7 +9,6 @@ import ContactFormModal from "app/components/modals/ContactFormModal"
 import Button from "app/components/buttons/gradientButton"
 import { Confetti } from "utils/confetti"
 import { PromptCard as DashboardCard } from "app/components/shared/PromptCard"
-import { updateUserSubscription } from "utils/helpers"
 
 const UpgradeAccount = ({ text, isPremium, subId, userId }) => (
   <Link
@@ -28,6 +27,7 @@ export default function Client({
   const searchParams = useSearchParams()
   const router = useRouter()
   const [isPremium, setIsPremium] = React.useState<boolean>(isProUser)
+
   const [thanksMessage, setThanksMessage] = React.useState<boolean>(false)
   const [openContactForm, setOpenContactForm] = React.useState<boolean>(false)
   const { dashboard, pricing } = translations
@@ -49,7 +49,6 @@ export default function Client({
 
   useEffect(() => {
     if (searchParams && searchParams.has("session_id")) {
-      updateUserSubscription(session?.user?.id, subscriptionId)
       //THANKS MESSAGE WITH DIALOG
       setThanksMessage(true)
       setOpenContactForm(true)
@@ -61,8 +60,6 @@ export default function Client({
 
   useEffect(() => {
     if (subscriptionHasBeenDeleted) {
-      updateUserSubscription(session?.user?.id, "")
-      setIsPremium(false)
       //SORRY TO SEE YOU GO MESSAGE
       setThanksMessage(true)
       setOpenContactForm(true)

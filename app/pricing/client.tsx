@@ -15,7 +15,7 @@ import { Button } from "app/components/buttons/button"
 import { Loader2 } from "lucide-react"
 import { AuthContext } from "app/provider"
 
-type ClientPropTye = {
+type ClientPropTypes = {
   session: any
   translations: any
   modalTranslations?: any
@@ -27,7 +27,7 @@ export default function Client({
   session,
   translations,
   modalTranslations,
-}: ClientPropTye) {
+}: ClientPropTypes) {
   const [anual, setAnual] = useState(true)
 
   let { setModalIsOpen } = useContext(AuthContext) || {
@@ -80,6 +80,7 @@ export default function Client({
       router.push("/dashboard")
       return false
     }
+    console.log("priceId", priceId)
 
     try {
       const response = await fetch("/api/checkout/stripe_sessions", {

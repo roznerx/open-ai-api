@@ -1,16 +1,19 @@
 import NextAuth, { AuthOptions } from "next-auth"
 import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
-import { PrismaAdapter } from "@next-auth/prisma-adapter"
-import prisma from "@/lib/prisma"
-import WelcomeEmail from "emails/welcome-email"
+import jwt from "jsonwebtoken"
+import { SupabaseAdapter } from "@auth/supabase-adapter"
 import { sendEmail } from "emails"
+import WelcomeEmail from "emails/welcome-email"
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL
 
 export const authOptions: AuthOptions = {
   secret: process.env.NEXTAUTH_SECRET,
-  adapter: PrismaAdapter(prisma),
+  adapter: SupabaseAdapter({
+    url: process.env.NEXT_PUBLIC_SUPABASE_URL || "",
+    secret: process.env.SUPABASE_SERVICE_ROLE_KEY || "",
+  }),
   providers: [
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID || "",
@@ -39,80 +42,65 @@ export const authOptions: AuthOptions = {
   },
   events: {
     async signIn(message) {
+      console.log("message:", message)
+
       if (message.isNewUser) {
         const email = message.user.email as string
-        const user = await prisma.user.findUnique({
-          where: { email },
-          select: {
-            name: true,
-            createdAt: true,
-          },
-        })
         // only send the welcome email if the user was created in the last 10s
         // (this is a workaround because the `isNewUser` flag is triggered when a user does `dangerousEmailAccountLinking`)
-        if (
-          user?.createdAt &&
-          new Date(user.createdAt).getTime() > Date.now() - 10000
-        ) {
-          sendEmail({
-            subject: "Welcome to Dub.sh!",
-            email,
-            react: WelcomeEmail({
-              name: user.name || null,
-            }),
-            marketing: true,
-          })
-        }
+
+        sendEmail({
+          subject: "Welcome Code Genius",
+          email,
+          react: WelcomeEmail({
+            name: message.user.name || null,
+          }),
+          test: true,
+        })
       }
     },
   },
   callbacks: {
+    async session({ session, token, user }) {
+      const signingSecret = process.env.SUPABASE_JWT_SECRET
+      if (signingSecret) {
+        const payload = {
+          aud: "authenticated",
+          exp: Math.floor(new Date(session.expires).getTime() / 1000),
+          sub: crypto.randomUUID(),
+          email: session?.user.email,
+          role: "authenticated",
+        }
+        session.supabaseAccessToken = jwt.sign(payload, signingSecret)
+        //@ts-ignore
+        session.user.id = token.user.id
+      }
+      return session
+    },
     async signIn({ user, account, profile }) {
       if (!user.email) {
         return false
       }
       if (account?.provider === "google") {
-        const userExists = await prisma.user.findUnique({
-          where: { email: user.email },
-          select: { name: true },
-        })
-        // if the user already exists via email,
-        // update the user with their name and image from Google
-        if (userExists && !userExists.name) {
-          await prisma.user.update({
-            where: { email: user.email },
-            data: {
-              name: profile?.name,
-              // @ts-ignore - this is a bug in the types, `picture` is a valid on the `Profile` type
-              image: profile?.picture,
-            },
-          })
-        }
+        //Do something special for Google users.
       }
       return true
     },
     jwt: async ({ token, user, trigger }) => {
+      // console.log("token, user, trigger:", token, user, trigger)
       if (!token.email) {
         return {}
       }
       if (user) {
         token.user = user
       }
-      if (trigger === "update") {
-        const refreshedUser = await prisma.user.findUnique({
-          where: { id: token.sub },
-        })
-        token.user = refreshedUser
-      }
+      // if (trigger === "update") {
+      //   const refreshedUser = await prisma.user.findUnique({
+      //     where: { id: token.sub },
+      //   })
+      //   token.user = refreshedUser
+      // }
       return token
-    },
-    session: async ({ session, token }) => {
-      session.user = {
-        id: token.sub,
-        // @ts-ignore
-        ...(token || session).user,
-      }
-      return session
     },
   },
   pages: {
