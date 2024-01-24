@@ -1,6 +1,11 @@
-import { nanoid } from "@/lib/utils"
+import { customAlphabet } from "nanoid"
 import { ReactElement, JSXElementConstructor } from "react"
 import { Resend } from "resend"
+
+export const nanoid = customAlphabet(
+  "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz",
+  7,
+)
 
 export const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
