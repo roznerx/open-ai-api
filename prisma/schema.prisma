@@ -75,6 +75,7 @@ model users {
   subscriptionId String     @default("")
   emailVerified  DateTime?  @db.Timestamptz(6)
   image          String?
+  credits        Int?       @default(0)
   accounts       accounts[]
   sessions       sessions[]
 

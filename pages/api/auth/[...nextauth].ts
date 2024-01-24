@@ -42,7 +42,7 @@ export const authOptions: AuthOptions = {
   },
   events: {
     async signIn(message) {
-      console.log("message:", message)
+      // console.log("message:", message)
 
       if (message.isNewUser) {
         const email = message.user.email as string
@@ -62,6 +62,8 @@ export const authOptions: AuthOptions = {
   },
   callbacks: {
     async session({ session, token, user }) {
+      // console.log("user:", user)
+      // console.log("token:", token)
       const signingSecret = process.env.SUPABASE_JWT_SECRET
       if (signingSecret) {
         const payload = {
@@ -78,6 +80,9 @@ export const authOptions: AuthOptions = {
       return session
     },
     async signIn({ user, account, profile }) {
+      // console.log("user:", user)
+      // console.log("account:", account)
+      // console.log("profile:", profile)
       if (!user.email) {
         return false
       }

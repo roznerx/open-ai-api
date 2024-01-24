@@ -81,7 +81,7 @@ export default async function Dashboard({
       id: session.user.id,
     },
   })
-  console.log("prismaUser:", prismaUser)
+
   const headersList = headers()
   const lang =
     headersList &&
