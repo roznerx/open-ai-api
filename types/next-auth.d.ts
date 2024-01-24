@@ -6,10 +6,12 @@ declare module "next-auth" {
    * Returned by `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
    */
   interface Session {
+    supabaseAccessToken: {}
     user: {
       subscriptionId?: string
+      email?: string
       name: string
-      id: string
+      id?: string
       isPremium?: boolean
     }
   }

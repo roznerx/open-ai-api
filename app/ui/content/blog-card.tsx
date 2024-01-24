@@ -32,7 +32,7 @@ export default function BlogCard({
       />
       <div className="rounded-b-lg bg-white p-6">
         <div className="flex justify-between">
-          <h2 className="line-clamp-1 font-pro text-2xl font-semibold text-gray-700">
+          <h2 className="font-pro line-clamp-1 text-2xl font-semibold text-gray-700">
             {data.title}
           </h2>
           <Chip

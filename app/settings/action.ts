@@ -2,7 +2,7 @@
 
 import { stripe } from "@/lib/stripe"
 import { redirect } from "next/navigation"
-import { updateUserSubscription } from "utils/helpers"
+import prisma from "@/lib/prisma"
 
 export async function cancelAction(subId, userId) {
   try {
@@ -13,7 +13,16 @@ export async function cancelAction(subId, userId) {
       },
     })
 
-    await updateUserSubscription(userId, "")
+    const userWithoutSubscription = await prisma.users.update({
+      where: {
+        id: userId,
+      },
+      data: {
+        isPremium: false,
+        subscriptionId: "",
+      },
+    })
+    console.log("userWithoutSubscription:", userWithoutSubscription)
   } catch (error) {
     console.error(`The was an error deleting your subscription: ${error}`)
   }

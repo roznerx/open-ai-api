@@ -79,6 +79,8 @@ module.exports = {
         "-100": "-1",
       },
       animation: {
+        "scale-in": "scale-in 0.2s cubic-bezier(0.16, 1, 0.3, 1)",
+        "fade-in": "fade-in 0.3s ease-out forwards",
         tilt: "tilt 3s infinite linear",
         bounceArrow: "bounce 2s infinite",
         pulseCustom: "custom 5s linear infinite",
