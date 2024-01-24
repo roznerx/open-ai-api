@@ -4,6 +4,7 @@ import { headers } from "next/headers"
 import { redirect } from "next/navigation"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import Container from "./container"
+import prisma from "@/lib/prisma"
 import { Roboto_Mono } from "next/font/google"
 
 export const metadata = {
@@ -28,12 +29,21 @@ export default async function Page() {
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(lang)
+  const prismaUser = await prisma.users.findUnique({
+    where: {
+      id: session.user.id,
+    },
+  })
 
   return (
     <main
       className={`min-h-screen w-full flex-1 flex-row flex-nowrap items-start justify-start overflow-hidden overflow-y-auto bg-purple-900 font-sans ${roboto_mono.variable}`}
     >
-      <Container translations={dictionary} session={session} />
+      <Container
+        translations={dictionary}
+        session={session}
+        prismaUser={prismaUser}
+      />
     </main>
   )
 }

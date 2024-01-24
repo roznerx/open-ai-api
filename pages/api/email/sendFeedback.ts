@@ -14,7 +14,7 @@ export default async function handler(
     return res.status(400).json({ done: false })
   }
   try {
-    const data = await resend.sendEmail({
+    const data = await resend.emails.send({
       from: "feedback@code-genius.dev",
       to: "geniuscodeai@gmail.com",
       subject: `New client feedback from: ${bodyRequest.name}`,
