@@ -60,13 +60,13 @@ export default async function Settings({
     headersList?.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(locale)
 
-  const numLength = subscription.plan.amount.toString().length
+  const numLength = subscription?.plan?.amount?.toString()?.length
   const formattedNumber =
     numLength === 3
-      ? subscription.plan.amount.toString().substring(0, 1)
-      : subscription.plan.amount.toString().substring(0, 2)
+      ? subscription?.plan?.amount?.toString()?.substring(0, 1)
+      : subscription?.plan?.amount?.toString()?.substring(0, 2)
 
-  const interval = subscription.plan.interval
+  const interval = subscription?.plan?.interval
 
   return (
     <>
@@ -82,26 +82,26 @@ export default async function Settings({
           <div className="text-sm grid grid-cols-2 gap-4 text-white">
             <div>{dictionary.settings.member}</div>
             <div className="flex justify-end">
-              {getSubscriptionDate(subscription.created)}
+              {getSubscriptionDate(subscription?.created)}
             </div>
             <div>{dictionary.settings.trial}</div>
             <div className="flex justify-end">
-              {getSubscriptionDate(subscription.current_period_end)}
+              {getSubscriptionDate(subscription?.current_period_end)}
             </div>
             <div>{dictionary.settings.period}</div>
             <div className="flex justify-end">
-              {getSubscriptionDate(subscription.current_period_end)}
+              {getSubscriptionDate(subscription?.current_period_end)}
             </div>
-            <div>{dictionary.settings.billing}</div>
+            <div>{dictionary?.settings?.billing}</div>
             <div className="flex justify-end">
               {" "}
-              {getSubscriptionDate(subscription.billing_cycle_anchor)}
+              {getSubscriptionDate(subscription?.billing_cycle_anchor)}
             </div>
-            <div>{dictionary.settings.paymentAmoun}</div>
+            <div>{dictionary?.settings?.paymentAmoun}</div>
             <div className="flex justify-end">
               {formattedNumber} USD /{" "}
               <span className="ml-1 capitalize">
-                {subscription.plan.interval}
+                {subscription?.plan?.interval}
               </span>
             </div>
           </div>
@@ -123,7 +123,7 @@ export default async function Settings({
                 </span>
               </div>
               <span className="pt-1 text-right text-white">
-                {dictionary.settings.unlock}
+                {dictionary?.settings?.unlock}
               </span>
             </div>
           )}
@@ -131,8 +131,8 @@ export default async function Settings({
             subId={subId}
             interval={interval}
             translations={dictionary?.dashboard?.modal?.cancelModal}
-            cancel={dictionary.settings.cancel}
-            anual={dictionary.settings.switch}
+            cancel={dictionary?.settings?.cancel}
+            anual={dictionary?.settings?.switch}
           />
         </div>
         <div className="mt-12 w-2/3 rounded-lg bg-purple-700 p-8">
@@ -140,7 +140,7 @@ export default async function Settings({
             {dictionary.settings.payment}
           </h2>
           <div className="text-sm grid grid-cols-2 gap-4 text-white">
-            <div className="pt-2">{dictionary.settings.manage}</div>
+            <div className="pt-2">{dictionary?.settings?.manage}</div>
             <Link
               target="_blank"
               href={paymentPortalLink}
@@ -150,7 +150,7 @@ export default async function Settings({
                 <ArrowUpRight />
               </span>
             </Link>
-            <div className="pt-2">{dictionary.settings.history}</div>
+            <div className="pt-2">{dictionary?.settings?.history}</div>
             <Link
               target="_blank"
               href={paymentPortalLink}
