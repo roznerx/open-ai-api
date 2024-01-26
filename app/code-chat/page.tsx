@@ -1,6 +1,7 @@
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { getServerSession } from "next-auth"
 import Client from "./client"
+import prisma from "@/lib/prisma"
 import { headers } from "next/headers"
 import { getDictionary } from "app/(lang)/dictionaries"
 
@@ -18,6 +19,14 @@ export default async function Page({
   const headersList = headers()
   const lang = headersList.get("accept-language")?.split(",")[0].substring(0, 2)
   const dictionary = await getDictionary(lang)
+
+  if (searchParams && searchParams.q !== null && searchParams.q !== "") {
+    await prisma.prompt.create({
+      data: {
+        prompt: searchParams.q,
+      },
+    })
+  }
 
   return (
     <main className="flex w-full items-center justify-center">

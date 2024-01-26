@@ -10,12 +10,9 @@ datasource db {
   schemas   = ["next_auth", "public"]
 }
 
-model User {
-  id             String   @unique
-  name           String?
-  email          String?  @unique
-  isPremium      Boolean  @default(false)
-  subscriptionId String   @default("")
+model Prompt {
+  id             String   @id @default(cuid())
+  prompt         String   @default("")
   createdAt      DateTime @default(now())
 
   @@schema("public")

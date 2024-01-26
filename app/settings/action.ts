@@ -13,7 +13,7 @@ export async function cancelAction(subId, userId) {
       },
     })
 
-    const userWithoutSubscription = await prisma.users.update({
+    await prisma.users.update({
       where: {
         id: userId,
       },
@@ -22,7 +22,6 @@ export async function cancelAction(subId, userId) {
         subscriptionId: "",
       },
     })
-    console.log("userWithoutSubscription:", userWithoutSubscription)
   } catch (error) {
     console.error(`The was an error deleting your subscription: ${error}`)
   }
