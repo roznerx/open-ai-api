@@ -1,7 +1,14 @@
 import Image from "next/image"
+import Modal from "app/components/Modal"
+
 import CurveArrow from "./CurveArrow"
+import { useState } from "react"
+import useMediaQuery from "hooks/use-media-query"
 
 export default function GoFromThis({ translations }) {
+  const [isOpenFirst, setIsOpenFirst] = useState(false)
+  const [isOpenSecond, setIsOpenSecond] = useState(false)
+  const { isDesktop } = useMediaQuery()
   return (
     <>
       <div className="relative mx-auto mt-28 flex w-screen flex-col items-center justify-center">
@@ -31,26 +38,57 @@ export default function GoFromThis({ translations }) {
               className="flex h-[444px] w-full flex-col items-center justify-center rounded-[35px] bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] 
             to-[#B1EAF1] sm:w-[500px]"
             >
+                <Modal
+                  isImageModal
+                  title={translations?.sure}
+                  body={ <Image
+                    className={`duration-300 ease-in scale-125 ${isDesktop ? 'm-10' : 'mt-6'}`}
+                    src="/home/from-this.svg"
+                    alt="Go from this component"
+                    width={506}
+                    height={383}
+                  />}
+                  isOpen={isOpenFirst}
+                  buttonLink={undefined}
+                  setIsOpen={setIsOpenFirst}
+                />
               <Image
-                className="scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100"
-                src="/home/from-this.svg"
-                alt="Go from this component"
-                width={406}
-                height={283}
-              />
+            className={`scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100`}
+            src="/home/from-this.svg"
+            onClick={()=>setIsOpenFirst(true)}
+            alt="Go from this component"
+            width={406}
+            height={283}
+          />
+              
             </div>
             <div
               className="mt-12 flex h-[444px] w-full flex-col items-center justify-center rounded-[35px]
-               bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] sm:mt-0
-       sm:w-[505px] "
+               bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] sm:mt-0 sm:w-[505px] "
             >
-              <Image
-                className="scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100"
-                src="/home/to-this.svg"
-                alt="To this unit test"
-                width={406}
-                height={337}
-              />
+                <Modal
+                  isImageModal
+                  title={translations?.sure}
+                  body={ <Image
+                    className={`duration-300 ease-in scale-125 ${isDesktop ? 'm-10' : 'mt-6'}`}
+                    src="/home/to-this.svg"
+                    alt="To this unit test"
+                    width={506}
+                    height={437}
+                  />}
+                  isOpen={isOpenSecond}
+                  buttonLink={undefined}
+                  setIsOpen={setIsOpenSecond}
+                />
+                <Image
+                  className="scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100"
+                  onClick={()=>setIsOpenSecond(true)}
+                  src="/home/to-this.svg"
+                  alt="To this unit test"
+                  width={406}
+                  height={337}
+                />
+              
             </div>
           </div>
           ``

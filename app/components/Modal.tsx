@@ -10,6 +10,7 @@ type DialogProps = {
   isPromptModal?: boolean
   isCreditsModal?: boolean
   isLiveDemoModal?: boolean
+  isImageModal?: boolean
   body: string | JSX.Element
   propmptName?: string
   buttonLink?: string
@@ -31,6 +32,7 @@ export default function MyModal({
   setIsOpen,
   propmptName,
   isPromptModal = false,
+  isImageModal = false,
   isLiveDemoModal = false,
   savePropmptName = false,
   handleInputChange,
@@ -68,9 +70,9 @@ export default function MyModal({
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel
-                  className={`w-full ${
-                    isLiveDemoModal ? "w-[65%]" : "max-w-xl"
-                  } transform overflow-hidden rounded-2xl bg-purple-700 p-10 text-center align-middle shadow-xl transition-all`}
+                  className={`flex justify-center ${
+                    isLiveDemoModal ? "w-[65%]" : "w-auto mx-auto"
+                  } transform overflow-hidden rounded-2xl bg-purple-900 p-10 text-center align-middle shadow-xl transition-all`}
                 >
                   <X
                     onClick={() => {
@@ -111,6 +113,7 @@ export default function MyModal({
                       </p>
                     </div>
                   )}
+                  {!isImageModal &&
                   <div className="mt-4 flex justify-end">
                     {!buttonLink ? (
                       <button
@@ -145,6 +148,7 @@ export default function MyModal({
                       </Link>
                     )}
                   </div>
+                  }
                 </Dialog.Panel>
               </Transition.Child>
             </div>
