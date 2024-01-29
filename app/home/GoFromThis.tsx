@@ -35,60 +35,66 @@ export default function GoFromThis({ translations }) {
             className={`mx-auto mt-12 grid w-[90%] grid-cols-1 flex-col place-items-start gap-x-0 sm:w-[1100px] sm:grid-cols-2 sm:place-items-center`}
           >
             <div
-              className="flex h-[444px] w-full flex-col items-center justify-center rounded-[35px] bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] 
-            to-[#B1EAF1] sm:w-[500px]"
+              className={`${
+                isDesktop ? "m-12" : "mt-6"
+              } flex h-[444px] w-full flex-col items-center justify-center rounded-[35px] bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] 
+            to-[#B1EAF1] sm:w-[500px]`}
             >
-                <Modal
-                  isImageModal
-                  title={translations?.sure}
-                  body={ <Image
-                    className={`duration-300 ease-in scale-125 ${isDesktop ? 'm-10' : 'mt-6'}`}
+              <Modal
+                isImageModal
+                title={translations?.sure}
+                body={
+                  <Image
+                    className="scale-110"
                     src="/home/from-this.svg"
                     alt="Go from this component"
                     width={506}
                     height={383}
-                  />}
-                  isOpen={isOpenFirst}
-                  buttonLink={undefined}
-                  setIsOpen={setIsOpenFirst}
-                />
+                  />
+                }
+                isOpen={isOpenFirst}
+                buttonLink={undefined}
+                setIsOpen={setIsOpenFirst}
+              />
               <Image
-            className={`scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100`}
-            src="/home/from-this.svg"
-            onClick={()=>setIsOpenFirst(true)}
-            alt="Go from this component"
-            width={406}
-            height={283}
-          />
-              
+                className={`scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100`}
+                src="/home/from-this.svg"
+                onClick={() => setIsOpenFirst(true)}
+                alt="Go from this component"
+                width={406}
+                height={283}
+              />
             </div>
             <div
-              className="mt-12 flex h-[444px] w-full flex-col items-center justify-center rounded-[35px]
-               bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] sm:mt-0 sm:w-[505px] "
+              className={`${
+                isDesktop ? "m-12" : "mt-6"
+              } flex h-[444px] w-full flex-col items-center justify-center rounded-[35px]
+               bg-gradient-to-b from-[#B095FF] via-[#8ABFE5] to-[#B1EAF1] sm:mt-0 sm:w-[505px]`}
             >
-                <Modal
-                  isImageModal
-                  title={translations?.sure}
-                  body={ <Image
-                    className={`duration-300 ease-in scale-125 ${isDesktop ? 'm-10' : 'mt-6'}`}
+              <Modal
+                isImageModal
+                title={translations?.sure}
+                body={
+                  <Image
+                    className="scale-110"
                     src="/home/to-this.svg"
                     alt="To this unit test"
                     width={506}
                     height={437}
-                  />}
-                  isOpen={isOpenSecond}
-                  buttonLink={undefined}
-                  setIsOpen={setIsOpenSecond}
-                />
-                <Image
-                  className="scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100"
-                  onClick={()=>setIsOpenSecond(true)}
-                  src="/home/to-this.svg"
-                  alt="To this unit test"
-                  width={406}
-                  height={337}
-                />
-              
+                  />
+                }
+                isOpen={isOpenSecond}
+                buttonLink={undefined}
+                setIsOpen={setIsOpenSecond}
+              />
+              <Image
+                className="scale-90 cursor-pointer duration-300 ease-in hover:scale-[1.15] sm:scale-100"
+                onClick={() => setIsOpenSecond(true)}
+                src="/home/to-this.svg"
+                alt="To this unit test"
+                width={406}
+                height={337}
+              />
             </div>
           </div>
           ``
