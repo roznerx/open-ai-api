@@ -78,12 +78,12 @@ export default async function RootLayout({
             <SignInModal signInTranslations={translations.modals.signIn} />
           </SessionProvider>
           <Script
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             src="https://www.googletagmanager.com/gtag/js?id=G-WHLZCV41W9"
           />
           <Script
             id="google-analytics"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}

@@ -30,6 +30,7 @@
     "cmdk": "^0.2.0",
     "contentlayer": "^0.3.4",
     "crisp-sdk-web": "^1.0.19",
+    "cssnano": "^6.0.3",
     "eslint-config-next": "^13.4.12",
     "eslint-plugin-unused-imports": "^2.0.0",
     "eventsource-parser": "^0.0.5",

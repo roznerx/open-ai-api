@@ -17,11 +17,9 @@ export default function HomeChatInput({
   const inputRef = useRef<HTMLInputElement | null>(null)
   const { isMobile } = useWindowSize()
   const [isFocus, setIsFocus] = useState(false)
-  const rotatingTextRef = useRef<HTMLDivElement | null>(null)
 
   const handleFocus = () => {
-    if (rotatingTextRef.current && inputRef.current) {
-      rotatingTextRef.current.classList.add("hidden")
+    if (inputRef.current) {
       inputRef.current.focus()
     }
   }
@@ -80,32 +78,30 @@ export default function HomeChatInput({
               </p>
             </button>
           </div>
-          <div
-            className={`${
-              isFocus ? "hidden" : "block"
-            } absolute bottom-2 left-5 z-20  w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto`}
-          >
-            <TypeAnimation
-              preRenderFirstString={true}
-              ref={rotatingTextRef}
-              className="rotating-text text-slate-200"
-              sequence={[
-                translations.message1,
-                1000,
-                translations.message2,
-                1000,
-                translations.message3,
-                1000,
-                translations.message4,
-                1000,
-                translations.message5,
-                1000,
-              ]}
-              wrapper="span"
-              speed={55}
-              repeat={Infinity}
-            />
-          </div>
+          {!isFocus && (
+            <div
+              className={`absolute bottom-2 left-5 z-20  w-[258px] text-left leading-6 sm:bottom-5 sm:left-28 sm:w-auto`}
+            >
+              <TypeAnimation
+                className="text-slate-200"
+                sequence={[
+                  translations.message1,
+                  1000,
+                  translations.message2,
+                  1000,
+                  translations.message3,
+                  1000,
+                  translations.message4,
+                  1000,
+                  translations.message5,
+                  1000,
+                ]}
+                wrapper="span"
+                speed={55}
+                repeat={Infinity}
+              />
+            </div>
+          )}
         </form>
       </div>
     </div>

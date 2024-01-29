@@ -23,7 +23,7 @@ export default function ProgrammingBuddy({ translations }) {
             className="my-8 flex h-auto items-center justify-center sm:my-0"
           >
             <Image
-              className="-rotate-[7.5deg] cursor-pointer hover:-scale-x-100 hover:transform"
+              className="cursor-pointer"
               src="/home/chat-combo.svg"
               width={352}
               height={300}
