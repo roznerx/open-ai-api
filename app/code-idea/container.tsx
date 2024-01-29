@@ -4,6 +4,7 @@ import { useState } from "react"
 import Client from "./client"
 import { LandElementType } from "app/components/DropDown"
 import { ProModal } from "app/components/modals/ProModal"
+import "./code-idea.css"
 
 export type ModeTypes = "smart" | "test" | "improve" | "docs"
 
