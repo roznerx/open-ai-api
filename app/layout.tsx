@@ -6,7 +6,7 @@ import { GeistMono } from "geist/font/mono"
 import { Metadata } from "next"
 import HeaderWrapper from "./components/shared/HeaderWrapper"
 import { getDictionary } from "./(lang)/dictionaries"
-// import Script from "next/script"
+import Script from "next/script"
 import SideBar from "./components/shared/SideBar"
 import Footer from "./components/Footer"
 import { getServerSession } from "next-auth"
@@ -77,7 +77,7 @@ export default async function RootLayout({
             />
             <SignInModal signInTranslations={translations.modals.signIn} />
           </SessionProvider>
-          {/* <Script
+          <Script
             strategy="lazyOnload"
             src="https://www.googletagmanager.com/gtag/js?id=G-WHLZCV41W9"
           />
@@ -90,7 +90,7 @@ export default async function RootLayout({
                 gtag('js', new Date());
                 gtag('config', 'G-WHLZCV41W9');`,
             }}
-          /> */}
+          />
         </body>
       </html>
     </>
