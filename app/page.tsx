@@ -4,9 +4,9 @@ import Client from "./client"
 import { getDictionary } from "./(lang)/dictionaries"
 
 export const metadata = {
-  title: "Code Genius | Enhance your coding skills with the help of AI",
+  title: "Code Genius | AI code generator for React, Vue JS, Tailwind CSS",
   description:
-    "Code Genius is the AI tool that will help you find solutions quickly and avoid repetitive tasks. Use it to improve code quality and chat with an expert coding assistant.",
+    "Code Genius is a AI  code generator tool that will help you with your daily programming tasks.",
 }
 
 export default async function Page() {

@@ -11,6 +11,10 @@ export default function Sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
     },
     {
+      url: `https://${productionHost}/code-chat`,
+      lastModified: new Date(),
+    },
+    {
       url: `https://${productionHost}/pricing`,
       lastModified: new Date(),
     },
