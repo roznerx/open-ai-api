@@ -26,7 +26,6 @@ export default async function Dashboard({
   let stripeSession
   const { session_id, subId = "" } = searchParams
   const session = await getServerSession(authOptions)
-  console.log("session:", session)
 
   if (!session) {
     redirect("/?referer=/dashboard")
