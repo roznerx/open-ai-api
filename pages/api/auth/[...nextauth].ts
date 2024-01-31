@@ -43,7 +43,7 @@ export const authOptions: AuthOptions = {
       // only send the welcome email if the user was created in the last 10s
       // (this is a workaround because the `isNewUser` flag is triggered when a user does `dangerousEmailAccountLinking`)
 
-      if (message.isNewUser) {
+      if (message.user) {
         try {
           const payload = {
             isNewUser: true,
