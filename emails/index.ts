@@ -29,14 +29,13 @@ export const sendEmail = async ({
     )
     return Promise.resolve()
   }
-  await resend.emails.send({
+  console.log("Hello!!")
+
+  const data = await resend.emails.send({
     from: "hello@code-genius.dev",
     to: test ? "delivered@resend.dev" : email,
     subject,
     react,
-    //@ts-ignore
-    headers: {
-      "X-Entity-Ref-ID": nanoid(),
-    },
   })
+  console.log("data:", data)
 }
