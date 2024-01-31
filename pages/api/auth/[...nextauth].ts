@@ -3,8 +3,6 @@ import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
 import jwt from "jsonwebtoken"
 import { SupabaseAdapter } from "@auth/supabase-adapter"
-import { sendEmail } from "emails"
-import WelcomeEmail from "emails/welcome-email"
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL
 
@@ -42,28 +40,30 @@ export const authOptions: AuthOptions = {
   },
   events: {
     async signIn(message) {
-      // console.log("message:", message)
+      // only send the welcome email if the user was created in the last 10s
+      // (this is a workaround because the `isNewUser` flag is triggered when a user does `dangerousEmailAccountLinking`)
 
       if (message.isNewUser) {
-        const email = message.user.email as string
-        // only send the welcome email if the user was created in the last 10s
-        // (this is a workaround because the `isNewUser` flag is triggered when a user does `dangerousEmailAccountLinking`)
-
-        sendEmail({
-          subject: "Welcome Code Genius",
-          email,
-          react: WelcomeEmail({
-            name: message.user.name || null,
-          }),
-          test: true,
-        })
+        try {
+          const payload = {
+            isNewUser: true,
+            subjet: "Welcome to Code Genius",
+            name: message.user?.name,
+            email: message.user?.email,
+            test: true,
+          }
+          await fetch(`${process.env.NEXTAUTH_URL}/api/send`, {
+            method: "POST",
+            body: JSON.stringify(payload),
+          })
+        } catch (error) {
+          console.error("error sending welcome email: ", error)
+        }
       }
     },
   },
   callbacks: {
-    async session({ session, token, user }) {
-      // console.log("user:", user)
-      // console.log("token:", token)
+    async session({ session, token }) {
       const signingSecret = process.env.SUPABASE_JWT_SECRET
       if (signingSecret) {
         const payload = {
@@ -79,10 +79,7 @@ export const authOptions: AuthOptions = {
       }
       return session
     },
-    async signIn({ user, account, profile }) {
-      // console.log("user:", user)
-      // console.log("account:", account)
-      // console.log("profile:", profile)
+    async signIn({ user, account }) {
       if (!user.email) {
         return false
       }
@@ -91,7 +88,7 @@ export const authOptions: AuthOptions = {
       }
       return true
     },
-    jwt: async ({ token, user, trigger }) => {
+    jwt: async ({ token, user }) => {
       // console.log("token, user, trigger:", token, user, trigger)
       if (!token.email) {
         return {}
