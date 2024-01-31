@@ -9,7 +9,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const { data } = await resend.emails.send({
-      from: "delivered@resend.dev",
+      from: "hello@code-genius.dev",
       to: bodyRequest.email,
       subject: bodyRequest.isNewUser
         ? "Welcome to Code Genius"
