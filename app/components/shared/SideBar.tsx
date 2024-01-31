@@ -27,7 +27,6 @@ const SideBar = ({
   const searchParams = useSearchParams()
 
   const mode = searchParams && searchParams.get("mode")
-  console.log("mode:", mode)
 
   const pathname = usePathname()
 
