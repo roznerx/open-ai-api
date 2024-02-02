@@ -20,7 +20,6 @@ export const sendEmail = async ({
   email: string
   subject: string
   react: ReactElement<any, string | JSXElementConstructor<any>>
-  marketing?: boolean
   test?: boolean
 }) => {
   if (!resend) {
@@ -32,7 +31,7 @@ export const sendEmail = async ({
   console.log("Hello!!")
 
   const data = await resend.emails.send({
-    from: "hello@code-genius.dev",
+    from: "welcome@code-genius.dev",
     to: test ? "delivered@resend.dev" : email,
     subject,
     react,

@@ -3,6 +3,8 @@ import GoogleProvider from "next-auth/providers/google"
 import GitHubProvider from "next-auth/providers/github"
 import jwt from "jsonwebtoken"
 import { SupabaseAdapter } from "@auth/supabase-adapter"
+import { sendEmail } from "emails"
+import WelcomeEmail from "emails/welcome-email"
 
 const VERCEL_DEPLOYMENT = !!process.env.VERCEL_URL
 
@@ -41,18 +43,26 @@ export const authOptions: AuthOptions = {
   events: {
     async signIn(message) {
       console.log("message:", message)
+      const email = message.user?.email as string
       if (message.user) {
         try {
-          const payload = {
-            isNewUser: true,
-            subjet: "Welcome to Code Genius",
-            name: message.user?.name,
-            email: message.user?.email,
-          }
-          await fetch(`${process.env.NEXTAUTH_URL}/api/send`, {
-            method: "POST",
-            body: JSON.stringify(payload),
+          // const payload = {
+          //   isNewUser: true,
+          //   subjet: "Welcome to Code Genius",
+          //   name: message.user?.name,
+          //   email: message.user?.email,
+          // }
+          sendEmail({
+            subject: "Welcome to Code Genius",
+            email,
+            react: WelcomeEmail({
+              name: message.user.name || null,
+            }),
           })
+          // await fetch(`${process.env.NEXTAUTH_URL}/api/send`, {
+          //   method: "POST",
+          //   body: JSON.stringify(payload),
+          // })
         } catch (error) {
           console.error("error sending welcome email: ", error)
         }
