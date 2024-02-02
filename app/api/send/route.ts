@@ -9,13 +9,13 @@ export async function POST(req: NextRequest) {
 
   try {
     const { data } = await resend.emails.send({
-      from: "hello@code-genius.dev",
+      from: "welcome@code-genius.dev",
       to: bodyRequest.email,
       subject: bodyRequest.isNewUser
         ? "Welcome to Code Genius"
         : bodyRequest.subjet,
       react: WelcomeEmail({
-        name: "Lautaro",
+        name: bodyRequest.name,
       }),
       headers: {
         "X-Entity-Ref-ID": Math.random().toString(),

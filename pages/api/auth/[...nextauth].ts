@@ -47,7 +47,6 @@ export const authOptions: AuthOptions = {
             subjet: "Welcome to Code Genius",
             name: message.user?.name,
             email: message.user?.email,
-            test: true,
           }
           await fetch(`${process.env.NEXTAUTH_URL}/api/send`, {
             method: "POST",
