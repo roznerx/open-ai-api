@@ -42,16 +42,9 @@ export const authOptions: AuthOptions = {
   },
   events: {
     async signIn(message) {
-      console.log("message:", message)
       const email = message.user?.email as string
-      if (message.user) {
+      if (message.isNewUser) {
         try {
-          // const payload = {
-          //   isNewUser: true,
-          //   subjet: "Welcome to Code Genius",
-          //   name: message.user?.name,
-          //   email: message.user?.email,
-          // }
           sendEmail({
             subject: "Welcome to Code Genius",
             email,
@@ -59,10 +52,6 @@ export const authOptions: AuthOptions = {
               name: message.user.name || null,
             }),
           })
-          // await fetch(`${process.env.NEXTAUTH_URL}/api/send`, {
-          //   method: "POST",
-          //   body: JSON.stringify(payload),
-          // })
         } catch (error) {
           console.error("error sending welcome email: ", error)
         }
