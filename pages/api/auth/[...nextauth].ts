@@ -40,7 +40,8 @@ export const authOptions: AuthOptions = {
   },
   events: {
     async signIn(message) {
-      if (message.isNewUser) {
+      console.log("message:", message)
+      if (message.user) {
         try {
           const payload = {
             isNewUser: true,
