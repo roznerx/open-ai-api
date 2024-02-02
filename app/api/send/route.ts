@@ -17,12 +17,9 @@ export async function POST(req: NextRequest) {
       react: WelcomeEmail({
         name: bodyRequest.name,
       }),
-      headers: {
-        "X-Entity-Ref-ID": Math.random().toString(),
-      },
     })
 
-    return NextResponse.json(data)
+    return NextResponse.json({ data })
   } catch (error) {
     return NextResponse.json({ error })
   }
