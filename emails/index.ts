@@ -28,10 +28,9 @@ export const sendEmail = async ({
     )
     return Promise.resolve()
   }
-  console.log("Hello!!")
 
   const data = await resend.emails.send({
-    from: "welcome@code-genius.dev",
+    from: "Code Genius Team <welcome@code-genius.dev>",
     to: test ? "delivered@resend.dev" : email,
     subject,
     react,
