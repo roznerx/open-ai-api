@@ -24,6 +24,10 @@ export default async function Blog() {
       <CategoryNav />
       <div className="mx-auto grid w-full max-w-screen-xl grid-cols-1 justify-start gap-8 px-2.5 py-10 md:grid-cols-3 lg:px-5">
         {articles.map((article, idx) => {
+          if (article.slug === "project-story") {
+            //temporary hide this blog post
+            return
+          }
           return (
             <BlogCard key={article.slug} data={article} priority={idx <= 1} />
           )
