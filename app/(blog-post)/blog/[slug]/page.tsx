@@ -125,7 +125,7 @@ export default async function BlogArticle({
               </Link>
             </div>
           </div>
-          <div className="text-xs  top-8 col-span-1 -ml-[40px] hidden flex-col divide-y divide-gray-300 self-start rounded-xl  bg-purple-900 pl-5 sm:flex">
+          <div className="text-xs top-8 col-span-1 -ml-[20px] mr-2 hidden flex-col divide-y divide-gray-300 self-start rounded-xl bg-purple-900  px-4 pl-5 sm:flex">
             <div className="text-xs flex flex-col space-y-4 py-5">
               <p className="text-sm text-gray-200">Written by</p>
               <Author username={data.author} />
