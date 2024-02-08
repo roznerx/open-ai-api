@@ -12,7 +12,7 @@ import CodeFaster from "./home/CodeFaster"
 export default function Client({ translations }) {
   return (
     <>
-      <div className="h-screen w-screen bg-[radial-gradient(at_top_left,_var(--tw-gradient-stops))] from-black via-violet-800 to-fuchsia-600/70 ">
+      <div className="h-screen w-screen bg-[radial-gradient(at_top_left,_var(--tw-gradient-stops))] from-black via-violet-800 to-fuchsia-600/70">
         <div className="relative mx-auto flex h-[700px] w-full flex-col items-center justify-center overflow-hidden rounded-xl">
           <SuperHero translations={translations?.home?.superHero} />
           <HomeChat
