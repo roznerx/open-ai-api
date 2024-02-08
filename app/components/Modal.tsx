@@ -70,8 +70,8 @@ export default function MyModal({
                 leaveTo="opacity-0 scale-95"
               >
                 <Dialog.Panel
-                  className={`flex justify-center ${
-                    isLiveDemoModal ? "w-[65%]" : "w-auto mx-auto"
+                  className={`flex flex-col justify-center ${
+                    isLiveDemoModal ? "w-[65%]" : "mx-auto w-auto"
                   } transform overflow-hidden rounded-2xl bg-purple-900 p-10 text-center align-middle shadow-xl transition-all`}
                 >
                   <X
@@ -113,42 +113,42 @@ export default function MyModal({
                       </p>
                     </div>
                   )}
-                  {!isImageModal &&
-                  <div className="mt-4 flex justify-end">
-                    {!buttonLink ? (
-                      <button
-                        type="button"
-                        className="text-sm mx-auto inline-flex min-w-[125px] justify-center rounded-md border border-transparent bg-mint px-10 py-2 font-sans font-medium text-black/90 focus:outline-none  "
-                        onClick={() => {
-                          setIsOpen(false)
-                          if (typeof onSave === "function") {
-                            onSave()
-                          }
-                          if (typeof onClickPrimary === "function") {
-                            onClickPrimary()
-                          }
-                        }}
-                      >
-                        {buttonText}
-                      </button>
-                    ) : (
-                      <Link
-                        href={buttonLink}
-                        className="text-sm w-auto rounded-md border border-transparent bg-mint/80 px-5 py-3 font-medium text-black/90 hover:bg-mint hover:text-purple-900 focus:outline-none "
-                        onClick={() => {
-                          setIsOpen(false)
-                        }}
-                      >
-                        {buttonText}
-                        {/* <Rocket
+                  {!isImageModal && (
+                    <div className="mt-4 flex justify-end">
+                      {!buttonLink ? (
+                        <button
+                          type="button"
+                          className="text-sm mx-auto inline-flex min-w-[125px] justify-center rounded-md border border-transparent bg-mint px-10 py-2 font-sans font-medium text-black/90 focus:outline-none  "
+                          onClick={() => {
+                            setIsOpen(false)
+                            if (typeof onSave === "function") {
+                              onSave()
+                            }
+                            if (typeof onClickPrimary === "function") {
+                              onClickPrimary()
+                            }
+                          }}
+                        >
+                          {buttonText}
+                        </button>
+                      ) : (
+                        <Link
+                          href={buttonLink}
+                          className="text-sm w-auto rounded-md border border-transparent bg-mint/80 px-5 py-3 font-medium text-black/90 hover:bg-mint hover:text-purple-900 focus:outline-none "
+                          onClick={() => {
+                            setIsOpen(false)
+                          }}
+                        >
+                          {buttonText}
+                          {/* <Rocket
                           color="#000"
                           className="ml-2 inline-block"
                           size={20}
                         /> */}
-                      </Link>
-                    )}
-                  </div>
-                  }
+                        </Link>
+                      )}
+                    </div>
+                  )}
                 </Dialog.Panel>
               </Transition.Child>
             </div>
