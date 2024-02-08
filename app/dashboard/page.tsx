@@ -7,6 +7,8 @@ import { redirect } from "next/navigation"
 import { Params } from "app/settings/page"
 import { stripe } from "@/lib/stripe"
 import prisma from "@/lib/prisma"
+import { sendEmail } from "emails"
+import WelcomePremium from "emails/welcome-premium"
 
 export const metadata = {
   title: "AI Dashboard",
@@ -70,6 +72,14 @@ export default async function Dashboard({
         },
       })
       console.log("response:", response)
+      sendEmail({
+        subject: "Welcome to Code Genius Premium!",
+        email: response.email as string,
+        react: WelcomePremium({
+          name: response.name || null,
+        }),
+      })
+      //Send welcome email to premium user
     } catch (error) {
       console.log("error updating prisma user:", error)
     }
