@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import Chat from "app/components/shared/Chat"
 
 // import { useSignInModal } from "app/components/modals/SignInModal"
@@ -45,12 +45,12 @@ export default function Client({
     ],
   })
 
-  useEffect(() => {
-    if (session?.user && !session?.user?.credits && isLoading) {
-      stop()
-      setCreditsModaIsOpen(true)
-    }
-  }, [session, stop, isLoading])
+  // useEffect(() => {
+  //   if (session?.user && !session?.user?.credits && isLoading) {
+  //     stop()
+  //     setCreditsModaIsOpen(true)
+  //   }
+  // }, [session, stop, isLoading])
 
   return (
     <>
