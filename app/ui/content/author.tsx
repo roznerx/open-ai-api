@@ -42,7 +42,7 @@ export default function Author({
         className="rounded-full"
       />
       <div className="flex flex-col">
-        <p className=" font-normal text-gray-200">
+        <p className="font-normal text-gray-200">
           Written by {authors[username].name}
         </p>
         <time dateTime={updatedAt} className="text-sm font-light text-gray-400">
