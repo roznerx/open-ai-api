@@ -75,13 +75,13 @@ export default async function BlogArticle({
 
   return (
     <>
-      <MaxWidthWrapper className={cn("bg-gradient-to-r from-mint to-blue")}>
+      <MaxWidthWrapper className={cn("bg-black")}>
         <BlogBreadcrumbs />
         <div className="flex flex-col space-y-4 pt-8">
           <div className="flex items-center space-x-4">
             <Link
               href={`/blog/category/${category.slug}`}
-              className="text-sm rounded-full border border-none bg-purple-900 px-4 py-1.5 font-semibold text-white"
+              className="text-sm rounded-full border border-none bg-secondaryPurple p-5 py-1.5 font-semibold text-white"
             >
               {category.title}
             </Link>
@@ -92,14 +92,18 @@ export default async function BlogArticle({
               {formatDate(data.publishedAt)}
             </time>
           </div>
-          <h1 className="text-3xl font-extrabold text-purple-900 sm:text-4xl">
+          <h1 className="text-3xl font-extrabold text-white sm:text-4xl">
             {data.title}
           </h1>
-          <p className="my-4 pb-4 text-2xl text-purple-900">{data.summary}</p>
+          <p className="my-4 pb-4 text-2xl text-white">{data.summary}</p>
         </div>
       </MaxWidthWrapper>
 
-      <div className={cn("relative h-full bg-purple-900 text-white")}>
+      <div
+        className={cn(
+          "relative h-full bg-[radial-gradient(at_top_left,_var(--tw-gradient-stops))] from-black via-violet-800 to-fuchsia-600/70 text-white",
+        )}
+      >
         {/* <div className="absolute top-52 h-full w-full" /> */}
         <MaxWidthWrapper className="grid grid-cols-4 gap-10 px-0 sm:py-10">
           <div className="relative col-span-4 mb-10 flex flex-col space-y-8 rounded-xl bg-purple-700 pb-8 md:col-span-3">
@@ -118,10 +122,10 @@ export default async function BlogArticle({
               className="px-5 pb-20 pt-4 text-2xl sm:px-10"
             />
 
-            <div className="text-sm absolute bottom-2 left-0 ml-4 h-12 w-auto rounded-full border border-none bg-purple-900 px-4 py-3.5 text-gray-200 md:ml-9">
+            <div className="text-sm absolute bottom-6 left-0 ml-4 h-12 w-auto rounded-full border border-none bg-purple-900 px-4 py-3.5 text-gray-200 md:ml-9">
               <Link href={`/blog`} className="relative inline-flex ">
                 <ArrowLeft color="#E9E9EB" size={22} className="pr-1 " />
-                <span className="-mt-[1px]">Back to blog</span>
+                <span className="-mt-[1px] ">Back to blog</span>
               </Link>
             </div>
           </div>
