@@ -14,13 +14,13 @@ export default function BlogLayoutHero() {
   return (
     <MaxWidthWrapper className="h-auto bg-black pb-20 ">
       <div className="mt-12 flex flex-col justify-center">
-        <div className="flex items-center justify-center">
-          <h2 className="my-7 text-center font-sans text-3xl font-semibold text-white sm:text-4xl">
+        <div className="flex items-center justify-center pt-20">
+          <h2 className="text-center font-sans text-3xl font-semibold text-white sm:text-4xl">
             {data?.title || "Follow the AI latest news"}
           </h2>
         </div>
         <div className="flex items-center justify-center text-white">
-          <h3 className=" w-4/5 text-center text-2xl sm:text-3xl">
+          <h3 className="w-4/5 text-center text-2xl font-normal sm:text-3xl">
             {data?.description ||
               "Discover the most recent updates regarding artificial intelligence"}
           </h3>
