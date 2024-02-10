@@ -12,7 +12,11 @@ export default async function BlogLayout({
 }) {
   return (
     <>
-      <main className={cn("flex w-screen flex-col")}>
+      <main
+        className={cn(
+          "flex w-screen flex-col bg-[radial-gradient(at_top_left,_var(--tw-gradient-stops))] from-black via-violet-800 to-fuchsia-600/70",
+        )}
+      >
         <BlogLayoutHero />
         <MaxWidthWrapper>{children}</MaxWidthWrapper>
       </main>
