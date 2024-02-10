@@ -50,11 +50,7 @@ export default function Header({
                   alt="App Logo"
                 />
                 <h1
-                  className={`sm:text-xl sm:text-xl ml-2  ${
-                    pathName?.startsWith("/blog")
-                      ? "bg-purple-900"
-                      : "bg-gradient-to-r from-mint to-blue"
-                  }
+                  className={`sm:text-xl sm:text-xl ml-2 bg-gradient-to-r from-mint to-blue
                     bg-clip-text font-sans text-2xl font-bold tracking-tight text-transparent sm:ml-2 sm:mt-1 sm:leading-6`}
                 >
                   Code Genius
