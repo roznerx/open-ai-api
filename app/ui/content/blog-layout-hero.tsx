@@ -12,7 +12,7 @@ export default function BlogLayoutHero() {
   const data = BLOG_CATEGORIES.find((category) => category.slug === slug)
 
   return (
-    <MaxWidthWrapper className="h-auto bg-blue pb-20 ">
+    <MaxWidthWrapper className="h-auto bg-black pb-20 ">
       <div className="mt-12 flex flex-col justify-center">
         <div className="flex items-center justify-center">
           <h2 className="my-7 text-center font-sans text-3xl font-semibold text-white sm:text-4xl">
