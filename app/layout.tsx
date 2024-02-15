@@ -11,6 +11,7 @@ import Footer from "./components/Footer"
 import { getServerSession } from "next-auth"
 import { authOptions } from "pages/api/auth/[...nextauth]"
 import { SignInModal } from "./components/modals/SignInModal"
+import Script from "next/script"
 
 export const metadata: Metadata = {
   title: {
