@@ -1,4 +1,4 @@
-# [Codegenius MVP](https://code-friend-mvp.vercel.app/)
+# [Codegenius]
 
 This project generates code suggestions to help the developer code faster and smarther.
 
@@ -11,4 +11,3 @@ Then, run the application in the command line and it will be available at `http:
 ```bash
 yarn dev
 ```
-
