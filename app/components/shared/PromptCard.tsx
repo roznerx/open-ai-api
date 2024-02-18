@@ -4,13 +4,16 @@ import { ReactNode } from "react"
 
 type CardProps = {
   title: string
-  text: string
+  text?: string
   width?: string
   size?: "large" | "small"
   hasScale?: boolean
   isChat?: boolean
   isSub?: boolean
+  isLeetCode?: boolean
   mb?: string
+  category?: string
+  difficulty?: string
   order?: string
   button?: ReactNode
   pill?: ReactNode
@@ -21,6 +24,9 @@ export function PromptCard({
   hasScale,
   isChat = false,
   isSub = false,
+  isLeetCode = false,
+  category,
+  difficulty,
   title,
   button,
   pill,
@@ -40,7 +46,7 @@ export function PromptCard({
           : "sm:h-38 my-1  h-auto w-[90%] sm:h-52 sm:w-[280px] sm:items-start"
       }  cursor-pointer rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow `}
       onClick={() => {
-        if (onClick) onClick(text)
+        if (onClick && text) onClick(text)
       }}
     >
       <div className="relative mx-auto max-w-lg">
@@ -89,7 +95,24 @@ export function PromptCard({
             </div>
           )}
         </div>
-        <p className={`text-sm pt-2 font-normal text-gray-200`}>{text}</p>
+        {text && !isLeetCode && (
+          <p className={`text-sm pt-2 font-normal text-gray-200`}>{text}</p>
+        )}
+        {isLeetCode && (
+          <div className="mt-4">
+            {difficulty && (
+              <p className={`text-sm pt-2 font-normal text-gray-200`}>
+                Difficulty:{" "}
+                <span className="text-orange-300">{difficulty}</span>
+              </p>
+            )}
+            {category && (
+              <p className={`text-sm pt-2 font-normal text-gray-200`}>
+                Category: <span className="text-celeste">{category}</span>
+              </p>
+            )}
+          </div>
+        )}
       </div>
       {button && (
         <div className="relative mx-auto items-center justify-center sm:absolute sm:bottom-1 sm:right-4">
