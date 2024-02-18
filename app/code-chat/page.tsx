@@ -29,7 +29,7 @@ export default async function Page({
   }
 
   return (
-    <main className="flex w-full items-center justify-center">
+    <main className="flex h-full w-full items-start justify-center bg-[radial-gradient(at_bottom_center,_var(--tw-gradient-stops))] from-black to-violet-950">
       <Client
         initialQuery={(searchParams && searchParams.q) || ""}
         session={session}
