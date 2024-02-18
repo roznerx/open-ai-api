@@ -1,8 +1,8 @@
 import GenerateCode from "../GenerateCode"
-import { CodeMessagesProps } from "utils/types"
 import React from "react"
 import Image from "next/image"
 import { parseText, parseTextHome } from "utils/parseText"
+import { Message } from "ai/react/dist"
 
 const LogoCodeGenius = React.memo(() => (
   <Image
@@ -23,7 +23,7 @@ const UserAvatar = ({ username }) => {
   )
 }
 
-export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
+export const CombinedMessages = React.memo(
   ({
     userName,
     isLegacy,
@@ -32,7 +32,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
   }: {
     isLegacy?: boolean
     userName?: string
-    generatedMessages: []
+    generatedMessages: Message[]
     fontColor?: string
   }) => {
     return (
@@ -63,7 +63,7 @@ export const CombinedMessages: React.FC<CodeMessagesProps> = React.memo(
                         <p
                           style={{ borderRadius: "0px" }}
                           className={`ml-2 text-left leading-7 ${
-                            fontColor ? fontColor : "text-white"
+                            fontColor ? fontColor : "text-gray-200"
                           }`}
                         >
                           {message.text}
