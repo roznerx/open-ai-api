@@ -34,6 +34,7 @@ export default function Header({
             className={`ml-4 mt-3 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
+              pathName == "/code-chat/leet-code" ||
               canHideLogoInChat ||
               pathName == "/settings"
                 ? "hidden"
