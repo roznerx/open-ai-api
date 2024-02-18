@@ -367,8 +367,6 @@ export default function Client({
           {generatedMessages && (
             <CombinedMessages
               isLegacy={true}
-              pathName={pathName}
-              loading={loading}
               userName={userName}
               generatedMessages={generatedMessages}
             />
