@@ -184,7 +184,7 @@ export type UseCompletionOptions = {
 }
 
 export interface CodeMessagesProps {
-  generatedMessages: Message[] | string[]
+  generatedMessages: Message[]
   fontColor?: string
   pathName?: any
   bg?: string
