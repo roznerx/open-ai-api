@@ -74,15 +74,18 @@ export default function InputChat({
             <button
               type="submit"
               className={cn(
-                `absolute bottom-2 mr-2 flex items-center justify-end rounded-lg bg-purple-700 p-1.5 hover:bg-purple-400 disabled:hover:bg-transparent sm:right-0`,
+                "absolute bottom-3 mr-3 flex items-center justify-end rounded-lg bg-purple-800 p-1.5 hover:bg-purple-400 disabled:hover:bg-transparent sm:right-0",
+                {
+                  "bg-mint": hasAquestion,
+                },
               )}
             >
               <ArrowRight
                 className={cn("text-gray-400", {
-                  "-rotate-[90deg]  text-gray-100": hasAquestion,
+                  "-rotate-[90deg]  font-bold text-purple-900": hasAquestion,
                 })}
-                width={25}
-                height={25}
+                width={20}
+                height={20}
                 onClick={(e) => {
                   handleSubmit(e)
                 }}
