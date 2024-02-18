@@ -22,7 +22,9 @@ export default function Header({
   let { setModalIsOpen } = useContext(AuthContext) || {
     setModalIsOpen: () => {},
   }
-  const canHideLogoInChat = pathName == "/code-chat" && session !== null
+  const canHideLogoInChat =
+    (pathName == "/code-chat" && session !== null) ||
+    (pathName == "/code-chat/leet-code" && session !== null)
   return (
     <>
       <div
@@ -34,7 +36,6 @@ export default function Header({
             className={`ml-4 mt-3 ${
               pathName == "/dashboard" ||
               pathName == "/code-idea" ||
-              pathName == "/code-chat/leet-code" ||
               canHideLogoInChat ||
               pathName == "/settings"
                 ? "hidden"
