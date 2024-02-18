@@ -1,5 +1,6 @@
-import { Send } from "lucide-react"
-import React from "react"
+import { cn } from "@/lib/utils"
+import { ArrowRight } from "lucide-react"
+import React, { useState } from "react"
 
 export default function InputChat({
   reload,
@@ -9,14 +10,36 @@ export default function InputChat({
   handleInputChange,
   handleSubmit,
 }) {
-  // const buttonRef = useRef<HTMLButtonElement | null>(null)
+  const [newLine, setNewLine] = useState(0)
 
   React.useEffect(() => {
     // Check if the button element exists
     if (initialQuery !== "") {
       reload()
     }
-  }, []) // This effect runs once when the component mounts
+  }, [])
+
+  const handleUserKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      handleSubmit(e)
+      setNewLine(0)
+    }
+    if (e.key === "Enter" && e.shiftKey) {
+      setNewLine((prev) => prev + 1)
+    }
+    if (e.key === "Backspace" && newLine > 0) {
+      setNewLine((prev) => prev - 1)
+    }
+  }
+
+  const hasAquestion = inputValue !== "" || initialQuery !== ""
+  const totalRows = Math.min(
+    Math.ceil(inputValue.trim().split(/\s+/).length / 14),
+    6,
+  )
+
+  const height = !hasAquestion ? 56 : totalRows > 1 ? totalRows * 24 + 18 : 56
+  console.log("newLine:", newLine)
 
   return (
     <div className="fixed bottom-4 left-0 right-0 z-20 mx-auto h-14 w-full bg-transparent">
@@ -25,36 +48,47 @@ export default function InputChat({
           id="chat-form"
           onSubmit={(e) => {
             handleSubmit(e)
+            setNewLine(0)
           }}
         >
-          <input
-            id="chat-input"
-            onKeyDown={(e) => {
-              if (e.key === "Enter") {
-                handleSubmit(e)
-              }
+          <div
+            style={{
+              height: height + newLine * 24,
             }}
-            className="font-lg mx-2 h-12 w-[90%] resize-none rounded-lg bg-purple-400 py-2.5 pl-3 pr-12  
-               text-white outline-0 placeholder:pl-3 placeholder:pt-1 placeholder:font-sans placeholder:text-[16px]
-               placeholder:text-gray-300 hover:outline-0 focus:border-transparent focus:ring-black/30 active:outline-0 
-               sm:w-[900px]"
-            value={inputValue ?? initialQuery}
-            onChange={handleInputChange}
-            placeholder={translations?.ask}
-          />
-          <button
-            type="submit"
-            className="absolute right-8 top-2 rounded-lg bg-purple-700 hover:bg-purple-900 disabled:hover:bg-transparent sm:right-0"
+            className={cn(
+              "absolute bottom-0 flex w-full flex-grow flex-col overflow-hidden rounded-2xl border [&:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)]",
+            )}
           >
-            <Send
-              className="mb-2 mr-2 rotate-45 pl-2 pt-1 text-mint"
-              width={25}
-              height={25}
-              onClick={(e) => {
-                handleSubmit(e)
+            <textarea
+              id="chat-input"
+              rows={totalRows}
+              onKeyDown={handleUserKeyPress}
+              style={{
+                height: height + newLine * 24,
               }}
+              className="h-14 w-full resize-none border-0 bg-transparent pl-3 pr-6 pt-3 text-white placeholder-white/50 focus:ring-0 focus-visible:ring-0  md:pl-4 md:pr-12"
+              value={inputValue ?? initialQuery}
+              onChange={handleInputChange}
+              placeholder={translations?.ask}
             />
-          </button>
+            <button
+              type="submit"
+              className={cn(
+                `absolute bottom-2 mr-2 flex items-center justify-end rounded-lg bg-purple-700 p-1.5 hover:bg-purple-400 disabled:hover:bg-transparent sm:right-0`,
+              )}
+            >
+              <ArrowRight
+                className={cn("text-gray-400", {
+                  "-rotate-[90deg]  text-gray-100": hasAquestion,
+                })}
+                width={25}
+                height={25}
+                onClick={(e) => {
+                  handleSubmit(e)
+                }}
+              />
+            </button>
+          </div>
         </form>
       </div>
     </div>
