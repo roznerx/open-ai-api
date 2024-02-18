@@ -35,10 +35,8 @@ function GenerateCode({
       >
         {generatedCode &&
           generatedCode
-            .substring(generatedCode.indexOf("**") + 0)
-            .replace(regex, "")
-            .replace("javascript", "")
             .replace("typescript", "")
+            .replace("javascript", "")
             .replace("python", "")
             .replace("go", "")
             .replace("python", "")
