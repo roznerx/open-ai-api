@@ -17,6 +17,7 @@ export default function Client({
   initialQuery = "",
 }: any) {
   const [creditsModaIsOpen, setCreditsModaIsOpen] = useState(false)
+
   let messageFromHome: any
 
   messageFromHome =
@@ -45,15 +46,13 @@ export default function Client({
     ],
   })
 
-  // useEffect(() => {
-  //   if (session?.user && !session?.user?.credits && isLoading) {
-  //     stop()
-  //     setCreditsModaIsOpen(true)
-  //   }
-  // }, [session, stop, isLoading])
-
   return (
     <>
+      <div className="absolute inset-0 pt-14 text-3xl text-celeste">
+        <h1 className="mx-auto flex w-full justify-center">
+          Chat with Genius Minds on Engineering Topics
+        </h1>
+      </div>
       <Chat
         translations={translations}
         setInput={setInput}
