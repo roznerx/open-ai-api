@@ -74,9 +74,9 @@ export default function InputChat({
             <button
               type="submit"
               className={cn(
-                "absolute bottom-3 mr-3 flex items-center justify-end rounded-lg bg-purple-800 p-1.5 hover:bg-purple-400 disabled:hover:bg-transparent sm:right-0",
+                "absolute bottom-3 mr-3 flex items-center justify-end rounded-lg bg-purple-800 p-1.5 hover:bg-mint disabled:hover:bg-transparent sm:right-0",
                 {
-                  "bg-mint": hasAquestion,
+                  "bg-mint/75": hasAquestion,
                 },
               )}
             >
