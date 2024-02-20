@@ -48,8 +48,8 @@ export default function Client({
 
   return (
     <>
-      <div className="absolute inset-0 pt-14 text-3xl text-celeste">
-        <h1 className="mx-auto flex w-full justify-center">
+      <div className="inset-19 absolute mt-16 text-2xl text-celeste sm:text-2xl">
+        <h1 className="w-[80%]justify-center mx-auto flex text-center md:w-full">
           Chat with Genius Minds on Engineering Topics
         </h1>
       </div>

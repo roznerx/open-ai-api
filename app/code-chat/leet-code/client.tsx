@@ -42,7 +42,7 @@ export default function Client({
   return (
     <div className="flex h-full justify-start">
       <div className="absolute inset-0 pt-14 text-3xl text-celeste">
-        <h1 className="mx-auto flex w-full justify-center">
+        <h1 className="mx-auto flex w-[75%] flex-row justify-center text-center sm:w-full">
           Mastering LeetCode Problems Simplified
         </h1>
       </div>

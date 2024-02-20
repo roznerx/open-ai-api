@@ -42,7 +42,7 @@ export default function InputChat({
   console.log("newLine:", newLine)
 
   return (
-    <div className="fixed bottom-4 left-0 right-0 z-20 mx-auto h-14 w-full bg-transparent">
+    <div className="fixed bottom-4 left-0 right-0 z-20 mx-auto h-14 w-[95%] bg-transparent  sm:mx-auto sm:w-full">
       <div className="relative mx-auto mt-2 h-12 w-full sm:w-[900px]">
         <form
           id="chat-form"
@@ -56,7 +56,7 @@ export default function InputChat({
               height: height + newLine * 24,
             }}
             className={cn(
-              "absolute bottom-0 flex w-full flex-grow flex-col overflow-hidden rounded-2xl border [&:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)]",
+              "absolute bottom-0 flex w-full flex-grow flex-col overflow-hidden rounded-2xl border pb-0.5 pt-0.5 [&:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)]",
             )}
           >
             <textarea
@@ -74,7 +74,7 @@ export default function InputChat({
             <button
               type="submit"
               className={cn(
-                "absolute bottom-3 mr-3 flex items-center justify-end rounded-lg bg-purple-800 p-1.5 hover:bg-mint disabled:hover:bg-transparent sm:right-0",
+                "absolute bottom-3 right-2 mr-3 flex items-center justify-end rounded-lg bg-purple-800 p-1.5 hover:bg-mint disabled:hover:bg-transparent sm:right-0",
                 {
                   "bg-mint/75": hasAquestion,
                 },

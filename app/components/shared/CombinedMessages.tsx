@@ -15,7 +15,7 @@ const LogoCodeGenius = React.memo(() => (
 
 const UserAvatar = ({ username }) => {
   return (
-    <div className="-ml-1 flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <span className="mx-auto flex h-9 w-9 items-center justify-center rounded-full border-[1px] border-purple-500 bg-morado p-1 text-center font-medium ">
         {username}
       </span>
@@ -50,7 +50,7 @@ export const CombinedMessages = React.memo(
                 if (message.hasOwnProperty("text") && message?.text !== "") {
                   return (
                     <div key={idx} className="mt-1 flex">
-                      <div className="ml-6 flex items-center justify-center">
+                      <div className="flex items-center justify-center sm:ml-6">
                         {role === "user" ? (
                           <UserAvatar username={userName?.substring(0, 1)} />
                         ) : (

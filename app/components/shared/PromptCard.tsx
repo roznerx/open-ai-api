@@ -43,13 +43,13 @@ export function PromptCard({
       className={`${order} relative flex ${
         size === "large"
           ? "my-1 h-auto w-[90%] flex-col items-start justify-start sm:col-span-2 sm:h-56 sm:w-full"
-          : "sm:h-38 my-1  h-auto w-[90%] sm:h-52 sm:w-[280px] sm:items-start"
+          : "my-1 h-auto w-[90%] sm:h-52 sm:w-[280px] sm:items-start"
       }  cursor-pointer rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow `}
       onClick={() => {
         if (onClick && text) onClick(text)
       }}
     >
-      <div className="relative mx-auto max-w-lg">
+      <div className="relative mx-auto w-full sm:max-w-lg">
         <motion.div
           className={`absolute ${
             size !== "large"
@@ -66,7 +66,7 @@ export function PromptCard({
         ></motion.div>
         <div className="mb-2 flex w-full items-start justify-between sm:inline-flex sm:justify-start">
           <h5
-            className={`text-2xl font-bold tracking-tight text-white sm:mt-0`}
+            className={`text-left text-2xl font-bold tracking-tight text-white sm:mt-0`}
           >
             {title}
           </h5>

@@ -31,9 +31,9 @@ export default function Chat({
 
   return (
     <>
-      <div className="mx-auto flex rounded-md sm:mx-auto">
+      <div className="flex h-screen w-full justify-center rounded-md sm:mx-auto">
         {messages.length > 0 && (
-          <div className="mt-40 w-full">
+          <div className="mt-18 ml-8 flex w-full justify-center">
             <ChatContainer
               isMobile={isMobile}
               useFullHeight
@@ -48,8 +48,8 @@ export default function Chat({
           </div>
         )}
         {messages.length === 0 && pathName !== "/code-chat/leet-code" && (
-          <div className="flex items-center justify-center">
-            <div className="grid grid-cols-1 place-items-center gap-8 overflow-y-auto sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center">
+          <div className="mt-14 flex  items-center justify-center sm:mt-0 ">
+            <div className="mb-7 grid max-h-[70%] grid-cols-1 place-items-center gap-3 overflow-y-auto sm:col-span-2 sm:h-screen sm:grid-cols-4 sm:place-content-center sm:gap-8">
               <PromptCard
                 imageSrc="/icons/react.png"
                 onClick={() => setInput(translations.cards.react)}
@@ -102,8 +102,8 @@ export default function Chat({
           </div>
         )}
         {messages.length === 0 && pathName === "/code-chat/leet-code" && (
-          <div className="mb-8 flex items-center justify-center">
-            <div className="grid grid-cols-1 place-items-center gap-8 overflow-y-auto sm:col-span-2 sm:h-full sm:grid-cols-4 sm:place-content-center">
+          <div className="mb-8 mt-36 flex max-h-[65%] flex-col items-center justify-center sm:flex-row">
+            <div className="grid grid-cols-1 place-items-center gap-3 overflow-y-auto sm:col-span-2 sm:h-full sm:grid-cols-4 sm:place-content-center sm:gap-8">
               <PromptCard
                 isLeetCode
                 title={LEET_CODE.merge.title}
