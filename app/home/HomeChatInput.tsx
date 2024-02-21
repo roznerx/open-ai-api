@@ -47,7 +47,13 @@ export default function HomeChatInput({
           sm:px-3 sm:text-2xl"
               htmlFor="home-input"
             >
-              {labelText}
+              <TypeAnimation
+                className="text-slate-200"
+                sequence={[labelText, 1000]}
+                wrapper="span"
+                speed={55}
+                repeat={0}
+              />
             </label>
           </div>
           <div

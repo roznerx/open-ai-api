@@ -44,7 +44,7 @@ export function PromptCard({
         size === "large"
           ? "my-1 h-auto w-[90%] flex-col items-start justify-start sm:col-span-2 sm:h-56 sm:w-full"
           : "my-1 h-auto w-[90%] sm:h-52 sm:w-[280px] sm:items-start"
-      }  cursor-pointer rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow `}
+      }  cursor-default rounded-lg border-[1px] border-purple-500 bg-purple-700 p-6 shadow `}
       onClick={() => {
         if (onClick && text) onClick(text)
       }}
@@ -100,15 +100,17 @@ export function PromptCard({
         )}
         {isLeetCode && (
           <div className="mt-4">
+            {category && (
+              <p
+                className={`text-sm cursor-pointer pt-2 font-normal text-gray-200`}
+              >
+                Category: <span className="text-celeste">{category}</span>
+              </p>
+            )}
             {difficulty && (
               <p className={`text-sm pt-2 font-normal text-gray-200`}>
                 Difficulty:{" "}
                 <span className="text-orange-300">{difficulty}</span>
-              </p>
-            )}
-            {category && (
-              <p className={`text-sm pt-2 font-normal text-gray-200`}>
-                Category: <span className="text-celeste">{category}</span>
               </p>
             )}
           </div>

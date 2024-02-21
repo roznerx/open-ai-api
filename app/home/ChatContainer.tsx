@@ -9,8 +9,8 @@ export default function ChatContainer({ messages, useFullHeight }: any) {
     <div className="mx-auto flex w-full items-center justify-center sm:-ml-4">
       <div
         ref={chatContainerRef}
-        className={`h-auto overflow-y-scroll text-center ${
-          useFullHeight ? "max-h-[70vh] sm:max-h-[65vh]" : "h-auto"
+        className={`h-auto max-h-[70vh] overflow-y-scroll text-center ${
+          useFullHeight ? "sm:max-h-[65vh]" : "h-auto"
         } mt-2 w-[90%] rounded-md bg-transparent font-sans text-white
        sm:w-[60vw]`}
       >

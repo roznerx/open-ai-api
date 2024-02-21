@@ -11,3 +11,12 @@ export const paymentPortalLinkTest =
 
 export const paymentPortalLink =
   "https://billing.stripe.com/p/login/bIY9BFb2WfeE9eEfYY"
+
+export const createCatLink = (category) => {
+  switch (category) {
+    case "binary":
+      return `code-chat/leet-code?cat=binary`
+    default:
+      return `code-chat/leet-code?cat=binary`
+  }
+}
