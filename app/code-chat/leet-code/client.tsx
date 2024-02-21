@@ -47,8 +47,6 @@ export default function Client({
   })
 
   useEffect(() => {
-    console.log("questionPrompt", questionPrompt)
-
     // Check if the button element exists
     if (questionPrompt !== "") {
       setInput(questionPrompt)

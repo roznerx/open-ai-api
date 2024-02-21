@@ -40,7 +40,7 @@ export function PromptCard({
 
   return (
     <div
-      className={`${order} relative flex ${
+      className={`${order} relative flex cursor-pointer ${
         size === "large"
           ? "my-1 h-auto w-[90%] flex-col items-start justify-start sm:col-span-2 sm:h-56 sm:w-full"
           : "my-1 h-auto w-[90%] sm:h-52 sm:w-[280px] sm:items-start"
@@ -101,9 +101,7 @@ export function PromptCard({
         {isLeetCode && (
           <div className="mt-4">
             {category && (
-              <p
-                className={`text-sm cursor-pointer pt-2 font-normal text-gray-200`}
-              >
+              <p className={`text-sm pt-2 font-normal text-gray-200`}>
                 Category: <span className="text-celeste">{category}</span>
               </p>
             )}

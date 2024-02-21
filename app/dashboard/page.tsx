@@ -71,7 +71,6 @@ export default async function Dashboard({
           subscriptionId: stripeSession?.subscription,
         },
       })
-      console.log("response:", response)
       sendEmail({
         subject: "Welcome to Code Genius Premium!",
         email: response.email as string,

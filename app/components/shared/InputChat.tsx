@@ -11,6 +11,8 @@ export default function InputChat({
   handleSubmit,
 }) {
   const [newLine, setNewLine] = useState(0)
+  const [count, setCount] = React.useState(0)
+  console.log("count:", count)
 
   React.useEffect(() => {
     // Check if the button element exists
@@ -20,9 +22,10 @@ export default function InputChat({
   }, [])
 
   const handleUserKeyPress = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
+    if (e.key === "Enter" && !e.shiftKey && count < 500) {
       handleSubmit(e)
       setNewLine(0)
+      setCount(500)
     }
     if (e.key === "Enter" && e.shiftKey) {
       setNewLine((prev) => prev + 1)
@@ -32,13 +35,17 @@ export default function InputChat({
     }
   }
 
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    setCount(e.currentTarget.value.length)
+  }
+
   const hasAquestion = inputValue !== "" || initialQuery !== ""
   const totalRows = Math.min(
-    Math.ceil(inputValue.trim().split(/\s+/).length / 14),
+    Math.floor(inputValue.trim().split(/\s+/).length / 14),
     6,
   )
 
-  const height = !hasAquestion ? 56 : totalRows > 1 ? totalRows * 24 + 18 : 56
+  const height = !hasAquestion ? 56 : totalRows > 1 ? totalRows * 24 + 14 : 56
 
   return (
     <div className="fixed bottom-4 left-0 right-0 z-50 mx-auto h-14 w-[95%] bg-transparent  sm:mx-auto sm:w-full">
@@ -46,8 +53,11 @@ export default function InputChat({
         <form
           id="chat-form"
           onSubmit={(e) => {
-            handleSubmit(e)
-            setNewLine(0)
+            if (count < 500) {
+              handleSubmit(e)
+              setNewLine(0)
+              setCount(0)
+            }
           }}
         >
           <div
@@ -61,11 +71,14 @@ export default function InputChat({
             <textarea
               id="chat-input"
               rows={totalRows}
+              onKeyUp={handleKeyUp}
               onKeyDown={handleUserKeyPress}
               style={{
                 height: height + newLine * 14,
               }}
-              className="mt-1.5 h-14 w-full resize-none border-0 bg-transparent pl-3 pr-6 text-white placeholder-white/50 focus:ring-0 focus-visible:ring-0  md:pl-4 md:pr-12"
+              className={cn(
+                "h-14 w-full resize-none border-0 bg-transparent pl-3 pr-6 pt-3 text-white placeholder-white/50 focus:ring-0 focus-visible:ring-0 md:pl-4 md:pr-12",
+              )}
               value={inputValue ?? initialQuery}
               onChange={handleInputChange}
               placeholder={translations?.ask}
@@ -73,7 +86,7 @@ export default function InputChat({
             <button
               type="submit"
               className={cn(
-                "absolute bottom-3 right-2 mr-2 flex items-center justify-end rounded-lg border border-gray-300 bg-purple-500 p-1.5 disabled:hover:bg-transparent sm:right-0",
+                "absolute bottom-3 right-2 mr-2 flex items-center justify-end rounded-lg bg-purple-500 p-1.5 disabled:hover:bg-transparent sm:right-0",
                 {
                   "bg-mint/95 hover:bg-mint/80": hasAquestion,
                 },
@@ -86,13 +99,20 @@ export default function InputChat({
                 width={20}
                 height={20}
                 onClick={(e) => {
-                  handleSubmit(e)
-                  setNewLine(0)
+                  e.preventDefault()
+                  if (count < 500) {
+                    handleSubmit(e)
+                    setNewLine(0)
+                    setCount(0)
+                  } else {
+                    console.log("too much chars")
+                  }
                 }}
               />
             </button>
           </div>
         </form>
+        <div className="text-gray-300">Chars remaining {500 - count}</div>
       </div>
     </div>
   )
