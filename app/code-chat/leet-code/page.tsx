@@ -3,10 +3,12 @@ import { getServerSession } from "next-auth"
 import Client from "./client"
 import { headers } from "next/headers"
 import { getDictionary } from "app/(lang)/dictionaries"
+import { Metadata } from "next"
 
-export const metadata = {
-  title: "Code Chat",
-  description: "Code Chat is a fun way to learn how to code.",
+export const metadata: Metadata = {
+  title: "LeetCode questions and solutions",
+  description:
+    "Discover your full developer potential by cracking Data Structures and Algorithms",
 }
 
 export default async function Page({
