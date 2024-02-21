@@ -31,12 +31,12 @@ export default function Chat({
 
   return (
     <>
-      <div className="flex h-screen w-full justify-center rounded-md sm:mx-auto">
+      <div className="z-10 flex h-screen w-full justify-center rounded-md sm:mx-auto">
         {messages.length > 0 && (
           <div className="mt-18 ml-8 flex w-full justify-center">
             <ChatContainer
-              isMobile={isMobile}
               useFullHeight
+              isMobile={isMobile}
               width={chatWidth}
               messages={
                 <CombinedMessages
