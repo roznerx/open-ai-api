@@ -49,7 +49,7 @@ export const CombinedMessages = React.memo(
             ? result.map((message: any, idx) => {
                 if (message.hasOwnProperty("text") && message?.text !== "") {
                   return (
-                    <div key={idx} className="mt-1 flex">
+                    <div key={idx} className="mt-1 flex overflow-y-scroll">
                       <div className="flex items-center justify-center sm:ml-6">
                         {role === "user" ? (
                           <UserAvatar username={userName?.substring(0, 1)} />
