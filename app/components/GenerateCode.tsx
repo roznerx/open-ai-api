@@ -18,7 +18,6 @@ type GenerateCode = {
 }
 
 const themeColors: any = tailwindConfig.theme?.extend?.colors
-const regex = /^x/
 
 function GenerateCode({
   align = "center",
@@ -49,7 +48,7 @@ function GenerateCode({
               return (
                 <div
                   key={idx}
-                  className="mx-auto flex w-full items-center justify-center overflow-x-auto overflow-y-scroll text-left font-mono sm:items-start sm:justify-start"
+                  className="mx-auto flex w-full items-center justify-center text-left font-mono sm:items-start sm:justify-start"
                 >
                   <CopyBlock
                     onCopy={() => null}
