@@ -52,10 +52,10 @@ export default function InputChat({
         >
           <div
             style={{
-              height: height + newLine * 24,
+              height: height + newLine * 14,
             }}
             className={cn(
-              "absolute bottom-0 flex w-full flex-grow flex-col overflow-hidden rounded-2xl border bg-purple-900 pb-0.5 pt-0.5 [&:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)]",
+              "absolute bottom-0 flex w-full flex-grow flex-col overflow-hidden rounded-2xl border border-gray-300 bg-purple-900 [&:has(textarea:focus)]:shadow-[0_2px_6px_rgba(0,0,0,.05)]",
             )}
           >
             <textarea
@@ -63,9 +63,9 @@ export default function InputChat({
               rows={totalRows}
               onKeyDown={handleUserKeyPress}
               style={{
-                height: height + newLine * 24,
+                height: height + newLine * 14,
               }}
-              className="h-14 w-full resize-none border-0 bg-transparent pl-3 pr-6 pt-3 text-white placeholder-white/50 focus:ring-0 focus-visible:ring-0  md:pl-4 md:pr-12"
+              className="mt-1.5 h-14 w-full resize-none border-0 bg-transparent pl-3 pr-6 text-white placeholder-white/50 focus:ring-0 focus-visible:ring-0  md:pl-4 md:pr-12"
               value={inputValue ?? initialQuery}
               onChange={handleInputChange}
               placeholder={translations?.ask}
@@ -73,7 +73,7 @@ export default function InputChat({
             <button
               type="submit"
               className={cn(
-                "absolute bottom-3 right-2 mr-2 flex items-center justify-end rounded-lg bg-purple-500 p-1.5 disabled:hover:bg-transparent sm:right-0",
+                "absolute bottom-3 right-2 mr-2 flex items-center justify-end rounded-lg border border-gray-300 bg-purple-500 p-1.5 disabled:hover:bg-transparent sm:right-0",
                 {
                   "bg-mint/95 hover:bg-mint/80": hasAquestion,
                 },

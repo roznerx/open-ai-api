@@ -200,7 +200,7 @@
     }
   },
   "chat": {
-    "ask": "Ask to Code Genius..",
+    "ask": "How can I help you today?",
     "cards": {
       "react": "Explain how to use the create react app npm package",
       "next": "How should I use the Create Next App npm package?",
