@@ -20,7 +20,7 @@ export default async function Page({
   const dictionary = await getDictionary(lang)
 
   return (
-    <main className=" flex h-screen w-full items-start justify-center bg-[radial-gradient(at_bottom_center,_var(--tw-gradient-stops))] from-black to-violet-950">
+    <main className="z-0 flex h-screen w-full items-start justify-center bg-[radial-gradient(at_bottom_center,_var(--tw-gradient-stops))] from-black to-violet-950">
       <Client session={session} translations={dictionary?.chat} />
     </main>
   )
