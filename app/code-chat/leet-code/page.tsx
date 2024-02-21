@@ -9,6 +9,15 @@ export const metadata: Metadata = {
   title: "LeetCode questions and solutions",
   description:
     "Discover your full developer potential by cracking Data Structures and Algorithms",
+  openGraph: {
+    title: "LeetCode questions and solutions",
+    description:
+      "Discover your full developer potential by cracking Data Structures and Algorithms",
+    url: "https://www.code-genius.dev/code-chat/leet-code",
+    siteName: "Code Genius",
+    locale: "en-US",
+    type: "website",
+  },
 }
 
 export default async function Page({
